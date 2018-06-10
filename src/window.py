@@ -18,7 +18,6 @@
 from gi.repository import Gtk, Gio, GdkPixbuf
 from .gi_composites import GtkTemplate
 
-
 @GtkTemplate(ui='/org/gnome/Dynamic-Wallpaper-Editor/window.ui')
 class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'DynamicWallpaperEditorWindow'
@@ -50,7 +49,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.trans_time_btn.set_increments(1,1)
 
         self.static_time_btn.set_value(10.0)
-        self.trans_time_btn.set_value(1.0)
+        self.trans_time_btn.set_value(0.0)
 
         ##############
 
@@ -63,6 +62,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.time_switch.connect('notify::active', self.update_global_time_box)
 
         self.time_switch.set_sensitive(False) # FIXME temporaire
+        self.time_switch.set_tooltip_text("not implemented yet")
 
         self.files_list = []
 
@@ -114,7 +114,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         response = file_chooser.run()
         if response == Gtk.ResponseType.OK:
             self.add_pictures_to_list(file_chooser.get_filenames())
-            print(self.files_list)
             # self.list_box.show_all()
         file_chooser.destroy()
 
@@ -144,57 +143,80 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(fc.get_filename(), 200, 200, True)
         self.preview_image.set_from_pixbuf(pixbuf)
 
+    def reset_list_box(self):
+        for image in self.files_list:
+            self.pictures_dict[image].destroy()
+
     def add_pictures_to_list(self, new_pics_list):
         # TODO améliorable sans doute ?
-        for image in self.files_list:
-            print(image)
-            self.pictures_dict[image].destroy()
+        self.reset_list_box()
         self.files_list = self.files_list + new_pics_list
         for image in self.files_list:
             new_row = PictureRow(image, self)
             self.pictures_dict[image] = new_row
             self.list_box.add(self.pictures_dict[image])
 
+    # Writing the result in a file
     def on_save(self, b):
-        # écrire dans fichier
-        # TODO conditionnelle
-        file_chooser = Gtk.FileChooserDialog(_("Save as"), self,
-            Gtk.FileChooserAction.SAVE,
-            (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-            Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
-        response = file_chooser.run()
-        if response == Gtk.ResponseType.OK:
-            Gio.File.new_for_path(file_chooser.get_filename())
-            f = open(file_chooser.get_filename(), 'w')
+        if self.xml_file_uri is None:
+            file_chooser = Gtk.FileChooserDialog(_("Save as"), self,
+                Gtk.FileChooserAction.SAVE,
+                (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+                Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+            response = file_chooser.run()
+            if response == Gtk.ResponseType.OK:
+                Gio.File.new_for_path(file_chooser.get_filename())
+                f = open(file_chooser.get_filename(), 'w')
+                f.write(self.generate_text())
+                f.close()
+                self.xml_file_uri = file_chooser.get_uri()
+                self.header_bar.set_subtitle(file_chooser.get_filename())
+                self.set_btn.set_sensitive(True)
+            file_chooser.destroy()
+        else:
+            Gio.File.new_for_path(self.header_bar.get_subtitle())
+            f = open(self.header_bar.get_subtitle(), 'w')
             f.write(self.generate_text())
             f.close()
-            self.xml_file_uri = file_chooser.get_uri()
-            self.header_bar.set_subtitle(file_chooser.get_filename())
-            self.set_btn.set_sensitive(True)
-        file_chooser.destroy()
 
     def update_global_time_box(self, interrupteur, osef):
         self.time_box.set_visible(interrupteur.get_active())
 
+    # This method parses the XML, looking for pictures paths
     def load_list_from_xml(self):
-        row = Gtk.ListBoxRow()
-        label = Gtk.Label("for now, you can't edit an existing dynamic wallpaper.\nhowever you can use this app to set it as a wallpaper")
-        self.save_btn.set_sensitive(False)
-        self.add_btn.set_sensitive(False)
-        row.add(label)
-        self.list_box.add(row)
-
-    def load_list_from_xml2(self):
+        self.reset_list_box()
         self.files_list = []
+        files_list = []
+        durations_list = []
 
-        # TODO
-        # - parser pour chercher les balises background et si il n'y en a pas on retourne
-        # - parser pour rechercher les '<static>' et pour chacune d'elle:
-        #     - avant la fin de la static, chercher la durée et le path
-        #     - après la fin, chercher l'autre duration et les chemins
+        f = open(self.header_bar.get_subtitle(), 'r')
+        xml_text = f.read()
+        f.close()
 
-        self.add_pictures_to_list([])
+        if '<background>' not in xml_text:
+            return
+        if '</background>' not in xml_text:
+            return
 
+        splitted_by_static = xml_text.split('<static>')
+
+        for image in splitted_by_static:
+            if image is splitted_by_static[0]:
+                continue
+            static_tags_for_image = image.split('</static>')[0]
+            path = static_tags_for_image.split('<file>')
+            path = path[1].split('</file>')[0]
+            files_list = files_list + [path]
+            duration = static_tags_for_image.split('<duration>')
+            duration = duration[1].split('</duration>')[0]
+            durations_list = durations_list + [duration]
+            # TODO les transitions
+            trans_tags_for_image = image.split('</static>')[1]
+
+        # TODO gérer les temps statiques et de transition ?
+        self.add_pictures_to_list(files_list)
+
+    # This method generates valid XML code for a wallpaper
     def generate_text(self):
         pastimage = None
         text = """<!-- Generated by org.gnome.Dynamic-Wallpaper-Editor -->
