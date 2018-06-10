@@ -1,6 +1,6 @@
 # window.py
 #
-# Copyright 2018 Maestroschan
+# Copyright 2018 Romain F. T.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -60,7 +60,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.save_btn.connect('clicked', self.on_save)
         self.open_btn.connect('clicked', self.on_open)
         self.set_btn.connect('clicked', self.on_set_as_wallpaper)
-        self.time_switch.connect('notify::active', self.set_global_time)
+        self.time_switch.connect('notify::active', self.update_global_time_box)
 
         self.time_switch.set_sensitive(False) # FIXME temporaire
 
@@ -76,21 +76,14 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         onlyXML.set_name("Dynamic wallpapers")
         onlyXML.add_mime_type('application/xml')
         file_chooser.set_filter(onlyXML)
+        # file_chooser.set_preview_widget(self.get_preview_widget_xml())
+        # file_chooser.connect('update-preview', self.on_update_preview_xml)
         response = file_chooser.run()
         if response == Gtk.ResponseType.OK:
             self.xml_file_uri = file_chooser.get_uri()
             self.header_bar.set_subtitle(file_chooser.get_filename())
             self.set_btn.set_sensitive(True)
-            # TODO parser les trucs
-            # FIXME temporairement :
-            row = Gtk.ListBoxRow()
-            label = Gtk.Label("for now, you can't edit an existing dynamic wallpaper.\nhowever you can use this app to set it as a wallpaper")
-            self.save_btn.set_sensitive(False)
-            self.add_btn.set_sensitive(False)
-            row.add(label)
-            self.list_box.add(row)
-            self.list_box.show_all()
-
+            self.load_list_from_xml()
         file_chooser.destroy()
 
     def on_set_as_wallpaper(self, b):
@@ -104,6 +97,10 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             Gtk.FileChooserAction.OPEN,
             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
             Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+        # file_chooser = Gtk.FileChooserNative.new(_("Add pictures"), self, # FIXME mieux mais pété ??
+        #     Gtk.FileChooserAction.OPEN,
+        #     _("Open"),
+        #     _("Cancel"))
         onlyPictures = Gtk.FileFilter()
         onlyPictures.set_name("Pictures")
         onlyPictures.add_mime_type('image/png')
@@ -111,20 +108,44 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         onlyPictures.add_mime_type('image/svg')
         onlyPictures.add_mime_type('image/tiff')
         file_chooser.set_filter(onlyPictures)
+        file_chooser.set_preview_widget(self.get_preview_widget_pic())
+        file_chooser.connect('update-preview', self.on_update_preview_pic)
         file_chooser.set_select_multiple(True)
-        # TODO si je veux une preview il faut l'implémenter moi-mme et l'ajouter ici
         response = file_chooser.run()
         if response == Gtk.ResponseType.OK:
-            # self.files_list = self.files_list + file_chooser.get_filenames()
-
-            # TODO améliorable sans doute ?
             self.add_pictures_to_list(file_chooser.get_filenames())
-
-            self.list_box.show_all()
-
+            print(self.files_list)
+            # self.list_box.show_all()
         file_chooser.destroy()
 
+    def get_preview_widget_xml(self):
+        self.preview_image = Gtk.Image()
+        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        bbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        precedent = Gtk.Button("<")
+        suivant = Gtk.Button(">")
+        bbox.add(precedent)
+        bbox.add(suivant)
+        box.add(self.preview_image)
+        box.add(bbox)
+        box.show_all()
+        return box
+
+    def on_update_preview_xml(self, fc):
+        print(fc.get_filename())
+        # pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(fc.get_filename(), 100, 100, True)
+        # self.preview_image.set_from_pixbuf(pixbuf)
+
+    def get_preview_widget_pic(self):
+        self.preview_image = Gtk.Image()
+        return self.preview_image
+
+    def on_update_preview_pic(self, fc):
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(fc.get_filename(), 200, 200, True)
+        self.preview_image.set_from_pixbuf(pixbuf)
+
     def add_pictures_to_list(self, new_pics_list):
+        # TODO améliorable sans doute ?
         for image in self.files_list:
             print(image)
             self.pictures_dict[image].destroy()
@@ -152,8 +173,27 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             self.set_btn.set_sensitive(True)
         file_chooser.destroy()
 
-    def set_global_time(self, interrupteur, osef):
+    def update_global_time_box(self, interrupteur, osef):
         self.time_box.set_visible(interrupteur.get_active())
+
+    def load_list_from_xml(self):
+        row = Gtk.ListBoxRow()
+        label = Gtk.Label("for now, you can't edit an existing dynamic wallpaper.\nhowever you can use this app to set it as a wallpaper")
+        self.save_btn.set_sensitive(False)
+        self.add_btn.set_sensitive(False)
+        row.add(label)
+        self.list_box.add(row)
+
+    def load_list_from_xml2(self):
+        self.files_list = []
+
+        # TODO
+        # - parser pour chercher les balises background et si il n'y en a pas on retourne
+        # - parser pour rechercher les '<static>' et pour chacune d'elle:
+        #     - avant la fin de la static, chercher la durée et le path
+        #     - après la fin, chercher l'autre duration et les chemins
+
+        self.add_pictures_to_list([])
 
     def generate_text(self):
         pastimage = None
@@ -212,7 +252,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
         return text
 
-
+# This is a row with the thumbnail and the path of the picture, and control buttons
+# (up/down, delete) for this picture.
 class PictureRow(Gtk.ListBoxRow):
     __gtype_name__ = 'PictureRow'
 
@@ -259,11 +300,11 @@ class PictureRow(Gtk.ListBoxRow):
         move_box.add(up_btn)
         move_box.get_style_context().add_class('linked')
 
-        static_label = Gtk.Label(_("Time:"))
-        self.static_time_btn = Gtk.SpinButton()
+        # static_label = Gtk.Label(_("Time:"))
+        # self.static_time_btn = Gtk.SpinButton()
 
-        trans_label = Gtk.Label(_("Transition:"))
-        self.trans_time_btn = Gtk.SpinButton()
+        # trans_label = Gtk.Label(_("Transition:"))
+        # self.trans_time_btn = Gtk.SpinButton()
 
         row_box.pack_start(image, expand=False, fill=False, padding=0)
         row_box.pack_start(label, expand=False, fill=False, padding=0)

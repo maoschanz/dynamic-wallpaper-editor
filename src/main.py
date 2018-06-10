@@ -43,7 +43,6 @@ class Application(Gtk.Application):
             win = DynamicWallpaperEditorWindow(application=self)
         win.present()
 
-
     def get_app_menu(self):
         builder = Gtk.Builder()
         builder.add_from_resource("/org/gnome/Dynamic-Wallpaper-Editor/Appmenu.ui")
@@ -57,10 +56,6 @@ class Application(Gtk.Application):
         # prefs_action.connect("activate", self.on_prefs_activate)
         # self.add_action(prefs_action)
 
-        # shortcuts_action = Gio.SimpleAction.new("shortcuts", None)
-        # shortcuts_action.connect("activate", self.on_shortcuts_activate)
-        # self.add_action(shortcuts_action)
-
         about_action = Gio.SimpleAction.new("about", None)
         about_action.connect("activate", self.on_about_activate)
         self.add_action(about_action)
@@ -70,10 +65,6 @@ class Application(Gtk.Application):
         self.add_action(quit_action)
 
         return menu
-
-    def build_shortcuts_dialog(self):
-        self.shortcuts_dialog = Gtk.ShortcutsWindow()
-
 
     def on_about_activate(self, a, b):
         self.build_about_dialog()

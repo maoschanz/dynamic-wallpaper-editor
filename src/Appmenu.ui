@@ -16,11 +16,7 @@
     <!-- </section> -->
 
     <section>
-      <!-- <item> -->
-      <!--   <attribute name="action">app.shortcuts</attribute> -->
-      <!--   <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute> -->
-      <!-- </item> -->
-<!--
+<!-- TODO
       <item>
         <attribute name="action">app.help</attribute>
         <attribute name="label" translatable="yes">_Help</attribute>

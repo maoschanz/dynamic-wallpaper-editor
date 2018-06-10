@@ -25,9 +25,6 @@
 						<property name="visible">True</property>
 						<property name="sensitive">False</property>
 						<property name="label" translatable="yes">Set as wallpaper</property>
-						<!-- <style> -->
-						 <!--	<class name="suggested-action"/> -->
-						<!-- </style> -->
 					</object>
 					<packing>
 						<property name="pack-type">GTK_PACK_END</property>
