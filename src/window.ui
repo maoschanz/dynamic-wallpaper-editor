@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<template class="DynamicWallpaperEditorWindow" parent="GtkApplicationWindow">
+		<property name="default-width">700</property>
+		<property name="default-height">400</property>
+		<child type="titlebar">
+			<object class="GtkHeaderBar" id="header_bar">
+				<property name="visible">True</property>
+				<property name="show-close-button">True</property>
+				<property name="title">Dynamic wallpaper editor</property>
+
+				<child>
+					<object class="GtkButton" id="open_btn">
+						<property name="visible">True</property>
+						<property name="label" translatable="yes">Open</property>
+						<property name="tooltip_text" translatable="yes">Open an existing dynamic wallpaper</property>
+					</object>
+					<packing>
+						<property name="pack-type">GTK_PACK_START</property>
+					</packing>
+				</child>
+
+				<child>
+					<object class="GtkButton" id="set_btn">
+						<property name="visible">True</property>
+						<property name="sensitive">False</property>
+						<property name="label" translatable="yes">Set as wallpaper</property>
+						<!-- <style> -->
+						 <!--	<class name="suggested-action"/> -->
+						<!-- </style> -->
+					</object>
+					<packing>
+						<property name="pack-type">GTK_PACK_END</property>
+					</packing>
+				</child>
+
+				<child>
+					<object class="GtkButton" id="save_btn">
+						<property name="visible">True</property>
+						<property name="label" translatable="yes">Save</property>
+					</object>
+					<packing>
+						<property name="pack-type">GTK_PACK_END</property>
+					</packing>
+				</child>
+
+			</object>
+		</child>
+
+		<child>
+			<object class="GtkBox" id="main_box">
+				<property name="margin">20</property>
+				<property name="spacing">20</property>
+				<property name="visible">True</property>
+				<property name="orientation">vertical</property>
+
+
+				<child>
+					<object class="GtkBox">
+						<property name="visible">True</property>
+						<property name="expand">False</property>
+						<property name="orientation">horizontal</property>
+						<property name="spacing">20</property>
+
+						<child>
+							<object class="GtkButton" id="add_btn">
+								<property name="visible">True</property>
+								<property name="label" translatable="yes">Add pictures</property>
+								<property name="expand">False</property>
+								<style>
+									<class name="suggested-action"/>
+								</style>
+							</object>
+							<packing>
+								<property name="pack-type">GTK_PACK_START</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkSwitch" id="time_switch">
+								<property name="visible">True</property>
+								<property name="state">True</property>
+							</object>
+							<packing>
+								<property name="pack-type">GTK_PACK_END</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkLabel">
+								<property name="visible">True</property>
+								<property name="label" translatable="yes">Use the same time for all pictures</property>
+							</object>
+							<packing>
+								<property name="pack-type">GTK_PACK_END</property>
+							</packing>
+						</child>
+
+					</object>
+				</child>
+
+				<child>
+					<object class="GtkBox" id="time_box">
+						<property name="visible">True</property>
+						<property name="expand">False</property>
+						<property name="orientation">horizontal</property>
+						<property name="spacing">20</property>
+
+						<child>
+							<object class="GtkLabel" id="static_label">
+								<property name="visible">True</property>
+								<property name="expand">False</property>
+								<property name="label" translatable="yes">Time per picture:</property>
+							</object>
+							<packing>
+								<property name="pack-type">GTK_PACK_START</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkSpinButton" id="static_time_btn">
+								<property name="visible">True</property>
+								<property name="expand">False</property>
+							</object>
+							<packing>
+								<property name="pack-type">GTK_PACK_START</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkSpinButton" id="trans_time_btn">
+								<property name="visible">True</property>
+								<property name="expand">False</property>
+							</object>
+							<packing>
+								<property name="pack-type">GTK_PACK_END</property>
+							</packing>
+						</child>
+
+						<child>
+							<object class="GtkLabel" id="trans_label">
+								<property name="visible">True</property>
+								<property name="expand">False</property>
+								<property name="label" translatable="yes">Transition:</property>
+							</object>
+							<packing>
+								<property name="pack-type">GTK_PACK_END</property>
+							</packing>
+						</child>
+
+					</object>
+					<packing>
+						<property name="pack-type">GTK_PACK_START</property>
+					</packing>
+				</child>
+
+				<child>
+					<object class="GtkScrolledWindow">
+						<property name="visible">True</property>
+						<property name="expand">True</property>
+
+						<child>
+							<object class="GtkListBox" id="list_box">
+								<property name="visible">True</property>
+							</object>
+							<packing>
+								<property name="pack-type">GTK_PACK_START</property>
+							</packing>
+						</child>
+
+					</object>
+					<packing>
+						<property name="pack-type">GTK_PACK_END</property>
+					</packing>
+				</child>
+
+			</object>
+		</child>
+
+	</template>
+</interface>

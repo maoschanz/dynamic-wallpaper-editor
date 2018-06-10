@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dynamic Wallpaper Editor
+Name[fr]=Éditeur de fonds d'écran dynamiques
+Exec=dynamic-wallpaper-editor
+Terminal=false
+Type=Application
+Categories=GTK;Utility;GNOME
+StartupNotify=true
+Icon=org.gnome.Dynamic-Wallpaper-Editor
