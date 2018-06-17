@@ -17,6 +17,7 @@
 
 from gi.repository import Gtk, Gio, GdkPixbuf
 from .gi_composites import GtkTemplate
+# from gettext import gettext as _
 
 @GtkTemplate(ui='/org/gnome/Dynamic-Wallpaper-Editor/window.ui')
 class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
@@ -72,7 +73,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
             Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
         onlyXML = Gtk.FileFilter()
-        onlyXML.set_name("Dynamic wallpapers")
+        onlyXML.set_name(_("Dynamic wallpapers (XML)"))
         onlyXML.add_mime_type('application/xml')
         file_chooser.set_filter(onlyXML)
         # file_chooser.set_preview_widget(self.get_preview_widget_xml())

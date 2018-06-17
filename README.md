@@ -18,7 +18,7 @@ These dynamic wallpapers are XML files, and you don't want to write these files 
 ## Editing XML files
 
 - Open an XML file
-- Add pictures, or remove pictures<!--, or change their order or their times-->
+- Add pictures, or remove pictures, or change their order or their durations
 - Save the modification
 
 ## Set an XML file as a wallpaper

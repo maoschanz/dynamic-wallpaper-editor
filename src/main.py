@@ -17,6 +17,7 @@
 
 import sys
 import gi
+# from gettext import gettext as _
 
 gi.require_version('Gtk', '3.0')
 
@@ -88,14 +89,14 @@ class Application(Gtk.Application):
 
     def build_about_dialog(self):
         self.about_dialog = Gtk.AboutDialog.new()
-        self.about_dialog.set_comments("Create or edit dynamic wallpapers for GNOME.")
+        self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
         self.about_dialog.set_authors(['Romain F. T.'])
         self.about_dialog.set_copyright('© 2018 Romain F. T.')
         self.about_dialog.set_license_type(Gtk.License.GPL_3_0)
         self.about_dialog.set_logo_icon_name('org.gnome.Dynamic-Wallpaper-Editor')
         self.about_dialog.set_version('beta-2018-06-17')
         self.about_dialog.set_website('https://github.com/maestroschan/dynamic-wallpaper-editor')
-        self.about_dialog.set_website_label("Website")
+        self.about_dialog.set_website_label(_("Website"))
 
 def main(version):
     app = Application()

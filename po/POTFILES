@@ -1,5 +1,7 @@
 data/org.gnome.Dynamic-Wallpaper-Editor.desktop.in
 data/org.gnome.Dynamic-Wallpaper-Editor.appdata.xml.in
 data/org.gnome.Dynamic-Wallpaper-Editor.gschema.xml
-src/window.uisrc/main.py
+src/Appmenu.ui
+src/window.ui
+src/main.py
 src/window.py

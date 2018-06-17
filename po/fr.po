@@ -1,0 +1,102 @@
+# French translation of dynamic wallpaper editor.
+# Copyright (C) 1998-2017 Free Software Foundation, Inc.
+# This file is under the same GPLv3.
+#
+# Romain F. T. 2018
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: dynamic-wallpaper-editor 1\n"
+"POT-Creation-Date: 2018-06-16 21:35+0000\n"
+"PO-Revision-Date: 2018-06-16 20:01+0200\n"
+"Last-Translator: Romain F. T.>\n"
+"Language-Team: français\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#:
+msgid "Dynamic Wallpaper Editor"
+msgstr "Éditeur de fonds d'écran dynamiques"
+
+#:
+msgid "New window"
+msgstr "Nouvelle fenêtre"
+
+#:
+msgid "About"
+msgstr "À propos"
+
+#:
+msgid "Quit"
+msgstr "Quitter"
+
+#:
+msgid "Website"
+msgstr "Site-toile"
+
+#:
+msgid "Dynamic wallpaper editor"
+msgstr "Éditeur de fonds d'écran dynamiques"
+
+#:
+msgid "Open"
+msgstr "Ouvrir"
+
+#:
+msgid "Open an existing dynamic wallpaper"
+msgstr "Ouvrir un fond d'écran dynamique existant"
+
+#:
+msgid "Set as wallpaper"
+msgstr "Appliquer comme fond d'écran"
+
+#:
+msgid "Save"
+msgstr "Enregistrer"
+
+#:
+msgid "Create or edit dynamic wallpapers for GNOME."
+msgstr "Créer ou éditer des fonds d'écrans dynamiques pour GNOME."
+
+#:
+msgid "Add pictures"
+msgstr "Ajouter des images"
+
+#:
+msgid "Use the same time for all pictures"
+msgstr "Utiliser le même temps pour toutes les images"
+
+#:
+msgid "Time per picture:"
+msgstr "Temps par image :"
+
+#:
+msgid "Transitions:"
+msgstr "Transitions :"
+
+#:
+msgid "Dynamic wallpapers (XML)"
+msgstr "Fonds d'écran dynamiques"
+
+#:
+msgid "Save as"
+msgstr "Enregistrer sous"
+
+#:
+msgid "Time:"
+msgstr "Temps :"
+
+#:
+msgid "Time (in seconds) of this image. This doesn't include the time of the transition."
+msgstr "Temps (en secondes) de cette image. Ça n'inclue pas le temps de la transition."
+
+#:
+msgid "Transition:"
+msgstr "Transition :"
+
+#:
+msgid "Time (in seconds) of the transition between this image and the next one."
+msgstr "Temps (en secondes) de la transition entre cette image et la suivante."
