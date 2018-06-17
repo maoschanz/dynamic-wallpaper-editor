@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
 	<template class="DynamicWallpaperEditorWindow" parent="GtkApplicationWindow">
-		<property name="default-width">700</property>
-		<property name="default-height">400</property>
+		<property name="default-width">900</property>
+		<property name="default-height">500</property>
 		<child type="titlebar">
 			<object class="GtkHeaderBar" id="header_bar">
 				<property name="visible">True</property>
@@ -76,7 +76,7 @@
 						<child>
 							<object class="GtkSwitch" id="time_switch">
 								<property name="visible">True</property>
-								<property name="state">True</property>
+								<property name="state">False</property>
 							</object>
 							<packing>
 								<property name="pack-type">GTK_PACK_END</property>
@@ -98,7 +98,7 @@
 
 				<child>
 					<object class="GtkBox" id="time_box">
-						<property name="visible">True</property>
+						<property name="visible">False</property>
 						<property name="expand">False</property>
 						<property name="orientation">horizontal</property>
 						<property name="spacing">20</property>
