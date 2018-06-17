@@ -2,6 +2,6 @@
 <gresources>
   <gresource prefix="/org/gnome/Dynamic-Wallpaper-Editor">
     <file>window.ui</file>
-    <file>Appmenu.ui</file>
+    <file>appmenu.ui</file>
   </gresource>
 </gresources>

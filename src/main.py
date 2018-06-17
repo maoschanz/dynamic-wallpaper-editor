@@ -45,7 +45,7 @@ class Application(Gtk.Application):
 
     def get_app_menu(self):
         builder = Gtk.Builder()
-        builder.add_from_resource("/org/gnome/Dynamic-Wallpaper-Editor/Appmenu.ui")
+        builder.add_from_resource("/org/gnome/Dynamic-Wallpaper-Editor/appmenu.ui")
         menu = builder.get_object("app-menu")
 
         new_window_action = Gio.SimpleAction.new("new_window", None)
@@ -55,6 +55,10 @@ class Application(Gtk.Application):
         # prefs_action = Gio.SimpleAction.new("settings", None)
         # prefs_action.connect("activate", self.on_prefs_activate)
         # self.add_action(prefs_action)
+
+        # help_action = Gio.SimpleAction.new("settings", None)
+        # help_action.connect("activate", self.on_help_activate)
+        # self.add_action(help_action)
 
         about_action = Gio.SimpleAction.new("about", None)
         about_action.connect("activate", self.on_about_activate)

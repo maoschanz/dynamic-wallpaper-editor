@@ -1,6 +1,5 @@
 [Desktop Entry]
 Name=Dynamic Wallpaper Editor
-Name[fr]=Éditeur de fonds d'écran dynamiques
 Exec=dynamic-wallpaper-editor
 Terminal=false
 Type=Application
