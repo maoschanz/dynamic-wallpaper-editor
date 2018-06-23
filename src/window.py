@@ -25,6 +25,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
     header_bar = GtkTemplate.Child()
     save_btn = GtkTemplate.Child()
+    save_as_btn = GtkTemplate.Child()
     set_btn = GtkTemplate.Child()
     open_btn = GtkTemplate.Child()
     add_btn = GtkTemplate.Child()
@@ -58,6 +59,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
         self.add_btn.connect('clicked', self.on_add_pictures)
         self.save_btn.connect('clicked', self.on_save)
+        self.save_as_btn.connect('clicked', self.on_save_as)
         self.open_btn.connect('clicked', self.on_open)
         self.set_btn.connect('clicked', self.on_set_as_wallpaper)
         self.time_switch.connect('notify::active', self.update_global_time_box)
@@ -102,7 +104,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         #     _("Open"),
         #     _("Cancel"))
         onlyPictures = Gtk.FileFilter()
-        onlyPictures.set_name("Pictures")
+        onlyPictures.set_name(_("Pictures"))
         onlyPictures.add_mime_type('image/png')
         onlyPictures.add_mime_type('image/jpeg')
         onlyPictures.add_mime_type('image/svg')
@@ -115,7 +117,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         if response == Gtk.ResponseType.OK:
             array = file_chooser.get_filenames()
             self.add_pictures_to_list(array, [10]*len(array), [0]*len(array))
-            # self.list_box.show_all()
         file_chooser.destroy()
 
     def get_preview_widget_xml(self):
@@ -131,7 +132,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         box.show_all()
         return box
 
-    def on_update_preview_xml(self, fc):
+    def on_update_preview_xml(self, fc): # TODO
         print(fc.get_filename())
         # pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(fc.get_filename(), 100, 100, True)
         # self.preview_image.set_from_pixbuf(pixbuf)
@@ -164,25 +165,43 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     # Writing the result in a file
     def on_save(self, b):
         if self.xml_file_uri is None:
-            file_chooser = Gtk.FileChooserDialog(_("Save as"), self,
-                Gtk.FileChooserAction.SAVE,
-                (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
-            response = file_chooser.run()
-            if response == Gtk.ResponseType.OK:
-                Gio.File.new_for_path(file_chooser.get_filename())
-                f = open(file_chooser.get_filename(), 'w')
+            (uri, fn) = self.invoke_file_chooser()
+            if uri is not None:
+                Gio.File.new_for_path(fn)
+                f = open(fn, 'w')
                 f.write(self.generate_text())
                 f.close()
-                self.xml_file_uri = file_chooser.get_uri()
-                self.header_bar.set_subtitle(file_chooser.get_filename())
+
+                self.xml_file_uri = uri
+                self.header_bar.set_subtitle(fn)
                 self.set_btn.set_sensitive(True)
-            file_chooser.destroy()
         else:
             Gio.File.new_for_path(self.header_bar.get_subtitle())
             f = open(self.header_bar.get_subtitle(), 'w')
             f.write(self.generate_text())
             f.close()
+
+    def on_save_as(self, b):
+        (uri, fn) = self.invoke_file_chooser()
+        if uri is not None:
+            Gio.File.new_for_path(fn)
+            f = open(fn, 'w')
+            f.write(self.generate_text())
+            f.close()
+
+    def invoke_file_chooser(self):
+        uri = None
+        fn = None
+        file_chooser = Gtk.FileChooserDialog(_("Save as"), self,
+            Gtk.FileChooserAction.SAVE,
+            (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+            Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+        response = file_chooser.run()
+        if response == Gtk.ResponseType.OK:
+            uri = file_chooser.get_uri()
+            fn = file_chooser.get_filename()
+        file_chooser.destroy()
+        return (uri, fn)
 
     def update_durations(self):
         i = 0

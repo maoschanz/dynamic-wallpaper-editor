@@ -34,8 +34,8 @@ msgid "Quit"
 msgstr "Quitter"
 
 #:
-msgid "Website"
-msgstr "Site-toile"
+msgid "Report bugs or ideas"
+msgstr "Rapporter des bugs ou des idées"
 
 #:
 msgid "Dynamic wallpaper editor"

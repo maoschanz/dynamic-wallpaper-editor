@@ -24,7 +24,16 @@
 					<object class="GtkButton" id="set_btn">
 						<property name="visible">True</property>
 						<property name="sensitive">False</property>
-						<property name="label" translatable="yes">Set as wallpaper</property>
+						<property name="tooltip_text" translatable="yes">Set as wallpaper</property>
+						<child>
+							<object class="GtkImage">
+								<property name="visible">True</property>
+								<property name="icon_name">preferences-desktop-wallpaper-symbolic</property>
+							</object>
+						</child>
+						<style>
+							<class name="suggested-action"/>
+						</style>
 					</object>
 					<packing>
 						<property name="pack-type">GTK_PACK_END</property>
@@ -32,9 +41,29 @@
 				</child>
 
 				<child>
-					<object class="GtkButton" id="save_btn">
+					<object class="GtkBox">
 						<property name="visible">True</property>
-						<property name="label" translatable="yes">Save</property>
+						<child>
+							<object class="GtkButton" id="save_btn">
+								<property name="visible">True</property>
+								<property name="label" translatable="yes">Save</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkButton" id="save_as_btn">
+								<property name="visible">True</property>
+								<property name="tooltip_text" translatable="yes">Save as</property>
+								<child>
+									<object class="GtkImage">
+										<property name="visible">True</property>
+										<property name="icon_name">document-save-as-symbolic</property>
+									</object>
+								</child>
+							</object>
+						</child>
+						<style>
+							<class name="linked"/>
+						</style>
 					</object>
 					<packing>
 						<property name="pack-type">GTK_PACK_END</property>

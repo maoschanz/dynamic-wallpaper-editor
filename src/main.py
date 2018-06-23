@@ -98,9 +98,9 @@ class Application(Gtk.Application):
         self.about_dialog.set_copyright('© 2018 Romain F. T.')
         self.about_dialog.set_license_type(Gtk.License.GPL_3_0)
         self.about_dialog.set_logo_icon_name('org.gnome.Dynamic-Wallpaper-Editor')
-        self.about_dialog.set_version('beta-2018-06-17')
+        self.about_dialog.set_version('beta-2018-06-23')
         self.about_dialog.set_website('https://github.com/maestroschan/dynamic-wallpaper-editor')
-        self.about_dialog.set_website_label(_("Website"))
+        self.about_dialog.set_website_label(_("Report bugs or ideas"))
 
 def main(version):
     app = Application()
