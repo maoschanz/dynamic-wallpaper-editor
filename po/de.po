@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the dynamic-wallpaper-editor package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: dynamic-wallpaper-editor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-23 17:42+0200\n"
+"PO-Revision-Date: 2018-06-23 17:44+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/org.gnome.Dynamic-Wallpaper-Editor.desktop.in:3
+msgid "Dynamic Wallpaper Editor"
+msgstr "Dynamischer Bildschirmhintergrund Editor"
+
+#: data/org.gnome.Dynamic-Wallpaper-Editor.desktop.in:5 src/main.py:96
+msgid "Create or edit dynamic wallpapers for GNOME."
+msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
+
+#: data/org.gnome.Dynamic-Wallpaper-Editor.desktop.in:9
+msgid "org.gnome.Dynamic-Wallpaper-Editor"
+msgstr "org.gnome.Dynamic-Wallpaper-Editor"
+
+#: src/appmenu.ui:7
+msgid "New window"
+msgstr "Neues Fenster"
+
+#: src/appmenu.ui:27
+msgid "About"
+msgstr "Info"
+
+#: src/appmenu.ui:31
+msgid "Quit"
+msgstr "Beenden"
+
+#: src/window.ui:10
+msgid "Dynamic wallpaper editor"
+msgstr "Dynamischer Bildschirmhintergrund Editor"
+
+#. créer liste de paths
+#: src/window.ui:15 src/window.py:73
+msgid "Open"
+msgstr "Öffnen"
+
+#: src/window.ui:16
+msgid "Open an existing dynamic wallpaper"
+msgstr "Öffne einen existierenden dynamischen Bildschirmhintergrund"
+
+#: src/window.ui:27
+msgid "Set as wallpaper"
+msgstr "Als Bildschirmhintergrund festlegen"
+
+#: src/window.ui:49
+msgid "Save"
+msgstr "Speichern"
+
+#: src/window.ui:55 src/window.py:195
+msgid "Save as"
+msgstr "Speichern unter"
+
+#. créer liste de paths
+#: src/window.ui:94 src/window.py:98
+msgid "Add pictures"
+msgstr "Bilder hinzufügen"
+
+#: src/window.ui:118
+msgid "Use the same time for all pictures"
+msgstr "Verwende die selbe Zeit für alle Bilder"
+
+#: src/window.ui:139
+msgid "Time per picture:"
+msgstr "Zeit pro Bild:"
+
+#: src/window.ui:170
+msgid "Transitions:"
+msgstr "Übergänge:"
+
+#: src/main.py:103
+msgid "Report bugs or ideas"
+msgstr "Melde Fehler oder Ideen"
+
+#: src/window.py:78
+msgid "Dynamic wallpapers (XML)"
+msgstr "Dynamische Bildschirmhintergründe (XML)"
+
+#: src/window.py:107
+msgid "Pictures"
+msgstr "Bilder"
+
+#: src/window.py:370
+msgid "Time:"
+msgstr "Zeit:"
+
+#: src/window.py:371
+msgid ""
+"Time (in seconds) of this image. This doesn't include the time of the "
+"transition."
+msgstr ""
+"Zeit (in Sekunden) dieses Bildes. Beinhaltet nicht die Zeit der Übergänge."
+
+#: src/window.py:374
+msgid "Transition:"
+msgstr "Übergänge:"
+
+#: src/window.py:375
+msgid ""
+"Time (in seconds) of the transition between this image and the next one."
+msgstr ""
+"Zeit (in Sekunden) der Übergänge zwischen diesem Bild und dem nächsten."
+
+#~ msgid "Website"
+#~ msgstr "Webseite"
