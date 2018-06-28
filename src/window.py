@@ -115,7 +115,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         return True
 
     def on_open(self, b):
-        if not self.confirm_save_modifs(True):
+        if not self.confirm_save_modifs():
             return
         file_chooser = Gtk.FileChooserDialog(_("Open"), self,
             Gtk.FileChooserAction.OPEN,
