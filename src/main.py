@@ -126,7 +126,7 @@ class Application(Gtk.Application):
         self.about_dialog.set_copyright('© 2018 Romain F. T.')
         self.about_dialog.set_license_type(Gtk.License.GPL_3_0)
         self.about_dialog.set_logo_icon_name('org.gnome.Dynamic-Wallpaper-Editor')
-        self.about_dialog.set_version('beta-2018-06-28')
+        self.about_dialog.set_version('1.0')
         self.about_dialog.set_website('https://github.com/maestroschan/dynamic-wallpaper-editor')
         self.about_dialog.set_website_label(_("Report bugs or ideas"))
         self.about_dialog.set_translator_credits(_("translator-credits"))
