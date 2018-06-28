@@ -36,7 +36,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     time_box = GtkTemplate.Child()
     time_switch = GtkTemplate.Child()
 
-    pictures_dict = {}
+    # pictures_list = []
+    my_row_list = []
+    pic_list = []
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -77,9 +79,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.time_switch.connect('notify::active', self.update_global_time_box)
         self.connect('delete-event', self.action_close)
 
-        self.files_list = []
-        self.st_durations_list = []
-        self.tr_durations_list = []
+        self.list_box.set_placeholder(Gtk.Label(_("Add new pictures, or open an existing XML file."), visible=True))
 
         action = Gio.SimpleAction.new("save", None)
         action.connect("activate", self.action_save)
@@ -105,7 +105,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
     def on_start_time_open(self, button):
         self.start_time_popover.show_all()
-        # button.set_active(False)
 
     def on_start_time_popover_closed(self, popover, button):
         button.set_active(False) # FIXME ?
@@ -182,7 +181,11 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         response = file_chooser.run()
         if response == Gtk.ResponseType.OK:
             array = file_chooser.get_filenames()
-            self.add_pictures_to_list(array, [10]*len(array), [0]*len(array))
+            pic_array = []
+            for path in array:
+                pic_array.append(PictureStruct(path, 10, 0))
+            self.update_durations()
+            self.add_pictures_to_list(pic_array)
         file_chooser.destroy()
 
     def get_preview_widget_xml(self):
@@ -212,22 +215,17 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.preview_image.set_from_pixbuf(pixbuf)
 
     def reset_list_box(self):
-        for image in self.files_list:
-            self.pictures_dict[image].destroy()
+        while len(self.my_row_list) > 0:
+            self.my_row_list.pop().destroy()
 
-    def add_pictures_to_list(self, new_pics_list, st_durations_list, tr_durations_list):
+    def add_pictures_to_list(self, new_pics_list):
         self._is_saved = False
-        # TODO améliorable sans doute ? # FIXME ne pas identifier par le path, car une image peut revenir
-        self.update_durations()
         self.reset_list_box()
-        self.files_list = self.files_list + new_pics_list
-        self.st_durations_list = self.st_durations_list + st_durations_list
-        self.tr_durations_list = self.tr_durations_list + tr_durations_list
-        for image in self.files_list:
-            current_index = self.files_list.index(image)
-            self.pictures_dict[image] = PictureRow(image, self.st_durations_list[current_index], \
-                self.tr_durations_list[current_index], self)
-            self.list_box.add(self.pictures_dict[image])
+        self.pic_list = self.pic_list + new_pics_list
+        for index in range(0, len(self.pic_list)):
+            row = PictureRow(self.pic_list[index], self)
+            self.my_row_list.append(row)
+            self.list_box.add(row)
 
     # Writing the result in a file
     def on_save(self, b):
@@ -272,24 +270,20 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         return (uri, fn)
 
     def update_durations(self):
-        i = 0
-        for image in self.files_list:
-            self.st_durations_list[i] = self.pictures_dict[image].static_time_btn.get_value()
-            self.tr_durations_list[i] = self.pictures_dict[image].trans_time_btn.get_value()
-            i = i + 1
+        for index in range(0, len(self.pic_list)):
+            self.pic_list[index].static_time = self.my_row_list[index].static_time_btn.get_value()
+            self.pic_list[index].trans_time = self.my_row_list[index].trans_time_btn.get_value()
 
     def update_global_time_box(self, interrupteur, osef):
         self.time_box.set_visible(interrupteur.get_active())
-        for image in self.files_list:
-            self.pictures_dict[image].time_box.set_visible(not interrupteur.get_active())
+        for index in range(0, len(self.pic_list)):
+            self.my_row_list[index].time_box.set_visible(not interrupteur.get_active())
 
     # This method parses the XML, looking for pictures paths
     def load_list_from_xml(self):
         self.reset_list_box()
-        self.files_list = []
-        files_list = []
-        st_durations_list = []
-        tr_durations_list = []
+        self.pic_list = []
+        pic_list = []
 
         f = open(self.header_bar.get_subtitle(), 'r')
         xml_text = f.read()
@@ -307,17 +301,20 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             if image is splitted_by_static[0]:
                 continue
             static_tags_for_image = image.split('</static>')[0]
+
             path = static_tags_for_image.split('<file>')
             path = path[1].split('</file>')[0]
-            files_list = files_list + [path]
-            duration = static_tags_for_image.split('<duration>')
-            duration = duration[1].split('</duration>')[0]
-            st_durations_list = st_durations_list + [duration]
+
+            sduration = static_tags_for_image.split('<duration>')
+            sduration = sduration[1].split('</duration>')[0]
+
             trans_tags_for_image = image.split('</static>')[1]
-            duration = trans_tags_for_image.split('<duration>')
-            duration = duration[1].split('</duration>')[0]
-            tr_durations_list = tr_durations_list + [duration]
-        self.add_pictures_to_list(files_list, st_durations_list, tr_durations_list)
+
+            tduration = trans_tags_for_image.split('<duration>')
+            tduration = tduration[1].split('</duration>')[0]
+
+            pic_list = pic_list + [PictureStruct(path, sduration, tduration)]
+        self.add_pictures_to_list(pic_list)
 
     def set_spinbuttons(self, string):
         splitted = string.split('</year>')[0]
@@ -348,23 +345,24 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		<minute>""" + str(int(self.minute_spinbtn.get_value())) + """</minute>
 		<second>""" + str(int(self.second_spinbtn.get_value())) + """</second>
 	</starttime>\n"""
-        for image in self.files_list:
+        for index in range(0, len(self.pic_list)):
+            image = self.pic_list[index].filename
             if image is not None:
                 if self.time_switch.get_active():
                     st_time = str(self.static_time_btn.get_value())
                     tr_time = str(self.trans_time_btn.get_value())
                 else:
-                    st_time = str(self.pictures_dict[image].static_time_btn.get_value())
-                    tr_time = str(self.pictures_dict[image].trans_time_btn.get_value())
+                    st_time = str(self.my_row_list[index].static_time_btn.get_value())
+                    tr_time = str(self.my_row_list[index].trans_time_btn.get_value())
 
-                if image is self.files_list[0]: # CAS 1 : 1ÈRE IMAGE, JUSTE LE STATIC
+                if index == 0: # CAS 1 : 1ÈRE IMAGE, JUSTE LE STATIC
                     text = text + """
 	<static>
 		<duration>""" + st_time + """</duration>
 		<file>""" + image + """</file>
 	</static>\n"""
                     pastimage = image
-                elif image is self.files_list[-1]: # CAS 2 : DERNIÈRE IMAGE, TRANSITION - STATIC - TRANSITION
+                elif self.pic_list[index] is self.pic_list[-1]: # CAS 2 : DERNIÈRE IMAGE, TRANSITION - STATIC - TRANSITION
 
                     text = text + """
 	<transition type="overlay">
@@ -381,7 +379,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	<transition type="overlay">
 		<duration>""" + tr_time + """</duration>
 		<from>""" + image + """</from>
-		<to>""" + self.files_list[0] + """</to>
+		<to>""" + self.pic_list[0].filename + """</to>
 	</transition>\n"""
                 else: # CAS 3 : CAS GÉNÉRAL D'UNE IMAGE, TRANSITION - STATIC
                     text = text + """
@@ -412,12 +410,12 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         minute_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20, margin=5)
         second_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20, margin=5)
 
-        year_label = Gtk.Label(_("Year:"))
-        month_label = Gtk.Label(_("Month:"))
-        day_label = Gtk.Label(_("Day:"))
-        hour_label = Gtk.Label(_("Hour:"))
-        minute_label = Gtk.Label(_("Minute:"))
-        second_label = Gtk.Label(_("Second:"))
+        year_label = Gtk.Label(_("Year"))
+        month_label = Gtk.Label(_("Month"))
+        day_label = Gtk.Label(_("Day"))
+        hour_label = Gtk.Label(_("Hour"))
+        minute_label = Gtk.Label(_("Minute"))
+        second_label = Gtk.Label(_("Second"))
 
         year_box.add(year_label)
         month_box.add(month_label)
@@ -426,26 +424,12 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         minute_box.add(minute_label)
         second_box.add(second_label)
 
-        self.year_spinbtn = Gtk.SpinButton(value=0)
-        self.month_spinbtn = Gtk.SpinButton(value=0)
-        self.day_spinbtn = Gtk.SpinButton(value=0)
-        self.hour_spinbtn = Gtk.SpinButton(value=0)
-        self.minute_spinbtn = Gtk.SpinButton(value=0)
-        self.second_spinbtn = Gtk.SpinButton(value=0)
-
-        self.year_spinbtn.set_range(2018, 2025)
-        self.month_spinbtn.set_range(1, 12)
-        self.day_spinbtn.set_range(1, 31)
-        self.hour_spinbtn.set_range(0, 23)
-        self.minute_spinbtn.set_range(0, 59)
-        self.second_spinbtn.set_range(0, 59)
-
-        self.year_spinbtn.set_increments(1, 1)
-        self.month_spinbtn.set_increments(1, 1)
-        self.day_spinbtn.set_increments(1, 1)
-        self.hour_spinbtn.set_increments(1, 1)
-        self.minute_spinbtn.set_increments(1, 1)
-        self.second_spinbtn.set_increments(1, 1)
+        self.year_spinbtn = Gtk.SpinButton.new_with_range(2018, 2025, 1)
+        self.month_spinbtn = Gtk.SpinButton.new_with_range(1, 12, 1)
+        self.day_spinbtn = Gtk.SpinButton.new_with_range(1, 31, 1)
+        self.hour_spinbtn = Gtk.SpinButton.new_with_range(0, 23, 1)
+        self.minute_spinbtn = Gtk.SpinButton.new_with_range(0, 59, 1)
+        self.second_spinbtn = Gtk.SpinButton.new_with_range(0, 59, 1)
 
         year_box.pack_end(self.year_spinbtn, expand=False, fill=False, padding=0)
         month_box.pack_end(self.month_spinbtn, expand=False, fill=False, padding=0)
@@ -469,24 +453,24 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 class PictureRow(Gtk.ListBoxRow):
     __gtype_name__ = 'PictureRow'
 
-    def __init__(self, filename, static_time, trans_time, window):
+    def __init__(self, pic_struct, window):
         super().__init__()
 
         self.set_selectable(False)
-        self.filename = filename
+        self.filename = pic_struct.filename
         self.window = window
 
         box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, margin=5, spacing=5)
         row_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, margin=2, spacing=5)
         self.time_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
 
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename, 64, 36, True)
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, 64, 36, True)
         image = Gtk.Image.new_from_pixbuf(pixbuf)
 
-        if len(filename) >= 35:
-            label = Gtk.Label("..." + filename[-35:])
+        if len(self.filename) >= 35:
+            label = Gtk.Label("..." + self.filename[-35:])
         else:
-            label = Gtk.Label(filename)
+            label = Gtk.Label(self.filename)
 
         delete_icon = Gtk.Image()
         delete_icon.set_from_icon_name('edit-delete-symbolic', Gtk.IconSize.BUTTON)
@@ -521,8 +505,8 @@ class PictureRow(Gtk.ListBoxRow):
             tooltip_text=_("Time (in seconds) of the transition between this image and the next one."))
         self.trans_time_btn = Gtk.SpinButton.new_with_range(0.0, 1000.0, 1.0)
 
-        self.static_time_btn.set_value(float(static_time))
-        self.trans_time_btn.set_value(float(trans_time))
+        self.static_time_btn.set_value(float(pic_struct.static_time))
+        self.trans_time_btn.set_value(float(pic_struct.trans_time))
 
         row_box.pack_start(image, expand=False, fill=False, padding=0)
         row_box.pack_start(label, expand=False, fill=False, padding=0)
@@ -547,30 +531,34 @@ class PictureRow(Gtk.ListBoxRow):
     def on_up(self, b):
         index = self.get_index()
         self.window.update_durations()
-        self.window.files_list.remove(self.filename)
-        self.window.st_durations_list.remove(self.window.st_durations_list[index])
-        self.window.tr_durations_list.remove(self.window.tr_durations_list[index])
-        self.window.files_list.insert(index-1, self.filename)
-        self.window.st_durations_list.insert(index-1, self.static_time_btn.get_value())
-        self.window.tr_durations_list.insert(index-1, self.trans_time_btn.get_value())
-        self.window.add_pictures_to_list([], [], [])
+        self.window.pic_list.remove(self.window.pic_list[index])
+        self.window.pic_list.insert(index-1, PictureStruct(self.filename, \
+            self.static_time_btn.get_value(), self.trans_time_btn.get_value()))
+        self.window.add_pictures_to_list([])
 
     def on_down(self, b):
         index = self.get_index()
         self.window.update_durations()
-        self.window.files_list.remove(self.filename)
-        self.window.st_durations_list.remove(self.window.st_durations_list[index])
-        self.window.tr_durations_list.remove(self.window.tr_durations_list[index])
-        self.window.files_list.insert(index+1, self.filename)
-        self.window.st_durations_list.insert(index+1, self.static_time_btn.get_value())
-        self.window.tr_durations_list.insert(index+1, self.trans_time_btn.get_value())
-        self.window.add_pictures_to_list([], [], [])
+        self.window.pic_list.remove(self.window.pic_list[index])
+        self.window.pic_list.insert(index+1, PictureStruct(self.filename, \
+            self.static_time_btn.get_value(), self.trans_time_btn.get_value()))
+        self.window.add_pictures_to_list([])
 
     def destroy_row(self, b):
         index = self.get_index()
         self.window.update_durations()
-        self.window.files_list.remove(self.filename)
-        self.window.st_durations_list.remove(self.window.st_durations_list[index])
-        self.window.tr_durations_list.remove(self.window.tr_durations_list[index])
-        self.window.add_pictures_to_list([], [], [])
+        self.window.pic_list.remove(self.window.pic_list[index])
+        self.window.add_pictures_to_list([])
         self.destroy()
+
+class PictureStruct():
+    __gtype_name__ = 'PictureStruct'
+
+    filename = ''
+    static_time = 0
+    trans_time = 0
+
+    def __init__(self, filename, static_time, trans_time):
+        self.filename = filename
+        self.static_time = static_time
+        self.trans_time = trans_time        

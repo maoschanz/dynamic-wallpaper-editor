@@ -124,3 +124,35 @@ msgstr "Général"
 #:
 msgid "File"
 msgstr "Fichier"
+
+#:
+msgid "Add new pictures, or open an existing XML file."
+msgstr "Ajoutez de nouvelles images, ou ouvrez un fichier XML existant."
+
+#:
+msgid "Year"
+msgstr "Année"
+
+#:
+msgid "Month"
+msgstr "Mois"
+
+#:
+msgid "Day"
+msgstr "Jour"
+
+#:
+msgid "Hour"
+msgstr "Heure"
+
+#:
+msgid "Minute"
+msgstr "Minute"
+
+#:
+msgid "Second"
+msgstr "Seconde"
+
+#:
+msgid "Set the exact start time of the wallpaper"
+msgstr "Régler l'heure exacte de début du fond d'écran"
