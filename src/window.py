@@ -56,6 +56,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         ##############
 
         self.xml_file_uri = None
+        self._is_saved = True
 
         self.add_btn.connect('clicked', self.on_add_pictures)
         self.save_btn.connect('clicked', self.on_save)
@@ -63,13 +64,59 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.open_btn.connect('clicked', self.on_open)
         self.set_btn.connect('clicked', self.on_set_as_wallpaper)
         self.time_switch.connect('notify::active', self.update_global_time_box)
+        self.connect('delete-event', self.action_close)
 
         self.files_list = []
         self.st_durations_list = []
         self.tr_durations_list = []
 
+        action = Gio.SimpleAction.new("save", None)
+        action.connect("activate", self.action_save)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("open", None)
+        action.connect("activate", self.action_open)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("close", None)
+        action.connect("activate", self.action_close)
+        self.add_action(action)
+
+    def action_open(self, a, b):
+        self.on_open(None)
+
+    def action_save(self, a, b):
+        self.on_save(None)
+
+    def action_close(self, a, b):
+        if self.confirm_save_modifs():
+            self.close()
+
+    def confirm_save_modifs(self):
+        if not self._is_saved:
+            dialog = Gtk.Dialog(use_header_bar=True, modal=True, parent=self)
+            dialog.add_button(_("Save"), Gtk.ResponseType.APPLY)
+            dialog.add_button(_("Discard"), Gtk.ResponseType.NO)
+            dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
+            dialog.set_response_sensitive(Gtk.ResponseType.CANCEL, False) # FIXME
+            dialog.get_content_area().add(Gtk.Label(_("There are unsaved modifications to your wallpaper."), margin=10))
+            dialog.show_all()
+            result = dialog.run()
+            if result == -10:
+                dialog.destroy()
+                self.on_save(None)
+                return True
+            elif result == -9:
+                dialog.destroy()
+                return True
+            else:
+                dialog.destroy()
+                return False
+        return True
+
     def on_open(self, b):
-        # créer liste de paths
+        if not self.confirm_save_modifs(True):
+            return
         file_chooser = Gtk.FileChooserDialog(_("Open"), self,
             Gtk.FileChooserAction.OPEN,
             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
@@ -86,6 +133,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             self.header_bar.set_subtitle(file_chooser.get_filename())
             self.set_btn.set_sensitive(True)
             self.load_list_from_xml()
+            self._is_saved = True
         file_chooser.destroy()
 
     def on_set_as_wallpaper(self, b):
@@ -150,6 +198,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             self.pictures_dict[image].destroy()
 
     def add_pictures_to_list(self, new_pics_list, st_durations_list, tr_durations_list):
+        self._is_saved = False
         # TODO améliorable sans doute ?
         self.update_durations()
         self.reset_list_box()
@@ -180,6 +229,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             f = open(self.header_bar.get_subtitle(), 'w')
             f.write(self.generate_text())
             f.close()
+        self._is_saved = True
 
     def on_save_as(self, b):
         (uri, fn) = self.invoke_file_chooser()
@@ -399,7 +449,7 @@ class PictureRow(Gtk.ListBoxRow):
         self.time_box.set_visible(not self.window.time_switch.get_active())
 
     def on_up(self, b):
-        index = self.window.files_list.index(self.filename)
+        index = self.get_index()
         self.window.update_durations()
         self.window.files_list.remove(self.filename)
         self.window.st_durations_list.remove(self.window.st_durations_list[index])
@@ -410,7 +460,7 @@ class PictureRow(Gtk.ListBoxRow):
         self.window.add_pictures_to_list([], [], [])
 
     def on_down(self, b):
-        index = self.window.files_list.index(self.filename)
+        index = self.get_index()
         self.window.update_durations()
         self.window.files_list.remove(self.filename)
         self.window.st_durations_list.remove(self.window.st_durations_list[index])
@@ -421,7 +471,7 @@ class PictureRow(Gtk.ListBoxRow):
         self.window.add_pictures_to_list([], [], [])
 
     def destroy_row(self, b):
-        index = self.window.files_list.index(self.filename)
+        index = self.get_index()
         self.window.update_durations()
         self.window.files_list.remove(self.filename)
         self.window.st_durations_list.remove(self.window.st_durations_list[index])

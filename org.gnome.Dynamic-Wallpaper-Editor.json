@@ -44,7 +44,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///home/roschan/Projects/dynamic-wallpaper-editor"
+                    "url" : "https://github.com/Maestroschan/dynamic-wallpaper-editor.git"
                 }
             ]
         }

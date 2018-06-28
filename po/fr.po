@@ -100,3 +100,27 @@ msgstr "Transition :"
 #:
 msgid "Time (in seconds) of the transition between this image and the next one."
 msgstr "Temps (en secondes) de la transition entre cette image et la suivante."
+
+#:
+msgid "There are unsaved modifications to your wallpaper."
+msgstr "Il y a des modifications non enregistrées à votre fond d'écran."
+
+#:
+msgid "Discard"
+msgstr "Abandonner"
+
+#:
+msgid "Close"
+msgstr "Fermer"
+
+#:
+msgid "Shortcuts"
+msgstr "Raccourcis clavier"
+
+#:
+msgid "General"
+msgstr "Général"
+
+#:
+msgid "File"
+msgstr "Fichier"
