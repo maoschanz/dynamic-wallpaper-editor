@@ -4,9 +4,9 @@ The GNOME desktop allows the wallpaper to change with time.
 
 These dynamic wallpapers are XML files, and you don't want to write these files yourself: Dynamic Wallpaper Editor is a little utility for creation or edition of these XML wallpapers.
 
-**This is a beta version, very incomplete.**
+**This is a beta version, it's quite incomplete.**
 
-![screenshot](https://i.imgur.com/XaSNWbm.png)
+![screenshot](https://i.imgur.com/v8w97hB.png)
 
 ## Create XML files
 
