@@ -25,9 +25,20 @@
 						<property name="visible">True</property>
 						<property name="tooltip_text" translatable="yes">Set the exact start time of the wallpaper</property>
 						<child>
-							<object class="GtkImage">
+							<object class="GtkBox">
 								<property name="visible">True</property>
-								<property name="icon_name">preferences-system-time-symbolic</property>
+								<child>
+									<object class="GtkImage">
+										<property name="visible">True</property>
+										<property name="icon_name">preferences-system-time-symbolic</property>
+									</object>
+								</child>
+								<child>
+									<object class="GtkImage">
+										<property name="visible">True</property>
+										<property name="icon_name">pan-down-symbolic</property>
+									</object>
+								</child>
 							</object>
 						</child>
 					</object>
@@ -198,3 +209,4 @@
 
 	</template>
 </interface>
+

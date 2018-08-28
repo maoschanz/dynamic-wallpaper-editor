@@ -46,7 +46,7 @@ class Application(Gtk.Application):
 
     def build_app_menu(self):
         builder = Gtk.Builder()
-        builder.add_from_resource("/com/github/maoschanz/Dynamic-Wallpaper-Editor/appmenu.ui")
+        builder.add_from_resource("/com/github/maoschanz/Dynamic-Wallpaper-Editor/menus.ui")
         menu = builder.get_object("app-menu")
 
         new_window_action = Gio.SimpleAction.new("new_window", None)
@@ -112,13 +112,13 @@ class Application(Gtk.Application):
 
     def build_about_dialog(self):
         self.about_dialog = Gtk.AboutDialog.new()
+        self.about_dialog.set_version('1.2') # TODO
         self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
         self.about_dialog.set_authors(['Romain F. T.'])
         self.about_dialog.set_copyright('© 2018 Romain F. T.')
         self.about_dialog.set_license_type(Gtk.License.GPL_3_0)
         self.about_dialog.set_logo_icon_name('com.github.maoschanz.Dynamic-Wallpaper-Editor')
-        self.about_dialog.set_version('1.0')
-        self.about_dialog.set_website('https://github.com/maestroschan/dynamic-wallpaper-editor')
+        self.about_dialog.set_website('https://github.com/maoschanz/dynamic-wallpaper-editor')
         self.about_dialog.set_website_label(_("Report bugs or ideas"))
         self.about_dialog.set_translator_credits(_("translator-credits"))
 

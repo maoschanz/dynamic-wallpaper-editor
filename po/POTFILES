@@ -1,7 +1,7 @@
 data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in
 data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in
 data/com.github.maoschanz.Dynamic-Wallpaper-Editor.gschema.xml
-src/appmenu.ui
+src/menus.ui
 src/window.ui
 src/main.py
 src/window.py

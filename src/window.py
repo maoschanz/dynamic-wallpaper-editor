@@ -77,7 +77,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.connect('delete-event', self.action_close)
 
         builder = Gtk.Builder()
-        builder.add_from_resource("/com/github/maoschanz/Dynamic-Wallpaper-Editor/appmenu.ui")
+        builder.add_from_resource("/com/github/maoschanz/Dynamic-Wallpaper-Editor/menus.ui")
         menu = builder.get_object("window-menu")
         self.menu_popover = Gtk.Popover.new_from_model(self.menu_btn, menu)
         self.menu_btn.set_popover(self.menu_popover)
@@ -166,14 +166,10 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
     def on_add_pictures(self, b):
         # créer liste de paths
-        file_chooser = Gtk.FileChooserDialog(_("Add pictures"), self,
+        file_chooser = Gtk.FileChooserNative.new(_("Add pictures"), self, # FIXME mieux mais pété ??
             Gtk.FileChooserAction.OPEN,
-            (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-            Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
-        # file_chooser = Gtk.FileChooserNative.new(_("Add pictures"), self, # FIXME mieux mais pété ??
-        #     Gtk.FileChooserAction.OPEN,
-        #     _("Open"),
-        #     _("Cancel"))
+            _("Open"),
+            _("Cancel"))
         onlyPictures = Gtk.FileFilter()
         onlyPictures.set_name(_("Pictures"))
         onlyPictures.add_mime_type('image/png')
@@ -181,11 +177,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         onlyPictures.add_mime_type('image/svg')
         onlyPictures.add_mime_type('image/tiff')
         file_chooser.set_filter(onlyPictures)
-        file_chooser.set_preview_widget(self.get_preview_widget_pic())
-        file_chooser.connect('update-preview', self.on_update_preview_pic)
         file_chooser.set_select_multiple(True)
         response = file_chooser.run()
-        if response == Gtk.ResponseType.OK:
+        if response == Gtk.ResponseType.ACCEPT:
             array = file_chooser.get_filenames()
             pic_array = []
             for path in array:
@@ -409,6 +403,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     def build_start_time_box(self):
 
         start_time_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5, margin=10)
+        start_time_box.set_tooltip_text(_("This is useful, for example, if the total duration is 24 hours"))
+        title_label = Gtk.Label(_("Start time of the wallpaper"))
 
         year_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20, margin=5)
         month_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20, margin=5)
@@ -431,7 +427,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         minute_box.add(minute_label)
         second_box.add(second_label)
 
-        self.year_spinbtn = Gtk.SpinButton.new_with_range(2018, 2025, 1)
+        self.year_spinbtn = Gtk.SpinButton.new_with_range(2015, 2025, 1)
         self.month_spinbtn = Gtk.SpinButton.new_with_range(1, 12, 1)
         self.day_spinbtn = Gtk.SpinButton.new_with_range(1, 31, 1)
         self.hour_spinbtn = Gtk.SpinButton.new_with_range(0, 23, 1)
@@ -445,6 +441,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         minute_box.pack_end(self.minute_spinbtn, expand=False, fill=False, padding=0)
         second_box.pack_end(self.second_spinbtn, expand=False, fill=False, padding=0)
 
+        start_time_box.add(title_label)
         # start_time_box.add(year_box)
         start_time_box.add(month_box)
         start_time_box.add(day_box)

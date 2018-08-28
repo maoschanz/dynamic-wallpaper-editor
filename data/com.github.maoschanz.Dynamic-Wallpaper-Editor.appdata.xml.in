@@ -3,6 +3,20 @@
 	<id>com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
+	<name>Dynamic Wallpaper Editor</name>
+	<summary>
+Create or edit XML dynamic wallpapers ("slideshows") for the GNOME desktop.
+	</summary>
 	<description>
+		<p>A simple utility to create or edit dynamic wallpapers for GNOME Shell.</p>
+		<p>The duration of each picture and each transition can be set separately or globally.</p>
 	</description>
+	<url type="bugtracker">https://github.com/maoschanz/dynamic-wallpaper-editor/issues</url>
+	<url type="homepage">https://github.com/maoschanz/dynamic-wallpaper-editor/wiki</url>
+	<developer_name>Romain F. T.</developer_name>
+	<!-- <screenshots> -->
+	<!-- 	<screenshot type="default"> -->
+	<!-- 		<image type="source">TODO</image> -->
+	<!-- 	</screenshot> -->
+	<!-- </screenshots> -->
 </component>

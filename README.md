@@ -25,8 +25,10 @@ An existing XML file (opened, or just created) can be set as your wallpaper from
 
 <!-- TODO:
 
-un label comme titre du popover du start time
-
 la preview des xml
+
+page d'aide ?
+
+meilleure icône
 
 -->
