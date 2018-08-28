@@ -8,13 +8,6 @@
       </item>
     </section>
 
-    <!-- <section id="main"> -->
-    <!--   <item> -->
-    <!--     <attribute name="action">app.settings</attribute> -->
-    <!--     <attribute name="label" translatable="yes">Preferences</attribute> -->
-    <!--   </item> -->
-    <!-- </section> -->
-
     <section>
       <item>
         <attribute name="action">app.shortcuts</attribute>
@@ -36,4 +29,42 @@
       </item>
     </section>
   </menu>
+
+  <menu id="window-menu">
+    <section id="new">
+      <item>
+        <attribute name="action">app.new_window</attribute>
+        <attribute name="label" translatable="yes">New window</attribute>
+      </item>
+    </section>
+
+    <section id="edit">
+      <item>
+        <attribute name="action">win.save_as</attribute>
+        <attribute name="label" translatable="yes">Save as</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.set_as_wallpaper</attribute>
+        <attribute name="label" translatable="yes">Set as wallpaper</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="action">app.shortcuts</attribute>
+        <attribute name="label" translatable="yes">Shortcuts</attribute>
+      </item>
+<!-- TODO
+      <item>
+        <attribute name="action">app.help</attribute>
+        <attribute name="label" translatable="yes">Help</attribute>
+      </item>
+-->
+      <item>
+        <attribute name="action">app.about</attribute>
+        <attribute name="label" translatable="yes">About</attribute>
+      </item>
+    </section>
+  </menu>
 </interface>
+

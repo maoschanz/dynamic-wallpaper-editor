@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="dynamic-wallpaper-editor">
-	<schema id="org.gnome.Dynamic-Wallpaper-Editor" path="/org/gnome/Dynamic-Wallpaper-Editor/">
+	<schema id="com.github.maoschanz.Dynamic-Wallpaper-Editor" path="/com/github/maoschanz/Dynamic-Wallpaper-Editor/">
 	</schema>
 </schemalist>

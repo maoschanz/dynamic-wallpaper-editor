@@ -1,6 +1,6 @@
-data/org.gnome.Dynamic-Wallpaper-Editor.desktop.in
-data/org.gnome.Dynamic-Wallpaper-Editor.appdata.xml.in
-data/org.gnome.Dynamic-Wallpaper-Editor.gschema.xml
+data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in
+data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in
+data/com.github.maoschanz.Dynamic-Wallpaper-Editor.gschema.xml
 src/appmenu.ui
 src/window.ui
 src/main.py

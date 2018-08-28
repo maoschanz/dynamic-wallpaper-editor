@@ -19,7 +19,7 @@ from gi.repository import Gtk, Gio, GdkPixbuf
 from .gi_composites import GtkTemplate
 # from gettext import gettext as _
 
-@GtkTemplate(ui='/org/gnome/Dynamic-Wallpaper-Editor/window.ui')
+@GtkTemplate(ui='/com/github/maoschanz/Dynamic-Wallpaper-Editor/window.ui')
 class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'DynamicWallpaperEditorWindow'
 
@@ -27,8 +27,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     open_btn = GtkTemplate.Child()
     start_btn = GtkTemplate.Child()
     save_btn = GtkTemplate.Child()
-    save_as_btn = GtkTemplate.Child()
-    set_btn = GtkTemplate.Child()
+    menu_btn = GtkTemplate.Child()
     add_btn = GtkTemplate.Child()
     list_box = GtkTemplate.Child()
     trans_time_btn = GtkTemplate.Child()
@@ -72,18 +71,31 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self._is_saved = True
 
         self.add_btn.connect('clicked', self.on_add_pictures)
-        self.save_btn.connect('clicked', self.on_save)
-        self.save_as_btn.connect('clicked', self.on_save_as)
-        self.open_btn.connect('clicked', self.on_open)
-        self.set_btn.connect('clicked', self.on_set_as_wallpaper)
+        self.save_btn.connect('clicked', self.action_save)
+        self.open_btn.connect('clicked', self.action_open)
         self.time_switch.connect('notify::active', self.update_global_time_box)
         self.connect('delete-event', self.action_close)
+
+        builder = Gtk.Builder()
+        builder.add_from_resource("/com/github/maoschanz/Dynamic-Wallpaper-Editor/appmenu.ui")
+        menu = builder.get_object("window-menu")
+        self.menu_popover = Gtk.Popover.new_from_model(self.menu_btn, menu)
+        self.menu_btn.set_popover(self.menu_popover)
 
         self.list_box.set_placeholder(Gtk.Label(_("Add new pictures, or open an existing XML file."), visible=True))
 
         action = Gio.SimpleAction.new("save", None)
         action.connect("activate", self.action_save)
         self.add_action(action)
+
+        action = Gio.SimpleAction.new("save_as", None)
+        action.connect("activate", self.action_save_as)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("set_as_wallpaper", None)
+        action.connect("activate", self.action_set_as_wallpaper)
+        self.add_action(action)
+        self.lookup_action('set_as_wallpaper').set_enabled(False)
 
         action = Gio.SimpleAction.new("open", None)
         action.connect("activate", self.action_open)
@@ -93,13 +105,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         action.connect("activate", self.action_close)
         self.add_action(action)
 
-    def action_open(self, a, b):
-        self.on_open(None)
-
-    def action_save(self, a, b):
-        self.on_save(None)
-
-    def action_close(self, a, b):
+    def action_close(self, *args):
         if self.confirm_save_modifs():
             self.close()
 
@@ -121,7 +127,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             result = dialog.run()
             if result == -10:
                 dialog.destroy()
-                self.on_save(None)
+                self.action_save()
                 return True
             elif result == -9:
                 dialog.destroy()
@@ -131,7 +137,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
                 return False
         return True
 
-    def on_open(self, b):
+    def action_open(self, *args):
         if not self.confirm_save_modifs():
             return
         file_chooser = Gtk.FileChooserDialog(_("Open"), self,
@@ -148,12 +154,12 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         if response == Gtk.ResponseType.OK:
             self.xml_file_uri = file_chooser.get_uri()
             self.header_bar.set_subtitle(file_chooser.get_filename())
-            self.set_btn.set_sensitive(True)
+            self.lookup_action('set_as_wallpaper').set_enabled(True)
             self.load_list_from_xml()
             self._is_saved = True
         file_chooser.destroy()
 
-    def on_set_as_wallpaper(self, b):
+    def action_set_as_wallpaper(self, *args):
         gsettings = Gio.Settings.new('org.gnome.desktop.background')
         wp_key = 'picture-uri'
         gsettings.set_string(wp_key, self.xml_file_uri)
@@ -228,7 +234,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             self.list_box.add(row)
 
     # Writing the result in a file
-    def on_save(self, b):
+    def action_save(self, *args):
         if self.xml_file_uri is None:
             (uri, fn) = self.invoke_file_chooser()
             if uri is not None:
@@ -239,7 +245,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
                 self.xml_file_uri = uri
                 self.header_bar.set_subtitle(fn)
-                self.set_btn.set_sensitive(True)
+                self.lookup_action('set_as_wallpaper').set_enabled(True)
         else:
             Gio.File.new_for_path(self.header_bar.get_subtitle())
             f = open(self.header_bar.get_subtitle(), 'w')
@@ -247,13 +253,14 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             f.close()
         self._is_saved = True
 
-    def on_save_as(self, b):
+    def action_save_as(self, *args):
         (uri, fn) = self.invoke_file_chooser()
         if uri is not None:
             Gio.File.new_for_path(fn)
             f = open(fn, 'w')
             f.write(self.generate_text())
             f.close()
+            self._is_saved = True
 
     def invoke_file_chooser(self):
         uri = None
@@ -335,7 +342,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.update_durations()
         pastimage = None
         pasttrans = '0'
-        text = """<!-- Generated by org.gnome.Dynamic-Wallpaper-Editor -->
+        text = """<!-- Generated by com.github.maoschanz.Dynamic-Wallpaper-Editor -->
 <background>
 	<starttime>
 		<year>""" + str(int(self.year_spinbtn.get_value())) + """</year>
@@ -561,4 +568,6 @@ class PictureStruct():
     def __init__(self, filename, static_time, trans_time):
         self.filename = filename
         self.static_time = static_time
-        self.trans_time = trans_time        
+        self.trans_time = trans_time
+
+

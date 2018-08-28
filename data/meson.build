@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-  input: 'org.gnome.Dynamic-Wallpaper-Editor.desktop.in',
-  output: 'org.gnome.Dynamic-Wallpaper-Editor.desktop',
+  input: 'com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in',
+  output: 'com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop',
   type: 'desktop',
   po_dir: '../po',
   install: true,
@@ -15,8 +15,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: 'org.gnome.Dynamic-Wallpaper-Editor.appdata.xml.in',
-  output: 'org.gnome.Dynamic-Wallpaper-Editor.appdata.xml',
+  input: 'com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in',
+  output: 'com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml',
   po_dir: '../po',
   install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')
@@ -29,7 +29,7 @@ if appstream_util.found()
   )
 endif
 
-install_data('org.gnome.Dynamic-Wallpaper-Editor.gschema.xml',
+install_data('com.github.maoschanz.Dynamic-Wallpaper-Editor.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
 )
 

@@ -27,15 +27,16 @@ from .window import DynamicWallpaperEditorWindow
 
 class Application(Gtk.Application):
     def __init__(self):
-        super().__init__(application_id='org.gnome.Dynamic-Wallpaper-Editor',
+        super().__init__(application_id='com.github.maoschanz.Dynamic-Wallpaper-Editor',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
         GLib.set_application_name('Dynamic Wallpaper Editor')
-        GLib.set_prgname('org.gnome.Dynamic-Wallpaper-Editor')
+        GLib.set_prgname('com.github.maoschanz.Dynamic-Wallpaper-Editor')
 
         self.register(None)
-        menu = self.get_app_menu()
-        self.set_app_menu(menu)
+        menu = self.build_app_menu()
+        if self.prefers_app_menu():
+            self.set_app_menu(menu)
 
     def do_activate(self):
         win = self.props.active_window
@@ -43,18 +44,14 @@ class Application(Gtk.Application):
             win = DynamicWallpaperEditorWindow(application=self)
         win.present()
 
-    def get_app_menu(self):
+    def build_app_menu(self):
         builder = Gtk.Builder()
-        builder.add_from_resource("/org/gnome/Dynamic-Wallpaper-Editor/appmenu.ui")
+        builder.add_from_resource("/com/github/maoschanz/Dynamic-Wallpaper-Editor/appmenu.ui")
         menu = builder.get_object("app-menu")
 
         new_window_action = Gio.SimpleAction.new("new_window", None)
         new_window_action.connect("activate", self.on_new_window_activate)
         self.add_action(new_window_action)
-
-        # prefs_action = Gio.SimpleAction.new("settings", None)
-        # prefs_action.connect("activate", self.on_prefs_activate)
-        # self.add_action(prefs_action)
 
         shortcuts_action = Gio.SimpleAction.new("shortcuts", None)
         shortcuts_action.connect("activate", self.on_shortcuts_activate)
@@ -113,19 +110,13 @@ class Application(Gtk.Application):
         self.build_shortcuts_dialog()
         self.shortcuts_dialog.show_all()
 
-    # Possible pref (TODO):
-    # the beginning day/hh/mm/ss
-    # def on_prefs_activate(self, a, b):
-        # self.prefs_window =
-        # self.prefs_window.present()
-
     def build_about_dialog(self):
         self.about_dialog = Gtk.AboutDialog.new()
         self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
         self.about_dialog.set_authors(['Romain F. T.'])
         self.about_dialog.set_copyright('© 2018 Romain F. T.')
         self.about_dialog.set_license_type(Gtk.License.GPL_3_0)
-        self.about_dialog.set_logo_icon_name('org.gnome.Dynamic-Wallpaper-Editor')
+        self.about_dialog.set_logo_icon_name('com.github.maoschanz.Dynamic-Wallpaper-Editor')
         self.about_dialog.set_version('1.0')
         self.about_dialog.set_website('https://github.com/maestroschan/dynamic-wallpaper-editor')
         self.about_dialog.set_website_label(_("Report bugs or ideas"))
