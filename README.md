@@ -25,7 +25,9 @@ An existing XML file (opened, or just created) can be set as your wallpaper from
 
 <!-- TODO:
 
-meilleur dialogue de confirmation
+mieux détecter les modifications
+
+draggable
 
 meilleure icône
 

@@ -18,7 +18,10 @@
 
 	<object class="GtkBox" id="row_box">
 		<property name="visible">True</property>
-		<property name="margin">2</property>
+		<property name="margin-top">2</property>
+		<property name="margin-bottom">2</property>
+		<property name="margin-right">20</property>
+		<property name="margin-left">20</property>
 		<property name="spacing">5</property>
 		<property name="orientation">horizontal</property>
 
@@ -181,4 +184,5 @@
 		</child>
 	</object>
 </interface>
+
 

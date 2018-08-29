@@ -95,18 +95,16 @@
 
 		<child>
 			<object class="GtkBox" id="main_box">
-				<property name="margin">20</property>
-				<property name="spacing">20</property>
 				<property name="visible">True</property>
 				<property name="orientation">vertical</property>
-
 
 				<child>
 					<object class="GtkBox">
 						<property name="visible">True</property>
 						<property name="expand">False</property>
 						<property name="orientation">horizontal</property>
-						<property name="spacing">20</property>
+						<property name="margin">15</property>
+						<property name="spacing">15</property>
 
 						<child>
 							<object class="GtkButton" id="add_btn">
@@ -125,7 +123,7 @@
 						<child>
 							<object class="GtkSwitch" id="time_switch">
 								<property name="visible">True</property>
-								<property name="state">False</property>
+								<property name="state">True</property>
 							</object>
 							<packing>
 								<property name="pack-type">GTK_PACK_END</property>
@@ -135,7 +133,7 @@
 						<child>
 							<object class="GtkLabel">
 								<property name="visible">True</property>
-								<property name="label" translatable="yes">Use the same time for all pictures</property>
+								<property name="label" translatable="yes">Use the same duration for all pictures</property>
 							</object>
 							<packing>
 								<property name="pack-type">GTK_PACK_END</property>
@@ -147,16 +145,18 @@
 
 				<child>
 					<object class="GtkBox" id="time_box">
-						<property name="visible">False</property>
+						<property name="visible">True</property>
 						<property name="expand">False</property>
 						<property name="orientation">horizontal</property>
-						<property name="spacing">20</property>
+						<property name="spacing">15</property>
+						<property name="margin">15</property>
+						<property name="margin-top">0</property>
 
 						<child>
 							<object class="GtkLabel" id="static_label">
 								<property name="visible">True</property>
 								<property name="expand">False</property>
-								<property name="label" translatable="yes">Time per picture:</property>
+								<property name="label" translatable="yes">Duration of each picture (seconds)</property>
 							</object>
 							<packing>
 								<property name="pack-type">GTK_PACK_START</property>
@@ -189,7 +189,7 @@
 							<object class="GtkLabel" id="trans_label">
 								<property name="visible">True</property>
 								<property name="expand">False</property>
-								<property name="label" translatable="yes">Transitions:</property>
+								<property name="label" translatable="yes">Duration of each transition (seconds)</property>
 							</object>
 							<packing>
 								<property name="pack-type">GTK_PACK_END</property>
@@ -227,4 +227,5 @@
 
 	</template>
 </interface>
+
 

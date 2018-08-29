@@ -56,6 +56,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         ##############
 
         self.xml_file_uri = None
+        self.xml_file_name = None
         self._is_saved = True
 
         self.add_btn.connect('clicked', self.action_add)
@@ -99,7 +100,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
     def action_close(self, *args):
         if self.confirm_save_modifs():
-            self.close()
+            return False
+        else:
+            return True
 
     def on_start_time_open(self, button):
         self.start_time_popover.show_all()
@@ -109,29 +112,34 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
     def confirm_save_modifs(self):
         if not self._is_saved:
-            dialog = Gtk.Dialog(use_header_bar=True, modal=True, parent=self)
-            dialog.add_button(_("Save"), Gtk.ResponseType.APPLY)
+            if self.xml_file_name is None:
+                title_label = _("Untitled") + '.xml'
+            else:
+                title_label = self.xml_file_name.split('/')[-1]
+            dialog = Gtk.MessageDialog(modal=True, title=title_label, parent=self)
+            dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL) # FIXME
             dialog.add_button(_("Discard"), Gtk.ResponseType.NO)
-            dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
-            dialog.set_response_sensitive(Gtk.ResponseType.CANCEL, False) # FIXME
-            dialog.get_content_area().add(Gtk.Label(_("There are unsaved modifications to your wallpaper."), margin=10))
+            dialog.add_button(_("Save"), Gtk.ResponseType.APPLY)
+            dialog.get_message_area().add(Gtk.Label(_("There are unsaved modifications to your wallpaper.")))
             dialog.show_all()
             result = dialog.run()
-            if result == -10:
+            if result == Gtk.ResponseType.APPLY:
                 dialog.destroy()
                 self.action_save()
                 return True
-            elif result == -9:
+            elif result == Gtk.ResponseType.NO:
                 dialog.destroy()
                 return True
             else:
                 dialog.destroy()
                 return False
-        return True
+        else:
+            return True
 
     def action_open(self, *args):
         if not self.confirm_save_modifs():
             return
+        self.time_switch.set_active(False)
         file_chooser = Gtk.FileChooserDialog(_("Open"), self,
             Gtk.FileChooserAction.OPEN,
             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
@@ -145,6 +153,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         response = file_chooser.run()
         if response == Gtk.ResponseType.OK:
             self.xml_file_uri = file_chooser.get_uri()
+            self.xml_file_name = file_chooser.get_filename()
             self.header_bar.set_subtitle(file_chooser.get_filename())
             self.lookup_action('set_as_wallpaper').set_enabled(True)
             self.load_list_from_xml()
@@ -230,11 +239,12 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
                 f.close()
 
                 self.xml_file_uri = uri
+                self.xml_file_name = fn
                 self.header_bar.set_subtitle(fn)
                 self.lookup_action('set_as_wallpaper').set_enabled(True)
         else:
-            Gio.File.new_for_path(self.header_bar.get_subtitle())
-            f = open(self.header_bar.get_subtitle(), 'w')
+            Gio.File.new_for_path(self.xml_file_name)
+            f = open(self.xml_file_name, 'w')
             f.write(self.generate_text())
             f.close()
         self._is_saved = True
@@ -278,7 +288,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.pic_list = []
         pic_list = []
 
-        f = open(self.header_bar.get_subtitle(), 'r')
+        f = open(self.xml_file_name, 'r')
         xml_text = f.read()
         f.close()
 

@@ -11,7 +11,7 @@
     <section>
       <item>
         <attribute name="action">app.shortcuts</attribute>
-        <attribute name="label" translatable="yes">Shortcuts</attribute>
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
       </item>
 <!-- TODO
       <item>
@@ -52,7 +52,7 @@
     <section>
       <item>
         <attribute name="action">app.shortcuts</attribute>
-        <attribute name="label" translatable="yes">Shortcuts</attribute>
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
       </item>
 <!-- TODO
       <item>
@@ -67,4 +67,3 @@
     </section>
   </menu>
 </interface>
-
