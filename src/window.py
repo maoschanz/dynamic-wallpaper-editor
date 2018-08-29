@@ -58,7 +58,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.xml_file_uri = None
         self._is_saved = True
 
-        self.add_btn.connect('clicked', self.on_add_pictures)
+        self.add_btn.connect('clicked', self.action_add)
         self.save_btn.connect('clicked', self.action_save)
         self.open_btn.connect('clicked', self.action_open)
         self.time_switch.connect('notify::active', self.update_global_time_box)
@@ -87,6 +87,10 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
         action = Gio.SimpleAction.new("open", None)
         action.connect("activate", self.action_open)
+        self.add_action(action)
+
+        action = Gio.SimpleAction.new("add", None)
+        action.connect("activate", self.action_add)
         self.add_action(action)
 
         action = Gio.SimpleAction.new("close", None)
@@ -152,7 +156,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         wp_key = 'picture-uri'
         gsettings.set_string(wp_key, self.xml_file_uri)
 
-    def on_add_pictures(self, b):
+    def action_add(self, *args):
         # créer liste de paths
         file_chooser = Gtk.FileChooserNative.new(_("Add pictures"), self, # FIXME mieux mais pété ??
             Gtk.FileChooserAction.OPEN,

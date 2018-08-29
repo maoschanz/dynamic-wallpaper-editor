@@ -14,9 +14,9 @@ Create or edit XML dynamic wallpapers ("slideshows") for the GNOME desktop.
 	<url type="bugtracker">https://github.com/maoschanz/dynamic-wallpaper-editor/issues</url>
 	<url type="homepage">https://github.com/maoschanz/dynamic-wallpaper-editor/wiki</url>
 	<developer_name>Romain F. T.</developer_name>
-	<!-- <screenshots> -->
-	<!-- 	<screenshot type="default"> -->
-	<!-- 		<image type="source">TODO</image> -->
-	<!-- 	</screenshot> -->
-	<!-- </screenshots> -->
+	<screenshots>
+		<screenshot type="default">
+			<image type="source">https://i.imgur.com/0mQJWnG.png</image>
+		</screenshot>
+	</screenshots>
 </component>

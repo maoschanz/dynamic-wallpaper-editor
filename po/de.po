@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-29 18:54+0200\n"
+"POT-Creation-Date: 2018-08-29 19:29+0200\n"
 "PO-Revision-Date: 2018-06-23 17:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,7 +24,7 @@ msgid "Dynamic Wallpaper Editor"
 msgstr "Dynamischer Bildschirmhintergrund Editor"
 
 #: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in:5
-#: src/main.py:116
+#: src/main.py:99
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
 
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Romain F. T."
 msgstr ""
 
-#: src/menus.ui:7 src/menus.ui:37 src/main.py:96
+#: src/menus.ui:7 src/menus.ui:37 src/shortcuts.ui:17
 msgid "New window"
 msgstr "Neues Fenster"
 
@@ -66,15 +66,15 @@ msgstr ""
 msgid "About"
 msgstr "Info"
 
-#: src/menus.ui:28 src/main.py:97
+#: src/menus.ui:28
 msgid "Quit"
 msgstr "Beenden"
 
-#: src/menus.ui:44 src/window.py:250
+#: src/menus.ui:44 src/window.py:254
 msgid "Save as"
 msgstr "Speichern unter"
 
-#: src/menus.ui:48
+#: src/menus.ui:48 src/shortcuts.ui:58
 msgid "Set as wallpaper"
 msgstr "Als Bildschirmhintergrund festlegen"
 
@@ -82,11 +82,11 @@ msgstr "Als Bildschirmhintergrund festlegen"
 msgid "Dynamic wallpaper editor"
 msgstr "Dynamischer Bildschirmhintergrund Editor"
 
-#: src/window.ui:31 src/main.py:100 src/window.py:131 src/window.py:159
+#: src/window.ui:31 src/window.py:135 src/window.py:163
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/window.ui:32
+#: src/window.ui:32 src/shortcuts.ui:37
 msgid "Open an existing dynamic wallpaper"
 msgstr "Öffne einen existierenden dynamischen Bildschirmhintergrund"
 
@@ -98,11 +98,11 @@ msgstr ""
 msgid "More actions"
 msgstr ""
 
-#: src/window.ui:86 src/main.py:101 src/window.py:109
+#: src/window.ui:86 src/shortcuts.ui:51 src/window.py:113
 msgid "Save"
 msgstr "Speichern"
 
-#: src/window.ui:114 src/window.py:157
+#: src/window.ui:114 src/shortcuts.ui:44 src/window.py:161
 msgid "Add pictures"
 msgstr "Bilder hinzufügen"
 
@@ -174,23 +174,24 @@ msgstr ""
 msgid "Second"
 msgstr ""
 
-#: src/main.py:95
+#: src/shortcuts.ui:13
 msgid "General"
 msgstr ""
 
-#: src/main.py:99
-msgid "File"
+#: src/shortcuts.ui:24
+msgid "Quit all windows"
 msgstr ""
 
-#: src/main.py:102
-msgid "Close"
-msgstr ""
+#: src/shortcuts.ui:33
+#, fuzzy
+msgid "Wallpaper"
+msgstr "Als Bildschirmhintergrund festlegen"
 
-#: src/main.py:122
+#: src/main.py:105
 msgid "Report bugs or ideas"
 msgstr "Melde Fehler oder Ideen"
 
-#: src/main.py:123
+#: src/main.py:106
 msgid "translator-credits"
 msgstr ""
 
@@ -198,25 +199,55 @@ msgstr ""
 msgid "Add new pictures, or open an existing XML file."
 msgstr ""
 
-#: src/window.py:110
+#: src/window.py:114
 msgid "Discard"
 msgstr ""
 
-#: src/window.py:111 src/window.py:160
+#: src/window.py:115 src/window.py:164
 msgid "Cancel"
 msgstr ""
 
-#: src/window.py:113
+#: src/window.py:117
 msgid "There are unsaved modifications to your wallpaper."
 msgstr ""
 
-#: src/window.py:136
+#: src/window.py:140
 msgid "Dynamic wallpapers (XML)"
 msgstr "Dynamische Bildschirmhintergründe (XML)"
 
-#: src/window.py:162
+#: src/window.py:166
 msgid "Pictures"
 msgstr "Bilder"
+
+#, fuzzy
+#~ msgctxt "shortcut window"
+#~ msgid "New window"
+#~ msgstr "Neues Fenster"
+
+#, fuzzy
+#~ msgctxt "shortcut window"
+#~ msgid "Open an existing dynamic wallpaper"
+#~ msgstr "Öffne einen existierenden dynamischen Bildschirmhintergrund"
+
+#, fuzzy
+#~ msgctxt "shortcut window"
+#~ msgid "Add pictures"
+#~ msgstr "Bilder hinzufügen"
+
+#, fuzzy
+#~ msgctxt "shortcut window"
+#~ msgid "Save"
+#~ msgstr "Speichern"
+
+#, fuzzy
+#~ msgctxt "shortcut window"
+#~ msgid "Set as wallpaper"
+#~ msgstr "Als Bildschirmhintergrund festlegen"
+
+#, fuzzy
+#~ msgctxt "shortcut window"
+#~ msgid "Open existing XML wallpaper"
+#~ msgstr "Öffne einen existierenden dynamischen Bildschirmhintergrund"
 
 #~ msgid "Website"
 #~ msgstr "Webseite"

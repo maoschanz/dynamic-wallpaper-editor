@@ -17,7 +17,6 @@
 
 import sys
 import gi
-# from gettext import gettext as _
 
 gi.require_version('Gtk', '3.0')
 
@@ -73,42 +72,26 @@ class Application(Gtk.Application):
         self.set_accels_for_action("app.quit", ["<Ctrl>q"])
         self.set_accels_for_action("win.save", ["<Ctrl>s"])
         self.set_accels_for_action("win.open", ["<Ctrl>o"])
-        self.set_accels_for_action("win.close", ["<Ctrl>w"])
+        self.set_accels_for_action("win.add", ["<Ctrl>a"])
+        self.set_accels_for_action("win.set_as_wallpaper", ["<Ctrl>w"])
 
         return menu
 
-    def on_about_activate(self, a, b):
+    def on_about_activate(self, *args):
         self.build_about_dialog()
         self.about_dialog.show()
 
-    def on_quit(self, a, b):
+    def on_quit(self, *args):
         self.quit()
 
-    def on_new_window_activate(self, a, b):
+    def on_new_window_activate(self, *args):
         win = DynamicWallpaperEditorWindow(application=self)
         win.present()
 
-    def build_shortcuts_dialog(self):
-        self.shortcuts_dialog = Gtk.ShortcutsWindow()
-        section = Gtk.ShortcutsSection(section_name='shortcuts', max_height=8, visible=True)
-
-        group1 = Gtk.ShortcutsGroup(title=_("General"), visible=True)
-        group1.add(Gtk.ShortcutsShortcut(title=_("New window"), accelerator='<Ctrl>n'))
-        group1.add(Gtk.ShortcutsShortcut(title=_("Quit"), accelerator='<Ctrl>q'))
-
-        group2 = Gtk.ShortcutsGroup(title=_("File"), visible=True)
-        group2.add(Gtk.ShortcutsShortcut(title=_("Open"), accelerator='<Ctrl>o'))
-        group2.add(Gtk.ShortcutsShortcut(title=_("Save"), accelerator='<Ctrl>s'))
-        group2.add(Gtk.ShortcutsShortcut(title=_("Close"), accelerator='<Ctrl>w'))
-
-        section.add(group1)
-        section.add(group2)
-
-        self.shortcuts_dialog.add(section)
-
-    def on_shortcuts_activate(self, a, b):
-        self.build_shortcuts_dialog()
-        self.shortcuts_dialog.show_all()
+    def on_shortcuts_activate(self, *args):
+        builder = Gtk.Builder().new_from_resource('/com/github/maoschanz/Dynamic-Wallpaper-Editor/shortcuts.ui')
+        self.shortcuts_window = builder.get_object('shortcuts')
+        self.shortcuts_window.present()
 
     def build_about_dialog(self):
         self.about_dialog = Gtk.AboutDialog.new()

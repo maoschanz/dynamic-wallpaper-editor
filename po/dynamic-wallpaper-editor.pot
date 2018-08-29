@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-29 18:54+0200\n"
+"POT-Creation-Date: 2018-08-29 19:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgid "Dynamic Wallpaper Editor"
 msgstr ""
 
 #: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in:5
-#: src/main.py:116
+#: src/main.py:99
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr ""
 
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Romain F. T."
 msgstr ""
 
-#: src/menus.ui:7 src/menus.ui:37 src/main.py:96
+#: src/menus.ui:7 src/menus.ui:37 src/shortcuts.ui:17
 msgid "New window"
 msgstr ""
 
@@ -62,15 +62,15 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: src/menus.ui:28 src/main.py:97
+#: src/menus.ui:28
 msgid "Quit"
 msgstr ""
 
-#: src/menus.ui:44 src/window.py:250
+#: src/menus.ui:44 src/window.py:254
 msgid "Save as"
 msgstr ""
 
-#: src/menus.ui:48
+#: src/menus.ui:48 src/shortcuts.ui:58
 msgid "Set as wallpaper"
 msgstr ""
 
@@ -78,11 +78,11 @@ msgstr ""
 msgid "Dynamic wallpaper editor"
 msgstr ""
 
-#: src/window.ui:31 src/main.py:100 src/window.py:131 src/window.py:159
+#: src/window.ui:31 src/window.py:135 src/window.py:163
 msgid "Open"
 msgstr ""
 
-#: src/window.ui:32
+#: src/window.ui:32 src/shortcuts.ui:37
 msgid "Open an existing dynamic wallpaper"
 msgstr ""
 
@@ -94,11 +94,11 @@ msgstr ""
 msgid "More actions"
 msgstr ""
 
-#: src/window.ui:86 src/main.py:101 src/window.py:109
+#: src/window.ui:86 src/shortcuts.ui:51 src/window.py:113
 msgid "Save"
 msgstr ""
 
-#: src/window.ui:114 src/window.py:157
+#: src/window.ui:114 src/shortcuts.ui:44 src/window.py:161
 msgid "Add pictures"
 msgstr ""
 
@@ -165,23 +165,23 @@ msgstr ""
 msgid "Second"
 msgstr ""
 
-#: src/main.py:95
+#: src/shortcuts.ui:13
 msgid "General"
 msgstr ""
 
-#: src/main.py:99
-msgid "File"
+#: src/shortcuts.ui:24
+msgid "Quit all windows"
 msgstr ""
 
-#: src/main.py:102
-msgid "Close"
+#: src/shortcuts.ui:33
+msgid "Wallpaper"
 msgstr ""
 
-#: src/main.py:122
+#: src/main.py:105
 msgid "Report bugs or ideas"
 msgstr ""
 
-#: src/main.py:123
+#: src/main.py:106
 msgid "translator-credits"
 msgstr ""
 
@@ -189,22 +189,22 @@ msgstr ""
 msgid "Add new pictures, or open an existing XML file."
 msgstr ""
 
-#: src/window.py:110
+#: src/window.py:114
 msgid "Discard"
 msgstr ""
 
-#: src/window.py:111 src/window.py:160
+#: src/window.py:115 src/window.py:164
 msgid "Cancel"
 msgstr ""
 
-#: src/window.py:113
+#: src/window.py:117
 msgid "There are unsaved modifications to your wallpaper."
 msgstr ""
 
-#: src/window.py:136
+#: src/window.py:140
 msgid "Dynamic wallpapers (XML)"
 msgstr ""
 
-#: src/window.py:162
+#: src/window.py:166
 msgid "Pictures"
 msgstr ""
