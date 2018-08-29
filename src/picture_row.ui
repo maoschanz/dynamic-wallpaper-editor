@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="dynamic-wallpaper-editor">
+
+	<object class="GtkAdjustment" id="adjustment_st">
+		<property name="lower">1</property>
+		<property name="upper">86400</property>
+		<property name="step_increment">1</property>
+		<property name="page_increment">10</property>
+		<property name="value">10</property>
+	</object>
+	<object class="GtkAdjustment" id="adjustment_tr">
+		<property name="lower">0</property>
+		<property name="upper">2000</property>
+		<property name="step_increment">1</property>
+		<property name="page_increment">10</property>
+		<property name="value">0</property>
+	</object>
+
+	<object class="GtkBox" id="row_box">
+		<property name="visible">True</property>
+		<property name="margin">2</property>
+		<property name="spacing">5</property>
+		<property name="orientation">horizontal</property>
+
+		<child>
+			<object class="GtkImage" id="row_thumbnail">
+				<property name="visible">True</property>
+				<property name="expand">False</property>
+			</object>
+			<packing>
+				<property name="pack-type">GTK_PACK_START</property>
+			</packing>
+		</child>
+
+		<child>
+			<object class="GtkLabel" id="row_label">
+				<property name="visible">True</property>
+				<property name="label">picture name</property>
+			</object>
+			<packing>
+				<property name="pack-type">GTK_PACK_START</property>
+			</packing>
+		</child>
+
+		<child>
+			<object class="GtkBox">
+				<property name="visible">True</property>
+				<property name="orientation">horizontal</property>
+				<property name="spacing">5</property>
+
+				<child>
+					<object class="GtkBox" id="time_box">
+						<property name="visible">True</property>
+						<property name="expand">False</property>
+						<property name="orientation">vertical</property>
+						<property name="spacing">2</property>
+
+						<child>
+							<object class="GtkGrid">
+								<property name="visible">True</property>
+								<property name="expand">False</property>
+								<property name="row-spacing">2</property>
+								<property name="column-spacing">5</property>
+
+								<child>
+									<object class="GtkLabel" id="static_label">
+										<property name="visible">True</property>
+										<property name="expand">False</property>
+										<property name="label" translatable="yes">Time</property>
+									</object>
+									<packing>
+										<property name="left-attach">0</property>
+										<property name="top-attach">0</property>
+									</packing>
+								</child>
+								<child>
+									<object class="GtkSpinButton" id="static_btn">
+										<property name="visible">True</property>
+										<property name="expand">False</property>
+										<property name="tooltip_text" translatable="yes">Time (in seconds) of this image. This doesn't include the time of the transition.</property>
+										<property name="adjustment">adjustment_st</property>
+									</object>
+									<packing>
+										<property name="left-attach">1</property>
+										<property name="top-attach">0</property>
+									</packing>
+								</child>
+
+								<child>
+									<object class="GtkLabel" id="transition_label">
+										<property name="visible">True</property>
+										<property name="expand">False</property>
+										<property name="label" translatable="yes">Transition</property>
+									</object>
+									<packing>
+										<property name="left-attach">0</property>
+										<property name="top-attach">1</property>
+									</packing>
+								</child>
+								<child>
+									<object class="GtkSpinButton" id="transition_btn">
+										<property name="expand">False</property>
+										<property name="visible">True</property>
+										<property name="tooltip_text" translatable="yes">Time (in seconds) of the transition between this image and the next one.</property>
+										<property name="adjustment">adjustment_tr</property>
+									</object>
+									<packing>
+										<property name="left-attach">1</property>
+										<property name="top-attach">1</property>
+									</packing>
+								</child>
+
+							</object>
+						</child>
+					</object>
+				</child>
+
+				<child>
+					<object class="GtkButton" id="delete_btn">
+						<property name="visible">True</property>
+						<child>
+							<object class="GtkImage">
+								<property name="visible">True</property>
+								<property name="icon-name">edit-delete-symbolic</property>
+							</object>
+						</child>
+						<style>
+							<class name="destructive-action"/>
+						</style>
+					</object>
+					<packing>
+						<property name="pack-type">GTK_PACK_END</property>
+					</packing>
+				</child>
+
+				<child>
+					<object class="GtkBox">
+						<property name="visible">False</property>
+						<property name="orientation">vertical</property>
+						<property name="expand">False</property>
+
+						<child>
+							<object class="GtkButton" id="up_btn">
+								<property name="visible">True</property>
+								<property name="expand">True</property>
+								<child>
+									<object class="GtkImage">
+										<property name="visible">True</property>
+										<property name="icon-name">go-up-symbolic</property>
+									</object>
+								</child>
+							</object>
+						</child>
+
+						<child>
+							<object class="GtkButton" id="down_btn">
+								<property name="visible">True</property>
+								<property name="expand">True</property>
+								<child>
+									<object class="GtkImage">
+										<property name="visible">True</property>
+										<property name="icon-name">go-down-symbolic</property>
+									</object>
+								</child>
+							</object>
+						</child>
+						<style>
+							<class name="linked"/>
+						</style>
+
+					</object>
+					<packing>
+						<property name="pack-type">GTK_PACK_END</property>
+					</packing>
+				</child>
+
+			</object>
+			<packing>
+				<property name="pack-type">GTK_PACK_END</property>
+			</packing>
+		</child>
+	</object>
+</interface>
+

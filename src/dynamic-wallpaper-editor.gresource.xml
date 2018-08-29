@@ -3,5 +3,7 @@
   <gresource prefix="/com/github/maoschanz/Dynamic-Wallpaper-Editor">
     <file>window.ui</file>
     <file>menus.ui</file>
+    <file>picture_row.ui</file>
+    <file>start_time.ui</file>
   </gresource>
 </gresources>

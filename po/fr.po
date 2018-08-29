@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-28 22:04+0200\n"
+"POT-Creation-Date: 2018-08-29 18:54+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in:3
+#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:6
 msgid "Dynamic Wallpaper Editor"
 msgstr "Éditeur de fonds d'écran dynamiques"
 
@@ -30,6 +31,29 @@ msgstr "Créer ou éditer des fonds d'écrans dynamiques pour GNOME."
 #: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in:10
 msgid "com.github.maoschanz.Dynamic-Wallpaper-Editor"
 msgstr "com.github.maoschanz.Dynamic-Wallpaper-Editor"
+
+#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:7
+msgid ""
+"Create or edit XML dynamic wallpapers (\"slideshows\") for the GNOME desktop."
+msgstr ""
+"Créer ou éditer des fonds d'écrans dynamiques (\"diaporamas\") pour le "
+"bureau GNOME."
+
+#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:11
+msgid "A simple utility to create or edit dynamic wallpapers for GNOME Shell."
+msgstr ""
+"Un utilitaire simple pour créer ou éditer des fonds d'écrans dynamiques pour "
+"GNOME."
+
+#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:12
+msgid ""
+"The duration of each picture and each transition can be set separately or "
+"globally."
+msgstr ""
+
+#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:16
+msgid "Romain F. T."
+msgstr ""
 
 #: src/menus.ui:7 src/menus.ui:37 src/main.py:96
 msgid "New window"
@@ -47,7 +71,7 @@ msgstr "À propos"
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/menus.ui:44 src/window.py:262
+#: src/menus.ui:44 src/window.py:250
 msgid "Save as"
 msgstr "Enregistrer sous"
 
@@ -55,45 +79,99 @@ msgstr "Enregistrer sous"
 msgid "Set as wallpaper"
 msgstr "Appliquer comme fond d'écran"
 
-#: src/window.ui:10
+#: src/window.ui:26
 msgid "Dynamic wallpaper editor"
 msgstr "Éditeur de fonds d'écran dynamiques"
 
-#: src/window.ui:15 src/main.py:100 src/window.py:143 src/window.py:171
+#: src/window.ui:31 src/main.py:100 src/window.py:131 src/window.py:159
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/window.ui:16
+#: src/window.ui:32
 msgid "Open an existing dynamic wallpaper"
 msgstr "Ouvrir un fond d'écran dynamique existant"
 
-#: src/window.ui:26
+#: src/window.ui:42
 msgid "Set the exact start time of the wallpaper"
 msgstr "Régler l'heure exacte de début du fond d'écran"
 
-#: src/window.ui:54
+#: src/window.ui:70
 msgid "More actions"
 msgstr "Plus d'actions"
 
-#: src/window.ui:70 src/main.py:101 src/window.py:121
+#: src/window.ui:86 src/main.py:101 src/window.py:109
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/window.ui:98 src/window.py:169
+#: src/window.ui:114 src/window.py:157
 msgid "Add pictures"
 msgstr "Ajouter des images"
 
-#: src/window.ui:122
+#: src/window.ui:138
 msgid "Use the same time for all pictures"
 msgstr "Utiliser le même temps pour toutes les images"
 
-#: src/window.ui:143
+#: src/window.ui:159
 msgid "Time per picture:"
 msgstr "Temps par image :"
 
-#: src/window.ui:174
+#: src/window.ui:192
 msgid "Transitions:"
 msgstr "Transitions :"
+
+#: src/picture_row.ui:69
+msgid "Time"
+msgstr "Temps"
+
+#: src/picture_row.ui:80
+msgid ""
+"Time (in seconds) of this image. This doesn't include the time of the "
+"transition."
+msgstr ""
+"Temps (en secondes) de cette image. Ça n'inclue pas le temps de la "
+"transition."
+
+#: src/picture_row.ui:93
+msgid "Transition"
+msgstr "Transition"
+
+#: src/picture_row.ui:104
+msgid ""
+"Time (in seconds) of the transition between this image and the next one."
+msgstr "Temps (en secondes) de la transition entre cette image et la suivante."
+
+#: src/start_time.ui:52
+#, fuzzy
+msgid "This is useful, for example, if the total duration is 24 hours."
+msgstr "Ceci est utile, par exemple, si la durée totale est 24 heures"
+
+#: src/start_time.ui:57
+msgid "Start time of the wallpaper"
+msgstr "Heure de début du fond d'écran"
+
+#: src/start_time.ui:75
+msgid "Year"
+msgstr "Année"
+
+#: src/start_time.ui:98
+msgid "Month"
+msgstr "Mois"
+
+#: src/start_time.ui:121
+msgid "Day"
+msgstr "Jour"
+
+#: src/start_time.ui:144
+msgid "Hour"
+msgstr "Heure"
+
+#: src/start_time.ui:167
+msgid "Minute"
+msgstr "Minute"
+
+#: src/start_time.ui:190
+msgid "Second"
+msgstr "Seconde"
 
 #: src/main.py:95
 msgid "General"
@@ -115,79 +193,26 @@ msgstr "Rapporter des bugs ou des idées"
 msgid "translator-credits"
 msgstr "Romain F. T."
 
-#: src/window.py:85
+#: src/window.py:73
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Ajoutez de nouvelles images, ou ouvrez un fichier XML existant."
 
-#: src/window.py:122
+#: src/window.py:110
 msgid "Discard"
 msgstr "Abandonner"
 
-#: src/window.py:123 src/window.py:172
+#: src/window.py:111 src/window.py:160
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/window.py:125
+#: src/window.py:113
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Il y a des modifications non enregistrées à votre fond d'écran."
 
-#: src/window.py:148
+#: src/window.py:136
 msgid "Dynamic wallpapers (XML)"
 msgstr "Fonds d'écran dynamiques"
 
-#: src/window.py:174
+#: src/window.py:162
 msgid "Pictures"
 msgstr "Images"
-
-#: src/window.py:406
-msgid "This is useful, for example, if the total duration is 24 hours"
-msgstr "Ceci est utile, par exemple, si la durée totale est 24 heures"
-
-#: src/window.py:407
-msgid "Start time of the wallpaper"
-msgstr "Heure de début du fond d'écran"
-
-#: src/window.py:416
-msgid "Year"
-msgstr "Année"
-
-#: src/window.py:417
-msgid "Month"
-msgstr "Mois"
-
-#: src/window.py:418
-msgid "Day"
-msgstr "Jour"
-
-#: src/window.py:419
-msgid "Hour"
-msgstr "Heure"
-
-#: src/window.py:420
-msgid "Minute"
-msgstr "Minute"
-
-#: src/window.py:421
-msgid "Second"
-msgstr "Seconde"
-
-#: src/window.py:504
-msgid "Time:"
-msgstr "Temps :"
-
-#: src/window.py:505
-msgid ""
-"Time (in seconds) of this image. This doesn't include the time of the "
-"transition."
-msgstr ""
-"Temps (en secondes) de cette image. Ça n'inclue pas le temps de la "
-"transition."
-
-#: src/window.py:508
-msgid "Transition:"
-msgstr "Transition :"
-
-#: src/window.py:509
-msgid ""
-"Time (in seconds) of the transition between this image and the next one."
-msgstr "Temps (en secondes) de la transition entre cette image et la suivante."

@@ -3,5 +3,7 @@ data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in
 data/com.github.maoschanz.Dynamic-Wallpaper-Editor.gschema.xml
 src/menus.ui
 src/window.ui
+src/picture_row.ui
+src/start_time.ui
 src/main.py
 src/window.py

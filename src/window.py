@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk, Gio, GdkPixbuf
+from gi.repository import Gtk, Gio, GdkPixbuf, Pango
 from .gi_composites import GtkTemplate
 # from gettext import gettext as _
 
@@ -42,18 +42,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.init_template()
-
-        self.static_time_btn.set_range(1, 86400)
-        self.trans_time_btn.set_range(0, 1000)
-
-        self.static_time_btn.set_digits(0)
-        self.trans_time_btn.set_digits(0)
-
-        self.static_time_btn.set_increments(1,1)
-        self.trans_time_btn.set_increments(1,1)
-
-        self.static_time_btn.set_value(10.0)
-        self.trans_time_btn.set_value(0.0)
 
         ##############
 
@@ -401,54 +389,15 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         return text
 
     def build_start_time_box(self):
-
-        start_time_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=5, margin=10)
-        start_time_box.set_tooltip_text(_("This is useful, for example, if the total duration is 24 hours"))
-        title_label = Gtk.Label(_("Start time of the wallpaper"))
-
-        year_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20, margin=5)
-        month_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20, margin=5)
-        day_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20, margin=5)
-        hour_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20, margin=5)
-        minute_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20, margin=5)
-        second_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20, margin=5)
-
-        year_label = Gtk.Label(_("Year"))
-        month_label = Gtk.Label(_("Month"))
-        day_label = Gtk.Label(_("Day"))
-        hour_label = Gtk.Label(_("Hour"))
-        minute_label = Gtk.Label(_("Minute"))
-        second_label = Gtk.Label(_("Second"))
-
-        year_box.add(year_label)
-        month_box.add(month_label)
-        day_box.add(day_label)
-        hour_box.add(hour_label)
-        minute_box.add(minute_label)
-        second_box.add(second_label)
-
-        self.year_spinbtn = Gtk.SpinButton.new_with_range(2015, 2025, 1)
-        self.month_spinbtn = Gtk.SpinButton.new_with_range(1, 12, 1)
-        self.day_spinbtn = Gtk.SpinButton.new_with_range(1, 31, 1)
-        self.hour_spinbtn = Gtk.SpinButton.new_with_range(0, 23, 1)
-        self.minute_spinbtn = Gtk.SpinButton.new_with_range(0, 59, 1)
-        self.second_spinbtn = Gtk.SpinButton.new_with_range(0, 59, 1)
-
-        year_box.pack_end(self.year_spinbtn, expand=False, fill=False, padding=0)
-        month_box.pack_end(self.month_spinbtn, expand=False, fill=False, padding=0)
-        day_box.pack_end(self.day_spinbtn, expand=False, fill=False, padding=0)
-        hour_box.pack_end(self.hour_spinbtn, expand=False, fill=False, padding=0)
-        minute_box.pack_end(self.minute_spinbtn, expand=False, fill=False, padding=0)
-        second_box.pack_end(self.second_spinbtn, expand=False, fill=False, padding=0)
-
-        start_time_box.add(title_label)
-        # start_time_box.add(year_box)
-        start_time_box.add(month_box)
-        start_time_box.add(day_box)
-        start_time_box.add(hour_box)
-        start_time_box.add(minute_box)
-        start_time_box.add(second_box)
-
+        builder = Gtk.Builder()
+        builder.add_from_resource("/com/github/maoschanz/Dynamic-Wallpaper-Editor/start_time.ui")
+        start_time_box = builder.get_object("start_time_box")
+        self.year_spinbtn = builder.get_object("year_spinbtn")
+        self.month_spinbtn = builder.get_object("month_spinbtn")
+        self.day_spinbtn = builder.get_object("day_spinbtn")
+        self.hour_spinbtn = builder.get_object("hour_spinbtn")
+        self.minute_spinbtn = builder.get_object("minute_spinbtn")
+        self.second_spinbtn = builder.get_object("second_spinbtn")
         return start_time_box
 
 
@@ -464,69 +413,35 @@ class PictureRow(Gtk.ListBoxRow):
         self.filename = pic_struct.filename
         self.window = window
 
-        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, margin=5, spacing=5)
-        row_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, margin=2, spacing=5)
-        self.time_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=5)
+        builder = Gtk.Builder()
+        builder.add_from_resource("/com/github/maoschanz/Dynamic-Wallpaper-Editor/picture_row.ui")
+        row_box = builder.get_object("row_box")
+        self.time_box = builder.get_object("time_box")
 
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, 64, 36, True)
-        image = Gtk.Image.new_from_pixbuf(pixbuf)
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, 114, 64, True)
+        image = builder.get_object("row_thumbnail")
+        image.set_from_pixbuf(pixbuf)
 
-        if len(self.filename) >= 35:
-            label = Gtk.Label("..." + self.filename[-35:])
-        else:
-            label = Gtk.Label(self.filename)
+        label = builder.get_object("row_label")
+        # if len(self.filename) >= 50:
+        #     label.set_label("…" + self.filename[-45:])
+        # else:
+        #     label.set_label(self.filename)
+        label.set_label(self.filename)
+        label.set_ellipsize(Pango.EllipsizeMode.START)
 
-        delete_icon = Gtk.Image()
-        delete_icon.set_from_icon_name('edit-delete-symbolic', Gtk.IconSize.BUTTON)
-        delete_btn = Gtk.Button()
-        delete_btn.add(delete_icon)
-        delete_btn.get_style_context().add_class('destructive-action')
+        delete_btn = builder.get_object("delete_btn")
         delete_btn.connect('clicked', self.destroy_row)
 
-        move_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-
-        up_icon = Gtk.Image()
-        up_icon.set_from_icon_name('go-up-symbolic', Gtk.IconSize.BUTTON)
-        up_btn = Gtk.Button()
-        up_btn.add(up_icon)
+        up_btn = builder.get_object("up_btn")
+        down_btn = builder.get_object("down_btn")
         up_btn.connect('clicked', self.on_up)
-
-        down_icon = Gtk.Image()
-        down_icon.set_from_icon_name('go-down-symbolic', Gtk.IconSize.BUTTON)
-        down_btn = Gtk.Button()
-        down_btn.add(down_icon)
         down_btn.connect('clicked', self.on_down)
 
-        move_box.add(down_btn)
-        move_box.add(up_btn)
-        move_box.get_style_context().add_class('linked')
-
-        static_label = Gtk.Label(_("Time:"), \
-            tooltip_text=_("Time (in seconds) of this image. This doesn't include the time of the transition."))
-        self.static_time_btn = Gtk.SpinButton.new_with_range(1.0, 86400.0, 1.0)
-
-        trans_label = Gtk.Label(_("Transition:"), \
-            tooltip_text=_("Time (in seconds) of the transition between this image and the next one."))
-        self.trans_time_btn = Gtk.SpinButton.new_with_range(0.0, 1000.0, 1.0)
-
+        self.static_time_btn = builder.get_object("static_btn")
+        self.trans_time_btn = builder.get_object("transition_btn")
         self.static_time_btn.set_value(float(pic_struct.static_time))
         self.trans_time_btn.set_value(float(pic_struct.trans_time))
-
-        row_box.pack_start(image, expand=False, fill=False, padding=0)
-        row_box.pack_start(label, expand=False, fill=False, padding=0)
-
-        self.time_box.add(static_label)
-        self.time_box.add(self.static_time_btn)
-        self.time_box.add(Gtk.Separator())
-        self.time_box.add(trans_label)
-        self.time_box.add(self.trans_time_btn)
-        self.time_box.add(Gtk.Separator())
-
-        box.pack_start(self.time_box, expand=False, fill=False, padding=0)
-        box.pack_end(delete_btn, expand=False, fill=False, padding=0)
-        box.pack_end(move_box, expand=False, fill=False, padding=0)
-
-        row_box.pack_end(box, expand=False, fill=False, padding=0)
 
         self.add(row_box)
         self.show_all()
@@ -559,12 +474,11 @@ class PictureStruct():
     __gtype_name__ = 'PictureStruct'
 
     filename = ''
-    static_time = 0
+    static_time = 10
     trans_time = 0
 
     def __init__(self, filename, static_time, trans_time):
         self.filename = filename
         self.static_time = static_time
         self.trans_time = trans_time
-
 

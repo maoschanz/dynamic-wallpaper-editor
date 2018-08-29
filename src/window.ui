@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="dynamic-wallpaper-editor">
+
+	<object class="GtkAdjustment" id="adjustment_st">
+		<property name="lower">1</property>
+		<property name="upper">86400</property>
+		<property name="step_increment">1</property>
+		<property name="page_increment">10</property>
+		<property name="value">10</property>
+	</object>
+	<object class="GtkAdjustment" id="adjustment_tr">
+		<property name="lower">0</property>
+		<property name="upper">2000</property>
+		<property name="step_increment">1</property>
+		<property name="page_increment">10</property>
+		<property name="value">0</property>
+	</object>
+
 	<template class="DynamicWallpaperEditorWindow" parent="GtkApplicationWindow">
 		<property name="default-width">900</property>
 		<property name="default-height">500</property>
@@ -151,6 +167,7 @@
 							<object class="GtkSpinButton" id="static_time_btn">
 								<property name="visible">True</property>
 								<property name="expand">False</property>
+								<property name="adjustment">adjustment_st</property>
 							</object>
 							<packing>
 								<property name="pack-type">GTK_PACK_START</property>
@@ -161,6 +178,7 @@
 							<object class="GtkSpinButton" id="trans_time_btn">
 								<property name="visible">True</property>
 								<property name="expand">False</property>
+								<property name="adjustment">adjustment_tr</property>
 							</object>
 							<packing>
 								<property name="pack-type">GTK_PACK_END</property>
