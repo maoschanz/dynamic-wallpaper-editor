@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-29 19:29+0200\n"
+"POT-Creation-Date: 2018-08-29 19:45+0200\n"
 "PO-Revision-Date: 2018-06-23 17:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -218,36 +218,3 @@ msgstr "Dynamische Bildschirmhintergründe (XML)"
 #: src/window.py:166
 msgid "Pictures"
 msgstr "Bilder"
-
-#, fuzzy
-#~ msgctxt "shortcut window"
-#~ msgid "New window"
-#~ msgstr "Neues Fenster"
-
-#, fuzzy
-#~ msgctxt "shortcut window"
-#~ msgid "Open an existing dynamic wallpaper"
-#~ msgstr "Öffne einen existierenden dynamischen Bildschirmhintergrund"
-
-#, fuzzy
-#~ msgctxt "shortcut window"
-#~ msgid "Add pictures"
-#~ msgstr "Bilder hinzufügen"
-
-#, fuzzy
-#~ msgctxt "shortcut window"
-#~ msgid "Save"
-#~ msgstr "Speichern"
-
-#, fuzzy
-#~ msgctxt "shortcut window"
-#~ msgid "Set as wallpaper"
-#~ msgstr "Als Bildschirmhintergrund festlegen"
-
-#, fuzzy
-#~ msgctxt "shortcut window"
-#~ msgid "Open existing XML wallpaper"
-#~ msgstr "Öffne einen existierenden dynamischen Bildschirmhintergrund"
-
-#~ msgid "Website"
-#~ msgstr "Webseite"
