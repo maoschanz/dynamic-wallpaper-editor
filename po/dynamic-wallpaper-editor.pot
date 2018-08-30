@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-30 23:30+0200\n"
+"POT-Creation-Date: 2018-08-31 00:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,7 +67,7 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: src/menus.ui:42 src/window.py:263
+#: src/menus.ui:42 src/window.py:243
 msgid "Save as"
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr ""
 msgid "Dynamic wallpaper editor"
 msgstr ""
 
-#: src/window.ui:31 src/window.py:142 src/window.py:171
+#: src/window.ui:31 src/window.py:147 src/window.py:177
 msgid "Open"
 msgstr ""
 
@@ -95,23 +95,23 @@ msgstr ""
 msgid "More actions"
 msgstr ""
 
-#: src/window.ui:86 src/shortcuts.ui:51 src/window.py:121
+#: src/window.ui:86 src/shortcuts.ui:51 src/window.py:126
 msgid "Save"
 msgstr ""
 
-#: src/window.ui:112 src/shortcuts.ui:44 src/window.py:169
+#: src/window.ui:167 src/shortcuts.ui:44 src/window.py:175
 msgid "Add pictures"
 msgstr ""
 
-#: src/window.ui:136
+#: src/window.ui:191
 msgid "Use the same duration for all pictures"
 msgstr ""
 
-#: src/window.ui:159
+#: src/window.ui:214
 msgid "Duration of each picture (seconds)"
 msgstr ""
 
-#: src/window.ui:192
+#: src/window.ui:247
 msgid "Duration of each transition (seconds)"
 msgstr ""
 
@@ -198,30 +198,38 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.py:73
+#: src/window.py:78
 msgid "Add new pictures, or open an existing XML file."
 msgstr ""
 
-#: src/window.py:115 src/window.py:267
+#: src/window.py:120 src/window.py:247
 msgid "Untitled"
 msgstr ""
 
-#: src/window.py:119 src/window.py:172
+#: src/window.py:124 src/window.py:178
 msgid "Cancel"
 msgstr ""
 
-#: src/window.py:120
+#: src/window.py:125
 msgid "Discard"
 msgstr ""
 
-#: src/window.py:122
+#: src/window.py:127
 msgid "There are unsaved modifications to your wallpaper."
 msgstr ""
 
-#: src/window.py:147
+#: src/window.py:152
 msgid "Dynamic wallpapers (XML)"
 msgstr ""
 
-#: src/window.py:174
+#: src/window.py:180
 msgid "Pictures"
+msgstr ""
+
+#: src/window.py:280
+msgid "This XML file doesn't describe a dynamic wallpaper"
+msgstr ""
+
+#: src/window.py:284
+msgid "This dynamic wallpaper is corrupted"
 msgstr ""
