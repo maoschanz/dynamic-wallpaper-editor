@@ -13,12 +13,10 @@
         <attribute name="action">app.shortcuts</attribute>
         <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
       </item>
-<!-- TODO
       <item>
         <attribute name="action">app.help</attribute>
         <attribute name="label" translatable="yes">Help</attribute>
       </item>
--->
       <item>
         <attribute name="action">app.about</attribute>
         <attribute name="label" translatable="yes">About</attribute>
@@ -54,12 +52,10 @@
         <attribute name="action">app.shortcuts</attribute>
         <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
       </item>
-<!-- TODO
       <item>
         <attribute name="action">app.help</attribute>
         <attribute name="label" translatable="yes">Help</attribute>
       </item>
--->
       <item>
         <attribute name="action">app.about</attribute>
         <attribute name="label" translatable="yes">About</attribute>
@@ -67,3 +63,4 @@
     </section>
   </menu>
 </interface>
+

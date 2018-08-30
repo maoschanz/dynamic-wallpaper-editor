@@ -17,7 +17,6 @@
 
 from gi.repository import Gtk, Gio, GdkPixbuf, Pango
 from .gi_composites import GtkTemplate
-# from gettext import gettext as _
 
 @GtkTemplate(ui='/com/github/maoschanz/Dynamic-Wallpaper-Editor/window.ui')
 class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
@@ -117,7 +116,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             else:
                 title_label = self.xml_file_name.split('/')[-1]
             dialog = Gtk.MessageDialog(modal=True, title=title_label, parent=self)
-            dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL) # FIXME
+            dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
             dialog.add_button(_("Discard"), Gtk.ResponseType.NO)
             dialog.add_button(_("Save"), Gtk.ResponseType.APPLY)
             dialog.get_message_area().add(Gtk.Label(_("There are unsaved modifications to your wallpaper.")))
@@ -265,6 +264,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             Gtk.FileChooserAction.SAVE,
             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
             Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+        file_chooser.set_current_name(_("Untitled") + '.xml')
+        file_chooser.set_do_overwrite_confirmation(True)
         response = file_chooser.run()
         if response == Gtk.ResponseType.OK:
             uri = file_chooser.get_uri()
@@ -292,7 +293,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         xml_text = f.read()
         f.close()
 
-        if '<background>' not in xml_text:
+        if '<background>' not in xml_text: # TODO afficher une erreur
             return
         if '</background>' not in xml_text:
             return

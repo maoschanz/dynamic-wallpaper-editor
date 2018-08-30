@@ -1,0 +1,49 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide" id="index">
+
+  <info>
+    <title type="link">Dynamic Wallpaper Editor</title>
+    <title type="text">Dynamic Wallpaper Editor</title>
+    <revision pkgversion="3.12" date="2018-02-24" status="review"/>
+
+    <credit type="author">
+      <name>Romain F. T.</name>
+      <website its:translate="no">https://github.com/maoschanz/dynamic-wallpaper-editor</website>
+      <years>2018</years>
+    </credit>
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+  </info>
+
+  <title>
+  <media type="image" mime="image/png" src="figures/icon.png"
+  its:translate="no"/>
+  Dynamic Wallpaper Editor
+  </title>
+
+  <p>GNOME Shell natively allows the wallpaper to change automatically over time, so your wallpaper can be for example:</p>
+  <list>
+    <item><p>a slideshow of your favorite pictures</p></item>
+    <item><p>an image adapting to the daylight</p></item>
+  </list>
+  <p>Dynamic wallpapers are saved as XML files, and this utility helps you creating, editing, and applying them.</p>
+
+  <section id="pictures">
+    <title>Manage pictures</title>
+    <p>You can add pictures with the <gui style="button">Add Pictures</gui> button, or remove them with <gui style="button">Delete</gui> button at the right of each row. It's possible to use a picture several times in the same slideshow. Then you can order them as you want with the <gui style="button">Move up</gui> and <gui style="button">Move down</gui> buttons.</p>
+  </section>
+  <section id="durations">
+    <title>Durations</title>
+    <p>The duration of each picture can be set globally (all pictures will last the same amount of seconds) or individually, depending on how you set the switch. You can also set the duration of the transition to the next image, in seconds.</p>
+    <p>If you want to do a wallpaper changing with the daylight, the total amount of seconds should be 86400, transitions included.</p>
+  </section>
+  <section id="start-time">
+    <title>Start time</title>
+    <p>If you want to do a wallpaper changing with the daylight, you might want to set the exact moment the slideshow begin. This is possible from the <gui style="button">Start time</gui> menu.</p>
+  </section>
+  <section id="save-apply">
+    <title>Save and apply as wallpaper</title>
+    <p>Then you can save your creation as an XML file, and apply it as a wallpaper with the <gui style="menuitem">Set as wallpaper</gui> menu item.</p>
+  </section>
+
+</page>

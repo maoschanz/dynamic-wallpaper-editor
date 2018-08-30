@@ -27,12 +27,12 @@ An existing XML file (opened, or just created) can be set as your wallpaper from
 
 mieux détecter les modifications
 
+erreur si invalide
+
 draggable
 
 meilleure icône
 
-la preview des xml
-
-page d'aide ?
+la preview des xml ?
 
 -->

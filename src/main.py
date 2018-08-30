@@ -20,7 +20,7 @@ import gi
 
 gi.require_version('Gtk', '3.0')
 
-from gi.repository import Gtk, Gio, GLib
+from gi.repository import Gtk, Gio, GLib, Gdk
 
 from .window import DynamicWallpaperEditorWindow
 
@@ -56,9 +56,9 @@ class Application(Gtk.Application):
         shortcuts_action.connect("activate", self.on_shortcuts_activate)
         self.add_action(shortcuts_action)
 
-        # help_action = Gio.SimpleAction.new("help", None)
-        # help_action.connect("activate", self.on_help_activate)
-        # self.add_action(help_action)
+        help_action = Gio.SimpleAction.new("help", None)
+        help_action.connect("activate", self.on_help_activate)
+        self.add_action(help_action)
 
         about_action = Gio.SimpleAction.new("about", None)
         about_action.connect("activate", self.on_about_activate)
@@ -80,6 +80,9 @@ class Application(Gtk.Application):
     def on_about_activate(self, *args):
         self.build_about_dialog()
         self.about_dialog.show()
+
+    def on_help_activate(self, *args):
+        Gtk.show_uri(None, "help:dynamic-wallpaper-editor", Gdk.CURRENT_TIME)
 
     def on_quit(self, *args):
         self.quit()
