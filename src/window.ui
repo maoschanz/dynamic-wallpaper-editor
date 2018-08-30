@@ -32,7 +32,7 @@
 						<property name="tooltip_text" translatable="yes">Open an existing dynamic wallpaper</property>
 					</object>
 					<packing>
-						<property name="pack-type">GTK_PACK_START</property>
+						<property name="pack-type">start</property>
 					</packing>
 				</child>
 
@@ -59,7 +59,7 @@
 						</child>
 					</object>
 					<packing>
-						<property name="pack-type">GTK_PACK_START</property>
+						<property name="pack-type">start</property>
 					</packing>
 				</child>
 
@@ -76,7 +76,7 @@
 						</child>
 					</object>
 					<packing>
-						<property name="pack-type">GTK_PACK_END</property>
+						<property name="pack-type">end</property>
 					</packing>
 				</child>
 
@@ -86,7 +86,7 @@
 						<property name="label" translatable="yes">Save</property>
 					</object>
 					<packing>
-						<property name="pack-type">GTK_PACK_END</property>
+						<property name="pack-type">end</property>
 					</packing>
 				</child>
 
@@ -97,6 +97,73 @@
 			<object class="GtkBox" id="main_box">
 				<property name="visible">True</property>
 				<property name="orientation">vertical</property>
+
+				<child>
+					<object class="GtkOverlay" id="notification_overlay">
+						<property name="visible">True</property>
+						<property name="can_focus">False</property>
+						<property name="valign">start</property>
+						<property name="halign">center</property>
+						<child>
+							<object class="GtkRevealer" id="notification_revealer">
+								<property name="visible">True</property>
+								<property name="can_focus">False</property>
+								<property name="halign">center</property>
+								<child>
+									<object class="GtkFrame">
+										<property name="visible">True</property>
+										<child>
+											<object class="GtkBox">
+												<property name="visible">True</property>
+												<property name="can_focus">False</property>
+												<property name="spacing">10</property>
+												<child>
+													<object class="GtkImage">
+														<property name="visible">True</property>
+														<property name="icon-name">dialog-error-symbolic</property>
+													</object>
+													<packing>
+														<property name="pack-type">start</property>
+													</packing>
+												</child>
+												<child>
+													<object class="GtkLabel" id="notification_label">
+														<property name="visible">True</property>
+														<property name="can_focus">False</property>
+														<property name="label">This is an app-notification</property>
+													</object>
+												</child>
+												<child>
+													<object class="GtkButton" id="dismiss_notif_btn">
+														<property name="visible">True</property>
+														<property name="expand">False</property>
+														<property name="relief">none</property>
+														<child>
+															<object class="GtkImage">
+																<property name="visible">True</property>
+																<property name="icon-name">window-close-symbolic</property>
+															</object>
+														</child>
+													</object>
+													<packing>
+														<property name="pack-type">end</property>
+													</packing>
+												</child>
+											</object>
+										</child>
+										<style>
+											<class name="app-notification"/>
+										</style>
+									</object>
+								</child>
+							</object>
+							<packing>
+								<property name="pass_through">True</property>
+								<property name="index">-1</property>
+							</packing>
+						</child>
+					</object>
+				</child>
 
 				<child>
 					<object class="GtkBox">
@@ -116,7 +183,7 @@
 								</style>
 							</object>
 							<packing>
-								<property name="pack-type">GTK_PACK_START</property>
+								<property name="pack-type">start</property>
 							</packing>
 						</child>
 
@@ -126,7 +193,7 @@
 								<property name="state">True</property>
 							</object>
 							<packing>
-								<property name="pack-type">GTK_PACK_END</property>
+								<property name="pack-type">end</property>
 							</packing>
 						</child>
 
@@ -136,7 +203,7 @@
 								<property name="label" translatable="yes">Use the same duration for all pictures</property>
 							</object>
 							<packing>
-								<property name="pack-type">GTK_PACK_END</property>
+								<property name="pack-type">end</property>
 							</packing>
 						</child>
 
@@ -159,7 +226,7 @@
 								<property name="label" translatable="yes">Duration of each picture (seconds)</property>
 							</object>
 							<packing>
-								<property name="pack-type">GTK_PACK_START</property>
+								<property name="pack-type">start</property>
 							</packing>
 						</child>
 
@@ -170,7 +237,7 @@
 								<property name="adjustment">adjustment_st</property>
 							</object>
 							<packing>
-								<property name="pack-type">GTK_PACK_START</property>
+								<property name="pack-type">start</property>
 							</packing>
 						</child>
 
@@ -181,7 +248,7 @@
 								<property name="adjustment">adjustment_tr</property>
 							</object>
 							<packing>
-								<property name="pack-type">GTK_PACK_END</property>
+								<property name="pack-type">end</property>
 							</packing>
 						</child>
 
@@ -192,13 +259,13 @@
 								<property name="label" translatable="yes">Duration of each transition (seconds)</property>
 							</object>
 							<packing>
-								<property name="pack-type">GTK_PACK_END</property>
+								<property name="pack-type">end</property>
 							</packing>
 						</child>
 
 					</object>
 					<packing>
-						<property name="pack-type">GTK_PACK_START</property>
+						<property name="pack-type">start</property>
 					</packing>
 				</child>
 
@@ -212,13 +279,13 @@
 								<property name="visible">True</property>
 							</object>
 							<packing>
-								<property name="pack-type">GTK_PACK_START</property>
+								<property name="pack-type">start</property>
 							</packing>
 						</child>
 
 					</object>
 					<packing>
-						<property name="pack-type">GTK_PACK_END</property>
+						<property name="pack-type">end</property>
 					</packing>
 				</child>
 
@@ -227,5 +294,6 @@
 
 	</template>
 </interface>
+
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/com/github/maoschanz/Dynamic-Wallpaper-Editor">
+  <gresource prefix="/com/github/maoschanz/DynamicWallpaperEditor">
     <file>window.ui</file>
     <file>menus.ui</file>
     <file>picture_row.ui</file>

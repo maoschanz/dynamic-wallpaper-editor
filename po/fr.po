@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-30 14:56+0200\n"
+"POT-Creation-Date: 2018-08-30 23:30+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -18,42 +18,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in:3
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:6
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:6
 msgid "Dynamic Wallpaper Editor"
 msgstr "Éditeur de fonds d'écran dynamiques"
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in:5
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
 #: src/main.py:102
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Créer ou éditer des fonds d'écrans dynamiques pour GNOME."
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in:10
-msgid "com.github.maoschanz.Dynamic-Wallpaper-Editor"
-msgstr "com.github.maoschanz.Dynamic-Wallpaper-Editor"
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:10
+msgid "com.github.maoschanz.DynamicWallpaperEditor"
+msgstr "com.github.maoschanz.DynamicWallpaperEditor"
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:7
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:7
+#, fuzzy
 msgid ""
-"Create or edit XML dynamic wallpapers (\"slideshows\") for the GNOME desktop."
+"Create or edit XML dynamic wallpapers (\"slideshows\") for the GNOME desktop"
 msgstr ""
 "Créer ou éditer des fonds d'écrans dynamiques (\"diaporamas\") pour le "
 "bureau GNOME."
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:11
-msgid "A simple utility to create or edit dynamic wallpapers for GNOME Shell."
-msgstr ""
-"Un utilitaire simple pour créer ou éditer des fonds d'écrans dynamiques pour "
-"GNOME."
-
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:12
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:9
+#, fuzzy
 msgid ""
-"The duration of each picture and each transition can be set separately or "
+"A simple utility to create or edit dynamic wallpapers for GNOME Shell. The "
+"duration of each picture and each transition can be set separately or "
 "globally."
 msgstr ""
 "La durée de chaque image et de chaque transition peut être réglée séparément "
 "ou globalement."
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:16
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:13
 msgid "Romain F. T."
 msgstr ""
 
@@ -214,7 +211,7 @@ msgstr "Romain F. T."
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Ajoutez de nouvelles images, ou ouvrez un fichier XML existant."
 
-#: src/window.py:115
+#: src/window.py:115 src/window.py:267
 msgid "Untitled"
 msgstr "Sans titre"
 
@@ -237,3 +234,9 @@ msgstr "Fonds d'écran dynamiques"
 #: src/window.py:174
 msgid "Pictures"
 msgstr "Images"
+
+#~ msgid ""
+#~ "A simple utility to create or edit dynamic wallpapers for GNOME Shell."
+#~ msgstr ""
+#~ "Un utilitaire simple pour créer ou éditer des fonds d'écrans dynamiques "
+#~ "pour GNOME."

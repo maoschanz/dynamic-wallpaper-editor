@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-30 14:56+0200\n"
+"POT-Creation-Date: 2018-08-30 23:30+0200\n"
 "PO-Revision-Date: 2018-06-23 17:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,39 +18,35 @@ msgstr ""
 "X-Generator: Poedit 2.0.8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in:3
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:6
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:6
 msgid "Dynamic Wallpaper Editor"
 msgstr "Dynamischer Bildschirmhintergrund Editor"
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in:5
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
 #: src/main.py:102
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in:10
-#, fuzzy
-msgid "com.github.maoschanz.Dynamic-Wallpaper-Editor"
-msgstr "org.gnome.Dynamic-Wallpaper-Editor"
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:10
+msgid "com.github.maoschanz.DynamicWallpaperEditor"
+msgstr "com.github.maoschanz.DynamicWallpaperEditor"
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:7
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:7
 #, fuzzy
 msgid ""
-"Create or edit XML dynamic wallpapers (\"slideshows\") for the GNOME desktop."
+"Create or edit XML dynamic wallpapers (\"slideshows\") for the GNOME desktop"
 msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:11
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:9
 #, fuzzy
-msgid "A simple utility to create or edit dynamic wallpapers for GNOME Shell."
-msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
-
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:12
 msgid ""
-"The duration of each picture and each transition can be set separately or "
+"A simple utility to create or edit dynamic wallpapers for GNOME Shell. The "
+"duration of each picture and each transition can be set separately or "
 "globally."
-msgstr ""
+msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
 
-#: data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in:16
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:13
 msgid "Romain F. T."
 msgstr ""
 
@@ -216,7 +212,7 @@ msgstr ""
 msgid "Add new pictures, or open an existing XML file."
 msgstr ""
 
-#: src/window.py:115
+#: src/window.py:115 src/window.py:267
 msgid "Untitled"
 msgstr ""
 
@@ -239,9 +235,3 @@ msgstr "Dynamische Bildschirmhintergründe (XML)"
 #: src/window.py:174
 msgid "Pictures"
 msgstr "Bilder"
-
-#~ msgid "Time per picture:"
-#~ msgstr "Zeit pro Bild:"
-
-#~ msgid "Transitions:"
-#~ msgstr "Übergänge:"

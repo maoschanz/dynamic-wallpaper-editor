@@ -1,5 +1,5 @@
 {
-    "app-id" : "com.github.maoschanz.Dynamic-Wallpaper-Editor",
+    "app-id" : "com.github.maoschanz.DynamicWallpaperEditor",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "3.28",
     "sdk" : "org.gnome.Sdk",
@@ -44,7 +44,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://github.com/Maestroschan/dynamic-wallpaper-editor.git"
+                    "url" : "https://github.com/maoschanz/dynamic-wallpaper-editor.git"
                 }
             ]
         }

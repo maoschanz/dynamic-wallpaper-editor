@@ -1,6 +1,6 @@
-data/com.github.maoschanz.Dynamic-Wallpaper-Editor.desktop.in
-data/com.github.maoschanz.Dynamic-Wallpaper-Editor.appdata.xml.in
-data/com.github.maoschanz.Dynamic-Wallpaper-Editor.gschema.xml
+data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
+data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
 src/menus.ui
 src/window.ui
 src/picture_row.ui
