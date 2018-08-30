@@ -152,8 +152,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         onlyXML.set_name(_("Dynamic wallpapers (XML)"))
         onlyXML.add_mime_type('application/xml')
         file_chooser.set_filter(onlyXML)
-        # file_chooser.set_preview_widget(self.get_preview_widget_xml())
-        # file_chooser.connect('update-preview', self.on_update_preview_xml)
         response = file_chooser.run()
         if response == Gtk.ResponseType.OK:
             self.xml_file_uri = file_chooser.get_uri()
@@ -195,32 +193,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             self.update_durations()
             self.add_pictures_to_list(pic_array)
         file_chooser.destroy()
-
-    def get_preview_widget_xml(self):
-        self.preview_image = Gtk.Image()
-        box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        bbox = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
-        precedent = Gtk.Button("<")
-        suivant = Gtk.Button(">")
-        bbox.add(precedent)
-        bbox.add(suivant)
-        box.add(self.preview_image)
-        box.add(bbox)
-        box.show_all()
-        return box
-
-    def on_update_preview_xml(self, fc): # TODO
-        print(fc.get_filename())
-        # pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(fc.get_filename(), 100, 100, True)
-        # self.preview_image.set_from_pixbuf(pixbuf)
-
-    def get_preview_widget_pic(self):
-        self.preview_image = Gtk.Image()
-        return self.preview_image
-
-    def on_update_preview_pic(self, fc):
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(fc.get_filename(), 200, 200, True)
-        self.preview_image.set_from_pixbuf(pixbuf)
 
     def reset_list_box(self):
         while len(self.my_row_list) > 0:
@@ -292,7 +264,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             self.my_row_list[index].time_box.set_visible(not interrupteur.get_active())
 
     def close_notification(self, *args):
-        self.notification_label.set_label('...')
         self.notification_revealer.set_reveal_child(False)
 
     # This method parses the XML, looking for pictures paths

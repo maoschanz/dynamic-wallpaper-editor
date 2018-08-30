@@ -9,7 +9,6 @@
 
     <credit type="author">
       <name>Romain F. T.</name>
-      <website its:translate="no">https://github.com/maoschanz/dynamic-wallpaper-editor</website>
       <years>2018</years>
     </credit>
     <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
