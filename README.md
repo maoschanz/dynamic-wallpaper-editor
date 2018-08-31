@@ -10,7 +10,8 @@ These dynamic wallpapers are XML files, and you don't want to write these files 
 
 - Add pictures to the list
 - Order the list
-- Set the time of each picture, and the time of transition between them
+- Set the duration of each picture, and the duration of transition between them
+- Adjust the start time of the slideshow
 - Save as an XML file
 
 ## Editing XML files
