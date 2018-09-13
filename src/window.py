@@ -124,7 +124,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
             dialog.add_button(_("Discard"), Gtk.ResponseType.NO)
             dialog.add_button(_("Save"), Gtk.ResponseType.APPLY)
-            dialog.get_message_area().add(Gtk.Label(_("There are unsaved modifications to your wallpaper.")))
+            dialog.get_message_area().add(Gtk.Label(label=_("There are unsaved modifications to your wallpaper.")))
             dialog.show_all()
             result = dialog.run()
             if result == Gtk.ResponseType.APPLY:
@@ -172,7 +172,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
     def action_add(self, *args):
         # créer liste de paths
-        file_chooser = Gtk.FileChooserNative.new(_("Add pictures"), self, # FIXME mieux mais pété ??
+        file_chooser = Gtk.FileChooserNative.new(_("Add pictures"), self,
             Gtk.FileChooserAction.OPEN,
             _("Open"),
             _("Cancel"))

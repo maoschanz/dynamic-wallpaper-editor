@@ -62,7 +62,7 @@
 							<object class="GtkGrid">
 								<property name="visible">True</property>
 								<property name="expand">False</property>
-								<property name="row-spacing">2</property>
+								<property name="row-spacing">5</property>
 								<property name="column-spacing">5</property>
 
 								<child>

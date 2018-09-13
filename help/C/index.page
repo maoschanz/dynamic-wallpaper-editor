@@ -34,16 +34,16 @@
   </section>
   <section id="durations">
     <title>Adjust images duration</title>
-    <p>You can set the duration of each picture globally (all pictures will last the same amount of seconds) or individually, depending on how you set the corresponding switch. You can also set the duration of the transition to the next image, in seconds.</p>
+    <p>Depending on how you set the corresponding switch, you can set the duration of each picture globally (all pictures will last the same amount of seconds) or individually. You can also set the duration of the transition to the next image, in seconds.</p>
     <p>If you want to do a wallpaper changing with the daylight, the total amount of seconds should be 86400, transitions included.</p>
   </section>
   <section id="start-time">
-    <title>Set the exact start time</title>
+    <title>Set the start time</title>
     <p>You can set the exact moment the slideshow begin from the <gui style="button">Start time</gui> menu. This is especially useful if you want to do a wallpaper changing with the daylight</p>
   </section>
   <section id="save-apply">
     <title>Save and apply as wallpaper</title>
-    <p>Finally you can save your creation as an XML file, and apply it as a wallpaper with the <gui style="menuitem">Set as wallpaper</gui> menu item.</p>
+    <p>Save your creation as an XML file (with the <gui style="menuitem">Save</gui> button), and apply it as a wallpaper with the <gui style="menuitem">Set as wallpaper</gui> menu item.</p>
   </section>
 
 </page>

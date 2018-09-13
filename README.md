@@ -30,8 +30,6 @@ mieux détecter les modifications
 
 draggable
 
-meilleure icône
-
 la preview des xml ?
 
 -->
