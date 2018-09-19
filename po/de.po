@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-31 00:51+0200\n"
+"POT-Creation-Date: 2018-09-19 20:56+0200\n"
 "PO-Revision-Date: 2018-06-23 17:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -70,7 +70,7 @@ msgstr "Info"
 msgid "Quit"
 msgstr "Beenden"
 
-#: src/menus.ui:42 src/window.py:243
+#: src/menus.ui:42 src/window.py:244
 msgid "Save as"
 msgstr "Speichern unter"
 
@@ -82,7 +82,7 @@ msgstr "Als Bildschirmhintergrund festlegen"
 msgid "Dynamic wallpaper editor"
 msgstr "Dynamischer Bildschirmhintergrund Editor"
 
-#: src/window.ui:31 src/window.py:147 src/window.py:177
+#: src/window.ui:31 src/window.py:143 src/window.py:173
 msgid "Open"
 msgstr "Öffnen"
 
@@ -98,11 +98,11 @@ msgstr ""
 msgid "More actions"
 msgstr ""
 
-#: src/window.ui:86 src/shortcuts.ui:51 src/window.py:126
+#: src/window.ui:86 src/shortcuts.ui:51 src/window.py:122
 msgid "Save"
 msgstr "Speichern"
 
-#: src/window.ui:167 src/shortcuts.ui:44 src/window.py:175
+#: src/window.ui:167 src/shortcuts.ui:44 src/window.py:171
 msgid "Add pictures"
 msgstr "Bilder hinzufügen"
 
@@ -117,6 +117,10 @@ msgstr ""
 
 #: src/window.ui:247
 msgid "Duration of each transition (seconds)"
+msgstr ""
+
+#: src/window.ui:271
+msgid "Add new pictures, or open an existing XML file."
 msgstr ""
 
 #: src/picture_row.ui:72
@@ -208,39 +212,40 @@ msgstr "Melde Fehler oder Ideen"
 msgid "translator-credits"
 msgstr ""
 
-#: src/window.py:78
-msgid "Add new pictures, or open an existing XML file."
-msgstr ""
-
-#: src/window.py:120 src/window.py:247
+#: src/window.py:116 src/window.py:248
 msgid "Untitled"
 msgstr ""
 
-#: src/window.py:124 src/window.py:178
+#: src/window.py:120 src/window.py:174
 msgid "Cancel"
 msgstr ""
 
-#: src/window.py:125
+#: src/window.py:121
 msgid "Discard"
 msgstr ""
 
-#: src/window.py:127
+#: src/window.py:123
 msgid "There are unsaved modifications to your wallpaper."
 msgstr ""
 
-#: src/window.py:152
+#: src/window.py:148 src/window.py:250
 msgid "Dynamic wallpapers (XML)"
 msgstr "Dynamische Bildschirmhintergründe (XML)"
 
-#: src/window.py:180
+#: src/window.py:176
 msgid "Pictures"
 msgstr "Bilder"
 
-#: src/window.py:280
+#: src/window.py:191
+#, python-format
+msgid "Files such as %s are not pictures."
+msgstr ""
+
+#: src/window.py:285
 msgid "This XML file doesn't describe a dynamic wallpaper"
 msgstr ""
 
-#: src/window.py:284
+#: src/window.py:289
 #, fuzzy
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Dynamischer Bildschirmhintergrund Editor"

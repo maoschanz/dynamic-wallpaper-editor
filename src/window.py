@@ -46,21 +46,20 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         super().__init__(**kwargs)
         self.init_template()
 
+        self.xml_file_uri = None
+        self.xml_file_name = None
+        self._is_saved = True
+
         ##############
 
         self.start_time_popover = Gtk.Popover()
         start_time_box = self.build_start_time_box()
         self.start_time_popover.add(start_time_box)
         self.start_time_popover.set_relative_to(self.start_btn)
-
         self.start_btn.connect('toggled', self.on_start_time_open)
         self.start_time_popover.connect('closed', self.on_start_time_popover_closed, self.start_btn)
 
         ##############
-
-        self.xml_file_uri = None
-        self.xml_file_name = None
-        self._is_saved = True
 
         self.add_btn.connect('clicked', self.action_add)
         self.save_btn.connect('clicked', self.action_save)
@@ -69,13 +68,13 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.connect('delete-event', self.action_close)
         self.dismiss_notif_btn.connect('clicked', self.close_notification)
 
+        ##############
+
         builder = Gtk.Builder()
         builder.add_from_resource("/com/github/maoschanz/DynamicWallpaperEditor/menus.ui")
         menu = builder.get_object("window-menu")
         self.menu_popover = Gtk.Popover.new_from_model(self.menu_btn, menu)
         self.menu_btn.set_popover(self.menu_popover)
-
-        self.list_box.set_placeholder(Gtk.Label(_("Add new pictures, or open an existing XML file."), visible=True))
 
         action = Gio.SimpleAction.new("save", None)
         action.connect("activate", self.action_save)
@@ -103,16 +102,13 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.add_action(action)
 
     def action_close(self, *args):
-        if self.confirm_save_modifs():
-            return False
-        else:
-            return True
+        return not self.confirm_save_modifs()
 
     def on_start_time_open(self, button):
         self.start_time_popover.show_all()
 
     def on_start_time_popover_closed(self, popover, button):
-        button.set_active(False) # FIXME ?
+        button.set_active(False)
 
     def confirm_save_modifs(self):
         if not self._is_saved:
@@ -170,8 +166,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         wp_key = 'picture-uri'
         gsettings.set_string(wp_key, self.xml_file_uri)
 
+    # Run an "open" dialog and create a list of PictureStruct from it
     def action_add(self, *args):
-        # créer liste de paths
         file_chooser = Gtk.FileChooserNative.new(_("Add pictures"), self,
             Gtk.FileChooserAction.OPEN,
             _("Open"),
@@ -189,7 +185,13 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             array = file_chooser.get_filenames()
             pic_array = []
             for path in array:
-                pic_array.append(PictureStruct(path, 10, 0))
+                if path.split('.')[-1] in ('png','jpg','jpeg','jpe','tiff','bmp', 'svg'):
+                    pic_array.append(PictureStruct(path, 10, 0))
+                else:
+                    if len(path) > 60:
+                        path = '…' + path[-55:]
+                    self.notification_label.set_label(_("Files such as %s are not pictures.") % path)
+                    self.notification_revealer.set_reveal_child(True)
             self.update_durations()
             self.add_pictures_to_list(pic_array)
         file_chooser.destroy()
@@ -237,6 +239,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             f.close()
             self._is_saved = True
 
+    # Run the "save as" filechooser and return the uri and the filename
     def invoke_file_chooser(self):
         uri = None
         fn = None
@@ -245,6 +248,10 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
             Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
         file_chooser.set_current_name(_("Untitled") + '.xml')
+        onlyXML = Gtk.FileFilter()
+        onlyXML.set_name(_("Dynamic wallpapers (XML)"))
+        onlyXML.add_mime_type('application/xml')
+        file_chooser.set_filter(onlyXML)
         file_chooser.set_do_overwrite_confirmation(True)
         response = file_chooser.run()
         if response == Gtk.ResponseType.OK:
@@ -266,7 +273,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     def close_notification(self, *args):
         self.notification_revealer.set_reveal_child(False)
 
-    # This method parses the XML, looking for pictures paths
+    # This method parses the XML, looking for pictures' paths
     def load_list_from_xml(self):
         self.reset_list_box()
         self.pic_list = []

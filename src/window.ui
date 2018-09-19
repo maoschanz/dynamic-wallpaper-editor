@@ -265,6 +265,12 @@
 						<child>
 							<object class="GtkListBox" id="list_box">
 								<property name="visible">True</property>
+								<child type="placeholder">
+									<object class="GtkLabel">
+										<property name="visible">True</property>
+										<property name="label" translatable="yes">Add new pictures, or open an existing XML file.</property>
+									</object>
+								</child>
 							</object>
 							<packing>
 								<property name="pack-type">start</property>
@@ -282,6 +288,7 @@
 
 	</template>
 </interface>
+
 
 
 
