@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor 1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 21:00+0200\n"
+"POT-Creation-Date: 2018-09-20 00:33+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -49,7 +49,15 @@ msgstr ""
 "GNOME.La durée de chaque image et de chaque transition peut être réglée "
 "séparément ou globalement."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:13
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:15
+msgid "Updated metadata"
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:16
+msgid "Reworked file chooser dialogs"
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:23
 msgid "Romain F. T."
 msgstr ""
 
@@ -73,7 +81,7 @@ msgstr "À propos"
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/menus.ui:42 src/window.py:244
+#: src/menus.ui:42 src/window.py:229
 msgid "Save as"
 msgstr "Enregistrer sous"
 
@@ -85,7 +93,7 @@ msgstr "Appliquer comme fond d'écran"
 msgid "Dynamic wallpaper editor"
 msgstr "Éditeur de fonds d'écran dynamiques"
 
-#: src/window.ui:31 src/window.py:143 src/window.py:173
+#: src/window.ui:31 src/window.py:142 src/window.py:144
 msgid "Open"
 msgstr "Ouvrir"
 
@@ -101,11 +109,11 @@ msgstr "Régler l'heure exacte de début du fond d'écran"
 msgid "More actions"
 msgstr "Plus d'actions"
 
-#: src/window.ui:86 src/shortcuts.ui:51 src/window.py:122
+#: src/window.ui:86 src/shortcuts.ui:51 src/window.py:122 src/window.py:231
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/window.ui:167 src/shortcuts.ui:44 src/window.py:171
+#: src/window.ui:167 src/shortcuts.ui:44 src/window.py:169
 msgid "Add pictures"
 msgstr "Ajouter des images"
 
@@ -210,11 +218,11 @@ msgstr "Rapporter des bugs ou des idées"
 msgid "translator-credits"
 msgstr "Romain F. T."
 
-#: src/window.py:116 src/window.py:248
+#: src/window.py:116 src/window.py:237
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: src/window.py:120 src/window.py:174
+#: src/window.py:120 src/window.py:145 src/window.py:172 src/window.py:232
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -226,23 +234,22 @@ msgstr "Abandonner"
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Il y a des modifications non enregistrées à votre fond d'écran."
 
-#: src/window.py:148 src/window.py:250
+#: src/window.py:147 src/window.py:239
 msgid "Dynamic wallpapers (XML)"
 msgstr "Fonds d'écran dynamiques"
 
-#: src/window.py:176
+#: src/window.py:171
+msgid "Add"
+msgstr "Ajouter"
+
+#: src/window.py:174
 msgid "Pictures"
 msgstr "Images"
 
-#: src/window.py:191
-#, python-format
-msgid "Files such as %s are not pictures."
-msgstr "Les fichiers tels que %s ne sont pas des images."
-
-#: src/window.py:285
+#: src/window.py:278
 msgid "This XML file doesn't describe a dynamic wallpaper"
 msgstr "Ce fichier XML ne décrit pas un fond d'écran dynamique"
 
-#: src/window.py:289
+#: src/window.py:282
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Ce fond d'écran dynamique est corrompu"
