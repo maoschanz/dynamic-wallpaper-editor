@@ -147,7 +147,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         onlyXML = Gtk.FileFilter()
         onlyXML.set_name(_("Dynamic wallpapers (XML)"))
         onlyXML.add_mime_type('application/xml')
-        file_chooser.set_filter(onlyXML)
+        file_chooser.add_filter(onlyXML)
         response = file_chooser.run()
         if response == Gtk.ResponseType.OK:
             self.xml_file_uri = file_chooser.get_uri()
@@ -170,7 +170,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     def action_add(self, *args):
         file_chooser = Gtk.FileChooserNative.new(_("Add pictures"), self,
             Gtk.FileChooserAction.OPEN,
-            _("Open"),
+            _("Add"),
             _("Cancel"))
         onlyPictures = Gtk.FileFilter()
         onlyPictures.set_name(_("Pictures"))
@@ -178,7 +178,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         onlyPictures.add_mime_type('image/jpeg')
         onlyPictures.add_mime_type('image/svg')
         onlyPictures.add_mime_type('image/tiff')
-        file_chooser.set_filter(onlyPictures)
+        file_chooser.add_filter(onlyPictures)
         file_chooser.set_select_multiple(True)
         response = file_chooser.run()
         if response == Gtk.ResponseType.ACCEPT:
@@ -251,7 +251,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         onlyXML = Gtk.FileFilter()
         onlyXML.set_name(_("Dynamic wallpapers (XML)"))
         onlyXML.add_mime_type('application/xml')
-        file_chooser.set_filter(onlyXML)
+        file_chooser.add_filter(onlyXML)
         file_chooser.set_do_overwrite_confirmation(True)
         response = file_chooser.run()
         if response == Gtk.ResponseType.OK:
