@@ -181,11 +181,10 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         file_chooser.set_select_multiple(True)
         response = file_chooser.run()
         if response == Gtk.ResponseType.ACCEPT:
-            array = file_chooser.get_files()
-            # array = file_chooser.get_filenames()
+            array = file_chooser.get_filenames()
             pic_array = []
-            for gfile in array:
-                pic_array.append(PictureStruct(gfile, 10, 0))
+            for path in array:
+                pic_array.append(PictureStruct(path, 10, 0))
             self.update_durations()
             self.add_pictures_to_list(pic_array)
         file_chooser.destroy()
@@ -303,7 +302,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             tduration = trans_tags_for_image.split('<duration>')
             tduration = tduration[1].split('</duration>')[0]
 
-            pic_list = pic_list + [PictureStruct(Gio.File.new_for_path(path), sduration, tduration)]
+            pic_list = pic_list + [PictureStruct(path, sduration, tduration)]
         self.add_pictures_to_list(pic_list)
         return True
 
@@ -337,7 +336,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		<second>""" + str(int(self.second_spinbtn.get_value())) + """</second>
 	</starttime>\n"""
         for index in range(0, len(self.pic_list)):
-            image = self.pic_list[index].giofile.get_parse_name()
+            image = self.pic_list[index].filename
             if image is not None:
                 if self.time_switch.get_active():
                     st_time = str(self.static_time_btn.get_value())
@@ -370,7 +369,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	<transition type="overlay">
 		<duration>""" + tr_time + """</duration>
 		<from>""" + image + """</from>
-		<to>""" + self.pic_list[0].giofile.get_parse_name() + """</to>
+		<to>""" + self.pic_list[0].filename + """</to>
 	</transition>\n"""
                 else: # CAS 3 : CAS GÉNÉRAL D'UNE IMAGE, TRANSITION - STATIC
                     text = text + """
@@ -412,7 +411,7 @@ class PictureRow(Gtk.ListBoxRow):
         super().__init__()
 
         self.set_selectable(False)
-        self.giofile = pic_struct.giofile
+        self.filename = pic_struct.filename
         self.window = window
 
         builder = Gtk.Builder()
@@ -420,7 +419,7 @@ class PictureRow(Gtk.ListBoxRow):
         row_box = builder.get_object("row_box")
         self.time_box = builder.get_object("time_box")
 
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.giofile.get_parse_name(), 114, 64, True)
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, 114, 64, True)
         image = builder.get_object("row_thumbnail")
         image.set_from_pixbuf(pixbuf)
 
@@ -429,7 +428,7 @@ class PictureRow(Gtk.ListBoxRow):
         #     label.set_label("…" + self.filename[-45:])
         # else:
         #     label.set_label(self.filename)
-        label.set_label(self.giofile.get_parse_name())
+        label.set_label(self.filename)
         label.set_ellipsize(Pango.EllipsizeMode.START)
 
         delete_btn = builder.get_object("delete_btn")
@@ -453,7 +452,7 @@ class PictureRow(Gtk.ListBoxRow):
         index = self.get_index()
         self.window.update_durations()
         self.window.pic_list.remove(self.window.pic_list[index])
-        self.window.pic_list.insert(index-1, PictureStruct(self.giofile, \
+        self.window.pic_list.insert(index-1, PictureStruct(self.filename, \
             self.static_time_btn.get_value(), self.trans_time_btn.get_value()))
         self.window.add_pictures_to_list([])
 
@@ -461,7 +460,7 @@ class PictureRow(Gtk.ListBoxRow):
         index = self.get_index()
         self.window.update_durations()
         self.window.pic_list.remove(self.window.pic_list[index])
-        self.window.pic_list.insert(index+1, PictureStruct(self.giofile, \
+        self.window.pic_list.insert(index+1, PictureStruct(self.filename, \
             self.static_time_btn.get_value(), self.trans_time_btn.get_value()))
         self.window.add_pictures_to_list([])
 
@@ -475,12 +474,12 @@ class PictureRow(Gtk.ListBoxRow):
 class PictureStruct():
     __gtype_name__ = 'PictureStruct'
 
-    giofile = None
+    filename = ''
     static_time = 10
     trans_time = 0
 
-    def __init__(self, giofile, static_time, trans_time):
-        self.giofile = giofile
+    def __init__(self, filename, static_time, trans_time):
+        self.filename = filename
         self.static_time = static_time
         self.trans_time = trans_time
 
