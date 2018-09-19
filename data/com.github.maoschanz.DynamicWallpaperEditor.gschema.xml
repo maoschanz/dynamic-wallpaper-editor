@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- if this file becomes needed, uncomment in data/meson.build and add this "finish-args" in the manifest :
+        "-\-filesystem=xdg-run/dconf",
+        "-\-filesystem=~/.config/dconf:ro",
+        "-\-talk-name=ca.desrt.dconf",
+        "-\-env=DCONF_USER_CONFIG_DIR=.config/dconf",
+-->
 <schemalist gettext-domain="dynamic-wallpaper-editor">
 	<schema id="com.github.maoschanz.DynamicWallpaperEditor" path="/com/github/maoschanz/DynamicWallpaperEditor/">
 	</schema>
