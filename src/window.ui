@@ -258,6 +258,15 @@
 				</child>
 
 				<child>
+					<object class="GtkStatusbar" id="status_bar">
+						<property name="visible">True</property>
+					</object>
+					<packing>
+						<property name="pack-type">end</property>
+					</packing>
+				</child>
+
+				<child>
 					<object class="GtkScrolledWindow">
 						<property name="visible">True</property>
 						<property name="expand">True</property>
@@ -288,6 +297,7 @@
 
 	</template>
 </interface>
+
 
 
 

@@ -105,6 +105,7 @@
 				<child>
 					<object class="GtkSpinButton" id="month_spinbtn">
 						<property name="visible">True</property>
+						<property name="wrap">True</property>
 						<property name="expand">False</property>
 						<property name="adjustment">adjustment_month</property>
 					</object>
@@ -128,6 +129,7 @@
 				<child>
 					<object class="GtkSpinButton" id="day_spinbtn">
 						<property name="visible">True</property>
+						<property name="wrap">True</property>
 						<property name="expand">False</property>
 						<property name="adjustment">adjustment_day</property>
 					</object>
@@ -151,6 +153,7 @@
 				<child>
 					<object class="GtkSpinButton" id="hour_spinbtn">
 						<property name="visible">True</property>
+						<property name="wrap">True</property>
 						<property name="expand">False</property>
 						<property name="adjustment">adjustment_hour</property>
 					</object>
@@ -174,6 +177,7 @@
 				<child>
 					<object class="GtkSpinButton" id="minute_spinbtn">
 						<property name="visible">True</property>
+						<property name="wrap">True</property>
 						<property name="expand">False</property>
 						<property name="adjustment">adjustment_minute</property>
 					</object>
@@ -197,6 +201,7 @@
 				<child>
 					<object class="GtkSpinButton" id="second_spinbtn">
 						<property name="visible">True</property>
+						<property name="wrap">True</property>
 						<property name="expand">False</property>
 						<property name="adjustment">adjustment_second</property>
 					</object>

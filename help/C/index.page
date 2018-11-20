@@ -3,10 +3,7 @@
       type="guide" id="index">
 
   <info>
-    <title type="link">Dynamic Wallpaper Editor</title>
     <title type="text">Dynamic Wallpaper Editor</title>
-    <revision pkgversion="3.12" date="2018-02-24" status="review"/>
-
     <credit type="author">
       <name>Romain F. T.</name>
       <years>2018</years>

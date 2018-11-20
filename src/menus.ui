@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <interface domain="dynamic-wallpaper-editor">
   <menu id="app-menu">
-    <section id="new">
+    <section>
       <item>
         <attribute name="action">app.new_window</attribute>
         <attribute name="label" translatable="yes">New window</attribute>
@@ -29,22 +29,60 @@
   </menu>
 
   <menu id="window-menu">
-    <section id="new">
+    <section>
       <item>
         <attribute name="action">app.new_window</attribute>
         <attribute name="label" translatable="yes">New window</attribute>
       </item>
     </section>
 
-    <section id="edit">
+    <section>
       <item>
         <attribute name="action">win.save_as</attribute>
         <attribute name="label" translatable="yes">Save as</attribute>
       </item>
+    </section>
+
+    <section>
       <item>
         <attribute name="action">win.set_as_wallpaper</attribute>
         <attribute name="label" translatable="yes">Set as wallpaper</attribute>
       </item>
+      <submenu>
+        <attribute name="label" translatable="yes">Background adjustment</attribute>
+        <section>
+          <item>
+            <attribute name="action">win.pic_options</attribute>
+            <attribute name="label" translatable="yes">None</attribute>
+            <attribute name="target">none</attribute>
+          </item>
+          <item>
+            <attribute name="action">win.pic_options</attribute>
+            <attribute name="label" translatable="yes">Mosaic</attribute>
+            <attribute name="target">wallpaper</attribute>
+          </item>
+          <item>
+            <attribute name="action">win.pic_options</attribute>
+            <attribute name="label" translatable="yes">Centered</attribute>
+            <attribute name="target">centered</attribute>
+          </item>
+          <item>
+            <attribute name="action">win.pic_options</attribute>
+            <attribute name="label" translatable="yes">Scaled</attribute>
+            <attribute name="target">scaled</attribute>
+          </item>
+          <item>
+            <attribute name="action">win.pic_options</attribute>
+            <attribute name="label" translatable="yes">Zoom</attribute>
+            <attribute name="target">zoom</attribute>
+          </item>
+          <item>
+            <attribute name="action">win.pic_options</attribute>
+            <attribute name="label" translatable="yes">Spanned</attribute>
+            <attribute name="target">spanned</attribute>
+          </item>
+        </section>
+      </submenu>
     </section>
 
     <section>
@@ -63,4 +101,5 @@
     </section>
   </menu>
 </interface>
+
 

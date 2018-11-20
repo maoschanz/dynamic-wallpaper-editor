@@ -33,8 +33,9 @@ class Application(Gtk.Application):
         GLib.set_prgname('com.github.maoschanz.DynamicWallpaperEditor')
 
         self.register(None)
-        menu = self.build_app_menu()
+        self.build_all_actions()
         if self.prefers_app_menu():
+            menu = self.build_app_menu()
             self.set_app_menu(menu)
 
     def do_activate(self):
@@ -47,26 +48,19 @@ class Application(Gtk.Application):
         builder = Gtk.Builder()
         builder.add_from_resource("/com/github/maoschanz/DynamicWallpaperEditor/menus.ui")
         menu = builder.get_object("app-menu")
+        return menu
 
-        new_window_action = Gio.SimpleAction.new("new_window", None)
-        new_window_action.connect("activate", self.on_new_window_activate)
-        self.add_action(new_window_action)
+    def build_action(self, action_name, callback):
+        action = Gio.SimpleAction.new(action_name, None)
+        action.connect("activate", callback)
+        self.add_action(action)
 
-        shortcuts_action = Gio.SimpleAction.new("shortcuts", None)
-        shortcuts_action.connect("activate", self.on_shortcuts_activate)
-        self.add_action(shortcuts_action)
-
-        help_action = Gio.SimpleAction.new("help", None)
-        help_action.connect("activate", self.on_help_activate)
-        self.add_action(help_action)
-
-        about_action = Gio.SimpleAction.new("about", None)
-        about_action.connect("activate", self.on_about_activate)
-        self.add_action(about_action)
-
-        quit_action = Gio.SimpleAction.new("quit", None)
-        quit_action.connect("activate", self.on_quit)
-        self.add_action(quit_action)
+    def build_all_actions(self):
+        self.build_action('new_window', self.on_new_window_activate)
+        self.build_action('shortcuts', self.on_shortcuts_activate)
+        self.build_action('help', self.on_help_activate)
+        self.build_action('about', self.on_about_activate)
+        self.build_action('quit', self.on_quit)
 
         self.set_accels_for_action("app.new_window", ["<Ctrl>n"])
         self.set_accels_for_action("app.quit", ["<Ctrl>q"])
@@ -74,8 +68,6 @@ class Application(Gtk.Application):
         self.set_accels_for_action("win.open", ["<Ctrl>o"])
         self.set_accels_for_action("win.add", ["<Ctrl>a"])
         self.set_accels_for_action("win.set_as_wallpaper", ["<Ctrl>w"])
-
-        return menu
 
     def on_about_activate(self, *args):
         self.build_about_dialog()
@@ -98,7 +90,7 @@ class Application(Gtk.Application):
 
     def build_about_dialog(self):
         self.about_dialog = Gtk.AboutDialog.new()
-        self.about_dialog.set_version('1.7') # TODO
+        self.about_dialog.set_version('1.9') # TODO
         self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
         self.about_dialog.set_authors(['Romain F. T.'])
         self.about_dialog.set_copyright('© 2018 Romain F. T.')

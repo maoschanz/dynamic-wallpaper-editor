@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: dynamic-wallpaper-editor 1\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-20 01:11+0200\n"
+"POT-Creation-Date: 2018-09-20 18:39+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -97,7 +97,7 @@ msgstr "Appliquer comme fond d'écran"
 msgid "Dynamic wallpaper editor"
 msgstr "Éditeur de fonds d'écran dynamiques"
 
-#: src/window.ui:31 src/window.py:143
+#: src/window.ui:31 src/window.py:148 src/window.py:150
 msgid "Open"
 msgstr "Ouvrir"
 
@@ -113,11 +113,11 @@ msgstr "Régler l'heure exacte de début du fond d'écran"
 msgid "More actions"
 msgstr "Plus d'actions"
 
-#: src/window.ui:86 src/shortcuts.ui:51 src/window.py:122
+#: src/window.ui:86 src/shortcuts.ui:51 src/window.py:128 src/window.py:248
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/window.ui:167 src/shortcuts.ui:44 src/window.py:171
+#: src/window.ui:167 src/shortcuts.ui:44 src/window.py:188
 msgid "Add pictures"
 msgstr "Ajouter des images"
 
@@ -222,43 +222,40 @@ msgstr "Rapporter des bugs ou des idées"
 msgid "translator-credits"
 msgstr "Romain F. T."
 
-#: src/window.py:116 src/window.py:250
+#: src/window.py:122 src/window.py:250
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: src/window.py:120 src/window.py:174
+#: src/window.py:126 src/window.py:151 src/window.py:249
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/window.py:121
+#: src/window.py:127
 msgid "Discard"
 msgstr "Abandonner"
 
-#: src/window.py:123
+#: src/window.py:129
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Il y a des modifications non enregistrées à votre fond d'écran."
 
-#: src/window.py:148 src/window.py:252
+#: src/window.py:153 src/window.py:252
 msgid "Dynamic wallpapers (XML)"
 msgstr "Fonds d'écran dynamiques"
 
-#: src/window.py:173
-msgid "Add"
-msgstr "Ajouter"
-
-#: src/window.py:176
+#: src/window.py:181
 msgid "Pictures"
 msgstr "Images"
 
-#: src/window.py:193
-#, python-format
-msgid "Files such as %s are not pictures."
-msgstr "Les fichiers tels que %s ne sont pas des images."
-
-#: src/window.py:287
+#: src/window.py:294
 msgid "This XML file doesn't describe a dynamic wallpaper"
 msgstr "Ce fichier XML ne décrit pas un fond d'écran dynamique"
 
-#: src/window.py:291
+#: src/window.py:298
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Ce fond d'écran dynamique est corrompu"
+
+#~ msgid "Add"
+#~ msgstr "Ajouter"
+
+#~ msgid "Files such as %s are not pictures."
+#~ msgstr "Les fichiers tels que %s ne sont pas des images."
