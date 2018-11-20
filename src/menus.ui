@@ -73,6 +73,11 @@
           </item>
           <item>
             <attribute name="action">win.pic_options</attribute>
+            <attribute name="label" translatable="yes">Streched</attribute>
+            <attribute name="target">streched</attribute>
+          </item>
+          <item>
+            <attribute name="action">win.pic_options</attribute>
             <attribute name="label" translatable="yes">Zoom</attribute>
             <attribute name="target">zoom</attribute>
           </item>
@@ -101,5 +106,6 @@
     </section>
   </menu>
 </interface>
+
 
 

@@ -24,12 +24,12 @@ These dynamic wallpapers are XML files, and you don't want to write these files 
 
 An existing XML file (opened, or just created) can be set as your wallpaper from the app.
 
+Adjustment options are available (mosaic, zoom, centered, etc.)
+
 <!-- TODO:
 
 mieux détecter les modifications
 
 draggable
-
-la preview des xml ?
 
 -->

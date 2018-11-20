@@ -79,11 +79,11 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.status_bar.pop(0)
         total_time = 0
         if self.time_switch.get_active():
-            for index in range(0, len(self.pic_list)):
+            for index in range(0, len(self.pic_list)-1):
                 total_time += self.static_time_btn.get_value()
                 total_time += self.trans_time_btn.get_value()
         else:
-            for index in range(0, len(self.pic_list)):
+            for index in range(0, len(self.pic_list)-1):
                 total_time += self.my_row_list[index].static_time_btn.get_value()
                 total_time += self.my_row_list[index].trans_time_btn.get_value()
         message = str(_("%s pictures") % len(self.pic_list) + ' - ' + _("Total time: %s seconds") % total_time)
@@ -126,6 +126,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         elif GLib.Variant.new_string('scaled') == args[1]:
             self.set_wallpaper_option('scaled')
             args[0].set_state(GLib.Variant.new_string('scaled'))
+        elif GLib.Variant.new_string('streched') == args[1]:
+            self.set_wallpaper_option('streched')
+            args[0].set_state(GLib.Variant.new_string('streched'))
         elif GLib.Variant.new_string('zoom') == args[1]:
             self.set_wallpaper_option('zoom')
             args[0].set_state(GLib.Variant.new_string('zoom'))
@@ -184,7 +187,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     def action_open(self, *args):
         if not self.confirm_save_modifs():
             return
-        self.status_bar.push(1, _("Loading"))
+        self.status_bar.push(1, _("Loading..."))
         file_chooser = Gtk.FileChooserNative.new(_("Open"), self,
             Gtk.FileChooserAction.OPEN,
             _("Open"),
@@ -316,7 +319,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             fn = file_chooser.get_filename()
             self.xml_file_name = fn
             self.header_bar.set_subtitle(fn.split('/')[-1])
-            print(fn)
 
             self.gio_file = file_chooser.get_file()
         file_chooser.destroy()

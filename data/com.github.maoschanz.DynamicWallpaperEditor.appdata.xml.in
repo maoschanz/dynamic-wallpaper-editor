@@ -4,7 +4,7 @@
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
 	<name>Dynamic Wallpaper Editor</name>
-	<summary>Create or edit XML dynamic wallpapers ("slideshows") for the GNOME desktop</summary>
+	<summary>Create or edit XML dynamic wallpapers ("background slideshows") for the GNOME desktop</summary>
 	<description>
 		<p>A simple utility to create or edit dynamic wallpapers for GNOME Shell. The duration of each picture and each transition can be set separately or globally.</p>
 	</description>
@@ -16,6 +16,16 @@
 					<li>Bug fixes</li>
 					<li>Change permissions</li>
 					<li>Reworked file chooser dialogs</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.8" date="2018-10-20">
+			<description>
+				<ul>
+					<li>Provide access to the background adjustment</li>
+					<li>Bug fixes</li>
+					<li>Change permissions</li>
+					<li>Add a statusbar with the total time</li>
 				</ul>
 			</description>
 		</release>
@@ -31,5 +41,6 @@
 	<update_contact>rrroschan@gmail.com</update_contact>
 	<translation type="gettext">dynamic-wallpaper-editor</translation>
 </component>
+
 
 
