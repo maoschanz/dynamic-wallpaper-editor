@@ -15,11 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys
-import gi
+import sys, gi
 
 gi.require_version('Gtk', '3.0')
-
 from gi.repository import Gtk, Gio, GLib, Gdk
 
 from .window import DynamicWallpaperEditorWindow
@@ -31,9 +29,9 @@ class Application(Gtk.Application):
 
         GLib.set_application_name('Dynamic Wallpaper Editor')
         GLib.set_prgname('com.github.maoschanz.DynamicWallpaperEditor')
-
         self.register(None)
         self.build_all_actions()
+
         if self.prefers_app_menu():
             menu = self.build_app_menu()
             self.set_app_menu(menu)
@@ -90,7 +88,7 @@ class Application(Gtk.Application):
 
     def build_about_dialog(self):
         self.about_dialog = Gtk.AboutDialog.new()
-        self.about_dialog.set_version('1.9') # TODO
+        self.about_dialog.set_version('1.8') # TODO
         self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
         self.about_dialog.set_authors(['Romain F. T.'])
         self.about_dialog.set_copyright('© 2018 Romain F. T.')
