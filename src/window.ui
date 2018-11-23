@@ -37,7 +37,7 @@
 				</child>
 
 				<child>
-					<object class="GtkToggleButton" id="start_btn">
+					<object class="GtkMenuButton" id="start_btn">
 						<property name="visible">True</property>
 						<property name="tooltip_text" translatable="yes">Set the exact start time of the wallpaper</property>
 						<child>
@@ -297,4 +297,5 @@
 
 	</template>
 </interface>
+
 

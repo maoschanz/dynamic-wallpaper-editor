@@ -55,9 +55,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.start_time_popover = Gtk.Popover()
         start_time_box = self.build_start_time_box()
         self.start_time_popover.add(start_time_box)
-        self.start_time_popover.set_relative_to(self.start_btn)
-        self.start_btn.connect('toggled', self.on_start_time_open)
-        self.start_time_popover.connect('closed', self.on_start_time_popover_closed, self.start_btn)
+        self.start_btn.set_popover(self.start_time_popover)
 
         self.add_btn.connect('clicked', self.action_add)
         self.save_btn.connect('clicked', self.action_save)
@@ -69,12 +67,14 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.trans_time_btn.connect('value-changed', self.update_status)
         self.static_time_btn.connect('value-changed', self.update_status)
 
+        # Used in the "add pictures" file chooser dialog
         self.preview_picture = Gtk.Image(margin_right=5)
 
         self.build_primary_menu()
         self.build_all_actions()
         self.update_status()
 
+    # Update the total time in the statusbar
     def update_status(self, *args):
         self.status_bar.pop(0)
         total_time = 0
@@ -86,6 +86,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             for index in range(0, len(self.pic_list)-1):
                 total_time += self.my_row_list[index].static_time_btn.get_value()
                 total_time += self.my_row_list[index].trans_time_btn.get_value()
+        # TODO convert from seconds to HH:MM:SS
         message = str(_("%s pictures") % len(self.pic_list) + ' - ' + _("Total time: %s seconds") % total_time)
         self.status_bar.push(0, message)
 
@@ -135,6 +136,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         elif GLib.Variant.new_string('spanned') == args[1]:
             self.set_wallpaper_option('spanned')
             args[0].set_state(GLib.Variant.new_string('spanned'))
+        # XXX "none" actually means "no picture"
         # elif GLib.Variant.new_string('none') == args[1]:
         #     self.set_wallpaper_option('none')
         #     args[0].set_state(GLib.Variant.new_string('none'))
@@ -151,12 +153,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
     def action_close(self, *args):
         return not self.confirm_save_modifs()
-
-    def on_start_time_open(self, button):
-        self.start_time_popover.show_all()
-
-    def on_start_time_popover_closed(self, popover, button):
-        button.set_active(False)
 
     def confirm_save_modifs(self):
         if not self._is_saved:
@@ -187,7 +183,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     def action_open(self, *args):
         if not self.confirm_save_modifs():
             return
-        self.status_bar.push(1, _("Loading..."))
+        self.status_bar.push(1, _("Loading…"))
         file_chooser = Gtk.FileChooserNative.new(_("Open"), self,
             Gtk.FileChooserAction.OPEN,
             _("Open"),
@@ -206,7 +202,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
                 self.header_bar.set_subtitle(file_chooser.get_filename().split('/')[-1])
                 self.lookup_action('set_as_wallpaper').set_enabled(True)
                 self._is_saved = True
-                self.time_switch.set_active(False)
             else:
                 self.xml_file_uri = None
                 self.xml_file_name = None
@@ -343,6 +338,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.pic_list = []
         pic_list = []
 
+        # XXX use Gio.File here too
         f = open(self.xml_file_name, 'r')
         xml_text = f.read()
         f.close()
@@ -376,6 +372,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             tduration = tduration[1].split('</duration>')[0]
 
             pic_list = pic_list + [PictureStruct(path, sduration, tduration)]
+        self.time_switch.set_active(False)
         self.add_pictures_to_list(pic_list)
         return True
 
@@ -475,8 +472,10 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         return start_time_box
 
 
-# This is a row with the thumbnail and the path of the picture, and control buttons
-# (up/down, delete) for this picture.
+# This is a row with the thumbnail and the path of the picture, and control
+# buttons (up/down, delete) for this picture. It also contains "spinbuttons" if
+# the user needs them.
+# TODO make rows draggable ?
 class PictureRow(Gtk.ListBoxRow):
     __gtype_name__ = 'PictureRow'
 
@@ -492,6 +491,7 @@ class PictureRow(Gtk.ListBoxRow):
         row_box = builder.get_object("row_box")
         self.time_box = builder.get_object("time_box")
 
+        # This size is totally arbitrary.
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, 114, 64, True)
         image = builder.get_object("row_thumbnail")
         image.set_from_pixbuf(pixbuf)
@@ -542,6 +542,10 @@ class PictureRow(Gtk.ListBoxRow):
         self.window.add_pictures_to_list([])
         self.destroy()
 
+
+# This structure keep track of a picture's path and times. While rows are
+# destroyed during the edition, these structures are not.
+# TODO hey maybe python has actual structures, instead of empty classes ?
 class PictureStruct():
     __gtype_name__ = 'PictureStruct'
 
