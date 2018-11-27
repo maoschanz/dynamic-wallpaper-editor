@@ -22,7 +22,7 @@
                 {
                     "type" : "git",
                     "tag" : "1.8.1",
-                    "commit" : "90132853a8ee2dca426bbaa1ab5864bb8384e978",
+                    "commit" : "3b15a4d9b4b0aabe6c12023e31f422d20ae30cc9",
                     "url" : "https://github.com/maoschanz/dynamic-wallpaper-editor.git"
                 }
             ]

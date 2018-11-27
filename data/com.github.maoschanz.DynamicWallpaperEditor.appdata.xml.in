@@ -9,16 +9,6 @@
 		<p>A simple utility to create or edit dynamic wallpapers for GNOME Shell. The duration of each picture and each transition can be set separately or globally.</p>
 	</description>
 	<releases>
-		<release version="1.7" date="2018-09-20">
-			<description>
-				<ul>
-					<li>Updated metadata</li>
-					<li>Bug fixes</li>
-					<li>Change permissions</li>
-					<li>Reworked file chooser dialogs</li>
-				</ul>
-			</description>
-		</release>
 		<release version="1.8" date="2018-10-20">
 			<description>
 				<ul>
@@ -26,6 +16,16 @@
 					<li>Bug fixes</li>
 					<li>Change permissions</li>
 					<li>Add a statusbar with the total time</li>
+				</ul>
+			</description>
+		</release>
+		<release version="1.7" date="2018-09-20">
+			<description>
+				<ul>
+					<li>Updated metadata</li>
+					<li>Bug fixes</li>
+					<li>Change permissions</li>
+					<li>Reworked file chooser dialogs</li>
 				</ul>
 			</description>
 		</release>
@@ -41,6 +41,7 @@
 	<update_contact>rrroschan@gmail.com</update_contact>
 	<translation type="gettext">dynamic-wallpaper-editor</translation>
 </component>
+
 
 
 
