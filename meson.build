@@ -1,4 +1,6 @@
-project('dynamic-wallpaper-editor',         version: '0.1.0',
+project(
+  'dynamic-wallpaper-editor',
+  version: '1.9.0',
   meson_version: '>= 0.40.0',
 )
 

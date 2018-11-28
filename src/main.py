@@ -23,7 +23,10 @@ from gi.repository import Gtk, Gio, GLib, Gdk
 from .window import DynamicWallpaperEditorWindow
 
 class Application(Gtk.Application):
-    def __init__(self):
+    about_dialog = None
+    shortcuts_window = None
+
+    def __init__(self, version):
         super().__init__(application_id='com.github.maoschanz.DynamicWallpaperEditor',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
 
@@ -31,6 +34,7 @@ class Application(Gtk.Application):
         GLib.set_prgname('com.github.maoschanz.DynamicWallpaperEditor')
         self.register(None)
         self.build_all_actions()
+        self._version = version
 
         if self.prefers_app_menu():
             menu = self.build_app_menu()
@@ -67,7 +71,9 @@ class Application(Gtk.Application):
         self.set_accels_for_action("win.add", ["<Ctrl>a"])
         self.set_accels_for_action("win.set_as_wallpaper", ["<Ctrl>w"])
 
-    def on_about_activate(self, *args): # FIXME unicité
+    def on_about_activate(self, *args):
+        if self.about_dialog is not None:
+            self.about_dialog.destroy()
         self.build_about_dialog()
         self.about_dialog.show()
 
@@ -81,14 +87,16 @@ class Application(Gtk.Application):
         win = DynamicWallpaperEditorWindow(application=self)
         win.present()
 
-    def on_shortcuts_activate(self, *args): # FIXME unicité
+    def on_shortcuts_activate(self, *args):
+        if self.shortcuts_window is not None:
+            self.shortcuts_window.destroy()
         builder = Gtk.Builder().new_from_resource('/com/github/maoschanz/DynamicWallpaperEditor/shortcuts.ui')
         self.shortcuts_window = builder.get_object('shortcuts')
         self.shortcuts_window.present()
 
     def build_about_dialog(self):
         self.about_dialog = Gtk.AboutDialog.new()
-        self.about_dialog.set_version('1.9') # TODO meson
+        self.about_dialog.set_version(str(self._version))
         self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
         self.about_dialog.set_authors(['Romain F. T.'])
         self.about_dialog.set_copyright('© 2018 Romain F. T.')
@@ -99,5 +107,5 @@ class Application(Gtk.Application):
         self.about_dialog.set_translator_credits(_("translator-credits"))
 
 def main(version):
-    app = Application()
+    app = Application(version)
     return app.run(sys.argv)

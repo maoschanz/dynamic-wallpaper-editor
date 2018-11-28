@@ -28,5 +28,6 @@ Adjustment options are available (mosaic, zoom, centered, etc.)
 
 - mieux détecter les modifications
 - lignes draggable
+- images inexistantes
 
 -->
