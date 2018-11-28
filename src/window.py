@@ -23,11 +23,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'DynamicWallpaperEditorWindow'
 
     header_bar = GtkTemplate.Child()
-    open_btn = GtkTemplate.Child()
     start_btn = GtkTemplate.Child()
-    save_btn = GtkTemplate.Child()
     menu_btn = GtkTemplate.Child()
-    add_btn = GtkTemplate.Child()
 
     list_box = GtkTemplate.Child()
     trans_time_btn = GtkTemplate.Child()
@@ -57,9 +54,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.start_time_popover.add(start_time_box)
         self.start_btn.set_popover(self.start_time_popover)
 
-        self.add_btn.connect('clicked', self.action_add)
-        self.save_btn.connect('clicked', self.action_save)
-        self.open_btn.connect('clicked', self.action_open)
         self.time_switch.connect('notify::active', self.update_global_time_box)
         self.connect('delete-event', self.action_close)
         self.dismiss_notif_btn.connect('clicked', self.close_notification)
@@ -118,28 +112,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.add_action(action_options)
 
     def on_change_wallpaper_options(self, *args):
-        if GLib.Variant.new_string('wallpaper') == args[1]:
-            self.set_wallpaper_option('wallpaper')
-            args[0].set_state(GLib.Variant.new_string('wallpaper'))
-        elif GLib.Variant.new_string('centered') == args[1]:
-            self.set_wallpaper_option('centered')
-            args[0].set_state(GLib.Variant.new_string('centered'))
-        elif GLib.Variant.new_string('scaled') == args[1]:
-            self.set_wallpaper_option('scaled')
-            args[0].set_state(GLib.Variant.new_string('scaled'))
-        elif GLib.Variant.new_string('streched') == args[1]:
-            self.set_wallpaper_option('streched')
-            args[0].set_state(GLib.Variant.new_string('streched'))
-        elif GLib.Variant.new_string('zoom') == args[1]:
-            self.set_wallpaper_option('zoom')
-            args[0].set_state(GLib.Variant.new_string('zoom'))
-        elif GLib.Variant.new_string('spanned') == args[1]:
-            self.set_wallpaper_option('spanned')
-            args[0].set_state(GLib.Variant.new_string('spanned'))
-        # XXX "none" actually means "no picture"
-        # elif GLib.Variant.new_string('none') == args[1]:
-        #     self.set_wallpaper_option('none')
-        #     args[0].set_state(GLib.Variant.new_string('none'))
+        new_value = args[1].get_string()
+        self.set_wallpaper_option(new_value)
+        args[0].set_state(GLib.Variant.new_string(new_value))
 
     def set_wallpaper_option(self, value):
         gsettings = Gio.Settings.new('org.gnome.desktop.background')
@@ -328,6 +303,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.time_box.set_visible(interrupteur.get_active())
         for index in range(0, len(self.pic_list)):
             self.my_row_list[index].time_box.set_visible(not interrupteur.get_active())
+        self.update_status()
 
     def close_notification(self, *args):
         self.notification_revealer.set_reveal_child(False)

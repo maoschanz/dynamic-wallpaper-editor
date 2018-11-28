@@ -28,6 +28,7 @@
 				<child>
 					<object class="GtkButton" id="open_btn">
 						<property name="visible">True</property>
+						<property name="action_name">win.open</property>
 						<property name="label" translatable="yes">Open</property>
 						<property name="tooltip_text" translatable="yes">Open an existing dynamic wallpaper</property>
 					</object>
@@ -83,6 +84,7 @@
 				<child>
 					<object class="GtkButton" id="save_btn">
 						<property name="visible">True</property>
+						<property name="action_name">win.save</property>
 						<property name="label" translatable="yes">Save</property>
 					</object>
 					<packing>
@@ -164,6 +166,7 @@
 						<child>
 							<object class="GtkButton" id="add_btn">
 								<property name="visible">True</property>
+								<property name="action_name">win.add</property>
 								<property name="label" translatable="yes">Add pictures</property>
 								<property name="expand">False</property>
 								<style>
@@ -297,5 +300,6 @@
 
 	</template>
 </interface>
+
 
 

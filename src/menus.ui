@@ -51,11 +51,11 @@
       <submenu>
         <attribute name="label" translatable="yes">Background adjustment</attribute>
         <section>
-          <item>
-            <attribute name="action">win.pic_options</attribute>
-            <attribute name="label" translatable="yes">None</attribute>
-            <attribute name="target">none</attribute>
-          </item>
+          <!-- <item> -->
+          <!--   <attribute name="action">win.pic_options</attribute> -->
+          <!--   <attribute name="label" translatable="yes">None</attribute> -->
+          <!--   <attribute name="target">none</attribute> -->
+          <!-- </item> -->
           <item>
             <attribute name="action">win.pic_options</attribute>
             <attribute name="label" translatable="yes">Mosaic</attribute>
@@ -106,6 +106,4 @@
     </section>
   </menu>
 </interface>
-
-
 

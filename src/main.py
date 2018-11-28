@@ -67,7 +67,7 @@ class Application(Gtk.Application):
         self.set_accels_for_action("win.add", ["<Ctrl>a"])
         self.set_accels_for_action("win.set_as_wallpaper", ["<Ctrl>w"])
 
-    def on_about_activate(self, *args):
+    def on_about_activate(self, *args): # FIXME unicité
         self.build_about_dialog()
         self.about_dialog.show()
 
@@ -81,14 +81,14 @@ class Application(Gtk.Application):
         win = DynamicWallpaperEditorWindow(application=self)
         win.present()
 
-    def on_shortcuts_activate(self, *args):
+    def on_shortcuts_activate(self, *args): # FIXME unicité
         builder = Gtk.Builder().new_from_resource('/com/github/maoschanz/DynamicWallpaperEditor/shortcuts.ui')
         self.shortcuts_window = builder.get_object('shortcuts')
         self.shortcuts_window.present()
 
     def build_about_dialog(self):
         self.about_dialog = Gtk.AboutDialog.new()
-        self.about_dialog.set_version('1.8') # TODO
+        self.about_dialog.set_version('1.9') # TODO meson
         self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
         self.about_dialog.set_authors(['Romain F. T.'])
         self.about_dialog.set_copyright('© 2018 Romain F. T.')

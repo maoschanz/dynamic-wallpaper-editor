@@ -103,8 +103,6 @@ def _register_template(cls, template_bytes):
 def _init_template(self, cls, base_init_template):
     '''This would be better as an override for Gtk.Widget'''
 
-    # TODO: could disallow using a metaclass.. but this is good enough
-    # .. if you disagree, feel free to fix it and issue a PR :)
     if self.__class__ is not cls:
         raise TypeError("Inheritance from classes with @GtkTemplate decorators "
                         "is not allowed at this time")
@@ -135,7 +133,6 @@ def _init_template(self, cls, base_init_template):
         warnings.warn(errmsg, GtkTemplateWarning)
 
 
-# TODO: Make it easier for IDE to introspect this
 class _Child(object):
     '''
         Assign this to an attribute in your class definition and it will
@@ -225,9 +222,6 @@ class _GtkTemplate(object):
 
             :param path: one or more path elements, will be joined together
                          to create the final path
-
-            TODO: Alternatively, could wait until first class instantiation
-                  before registering templates? Would need a metaclass...
         '''
         _GtkTemplate.__ui_path__ = abspath(join(*path))
 
@@ -264,10 +258,9 @@ class _GtkTemplate(object):
         return cls
 
 
-
 # Future shim support if this makes it into PyGI?
 #if hasattr(Gtk, 'GtkTemplate'):
 #    GtkTemplate = lambda c: c
 #else:
 GtkTemplate = _GtkTemplate
-    
+
