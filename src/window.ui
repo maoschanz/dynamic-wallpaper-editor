@@ -17,7 +17,7 @@
 	</object>
 
 	<template class="DynamicWallpaperEditorWindow" parent="GtkApplicationWindow">
-		<property name="default-width">900</property>
+		<property name="default-width">810</property>
 		<property name="default-height">500</property>
 		<child type="titlebar">
 			<object class="GtkHeaderBar" id="header_bar">
@@ -300,6 +300,7 @@
 
 	</template>
 </interface>
+
 
 
 

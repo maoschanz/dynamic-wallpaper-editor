@@ -17,6 +17,8 @@
 
 from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
 from .gi_composites import GtkTemplate
+import math
+import xml.etree.ElementTree as xml_parser
 
 @GtkTemplate(ui='/com/github/maoschanz/DynamicWallpaperEditor/window.ui')
 class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
@@ -76,12 +78,21 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             for index in range(0, len(self.pic_list)-1):
                 total_time += self.static_time_btn.get_value()
                 total_time += self.trans_time_btn.get_value()
-        else:
+        elif len(self.pic_list)-1 == len(self.my_row_list)-1:
             for index in range(0, len(self.pic_list)-1):
                 total_time += self.my_row_list[index].static_time_btn.get_value()
                 total_time += self.my_row_list[index].trans_time_btn.get_value()
-        # TODO convert from seconds to HH:MM:SS
-        message = str(_("%s pictures") % len(self.pic_list) + ' - ' + _("Total time: %s seconds") % total_time)
+        message = str(_("%s pictures") % len(self.pic_list) + ' - ' + _("Total time: %s second(s)") % total_time)
+        if total_time >= 60:
+            message += ' = '
+            hours = math.floor(total_time / 3600)
+            minutes = math.floor((total_time % 3600) / 60)
+            seconds = math.floor(total_time % 60)
+            if hours > 0:
+                message += str(_("%s hour(s)") % hours + ' ')
+            if minutes > 0:
+                message += str(_("%s minute(s)") % minutes + ' ')
+            message += str(_("%s second(s)") % seconds)
         self.status_bar.push(0, message)
 
     def build_primary_menu(self):
@@ -314,59 +325,74 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
         self.pic_list = []
         pic_list = []
 
-        # XXX use Gio.File here too
+        # TODO use Gio.File here too
         f = open(self.xml_file_name, 'r')
         xml_text = f.read()
         f.close()
 
-        if '<background>' not in xml_text:
-            self.notification_label.set_label(_("This XML file doesn't describe a dynamic wallpaper"))
-            self.notification_revealer.set_reveal_child(True)
-            return False
-        if '</background>' not in xml_text:
+        try:
+            root = xml_parser.fromstring(xml_text)
+        except Exception: # TODO améliorable, la parseerror du module donnant un numéro de ligne
             self.notification_label.set_label(_("This dynamic wallpaper is corrupted"))
             self.notification_revealer.set_reveal_child(True)
             return False
 
-        splitted_by_static = xml_text.split('<static>')
-        self.set_spinbuttons(splitted_by_static[0])
+        if root.tag != 'background':
+            self.notification_label.set_label(_("This XML file doesn't describe a valid dynamic wallpaper"))
+            self.notification_revealer.set_reveal_child(True)
+            return False
 
-        for image in splitted_by_static:
-            if image is splitted_by_static[0]:
-                continue
-            static_tags_for_image = image.split('</static>')[0]
+        for child in root:
+            if child.tag == 'starttime':
+                self.set_start_time(child)
+            elif child.tag == 'static':
+                pic_list = pic_list + self.add_picture_from_element(child)
+            elif child.tag == 'transition':
+                pic_list = self.add_transition_to_last_pic(child, pic_list)
+            else:
+                self.notification_label.set_label(str(_("Unknown element: %s") % child.tag))
+                self.notification_revealer.set_reveal_child(True)
 
-            path = static_tags_for_image.split('<file>')
-            path = path[1].split('</file>')[0]
-
-            sduration = static_tags_for_image.split('<duration>')
-            sduration = sduration[1].split('</duration>')[0]
-
-            trans_tags_for_image = image.split('</static>')[1]
-
-            tduration = trans_tags_for_image.split('<duration>')
-            tduration = tduration[1].split('</duration>')[0]
-
-            pic_list = pic_list + [PictureStruct(path, sduration, tduration)]
         self.time_switch.set_active(False)
         self.add_pictures_to_list(pic_list)
         return True
 
-    def set_spinbuttons(self, string):
-        splitted = string.split('</year>')[0]
-        self.year_spinbtn.set_value(int(splitted.split('<year>')[1]))
-        splitted = string.split('</month>')[0]
-        self.month_spinbtn.set_value(int(splitted.split('<month>')[1]))
-        splitted = string.split('</day>')[0]
-        self.day_spinbtn.set_value(int(splitted.split('<day>')[1]))
-        splitted = string.split('</hour>')[0]
-        self.hour_spinbtn.set_value(int(splitted.split('<hour>')[1]))
-        splitted = string.split('</minute>')[0]
-        self.minute_spinbtn.set_value(int(splitted.split('<minute>')[1]))
-        splitted = string.split('</second>')[0]
-        self.second_spinbtn.set_value(int(splitted.split('<second>')[1]))
+    def set_start_time(self, xml_element):
+        for child in xml_element:
+            if child.tag == 'year':
+                self.year_spinbtn.set_value(int(child.text))
+            elif child.tag == 'month':
+                self.month_spinbtn.set_value(int(child.text))
+            elif child.tag == 'day':
+                self.day_spinbtn.set_value(int(child.text))
+            elif child.tag == 'hour':
+                self.hour_spinbtn.set_value(int(child.text))
+            elif child.tag == 'minute':
+                self.minute_spinbtn.set_value(int(child.text))
+            elif child.tag == 'second':
+                self.second_spinbtn.set_value(int(child.text))
 
-    # This method generates valid XML code for a wallpaper
+    def add_picture_from_element(self, xml_element_static):
+        for child in xml_element_static:
+           if child.tag == 'duration':
+               sduration = float(child.text)
+           elif child.tag == 'file':
+               pic_path = child.text
+        return [PictureStruct(pic_path, sduration, 0)]
+
+    def add_transition_to_last_pic(self, xml_element_transition, pic_list):
+        for child in xml_element_transition:
+           if child.tag == 'duration':
+               tduration = float(child.text)
+           elif child.tag == 'from':
+               path_from = child.text
+           elif child.tag == 'to':
+               path_to = child.text
+        if path_from == pic_list[-1].filename:
+            pic_list[-1].trans_time = tduration
+        return pic_list
+
+    # This method generates valid XML code for a wallpaper # XXX
     def generate_text(self):
         self.update_durations()
         pastimage = None
@@ -392,47 +418,45 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
                     tr_time = str(self.my_row_list[index].trans_time_btn.get_value())
 
                 if index == 0: # CAS 1 : 1ÈRE IMAGE, JUSTE LE STATIC
-                    text = text + """
+                    text = str(text) + """
 	<static>
-		<duration>""" + st_time + """</duration>
-		<file>""" + image + """</file>
+		<duration>""" + str(st_time) + """</duration>
+		<file>""" + str(image) + """</file>
 	</static>\n"""
                     pastimage = image
                 elif self.pic_list[index] is self.pic_list[-1]: # CAS 2 : DERNIÈRE IMAGE, TRANSITION - STATIC - TRANSITION
-
-                    text = text + """
+                    text = str(text) + """
 	<transition type="overlay">
-		<duration>""" + pasttrans + """</duration>
-		<from>""" + pastimage + """</from>
-		<to>""" + image + """</to>
+		<duration>""" + str(pasttrans) + """</duration>
+		<from>""" + str(pastimage) + """</from>
+		<to>""" + str(image) + """</to>
 	</transition>
 
 	<static>
-		<duration>""" + st_time + """</duration>
-		<file>""" + image + """</file>
+		<duration>""" + str(st_time) + """</duration>
+		<file>""" + str(image) + """</file>
 	</static>
 
 	<transition type="overlay">
-		<duration>""" + tr_time + """</duration>
-		<from>""" + image + """</from>
+		<duration>""" + str(tr_time) + """</duration>
+		<from>""" + str(image) + """</from>
 		<to>""" + self.pic_list[0].filename + """</to>
 	</transition>\n"""
                 else: # CAS 3 : CAS GÉNÉRAL D'UNE IMAGE, TRANSITION - STATIC
                     text = text + """
 	<transition type="overlay">
-		<duration>""" + pasttrans + """</duration>
-		<from>""" + pastimage + """</from>
-		<to>""" + image + """</to>
+		<duration>""" + str(pasttrans) + """</duration>
+		<from>""" + str(pastimage) + """</from>
+		<to>""" + str(image) + """</to>
 	</transition>
 
 	<static>
-		<duration>""" + st_time + """</duration>
-		<file>""" + image + """</file>
+		<duration>""" + str(st_time) + """</duration>
+		<file>""" + str(image) + """</file>
 	</static>\n"""
                 pastimage = image
                 pasttrans = tr_time
         text = text + "\n</background>"
-
         return text
 
     def build_start_time_box(self):
@@ -457,7 +481,6 @@ class PictureRow(Gtk.ListBoxRow):
 
     def __init__(self, pic_struct, window):
         super().__init__()
-
         self.set_selectable(False)
         self.filename = pic_struct.filename
         self.window = window
@@ -466,11 +489,6 @@ class PictureRow(Gtk.ListBoxRow):
         builder.add_from_resource("/com/github/maoschanz/DynamicWallpaperEditor/picture_row.ui")
         row_box = builder.get_object("row_box")
         self.time_box = builder.get_object("time_box")
-
-        # This size is totally arbitrary.
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, 114, 64, True)
-        image = builder.get_object("row_thumbnail")
-        image.set_from_pixbuf(pixbuf)
 
         label = builder.get_object("row_label")
         label.set_label(self.filename)
@@ -490,6 +508,18 @@ class PictureRow(Gtk.ListBoxRow):
         self.trans_time_btn.connect('value-changed', self.window.update_status)
         self.static_time_btn.set_value(float(pic_struct.static_time))
         self.trans_time_btn.set_value(float(pic_struct.trans_time))
+
+        image = builder.get_object("row_thumbnail")
+        try:
+            # This size is totally arbitrary.
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, 114, 64, True)
+            image.set_from_pixbuf(pixbuf)
+        except Exception:
+            image.set_from_icon_name('dialog-error-symbolic', Gtk.IconSize.BUTTON)
+            self.set_tooltip_text(_("This picture doesn't exist"))
+            self.time_box.set_sensitive(False)
+            up_btn.set_sensitive(False)
+            down_btn.set_sensitive(False)
 
         self.add(row_box)
         self.show_all()
