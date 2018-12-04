@@ -44,10 +44,6 @@
     </section>
 
     <section>
-      <item>
-        <attribute name="action">win.set_as_wallpaper</attribute>
-        <attribute name="label" translatable="yes">Set as wallpaper</attribute>
-      </item>
       <submenu>
         <attribute name="label" translatable="yes">Background adjustment</attribute>
         <section>
@@ -106,4 +102,5 @@
     </section>
   </menu>
 </interface>
+
 

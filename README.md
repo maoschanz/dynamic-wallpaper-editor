@@ -26,8 +26,10 @@ Adjustment options are available (mosaic, zoom, centered, etc.)
 
 <!-- TODO:
 
+- ajout d'images par dnd
 - mieux détecter les modifications
 - lignes draggable
-- images inexistantes
+- CLI
+- génération de code
 
 -->
