@@ -7,7 +7,6 @@
         <attribute name="label" translatable="yes">New window</attribute>
       </item>
     </section>
-
     <section>
       <item>
         <attribute name="action">app.shortcuts</attribute>
@@ -35,14 +34,12 @@
         <attribute name="label" translatable="yes">New window</attribute>
       </item>
     </section>
-
     <section>
       <item>
         <attribute name="action">win.save_as</attribute>
         <attribute name="label" translatable="yes">Save as</attribute>
       </item>
     </section>
-
     <section>
       <submenu>
         <attribute name="label" translatable="yes">Background adjustment</attribute>
@@ -85,7 +82,6 @@
         </section>
       </submenu>
     </section>
-
     <section>
       <item>
         <attribute name="action">app.shortcuts</attribute>
@@ -102,5 +98,3 @@
     </section>
   </menu>
 </interface>
-
-
