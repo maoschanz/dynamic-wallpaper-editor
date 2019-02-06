@@ -30,6 +30,7 @@ dynamic_wallpaper_editor_sources = [
   'gi_composites.py',
   'main.py',
   'window.py',
+  'picture_row.py'
 ]
 
 install_data(dynamic_wallpaper_editor_sources, install_dir: moduledir)

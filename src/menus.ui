@@ -93,7 +93,7 @@
       </item>
       <item>
         <attribute name="action">app.about</attribute>
-        <attribute name="label" translatable="yes">About</attribute>
+        <attribute name="label" translatable="yes">About Dynamic Wallpaper Editor</attribute>
       </item>
     </section>
   </menu>
