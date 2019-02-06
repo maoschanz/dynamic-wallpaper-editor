@@ -70,7 +70,7 @@
 
 				<child>
 					<object class="GtkLabel">
-						<!-- <property name="visible">True</property> -->
+						<property name="visible">True</property>
 						<property name="expand">False</property>
 						<property name="label" translatable="yes">Year</property>
 					</object>

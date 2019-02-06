@@ -30,7 +30,7 @@ class PictureRow(Gtk.ListBoxRow):
     def __init__(self, pic_struct, window):
         super().__init__()
         self.set_selectable(False)
-        self.filename = pic_struct.filename
+        self.filename = pic_struct['filename']
         self.window = window
 
         builder = Gtk.Builder()
@@ -54,8 +54,8 @@ class PictureRow(Gtk.ListBoxRow):
         self.trans_time_btn = builder.get_object("transition_btn")
         self.static_time_btn.connect('value-changed', self.window.update_status)
         self.trans_time_btn.connect('value-changed', self.window.update_status)
-        self.static_time_btn.set_value(float(pic_struct.static_time))
-        self.trans_time_btn.set_value(float(pic_struct.trans_time))
+        self.static_time_btn.set_value(float(pic_struct['static_time']))
+        self.trans_time_btn.set_value(float(pic_struct['trans_time']))
 
         image = builder.get_object("row_thumbnail")
         try:
@@ -109,7 +109,7 @@ class PictureRow(Gtk.ListBoxRow):
         index = self.get_index()
         self.window.update_durations()
         self.window.pic_list.remove(self.window.pic_list[index])
-        self.window.pic_list.insert(index-1, PictureStruct(self.filename, \
+        self.window.pic_list.insert(index-1, new_row_structure(self.filename, \
             self.static_time_btn.get_value(), self.trans_time_btn.get_value()))
         self.window.add_pictures_to_list([])
 
@@ -117,7 +117,7 @@ class PictureRow(Gtk.ListBoxRow):
         index = self.get_index()
         self.window.update_durations()
         self.window.pic_list.remove(self.window.pic_list[index])
-        self.window.pic_list.insert(index+1, PictureStruct(self.filename, \
+        self.window.pic_list.insert(index+1, new_row_structure(self.filename, \
             self.static_time_btn.get_value(), self.trans_time_btn.get_value()))
         self.window.add_pictures_to_list([])
 
@@ -128,19 +128,12 @@ class PictureRow(Gtk.ListBoxRow):
         self.window.add_pictures_to_list([])
         self.destroy()
 
+def new_row_structure(filename, static_time, trans_time):
+    row_structure = {
+        'filename': filename,
+        'static_time': static_time,
+        'trans_time': trans_time
+    }
+    return row_structure
 
-# This structure keep track of a picture's path and times. While rows are
-# destroyed during the edition, these structures are not.
-# FIXME utiliser une structure normale
-class PictureStruct():
-    __gtype_name__ = 'PictureStruct'
-
-    filename = ''
-    static_time = 10
-    trans_time = 0
-
-    def __init__(self, filename, static_time, trans_time):
-        self.filename = filename
-        self.static_time = static_time
-        self.trans_time = trans_time
 

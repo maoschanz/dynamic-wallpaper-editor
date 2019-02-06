@@ -21,7 +21,7 @@ import math
 import xml.etree.ElementTree as xml_parser
 
 from .picture_row import PictureRow
-from .picture_row import PictureStruct
+from .picture_row import new_row_structure
 
 @GtkTemplate(ui='/com/github/maoschanz/DynamicWallpaperEditor/window.ui')
 class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
@@ -231,7 +231,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             array = file_chooser.get_filenames()
             pic_array = []
             for path in array:
-                pic_array.append(PictureStruct(path, 10, 0))
+                pic_array.append(new_row_structure(path, 10, 0))
             self.update_durations()
             self.add_pictures_to_list(pic_array)
         file_chooser.destroy()
@@ -305,8 +305,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
     def update_durations(self):
         for index in range(0, len(self.pic_list)):
-            self.pic_list[index].static_time = self.my_row_list[index].static_time_btn.get_value()
-            self.pic_list[index].trans_time = self.my_row_list[index].trans_time_btn.get_value()
+            self.pic_list[index]['static_time'] = self.my_row_list[index].static_time_btn.get_value()
+            self.pic_list[index]['trans_time'] = self.my_row_list[index].trans_time_btn.get_value()
 
     def update_global_time_box(self, interrupteur, osef):
         self.time_box.set_visible(interrupteur.get_active())
@@ -376,7 +376,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
                sduration = float(child.text)
            elif child.tag == 'file':
                pic_path = child.text
-        return [PictureStruct(pic_path, sduration, 0)]
+        return [new_row_structure(pic_path, sduration, 0)]
 
     def add_transition_to_last_pic(self, xml_element_transition, pic_list):
         for child in xml_element_transition:
@@ -386,8 +386,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
                path_from = child.text
            elif child.tag == 'to':
                path_to = child.text
-        if path_from == pic_list[-1].filename:
-            pic_list[-1].trans_time = tduration
+        if path_from == pic_list[-1]['filename']:
+            pic_list[-1]['trans_time'] = tduration
         return pic_list
 
     # This method generates valid XML code for a wallpaper
@@ -410,11 +410,11 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
             st_time = None
             tr_time = None
         for index in range(0, len(self.pic_list)):
-            image = self.pic_list[index].filename
+            image = self.pic_list[index]['filename']
             if index >= len(self.pic_list)-1:
-                next_fn = self.pic_list[0].filename
+                next_fn = self.pic_list[0]['filename']
             else:
-                next_fn = self.pic_list[index+1].filename
+                next_fn = self.pic_list[index+1]['filename']
             if image is not None:
                 raw_text = str(raw_text) + self.my_row_list[index].generate_static(st_time)
                 raw_text = str(raw_text) + self.my_row_list[index].generate_transition(tr_time, next_fn)
