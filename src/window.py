@@ -37,9 +37,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	time_box = GtkTemplate.Child()
 	time_switch = GtkTemplate.Child()
 
-	notification_revealer = GtkTemplate.Child()
+	info_bar = GtkTemplate.Child()
 	notification_label = GtkTemplate.Child()
-	dismiss_notif_btn = GtkTemplate.Child()
 	status_bar = GtkTemplate.Child()
 
 	def __init__(self, **kwargs):
@@ -59,15 +58,17 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 		# Connect signals
 		self.time_switch.connect('notify::active', self.update_global_time_box)
-		self.dismiss_notif_btn.connect('clicked', self.close_notification)
 		self.trans_time_btn.connect('value-changed', self.update_status)
 		self.static_time_btn.connect('value-changed', self.update_status)
+		self.info_bar.connect('close', self.close_notification)
+		self.info_bar.connect('response', self.close_notification)
 
 		# Build the UI
 		self.build_time_popover()
 		self.build_primary_menu()
 		self.build_all_actions()
 		self.update_status()
+		self.close_notification()
 
 	def build_time_popover(self):
 		self.start_time_popover = Gtk.Popover()
@@ -118,6 +119,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.build_action('set_as_wallpaper', self.action_set_as_wallpaper)
 		self.build_action('open', self.action_open)
 		self.build_action('add', self.action_add)
+		self.build_action('add_folder', self.action_add_folder)
 		self.build_action('close', self.action_close)
 
 		self.lookup_action('set_as_wallpaper').set_enabled(False)
@@ -158,15 +160,13 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			dialog.get_message_area().add(Gtk.Label(label=_("There are unsaved modifications to your wallpaper.")))
 			dialog.show_all()
 			result = dialog.run()
+			dialog.destroy()
 			if result == Gtk.ResponseType.APPLY:
-				dialog.destroy()
 				self.action_save()
 				return True
 			elif result == Gtk.ResponseType.NO:
-				dialog.destroy()
 				return True
 			else:
-				dialog.destroy()
 				return False
 		else:
 			return True
@@ -204,6 +204,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		wp_key = 'picture-uri'
 		gsettings.set_string(wp_key, self.xml_file_uri)
 
+	def action_add_folder(self, *args):
+		pass # TODO
+
 	def action_add(self, *args):
 		"""Run an "open" dialog and create a list of PictureStruct from it
 		Actual paths are needed in XML files, so it can't be a native dialog:
@@ -216,6 +219,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		onlyPictures.add_mime_type('image/bmp')
 		onlyPictures.add_mime_type('image/tiff')
 
+		# TODO use a native file chooser dialog ?
 		file_chooser = Gtk.FileChooserDialog(_("Add pictures"), self,
 			Gtk.FileChooserAction.OPEN,
 			(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
@@ -317,7 +321,11 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.update_status()
 
 	def close_notification(self, *args):
-		self.notification_revealer.set_reveal_child(False)
+		self.info_bar.set_visible(False)
+
+	def show_notification(self, label):
+		self.notification_label.set_label(label)
+		self.info_bar.set_visible(True)
 
 	# This method parses the XML, looking for pictures' paths
 	def load_list_from_xml(self):
@@ -333,14 +341,12 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		try:
 			root = xml_parser.fromstring(xml_text)
 		except Exception:
-			self.notification_label.set_label(_("This dynamic wallpaper is corrupted"))
+			self.show_notification(_("This dynamic wallpaper is corrupted"))
 			# TODO improvable, the parseerror from the module gives the line number
-			self.notification_revealer.set_reveal_child(True)
 			return False
 
 		if root.tag != 'background':
-			self.notification_label.set_label(_("This XML file doesn't describe a valid dynamic wallpaper"))
-			self.notification_revealer.set_reveal_child(True)
+			self.show_notification(_("This XML file doesn't describe a valid dynamic wallpaper"))
 			return False
 
 		for child in root:
@@ -351,8 +357,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			elif child.tag == 'transition':
 				pic_list = self.add_transition_to_last_pic(child, pic_list)
 			else:
-				self.notification_label.set_label(str(_("Unknown element: %s") % child.tag))
-				self.notification_revealer.set_reveal_child(True)
+				self.show_notification(str(_("Unknown element: %s") % child.tag))
 
 		self.time_switch.set_active(False)
 		self.add_pictures_to_list(pic_list)
@@ -375,20 +380,20 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	def add_picture_from_element(self, xml_element_static):
 		for child in xml_element_static:
-		   if child.tag == 'duration':
-			   sduration = float(child.text)
-		   elif child.tag == 'file':
-			   pic_path = child.text
+			if child.tag == 'duration':
+				sduration = float(child.text)
+			elif child.tag == 'file':
+				pic_path = child.text
 		return [new_row_structure(pic_path, sduration, 0)]
 
 	def add_transition_to_last_pic(self, xml_element_transition, pic_list):
 		for child in xml_element_transition:
-		   if child.tag == 'duration':
-			   tduration = float(child.text)
-		   elif child.tag == 'from':
-			   path_from = child.text
-		   elif child.tag == 'to':
-			   path_to = child.text
+			if child.tag == 'duration':
+				tduration = float(child.text)
+			elif child.tag == 'from':
+				path_from = child.text
+			elif child.tag == 'to':
+				path_to = child.text
 		if path_from == pic_list[-1]['filename']:
 			pic_list[-1]['trans_time'] = tduration
 		return pic_list

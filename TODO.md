@@ -14,7 +14,6 @@
 - Important: make the rows draggable
 - Not important: support more desktop environments (Pantheon ? Budgie ? Unity ? MATE ? Cinnamon ?)
 - Quite important: ensure the memory is freed when deleting a row
-- Important: use a GtkInfoBar instead of the bullshit with the GtkRevealer
 - Not important: more clear and useful error messages, including line numbers
 
 ## Translations
