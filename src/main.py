@@ -71,7 +71,7 @@ class Application(Gtk.Application):
 		self.set_accels_for_action('win.save', ['<Ctrl>s'])
 		self.set_accels_for_action('win.open', ['<Ctrl>o'])
 		self.set_accels_for_action('win.add', ['<Ctrl>a'])
-		self.set_accels_for_action('win.add_folder', ['<Ctrl>f']) # TODO add to the dialog
+		self.set_accels_for_action('win.add_folder', ['<Ctrl>f'])
 		self.set_accels_for_action('win.set_as_wallpaper', ['<Ctrl>w']) # XXX not standard at all
 
 	def on_about_activate(self, *args):

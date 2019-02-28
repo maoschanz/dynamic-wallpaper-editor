@@ -131,7 +131,7 @@
             <property name="visible">True</property>
             <property name="expand">False</property>
             <property name="orientation">horizontal</property>
-            <property name="margin">15</property>
+            <property name="margin">10</property>
             <property name="spacing">15</property>
             <child>
               <object class="GtkButton" id="add_btn">
@@ -149,7 +149,7 @@
             </child>
             <child>
               <object class="GtkButton" id="add_folder_btn">
-                <!-- <property name="visible">True</property> -->
+                <property name="visible">True</property>
                 <property name="action_name">win.add_folder</property>
                 <property name="label" translatable="yes">Add a folder</property>
                 <property name="expand">False</property>

@@ -7,7 +7,6 @@
 
 ## Adding pictures
 
-- Important: ability to add a whole folder
 - Not important: ability to add a picture by drag-and-dropping the file from nautilus
 
 ## General

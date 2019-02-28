@@ -209,20 +209,23 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			Gtk.FileChooserAction.SELECT_FOLDER,
 			(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
 			Gtk.STOCK_OPEN, Gtk.ResponseType.OK),
-			select_multiple=True
-		)
-		self.add_pic_dialog_filters(file_chooser)
+			select_multiple=False)
 
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
-			print(file_chooser.get_filenames()) # TODO
-			# array = file_chooser.get_filenames()
-			# pic_array = []
-			# for path in array:
-			# 	pic_array.append(new_row_structure(path, 10, 0))
-			# self.update_durations()
-			# self.add_pictures_to_list(pic_array)
-			print('ok')
+			enumerator = file_chooser.get_file().enumerate_children('standard::*', \
+			             Gio.FileQueryInfoFlags.NONE, None)
+			f = enumerator.next_file(None)
+			array = []
+			while f is not None:
+				if 'image/' in f.get_content_type():
+					array.append(file_chooser.get_filename() + '/' + f.get_display_name())
+				f = enumerator.next_file(None)
+			pic_array = []
+			for path in array:
+				pic_array.append(new_row_structure(path, 10, 0))
+			self.update_durations()
+			self.add_pictures_to_list(pic_array)
 		file_chooser.destroy()
 
 	def add_pic_dialog_filters(self, dialog):
