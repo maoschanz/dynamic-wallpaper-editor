@@ -13,9 +13,8 @@
 			<description>
 				<ul>
 					<li>Bug fixes</li>
-					<li>Bug fixes</li>
-					<li>Bug fixes</li>
-					<li>Bug fixes</li>
+					<!-- <li>TODO</li> -->
+					<li>Better looking UI with the new Adwaita</li>
 				</ul>
 			</description>
 		</release>

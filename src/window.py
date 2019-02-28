@@ -280,8 +280,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			self.action_save()
 
 	# Run the "save as" filechooser and return the uri and the filename
-	def invoke_file_chooser(self):
-		fn = None # TODO retourner true ou false
+	def invoke_file_chooser(self): # TODO retourner true ou false
+		fn = None
 		file_chooser = Gtk.FileChooserNative.new(_("Save as"), self,
 			Gtk.FileChooserAction.SAVE,
 			_("Save"),
@@ -332,8 +332,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 		try:
 			root = xml_parser.fromstring(xml_text)
-		except Exception: # TODO improvable, the parseerror from the module gives the line number
+		except Exception:
 			self.notification_label.set_label(_("This dynamic wallpaper is corrupted"))
+			# TODO improvable, the parseerror from the module gives the line number
 			self.notification_revealer.set_reveal_child(True)
 			return False
 
