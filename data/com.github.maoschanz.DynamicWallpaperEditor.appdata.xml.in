@@ -9,11 +9,12 @@
 		<p>A simple utility to create or edit dynamic wallpapers for GNOME Shell. The duration of each picture and each transition can be set separately or globally.</p>
 	</description>
 	<releases>
-		<release version="1.9" date="2018-12-30">
+		<release version="1.9" date="2018-02-28">
 			<description>
 				<ul>
 					<li>Bug fixes</li>
-					<!-- <li>TODO</li> -->
+					<li>New (more reliable) XML parser</li>
+					<li>Ability to add entire folders to the pictures list</li>
 					<li>Better looking UI with the new Adwaita</li>
 				</ul>
 			</description>
@@ -44,13 +45,10 @@
 	<developer_name>Romain F. T.</developer_name>
 	<screenshots>
 		<screenshot type="default">
-			<image type="source">https://i.imgur.com/0mQJWnG.png</image>
+			<image type="source">https://i.imgur.com/g8tw4qm.png</image>
 		</screenshot>
 	</screenshots>
 	<update_contact>rrroschan@gmail.com</update_contact>
 	<translation type="gettext">dynamic-wallpaper-editor</translation>
 </component>
-
-
-
 
