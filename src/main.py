@@ -48,13 +48,13 @@ class Application(Gtk.Application):
 
 	def build_app_menu(self):
 		builder = Gtk.Builder()
-		builder.add_from_resource("/com/github/maoschanz/DynamicWallpaperEditor/menus.ui")
-		menu = builder.get_object("app-menu")
+		builder.add_from_resource('/com/github/maoschanz/DynamicWallpaperEditor/menus.ui')
+		menu = builder.get_object('app-menu')
 		return menu
 
 	def build_action(self, action_name, callback):
 		action = Gio.SimpleAction.new(action_name, None)
-		action.connect("activate", callback)
+		action.connect('activate', callback)
 		self.add_action(action)
 
 	def build_all_actions(self):
@@ -64,12 +64,12 @@ class Application(Gtk.Application):
 		self.build_action('about', self.on_about_activate)
 		self.build_action('quit', self.on_quit)
 
-		self.set_accels_for_action("app.new_window", ["<Ctrl>n"])
-		self.set_accels_for_action("app.quit", ["<Ctrl>q"])
-		self.set_accels_for_action("win.save", ["<Ctrl>s"])
-		self.set_accels_for_action("win.open", ["<Ctrl>o"])
-		self.set_accels_for_action("win.add", ["<Ctrl>a"])
-		self.set_accels_for_action("win.set_as_wallpaper", ["<Ctrl>w"])
+		self.set_accels_for_action('app.new_window', ['<Ctrl>n'])
+		self.set_accels_for_action('app.quit', ['<Ctrl>q'])
+		self.set_accels_for_action('win.save', ['<Ctrl>s'])
+		self.set_accels_for_action('win.open', ['<Ctrl>o'])
+		self.set_accels_for_action('win.add', ['<Ctrl>a'])
+		self.set_accels_for_action('win.set_as_wallpaper', ['<Ctrl>w']) # XXX not standard at all
 
 	def on_about_activate(self, *args):
 		if self.about_dialog is not None:
@@ -78,7 +78,7 @@ class Application(Gtk.Application):
 		self.about_dialog.show()
 
 	def on_help_activate(self, *args):
-		Gtk.show_uri(None, "help:dynamic-wallpaper-editor", Gdk.CURRENT_TIME)
+		Gtk.show_uri(None, 'help:dynamic-wallpaper-editor', Gdk.CURRENT_TIME)
 
 	def on_quit(self, *args):
 		self.quit()
@@ -109,3 +109,4 @@ class Application(Gtk.Application):
 def main(version):
 	app = Application(version)
 	return app.run(sys.argv)
+
