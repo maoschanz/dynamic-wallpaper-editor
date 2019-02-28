@@ -205,31 +205,62 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		gsettings.set_string(wp_key, self.xml_file_uri)
 
 	def action_add_folder(self, *args):
-		pass # TODO
+		file_chooser = Gtk.FileChooserDialog(_("Add a folder"), self,
+			Gtk.FileChooserAction.SELECT_FOLDER,
+			(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+			Gtk.STOCK_OPEN, Gtk.ResponseType.OK),
+			select_multiple=True
+		)
+		self.add_pic_dialog_filters(file_chooser)
+
+		response = file_chooser.run()
+		if response == Gtk.ResponseType.OK:
+			print(file_chooser.get_filenames()) # TODO
+			# array = file_chooser.get_filenames()
+			# pic_array = []
+			# for path in array:
+			# 	pic_array.append(new_row_structure(path, 10, 0))
+			# self.update_durations()
+			# self.add_pictures_to_list(pic_array)
+			print('ok')
+		file_chooser.destroy()
+
+	def add_pic_dialog_filters(self, dialog):
+		"""Add file filters for images to a file chooser dialog."""
+		allPictures = Gtk.FileFilter()
+		allPictures.set_name(_("All pictures"))
+		allPictures.add_mime_type('image/png')
+		allPictures.add_mime_type('image/jpeg')
+		allPictures.add_mime_type('image/bmp')
+		allPictures.add_mime_type('image/svg')
+		allPictures.add_mime_type('image/tiff')
+
+		pngPictures = Gtk.FileFilter()
+		pngPictures.set_name(_("PNG images"))
+		pngPictures.add_mime_type('image/png')
+
+		jpegPictures = Gtk.FileFilter()
+		jpegPictures.set_name(_("JPEG images"))
+		jpegPictures.add_mime_type('image/jpeg')
+
+		dialog.add_filter(allPictures)
+		dialog.add_filter(pngPictures)
+		dialog.add_filter(jpegPictures)
 
 	def action_add(self, *args):
 		"""Run an "open" dialog and create a list of PictureStruct from it
 		Actual paths are needed in XML files, so it can't be a native dialog:
 		a custom preview has to be set manually."""
-		onlyPictures = Gtk.FileFilter()
-		onlyPictures.set_name(_("Pictures"))
-		onlyPictures.add_mime_type('image/png')
-		onlyPictures.add_mime_type('image/jpeg')
-		onlyPictures.add_mime_type('image/svg')
-		onlyPictures.add_mime_type('image/bmp')
-		onlyPictures.add_mime_type('image/tiff')
-
-		# TODO use a native file chooser dialog ?
 		file_chooser = Gtk.FileChooserDialog(_("Add pictures"), self,
 			Gtk.FileChooserAction.OPEN,
 			(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
 			Gtk.STOCK_OPEN, Gtk.ResponseType.OK),
 			select_multiple=True,
 			create_folders=False,
-			filter=onlyPictures,
 			preview_widget=self.preview_picture,
-			use_preview_label=False # XXX ??? ugly warning ?
+			use_preview_label=False
 		)
+		self.add_pic_dialog_filters(file_chooser)
 		file_chooser.connect('update-preview', self.cb_update_preview)
 
 		response = file_chooser.run()

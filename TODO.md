@@ -3,6 +3,7 @@
 ## Opening XML files
 
 - Important: opening files from the command line
+- Not important: monitor files to detect modifications
 
 ## Adding pictures
 
@@ -21,5 +22,4 @@
 - Important: More languages
 - Not important: Provide translations for the help user manual
 - Important: provide translations to the description in `data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in` but without cluttering the `.po` file with release notes bullshit
-
 

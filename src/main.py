@@ -34,6 +34,7 @@ class Application(Gtk.Application):
 		GLib.set_prgname('com.github.maoschanz.DynamicWallpaperEditor')
 		self.register(None)
 		self.build_all_actions()
+		self.set_accels()
 		self._version = version
 
 		if self.prefers_app_menu():
@@ -64,11 +65,13 @@ class Application(Gtk.Application):
 		self.build_action('about', self.on_about_activate)
 		self.build_action('quit', self.on_quit)
 
+	def set_accels(self):
 		self.set_accels_for_action('app.new_window', ['<Ctrl>n'])
 		self.set_accels_for_action('app.quit', ['<Ctrl>q'])
 		self.set_accels_for_action('win.save', ['<Ctrl>s'])
 		self.set_accels_for_action('win.open', ['<Ctrl>o'])
 		self.set_accels_for_action('win.add', ['<Ctrl>a'])
+		self.set_accels_for_action('win.add_folder', ['<Ctrl>f']) # TODO add to the dialog
 		self.set_accels_for_action('win.set_as_wallpaper', ['<Ctrl>w']) # XXX not standard at all
 
 	def on_about_activate(self, *args):

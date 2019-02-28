@@ -24,12 +24,3 @@ An existing XML file (opened, or just created) can be set as your wallpaper from
 
 Adjustment options are available (mosaic, zoom, centered, etc.)
 
-<!-- TODO:
-
-- ajout d'images par dnd
-- mieux détecter les modifications
-- lignes draggable
-- CLI
-- génération de code
-
--->
