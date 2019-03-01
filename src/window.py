@@ -62,6 +62,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.static_time_btn.connect('value-changed', self.update_status)
 		self.info_bar.connect('close', self.close_notification)
 		self.info_bar.connect('response', self.close_notification)
+		self.list_box.set_sort_func(self.sort_list)
 
 		# Build the UI
 		self.build_time_popover()
@@ -295,7 +296,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.reset_list_box()
 		self.pic_list = self.pic_list + new_pics_list
 		for index in range(0, len(self.pic_list)):
-			row = PictureRow(self.pic_list[index], self)
+			row = PictureRow(self.pic_list[index], index, self)
 			self.my_row_list.append(row)
 			self.list_box.add(row)
 		self.update_status()
@@ -465,7 +466,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	def build_start_time_box(self):
 		builder = Gtk.Builder()
-		builder.add_from_resource("/com/github/maoschanz/DynamicWallpaperEditor/start_time.ui")
+		builder.add_from_resource('/com/github/maoschanz/DynamicWallpaperEditor/start_time.ui')
 		start_time_box = builder.get_object("start_time_box")
 		self.year_spinbtn = builder.get_object("year_spinbtn")
 		self.month_spinbtn = builder.get_object("month_spinbtn")
@@ -475,3 +476,18 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.second_spinbtn = builder.get_object("second_spinbtn")
 		return start_time_box
 
+	def sort_list(self, row1, row2, *args):
+		"""Returns int < 0 if row1 should be before row2, 0 if they are equal
+		and int > 0 otherwise"""
+		return row1.indx - row2.indx
+
+	def restack_indexes(self):
+		rows = self.list_box.get_children()
+		for r in rows:
+			r.indx = r.get_index()
+
+	def destroy_row(self, row):
+		self.update_durations()
+		self.pic_list.remove(self.pic_list[row.indx])
+		self.list_box.remove(row)
+		self.restack_indexes()

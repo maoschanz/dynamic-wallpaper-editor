@@ -25,37 +25,38 @@ class PictureRow(Gtk.ListBoxRow):
 	the user needs them."""
 	__gtype_name__ = 'PictureRow'
 
-	def __init__(self, pic_struct, window):
+	def __init__(self, pic_struct, index, window):
 		super().__init__()
 		self.set_selectable(False)
 		self.filename = pic_struct['filename']
 		self.window = window
+		self.indx = index
 
 		builder = Gtk.Builder()
-		builder.add_from_resource("/com/github/maoschanz/DynamicWallpaperEditor/picture_row.ui")
-		row_box = builder.get_object("row_box")
-		self.time_box = builder.get_object("time_box")
+		builder.add_from_resource('/com/github/maoschanz/DynamicWallpaperEditor/picture_row.ui')
+		row_box = builder.get_object('row_box')
+		self.time_box = builder.get_object('time_box')
 
-		label = builder.get_object("row_label")
+		label = builder.get_object('row_label')
 		label.set_label(self.filename)
 		label.set_ellipsize(Pango.EllipsizeMode.START)
 
-		delete_btn = builder.get_object("delete_btn")
+		delete_btn = builder.get_object('delete_btn')
 		delete_btn.connect('clicked', self.destroy_row)
 
-		up_btn = builder.get_object("up_btn")
-		down_btn = builder.get_object("down_btn")
+		up_btn = builder.get_object('up_btn')
+		down_btn = builder.get_object('down_btn')
 		up_btn.connect('clicked', self.on_up)
 		down_btn.connect('clicked', self.on_down)
 
-		self.static_time_btn = builder.get_object("static_btn")
-		self.trans_time_btn = builder.get_object("transition_btn")
+		self.static_time_btn = builder.get_object('static_btn')
+		self.trans_time_btn = builder.get_object('transition_btn')
 		self.static_time_btn.connect('value-changed', self.window.update_status)
 		self.trans_time_btn.connect('value-changed', self.window.update_status)
 		self.static_time_btn.set_value(float(pic_struct['static_time']))
 		self.trans_time_btn.set_value(float(pic_struct['trans_time']))
 
-		image = builder.get_object("row_thumbnail")
+		image = builder.get_object('row_thumbnail')
 		try:
 			# This size is totally arbitrary.
 			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, 114, 64, True)
@@ -104,26 +105,17 @@ class PictureRow(Gtk.ListBoxRow):
 		return str(raw_string)
 
 	def on_up(self, b):
-		index = self.get_index()
-		self.window.update_durations()
-		self.window.pic_list.remove(self.window.pic_list[index])
-		self.window.pic_list.insert(index-1, new_row_structure(self.filename, \
-			self.static_time_btn.get_value(), self.trans_time_btn.get_value()))
-		self.window.add_pictures_to_list([])
+		self.window.list_box.get_row_at_index(self.indx-1).indx = self.indx
+		self.indx = self.indx-1
+		self.window.list_box.invalidate_sort()
 
 	def on_down(self, b):
-		index = self.get_index()
-		self.window.update_durations()
-		self.window.pic_list.remove(self.window.pic_list[index])
-		self.window.pic_list.insert(index+1, new_row_structure(self.filename, \
-			self.static_time_btn.get_value(), self.trans_time_btn.get_value()))
-		self.window.add_pictures_to_list([])
+		self.window.list_box.get_row_at_index(self.indx+1).indx = self.indx
+		self.indx = self.indx+1
+		self.window.list_box.invalidate_sort()
 
 	def destroy_row(self, b):
-		index = self.get_index()
-		self.window.update_durations()
-		self.window.pic_list.remove(self.window.pic_list[index])
-		self.window.add_pictures_to_list([])
+		self.window.destroy_row(self)
 		self.destroy()
 
 def new_row_structure(filename, static_time, trans_time):
