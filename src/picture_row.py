@@ -25,10 +25,10 @@ class PictureRow(Gtk.ListBoxRow):
 	the user needs them."""
 	__gtype_name__ = 'PictureRow'
 
-	def __init__(self, pic_struct, index, window):
+	def __init__(self, fn, stt, trt, index, window):
 		super().__init__()
 		self.set_selectable(False)
-		self.filename = pic_struct['filename']
+		self.filename = fn
 		self.window = window
 		self.indx = index
 
@@ -53,8 +53,8 @@ class PictureRow(Gtk.ListBoxRow):
 		self.trans_time_btn = builder.get_object('transition_btn')
 		self.static_time_btn.connect('value-changed', self.window.update_status)
 		self.trans_time_btn.connect('value-changed', self.window.update_status)
-		self.static_time_btn.set_value(float(pic_struct['static_time']))
-		self.trans_time_btn.set_value(float(pic_struct['trans_time']))
+		self.static_time_btn.set_value(float(stt))
+		self.trans_time_btn.set_value(float(trt))
 
 		image = builder.get_object('row_thumbnail')
 		try:
@@ -104,26 +104,17 @@ class PictureRow(Gtk.ListBoxRow):
 """).format(dur=time_str, fn=self.filename, nfn=next_fn)
 		return str(raw_string)
 
-	def on_up(self, b):
+	def on_up(self, *args):
 		self.window.list_box.get_row_at_index(self.indx-1).indx = self.indx
 		self.indx = self.indx-1
 		self.window.list_box.invalidate_sort()
 
-	def on_down(self, b):
+	def on_down(self, *args):
 		self.window.list_box.get_row_at_index(self.indx+1).indx = self.indx
 		self.indx = self.indx+1
 		self.window.list_box.invalidate_sort()
 
-	def destroy_row(self, b):
+	def destroy_row(self, *args):
 		self.window.destroy_row(self)
 		self.destroy()
-
-def new_row_structure(filename, static_time, trans_time):
-	row_structure = {
-		'filename': filename,
-		'static_time': static_time,
-		'trans_time': trans_time
-	}
-	return row_structure
-
 

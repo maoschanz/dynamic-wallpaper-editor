@@ -21,7 +21,6 @@ import math
 import xml.etree.ElementTree as xml_parser
 
 from .picture_row import PictureRow
-from .picture_row import new_row_structure
 
 @GtkTemplate(ui='/com/github/maoschanz/DynamicWallpaperEditor/window.ui')
 class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
@@ -44,14 +43,11 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 		self.init_template()
-		self._is_saved = True
-
-		self.my_row_list = [] # TODO should be simplified
-		self.pic_list = [] # TODO should be simplified
 
 		self.xml_file_uri = None
 		self.xml_file_name = None
 		self.gio_file = None
+		self._is_saved = True
 
 		# Used in the "add pictures" file chooser dialog
 		self.preview_picture = Gtk.Image(margin_right=5)
@@ -81,15 +77,17 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		"""Update the total time in the statusbar."""
 		self.status_bar.pop(0)
 		total_time = 0
+		row_list = self.list_box.get_children()
+		l = len(row_list)
 		if self.time_switch.get_active():
-			for index in range(0, len(self.pic_list)-1):
+			for index in range(0, l-1):
 				total_time += self.static_time_btn.get_value()
 				total_time += self.trans_time_btn.get_value()
-		elif len(self.pic_list)-1 == len(self.my_row_list)-1:
-			for index in range(0, len(self.pic_list)-1):
-				total_time += self.my_row_list[index].static_time_btn.get_value()
-				total_time += self.my_row_list[index].trans_time_btn.get_value()
-		message = str(_("%s pictures") % len(self.pic_list) + ' - ' + _("Total time: %s second(s)") % total_time)
+		else:
+			for index in range(0, l-1):
+				total_time += row_list[index].static_time_btn.get_value()
+				total_time += row_list[index].trans_time_btn.get_value()
+		message = str(_("%s pictures") % l + ' - ' + _("Total time: %s second(s)") % total_time)
 		if total_time >= 60:
 			message += ' = '
 			hours = math.floor(total_time / 3600)
@@ -224,9 +222,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 				f = enumerator.next_file(None)
 			pic_array = []
 			for path in array:
-				pic_array.append(new_row_structure(path, 10, 0))
-			self.update_durations()
-			self.add_pictures_to_list(pic_array)
+				self.add_one_picture(path, 10, 0)
+			self.update_status()
+			self.restack_indexes()
 		file_chooser.destroy()
 
 	def add_pic_dialog_filters(self, dialog):
@@ -272,9 +270,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			array = file_chooser.get_filenames()
 			pic_array = []
 			for path in array:
-				pic_array.append(new_row_structure(path, 10, 0))
-			self.update_durations()
-			self.add_pictures_to_list(pic_array)
+				self.add_one_picture(path, 10, 0)
+			self.update_status()
+			self.restack_indexes()
 		file_chooser.destroy()
 
 	def cb_update_preview(self, fc):
@@ -288,26 +286,32 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.preview_picture.set_from_pixbuf(pixbuf)
 
 	def reset_list_box(self):
-		while len(self.my_row_list) > 0:
-			self.my_row_list.pop().destroy()
+		while len(self.list_box.get_children()) > 0:
+			self.list_box.get_children().pop().destroy()
 
 	def add_pictures_to_list(self, new_pics_list):
 		self._is_saved = False
-		self.reset_list_box()
-		self.pic_list = self.pic_list + new_pics_list
-		for index in range(0, len(self.pic_list)):
-			row = PictureRow(self.pic_list[index], index, self)
-			self.my_row_list.append(row)
+		l = len(self.list_box.get_children())
+		for index in range(0, len(new_pics_list)):
+			row = PictureRow(new_pics_list[index]['filename'], \
+				new_pics_list[index]['static_time'], \
+				new_pics_list[index]['trans_time'], \
+				l+index, self)
 			self.list_box.add(row)
 		self.update_status()
 
-	# Writing the result in a file
+	def add_one_picture(self, filename, stt, trt):
+		self._is_saved = False
+		l = len(self.list_box.get_children())
+		row = PictureRow(filename, stt, trt, l, self)
+		self.list_box.add(row)
+
 	def action_save(self, *args):
+		"""Write the result of `self.generate_text()` in a file."""
 		if self.xml_file_name is None:
 			fn = self.invoke_file_chooser()
 			if fn is None:
 				return
-
 		contents = self.generate_text().encode('utf-8')
 		self.gio_file.replace_contents_async(contents, None, False, \
 			Gio.FileCreateFlags.NONE, None, None, None)
@@ -344,15 +348,11 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		file_chooser.destroy()
 		return fn
 
-	def update_durations(self):
-		for index in range(0, len(self.pic_list)):
-			self.pic_list[index]['static_time'] = self.my_row_list[index].static_time_btn.get_value()
-			self.pic_list[index]['trans_time'] = self.my_row_list[index].trans_time_btn.get_value()
-
 	def update_global_time_box(self, interrupteur, osef):
 		self.time_box.set_visible(interrupteur.get_active())
-		for index in range(0, len(self.pic_list)):
-			self.my_row_list[index].time_box.set_visible(not interrupteur.get_active())
+		row_list = self.list_box.get_children()
+		for index in range(0, len(row_list)):
+			row_list[index].time_box.set_visible(not interrupteur.get_active())
 		self.update_status()
 
 	def close_notification(self, *args):
@@ -362,10 +362,10 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.notification_label.set_label(label)
 		self.info_bar.set_visible(True)
 
-	# This method parses the XML, looking for pictures' paths
 	def load_list_from_xml(self):
+		"""This method parses the XML from `self.xml_file_name`, looking for
+		pictures' paths and durations."""
 		self.reset_list_box()
-		self.pic_list = []
 		pic_list = []
 
 		# TODO use Gio.File here too
@@ -435,7 +435,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	# This method generates valid XML code for a wallpaper
 	def generate_text(self):
-		self.update_durations()
+		row_list = self.list_box.get_children()
 		raw_text = """<!-- Generated by com.github.maoschanz.DynamicWallpaperEditor -->
 <background>
 	<starttime>
@@ -452,15 +452,15 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		else:
 			st_time = None
 			tr_time = None
-		for index in range(0, len(self.pic_list)):
-			image = self.pic_list[index]['filename']
-			if index >= len(self.pic_list)-1:
-				next_fn = self.pic_list[0]['filename']
+		for index in range(0, len(row_list)):
+			image = row_list[index].filename
+			if index >= len(row_list)-1:
+				next_fn = row_list[0].filename
 			else:
-				next_fn = self.pic_list[index+1]['filename']
+				next_fn = row_list[index+1].filename
 			if image is not None:
-				raw_text = str(raw_text) + self.my_row_list[index].generate_static(st_time)
-				raw_text = str(raw_text) + self.my_row_list[index].generate_transition(tr_time, next_fn)
+				raw_text = str(raw_text) + row_list[index].generate_static(st_time)
+				raw_text = str(raw_text) + row_list[index].generate_transition(tr_time, next_fn)
 		raw_text = str(raw_text) + '</background>'
 		return str(raw_text)
 
@@ -487,7 +487,15 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			r.indx = r.get_index()
 
 	def destroy_row(self, row):
-		self.update_durations()
-		self.pic_list.remove(self.pic_list[row.indx])
 		self.list_box.remove(row)
 		self.restack_indexes()
+
+# TODO remove this
+def new_row_structure(filename, static_time, trans_time):
+	row_structure = {
+		'filename': filename,
+		'static_time': static_time,
+		'trans_time': trans_time
+	}
+	return row_structure
+
