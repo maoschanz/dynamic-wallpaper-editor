@@ -42,6 +42,7 @@
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
+                <property name="spacing">2</property>
                 <child>
                   <object class="GtkImage">
                     <property name="visible">True</property>
@@ -53,6 +54,9 @@
                     <property name="visible">True</property>
                     <property name="icon_name">pan-down-symbolic</property>
                   </object>
+                  <packing>
+                    <property name="pack-type">end</property>
+                  </packing>
                 </child>
               </object>
             </child>
@@ -242,12 +246,19 @@
         </child>
 
         <child>
+          <object class="GtkSeparator" id="time_box_separator">
+            <property name="visible">False</property>
+            <property name="expand">False</property>
+          </object>
+        </child>
+
+        <child>
           <object class="GtkBox" id="time_box">
             <property name="visible">False</property>
             <property name="expand">False</property>
             <property name="orientation">horizontal</property>
             <property name="spacing">15</property>
-            <property name="margin">15</property>
+            <property name="margin">10</property>
             <child>
               <object class="GtkLabel" id="static_label">
                 <property name="visible">True</property>

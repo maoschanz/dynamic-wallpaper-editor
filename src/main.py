@@ -48,8 +48,8 @@ class Application(Gtk.Application):
 		win.present()
 
 	def build_app_menu(self):
-		builder = Gtk.Builder()
-		builder.add_from_resource('/com/github/maoschanz/DynamicWallpaperEditor/menus.ui')
+		builder = Gtk.Builder().new_from_resource( \
+		                '/com/github/maoschanz/DynamicWallpaperEditor/menus.ui')
 		menu = builder.get_object('app-menu')
 		return menu
 
@@ -68,6 +68,7 @@ class Application(Gtk.Application):
 	def set_accels(self):
 		self.set_accels_for_action('app.new_window', ['<Ctrl>n'])
 		self.set_accels_for_action('app.quit', ['<Ctrl>q'])
+		self.set_accels_for_action('app.help', ['F1'])
 		self.set_accels_for_action('win.save', ['<Ctrl>s'])
 		self.set_accels_for_action('win.open', ['<Ctrl>o'])
 		self.set_accels_for_action('win.add', ['<Ctrl>a'])
@@ -93,7 +94,8 @@ class Application(Gtk.Application):
 	def on_shortcuts_activate(self, *args):
 		if self.shortcuts_window is not None:
 			self.shortcuts_window.destroy()
-		builder = Gtk.Builder().new_from_resource('/com/github/maoschanz/DynamicWallpaperEditor/shortcuts.ui')
+		builder = Gtk.Builder().new_from_resource( \
+		            '/com/github/maoschanz/DynamicWallpaperEditor/shortcuts.ui')
 		self.shortcuts_window = builder.get_object('shortcuts')
 		self.shortcuts_window.present()
 

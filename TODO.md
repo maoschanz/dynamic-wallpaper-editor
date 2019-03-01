@@ -2,8 +2,8 @@
 
 ## Opening XML files
 
-- Important: opening files from the command line
-- Not important: monitor files to detect modifications
+- Not important: opening files from the command line
+- Not important: monitor XML files to detect modifications
 
 ## Adding pictures
 
@@ -11,7 +11,6 @@
 
 ## General
 
-- **Very important:** performance issues, the list should not be rebuild at each modification.
 - Important: make the rows draggable
 - Quite important: ensure the memory is freed when deleting a row
 - Not important: support more desktop environments (Pantheon ? Budgie ? Unity ? MATE ? Cinnamon ?)
