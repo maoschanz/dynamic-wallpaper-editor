@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
+#: src/window.ui:26
 msgid "Dynamic Wallpaper Editor"
 msgstr "Éditeur de fonds d'écran dynamiques"
 
@@ -29,7 +30,7 @@ msgstr "Créer ou éditer des fonds d'écrans dynamiques pour GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:10
 msgid "com.github.maoschanz.DynamicWallpaperEditor"
-msgstr "com.github.maoschanz.DynamicWallpaperEditor"
+msgstr ""
 
 #: src/menus.ui:7 src/menus.ui:34 src/shortcuts.ui:17
 msgid "New window"
