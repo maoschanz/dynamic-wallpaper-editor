@@ -34,6 +34,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	list_box = GtkTemplate.Child()
 	trans_time_btn = GtkTemplate.Child()
 	static_time_btn = GtkTemplate.Child()
+
 	time_box_separator = GtkTemplate.Child()
 	time_box = GtkTemplate.Child()
 	time_switch = GtkTemplate.Child()
@@ -74,14 +75,14 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	def build_time_popover(self):
 		builder = Gtk.Builder().new_from_resource( \
 		           '/com/github/maoschanz/DynamicWallpaperEditor/start_time.ui')
-		self.start_time_popover = builder.get_object('start_time_popover')
+		start_time_popover = builder.get_object('start_time_popover')
 		self.year_spinbtn = builder.get_object('year_spinbtn')
 		self.month_spinbtn = builder.get_object('month_spinbtn')
 		self.day_spinbtn = builder.get_object('day_spinbtn')
 		self.hour_spinbtn = builder.get_object('hour_spinbtn')
 		self.minute_spinbtn = builder.get_object('minute_spinbtn')
 		self.second_spinbtn = builder.get_object('second_spinbtn')
-		self.start_btn.set_popover(self.start_time_popover)
+		self.start_btn.set_popover(start_time_popover)
 
 	def build_menus(self):
 		builder = Gtk.Builder().new_from_resource( \
@@ -137,6 +138,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	# Time management ##########################################################
 
 	def update_global_time_box(self, *args):
+		"""Show relevant spinbuttons based on the time_switch state."""
 		is_global = args[0].get_active()
 		self.time_box.set_visible(is_global)
 		self.time_box_separator.set_visible(is_global)
@@ -196,7 +198,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
 		dialog.add_button(_("Discard"), Gtk.ResponseType.NO)
 		dialog.add_button(_("Save"), Gtk.ResponseType.APPLY)
-		dialog.get_message_area().add(Gtk.Label(label=_("There are unsaved modifications to your wallpaper.")))
+		label = Gtk.Label(label=_("There are unsaved modifications to your wallpaper."))
+		dialog.get_message_area().add(label)
 
 		dialog.show_all()
 		result = dialog.run()
@@ -314,6 +317,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		return row1.indx - row2.indx
 
 	def restack_indexes(self):
+		"""Ensure rows' self.indx attribute corresponds to the actual index of
+		each row."""
 		rows = self.list_box.get_children()
 		for r in rows:
 			r.indx = r.get_index()
