@@ -25,21 +25,24 @@
 
   <section id="pictures">
     <title>Add and order pictures</title>
-    <p>Use the <gui style="button">Add Pictures</gui> button to append images to your wallpaper. It's possible to use a picture several times in the same slideshow.</p>
-    <p>Then you can order them as you want with the <gui style="button">Move up</gui> and <gui style="button">Move down</gui> buttons, or remove them with <gui style="button">Delete</gui> button, at the right of each row.</p>
+    <p>Use the <gui style="button">Add Pictures</gui> button to append images to your wallpaper. It's possible to use a picture several times in the same slideshow. The <gui style="button">Add a folder</gui> button appends all pictures from a directory to the list.</p>
+    <p>Then you can order them as you want with the <gui style="button">Move up</gui> and <gui style="button">Move down</gui> buttons, or remove them with <gui style="button">Delete</gui> button.</p>
   </section>
+
   <section id="durations">
     <title>Adjust images duration</title>
     <p>Depending on how you set the corresponding switch, you can set the duration of each picture globally (all pictures will last the same amount of seconds) or individually. You can also set the duration of the transition to the next image, in seconds.</p>
-    <p>If you want to do a wallpaper changing with the daylight, the total amount of seconds should be 86400, transitions included (the total time is displayed in the statusbar, at the bottom of the window).</p>
+    <p>If you want to do a wallpaper changing with the daylight, the total amount of time should be 24 hours (86400 seconds), transitions included. The total time is displayed in the statusbar, at the bottom of the window.</p>
   </section>
+
   <section id="start-time">
     <title>Set the start time</title>
-    <p>You can set the exact moment the slideshow begin from the <gui style="button">Start time</gui> menu. This is especially useful if you want to do a wallpaper changing with the daylight</p>
+    <p>You can set the exact moment the slideshow begin from the <gui style="button">Start time</gui> menu. This is especially useful if you want to do a wallpaper changing with the daylight.</p>
   </section>
+
   <section id="save-apply">
     <title>Save and apply as wallpaper</title>
-    <p>Save your creation as an XML file (with the <gui style="menuitem">Save</gui> button), and apply it as a wallpaper with the <gui style="menuitem">Set as wallpaper</gui> menu item. Adjustment options (zoom, centered, stretched, etc.) are available too.</p>
+    <p>Save your creation as an XML file (with the <gui style="menuitem">Save</gui> button), and apply it as a wallpaper with the <gui style="button">Set as wallpaper</gui> button. Adjustment options (zoom, centered, stretched, etc.) are available from the menu next to it.</p>
   </section>
 
 </page>

@@ -171,12 +171,6 @@
                   <object class="GtkMenuButton" id="adj_btn">
                     <property name="visible">True</property>
                     <property name="tooltip_text" translatable="yes">Adjustment options for the wallpaper</property>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="icon_name">pan-down-symbolic</property>
-                      </object>
-                    </child>
                   </object>
                 </child>
               </object>
