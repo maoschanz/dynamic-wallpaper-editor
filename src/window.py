@@ -472,7 +472,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	def run_save_file_chooser(self):
 		"""Run the "save as" filechooser and return the filename."""
 		fn = None
-		file_chooser = Gtk.FileChooserNative.new(_("Save as"), self,
+		file_chooser = Gtk.FileChooserNative.new(_("Save as…"), self,
 			Gtk.FileChooserAction.SAVE,
 			_("Save"),
 			_("Cancel"))

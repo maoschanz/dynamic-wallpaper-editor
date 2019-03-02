@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the dynamic-wallpaper-editor package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-02 03:13+0100\n"
+"POT-Creation-Date: 2019-03-02 03:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +51,7 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: src/menus.ui:40
+#: src/menus.ui:40 src/window.py:475
 msgid "Save as…"
 msgstr ""
 
@@ -297,8 +298,4 @@ msgstr ""
 #: src/window.py:393
 #, python-format
 msgid "Unknown element: %s"
-msgstr ""
-
-#: src/window.py:475
-msgid "Save as"
 msgstr ""

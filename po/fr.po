@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-02 03:13+0100\n"
+"POT-Creation-Date: 2019-03-02 03:35+0100\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -52,7 +52,7 @@ msgstr "À propos"
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/menus.ui:40
+#: src/menus.ui:40 src/window.py:475
 msgid "Save as…"
 msgstr "Enregistrer sous…"
 
@@ -83,10 +83,6 @@ msgstr "Zoomé"
 #: src/menus.ui:94
 msgid "Spanned"
 msgstr "Étalé"
-
-#: src/window.ui:26
-msgid "Dynamic wallpaper editor"
-msgstr "Éditeur de fonds d'écran dynamiques"
 
 #: src/window.ui:31 src/window.py:337 src/window.py:339
 msgid "Open"
@@ -306,10 +302,6 @@ msgstr "Ce fichier XML ne décrit pas un fond d'écran dynamique valide"
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Élément inconnu : %s"
-
-#: src/window.py:475
-msgid "Save as"
-msgstr "Enregistrer sous"
 
 #~ msgid ""
 #~ "Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
