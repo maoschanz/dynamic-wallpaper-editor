@@ -1,6 +1,5 @@
 # French translation of dynamic wallpaper editor.
-# Copyright (C) 1998-2017 Free Software Foundation, Inc.
-# This file is under the same GPLv3.
+# This file is distributed under the same license as the dynamic-wallpaper-editor package.
 #
 # Romain F. T. 2018
 #
