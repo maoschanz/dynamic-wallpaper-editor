@@ -1,32 +1,31 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the dynamic-wallpaper-editor package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Julian Reyes <julian.reyes.escrigas@gmail.com>, 2019.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: dynamic-wallpaper-editor\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-01 19:38-0500\n"
-"PO-Revision-Date: 2018-06-23 17:44+0200\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: de\n"
+"PO-Revision-Date: 2019-03-01 19:00-0500\n"
+"Last-Translator: Julian Reyes <julian.reyes.escrigas@gmail.com>\n"
+"Language-Team: Spanish; Castilian <julian.reyes.escrigas@gmail.com>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 3.30.1\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
 #: src/window.ui:26
 msgid "Dynamic Wallpaper Editor"
-msgstr "Dynamischer Bildschirmhintergrund Editor"
+msgstr "Editor de fondos dinámicos"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
 #: src/main.py:105
 msgid "Create or edit dynamic wallpapers for GNOME."
-msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
+msgstr "Crea o edita Fondos de pantalla dinamicos para GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:10
 msgid "com.github.maoschanz.DynamicWallpaperEditor"
@@ -34,31 +33,31 @@ msgstr ""
 
 #: src/menus.ui:7 src/menus.ui:34 src/shortcuts.ui:17
 msgid "New window"
-msgstr "Neues Fenster"
+msgstr "Nueva ventana"
 
 #: src/menus.ui:13 src/menus.ui:88
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Atajos de teclado"
 
 #: src/menus.ui:17 src/menus.ui:92
 msgid "Help"
-msgstr ""
+msgstr "Ayuda"
 
 #: src/menus.ui:21
 msgid "About"
-msgstr "Info"
+msgstr "Acerca de"
 
 #: src/menus.ui:25
 msgid "Quit"
-msgstr "Beenden"
+msgstr "Salir"
 
 #: src/menus.ui:40 src/window.py:340
 msgid "Save as"
-msgstr "Speichern unter"
+msgstr "Guardar como"
 
 #: src/menus.ui:45
 msgid "Background adjustment"
-msgstr ""
+msgstr "Fondo Ajuste"
 
 #: src/menus.ui:54
 msgid "Mosaic"
@@ -85,247 +84,222 @@ msgid "Spanned"
 msgstr ""
 
 #: src/menus.ui:96
-#, fuzzy
 msgid "About Dynamic Wallpaper Editor"
-msgstr "Dynamischer Bildschirmhintergrund Editor"
+msgstr "Acerca de Dynamic Wallpaper Editor"
 
 #: src/window.ui:31 src/window.py:190 src/window.py:192
 msgid "Open"
-msgstr "Öffnen"
+msgstr "Abrir"
 
 #: src/window.ui:32 src/shortcuts.ui:44
 msgid "Open an existing dynamic wallpaper"
-msgstr "Öffne einen existierenden dynamischen Bildschirmhintergrund"
+msgstr "Abrir un fondo dinamico existente"
 
 #: src/window.ui:41
 msgid "Set the exact start time of the wallpaper"
-msgstr ""
+msgstr "Establecer la hora exacta de inicio del fondo de pantalla"
 
 #: src/window.ui:72
 msgid "More actions"
-msgstr ""
+msgstr "Mas acciones"
 
 #: src/window.ui:88 src/shortcuts.ui:65 src/window.py:174 src/window.py:342
 msgid "Save"
-msgstr "Speichern"
+msgstr "Guardar"
 
 #: src/window.ui:125
 msgid "Error starting the application, please report this bug."
 msgstr ""
+"Ha ocurrido un error iniciando la aplicación, por favor reporte este error."
 
 #: src/window.ui:144 src/shortcuts.ui:51 src/window.py:249
 msgid "Add pictures"
-msgstr "Bilder hinzufügen"
+msgstr "Agregar imagenes"
 
 #: src/window.ui:158 src/shortcuts.ui:58 src/window.py:222
 msgid "Add a folder"
-msgstr ""
+msgstr "Agregar una carpeta"
 
 #: src/window.ui:169 src/shortcuts.ui:72
 msgid "Set as wallpaper"
-msgstr "Als Bildschirmhintergrund festlegen"
+msgstr "Fijar como fondo"
 
 #: src/window.ui:196
 msgid "Add new pictures, or open an existing XML file."
-msgstr ""
+msgstr "Agregue nuevas imágenes o abra un archivo XML existente."
 
 #: src/window.ui:226
-#, fuzzy
 msgid "Use the same duration for all pictures"
-msgstr "Verwende die selbe Zeit für alle Bilder"
+msgstr "Usa la misma duración para todas las imágenes"
 
 #: src/window.ui:266
 msgid "Duration of each picture (seconds)"
-msgstr ""
+msgstr "Duración de cada imagen (segundos)"
 
 #: src/window.ui:296
 msgid "Duration of each transition (seconds)"
-msgstr ""
+msgstr "Duración de cada transición (segundos)"
 
 #: src/picture_row.ui:72
-#, fuzzy
 msgid "Time"
-msgstr "Zeit:"
+msgstr "Tiempo"
 
 #: src/picture_row.ui:83
 msgid ""
 "Time (in seconds) of this image. This doesn't include the time of the "
 "transition."
 msgstr ""
-"Zeit (in Sekunden) dieses Bildes. Beinhaltet nicht die Zeit der Übergänge."
+"Tiempo (en segundos) de esta imagen. Esto no incluye el tiempo de la "
+"transición."
 
 #: src/picture_row.ui:96
-#, fuzzy
 msgid "Transition"
-msgstr "Übergänge:"
+msgstr "Transición"
 
 #: src/picture_row.ui:107
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr ""
-"Zeit (in Sekunden) der Übergänge zwischen diesem Bild und dem nächsten."
+"Tiempo (en segundos) de la transición entre esta imagen y la siguiente."
 
 #: src/picture_row.ui:124
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: src/picture_row.ui:150
 msgid "Move up"
-msgstr ""
+msgstr "Mover arriba"
 
 #: src/picture_row.ui:164
 msgid "Move down"
-msgstr ""
+msgstr "Mover abajo"
 
 #: src/start_time.ui:52
 msgid "This is useful, for example, if the total duration is 24 hours."
-msgstr ""
+msgstr "Esto es útil, por ejemplo, si la duración total es de 24 horas."
 
 #: src/start_time.ui:57
-#, fuzzy
 msgid "Start time of the wallpaper"
-msgstr "Als Bildschirmhintergrund festlegen"
+msgstr "Hora de inicio del fondo de pantalla"
 
 #: src/start_time.ui:75
 msgid "Year"
-msgstr ""
+msgstr "Año"
 
 #: src/start_time.ui:98
 msgid "Month"
-msgstr ""
+msgstr "Mes"
 
 #: src/start_time.ui:122
 msgid "Day"
-msgstr ""
+msgstr "Dia"
 
 #: src/start_time.ui:146
 msgid "Hour"
-msgstr ""
+msgstr "Hora"
 
 #: src/start_time.ui:170
 msgid "Minute"
-msgstr ""
+msgstr "Minuto"
 
 #: src/start_time.ui:194
 msgid "Second"
-msgstr ""
+msgstr "Segundo"
 
 #: src/shortcuts.ui:13
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: src/shortcuts.ui:24
 msgid "Quit all windows"
-msgstr ""
+msgstr "Salir de todas las ventanas"
 
 #: src/shortcuts.ui:31
 msgid "Display help"
-msgstr ""
+msgstr "Mostrar ayuda"
 
 #: src/shortcuts.ui:40
-#, fuzzy
 msgid "Wallpaper"
-msgstr "Als Bildschirmhintergrund festlegen"
+msgstr "Fondo de pantalla"
 
 #: src/main.py:111
 msgid "Report bugs or ideas"
-msgstr "Melde Fehler oder Ideen"
+msgstr "Reportar errores o ideas"
 
 #: src/main.py:112
 msgid "translator-credits"
-msgstr ""
+msgstr "Traductores"
 
 #: src/window.py:134
-#, fuzzy, python-format
+#, python-format
 msgid "%s pictures"
-msgstr "Bilder hinzufügen"
+msgstr "%s imagenes"
 
 #: src/window.py:134
 #, python-format
 msgid "Total time: %s second(s)"
-msgstr ""
+msgstr "Tiempo total:%s segundo (s)"
 
 #: src/window.py:141
 #, python-format
 msgid "%s hour(s)"
-msgstr ""
+msgstr "%s horas(s)"
 
 #: src/window.py:143
 #, python-format
 msgid "%s minute(s)"
-msgstr ""
+msgstr "%s minuto(s)"
 
 #: src/window.py:144
 #, python-format
 msgid "%s second(s)"
-msgstr ""
+msgstr "%s segundo(s)"
 
 #: src/window.py:168 src/window.py:344
 msgid "Untitled"
-msgstr ""
+msgstr "Sin titulo"
 
 #: src/window.py:172 src/window.py:193 src/window.py:343
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/window.py:173
 msgid "Discard"
-msgstr ""
+msgstr "Descartar"
 
 #: src/window.py:175
 msgid "There are unsaved modifications to your wallpaper."
-msgstr ""
+msgstr "Hay modificaciones no guardadas en tu fondo de pantalla."
 
 #: src/window.py:189
 msgid "Loading…"
-msgstr ""
+msgstr "Cargando..."
 
 #: src/window.py:195 src/window.py:346
 msgid "Dynamic wallpapers (XML)"
-msgstr "Dynamische Bildschirmhintergründe (XML)"
+msgstr "Fondos de pantalla dinámicos (XML)"
 
 #: src/window.py:282
-#, fuzzy
 msgid "All pictures"
-msgstr "Bilder hinzufügen"
+msgstr "Todas las imagenes"
 
 #: src/window.py:290
 msgid "PNG images"
-msgstr ""
+msgstr "Imagenes PNG"
 
 #: src/window.py:294
 msgid "JPEG images"
-msgstr ""
+msgstr "Imagenes JPEG"
 
 #: src/window.py:391
-#, fuzzy
 msgid "This dynamic wallpaper is corrupted"
-msgstr "Dynamischer Bildschirmhintergrund Editor"
+msgstr "Este fondo de pantalla dinámico está dañado"
 
 #: src/window.py:396
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
-msgstr ""
+msgstr "Este archivo XML no describe un fondo de pantalla dinámico válido"
 
 #: src/window.py:407
 #, python-format
 msgid "Unknown element: %s"
-msgstr ""
-
-#~ msgid "Dynamic wallpaper editor"
-#~ msgstr "Dynamischer Bildschirmhintergrund Editor"
-
-#~ msgid "Pictures"
-#~ msgstr "Bilder"
-
-#, fuzzy
-#~ msgid ""
-#~ "Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
-#~ "GNOME desktop"
-#~ msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
-
-#, fuzzy
-#~ msgid ""
-#~ "A simple utility to create or edit dynamic wallpapers for GNOME Shell. "
-#~ "The duration of each picture and each transition can be set separately or "
-#~ "globally."
-#~ msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
+msgstr "Elemento desconocido: %s"
