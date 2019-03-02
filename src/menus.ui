@@ -37,50 +37,8 @@
     <section>
       <item>
         <attribute name="action">win.save_as</attribute>
-        <attribute name="label" translatable="yes">Save as</attribute>
+        <attribute name="label" translatable="yes">Save as…</attribute>
       </item>
-    </section>
-    <section>
-      <submenu>
-        <attribute name="label" translatable="yes">Background adjustment</attribute>
-        <section>
-          <!-- <item> -->
-          <!--   <attribute name="action">win.pic_options</attribute> -->
-          <!--   <attribute name="label" translatable="yes">None</attribute> -->
-          <!--   <attribute name="target">none</attribute> -->
-          <!-- </item> -->
-          <item>
-            <attribute name="action">win.pic_options</attribute>
-            <attribute name="label" translatable="yes">Mosaic</attribute>
-            <attribute name="target">wallpaper</attribute>
-          </item>
-          <item>
-            <attribute name="action">win.pic_options</attribute>
-            <attribute name="label" translatable="yes">Centered</attribute>
-            <attribute name="target">centered</attribute>
-          </item>
-          <item>
-            <attribute name="action">win.pic_options</attribute>
-            <attribute name="label" translatable="yes">Scaled</attribute>
-            <attribute name="target">scaled</attribute>
-          </item>
-          <item>
-            <attribute name="action">win.pic_options</attribute>
-            <attribute name="label" translatable="yes">Streched</attribute>
-            <attribute name="target">streched</attribute>
-          </item>
-          <item>
-            <attribute name="action">win.pic_options</attribute>
-            <attribute name="label" translatable="yes">Zoom</attribute>
-            <attribute name="target">zoom</attribute>
-          </item>
-          <item>
-            <attribute name="action">win.pic_options</attribute>
-            <attribute name="label" translatable="yes">Spanned</attribute>
-            <attribute name="target">spanned</attribute>
-          </item>
-        </section>
-      </submenu>
     </section>
     <section>
       <item>
@@ -93,7 +51,48 @@
       </item>
       <item>
         <attribute name="action">app.about</attribute>
-        <attribute name="label" translatable="yes">About Dynamic Wallpaper Editor</attribute>
+        <attribute name="label" translatable="yes">About</attribute>
+      </item>
+    </section>
+  </menu>
+
+  <menu id="adjustment-menu">
+    <section>
+      <attribute name="label" translatable="yes">Background adjustment</attribute>
+      <!-- <item> -->
+      <!--   <attribute name="action">win.pic_options</attribute> -->
+      <!--   <attribute name="label" translatable="yes">None</attribute> -->
+      <!--   <attribute name="target">none</attribute> -->
+      <!-- </item> -->
+      <item>
+        <attribute name="action">win.pic_options</attribute>
+        <attribute name="label" translatable="yes">Mosaic</attribute>
+        <attribute name="target">wallpaper</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.pic_options</attribute>
+        <attribute name="label" translatable="yes">Centered</attribute>
+        <attribute name="target">centered</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.pic_options</attribute>
+        <attribute name="label" translatable="yes">Scaled</attribute>
+        <attribute name="target">scaled</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.pic_options</attribute>
+        <attribute name="label" translatable="yes">Streched</attribute>
+        <attribute name="target">streched</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.pic_options</attribute>
+        <attribute name="label" translatable="yes">Zoom</attribute>
+        <attribute name="target">zoom</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.pic_options</attribute>
+        <attribute name="label" translatable="yes">Spanned</attribute>
+        <attribute name="target">spanned</attribute>
       </item>
     </section>
   </menu>

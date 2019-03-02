@@ -18,7 +18,9 @@
 from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
 from .gi_composites import GtkTemplate
 
-# TODO make rows draggable ?
+# TODO make rows draggable ? It looks complex
+# Here is a C example https://blog.gtk.org/2017/04/23/drag-and-drop-in-lists/
+# I don't need a handle like him, the thumbnail is enough for this
 class PictureRow(Gtk.ListBoxRow):
 	"""This is a row with the thumbnail and the path of the picture, and control
 	buttons (up/down, delete) for this picture. It also contains "spinbuttons" if
@@ -37,18 +39,20 @@ class PictureRow(Gtk.ListBoxRow):
 		row_box = builder.get_object('row_box')
 		self.time_box = builder.get_object('time_box')
 
+		# File name
 		label = builder.get_object('row_label')
 		label.set_label(self.filename)
 		label.set_ellipsize(Pango.EllipsizeMode.START)
 
+		# Row controls
 		delete_btn = builder.get_object('delete_btn')
 		delete_btn.connect('clicked', self.destroy_row)
-
 		up_btn = builder.get_object('up_btn')
 		down_btn = builder.get_object('down_btn')
 		up_btn.connect('clicked', self.on_up)
 		down_btn.connect('clicked', self.on_down)
 
+		# Picture durations
 		self.static_time_btn = builder.get_object('static_btn')
 		self.trans_time_btn = builder.get_object('transition_btn')
 		self.static_time_btn.connect('value-changed', self.window.update_status)
@@ -56,6 +60,7 @@ class PictureRow(Gtk.ListBoxRow):
 		self.static_time_btn.set_value(float(stt))
 		self.trans_time_btn.set_value(float(trt))
 
+		# Thumbnail
 		image = builder.get_object('row_thumbnail')
 		try:
 			# This size is totally arbitrary.
@@ -73,6 +78,9 @@ class PictureRow(Gtk.ListBoxRow):
 		self.time_box.set_visible(not self.window.time_switch.get_active())
 
 	def generate_static(self, st_time):
+		"""Returns a valid XML code for this picture. The duration can
+		optionally be set as a parameter (if None, the spinbutton specific to
+		the row will be used)."""
 		if st_time is None:
 			time_str = str(self.static_time_btn.get_value())
 		else:
@@ -87,6 +95,9 @@ class PictureRow(Gtk.ListBoxRow):
 		return str(raw_string)
 
 	def generate_transition(self, tr_time, next_fn):
+		"""Returns a valid XML code for a transition from this picture to the
+		filename given as a parameter. The duration can	optionally be set as a
+		parameter too (if None, self's spinbutton will be used)."""
 		if tr_time is None:
 			time_str = str(self.trans_time_btn.get_value())
 		else:
@@ -116,5 +127,6 @@ class PictureRow(Gtk.ListBoxRow):
 
 	def destroy_row(self, *args):
 		self.window.destroy_row(self)
+		# FIXME memory is not correctly freed
 		self.destroy()
 
