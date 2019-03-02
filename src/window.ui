@@ -31,9 +31,6 @@
             <property name="label" translatable="yes">Open</property>
             <property name="tooltip_text" translatable="yes">Open an existing dynamic wallpaper</property>
           </object>
-          <packing>
-            <property name="pack-type">start</property>
-          </packing>
         </child>
         <child>
           <object class="GtkMenuButton" id="start_btn">
@@ -54,16 +51,10 @@
                     <property name="visible">True</property>
                     <property name="icon_name">pan-down-symbolic</property>
                   </object>
-                  <packing>
-                    <property name="pack-type">end</property>
-                  </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="pack-type">start</property>
-          </packing>
         </child>
         <child>
           <object class="GtkMenuButton" id="menu_btn">
@@ -163,11 +154,31 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="set_as_btn">
+              <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="action_name">win.set_as_wallpaper</property>
-                <property name="label" translatable="yes">Set as wallpaper</property>
-                <property name="expand">False</property>
+                <style>
+                  <class name="linked"/>
+                </style>
+                <child>
+                  <object class="GtkButton" id="set_as_btn">
+                    <property name="visible">True</property>
+                    <property name="action_name">win.set_as_wallpaper</property>
+                    <property name="label" translatable="yes">Set as wallpaper</property>
+                    <property name="expand">False</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkMenuButton" id="adj_btn">
+                    <property name="visible">True</property>
+                    <property name="tooltip_text" translatable="yes">Adjustment options for the wallpaper</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon_name">pan-down-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="pack-type">end</property>

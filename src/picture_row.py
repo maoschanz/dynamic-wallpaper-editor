@@ -116,5 +116,6 @@ class PictureRow(Gtk.ListBoxRow):
 
 	def destroy_row(self, *args):
 		self.window.destroy_row(self)
+		# FIXME memory is not correctly freed
 		self.destroy()
 
