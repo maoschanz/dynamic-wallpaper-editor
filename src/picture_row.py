@@ -75,7 +75,7 @@ class PictureRow(Gtk.ListBoxRow):
 
 		self.add(row_box)
 		self.show_all()
-		self.time_box.set_visible(not self.window.time_switch.get_active())
+		self.time_box.set_visible(not self.window.is_global)
 
 	def generate_static(self, st_time):
 		"""Returns a valid XML code for this picture. The duration can

@@ -37,9 +37,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	time_box_separator = GtkTemplate.Child()
 	time_box = GtkTemplate.Child()
-	time_switch = GtkTemplate.Child()
 
 	info_bar = GtkTemplate.Child()
+	fix_24_btn = GtkTemplate.Child()
 	notification_label = GtkTemplate.Child()
 	status_bar = GtkTemplate.Child()
 
@@ -51,14 +51,16 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.xml_file_name = None
 		self.gio_file = None
 		self._is_saved = True
+		self.is_global = True
+		self.check_24 = False
 
 		# Used in the "add pictures" file chooser dialog
 		self.preview_picture = Gtk.Image(margin_right=5)
 
 		# Connect signals
-		self.time_switch.connect('notify::active', self.update_global_time_box)
 		self.trans_time_btn.connect('value-changed', self.update_status)
 		self.static_time_btn.connect('value-changed', self.update_status)
+		self.fix_24_btn.connect('clicked', self.fix_24)
 		self.info_bar.connect('close', self.close_notification)
 		self.info_bar.connect('response', self.close_notification)
 		self.list_box.set_sort_func(self.sort_list)
@@ -67,6 +69,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.build_time_popover()
 		self.build_menus()
 		self.build_all_actions()
+		self.set_type_slideshow()
 		self.update_status()
 		self.close_notification()
 
@@ -122,23 +125,59 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	# Wallpaper type ###########################################################
 
 	def on_change_wallpaper_type(self, *args):
-		pass
-		# TODO
-		# 3 possible types:
-		# - 'slideshow': hide the start time, every pic has the same duration
-		# - 'time_day': show the start time, every pic has its own duration
-		#               (static in hours, transition in minutes ?) and the total
-		#               time HAS TO be 24h.
-		# - 'custom': show the start time, every pic has its own duration
+		new_value = args[1].get_string()
+		if new_value == 'slideshow':
+			self.set_type_slideshow()
+		elif new_value == 'time_day':
+			self.set_type_time_day()
+		else: # elif new_value == 'custom':
+			self.set_type_custom()
+		args[0].set_state(GLib.Variant.new_string(new_value))
+
+	def auto_detect_type(self):
+		total_time, l, row_list = self.get_total_time()
+		if total_time == 86400:
+			self.lookup_action('wallpaper_type').set_state(
+			                                GLib.Variant.new_string('time_day'))
+			self.set_type_time_day()
+		elif self.is_slideshow(l, row_list):
+			self.lookup_action('wallpaper_type').set_state(
+			                               GLib.Variant.new_string('slideshow'))
+			self.set_type_slideshow()
+		else:
+			self.lookup_action('wallpaper_type').set_state(
+			                                  GLib.Variant.new_string('custom'))
+			self.set_type_custom()
+
+	def is_slideshow(self, l, row_list):
+		st = row_list[0].static_time_btn.get_value()
+		tr = row_list[0].trans_time_btn.get_value()
+		for index in range(0, l):
+			if st != row_list[index].static_time_btn.get_value():
+				return False
+			if tr != row_list[index].trans_time_btn.get_value():
+				return False
+		self.static_time_btn.set_value(st)
+		self.trans_time_btn.set_value(tr)
+		return True
 
 	def set_type_slideshow(self):
-		pass
+		self.start_btn.set_visible(False)
+		self.update_global_time_box(True)
+		self.set_check_24(False)
+		self.set_title(_("Dynamic Wallpaper Editor") + ' - ' + _("Slideshow"))
 
 	def set_type_time_day(self):
-		pass
+		self.start_btn.set_visible(True)
+		self.update_global_time_box(False)
+		self.set_check_24(True)
+		self.set_title(_("Dynamic Wallpaper Editor") + ' - ' + _("Time of the day"))
 
 	def set_type_custom(self):
-		pass
+		self.start_btn.set_visible(True)
+		self.update_global_time_box(False)
+		self.set_check_24(False)
+		self.set_title(_("Dynamic Wallpaper Editor") + ' - ' + _("Custom"))
 
 	# Wallpaper settings #######################################################
 
@@ -164,9 +203,40 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	# Time management ##########################################################
 
-	def update_global_time_box(self, *args):
-		"""Show relevant spinbuttons based on the time_switch state."""
-		is_global = args[0].get_active()
+	def set_check_24(self, should_check):
+		self.check_24 = should_check
+		if not should_check:
+			self.close_notification()
+		self.update_status()
+
+	def fix_24(self, *args):
+		"""Automatically set the durations for each picture to reach a total of
+		24 hours, assuming there is only 1 picture for the night, and assuming
+		the night is 45% of a cycle. 4% of the total time is used for
+		transitions."""
+		total_time, l, row_list = self.get_total_time()
+		if l == 0:
+			return
+		if l == 1:
+			row_list[0].static_time_btn.set_value(86400)
+			row_list[0].trans_time_btn.set_value(0)
+			return
+
+		st_total = int(86400 * 0.96)
+		tr_total = 86400 - st_total
+		st_day_pics = int(st_total * 0.45 / (l-1))
+		st_night = st_total - st_day_pics * (l-1)
+		tr = tr_total / l
+		for index in range(0, l-1):
+			row_list[index].static_time_btn.set_value(st_day_pics)
+			row_list[index].trans_time_btn.set_value(tr)
+		row_list[-1].static_time_btn.set_value(st_night)
+		row_list[-1].trans_time_btn.set_value(tr)
+		self.update_status()
+
+	def update_global_time_box(self, is_global):
+		"""Show relevant spinbuttons based on the active 'wallpaper_type'."""
+		self.is_global = is_global
 		self.time_box.set_visible(is_global)
 		self.time_box_separator.set_visible(is_global)
 		row_list = self.list_box.get_children()
@@ -174,20 +244,24 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			row_list[index].time_box.set_visible(not is_global)
 		self.update_status()
 
-	def update_status(self, *args):
-		"""Update the total time in the statusbar."""
-		self.status_bar.pop(0)
+	def get_total_time(self):
 		total_time = 0
 		row_list = self.list_box.get_children()
 		l = len(row_list)
-		if self.time_switch.get_active():
-			for index in range(0, l-1):
+		if self.is_global:
+			for index in range(0, l):
 				total_time += self.static_time_btn.get_value()
 				total_time += self.trans_time_btn.get_value()
 		else:
-			for index in range(0, l-1):
+			for index in range(0, l):
 				total_time += row_list[index].static_time_btn.get_value()
 				total_time += row_list[index].trans_time_btn.get_value()
+		return int(total_time), l, row_list
+
+	def update_status(self, *args):
+		"""Update the total time in the statusbar."""
+		self.status_bar.pop(0)
+		total_time, l, row_list = self.get_total_time()
 		message = str(_("%s pictures") % l + ' - ' + _("Total time: %s second(s)") % total_time)
 		if total_time >= 60:
 			message += ' = '
@@ -199,6 +273,12 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			if minutes > 0:
 				message += str(_("%s minute(s)") % minutes + ' ')
 			message += str(_("%s second(s)") % seconds)
+		if self.check_24:
+			if total_time != 86400:
+				self.show_notification(_("The total duration isn't 24 hours."))
+				self.fix_24_btn.set_visible(True)
+			else:
+				self.close_notification()
 		self.status_bar.push(0, message)
 
 	# Miscellaneous ############################################################
@@ -207,6 +287,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.info_bar.set_visible(False)
 
 	def show_notification(self, label):
+		self.fix_24_btn.set_visible(False)
 		self.notification_label.set_label(label)
 		self.info_bar.set_visible(True)
 
@@ -377,6 +458,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			self.gio_file = file_chooser.get_file()
 			if self.load_list_from_xml():
 				self.header_bar.set_subtitle(file_chooser.get_filename().split('/')[-1])
+				self.auto_detect_type()
 				self.lookup_action('set_as_wallpaper').set_enabled(True)
 				self._is_saved = True
 			else:
@@ -419,7 +501,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			else:
 				self.show_notification(str(_("Unknown element: %s") % child.tag))
 
-		self.time_switch.set_active(False)
+		self.is_global = False
 		self.add_pictures_to_list1(pic_list)
 		return True
 
@@ -524,7 +606,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		"""This method generates valid XML code for a wallpaper. It might not be
 		correctly encoded."""
 		row_list = self.list_box.get_children()
-		raw_text = """<!-- Generated by com.github.maoschanz.DynamicWallpaperEditor -->
+		raw_text = """
+
+<!-- Generated by com.github.maoschanz.DynamicWallpaperEditor -->
 <background>
 	<starttime>
 		<year>""" + str(int(self.year_spinbtn.get_value())) + """</year>
@@ -534,7 +618,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		<minute>""" + str(int(self.minute_spinbtn.get_value())) + """</minute>
 		<second>""" + str(int(self.second_spinbtn.get_value())) + """</second>
 	</starttime>\n"""
-		if self.time_switch.get_active():
+		if self.is_global:
 			st_time = str(self.static_time_btn.get_value())
 			tr_time = str(self.trans_time_btn.get_value())
 		else:
@@ -549,7 +633,10 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			if image is not None:
 				raw_text = str(raw_text) + row_list[index].generate_static(st_time)
 				raw_text = str(raw_text) + row_list[index].generate_transition(tr_time, next_fn)
-		raw_text = str(raw_text) + '</background>'
+		raw_text = str(raw_text) + """</background>
+\n
+\n
+"""
 		return str(raw_text)
 
 ################################################################################

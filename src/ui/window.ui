@@ -116,6 +116,14 @@
                     <property name="label" translatable="yes">Error starting the application, please report this bug.</property>
                   </object>
                 </child>
+                <child>
+                  <object class="GtkButton" id="fix_24_btn">
+                    <property name="label" translatable="yes">Automatic fix</property>
+                  </object>
+                  <packing>
+                    <property name="pack-type">end</property>
+                  </packing>
+                </child>
               </object>
             </child>
           </object>
@@ -215,25 +223,6 @@
         <child>
           <object class="GtkStatusbar" id="status_bar">
             <property name="visible">True</property>
-            <property name="spacing">15</property>
-            <child>
-              <object class="GtkSwitch" id="time_switch">
-                <property name="visible">True</property>
-                <property name="state">False</property>
-              </object>
-              <packing>
-                <property name="pack-type">end</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="label" translatable="yes">Use the same duration for all pictures</property>
-              </object>
-              <packing>
-                <property name="pack-type">end</property>
-              </packing>
-            </child>
           </object>
           <packing>
             <property name="pack-type">end</property>
