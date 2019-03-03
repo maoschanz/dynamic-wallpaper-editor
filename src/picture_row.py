@@ -35,7 +35,7 @@ class PictureRow(Gtk.ListBoxRow):
 		self.indx = index
 
 		builder = Gtk.Builder().new_from_resource( \
-		          '/com/github/maoschanz/DynamicWallpaperEditor/picture_row.ui')
+		       '/com/github/maoschanz/DynamicWallpaperEditor/ui/picture_row.ui')
 		row_box = builder.get_object('row_box')
 		self.time_box = builder.get_object('time_box')
 

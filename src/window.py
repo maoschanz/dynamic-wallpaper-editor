@@ -22,7 +22,7 @@ import xml.etree.ElementTree as xml_parser
 
 from .picture_row import PictureRow
 
-@GtkTemplate(ui='/com/github/maoschanz/DynamicWallpaperEditor/window.ui')
+@GtkTemplate(ui='/com/github/maoschanz/DynamicWallpaperEditor/ui/window.ui')
 class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	__gtype_name__ = 'DynamicWallpaperEditorWindow'
 
@@ -74,7 +74,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	def build_time_popover(self):
 		builder = Gtk.Builder().new_from_resource( \
-		           '/com/github/maoschanz/DynamicWallpaperEditor/start_time.ui')
+		        '/com/github/maoschanz/DynamicWallpaperEditor/ui/start_time.ui')
 		start_time_popover = builder.get_object('start_time_popover')
 		self.year_spinbtn = builder.get_object('year_spinbtn')
 		self.month_spinbtn = builder.get_object('month_spinbtn')
@@ -86,7 +86,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	def build_menus(self):
 		builder = Gtk.Builder().new_from_resource( \
-		                '/com/github/maoschanz/DynamicWallpaperEditor/menus.ui')
+		             '/com/github/maoschanz/DynamicWallpaperEditor/ui/menus.ui')
 		self.menu_btn.set_menu_model(builder.get_object('window-menu'))
 		self.adj_btn.set_menu_model(builder.get_object('adjustment-menu'))
 
@@ -107,11 +107,38 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 		self.lookup_action('set_as_wallpaper').set_enabled(False)
 
+		action_type = Gio.SimpleAction().new_stateful('wallpaper_type', \
+		                   GLib.VariantType.new('s'), \
+		                   GLib.Variant.new_string('slideshow'))
+		action_type.connect('change-state', self.on_change_wallpaper_type)
+		self.add_action(action_type)
+
 		action_options = Gio.SimpleAction().new_stateful('pic_options', \
 		                   GLib.VariantType.new('s'), \
 		                   GLib.Variant.new_string(self.get_wallpaper_option()))
 		action_options.connect('change-state', self.on_change_wallpaper_options)
 		self.add_action(action_options)
+
+	# Wallpaper type ###########################################################
+
+	def on_change_wallpaper_type(self, *args):
+		pass
+		# TODO
+		# 3 possible types:
+		# - 'slideshow': hide the start time, every pic has the same duration
+		# - 'time_day': show the start time, every pic has its own duration
+		#               (static in hours, transition in minutes ?) and the total
+		#               time HAS TO be 24h.
+		# - 'custom': show the start time, every pic has its own duration
+
+	def set_type_slideshow(self):
+		pass
+
+	def set_type_time_day(self):
+		pass
+
+	def set_type_custom(self):
+		pass
 
 	# Wallpaper settings #######################################################
 

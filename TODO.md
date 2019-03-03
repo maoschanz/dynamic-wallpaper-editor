@@ -11,6 +11,7 @@
 
 ## General
 
+- Important: implement the "wallpaper type" mechanism as described in the comments in `window.py`
 - Important: make the rows draggable
 - Quite important: ensure the memory is freed when deleting a row
 - Not important: support more desktop environments (Pantheon ? Budgie ? Unity ? MATE ? Cinnamon ?)

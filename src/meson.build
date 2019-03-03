@@ -3,7 +3,7 @@ moduledir = join_paths(pkgdatadir, 'dynamic_wallpaper_editor')
 gnome = import('gnome')
 
 gnome.compile_resources('dynamic-wallpaper-editor',
-	'dynamic-wallpaper-editor.gresource.xml',
+	'ui/dynamic-wallpaper-editor.gresource.xml',
 	gresource_bundle: true,
 	install: true,
 	install_dir: pkgdatadir,

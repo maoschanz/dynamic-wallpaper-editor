@@ -49,7 +49,7 @@ class Application(Gtk.Application):
 
 	def build_app_menu(self):
 		builder = Gtk.Builder().new_from_resource( \
-		                '/com/github/maoschanz/DynamicWallpaperEditor/menus.ui')
+		             '/com/github/maoschanz/DynamicWallpaperEditor/ui/menus.ui')
 		menu = builder.get_object('app-menu')
 		return menu
 
@@ -95,7 +95,7 @@ class Application(Gtk.Application):
 		if self.shortcuts_window is not None:
 			self.shortcuts_window.destroy()
 		builder = Gtk.Builder().new_from_resource( \
-		            '/com/github/maoschanz/DynamicWallpaperEditor/shortcuts.ui')
+		         '/com/github/maoschanz/DynamicWallpaperEditor/ui/shortcuts.ui')
 		self.shortcuts_window = builder.get_object('shortcuts')
 		self.shortcuts_window.present()
 
