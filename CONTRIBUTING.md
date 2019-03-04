@@ -21,8 +21,8 @@ This quite simple project uses Python3 and PyGObject. The build system is `meson
 
 - Fork the repo and clone it on your disk.
 - Add your language to `po/LINGUAS`.
-- Build the app once, and then run `ninja -C _build dynamic-wallpaper-editor-update-po` at the root of the project. It will produce a `.po` file for your language.
-- Use a text editor or [an adequate app](https://flathub.org/apps/details/org.gnome.Gtranslator) to translate the strings of this `.po` file. Do not translate the app id (`com.github.maoschanz.DynamicWallpaperEditor`).
+- Build the app once, and then run `ninja -C _build dynamic-wallpaper-editor-update-po` at the root of the project. It will produce a `.po` file for your language. It's also possible to run `./update-translations.sh xx`, where `xx` is the code for your language.
+- Use a text editor or [an adequate app](https://flathub.org/apps/details/org.gnome.Gtranslator) to translate the strings of this `.po` file. The string `translator-credits` should be translated by your name(s), it will be displayed in the "About" dialog.
 - If you want to test your translation: GNOME Builder isn't able to run a translated version of the app so export it as a `.flatpak` file and install it.
 - Run
 ```
@@ -40,10 +40,10 @@ And submit a "pull request"/"merge request".
 - Tell on the issue that you'll do a patch.
 - Use tabs in `.py` files.
 - Use 2 spaces in `.ui` or `.xml` files.
-- In the python code, use double quotes for translatable strings and single quotes otherwise.
+- In python code, use double quotes for translatable strings and single quotes otherwise.
 - Concerning design, try to respect GNOME Human Interface Guidelines as much as possible.
-- If you find some bullshit in the code, or don't understand it, feel free to ask me about it.
 - Code comments should explain **why** the code is doing what it is doing, **not what** it does.
+- If you find some bullshit in the code, or don't understand it, feel free to ask me about it.
 
 ### Using GNOME Builder
 
