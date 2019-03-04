@@ -26,7 +26,7 @@
   <section id="type">
     <title>Select a type of wallpaper</title>
     <p>The three available types are <gui style="menuitem">Slideshow</gui> (all pictures have the same duration), <gui style="menuitem">Time of the day</gui> (each picture has its own duration, and the total is 24 hours), and <gui style="menuitem">Custom</gui> (each picture has its own duration). The default value is <gui style="menuitem">Custom</gui>.</p>
-    <p>The existing type is detected when opening an existing XML file.</p>
+    <p>When you open an existing XML file, the existing type is detected.</p>
   </section>
 
   <section id="pictures">
@@ -43,7 +43,7 @@
 
   <section id="start-time">
     <title>Set the start time</title>
-    <p>If the type is <gui style="menuitem">Daylight</gui>, you should set the exact moment the slideshow begin from the <gui style="button">Start time</gui> menu.</p>
+    <p>If the type is <gui style="menuitem">Daylight</gui>, you should set the moment the slideshow begins from the <gui style="button">Start time</gui> menu.</p>
   </section>
 
   <section id="save-apply">

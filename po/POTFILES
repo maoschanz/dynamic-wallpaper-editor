@@ -1,9 +1,10 @@
 data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
-src/menus.ui
-src/window.ui
-src/picture_row.ui
-src/start_time.ui
-src/shortcuts.ui
+src/ui/menus.ui
+src/ui/picture_row.ui
+src/ui/start_time.ui
+src/ui/shortcuts.ui
+src/ui/window.ui
 src/main.py
+src/picture_row.py
 src/window.py
