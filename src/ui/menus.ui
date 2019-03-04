@@ -33,27 +33,11 @@
         <attribute name="action">app.new_window</attribute>
         <attribute name="label" translatable="yes">New window</attribute>
       </item>
+    </section>
+    <section>
       <item>
         <attribute name="action">win.save_as</attribute>
         <attribute name="label" translatable="yes">Save as…</attribute>
-      </item>
-    </section>
-    <section>
-      <attribute name="label" translatable="yes">Wallpaper type</attribute>
-      <item>
-        <attribute name="action">win.wallpaper_type</attribute>
-        <attribute name="label" translatable="yes">Slideshow</attribute>
-        <attribute name="target">slideshow</attribute>
-      </item>
-      <item>
-        <attribute name="action">win.wallpaper_type</attribute>
-        <attribute name="label" translatable="yes">Time of the day</attribute>
-        <attribute name="target">time_day</attribute>
-      </item>
-      <item>
-        <attribute name="action">win.wallpaper_type</attribute>
-        <attribute name="label" translatable="yes">Custom</attribute>
-        <attribute name="target">custom</attribute>
       </item>
     </section>
     <section>
@@ -68,6 +52,27 @@
       <item>
         <attribute name="action">app.about</attribute>
         <attribute name="label" translatable="yes">About</attribute>
+      </item>
+    </section>
+  </menu>
+
+  <menu id="type-menu">
+    <section>
+      <attribute name="label" translatable="yes">Wallpaper type</attribute>
+      <item>
+        <attribute name="action">win.wallpaper_type</attribute>
+        <attribute name="label" translatable="yes">Slideshow</attribute>
+        <attribute name="target">slideshow</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.wallpaper_type</attribute>
+        <attribute name="label" translatable="yes">Daylight</attribute>
+        <attribute name="target">time_day</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.wallpaper_type</attribute>
+        <attribute name="label" translatable="yes">Custom</attribute>
+        <attribute name="target">custom</attribute>
       </item>
     </section>
   </menu>

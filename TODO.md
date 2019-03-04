@@ -11,9 +11,9 @@
 
 ## General
 
-- Important: implement the "wallpaper type" mechanism as described in the comments in `window.py`
+- Important: show hh:mm:ss values in each spinbtn's tooltip
 - Important: make the rows draggable
-- Quite important: ensure the memory is freed when deleting a row
+- Important: ensure the memory is freed when deleting a row
 - Not important: support more desktop environments (Pantheon ? Budgie ? Unity ? MATE ? Cinnamon ?)
 - Not important: more clear and useful error messages, including line numbers
 

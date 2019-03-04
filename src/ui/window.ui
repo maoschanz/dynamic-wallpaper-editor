@@ -33,17 +33,17 @@
           </object>
         </child>
         <child>
-          <object class="GtkMenuButton" id="start_btn">
+          <object class="GtkMenuButton" id="type_btn">
             <property name="visible">True</property>
-            <property name="tooltip_text" translatable="yes">Set the exact start time of the wallpaper</property>
+            <property name="tooltip_text" translatable="yes">Set the type of dynamic wallpaper you want</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="spacing">2</property>
                 <child>
-                  <object class="GtkImage">
+                  <object class="GtkLabel" id="type_label">
                     <property name="visible">True</property>
-                    <property name="icon_name">preferences-system-time-symbolic</property>
+                    <property name="label" translatable="yes">Custom</property>
                   </object>
                 </child>
                 <child>
@@ -160,6 +160,30 @@
               <packing>
                 <property name="pack-type">start</property>
               </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="start_btn">
+                <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Set the exact start time of the wallpaper</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="spacing">2</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon_name">preferences-system-time-symbolic</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon_name">pan-down-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
             </child>
             <child>
               <object class="GtkBox">

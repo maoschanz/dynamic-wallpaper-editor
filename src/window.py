@@ -30,6 +30,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	start_btn = GtkTemplate.Child()
 	menu_btn = GtkTemplate.Child()
 	adj_btn = GtkTemplate.Child()
+	type_btn = GtkTemplate.Child()
+	type_label = GtkTemplate.Child()
 
 	list_box = GtkTemplate.Child()
 	trans_time_btn = GtkTemplate.Child()
@@ -69,7 +71,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.build_time_popover()
 		self.build_menus()
 		self.build_all_actions()
-		self.set_type_slideshow()
+		self.set_type_custom()
 		self.update_status()
 		self.close_notification()
 
@@ -92,6 +94,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		             '/com/github/maoschanz/DynamicWallpaperEditor/ui/menus.ui')
 		self.menu_btn.set_menu_model(builder.get_object('window-menu'))
 		self.adj_btn.set_menu_model(builder.get_object('adjustment-menu'))
+		self.type_btn.set_menu_model(builder.get_object('type-menu'))
 
 	def build_action(self, action_name, callback):
 		"""Wrapper for adding a simple stateless Gio Action to the window."""
@@ -112,7 +115,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 		action_type = Gio.SimpleAction().new_stateful('wallpaper_type', \
 		                   GLib.VariantType.new('s'), \
-		                   GLib.Variant.new_string('slideshow'))
+		                   GLib.Variant.new_string('custom'))
 		action_type.connect('change-state', self.on_change_wallpaper_type)
 		self.add_action(action_type)
 
@@ -165,19 +168,19 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.start_btn.set_visible(False)
 		self.update_global_time_box(True)
 		self.set_check_24(False)
-		self.set_title(_("Dynamic Wallpaper Editor") + ' - ' + _("Slideshow"))
+		self.type_label.set_label(_("Slideshow"))
 
 	def set_type_time_day(self):
 		self.start_btn.set_visible(True)
 		self.update_global_time_box(False)
 		self.set_check_24(True)
-		self.set_title(_("Dynamic Wallpaper Editor") + ' - ' + _("Time of the day"))
+		self.type_label.set_label(_("Daylight"))
 
 	def set_type_custom(self):
 		self.start_btn.set_visible(True)
 		self.update_global_time_box(False)
 		self.set_check_24(False)
-		self.set_title(_("Dynamic Wallpaper Editor") + ' - ' + _("Custom"))
+		self.type_label.set_label(_("Custom"))
 
 	# Wallpaper settings #######################################################
 
@@ -343,6 +346,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 					array.append(file_chooser.get_filename() + '/' + f.get_display_name())
 				f = enumerator.next_file(None)
 			self.add_pictures_to_list2(array)
+		self.status_bar.pop(1)
 		file_chooser.destroy()
 
 	def action_add(self, *args):
@@ -365,6 +369,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		if response == Gtk.ResponseType.OK:
 			array = file_chooser.get_filenames()
 			self.add_pictures_to_list2(array)
+		self.status_bar.pop(1)
 		file_chooser.destroy()
 
 	def cb_update_preview(self, fc):
@@ -403,7 +408,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		"""Add pictures from a list of paths."""
 		for path in array:
 			self.add_one_picture(path, 10, 0)
-		self.status_bar.pop(1)
 		self.update_status()
 		self.restack_indexes()
 

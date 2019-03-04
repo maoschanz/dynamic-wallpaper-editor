@@ -52,7 +52,7 @@
         <property name="margin">10</property>
         <property name="spacing">10</property>
         <property name="orientation">vertical</property>
-        <property name="tooltip_text" translatable="yes">This is useful, for example, if the total duration is 24 hours.</property>
+        <property name="tooltip_text" translatable="yes">This is useful when the total duration is 24 hours.</property>
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
