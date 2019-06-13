@@ -3,6 +3,7 @@
 ## Opening XML files
 
 - Not important: monitor XML files to detect modifications
+- Not important: no need to remember the path and the uri ?
 
 ## Adding pictures
 

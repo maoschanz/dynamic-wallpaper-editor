@@ -81,15 +81,12 @@ class Application(Gtk.Application):
 		if options.contains('version'):
 			print(_("Dynamic Wallpaper Editor") + ' ' + self._version)
 			self.on_about()
-
-		# If no file given as argument
 		elif options.contains('new-window') and len(arguments) == 1:
-			self.on_new_window()
+			self.on_new_window() # If no file given as argument
 		elif len(arguments) == 1:
-			self.on_activate()
-
-		elif options.contains('new-window'):
-			self.on_new_window()
+			self.on_activate() # If no option
+		else:
+			# If file(s) given as argument
 			for path in arguments:
 				f = self.get_valid_file(args[1], path)
 				if f is not None:

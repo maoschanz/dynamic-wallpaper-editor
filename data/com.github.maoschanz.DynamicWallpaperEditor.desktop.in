@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Dynamic Wallpaper Editor
-Exec=dynamic-wallpaper-editor %u
+Exec=dynamic-wallpaper-editor %U
 Comment=Create or edit dynamic wallpapers for GNOME.
 Terminal=false
 Type=Application

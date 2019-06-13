@@ -67,6 +67,7 @@ class PictureRow(Gtk.ListBoxRow):
 			# This size is totally arbitrary.
 			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, 114, 64, True)
 			image.set_from_pixbuf(pixbuf)
+			pixbuf = None
 		except Exception:
 			image.set_from_icon_name('dialog-error-symbolic', Gtk.IconSize.BUTTON)
 			self.set_tooltip_text(_("This picture doesn't exist"))
@@ -117,8 +118,7 @@ class PictureRow(Gtk.ListBoxRow):
 
 	def destroy_row(self, *args):
 		self.window.destroy_row(self)
-		# FIXME memory is not correctly freed
-		self.destroy()
+		self.destroy() # FIXME memory is not correctly freed
 
 	############################################################################
 
