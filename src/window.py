@@ -22,7 +22,9 @@ import xml.etree.ElementTree as xml_parser
 
 from .picture_row import PictureRow
 
-@GtkTemplate(ui='/com/github/maoschanz/DynamicWallpaperEditor/ui/window.ui')
+UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
+
+@GtkTemplate(ui = UI_PATH + 'window.ui')
 class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	__gtype_name__ = 'DynamicWallpaperEditorWindow'
 
@@ -49,8 +51,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		super().__init__(**kwargs)
 		self.app = kwargs['application']
 		self.init_template()
-		self.xml_file_uri = None
-		self.xml_file_name = None
 		self.gio_file = None
 		self._is_saved = True
 		self.is_global = True
@@ -79,8 +79,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	# Building the UI ##########################################################
 
 	def build_time_popover(self):
-		builder = Gtk.Builder().new_from_resource( \
-		        '/com/github/maoschanz/DynamicWallpaperEditor/ui/start_time.ui')
+		builder = Gtk.Builder().new_from_resource(UI_PATH + 'start_time.ui')
 		start_time_popover = builder.get_object('start_time_popover')
 		self.year_spinbtn = builder.get_object('year_spinbtn')
 		self.month_spinbtn = builder.get_object('month_spinbtn')
@@ -91,8 +90,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.start_btn.set_popover(start_time_popover)
 
 	def build_menus(self):
-		builder = Gtk.Builder().new_from_resource( \
-		             '/com/github/maoschanz/DynamicWallpaperEditor/ui/menus.ui')
+		builder = Gtk.Builder().new_from_resource(UI_PATH + 'menus.ui')
 		self.menu_btn.set_menu_model(builder.get_object('window-menu'))
 		self.adj_btn.set_menu_model(builder.get_object('adjustment-menu'))
 		self.type_btn.set_menu_model(builder.get_object('type-menu'))
@@ -142,17 +140,15 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	def auto_detect_type(self):
 		total_time, l, row_list = self.get_total_time()
+		action = self.lookup_action('wallpaper_type')
 		if total_time == 86400:
-			self.lookup_action('wallpaper_type').set_state(
-			                                GLib.Variant.new_string('time_day'))
+			action.set_state(GLib.Variant.new_string('time_day'))
 			self.set_type_time_day()
 		elif self.is_slideshow(l, row_list):
-			self.lookup_action('wallpaper_type').set_state(
-			                               GLib.Variant.new_string('slideshow'))
+			action.set_state(GLib.Variant.new_string('slideshow'))
 			self.set_type_slideshow()
 		else:
-			self.lookup_action('wallpaper_type').set_state(
-			                                  GLib.Variant.new_string('custom'))
+			action.set_state(GLib.Variant.new_string('custom'))
 			self.set_type_custom()
 
 	def is_slideshow(self, l, row_list):
@@ -205,7 +201,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	def action_set_as_wallpaper(self, *args):
 		gsettings = Gio.Settings.new('org.gnome.desktop.background')
 		wp_key = 'picture-uri'
-		gsettings.set_string(wp_key, self.xml_file_uri)
+		gsettings.set_string(wp_key, self.gio_file.get_uri())
 
 	# Time management ##########################################################
 
@@ -319,18 +315,18 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		if self._is_saved:
 			return True
 
-		if self.xml_file_name is None:
+		if self.gio_file is None:
 			title_label = _("Untitled") + '.xml'
 		else:
-			title_label = self.xml_file_name.split('/')[-1]
+			title_label = self.gio_file.get_path().split('/')[-1]
 		dialog = Gtk.MessageDialog(modal=True, title=title_label, transient_for=self)
 		dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
 		dialog.add_button(_("Discard"), Gtk.ResponseType.NO)
 		dialog.add_button(_("Save"), Gtk.ResponseType.APPLY)
-		label = Gtk.Label(label=_("There are unsaved modifications to your wallpaper."))
+		label = Gtk.Label(visible=True, \
+		          label=_("There are unsaved modifications to your wallpaper."))
 		dialog.get_message_area().add(label)
 
-		dialog.show_all()
 		result = dialog.run()
 		dialog.destroy()
 		if result == Gtk.ResponseType.APPLY:
@@ -464,10 +460,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		if not self.confirm_save_modifs():
 			return
 		self.status_bar.push(1, _("Loading…"))
-		file_chooser = Gtk.FileChooserNative.new(_("Open"), self,
-			Gtk.FileChooserAction.OPEN,
-			_("Open"),
-			_("Cancel"))
+		file_chooser = Gtk.FileChooserNative.new(_("Open"), self, \
+		                     Gtk.FileChooserAction.OPEN, _("Open"), _("Cancel"))
 		onlyXML = Gtk.FileFilter()
 		onlyXML.set_name(_("Dynamic wallpapers (XML)"))
 		onlyXML.add_mime_type('application/xml')
@@ -481,21 +475,16 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	def load_gfile(self, gfile):
 		self.gio_file = gfile
-		self.xml_file_uri = gfile.get_uri() # FIXME ça donne l'uri en /run/...
-		self.xml_file_name = gfile.get_path() # FIXME ça donne le path en /run/...
-		# print(self.xml_file_uri)
-		# print(self.xml_file_name)
 		if self.load_list_from_xml():
-			self.header_bar.set_subtitle(self.xml_file_name.split('/')[-1])
+			self.header_bar.set_subtitle(self.gio_file.get_path().split('/')[-1])
 			self.auto_detect_type()
 			self.lookup_action('set_as_wallpaper').set_enabled(True)
 			self._is_saved = True
 		else:
-			self.xml_file_uri = None
-			self.xml_file_name = None
+			self.gio_file = None
 
 	def load_list_from_xml(self):
-		"""This method parses the XML from `self.xml_file_name`, looking for
+		"""This method parses the XML from `self.gio_file`, looking for the
 		pictures' paths and durations."""
 		# Clear the list_box content
 		self.reset_list_box()
@@ -503,7 +492,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		# This is the list of pictures to add
 		pic_list = []
 
-		f = open(self.xml_file_name, 'r') # TODO use Gio.File here too ?
+		f = open(self.gio_file.get_path(), 'r')
 		xml_text = f.read()
 		f.close()
 
@@ -591,9 +580,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	def action_save(self, *args):
 		"""Write the result of `self.generate_text()` in a file."""
-		if self.xml_file_name is None:
-			fn = self.run_save_file_chooser()
-			if fn is None:
+		if self.gio_file is None:
+			is_saved = self.run_save_file_chooser()
+			if is_saved == False:
 				return
 		contents = self.generate_text().encode('utf-8')
 		self.gio_file.replace_contents_async(contents, None, False, \
@@ -601,17 +590,15 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self._is_saved = True
 
 	def action_save_as(self, *args):
-		fn = self.run_save_file_chooser()
-		if fn is not None:
+		is_saved = self.run_save_file_chooser()
+		if is_saved == True:
 			self.action_save()
 
 	def run_save_file_chooser(self):
 		"""Run the "save as" filechooser and return the filename."""
-		fn = None
-		file_chooser = Gtk.FileChooserNative.new(_("Save as…"), self,
-			Gtk.FileChooserAction.SAVE,
-			_("Save"),
-			_("Cancel"))
+		is_saved = False
+		file_chooser = Gtk.FileChooserNative.new(_("Save as…"), self, \
+		                     Gtk.FileChooserAction.SAVE, _("Save"), _("Cancel"))
 		file_chooser.set_current_name(_("Untitled") + '.xml')
 		onlyXML = Gtk.FileFilter()
 		onlyXML.set_name(_("Dynamic wallpapers (XML)"))
@@ -620,14 +607,12 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		file_chooser.set_do_overwrite_confirmation(True)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.ACCEPT:
-			self.xml_file_uri = file_chooser.get_uri()
 			self.lookup_action('set_as_wallpaper').set_enabled(True)
-			fn = file_chooser.get_filename()
-			self.xml_file_name = fn
-			self.header_bar.set_subtitle(fn.split('/')[-1])
 			self.gio_file = file_chooser.get_file()
+			self.header_bar.set_subtitle(self.gio_file.get_path().split('/')[-1])
+			is_saved = True
 		file_chooser.destroy()
-		return fn
+		return is_saved
 
 	def generate_text(self):
 		"""This method generates valid XML code for a wallpaper. It might not be

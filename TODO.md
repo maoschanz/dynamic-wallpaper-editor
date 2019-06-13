@@ -3,17 +3,16 @@
 ## Opening XML files
 
 - Not important: monitor XML files to detect modifications
-- Not important: no need to remember the path and the uri ?
 
-## Adding pictures
+## Adding and managing pictures
 
+- Important: ensure the memory is freed when deleting a row
+- Not important: make the rows draggable
 - Not important: ability to add a picture by drag-and-dropping the file from nautilus
 
 ## General
 
-- Not important: less ugly message dialog
-- Important: make the rows draggable
-- Very important: ensure the memory is freed when deleting a row
+- Very important: don't save the `/run/user/1000/doc/...` path in dconf
 - Not important: support more desktop environments (Pantheon ? Budgie ? Unity ? MATE ? Cinnamon ?)
 - Not important: more clear and useful error messages, including line numbers
 
