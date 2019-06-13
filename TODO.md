@@ -11,15 +11,15 @@
 
 ## General
 
+- Important: better automatic 24h thing
 - Important: show hh:mm:ss values in each spinbtn's tooltip
 - Important: make the rows draggable
-- Important: ensure the memory is freed when deleting a row
+- Very important: ensure the memory is freed when deleting a row
 - Not important: support more desktop environments (Pantheon ? Budgie ? Unity ? MATE ? Cinnamon ?)
 - Not important: more clear and useful error messages, including line numbers
 
 ## Translations
 
-- Important: More languages
 - Important: provide translations to the description in `data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in` but without cluttering the `.po` file with release notes bullshit
 - Not important: Provide translations for the help user manual
 

@@ -60,6 +60,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.preview_picture = Gtk.Image(margin_right=5)
 
 		# Connect signals
+		self.connect('delete-event', self.action_close)
 		self.trans_time_btn.connect('value-changed', self.update_status)
 		self.static_time_btn.connect('value-changed', self.update_status)
 		self.fix_24_btn.connect('clicked', self.fix_24)
@@ -218,24 +219,38 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		the night is 45% of a cycle. 4% of the total time is used for
 		transitions."""
 		total_time, l, row_list = self.get_total_time()
+
 		if l == 0:
-			return
-		if l == 1:
+			pass
+		elif l == 1:
+			# Special case
 			row_list[0].static_time_btn.set_value(86400)
 			row_list[0].trans_time_btn.set_value(0)
-			return
+		else:
+			# General case
+			st_total = int(86400 * 0.96)
+			tr_total = 86400 - st_total
+			st_day_pics = int(st_total * 0.45 / (l-1))
+			st_night = st_total - st_day_pics * (l-1)
+			tr = tr_total / l
+			for index in range(0, l-1):
+				row_list[index].static_time_btn.set_value(st_day_pics)
+				row_list[index].trans_time_btn.set_value(tr)
+			row_list[-1].static_time_btn.set_value(st_night)
+			row_list[-1].trans_time_btn.set_value(tr)
 
-		st_total = int(86400 * 0.96)
-		tr_total = 86400 - st_total
-		st_day_pics = int(st_total * 0.45 / (l-1))
-		st_night = st_total - st_day_pics * (l-1)
-		tr = tr_total / l
-		for index in range(0, l-1):
-			row_list[index].static_time_btn.set_value(st_day_pics)
-			row_list[index].trans_time_btn.set_value(tr)
-		row_list[-1].static_time_btn.set_value(st_night)
-		row_list[-1].trans_time_btn.set_value(tr)
-		self.update_status()
+		# Update the tooltips and the status bar
+		for index in range(0, len(row_list)):
+			row_list[index].on_transition_changed()
+			row_list[index].on_static_changed()
+
+		# Ensure the total time is actually 86400 despite float → int conversions
+		while self.update_status() > 86400:
+			row_list[0].static_time_btn.set_value( \
+			                        row_list[0].static_time_btn.get_value() - 1)
+		while self.update_status() < 86400:
+			row_list[0].static_time_btn.set_value( \
+			                        row_list[0].static_time_btn.get_value() + 1)
 
 	def update_global_time_box(self, is_global):
 		"""Show relevant spinbuttons based on the active 'wallpaper_type'."""
@@ -283,6 +298,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			else:
 				self.close_notification()
 		self.status_bar.push(0, message)
+		return total_time
 
 	# Miscellaneous ############################################################
 

@@ -17,6 +17,7 @@
 
 from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
 from .gi_composites import GtkTemplate
+import math
 
 # TODO make rows draggable ? It looks complex
 # Here is a C example https://blog.gtk.org/2017/04/23/drag-and-drop-in-lists/
@@ -55,8 +56,8 @@ class PictureRow(Gtk.ListBoxRow):
 		# Picture durations
 		self.static_time_btn = builder.get_object('static_btn')
 		self.trans_time_btn = builder.get_object('transition_btn')
-		self.static_time_btn.connect('value-changed', self.window.update_status)
-		self.trans_time_btn.connect('value-changed', self.window.update_status)
+		self.static_time_btn.connect('value-changed', self.on_static_changed)
+		self.trans_time_btn.connect('value-changed', self.on_transition_changed)
 		self.static_time_btn.set_value(float(stt))
 		self.trans_time_btn.set_value(float(trt))
 
@@ -77,43 +78,32 @@ class PictureRow(Gtk.ListBoxRow):
 		self.show_all()
 		self.time_box.set_visible(not self.window.is_global)
 
-	def generate_static(self, st_time):
-		"""Returns a valid XML code for this picture. The duration can
-		optionally be set as a parameter (if None, the spinbutton specific to
-		the row will be used)."""
-		if st_time is None:
-			time_str = str(self.static_time_btn.get_value())
-		else:
-			time_str = str(st_time)
-		raw_string = (
-"""
-	<static>
-		<file>{fn}</file>
-		<duration>{dur}</duration>
-	</static>
-""").format(fn=self.filename, dur=time_str)
-		return str(raw_string)
+	############################################################################
 
-	def generate_transition(self, tr_time, next_fn):
-		"""Returns a valid XML code for a transition from this picture to the
-		filename given as a parameter. The duration can	optionally be set as a
-		parameter too (if None, self's spinbutton will be used)."""
-		if tr_time is None:
-			time_str = str(self.trans_time_btn.get_value())
-		else:
-			time_str = str(tr_time)
-		if time_str == '0.0':
-			raw_string = ''
-		else:
-			raw_string = (
-"""
-	<transition type="overlay">
-		<duration>{dur}</duration>
-		<from>{fn}</from>
-		<to>{nfn}</to>
-	</transition>
-""").format(dur=time_str, fn=self.filename, nfn=next_fn)
-		return str(raw_string)
+	def on_transition_changed(self, *args):
+		total_time = self.trans_time_btn.get_value()
+		message = ""
+		hours = math.floor(total_time / 3600)
+		minutes = math.floor((total_time % 3600) / 60)
+		seconds = math.floor(total_time % 60)
+		message += str(_("%s hour(s)") % hours + ' ')
+		message += str(_("%s minute(s)") % minutes + ' ')
+		message += str(_("%s second(s)") % seconds)
+		self.static_time_btn.set_tooltip_text(message)
+		self.trans_time_btn.set_tooltip_text(message)
+		self.window.update_status()
+
+	def on_static_changed(self, *args):
+		total_time = self.static_time_btn.get_value()
+		message = ""
+		hours = math.floor(total_time / 3600)
+		minutes = math.floor((total_time % 3600) / 60)
+		seconds = math.floor(total_time % 60)
+		message += str(_("%s hour(s)") % hours + ' ')
+		message += str(_("%s minute(s)") % minutes + ' ')
+		message += str(_("%s second(s)") % seconds)
+		self.static_time_btn.set_tooltip_text(message)
+		self.window.update_status()
 
 	def on_up(self, *args):
 		self.window.list_box.get_row_at_index(self.indx-1).indx = self.indx
@@ -129,4 +119,44 @@ class PictureRow(Gtk.ListBoxRow):
 		self.window.destroy_row(self)
 		# FIXME memory is not correctly freed
 		self.destroy()
+
+	############################################################################
+
+	def generate_static(self, st_time):
+		"""Returns a valid XML code for this picture. The duration can
+		optionally be set as a parameter (if None, the spinbutton specific to
+		the row will be used)."""
+		if st_time is None:
+			time_str = str(self.static_time_btn.get_value())
+		else:
+			time_str = str(st_time)
+		raw_string = (
+'''
+	<static>
+		<file>{fn}</file>
+		<duration>{dur}</duration>
+	</static>
+''').format(fn=self.filename, dur=time_str)
+		return str(raw_string)
+
+	def generate_transition(self, tr_time, next_fn):
+		"""Returns a valid XML code for a transition from this picture to the
+		filename given as a parameter. The duration can	optionally be set as a
+		parameter too (if None, self's spinbutton will be used)."""
+		if tr_time is None:
+			time_str = str(self.trans_time_btn.get_value())
+		else:
+			time_str = str(tr_time)
+		if time_str == '0.0':
+			raw_string = ''
+		else:
+			raw_string = (
+'''
+	<transition type="overlay">
+		<duration>{dur}</duration>
+		<from>{fn}</from>
+		<to>{nfn}</to>
+	</transition>
+''').format(dur=time_str, fn=self.filename, nfn=next_fn)
+		return str(raw_string)
 

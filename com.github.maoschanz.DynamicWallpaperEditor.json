@@ -1,7 +1,7 @@
 {
     "app-id" : "com.github.maoschanz.DynamicWallpaperEditor",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.30",
+    "runtime-version" : "3.32",
     "sdk" : "org.gnome.Sdk",
     "command" : "dynamic-wallpaper-editor",
     "finish-args" : [
@@ -21,8 +21,6 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "tag" : "1.11.0",
-                    "commit" : "7ce191dc661306cac5febe5a04ab58205378cc3e",
                     "url" : "https://github.com/maoschanz/dynamic-wallpaper-editor.git"
                 }
             ]
