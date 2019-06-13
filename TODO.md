@@ -2,7 +2,6 @@
 
 ## Opening XML files
 
-- Not important: opening files from the command line
 - Not important: monitor XML files to detect modifications
 
 ## Adding pictures
@@ -11,8 +10,7 @@
 
 ## General
 
-- Important: better automatic 24h thing
-- Important: show hh:mm:ss values in each spinbtn's tooltip
+- Not important: less ugly message dialog
 - Important: make the rows draggable
 - Very important: ensure the memory is freed when deleting a row
 - Not important: support more desktop environments (Pantheon ? Budgie ? Unity ? MATE ? Cinnamon ?)

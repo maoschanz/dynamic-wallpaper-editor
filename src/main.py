@@ -22,96 +22,157 @@ from gi.repository import Gtk, Gio, GLib, Gdk
 
 from .window import DynamicWallpaperEditorWindow
 
+APP_ID = 'com.github.maoschanz.DynamicWallpaperEditor'
+UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
+
+def main(version):
+	app = Application(version)
+	return app.run(sys.argv)
+
+################################################################################
+
 class Application(Gtk.Application):
 	about_dialog = None
 	shortcuts_window = None
 
 	def __init__(self, version):
-		super().__init__(application_id='com.github.maoschanz.DynamicWallpaperEditor',
-		                 flags=Gio.ApplicationFlags.FLAGS_NONE)
+		super().__init__(application_id=APP_ID,
+		                 flags=Gio.ApplicationFlags.HANDLES_COMMAND_LINE)
 
 		GLib.set_application_name('Dynamic Wallpaper Editor')
-		GLib.set_prgname('com.github.maoschanz.DynamicWallpaperEditor')
+		GLib.set_prgname(APP_ID)
+		self.connect('startup', self.on_startup)
+		self.connect('activate', self.on_activate)
+		self.connect('command-line', self.on_cli)
 		self.register(None)
-		self.build_all_actions()
-		self.set_accels()
 		self._version = version
 
+		self.add_main_option('version', b'v', GLib.OptionFlags.NONE,
+		                     GLib.OptionArg.NONE,
+		                     _("Print the version and display the 'about' dialog"),
+		                     None)
+		self.add_main_option('new-window', b'n', GLib.OptionFlags.NONE,
+		                     GLib.OptionArg.NONE, _("Open a new window"), None)
+
+	def on_startup(self, *args):
+		self.build_app_actions()
 		if self.prefers_app_menu():
 			menu = self.build_app_menu()
 			self.set_app_menu(menu)
 
-	def do_activate(self):
+	def on_activate(self, *args):
+		"""I don't know if this is ever called from the 'activate' signal, but
+		it's called by on_cli anyway."""
 		win = self.props.active_window
 		if not win:
-			win = DynamicWallpaperEditorWindow(application=self)
-		win.present()
+			self.on_new_window()
+		else:
+			win.present()
+
+	def on_cli(self, *args):
+		"""Main handler, managing options and CLI arguments."""
+		# This is the list of files given by the command line. If there is none,
+		# it will be ['/app/bin/dynamic-wallpaper-editor'] which has a length of 1.
+		arguments = args[1].get_arguments()
+
+		# Possible options are 'version' and 'new-window'.
+		options = args[1].get_options_dict()
+
+		if options.contains('version'):
+			print(_("Dynamic Wallpaper Editor") + ' ' + self._version)
+			self.on_about()
+
+		# If no file given as argument
+		elif options.contains('new-window') and len(arguments) == 1:
+			self.on_new_window()
+		elif len(arguments) == 1:
+			self.on_activate()
+
+		elif options.contains('new-window'):
+			self.on_new_window()
+			for path in arguments:
+				f = self.get_valid_file(args[1], path)
+				if f is not None:
+					self.open_window_with_content(f)
+		# I don't even know if i should return something
+		return 0
+
+	def get_valid_file(self, app, path):
+		try:
+			f = app.create_file_for_arg(path)
+			info = f.query_info('standard::*', \
+			               Gio.FileQueryInfoFlags.NONE, None).get_content_type()
+			if ('text/xml' in info) or ('application/xml' in info):
+				return f
+			else:
+				return None
+		except:
+			command = 'flatpak run --file-forwarding {0} @@ {1} @@'
+			command = command.format(APP_ID, path)
+			err = _("Error opening this file. Did you mean\n %s \n?") % command
+			print(err)
+			return None
+
+	############################################################################
 
 	def build_app_menu(self):
-		builder = Gtk.Builder().new_from_resource( \
-		             '/com/github/maoschanz/DynamicWallpaperEditor/ui/menus.ui')
+		builder = Gtk.Builder().new_from_resource(UI_PATH + 'menus.ui')
 		menu = builder.get_object('app-menu')
 		return menu
 
-	def build_action(self, action_name, callback):
+	def add_action_simple(self, action_name, callback, shortcuts):
 		action = Gio.SimpleAction.new(action_name, None)
 		action.connect('activate', callback)
 		self.add_action(action)
+		if shortcuts is not None:
+			self.set_accels_for_action('app.' + action_name, shortcuts)
 
-	def build_all_actions(self):
-		self.build_action('new_window', self.on_new_window_activate)
-		self.build_action('shortcuts', self.on_shortcuts_activate)
-		self.build_action('help', self.on_help_activate)
-		self.build_action('about', self.on_about_activate)
-		self.build_action('quit', self.on_quit)
+	def build_app_actions(self):
+		self.add_action_simple('new_window', self.on_new_window, ['<Ctrl>n'])
+		self.add_action_simple('shortcuts', self.on_shortcuts_activate, None)
+		self.add_action_simple('help', self.on_help_activate, ['F1'])
+		self.add_action_simple('about', self.on_about, None)
+		self.add_action_simple('quit', self.on_quit, ['<Ctrl>q'])
 
-	def set_accels(self):
-		self.set_accels_for_action('app.new_window', ['<Ctrl>n'])
-		self.set_accels_for_action('app.quit', ['<Ctrl>q'])
-		self.set_accels_for_action('app.help', ['F1'])
-		self.set_accels_for_action('win.save', ['<Ctrl>s'])
-		self.set_accels_for_action('win.open', ['<Ctrl>o'])
-		self.set_accels_for_action('win.add', ['<Ctrl>a'])
-		self.set_accels_for_action('win.add_folder', ['<Ctrl>f'])
-		self.set_accels_for_action('win.set_as_wallpaper', ['<Ctrl>w']) # XXX not standard at all
+	############################################################################
 
-	def on_about_activate(self, *args):
-		if self.about_dialog is not None:
-			self.about_dialog.destroy()
-		self.build_about_dialog()
-		self.about_dialog.show()
+	def open_window_with_content(self, gfile):
+		win = self.on_new_window()
+		win.load_gfile(gfile)
+		return win
 
-	def on_help_activate(self, *args):
-		Gtk.show_uri(None, 'help:dynamic-wallpaper-editor', Gdk.CURRENT_TIME)
-
-	def on_quit(self, *args):
-		self.quit()
-
-	def on_new_window_activate(self, *args):
+	def on_new_window(self, *args):
 		win = DynamicWallpaperEditorWindow(application=self)
 		win.present()
+		return win
 
 	def on_shortcuts_activate(self, *args):
 		if self.shortcuts_window is not None:
 			self.shortcuts_window.destroy()
-		builder = Gtk.Builder().new_from_resource( \
-		         '/com/github/maoschanz/DynamicWallpaperEditor/ui/shortcuts.ui')
+		builder = Gtk.Builder().new_from_resource(UI_PATH + 'shortcuts.ui')
 		self.shortcuts_window = builder.get_object('shortcuts')
 		self.shortcuts_window.present()
 
-	def build_about_dialog(self):
+	def on_help_activate(self, *args):
+		Gtk.show_uri(None, 'help:dynamic-wallpaper-editor', Gdk.CURRENT_TIME)
+
+	def on_about(self, *args):
+		if self.about_dialog is not None:
+			self.about_dialog.destroy()
 		self.about_dialog = Gtk.AboutDialog.new()
 		self.about_dialog.set_version(str(self._version))
 		self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
 		self.about_dialog.set_authors(['Romain F. T.'])
 		self.about_dialog.set_copyright('© 2018-2019 Romain F. T.')
 		self.about_dialog.set_license_type(Gtk.License.GPL_3_0)
-		self.about_dialog.set_logo_icon_name('com.github.maoschanz.DynamicWallpaperEditor')
+		self.about_dialog.set_logo_icon_name(APP_ID)
 		self.about_dialog.set_website('https://github.com/maoschanz/dynamic-wallpaper-editor')
 		self.about_dialog.set_website_label(_("Report bugs or ideas"))
 		self.about_dialog.set_translator_credits(_("translator-credits"))
+		self.about_dialog.show()
 
-def main(version):
-	app = Application(version)
-	return app.run(sys.argv)
+	def on_quit(self, *args):
+		self.quit()
+
+################################################################################
 

@@ -47,8 +47,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
+		self.app = kwargs['application']
 		self.init_template()
-
 		self.xml_file_uri = None
 		self.xml_file_name = None
 		self.gio_file = None
@@ -97,20 +97,22 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.adj_btn.set_menu_model(builder.get_object('adjustment-menu'))
 		self.type_btn.set_menu_model(builder.get_object('type-menu'))
 
-	def build_action(self, action_name, callback):
-		"""Wrapper for adding a simple stateless Gio Action to the window."""
+	def add_action_simple(self, action_name, callback, shortcuts):
 		action = Gio.SimpleAction.new(action_name, None)
 		action.connect('activate', callback)
 		self.add_action(action)
+		if shortcuts is not None:
+			self.app.set_accels_for_action('win.' + action_name, shortcuts)
 
 	def build_all_actions(self):
-		self.build_action('save', self.action_save)
-		self.build_action('save_as', self.action_save_as)
-		self.build_action('set_as_wallpaper', self.action_set_as_wallpaper)
-		self.build_action('open', self.action_open)
-		self.build_action('add', self.action_add)
-		self.build_action('add_folder', self.action_add_folder)
-		self.build_action('close', self.action_close)
+		self.add_action_simple('save', self.action_save, ['<Ctrl>s'])
+		self.add_action_simple('save_as', self.action_save_as, None)
+		self.add_action_simple('set_as_wallpaper', \
+		    self.action_set_as_wallpaper, ['<Ctrl>w']) # XXX not standard at all
+		self.add_action_simple('open', self.action_open, ['<Ctrl>o'])
+		self.add_action_simple('add', self.action_add, ['<Ctrl>a'])
+		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl>f'])
+		self.add_action_simple('close', self.action_close, None)
 
 		self.lookup_action('set_as_wallpaper').set_enabled(False)
 
@@ -473,19 +475,24 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		file_chooser.add_filter(onlyXML)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.ACCEPT:
-			self.xml_file_uri = file_chooser.get_uri()
-			self.xml_file_name = file_chooser.get_filename()
-			self.gio_file = file_chooser.get_file()
-			if self.load_list_from_xml():
-				self.header_bar.set_subtitle(file_chooser.get_filename().split('/')[-1])
-				self.auto_detect_type()
-				self.lookup_action('set_as_wallpaper').set_enabled(True)
-				self._is_saved = True
-			else:
-				self.xml_file_uri = None
-				self.xml_file_name = None
+			self.load_gfile(file_chooser.get_file())
 		file_chooser.destroy()
 		self.status_bar.pop(1)
+
+	def load_gfile(self, gfile):
+		self.gio_file = gfile
+		self.xml_file_uri = gfile.get_uri() # FIXME ça donne l'uri en /run/...
+		self.xml_file_name = gfile.get_path() # FIXME ça donne le path en /run/...
+		# print(self.xml_file_uri)
+		# print(self.xml_file_name)
+		if self.load_list_from_xml():
+			self.header_bar.set_subtitle(self.xml_file_name.split('/')[-1])
+			self.auto_detect_type()
+			self.lookup_action('set_as_wallpaper').set_enabled(True)
+			self._is_saved = True
+		else:
+			self.xml_file_uri = None
+			self.xml_file_name = None
 
 	def load_list_from_xml(self):
 		"""This method parses the XML from `self.xml_file_name`, looking for
