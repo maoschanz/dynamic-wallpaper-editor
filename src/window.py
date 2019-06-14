@@ -315,17 +315,11 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		if self._is_saved:
 			return True
 
-		if self.gio_file is None:
-			title_label = _("Untitled") + '.xml'
-		else:
-			title_label = self.gio_file.get_path().split('/')[-1]
-		dialog = Gtk.MessageDialog(modal=True, title=title_label, transient_for=self)
+		dialog = Gtk.MessageDialog(modal=True, transient_for=self, \
+		 message_format=_("There are unsaved modifications to your wallpaper."))
 		dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
 		dialog.add_button(_("Discard"), Gtk.ResponseType.NO)
 		dialog.add_button(_("Save"), Gtk.ResponseType.APPLY)
-		label = Gtk.Label(visible=True, \
-		          label=_("There are unsaved modifications to your wallpaper."))
-		dialog.get_message_area().add(label)
 
 		result = dialog.run()
 		dialog.destroy()
