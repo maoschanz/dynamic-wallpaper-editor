@@ -15,8 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
-from .gi_composites import GtkTemplate
+from gi.repository import Gtk, GdkPixbuf, Pango
 import math
 
 # TODO make rows draggable ? It looks complex
@@ -159,4 +158,7 @@ class PictureRow(Gtk.ListBoxRow):
 	</transition>
 ''').format(dur=time_str, fn=self.filename, nfn=next_fn)
 		return str(raw_string)
+
+	############################################################################
+################################################################################
 

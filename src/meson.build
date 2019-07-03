@@ -27,7 +27,6 @@ configure_file(
 
 dynamic_wallpaper_editor_sources = [
 	'__init__.py',
-	'gi_composites.py',
 	'main.py',
 	'window.py',
 	'picture_row.py'

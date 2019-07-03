@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
-from .gi_composites import GtkTemplate
 import math
 import xml.etree.ElementTree as xml_parser
 
@@ -24,33 +23,32 @@ from .picture_row import PictureRow
 
 UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
 
-@GtkTemplate(ui = UI_PATH + 'window.ui')
+@Gtk.Template(resource_path = UI_PATH + 'window.ui')
 class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	__gtype_name__ = 'DynamicWallpaperEditorWindow'
 
-	header_bar = GtkTemplate.Child()
-	start_btn = GtkTemplate.Child()
-	menu_btn = GtkTemplate.Child()
-	adj_btn = GtkTemplate.Child()
-	type_btn = GtkTemplate.Child()
-	type_label = GtkTemplate.Child()
+	header_bar = Gtk.Template.Child()
+	start_btn = Gtk.Template.Child()
+	menu_btn = Gtk.Template.Child()
+	adj_btn = Gtk.Template.Child()
+	type_btn = Gtk.Template.Child()
+	type_label = Gtk.Template.Child()
 
-	list_box = GtkTemplate.Child()
-	trans_time_btn = GtkTemplate.Child()
-	static_time_btn = GtkTemplate.Child()
+	list_box = Gtk.Template.Child()
+	trans_time_btn = Gtk.Template.Child()
+	static_time_btn = Gtk.Template.Child()
 
-	time_box_separator = GtkTemplate.Child()
-	time_box = GtkTemplate.Child()
+	time_box_separator = Gtk.Template.Child()
+	time_box = Gtk.Template.Child()
 
-	info_bar = GtkTemplate.Child()
-	fix_24_btn = GtkTemplate.Child()
-	notification_label = GtkTemplate.Child()
-	status_bar = GtkTemplate.Child()
+	info_bar = Gtk.Template.Child()
+	fix_24_btn = Gtk.Template.Child()
+	notification_label = Gtk.Template.Child()
+	status_bar = Gtk.Template.Child()
 
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 		self.app = kwargs['application']
-		self.init_template()
 		self.gio_file = None
 		self._is_saved = True
 		self.is_global = True

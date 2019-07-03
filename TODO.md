@@ -12,7 +12,8 @@
 
 ## General
 
-- Very important: don't save the `/run/user/1000/doc/...` path in dconf
+- UI: "modes" as radio buttons in the headerbar
+- Very important: don't save the `/run/user/1000/doc/...` path in dconf ?????
 - Not important: support more desktop environments (Pantheon ? Budgie ? Unity ? MATE ? Cinnamon ?)
 - Not important: more clear and useful error messages, including line numbers
 
