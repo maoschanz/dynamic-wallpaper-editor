@@ -24,7 +24,7 @@
 	<developer_name>Romain F. T.</developer_name>
 	<screenshots>
 		<screenshot type="default">
-			<image type="source">https://github.com/maoschanz/dynamic-wallpaper-editor/blob/master/help/C/figures/screenshot.png</image>
+			<image type="source">https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot.png</image>
 		</screenshot>
 	</screenshots>
 	<kudos>
@@ -33,6 +33,7 @@
 		<kudo>ModernToolkit</kudo>
 		<kudo>UserDocs</kudo>
 	</kudos>
+	<content_rating type="oars-1.1" />
 	<update_contact>rrroschan@gmail.com</update_contact>
 	<translation type="gettext">dynamic-wallpaper-editor</translation>
 </component>
