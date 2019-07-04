@@ -4,5 +4,6 @@ gnome.yelp(meson.project_name(),
     'index.page',
     'legal.xml'
   ],
-  media: 'figures/icon.png'
+  media: 'figures/icon.png',
+  media: 'figures/screenshot.png'
 )

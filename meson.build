@@ -1,7 +1,7 @@
 project(
 	'dynamic-wallpaper-editor',
-	version: '1.11.0',
-	meson_version: '>= 0.40.0',
+	version: '1.12.0',
+	meson_version: '>= 0.50.0',
 )
 
 i18n = import('i18n')

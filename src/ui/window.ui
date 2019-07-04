@@ -19,6 +19,7 @@
   <template class="DynamicWallpaperEditorWindow" parent="GtkApplicationWindow">
     <property name="default-width">810</property>
     <property name="default-height">500</property>
+
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header_bar">
         <property name="visible">True</property>
@@ -27,44 +28,55 @@
         <child>
           <object class="GtkButton" id="open_btn">
             <property name="visible">True</property>
-            <property name="action_name">win.open</property>
+            <property name="action-name">win.open</property>
             <property name="label" translatable="yes">Open</property>
-            <property name="tooltip_text" translatable="yes">Open an existing dynamic wallpaper</property>
+            <property name="tooltip-text" translatable="yes">Open an existing dynamic wallpaper</property>
           </object>
         </child>
-        <child>
-          <object class="GtkMenuButton" id="type_btn">
+
+        <child type="title">
+          <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="tooltip_text" translatable="yes">Set the type of dynamic wallpaper you want</property>
+            <property name="homogeneous">True</property>
+            <style><class name="linked"/></style>
             <child>
-              <object class="GtkBox">
+              <object class="GtkRadioButton" id="type_rbtn">
                 <property name="visible">True</property>
-                <property name="spacing">2</property>
-                <child>
-                  <object class="GtkLabel" id="type_label">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">Custom</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="icon_name">pan-down-symbolic</property>
-                  </object>
-                </child>
+                <property name="draw-indicator">False</property>
+                <property name="label" translatable="yes">Slideshow</property>
+                <property name="tooltip-text" translatable="yes">A simple succession of pictures.</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRadioButton" id="type_rbtn2">
+                <property name="visible">True</property>
+                <property name="draw-indicator">False</property>
+                <property name="group">type_rbtn</property>
+                <property name="label" translatable="yes">Daylight</property>
+                <property name="tooltip-text" translatable="yes">Pictures changing with the daylight.</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkRadioButton" id="type_rbtn3">
+                <property name="visible">True</property>
+                <property name="draw-indicator">False</property>
+                <property name="group">type_rbtn</property>
+                <property name="label" translatable="yes">Custom</property>
+                <property name="tooltip-text" translatable="yes">Set the durations you prefer.</property>
               </object>
             </child>
           </object>
         </child>
+
         <child>
           <object class="GtkMenuButton" id="menu_btn">
             <property name="visible">True</property>
             <property name="sensitive">False</property>
-            <property name="tooltip_text" translatable="yes">More actions</property>
+            <property name="tooltip-text" translatable="yes">More actions</property>
             <child>
               <object class="GtkImage">
                 <property name="visible">True</property>
-                <property name="icon_name">open-menu-symbolic</property>
+                <property name="icon-name">open-menu-symbolic</property>
               </object>
             </child>
           </object>
@@ -75,7 +87,7 @@
         <child>
           <object class="GtkButton" id="save_btn">
             <property name="visible">True</property>
-            <property name="action_name">win.save</property>
+            <property name="action-name">win.save</property>
             <property name="label" translatable="yes">Save</property>
           </object>
           <packing>
@@ -85,10 +97,92 @@
       </object>
     </child>
 
+    <!-- End of the headerbar -->
+
     <child>
       <object class="GtkBox" id="main_box">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
+
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="expand">False</property>
+            <property name="orientation">horizontal</property>
+            <property name="margin">10</property>
+            <property name="spacing">15</property>
+            <child>
+              <object class="GtkButton" id="add_btn">
+                <property name="visible">True</property>
+                <property name="action-name">win.add</property>
+                <property name="label" translatable="yes">Add pictures</property>
+                <property name="expand">False</property>
+                <style><class name="suggested-action"/></style>
+              </object>
+              <packing>
+                <property name="pack-type">start</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="add_folder_btn">
+                <property name="visible">True</property>
+                <property name="action-name">win.add_folder</property>
+                <property name="label" translatable="yes">Add a folder</property>
+                <property name="expand">False</property>
+              </object>
+              <packing>
+                <property name="pack-type">start</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="start_btn">
+                <property name="visible">True</property>
+                <property name="tooltip-text" translatable="yes">Set the exact start time of the wallpaper</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="spacing">2</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon-name">preferences-system-time-symbolic</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon-name">pan-down-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <style><class name="linked"/></style>
+                <child>
+                  <object class="GtkButton" id="set_as_btn">
+                    <property name="visible">True</property>
+                    <property name="action-name">win.set_as_wallpaper</property>
+                    <property name="label" translatable="yes">Set as wallpaper</property>
+                    <property name="expand">False</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkMenuButton" id="adj_btn">
+                    <property name="visible">True</property>
+                    <property name="tooltip-text" translatable="yes">Adjustment options for the wallpaper</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="pack-type">end</property>
+              </packing>
+            </child>
+          </object>
+        </child>
 
         <child>
           <object class="GtkInfoBar" id="info_bar">
@@ -125,90 +219,6 @@
                   </packing>
                 </child>
               </object>
-            </child>
-          </object>
-        </child>
-
-        <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="expand">False</property>
-            <property name="orientation">horizontal</property>
-            <property name="margin">10</property>
-            <property name="spacing">15</property>
-            <child>
-              <object class="GtkButton" id="add_btn">
-                <property name="visible">True</property>
-                <property name="action_name">win.add</property>
-                <property name="label" translatable="yes">Add pictures</property>
-                <property name="expand">False</property>
-                <style>
-                  <class name="suggested-action"/>
-                </style>
-              </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="add_folder_btn">
-                <property name="visible">True</property>
-                <property name="action_name">win.add_folder</property>
-                <property name="label" translatable="yes">Add a folder</property>
-                <property name="expand">False</property>
-              </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkMenuButton" id="start_btn">
-                <property name="visible">True</property>
-                <property name="tooltip_text" translatable="yes">Set the exact start time of the wallpaper</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="spacing">2</property>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="icon_name">preferences-system-time-symbolic</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="icon_name">pan-down-symbolic</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="GtkBox">
-                <property name="visible">True</property>
-                <style>
-                  <class name="linked"/>
-                </style>
-                <child>
-                  <object class="GtkButton" id="set_as_btn">
-                    <property name="visible">True</property>
-                    <property name="action_name">win.set_as_wallpaper</property>
-                    <property name="label" translatable="yes">Set as wallpaper</property>
-                    <property name="expand">False</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkMenuButton" id="adj_btn">
-                    <property name="visible">True</property>
-                    <property name="tooltip_text" translatable="yes">Adjustment options for the wallpaper</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="pack-type">end</property>
-              </packing>
             </child>
           </object>
         </child>

@@ -5,6 +5,7 @@ Comment=Create or edit dynamic wallpapers for GNOME.
 Terminal=false
 Type=Application
 Categories=GTK;Utility;GNOME;
+Keywords=Wallpaper;Daylight;XML;
 StartupNotify=true
 Icon=com.github.maoschanz.DynamicWallpaperEditor
 MimeType=text/xml;application/xml;

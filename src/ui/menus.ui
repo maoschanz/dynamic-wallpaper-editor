@@ -56,27 +56,6 @@
     </section>
   </menu>
 
-  <menu id="type-menu">
-    <section>
-      <attribute name="label" translatable="yes">Wallpaper type</attribute>
-      <item>
-        <attribute name="action">win.wallpaper_type</attribute>
-        <attribute name="label" translatable="yes">Slideshow</attribute>
-        <attribute name="target">slideshow</attribute>
-      </item>
-      <item>
-        <attribute name="action">win.wallpaper_type</attribute>
-        <attribute name="label" translatable="yes">Daylight</attribute>
-        <attribute name="target">time_day</attribute>
-      </item>
-      <item>
-        <attribute name="action">win.wallpaper_type</attribute>
-        <attribute name="label" translatable="yes">Custom</attribute>
-        <attribute name="target">custom</attribute>
-      </item>
-    </section>
-  </menu>
-
   <menu id="adjustment-menu">
     <section>
       <attribute name="label" translatable="yes">Background adjustment</attribute>

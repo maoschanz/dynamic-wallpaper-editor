@@ -30,9 +30,12 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	header_bar = Gtk.Template.Child()
 	start_btn = Gtk.Template.Child()
 	menu_btn = Gtk.Template.Child()
+	save_btn = Gtk.Template.Child()
 	adj_btn = Gtk.Template.Child()
-	type_btn = Gtk.Template.Child()
-	type_label = Gtk.Template.Child()
+
+	type_rbtn = Gtk.Template.Child()
+	type_rbtn2 = Gtk.Template.Child()
+	type_rbtn3 = Gtk.Template.Child()
 
 	list_box = Gtk.Template.Child()
 	trans_time_btn = Gtk.Template.Child()
@@ -70,7 +73,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.build_time_popover()
 		self.build_menus()
 		self.build_all_actions()
-		self.set_type_custom()
+		# self.set_type_custom()
+		self.type_rbtn3.set_active(True)
 		self.update_status()
 		self.close_notification()
 
@@ -91,7 +95,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		builder = Gtk.Builder().new_from_resource(UI_PATH + 'menus.ui')
 		self.menu_btn.set_menu_model(builder.get_object('window-menu'))
 		self.adj_btn.set_menu_model(builder.get_object('adjustment-menu'))
-		self.type_btn.set_menu_model(builder.get_object('type-menu'))
 
 	def add_action_simple(self, action_name, callback, shortcuts):
 		action = Gio.SimpleAction.new(action_name, None)
@@ -112,11 +115,15 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 		self.lookup_action('set_as_wallpaper').set_enabled(False)
 
-		action_type = Gio.SimpleAction().new_stateful('wallpaper_type', \
+		action_type = Gio.SimpleAction().new_stateful('wallpaper-type', \
 		                   GLib.VariantType.new('s'), \
 		                   GLib.Variant.new_string('custom'))
 		action_type.connect('change-state', self.on_change_wallpaper_type)
 		self.add_action(action_type)
+
+		self.type_rbtn.connect('toggled', self.radio_btn_helper, 'slideshow')
+		self.type_rbtn2.connect('toggled', self.radio_btn_helper, 'daylight')
+		self.type_rbtn3.connect('toggled', self.radio_btn_helper, 'custom')
 
 		action_options = Gio.SimpleAction().new_stateful('pic_options', \
 		                   GLib.VariantType.new('s'), \
@@ -126,28 +133,29 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	# Wallpaper type ###########################################################
 
+	def radio_btn_helper(self, *args):
+		if args[0].get_active():
+			action = self.lookup_action('wallpaper-type')
+			action.change_state(GLib.Variant.new_string(args[1]))
+
 	def on_change_wallpaper_type(self, *args):
 		new_value = args[1].get_string()
 		if new_value == 'slideshow':
 			self.set_type_slideshow()
-		elif new_value == 'time_day':
-			self.set_type_time_day()
+		elif new_value == 'daylight':
+			self.set_type_daylight()
 		else: # elif new_value == 'custom':
 			self.set_type_custom()
 		args[0].set_state(GLib.Variant.new_string(new_value))
 
 	def auto_detect_type(self):
 		total_time, l, row_list = self.get_total_time()
-		action = self.lookup_action('wallpaper_type')
 		if total_time == 86400:
-			action.set_state(GLib.Variant.new_string('time_day'))
-			self.set_type_time_day()
+			self.type_rbtn2.set_active(True)
 		elif self.is_slideshow(l, row_list):
-			action.set_state(GLib.Variant.new_string('slideshow'))
-			self.set_type_slideshow()
+			self.type_rbtn1.set_active(True)
 		else:
-			action.set_state(GLib.Variant.new_string('custom'))
-			self.set_type_custom()
+			self.type_rbtn3.set_active(True)
 
 	def is_slideshow(self, l, row_list):
 		st = row_list[0].static_time_btn.get_value()
@@ -165,19 +173,16 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.start_btn.set_visible(False)
 		self.update_global_time_box(True)
 		self.set_check_24(False)
-		self.type_label.set_label(_("Slideshow"))
 
-	def set_type_time_day(self):
+	def set_type_daylight(self):
 		self.start_btn.set_visible(True)
 		self.update_global_time_box(False)
 		self.set_check_24(True)
-		self.type_label.set_label(_("Daylight"))
 
 	def set_type_custom(self):
 		self.start_btn.set_visible(True)
 		self.update_global_time_box(False)
 		self.set_check_24(False)
-		self.type_label.set_label(_("Custom"))
 
 	# Wallpaper settings #######################################################
 
@@ -249,7 +254,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			                        row_list[0].static_time_btn.get_value() + 1)
 
 	def update_global_time_box(self, is_global):
-		"""Show relevant spinbuttons based on the active 'wallpaper_type'."""
+		"""Show relevant spinbuttons based on the active 'wallpaper-type'."""
 		self.is_global = is_global
 		self.time_box.set_visible(is_global)
 		self.time_box_separator.set_visible(is_global)
@@ -468,7 +473,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	def load_gfile(self, gfile):
 		self.gio_file = gfile
 		if self.load_list_from_xml():
-			self.header_bar.set_subtitle(self.gio_file.get_path().split('/')[-1])
+			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			self.auto_detect_type()
 			self.lookup_action('set_as_wallpaper').set_enabled(True)
 			self._is_saved = True
@@ -581,6 +586,10 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		                             Gio.FileCreateFlags.NONE, None, None, None)
 		self._is_saved = True
 
+	def update_win_title(self, file_name):
+		self.set_title(file_name)
+		self.save_btn.set_tooltip_text(_("Save %s") % file_name)
+
 	def action_save_as(self, *args):
 		is_saved = self.run_save_file_chooser()
 		if is_saved == True:
@@ -601,7 +610,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		if response == Gtk.ResponseType.ACCEPT:
 			self.lookup_action('set_as_wallpaper').set_enabled(True)
 			self.gio_file = file_chooser.get_file()
-			self.header_bar.set_subtitle(self.gio_file.get_path().split('/')[-1])
+			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			is_saved = True
 		file_chooser.destroy()
 		return is_saved
