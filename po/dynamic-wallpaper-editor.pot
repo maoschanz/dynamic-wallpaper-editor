@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-04 22:27+0200\n"
+"POT-Creation-Date: 2019-07-05 03:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,8 +35,9 @@ msgstr ""
 msgid "com.github.maoschanz.DynamicWallpaperEditor"
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:16
 #: src/ui/menus.ui:7 src/ui/menus.ui:34 src/ui/shortcuts.ui:17
-msgid "New window"
+msgid "New Window"
 msgstr ""
 
 #: src/ui/menus.ui:13 src/ui/menus.ui:46
@@ -55,7 +56,7 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: src/ui/menus.ui:40 src/window.py:601
+#: src/ui/menus.ui:40 src/window.py:623
 msgid "Save as…"
 msgstr ""
 
@@ -87,35 +88,27 @@ msgstr ""
 msgid "Spanned"
 msgstr ""
 
-#: src/ui/picture_row.ui:72
+#: src/ui/picture_row.ui:76
 msgid "Time"
 msgstr ""
 
-#: src/ui/picture_row.ui:83
+#: src/ui/picture_row.ui:87
 msgid ""
 "Time (in seconds) of this image. This doesn't include the time of the "
 "transition."
 msgstr ""
 
-#: src/ui/picture_row.ui:96
+#: src/ui/picture_row.ui:100
 msgid "Transition"
 msgstr ""
 
-#: src/ui/picture_row.ui:107
+#: src/ui/picture_row.ui:111
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr ""
 
-#: src/ui/picture_row.ui:124
+#: src/ui/picture_row.ui:128
 msgid "Delete"
-msgstr ""
-
-#: src/ui/picture_row.ui:150
-msgid "Move up"
-msgstr ""
-
-#: src/ui/picture_row.ui:164
-msgid "Move down"
 msgstr ""
 
 #: src/ui/start_time.ui:55
@@ -126,27 +119,27 @@ msgstr ""
 msgid "Start time of the wallpaper"
 msgstr ""
 
-#: src/ui/start_time.ui:77
+#: src/ui/start_time.ui:78
 msgid "Year"
 msgstr ""
 
-#: src/ui/start_time.ui:100
+#: src/ui/start_time.ui:101
 msgid "Month"
 msgstr ""
 
-#: src/ui/start_time.ui:124
+#: src/ui/start_time.ui:125
 msgid "Day"
 msgstr ""
 
-#: src/ui/start_time.ui:148
+#: src/ui/start_time.ui:149
 msgid "Hour"
 msgstr ""
 
-#: src/ui/start_time.ui:172
+#: src/ui/start_time.ui:173
 msgid "Minute"
 msgstr ""
 
-#: src/ui/start_time.ui:196
+#: src/ui/start_time.ui:197
 msgid "Second"
 msgstr ""
 
@@ -170,16 +163,16 @@ msgstr ""
 msgid "Open an existing dynamic wallpaper"
 msgstr ""
 
-#: src/ui/shortcuts.ui:51 src/ui/window.ui:118 src/window.py:368
+#: src/ui/shortcuts.ui:51 src/ui/window.ui:118 src/window.py:374
 msgid "Add pictures"
 msgstr ""
 
-#: src/ui/shortcuts.ui:58 src/ui/window.ui:130 src/window.py:342
+#: src/ui/shortcuts.ui:58 src/ui/window.ui:130 src/window.py:348
 msgid "Add a folder"
 msgstr ""
 
-#: src/ui/shortcuts.ui:65 src/ui/window.ui:91 src/window.py:325
-#: src/window.py:602
+#: src/ui/shortcuts.ui:65 src/ui/window.ui:91 src/window.py:330
+#: src/window.py:624
 msgid "Save"
 msgstr ""
 
@@ -187,7 +180,7 @@ msgstr ""
 msgid "Set as wallpaper"
 msgstr ""
 
-#: src/ui/window.ui:32 src/window.py:460 src/window.py:461
+#: src/ui/window.ui:32 src/window.py:475 src/window.py:476
 msgid "Open"
 msgstr ""
 
@@ -255,12 +248,9 @@ msgstr ""
 msgid "Open a new window"
 msgstr ""
 
-#: src/main.py:109
+#: src/main.py:107
 #, python-format
-msgid ""
-"Error opening this file. Did you mean\n"
-" %s \n"
-"?"
+msgid "Error opening this file. Did you mean %s ?"
 msgstr ""
 
 #: src/main.py:167
@@ -271,89 +261,89 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: src/picture_row.py:72
+#: src/picture_row.py:65
 msgid "This picture doesn't exist"
 msgstr ""
 
-#: src/picture_row.py:89 src/picture_row.py:102 src/window.py:291
+#: src/picture_row.py:100 src/picture_row.py:113 src/window.py:295
 #, python-format
 msgid "%s hour(s)"
 msgstr ""
 
-#: src/picture_row.py:90 src/picture_row.py:103 src/window.py:293
+#: src/picture_row.py:101 src/picture_row.py:114 src/window.py:297
 #, python-format
 msgid "%s minute(s)"
 msgstr ""
 
-#: src/picture_row.py:91 src/picture_row.py:104 src/window.py:294
+#: src/picture_row.py:102 src/picture_row.py:115 src/window.py:298
 #, python-format
 msgid "%s second(s)"
 msgstr ""
 
-#: src/window.py:284
+#: src/window.py:288
 #, python-format
 msgid "%s pictures"
 msgstr ""
 
-#: src/window.py:284
+#: src/window.py:288
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr ""
 
-#: src/window.py:297
+#: src/window.py:301
 msgid "The total duration isn't 24 hours."
 msgstr ""
 
-#: src/window.py:322
+#: src/window.py:327
 msgid "There are unsaved modifications to your wallpaper."
 msgstr ""
 
-#: src/window.py:323 src/window.py:461 src/window.py:602
+#: src/window.py:328 src/window.py:476 src/window.py:624
 msgid "Cancel"
 msgstr ""
 
-#: src/window.py:324
+#: src/window.py:329
 msgid "Discard"
 msgstr ""
 
-#: src/window.py:341 src/window.py:367 src/window.py:459
+#: src/window.py:347 src/window.py:373 src/window.py:474
 msgid "Loading…"
 msgstr ""
 
-#: src/window.py:399
+#: src/window.py:405
 msgid "All pictures"
 msgstr ""
 
-#: src/window.py:407
+#: src/window.py:413
 msgid "PNG images"
 msgstr ""
 
-#: src/window.py:411
+#: src/window.py:417
 msgid "JPEG images"
 msgstr ""
 
-#: src/window.py:463 src/window.py:605
+#: src/window.py:478 src/window.py:627
 msgid "Dynamic wallpapers (XML)"
 msgstr ""
 
-#: src/window.py:499
+#: src/window.py:512 src/window.py:519
 msgid "This dynamic wallpaper is corrupted"
 msgstr ""
 
-#: src/window.py:504
+#: src/window.py:524
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr ""
 
-#: src/window.py:515
+#: src/window.py:535
 #, python-format
 msgid "Unknown element: %s"
 msgstr ""
 
-#: src/window.py:591
+#: src/window.py:613
 #, python-format
 msgid "Save %s"
 msgstr ""
 
-#: src/window.py:603
+#: src/window.py:625
 msgid "Untitled"
 msgstr ""
