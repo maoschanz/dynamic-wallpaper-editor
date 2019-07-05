@@ -15,12 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk, GdkPixbuf, Pango
+from gi.repository import Gtk, GdkPixbuf, Pango, Gdk
 import math
 
-# TODO make rows draggable ? It looks complex
-# Here is a C example https://blog.gtk.org/2017/04/23/drag-and-drop-in-lists/
-# I don't need a handle like him, the thumbnail is enough for this
 class PictureRow(Gtk.ListBoxRow):
 	"""This is a row with the thumbnail and the path of the picture, and control
 	buttons (up/down, delete) for this picture. It also contains "spinbuttons" if
@@ -47,10 +44,6 @@ class PictureRow(Gtk.ListBoxRow):
 		# Row controls
 		delete_btn = builder.get_object('delete_btn')
 		delete_btn.connect('clicked', self.destroy_row)
-		up_btn = builder.get_object('up_btn')
-		down_btn = builder.get_object('down_btn')
-		up_btn.connect('clicked', self.on_up)
-		down_btn.connect('clicked', self.on_down)
 
 		# Picture durations
 		self.static_time_btn = builder.get_object('static_btn')
@@ -71,12 +64,30 @@ class PictureRow(Gtk.ListBoxRow):
 			image.set_from_icon_name('dialog-error-symbolic', Gtk.IconSize.BUTTON)
 			self.set_tooltip_text(_("This picture doesn't exist"))
 			self.time_box.set_sensitive(False)
-			up_btn.set_sensitive(False)
-			down_btn.set_sensitive(False)
+			# TODO a button for fixing that ?
+
+		# Ability to be dragged
+		row_box.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, None, Gdk.DragAction.MOVE)
+		row_box.connect('drag-data-get', self.on_drag_data_get)
+		row_box.drag_source_add_text_targets()
+
+		# Ability to receive drop
+		self.drag_dest_set(Gtk.DestDefaults.ALL, [], Gdk.DragAction.MOVE)
+		self.connect('drag-data-received', self.on_drag_data_received)
+		self.drag_dest_add_text_targets()
 
 		self.add(row_box)
 		self.show_all()
 		self.time_box.set_visible(not self.window.is_global)
+
+	############################################################################
+
+	def on_drag_data_get(self, widget, drag_context, data, info, time):
+		data.set_text(str(self.indx), -1)
+
+	def on_drag_data_received(self, widget, drag_context, x, y, data, info, time):
+		index_from = int(data.get_text())
+		self.window.move_row(index_from, self.indx)
 
 	############################################################################
 
@@ -105,11 +116,13 @@ class PictureRow(Gtk.ListBoxRow):
 		self.static_time_btn.set_tooltip_text(message)
 		self.window.update_status()
 
+	# Not used
 	def on_up(self, *args):
 		self.window.list_box.get_row_at_index(self.indx-1).indx = self.indx
 		self.indx = self.indx-1
 		self.window.list_box.invalidate_sort()
 
+	# Not used
 	def on_down(self, *args):
 		self.window.list_box.get_row_at_index(self.indx+1).indx = self.indx
 		self.indx = self.indx+1

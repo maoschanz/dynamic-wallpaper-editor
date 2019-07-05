@@ -9,3 +9,9 @@ Keywords=Wallpaper;Daylight;XML;
 StartupNotify=true
 Icon=com.github.maoschanz.DynamicWallpaperEditor
 MimeType=text/xml;application/xml;
+Actions=new-window;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=dynamic-wallpaper-editor --new-window
+

@@ -235,7 +235,7 @@ msgstr "Erreur au démarrage de l'application, veuillez rapporter ce bug."
 
 #: src/ui/window.ui:215
 msgid "Automatic fix"
-msgstr "Réparation automatique"
+msgstr "Correction automatique"
 
 #: src/ui/window.ui:243
 msgid "Add new pictures, or open an existing XML file."

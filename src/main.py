@@ -104,10 +104,10 @@ class Application(Gtk.Application):
 			else:
 				return None
 		except:
-			command = 'flatpak run --file-forwarding {0} @@ {1} @@'
+			err = _("Error opening this file. Did you mean %s ?")
+			command = "\n\tflatpak run --file-forwarding {0} @@ {1} @@\n"
 			command = command.format(APP_ID, path)
-			err = _("Error opening this file. Did you mean\n %s \n?") % command
-			print(err)
+			print(err % command)
 			return None
 
 	############################################################################

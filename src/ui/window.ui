@@ -40,7 +40,7 @@
             <property name="homogeneous">True</property>
             <style><class name="linked"/></style>
             <child>
-              <object class="GtkRadioButton" id="type_rbtn">
+              <object class="GtkRadioButton" id="type_rbtn1">
                 <property name="visible">True</property>
                 <property name="draw-indicator">False</property>
                 <property name="label" translatable="yes">Slideshow</property>
@@ -51,7 +51,7 @@
               <object class="GtkRadioButton" id="type_rbtn2">
                 <property name="visible">True</property>
                 <property name="draw-indicator">False</property>
-                <property name="group">type_rbtn</property>
+                <property name="group">type_rbtn1</property>
                 <property name="label" translatable="yes">Daylight</property>
                 <property name="tooltip-text" translatable="yes">Pictures changing with the daylight.</property>
               </object>
@@ -60,7 +60,7 @@
               <object class="GtkRadioButton" id="type_rbtn3">
                 <property name="visible">True</property>
                 <property name="draw-indicator">False</property>
-                <property name="group">type_rbtn</property>
+                <property name="group">type_rbtn1</property>
                 <property name="label" translatable="yes">Custom</property>
                 <property name="tooltip-text" translatable="yes">Set the durations you prefer.</property>
               </object>

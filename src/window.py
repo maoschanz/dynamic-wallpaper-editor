@@ -33,7 +33,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	save_btn = Gtk.Template.Child()
 	adj_btn = Gtk.Template.Child()
 
-	type_rbtn = Gtk.Template.Child()
+	type_rbtn1 = Gtk.Template.Child()
 	type_rbtn2 = Gtk.Template.Child()
 	type_rbtn3 = Gtk.Template.Child()
 
@@ -78,6 +78,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.update_status()
 		self.close_notification()
 
+	############################################################################
 	# Building the UI ##########################################################
 
 	def build_time_popover(self):
@@ -121,7 +122,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		action_type.connect('change-state', self.on_change_wallpaper_type)
 		self.add_action(action_type)
 
-		self.type_rbtn.connect('toggled', self.radio_btn_helper, 'slideshow')
+		self.type_rbtn1.connect('toggled', self.radio_btn_helper, 'slideshow')
 		self.type_rbtn2.connect('toggled', self.radio_btn_helper, 'daylight')
 		self.type_rbtn3.connect('toggled', self.radio_btn_helper, 'custom')
 
@@ -131,6 +132,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		action_options.connect('change-state', self.on_change_wallpaper_options)
 		self.add_action(action_options)
 
+	############################################################################
 	# Wallpaper type ###########################################################
 
 	def radio_btn_helper(self, *args):
@@ -184,6 +186,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.update_global_time_box(False)
 		self.set_check_24(False)
 
+	############################################################################
 	# Wallpaper settings #######################################################
 
 	def on_change_wallpaper_options(self, *args):
@@ -206,6 +209,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		wp_key = 'picture-uri'
 		gsettings.set_string(wp_key, self.gio_file.get_uri())
 
+	############################################################################
 	# Time management ##########################################################
 
 	def set_check_24(self, should_check):
@@ -301,6 +305,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.status_bar.push(0, message)
 		return total_time
 
+	############################################################################
 	# Miscellaneous ############################################################
 
 	def close_notification(self, *args):
@@ -333,6 +338,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			return True
 		return False # if canceled or closed
 
+	############################################################################
 	# Adding pictures to the list_box ##########################################
 
 	def action_add_folder(self, *args):
@@ -428,6 +434,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		row = PictureRow(filename, stt, trt, l, self)
 		self.list_box.add(row)
 
+	############################################################################
 	# Rows management ##########################################################
 
 	def reset_list_box(self):
@@ -449,6 +456,14 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	def destroy_row(self, row):
 		self.list_box.remove(row)
 		self.update_status()
+		self.restack_indexes()
+
+	def move_row(self, index_from, index_to):
+		if index_from > index_to:
+			self.list_box.get_children()[index_from].indx = index_to - 1
+		else:
+			self.list_box.get_children()[index_from].indx = index_to + 1
+		self.list_box.invalidate_sort()
 		self.restack_indexes()
 
 	# Loading data from an XML file ############################################
@@ -489,9 +504,14 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		# This is the list of pictures to add
 		pic_list = []
 
-		f = open(self.gio_file.get_path(), 'r')
-		xml_text = f.read()
-		f.close()
+		try:
+			f = open(self.gio_file.get_path(), 'r')
+			xml_text = f.read()
+			f.close()
+		except Exception:
+			self.show_notification(_("This dynamic wallpaper is corrupted"))
+			# So corrupted it can't even be read
+			return False
 
 		try:
 			root = xml_parser.fromstring(xml_text)
@@ -573,6 +593,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			self.list_box.add(row)
 		self.update_status()
 
+	############################################################################
 	# Saving ###################################################################
 
 	def action_save(self, *args):
@@ -585,6 +606,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.gio_file.replace_contents_async(contents, None, False, \
 		                             Gio.FileCreateFlags.NONE, None, None, None)
 		self._is_saved = True
+		self.lookup_action('set_as_wallpaper').set_enabled(True)
 
 	def update_win_title(self, file_name):
 		self.set_title(file_name)
@@ -624,12 +646,12 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 <!-- Generated by com.github.maoschanz.DynamicWallpaperEditor -->
 <background>
 	<starttime>
-		<year>""" + str(int(self.year_spinbtn.get_value())) + """</year>
-		<month>""" + str(int(self.month_spinbtn.get_value())) + """</month>
-		<day>""" + str(int(self.day_spinbtn.get_value())) + """</day>
-		<hour>""" + str(int(self.hour_spinbtn.get_value())) + """</hour>
-		<minute>""" + str(int(self.minute_spinbtn.get_value())) + """</minute>
-		<second>""" + str(int(self.second_spinbtn.get_value())) + """</second>
+		<year>""" + str(self.year_spinbtn.get_value_as_int()) + """</year>
+		<month>""" + str(self.month_spinbtn.get_value_as_int()) + """</month>
+		<day>""" + str(self.day_spinbtn.get_value_as_int()) + """</day>
+		<hour>""" + str(self.hour_spinbtn.get_value_as_int()) + """</hour>
+		<minute>""" + str(self.minute_spinbtn.get_value_as_int()) + """</minute>
+		<second>""" + str(self.second_spinbtn.get_value_as_int()) + """</second>
 	</starttime>\n"""
 		if self.is_global:
 			st_time = str(self.static_time_btn.get_value())
@@ -652,4 +674,5 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 """
 		return str(raw_text)
 
+	############################################################################
 ################################################################################
