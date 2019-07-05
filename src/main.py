@@ -126,7 +126,8 @@ class Application(Gtk.Application):
 
 	def build_app_actions(self):
 		self.add_action_simple('new_window', self.on_new_window, ['<Ctrl>n'])
-		self.add_action_simple('shortcuts', self.on_shortcuts_activate, None)
+		self.add_action_simple('shortcuts', self.on_shortcuts, \
+		                                         ['<Ctrl>question', '<Ctrl>F1'])
 		self.add_action_simple('help', self.on_help_activate, ['F1'])
 		self.add_action_simple('about', self.on_about, None)
 		self.add_action_simple('quit', self.on_quit, ['<Ctrl>q'])
@@ -143,7 +144,7 @@ class Application(Gtk.Application):
 		win.present()
 		return win
 
-	def on_shortcuts_activate(self, *args):
+	def on_shortcuts(self, *args):
 		if self.shortcuts_window is not None:
 			self.shortcuts_window.destroy()
 		builder = Gtk.Builder().new_from_resource(UI_PATH + 'shortcuts.ui')

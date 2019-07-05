@@ -28,6 +28,7 @@
         <child>
           <object class="GtkButton" id="open_btn">
             <property name="visible">True</property>
+            <property name="valign">center</property>
             <property name="action-name">win.open</property>
             <property name="label" translatable="yes">Open</property>
             <property name="tooltip-text" translatable="yes">Open an existing dynamic wallpaper</property>
@@ -37,6 +38,7 @@
         <child type="title">
           <object class="GtkBox">
             <property name="visible">True</property>
+            <property name="valign">center</property>
             <property name="homogeneous">True</property>
             <style><class name="linked"/></style>
             <child>
@@ -70,6 +72,7 @@
 
         <child>
           <object class="GtkMenuButton" id="menu_btn">
+            <property name="valign">center</property>
             <property name="visible">True</property>
             <property name="sensitive">False</property>
             <property name="tooltip-text" translatable="yes">More actions</property>
@@ -86,6 +89,7 @@
         </child>
         <child>
           <object class="GtkButton" id="save_btn">
+            <property name="valign">center</property>
             <property name="visible">True</property>
             <property name="action-name">win.save</property>
             <property name="label" translatable="yes">Save</property>

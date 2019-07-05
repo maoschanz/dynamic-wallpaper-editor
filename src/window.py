@@ -106,13 +106,13 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 
 	def build_all_actions(self):
 		self.add_action_simple('save', self.action_save, ['<Ctrl>s'])
-		self.add_action_simple('save_as', self.action_save_as, None)
+		self.add_action_simple('save_as', self.action_save_as, ['<Ctrl><Shift>s'])
 		self.add_action_simple('set_as_wallpaper', \
-		    self.action_set_as_wallpaper, ['<Ctrl>w']) # XXX not standard at all
+		                              self.action_set_as_wallpaper, ['<Ctrl>r'])
 		self.add_action_simple('open', self.action_open, ['<Ctrl>o'])
 		self.add_action_simple('add', self.action_add, ['<Ctrl>a'])
-		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl>f'])
-		self.add_action_simple('close', self.action_close, None)
+		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
+		self.add_action_simple('close', self.action_close, ['<Ctrl>w'])
 
 		self.lookup_action('set_as_wallpaper').set_enabled(False)
 
@@ -454,11 +454,13 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			r.indx = r.get_index()
 
 	def destroy_row(self, row):
+		self._is_saved = False
 		self.list_box.remove(row)
 		self.update_status()
 		self.restack_indexes()
 
 	def move_row(self, index_from, index_to):
+		self._is_saved = False
 		if index_from > index_to:
 			self.list_box.get_children()[index_from].indx = index_to - 1
 		else:
@@ -605,6 +607,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		contents = self.generate_text().encode('utf-8')
 		self.gio_file.replace_contents_async(contents, None, False, \
 		                             Gio.FileCreateFlags.NONE, None, None, None)
+		# TODO ne pas mettre que des none peut-être
 		self._is_saved = True
 		self.lookup_action('set_as_wallpaper').set_enabled(True)
 

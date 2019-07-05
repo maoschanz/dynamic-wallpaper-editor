@@ -21,8 +21,22 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">True</property>
+                <property name="title" translatable="yes">Close the current window</property>
+                <property name="accelerator">&lt;Primary&gt;w</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">True</property>
                 <property name="title" translatable="yes">Quit all windows</property>
                 <property name="accelerator">&lt;Primary&gt;q</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">True</property>
+                <property name="title" translatable="yes">Show shortcuts</property>
+                <property name="accelerator">&lt;Primary&gt;question</property>
               </object>
             </child>
             <child>
@@ -56,7 +70,7 @@
               <object class="GtkShortcutsShortcut">
                 <property name="visible">True</property>
                 <property name="title" translatable="yes">Add a folder</property>
-                <property name="accelerator">&lt;Primary&gt;f</property>
+                <property name="accelerator">&lt;Primary&gt;&lt;Shift&gt;a</property>
               </object>
             </child>
             <child>
@@ -69,8 +83,15 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">True</property>
+                <property name="title" translatable="yes">Save as…</property>
+                <property name="accelerator">&lt;Primary&gt;&lt;Shift&gt;s</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">True</property>
                 <property name="title" translatable="yes">Set as wallpaper</property>
-                <property name="accelerator">&lt;Primary&gt;w</property>
+                <property name="accelerator">&lt;Primary&gt;r</property>
               </object>
             </child>
           </object>
