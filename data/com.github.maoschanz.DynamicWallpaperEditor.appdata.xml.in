@@ -3,12 +3,29 @@
 	<id>com.github.maoschanz.DynamicWallpaperEditor.desktop</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
+
 	<name>Dynamic Wallpaper Editor</name>
 	<summary>Create or edit XML dynamic wallpapers ("background slideshows") for the GNOME desktop</summary>
 	<description>
-		<p>A simple utility to create or edit dynamic wallpapers for GNOME Shell. The duration of each picture and each transition can be set separately or globally.</p>
+		<p>Dynamic Wallpaper Editor is a simple utility to create or edit dynamic wallpapers for the GNOME desktop.</p>
+		<p>The duration of each picture and each transition can be set separately or globally.</p>
 	</description>
+	<screenshots>
+		<screenshot type="default">
+			<image type="source">https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot.png</image>
+			<caption>An example of a wallpaper changing with daylight.</caption>
+		</screenshot>
+	</screenshots>
+
 	<releases>
+		<release version="1.13" date="2018-07-05">
+			<description>
+				<ul>
+					<li>Bug fixes</li>
+					<li>Draggable rows</li>
+				</ul>
+			</description>
+		</release>
 		<release version="1.12" date="2018-07-04">
 			<description>
 				<ul>
@@ -19,14 +36,7 @@
 			</description>
 		</release>
 	</releases>
-	<url type="bugtracker">https://github.com/maoschanz/dynamic-wallpaper-editor/issues</url>
-	<url type="homepage">https://github.com/maoschanz/dynamic-wallpaper-editor</url>
-	<developer_name>Romain F. T.</developer_name>
-	<screenshots>
-		<screenshot type="default">
-			<image type="source">https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot.png</image>
-		</screenshot>
-	</screenshots>
+
 	<kudos>
 		<kudo>AppMenu</kudo>
 		<kudo>HiDpiIcon</kudo>
@@ -34,7 +44,12 @@
 		<kudo>UserDocs</kudo>
 	</kudos>
 	<content_rating type="oars-1.1" />
+	<url type="bugtracker">https://github.com/maoschanz/dynamic-wallpaper-editor/issues</url>
+	<url type="homepage">https://github.com/maoschanz/dynamic-wallpaper-editor</url>
+	<developer_name>Romain F. T.</developer_name>
 	<update_contact>rrroschan@gmail.com</update_contact>
+
 	<translation type="gettext">dynamic-wallpaper-editor</translation>
+	<launchable type="desktop-id">com.github.maoschanz.DynamicWallpaperEditor.desktop</launchable>
 </component>
 
