@@ -1,6 +1,6 @@
 # picture_row.py
 #
-# Copyright 2018 Romain F. T.
+# Copyright 2018-2019 Romain F. T.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -41,7 +41,11 @@ class PictureRow(Gtk.ListBoxRow):
 		label.set_label(self.filename)
 		label.set_ellipsize(Pango.EllipsizeMode.START)
 
-		# TODO a label with hours ? and/or the total duration ?
+		# Schedule labels
+		self.static_label = builder.get_object('static_label')
+		self.static_label.set_ellipsize(Pango.EllipsizeMode.START)
+		self.transition_label = builder.get_object('transition_label')
+		self.transition_label.set_ellipsize(Pango.EllipsizeMode.START)
 
 		# Row controls
 		delete_btn = builder.get_object('delete_btn')
@@ -80,7 +84,8 @@ class PictureRow(Gtk.ListBoxRow):
 
 		self.add(row_box)
 		self.show_all()
-		self.time_box.set_visible(not self.window.is_global)
+		wtype = self.window.lookup_action('wallpaper-type').get_state().get_string()
+		self.update_to_type(wtype)
 
 	############################################################################
 
@@ -93,45 +98,86 @@ class PictureRow(Gtk.ListBoxRow):
 
 	############################################################################
 
-	def on_transition_changed(self, *args):
+	def update_to_type(self, wtype):
+		self.time_box.set_visible(wtype != 'slideshow')
+		self.static_label.set_visible(wtype == 'daylight')
+		self.transition_label.set_visible(wtype == 'daylight')
+
+	############################################################################
+
+	def get_static_duration(self):
+		total_time = self.static_time_btn.get_value()
+		hours, minutes, seconds = self.get_hms(total_time)
+		return hours, minutes, seconds
+
+	def get_transition_duration(self):
 		total_time = self.trans_time_btn.get_value()
-		message = ""
+		hours, minutes, seconds = self.get_hms(total_time)
+		return hours, minutes, seconds
+
+	def get_hms(self, total_time):
 		hours = math.floor(total_time / 3600)
 		minutes = math.floor((total_time % 3600) / 60)
 		seconds = math.floor(total_time % 60)
-		message += str(_("%s hour(s)") % hours + ' ')
-		message += str(_("%s minute(s)") % minutes + ' ')
-		message += str(_("%s second(s)") % seconds)
-		self.trans_time_btn.set_tooltip_text(message)
-		self.window.update_status()
+		return hours, minutes, seconds
+
+	############################################################################
 
 	def on_static_changed(self, *args):
-		total_time = self.static_time_btn.get_value()
+		self.update_static_tooltip()
+		self.window._is_saved = False
+		self.window.update_status()
+
+	def on_transition_changed(self, *args):
+		self.update_transition_tooltip()
+		self.window._is_saved = False
+		self.window.update_status()
+
+	def update_static_tooltip(self):
+		hours, minutes, seconds = self.get_static_duration()
 		message = ""
-		hours = math.floor(total_time / 3600)
-		minutes = math.floor((total_time % 3600) / 60)
-		seconds = math.floor(total_time % 60)
 		message += str(_("%s hour(s)") % hours + ' ')
 		message += str(_("%s minute(s)") % minutes + ' ')
 		message += str(_("%s second(s)") % seconds)
 		self.static_time_btn.set_tooltip_text(message)
-		self.window.update_status()
 
-	# Not used
-	def on_up(self, *args):
-		self.window.list_box.get_row_at_index(self.indx-1).indx = self.indx
-		self.indx = self.indx-1
-		self.window.list_box.invalidate_sort()
+	def update_transition_tooltip(self):
+		hours, minutes, seconds = self.get_transition_duration()
+		message = ""
+		message += str(_("%s hour(s)") % hours + ' ')
+		message += str(_("%s minute(s)") % minutes + ' ')
+		message += str(_("%s second(s)") % seconds)
+		self.trans_time_btn.set_tooltip_text(message)
 
-	# Not used
-	def on_down(self, *args):
-		self.window.list_box.get_row_at_index(self.indx+1).indx = self.indx
-		self.indx = self.indx+1
-		self.window.list_box.invalidate_sort()
+	############################################################################
 
-	def destroy_row(self, *args):
-		self.window.destroy_row(self)
-		self.destroy() # FIXME memory is not correctly freed
+	def update_static_label(self, previous_end):
+		hours, minutes, seconds = self.get_static_duration()
+		message = _("This picture lasts from {0} to {1}")
+		start_time = str(previous_end[0]) + ':' + str(previous_end[1]) + ':' \
+		                                                  + str(previous_end[2])
+		total_seconds = ((previous_end[0] + hours) * 60 + previous_end[1] + \
+		                               minutes) * 60 + previous_end[2] + seconds
+		h, m, s = self.get_hms(total_seconds)
+		new_end = [h % 24, m, s]
+		end_time = str(new_end[0]) + ':' + str(new_end[1]) + ':' + str(new_end[2])
+		message = message.format(start_time, end_time)
+		self.static_label.set_label(message)
+		return new_end
+
+	def update_transition_label(self, previous_end):
+		hours, minutes, seconds = self.get_transition_duration()
+		message = _("The transition to the next picture lasts from {0} to {1}")
+		start_time = str(previous_end[0]) + ':' + str(previous_end[1]) + ':' \
+		                                                  + str(previous_end[2])
+		total_seconds = ((previous_end[0] + hours) * 60 + previous_end[1] + \
+		                               minutes) * 60 + previous_end[2] + seconds
+		h, m, s = self.get_hms(total_seconds)
+		new_end = [h % 24, m, s]
+		end_time = str(new_end[0]) + ':' + str(new_end[1]) + ':' + str(new_end[2])
+		message = message.format(start_time, end_time)
+		self.transition_label.set_label(message)
+		return new_end
 
 	############################################################################
 
@@ -172,6 +218,12 @@ class PictureRow(Gtk.ListBoxRow):
 	</transition>
 ''').format(dur=time_str, fn=self.filename, nfn=next_fn)
 		return str(raw_string)
+
+	############################################################################
+
+	def destroy_row(self, *args):
+		self.window.destroy_row(self)
+		self.destroy() # FIXME memory is not correctly freed
 
 	############################################################################
 ################################################################################

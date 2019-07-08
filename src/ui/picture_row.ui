@@ -50,13 +50,20 @@
                 <property name="label">picture name</property>
               </object>
             </child>
-            <!-- <child> -->
-            <!--   <object class="GtkLabel" id="time_label"> -->
-            <!--     <property name="visible">True</property> -->
-            <!--     <property name="label">time label</property> -->
-            <!--     <style><class name="dim-label"/></style> -->
-            <!--   </object> -->
-            <!-- </child> -->
+            <child>
+              <object class="GtkLabel" id="static_label">
+                <property name="visible">True</property>
+                <property name="label">static label</property>
+                <style><class name="dim-label"/></style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="transition_label">
+                <property name="visible">True</property>
+                <property name="label">transition label</property>
+                <style><class name="dim-label"/></style>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="pack-type">start</property>
