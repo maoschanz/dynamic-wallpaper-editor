@@ -235,36 +235,87 @@
         </child>
 
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="GtkBox">
             <property name="visible">True</property>
+            <property name="orientation">horizontal</property>
             <property name="expand">True</property>
+
             <child>
-              <object class="GtkListBox" id="list_box">
+              <object class="GtkScrolledWindow">
                 <property name="visible">True</property>
-                <child type="placeholder">
-                  <object class="GtkLabel">
+                <property name="expand">True</property>
+                <child>
+                  <object class="GtkListBox" id="list_box">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">Add new pictures, or open an existing XML file.</property>
+                    <property name="expand">True</property>
+                    <child type="placeholder">
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Add new pictures, or open an existing XML file.</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="pack-type">start</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkSeparator" id="time_box_separator">
+                <property name="visible">False</property>
+                <property name="expand">False</property>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkBox" id="time_box">
+                <property name="visible">False</property>
+                <property name="expand">False</property>
+                <property name="valign">center</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">15</property>
+                <property name="margin">10</property>
+                <child>
+                  <object class="GtkLabel" id="static_label">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Time</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="static_time_btn">
+                    <property name="visible">True</property>
+                    <property name="expand">False</property>
+                    <property name="adjustment">adjustment_st</property>
+                    <property name="tooltip-text" translatable="yes">Duration of each picture (seconds)</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkSeparator">
+                    <property name="visible">True</property>
+                    <property name="expand">False</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkLabel" id="trans_label">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Transition</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="trans_time_btn">
+                    <property name="visible">True</property>
+                    <property name="expand">False</property>
+                    <property name="adjustment">adjustment_tr</property>
+                    <property name="tooltip-text" translatable="yes">Duration of each transition (seconds)</property>
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
             </child>
           </object>
-          <packing>
-            <property name="pack-type">start</property>
-          </packing>
-        </child>
-
-        <child>
-          <object class="GtkStatusbar" id="status_bar">
-            <property name="visible">True</property>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
         </child>
 
         <child>
@@ -272,70 +323,14 @@
             <property name="visible">True</property>
             <property name="expand">False</property>
           </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
         </child>
 
         <child>
-          <object class="GtkSeparator" id="time_box_separator">
-            <property name="visible">False</property>
-            <property name="expand">False</property>
+          <object class="GtkStatusbar" id="status_bar">
+            <property name="visible">True</property>
           </object>
         </child>
 
-        <child>
-          <object class="GtkBox" id="time_box">
-            <property name="visible">False</property>
-            <property name="expand">False</property>
-            <property name="orientation">horizontal</property>
-            <property name="spacing">15</property>
-            <property name="margin">10</property>
-            <child>
-              <object class="GtkLabel" id="static_label">
-                <property name="visible">True</property>
-                <property name="expand">False</property>
-                <property name="label" translatable="yes">Duration of each picture (seconds)</property>
-              </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton" id="static_time_btn">
-                <property name="visible">True</property>
-                <property name="expand">False</property>
-                <property name="adjustment">adjustment_st</property>
-              </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton" id="trans_time_btn">
-                <property name="visible">True</property>
-                <property name="expand">False</property>
-                <property name="adjustment">adjustment_tr</property>
-              </object>
-              <packing>
-                <property name="pack-type">end</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel" id="trans_label">
-                <property name="visible">True</property>
-                <property name="expand">False</property>
-                <property name="label" translatable="yes">Duration of each transition (seconds)</property>
-              </object>
-              <packing>
-                <property name="pack-type">end</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="pack-type">end</property>
-          </packing>
-        </child>
       </object>
     </child>
   </template>

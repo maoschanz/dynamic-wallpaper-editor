@@ -24,8 +24,8 @@
         <property name="visible">True</property>
         <property name="margin-top">2</property>
         <property name="margin-bottom">2</property>
-        <property name="margin-right">20</property>
-        <property name="margin-left">20</property>
+        <property name="margin-right">18</property>
+        <property name="margin-left">18</property>
         <property name="spacing">5</property>
         <property name="orientation">horizontal</property>
 
@@ -40,9 +40,23 @@
         </child>
 
         <child>
-          <object class="GtkLabel" id="row_label">
+          <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="label">picture name</property>
+            <property name="homogeneous">True</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel" id="row_label">
+                <property name="visible">True</property>
+                <property name="label">picture name</property>
+              </object>
+            </child>
+            <!-- <child> -->
+            <!--   <object class="GtkLabel" id="time_label"> -->
+            <!--     <property name="visible">True</property> -->
+            <!--     <property name="label">time label</property> -->
+            <!--     <style><class name="dim-label"/></style> -->
+            <!--   </object> -->
+            <!-- </child> -->
           </object>
           <packing>
             <property name="pack-type">start</property>
@@ -70,7 +84,7 @@
                     <property name="column-spacing">5</property>
 
                     <child>
-                      <object class="GtkLabel" id="static_label">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="expand">False</property>
                         <property name="label" translatable="yes">Time</property>
@@ -94,7 +108,7 @@
                     </child>
 
                     <child>
-                      <object class="GtkLabel" id="transition_label">
+                      <object class="GtkLabel">
                         <property name="visible">True</property>
                         <property name="expand">False</property>
                         <property name="label" translatable="yes">Transition</property>
@@ -117,27 +131,22 @@
                       </packing>
                     </child>
 
-                    <child>
-                      <object class="GtkButton" id="delete_btn">
-                        <property name="visible">True</property>
-                        <property name="tooltip_text" translatable="yes">Delete</property>
-                        <child>
-                          <object class="GtkImage">
-                            <property name="visible">True</property>
-                            <property name="icon-name">edit-delete-symbolic</property>
-                          </object>
-                        </child>
-                        <style>
-                          <class name="destructive-action"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="left-attach">2</property>
-                        <property name="top-attach">0</property>
-                        <property name="height">2</property>
-                      </packing>
-                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
 
+            <child>
+              <!-- il est hors de la grille parce que la grille on la cache -->
+              <object class="GtkButton" id="delete_btn">
+                <property name="visible">True</property>
+                <property name="valign">center</property>
+                <property name="tooltip_text" translatable="yes">Delete</property>
+                <style><class name="destructive-action"/></style>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="icon-name">edit-delete-symbolic</property>
                   </object>
                 </child>
               </object>

@@ -41,6 +41,8 @@ class PictureRow(Gtk.ListBoxRow):
 		label.set_label(self.filename)
 		label.set_ellipsize(Pango.EllipsizeMode.START)
 
+		# TODO a label with hours ? and/or the total duration ?
+
 		# Row controls
 		delete_btn = builder.get_object('delete_btn')
 		delete_btn.connect('clicked', self.destroy_row)
@@ -100,7 +102,6 @@ class PictureRow(Gtk.ListBoxRow):
 		message += str(_("%s hour(s)") % hours + ' ')
 		message += str(_("%s minute(s)") % minutes + ' ')
 		message += str(_("%s second(s)") % seconds)
-		self.static_time_btn.set_tooltip_text(message)
 		self.trans_time_btn.set_tooltip_text(message)
 		self.window.update_status()
 
