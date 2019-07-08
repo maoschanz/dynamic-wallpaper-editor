@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 03:33+0200\n"
+"POT-Creation-Date: 2019-07-08 23:45+0200\n"
 "PO-Revision-Date: 2019-03-18 02:19+0300\n"
 "Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Turkish <teknomobil@yandex.com>\n"
@@ -23,7 +23,7 @@ msgid "Dynamic Wallpaper Editor"
 msgstr "Dinamik Duvar Kağıdı Düzenleyici"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
-#: src/main.py:161
+#: src/main.py:162
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "GNOME için dinamik duvar kağıtları oluşturun veya düzenleyin."
 
@@ -57,7 +57,7 @@ msgstr "Hakkında"
 msgid "Quit"
 msgstr "Çık"
 
-#: src/ui/menus.ui:40 src/window.py:623
+#: src/ui/menus.ui:40 src/ui/shortcuts.ui:86 src/window.py:644
 msgid "Save as…"
 msgstr "Farklı kaydet…"
 
@@ -89,27 +89,27 @@ msgstr "Yakınlaşmış"
 msgid "Spanned"
 msgstr "Yayılmış"
 
-#: src/ui/picture_row.ui:76
+#: src/ui/picture_row.ui:97 src/ui/window.ui:283
 msgid "Time"
 msgstr "Zaman"
 
-#: src/ui/picture_row.ui:87
+#: src/ui/picture_row.ui:108
 msgid ""
 "Time (in seconds) of this image. This doesn't include the time of the "
 "transition."
 msgstr "Bu görüntünün süresi (saniye olarak). Bu geçiş zamanını içermez."
 
-#: src/ui/picture_row.ui:100
+#: src/ui/picture_row.ui:121 src/ui/window.ui:305
 msgid "Transition"
 msgstr "Geçiş"
 
-#: src/ui/picture_row.ui:111
+#: src/ui/picture_row.ui:132
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr ""
 "Bu görüntü ile sonraki görüntü arasındaki geçişin süresi (saniye olarak)."
 
-#: src/ui/picture_row.ui:128
+#: src/ui/picture_row.ui:151
 msgid "Delete"
 msgstr "Sil"
 
@@ -150,95 +150,104 @@ msgid "General"
 msgstr "Genel"
 
 #: src/ui/shortcuts.ui:24
+msgid "Close the current window"
+msgstr ""
+
+#: src/ui/shortcuts.ui:31
 msgid "Quit all windows"
 msgstr "Tüm pencerelerden çık"
 
-#: src/ui/shortcuts.ui:31
+#: src/ui/shortcuts.ui:38
+#, fuzzy
+msgid "Show shortcuts"
+msgstr "Klavye Kısayolları"
+
+#: src/ui/shortcuts.ui:45
 msgid "Show help"
 msgstr "Yardımı göster"
 
-#: src/ui/shortcuts.ui:40
+#: src/ui/shortcuts.ui:54
 msgid "Wallpaper"
 msgstr "Duvar kağıdı"
 
-#: src/ui/shortcuts.ui:44 src/ui/window.ui:33
+#: src/ui/shortcuts.ui:58 src/ui/window.ui:34
 msgid "Open an existing dynamic wallpaper"
 msgstr "Mevcut dinamik duvar kağıdını aç"
 
-#: src/ui/shortcuts.ui:51 src/ui/window.ui:118 src/window.py:374
+#: src/ui/shortcuts.ui:65 src/ui/window.ui:122 src/window.py:394
 msgid "Add pictures"
 msgstr "Resim ekle"
 
-#: src/ui/shortcuts.ui:58 src/ui/window.ui:130 src/window.py:348
+#: src/ui/shortcuts.ui:72 src/ui/window.ui:134 src/window.py:368
 msgid "Add a folder"
 msgstr "Klasör ekle"
 
-#: src/ui/shortcuts.ui:65 src/ui/window.ui:91 src/window.py:330
-#: src/window.py:624
+#: src/ui/shortcuts.ui:79 src/ui/window.ui:95 src/window.py:350
+#: src/window.py:645
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/ui/shortcuts.ui:72 src/ui/window.ui:169
+#: src/ui/shortcuts.ui:93 src/ui/window.ui:173
 msgid "Set as wallpaper"
 msgstr "Duvar kağıdı olarak ayarla"
 
-#: src/ui/window.ui:32 src/window.py:475 src/window.py:476
+#: src/ui/window.ui:33 src/window.py:496 src/window.py:497
 msgid "Open"
 msgstr "Aç"
 
-#: src/ui/window.ui:46
+#: src/ui/window.ui:48
 msgid "Slideshow"
 msgstr "Sunu gösterimi"
 
-#: src/ui/window.ui:47
+#: src/ui/window.ui:49
 msgid "A simple succession of pictures."
 msgstr ""
 
-#: src/ui/window.ui:55
+#: src/ui/window.ui:57
 msgid "Daylight"
 msgstr "Gün ışığı"
 
-#: src/ui/window.ui:56
+#: src/ui/window.ui:58
 msgid "Pictures changing with the daylight."
 msgstr ""
 
-#: src/ui/window.ui:64
+#: src/ui/window.ui:66
 msgid "Custom"
 msgstr "Özel"
 
-#: src/ui/window.ui:65
+#: src/ui/window.ui:67
 msgid "Set the durations you prefer."
 msgstr ""
 
-#: src/ui/window.ui:75
+#: src/ui/window.ui:78
 msgid "More actions"
 msgstr "Daha fazla eylem"
 
-#: src/ui/window.ui:140
+#: src/ui/window.ui:144
 msgid "Set the exact start time of the wallpaper"
 msgstr "Duvar kağıdının tam başlama zamanını ayarla"
 
-#: src/ui/window.ui:176
+#: src/ui/window.ui:180
 msgid "Adjustment options for the wallpaper"
 msgstr "Duvar kağıdı için uyum seçenekleri"
 
-#: src/ui/window.ui:210
+#: src/ui/window.ui:214
 msgid "Error starting the application, please report this bug."
 msgstr "Uygulama başlatma hatası, lütfen bu hatayı bildirin."
 
-#: src/ui/window.ui:215
+#: src/ui/window.ui:219
 msgid "Automatic fix"
 msgstr "Otomatik düzelt"
 
-#: src/ui/window.ui:243
+#: src/ui/window.ui:254
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Yeni resimler ekle veya mevcut bir XML dosyasını aç."
 
-#: src/ui/window.ui:294
+#: src/ui/window.ui:291
 msgid "Duration of each picture (seconds)"
 msgstr "Her resmin süresi (saniye)"
 
-#: src/ui/window.ui:324
+#: src/ui/window.ui:313
 msgid "Duration of each transition (seconds)"
 msgstr "Her geçişin süresi (saniye)"
 
@@ -256,98 +265,112 @@ msgstr "Yeni pencere"
 msgid "Error opening this file. Did you mean %s ?"
 msgstr ""
 
-#: src/main.py:167
+#: src/main.py:168
 msgid "Report bugs or ideas"
 msgstr "Hata raporla veya öneri gönder"
 
-#: src/main.py:168
+#: src/main.py:169
 msgid "translator-credits"
 msgstr "Serdar Sağlam <teknomobil@yandex.com>"
 
-#: src/picture_row.py:65
+#: src/picture_row.py:71
 msgid "This picture doesn't exist"
 msgstr "Bu resim yok"
 
-#: src/picture_row.py:100 src/picture_row.py:113 src/window.py:295
+#: src/picture_row.py:139 src/picture_row.py:147 src/window.py:315
 #, python-format
 msgid "%s hour(s)"
 msgstr "%s saat"
 
-#: src/picture_row.py:101 src/picture_row.py:114 src/window.py:297
+#: src/picture_row.py:140 src/picture_row.py:148 src/window.py:317
 #, python-format
 msgid "%s minute(s)"
 msgstr "%s dakika"
 
-#: src/picture_row.py:102 src/picture_row.py:115 src/window.py:298
+#: src/picture_row.py:141 src/picture_row.py:149 src/window.py:318
 #, python-format
 msgid "%s second(s)"
 msgstr "%s saniye"
 
-#: src/window.py:288
+#: src/picture_row.py:156
+#, python-brace-format
+msgid "This picture lasts from {0} to {1}"
+msgstr ""
+
+#: src/picture_row.py:170
+#, python-brace-format
+msgid "The transition to the next picture lasts from {0} to {1}"
+msgstr ""
+
+#: src/window.py:215
+msgid "This desktop environnement isn't supported."
+msgstr ""
+
+#: src/window.py:308
 #, python-format
 msgid "%s pictures"
 msgstr "%s resimler"
 
-#: src/window.py:288
+#: src/window.py:308
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr "Toplam zaman: %s saniye"
 
-#: src/window.py:301
+#: src/window.py:321
 msgid "The total duration isn't 24 hours."
 msgstr "Toplam süre 24 saat değil."
 
-#: src/window.py:327
+#: src/window.py:347
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Duvar kağıdınıza kaydedilmemiş değişiklikler var."
 
-#: src/window.py:328 src/window.py:476 src/window.py:624
+#: src/window.py:348 src/window.py:497 src/window.py:645
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/window.py:329
+#: src/window.py:349
 msgid "Discard"
 msgstr "Yoksay"
 
-#: src/window.py:347 src/window.py:373 src/window.py:474
+#: src/window.py:367 src/window.py:393 src/window.py:495
 msgid "Loading…"
 msgstr "Yükleniyor…"
 
-#: src/window.py:405
+#: src/window.py:424
 msgid "All pictures"
 msgstr "Tüm resimler"
 
-#: src/window.py:413
+#: src/window.py:432
 msgid "PNG images"
 msgstr "PNG görüntüler"
 
-#: src/window.py:417
+#: src/window.py:436
 msgid "JPEG images"
 msgstr "JPEG görüntüler"
 
-#: src/window.py:478 src/window.py:627
+#: src/window.py:499 src/window.py:648
 msgid "Dynamic wallpapers (XML)"
 msgstr "Dinamik duvar kağıtları (XML)"
 
-#: src/window.py:512 src/window.py:519
+#: src/window.py:533 src/window.py:540
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Bu dinamik duvar kağıdı bozuk"
 
-#: src/window.py:524
+#: src/window.py:545
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Bu XML dosyası geçerli bir dinamik duvar kağıdı tanımlamıyor"
 
-#: src/window.py:535
+#: src/window.py:556
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Bilinmeyen öge: %s"
 
-#: src/window.py:613
+#: src/window.py:634
 #, fuzzy, python-format
 msgid "Save %s"
 msgstr "Kaydet"
 
-#: src/window.py:625
+#: src/window.py:646
 msgid "Untitled"
 msgstr "Başlıksız"
 

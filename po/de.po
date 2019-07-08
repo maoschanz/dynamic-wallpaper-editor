@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 03:33+0200\n"
+"POT-Creation-Date: 2019-07-08 23:45+0200\n"
 "PO-Revision-Date: 2018-06-23 17:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,7 +24,7 @@ msgid "Dynamic Wallpaper Editor"
 msgstr "Dynamischer Bildschirmhintergrund Editor"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
-#: src/main.py:161
+#: src/main.py:162
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
 
@@ -58,7 +58,7 @@ msgstr "Info"
 msgid "Quit"
 msgstr "Beenden"
 
-#: src/ui/menus.ui:40 src/window.py:623
+#: src/ui/menus.ui:40 src/ui/shortcuts.ui:86 src/window.py:644
 #, fuzzy
 msgid "Save as…"
 msgstr "Speichern unter"
@@ -91,30 +91,30 @@ msgstr ""
 msgid "Spanned"
 msgstr ""
 
-#: src/ui/picture_row.ui:76
+#: src/ui/picture_row.ui:97 src/ui/window.ui:283
 #, fuzzy
 msgid "Time"
 msgstr "Zeit:"
 
-#: src/ui/picture_row.ui:87
+#: src/ui/picture_row.ui:108
 msgid ""
 "Time (in seconds) of this image. This doesn't include the time of the "
 "transition."
 msgstr ""
 "Zeit (in Sekunden) dieses Bildes. Beinhaltet nicht die Zeit der Übergänge."
 
-#: src/ui/picture_row.ui:100
+#: src/ui/picture_row.ui:121 src/ui/window.ui:305
 #, fuzzy
 msgid "Transition"
 msgstr "Übergänge:"
 
-#: src/ui/picture_row.ui:111
+#: src/ui/picture_row.ui:132
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr ""
 "Zeit (in Sekunden) der Übergänge zwischen diesem Bild und dem nächsten."
 
-#: src/ui/picture_row.ui:128
+#: src/ui/picture_row.ui:151
 msgid "Delete"
 msgstr ""
 
@@ -156,97 +156,105 @@ msgid "General"
 msgstr ""
 
 #: src/ui/shortcuts.ui:24
-msgid "Quit all windows"
+msgid "Close the current window"
 msgstr ""
 
 #: src/ui/shortcuts.ui:31
+msgid "Quit all windows"
+msgstr ""
+
+#: src/ui/shortcuts.ui:38
+msgid "Show shortcuts"
+msgstr ""
+
+#: src/ui/shortcuts.ui:45
 msgid "Show help"
 msgstr ""
 
-#: src/ui/shortcuts.ui:40
+#: src/ui/shortcuts.ui:54
 #, fuzzy
 msgid "Wallpaper"
 msgstr "Als Bildschirmhintergrund festlegen"
 
-#: src/ui/shortcuts.ui:44 src/ui/window.ui:33
+#: src/ui/shortcuts.ui:58 src/ui/window.ui:34
 msgid "Open an existing dynamic wallpaper"
 msgstr "Öffne einen existierenden dynamischen Bildschirmhintergrund"
 
-#: src/ui/shortcuts.ui:51 src/ui/window.ui:118 src/window.py:374
+#: src/ui/shortcuts.ui:65 src/ui/window.ui:122 src/window.py:394
 msgid "Add pictures"
 msgstr "Bilder hinzufügen"
 
-#: src/ui/shortcuts.ui:58 src/ui/window.ui:130 src/window.py:348
+#: src/ui/shortcuts.ui:72 src/ui/window.ui:134 src/window.py:368
 msgid "Add a folder"
 msgstr ""
 
-#: src/ui/shortcuts.ui:65 src/ui/window.ui:91 src/window.py:330
-#: src/window.py:624
+#: src/ui/shortcuts.ui:79 src/ui/window.ui:95 src/window.py:350
+#: src/window.py:645
 msgid "Save"
 msgstr "Speichern"
 
-#: src/ui/shortcuts.ui:72 src/ui/window.ui:169
+#: src/ui/shortcuts.ui:93 src/ui/window.ui:173
 msgid "Set as wallpaper"
 msgstr "Als Bildschirmhintergrund festlegen"
 
-#: src/ui/window.ui:32 src/window.py:475 src/window.py:476
+#: src/ui/window.ui:33 src/window.py:496 src/window.py:497
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/ui/window.ui:46
+#: src/ui/window.ui:48
 msgid "Slideshow"
 msgstr ""
 
-#: src/ui/window.ui:47
+#: src/ui/window.ui:49
 msgid "A simple succession of pictures."
 msgstr ""
 
-#: src/ui/window.ui:55
+#: src/ui/window.ui:57
 msgid "Daylight"
 msgstr ""
 
-#: src/ui/window.ui:56
+#: src/ui/window.ui:58
 msgid "Pictures changing with the daylight."
 msgstr ""
 
-#: src/ui/window.ui:64
+#: src/ui/window.ui:66
 msgid "Custom"
 msgstr ""
 
-#: src/ui/window.ui:65
+#: src/ui/window.ui:67
 msgid "Set the durations you prefer."
 msgstr ""
 
-#: src/ui/window.ui:75
+#: src/ui/window.ui:78
 msgid "More actions"
 msgstr ""
 
-#: src/ui/window.ui:140
+#: src/ui/window.ui:144
 msgid "Set the exact start time of the wallpaper"
 msgstr ""
 
-#: src/ui/window.ui:176
+#: src/ui/window.ui:180
 #, fuzzy
 msgid "Adjustment options for the wallpaper"
 msgstr "Als Bildschirmhintergrund festlegen"
 
-#: src/ui/window.ui:210
+#: src/ui/window.ui:214
 msgid "Error starting the application, please report this bug."
 msgstr ""
 
-#: src/ui/window.ui:215
+#: src/ui/window.ui:219
 msgid "Automatic fix"
 msgstr ""
 
-#: src/ui/window.ui:243
+#: src/ui/window.ui:254
 msgid "Add new pictures, or open an existing XML file."
 msgstr ""
 
-#: src/ui/window.ui:294
+#: src/ui/window.ui:291
 msgid "Duration of each picture (seconds)"
 msgstr ""
 
-#: src/ui/window.ui:324
+#: src/ui/window.ui:313
 msgid "Duration of each transition (seconds)"
 msgstr ""
 
@@ -264,100 +272,114 @@ msgstr "Neues Fenster"
 msgid "Error opening this file. Did you mean %s ?"
 msgstr ""
 
-#: src/main.py:167
+#: src/main.py:168
 msgid "Report bugs or ideas"
 msgstr "Melde Fehler oder Ideen"
 
-#: src/main.py:168
+#: src/main.py:169
 msgid "translator-credits"
 msgstr ""
 
-#: src/picture_row.py:65
+#: src/picture_row.py:71
 msgid "This picture doesn't exist"
 msgstr ""
 
-#: src/picture_row.py:100 src/picture_row.py:113 src/window.py:295
+#: src/picture_row.py:139 src/picture_row.py:147 src/window.py:315
 #, python-format
 msgid "%s hour(s)"
 msgstr ""
 
-#: src/picture_row.py:101 src/picture_row.py:114 src/window.py:297
+#: src/picture_row.py:140 src/picture_row.py:148 src/window.py:317
 #, python-format
 msgid "%s minute(s)"
 msgstr ""
 
-#: src/picture_row.py:102 src/picture_row.py:115 src/window.py:298
+#: src/picture_row.py:141 src/picture_row.py:149 src/window.py:318
 #, python-format
 msgid "%s second(s)"
 msgstr ""
 
-#: src/window.py:288
+#: src/picture_row.py:156
+#, python-brace-format
+msgid "This picture lasts from {0} to {1}"
+msgstr ""
+
+#: src/picture_row.py:170
+#, python-brace-format
+msgid "The transition to the next picture lasts from {0} to {1}"
+msgstr ""
+
+#: src/window.py:215
+msgid "This desktop environnement isn't supported."
+msgstr ""
+
+#: src/window.py:308
 #, fuzzy, python-format
 msgid "%s pictures"
 msgstr "Bilder hinzufügen"
 
-#: src/window.py:288
+#: src/window.py:308
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr ""
 
-#: src/window.py:301
+#: src/window.py:321
 msgid "The total duration isn't 24 hours."
 msgstr ""
 
-#: src/window.py:327
+#: src/window.py:347
 msgid "There are unsaved modifications to your wallpaper."
 msgstr ""
 
-#: src/window.py:328 src/window.py:476 src/window.py:624
+#: src/window.py:348 src/window.py:497 src/window.py:645
 msgid "Cancel"
 msgstr ""
 
-#: src/window.py:329
+#: src/window.py:349
 msgid "Discard"
 msgstr ""
 
-#: src/window.py:347 src/window.py:373 src/window.py:474
+#: src/window.py:367 src/window.py:393 src/window.py:495
 msgid "Loading…"
 msgstr ""
 
-#: src/window.py:405
+#: src/window.py:424
 #, fuzzy
 msgid "All pictures"
 msgstr "Bilder hinzufügen"
 
-#: src/window.py:413
+#: src/window.py:432
 msgid "PNG images"
 msgstr ""
 
-#: src/window.py:417
+#: src/window.py:436
 msgid "JPEG images"
 msgstr ""
 
-#: src/window.py:478 src/window.py:627
+#: src/window.py:499 src/window.py:648
 msgid "Dynamic wallpapers (XML)"
 msgstr "Dynamische Bildschirmhintergründe (XML)"
 
-#: src/window.py:512 src/window.py:519
+#: src/window.py:533 src/window.py:540
 #, fuzzy
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Dynamischer Bildschirmhintergrund Editor"
 
-#: src/window.py:524
+#: src/window.py:545
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr ""
 
-#: src/window.py:535
+#: src/window.py:556
 #, python-format
 msgid "Unknown element: %s"
 msgstr ""
 
-#: src/window.py:613
+#: src/window.py:634
 #, fuzzy, python-format
 msgid "Save %s"
 msgstr "Speichern"
 
-#: src/window.py:625
+#: src/window.py:646
 msgid "Untitled"
 msgstr ""
 

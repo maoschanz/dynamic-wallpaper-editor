@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
-import math
+import math, os
 import xml.etree.ElementTree as xml_parser
 
 from .picture_row import PictureRow
@@ -204,8 +204,15 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		return gsettings.get_string(wp_key)
 
 	def action_set_as_wallpaper(self, *args):
-		gsettings = Gio.Settings.new('org.gnome.desktop.background')
-		wp_key = 'picture-uri'
+		desktop_env = os.getenv('XDG_CURRENT_DESKTOP', 'GNOME')
+		if 'GNOME' in desktop_env:
+			gsettings = Gio.Settings.new('org.gnome.desktop.background')
+			wp_key = 'picture-uri'
+		elif 'Pantheon' in desktop_env:
+			gsettings = Gio.Settings.new('org.gnome.desktop.background')
+			wp_key = 'picture-uri'
+		else:
+			self.show_notification(_("This desktop environnement isn't supported."))
 		gsettings.set_string(wp_key, self.gio_file.get_uri())
 
 	############################################################################
