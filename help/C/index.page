@@ -6,7 +6,7 @@
     <title type="text">Dynamic Wallpaper Editor</title>
     <credit type="author">
       <name>Romain F. T.</name>
-      <years>2018</years>
+      <years>2018-2019</years>
     </credit>
     <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
   </info>
@@ -17,22 +17,25 @@
   </title>
 
   <p>GNOME Shell natively allows the wallpaper to change automatically over
-  time, so your wallpaper can be for example:</p>
-  <list>
-    <item><p>a slideshow of your favorite pictures</p></item>
-    <item><p>an image adapting to the daylight</p></item>
-  </list>
+  time, so your wallpaper can be for example a slideshow of your favorite
+  pictures, or an image adapting to the daylight.</p>
   <p>Dynamic wallpapers are saved as XML files, and this utility helps you
   creating, editing, and applying them.</p>
   <media type="image" mime="image/png" src="figures/screenshot.png" its:translate="no"/>
 
   <section id="type">
     <title>Select a type of wallpaper</title>
-    <p>The three available types are <gui style="menuitem">Slideshow</gui> (all
-    pictures have the same duration), <gui style="menuitem">Time of the day</gui>
-    (each picture has its own duration, and the total is 24 hours), and
-    <gui style="menuitem">Custom</gui> (each picture has its own duration). The
-    default value is <gui style="menuitem">Custom</gui>.</p>
+    <p>The three available types are:</p>
+    <list>
+      <item><p><gui style="button">Slideshow</gui> (all pictures have the same
+      duration)</p></item>
+      <item><p><gui style="button">Time of the day</gui> (each picture has its
+      own duration, and the total is 24 hours)</p></item>
+      <item><p><gui style="button">Custom</gui> (each picture has its own
+      duration).</p></item>
+    </list>
+    <p>When you open an empty window to create a new wallpaper, the default
+    value is <gui style="button">Custom</gui>.</p>
     <p>When you open an existing XML file, the existing type is detected.</p>
   </section>
 
@@ -67,7 +70,7 @@
 
   <section id="save-apply">
     <title>Save and apply as wallpaper</title>
-    <p>Save your creation as an XML file (with the <gui style="menuitem">Save</gui>
+    <p>Save your creation as an XML file (with the <gui style="button">Save</gui>
     button), and apply it as a wallpaper with the <gui style="button">Set as
     wallpaper</gui> button. Adjustment options (zoom, centered, stretched, etc.)
     are available from the menu next to it.</p>

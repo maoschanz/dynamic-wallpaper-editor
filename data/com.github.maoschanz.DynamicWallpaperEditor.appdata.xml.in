@@ -18,16 +18,16 @@
 	</screenshots>
 
 	<releases>
-		<!-- <release version="1.14" date="2018-07-12"> -->
-		<!-- 	<description> -->
-		<!-- 		<ul> -->
-		<!-- 			<li>Better UI for the slideshow mode</li> -->
-		<!-- 			<li>More helpful labels for the daylight mode</li> -->
-		<!-- 			<li>Pantheon desktop support</li> -->
-		<!-- 			<li>Various bug fixes</li> -->
-		<!-- 		</ul> -->
-		<!-- 	</description> -->
-		<!-- </release> -->
+		<release version="2.0" date="2018-07-09">
+			<description>
+				<ul>
+					<li>Better UI for the slideshow mode</li>
+					<li>More helpful labels for the daylight mode</li>
+					<li>Other desktop environments support</li>
+					<li>Various bug fixes</li>
+				</ul>
+			</description>
+		</release>
 		<release version="1.13" date="2018-07-05">
 			<description>
 				<ul>

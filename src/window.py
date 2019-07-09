@@ -56,7 +56,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self._is_saved = True
 		self.check_24 = False
 		self.desktop_env = os.getenv('XDG_CURRENT_DESKTOP', 'GNOME')
-		self.set_show_menubar(False) # TODO show it with Cinnamon ??
+		self.set_show_menubar(False) # TODO fix it, then show it with Cinnamon ??
 		# The issue with Cinnamon is with the start time popover
 
 		# Used in the "add pictures" file chooser dialog
@@ -222,7 +222,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		wp_options = None
 		if 'Budgie' in self.desktop_env:
 			pass # Doesn't support XML wallpapers XXX ???
-		elif 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env:
+		elif 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env \
+		                                         or 'Unity' in self.desktop_env:
 			gsettings = Gio.Settings.new('org.gnome.desktop.background')
 			wp_path = 'picture-uri'
 			wp_options = 'picture-options'
