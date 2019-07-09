@@ -56,8 +56,11 @@ class Application(Gtk.Application):
 
 	def on_startup(self, *args):
 		self.build_app_actions()
+		builder = Gtk.Builder().new_from_resource(UI_PATH + 'menus.ui')
+		menubar_model = builder.get_object('menu-bar')
+		self.set_menubar(menubar_model)
 		if self.prefers_app_menu():
-			menu = self.build_app_menu()
+			menu = builder.get_object('app-menu')
 			self.set_app_menu(menu)
 
 	def on_activate(self, *args):
@@ -111,11 +114,6 @@ class Application(Gtk.Application):
 			return None
 
 	############################################################################
-
-	def build_app_menu(self):
-		builder = Gtk.Builder().new_from_resource(UI_PATH + 'menus.ui')
-		menu = builder.get_object('app-menu')
-		return menu
 
 	def add_action_simple(self, action_name, callback, shortcuts):
 		action = Gio.SimpleAction.new(action_name, None)

@@ -55,6 +55,9 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.gio_file = None
 		self._is_saved = True
 		self.check_24 = False
+		self.desktop_env = os.getenv('XDG_CURRENT_DESKTOP', 'GNOME')
+		self.set_show_menubar(False) # TODO show it with Cinnamon ??
+		# The issue with Cinnamon is with the start time popover
 
 		# Used in the "add pictures" file chooser dialog
 		self.preview_picture = Gtk.Image(margin_right=5)
@@ -194,26 +197,58 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		args[0].set_state(GLib.Variant.new_string(new_value))
 
 	def set_wallpaper_option(self, value):
-		gsettings = Gio.Settings.new('org.gnome.desktop.background')
-		wp_key = 'picture-options'
-		gsettings.set_string(wp_key, value)
+		gsettings, wp_path, wp_options = self.get_setting_keys()
+		if gsettings is None:
+			return self.unsupported_desktop()
+		gsettings.set_string(wp_options, value)
 
 	def get_wallpaper_option(self):
-		gsettings = Gio.Settings.new('org.gnome.desktop.background')
-		wp_key = 'picture-options'
-		return gsettings.get_string(wp_key)
+		gsettings, wp_path, wp_options = self.get_setting_keys()
+		if gsettings is None:
+			return self.unsupported_desktop()
+		return gsettings.get_string(wp_options)
+
+	def unsupported_desktop(self):
+		self.show_notification(_("This desktop environnement isn't supported."))
+		self.lookup_action('pic_options').set_enabled(False)
+		return ''
+
+	def get_setting_keys(self):
+		"""Return the setting keys required for the used environnement.
+		CAUTION: it can return None, which can crash the app if the value is
+		used anyway for a GSettings operation !"""
+		gsettings = None
+		wp_path = None
+		wp_options = None
+		if 'Budgie' in self.desktop_env:
+			pass # Doesn't support XML wallpapers XXX ???
+		elif 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env:
+			gsettings = Gio.Settings.new('org.gnome.desktop.background')
+			wp_path = 'picture-uri'
+			wp_options = 'picture-options'
+		elif 'Cinnamon' in self.desktop_env:
+			gsettings = Gio.Settings.new('org.cinnamon.desktop.background')
+			wp_path = 'picture-uri'
+			wp_options = 'picture-options'
+		elif 'MATE' in self.desktop_env:
+			gsettings = Gio.Settings.new('org.mate.desktop.background')
+			wp_path = 'picture-filename'
+			wp_options = 'picture-options'
+		return gsettings, wp_path, wp_options
 
 	def action_set_as_wallpaper(self, *args):
-		desktop_env = os.getenv('XDG_CURRENT_DESKTOP', 'GNOME')
-		if 'GNOME' in desktop_env:
-			gsettings = Gio.Settings.new('org.gnome.desktop.background')
-			wp_key = 'picture-uri'
-		elif 'Pantheon' in desktop_env:
-			gsettings = Gio.Settings.new('org.gnome.desktop.background')
-			wp_key = 'picture-uri'
-		else:
-			self.show_notification(_("This desktop environnement isn't supported."))
-		gsettings.set_string(wp_key, self.gio_file.get_uri())
+		gsettings, wp_path, wp_options = self.get_setting_keys()
+		if gsettings is None:
+			return self.unsupported_desktop()
+		if 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env:
+			value = self.gio_file.get_uri()
+		elif 'MATE' in self.desktop_env:
+			value = self.gio_file.get_path() # XXX à tester
+		elif 'Cinnamon' in self.desktop_env:
+			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
+			use_folder.set_boolean('slideshow-enabled', False)
+			value = self.gio_file.get_uri()
+		gsettings.set_string(wp_path, value)
 
 	############################################################################
 	# Time management ##########################################################
