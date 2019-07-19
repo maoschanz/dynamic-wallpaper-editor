@@ -1,0 +1,397 @@
+# Italian translations for dynamic-wallpaper-editor package.
+# Copyright (C) 2019 THE dynamic-wallpaper-editor'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the dynamic-wallpaper-editor package.
+# Automatically generated, 2019.
+# Nicola S <nicola.sella@disroot.org>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: dynamic-wallpaper-editor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-19 11:52+0200\n"
+"PO-Revision-Date: 2019-07-19 13:35+0200\n"
+"Last-Translator: Nicola S <nicola.sella@disroot.org>\n"
+"Language-Team: Italian <nicola.sella@disroot.org>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 3.32.1\n"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
+#: src/ui/window.ui:27 src/main.py:85
+msgid "Dynamic Wallpaper Editor"
+msgstr "Editor di Sfondi Dinamici"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
+#: src/main.py:160
+msgid "Create or edit dynamic wallpapers for GNOME."
+msgstr "Crea o modifica sfondi dinamici per GNOME."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:9
+msgid "Wallpaper;Daylight;XML;"
+msgstr "Wallpaper;Daylight;XML;"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:11
+msgid "com.github.maoschanz.DynamicWallpaperEditor"
+msgstr "com.github.maoschanz.DynamicWallpaperEditor"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:16
+#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:171
+#: src/ui/shortcuts.ui:17
+msgid "New Window"
+msgstr "Nuova Finestra"
+
+#: src/ui/menus.ui:13 src/ui/menus.ui:153 src/ui/menus.ui:183
+msgid "Keyboard Shortcuts"
+msgstr "Scorciatoie da tastiera"
+
+#: src/ui/menus.ui:17 src/ui/menus.ui:149 src/ui/menus.ui:187
+msgid "Help"
+msgstr "Aiuto"
+
+#: src/ui/menus.ui:21 src/ui/menus.ui:161 src/ui/menus.ui:191
+msgid "About"
+msgstr "Informazioni"
+
+#: src/ui/menus.ui:25 src/ui/menus.ui:62
+msgid "Quit"
+msgstr "Chiudi"
+
+#: src/ui/menus.ui:32
+msgid "File"
+msgstr "File"
+
+#: src/ui/menus.ui:42 src/ui/window.ui:33 src/window.py:532 src/window.py:533
+msgid "Open"
+msgstr "Apri"
+
+#: src/ui/menus.ui:48 src/ui/shortcuts.ui:79 src/ui/window.ui:95
+#: src/window.py:386 src/window.py:681
+msgid "Save"
+msgstr "Salva"
+
+#: src/ui/menus.ui:52 src/ui/menus.ui:177 src/ui/shortcuts.ui:86
+#: src/window.py:680
+msgid "Save as…"
+msgstr "Salva con nome..."
+
+#: src/ui/menus.ui:58
+msgid "Close"
+msgstr "Chiudi"
+
+#: src/ui/menus.ui:67
+msgid "Edit"
+msgstr "Modifica"
+
+#: src/ui/menus.ui:71 src/ui/shortcuts.ui:65 src/ui/window.ui:122
+#: src/window.py:430
+msgid "Add pictures"
+msgstr "Aggiungi immagini"
+
+#: src/ui/menus.ui:75 src/ui/shortcuts.ui:72 src/ui/window.ui:134
+#: src/window.py:404
+msgid "Add a folder"
+msgstr "Aggiungi cartelle"
+
+#: src/ui/menus.ui:81 src/ui/shortcuts.ui:93 src/ui/window.ui:173
+msgid "Set as wallpaper"
+msgstr "Imposta come sfondo"
+
+#: src/ui/menus.ui:84 src/ui/menus.ui:86
+msgid "Background adjustment"
+msgstr "Adatta le immagini allo sfondo"
+
+#: src/ui/menus.ui:94
+msgid "Mosaic"
+msgstr "Mosaico"
+
+#: src/ui/menus.ui:99
+msgid "Centered"
+msgstr "Centra"
+
+#: src/ui/menus.ui:104
+msgid "Scaled"
+msgstr "Adatta allo schermo"
+
+#: src/ui/menus.ui:109
+msgid "Streched"
+msgstr "Amplia per riempire lo schermo"
+
+#: src/ui/menus.ui:114
+msgid "Zoom"
+msgstr "Zoom"
+
+#: src/ui/menus.ui:119
+msgid "Spanned"
+msgstr "Riempi"
+
+#: src/ui/menus.ui:157
+msgid "User manual"
+msgstr "Manuale dell'utente"
+
+#: src/ui/picture_row.ui:97 src/ui/window.ui:283
+msgid "Time"
+msgstr "Durata"
+
+#: src/ui/picture_row.ui:108
+msgid ""
+"Time (in seconds) of this image. This doesn't include the time of the "
+"transition."
+msgstr ""
+"Durata (in secondi) della permanenza dell'immagine. Non include la durata "
+"della transizione."
+
+#: src/ui/picture_row.ui:121 src/ui/window.ui:305
+msgid "Transition"
+msgstr "Durata transizione"
+
+#: src/ui/picture_row.ui:132
+msgid ""
+"Time (in seconds) of the transition between this image and the next one."
+msgstr ""
+"Durata (in secondi) del tempo di transizione tra questa immagine e la "
+"prossima."
+
+#: src/ui/picture_row.ui:151
+msgid "Delete"
+msgstr "Elimina"
+
+#: src/ui/start_time.ui:55
+msgid "This is useful when the total duration is 24 hours."
+msgstr "Questo è utile quando la durata totale è 24 ore."
+
+#: src/ui/start_time.ui:59
+msgid "Start time of the wallpaper"
+msgstr "Tempo di inizio dello sfondo"
+
+#: src/ui/start_time.ui:78
+msgid "Year"
+msgstr "Anno"
+
+#: src/ui/start_time.ui:101
+msgid "Month"
+msgstr "Mese"
+
+#: src/ui/start_time.ui:125
+msgid "Day"
+msgstr "Gorno"
+
+#: src/ui/start_time.ui:149
+msgid "Hour"
+msgstr "Ore"
+
+#: src/ui/start_time.ui:173
+msgid "Minute"
+msgstr "Minuti"
+
+#: src/ui/start_time.ui:197
+msgid "Second"
+msgstr "Secondi"
+
+#: src/ui/shortcuts.ui:13
+msgid "General"
+msgstr "Generali"
+
+#: src/ui/shortcuts.ui:24
+msgid "Close the current window"
+msgstr "Chiudi la finestra corrente"
+
+#: src/ui/shortcuts.ui:31
+msgid "Quit all windows"
+msgstr "Chiudi tutte le finestre"
+
+#: src/ui/shortcuts.ui:38
+msgid "Show shortcuts"
+msgstr "Mostra scorciatoie da tastiera"
+
+#: src/ui/shortcuts.ui:45
+msgid "Show help"
+msgstr "Mostra la finestra di aiuto"
+
+#: src/ui/shortcuts.ui:54
+msgid "Wallpaper"
+msgstr "Sfondo"
+
+#: src/ui/shortcuts.ui:58 src/ui/window.ui:34
+msgid "Open an existing dynamic wallpaper"
+msgstr "Apri uno sfondo dinamico preesistente"
+
+#: src/ui/window.ui:48
+msgid "Slideshow"
+msgstr "Presentazione"
+
+#: src/ui/window.ui:49
+msgid "A simple succession of pictures."
+msgstr "Una semplice presentazione."
+
+#: src/ui/window.ui:57
+msgid "Daylight"
+msgstr "Luce del giorno"
+
+#: src/ui/window.ui:58
+msgid "Pictures changing with the daylight."
+msgstr "Le immagini cambiano con la luce del giorno."
+
+#: src/ui/window.ui:66
+msgid "Custom"
+msgstr "Personalizza"
+
+#: src/ui/window.ui:67
+msgid "Set the durations you prefer."
+msgstr "Imposta la durata che preferisci."
+
+#: src/ui/window.ui:78
+msgid "More actions"
+msgstr "Più azioni"
+
+#: src/ui/window.ui:144
+msgid "Set the exact start time of the wallpaper"
+msgstr "Imposta la data esatta di inizio dello sfondo"
+
+#: src/ui/window.ui:180
+msgid "Adjustment options for the wallpaper"
+msgstr "Impostazioni: adatta le immagini allo sfondo"
+
+#: src/ui/window.ui:214
+msgid "Error starting the application, please report this bug."
+msgstr "Errore all'avvio dell'applicazione, per favore, segnala questo bug."
+
+#: src/ui/window.ui:219
+msgid "Automatic fix"
+msgstr "Risolvi in automatico"
+
+#: src/ui/window.ui:254
+msgid "Add new pictures, or open an existing XML file."
+msgstr "Aggiungi un'immagine o apri un file XML."
+
+#: src/ui/window.ui:291
+msgid "Duration of each picture (seconds)"
+msgstr "Durata di ogni immagine (secondi)"
+
+#: src/ui/window.ui:313
+msgid "Duration of each transition (seconds)"
+msgstr "Durata di ogni transizione (secondi)"
+
+#: src/main.py:52
+msgid "Print the version and display the 'about' dialog"
+msgstr "Mostra la versione e la finestra di informazioni"
+
+#: src/main.py:55
+msgid "Open a new window"
+msgstr "Apri una nuova finestra"
+
+#: src/main.py:110
+#, python-format
+msgid "Error opening this file. Did you mean %s ?"
+msgstr "Errore nell'apertura del file. Volevi dire %s?"
+
+#: src/main.py:166
+msgid "Report bugs or ideas"
+msgstr "Segnala bug o suggerisci idee"
+
+#: src/main.py:167
+msgid "translator-credits"
+msgstr "inknos: nicola.sella AT disroot DOT org"
+
+#: src/picture_row.py:71
+msgid "This picture doesn't exist"
+msgstr "Questa immagine non esiste"
+
+#: src/picture_row.py:139 src/picture_row.py:147 src/window.py:351
+#, python-format
+msgid "%s hour(s)"
+msgstr "%s ora/e"
+
+#: src/picture_row.py:140 src/picture_row.py:148 src/window.py:353
+#, python-format
+msgid "%s minute(s)"
+msgstr "%s minuto/i"
+
+#: src/picture_row.py:141 src/picture_row.py:149 src/window.py:354
+#, python-format
+msgid "%s second(s)"
+msgstr "%s secondo/i"
+
+#: src/picture_row.py:156
+#, python-brace-format
+msgid "This picture lasts from {0} to {1}"
+msgstr "L'immagine inizierà alle {0} e finirà alle {1}"
+
+#: src/picture_row.py:170
+#, python-brace-format
+msgid "The transition to the next picture lasts from {0} to {1}"
+msgstr "La transizione inizierà alle {0} e finirà alle {1}"
+
+#: src/window.py:212
+msgid "This desktop environnement isn't supported."
+msgstr "Questo ambiente desktop non è supportato."
+
+#: src/window.py:344
+#, python-format
+msgid "%s pictures"
+msgstr "%s immagini"
+
+#: src/window.py:344
+#, python-format
+msgid "Total time: %s second(s)"
+msgstr "Durata totale: %s secondo/i"
+
+#: src/window.py:357
+msgid "The total duration isn't 24 hours."
+msgstr "La durata totale non è 24 ore."
+
+#: src/window.py:383
+msgid "There are unsaved modifications to your wallpaper."
+msgstr "Ci sono modifiche non salvate per il tuo sfondo."
+
+#: src/window.py:384 src/window.py:533 src/window.py:681
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/window.py:385
+msgid "Discard"
+msgstr "Esci senza salvare"
+
+#: src/window.py:403 src/window.py:429 src/window.py:531
+msgid "Loading…"
+msgstr "Caricamento..."
+
+#: src/window.py:460
+msgid "All pictures"
+msgstr "Tutte le immagini"
+
+#: src/window.py:468
+msgid "PNG images"
+msgstr "Immagini PNG"
+
+#: src/window.py:472
+msgid "JPEG images"
+msgstr "Immagini JPEG"
+
+#: src/window.py:535 src/window.py:684
+msgid "Dynamic wallpapers (XML)"
+msgstr "Sfondi dinamici (XML)"
+
+#: src/window.py:569 src/window.py:576
+msgid "This dynamic wallpaper is corrupted"
+msgstr "Questo sfondo dinamico è corrotto"
+
+#: src/window.py:581
+msgid "This XML file doesn't describe a valid dynamic wallpaper"
+msgstr "Questo file XML non corrisponde a uno sfondo dinamico valido"
+
+#: src/window.py:592
+#, python-format
+msgid "Unknown element: %s"
+msgstr "Elemento sconosciuto: %s"
+
+#: src/window.py:670
+#, python-format
+msgid "Save %s"
+msgstr "Salva %s"
+
+#: src/window.py:682
+msgid "Untitled"
+msgstr "Senza Titolo"
