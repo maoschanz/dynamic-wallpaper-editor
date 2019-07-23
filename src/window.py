@@ -31,7 +31,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	start_btn = Gtk.Template.Child()
 	menu_btn = Gtk.Template.Child()
 	save_btn = Gtk.Template.Child()
-	adj_btn = Gtk.Template.Child()
+	apply_btn = Gtk.Template.Child()
 
 	type_rbtn1 = Gtk.Template.Child()
 	type_rbtn2 = Gtk.Template.Child()
@@ -96,7 +96,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	def build_menus(self):
 		builder = Gtk.Builder().new_from_resource(UI_PATH + 'menus.ui')
 		self.menu_btn.set_menu_model(builder.get_object('window-menu'))
-		self.adj_btn.set_menu_model(builder.get_object('adjustment-menu'))
+		self.apply_btn.set_menu_model(builder.get_object('apply-menu'))
 
 	def add_action_simple(self, action_name, callback, shortcuts):
 		action = Gio.SimpleAction.new(action_name, None)
@@ -108,14 +108,16 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	def build_all_actions(self):
 		self.add_action_simple('save', self.action_save, ['<Ctrl>s'])
 		self.add_action_simple('save_as', self.action_save_as, ['<Ctrl><Shift>s'])
-		self.add_action_simple('set_as_wallpaper', \
-		                              self.action_set_as_wallpaper, ['<Ctrl>r'])
 		self.add_action_simple('open', self.action_open, ['<Ctrl>o'])
 		self.add_action_simple('add', self.action_add, ['<Ctrl>a'])
 		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
 		self.add_action_simple('close', self.action_close, ['<Ctrl>w'])
 
+		self.add_action_simple('set_as_wallpaper', \
+		                                 self.action_set_wallpaper, ['<Ctrl>r'])
+		self.add_action_simple('set_as_lockscreen', self.action_set_lockscreen, None)
 		self.lookup_action('set_as_wallpaper').set_enabled(False)
+		self.lookup_action('set_as_lockscreen').set_enabled(False)
 
 		action_type = Gio.SimpleAction().new_stateful('wallpaper-type', \
 		                   GLib.VariantType.new('s'), \
@@ -127,10 +129,16 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.type_rbtn2.connect('toggled', self.radio_btn_helper, 'daylight')
 		self.type_rbtn3.connect('toggled', self.radio_btn_helper, 'custom')
 
-		action_options = Gio.SimpleAction().new_stateful('pic_options', \
+		action_options = Gio.SimpleAction().new_stateful('wp_options', \
 		                   GLib.VariantType.new('s'), \
 		                   GLib.Variant.new_string(self.get_wallpaper_option()))
 		action_options.connect('change-state', self.on_change_wallpaper_options)
+		self.add_action(action_options)
+
+		action_options = Gio.SimpleAction().new_stateful('ls_options', \
+		                   GLib.VariantType.new('s'), \
+		                   GLib.Variant.new_string(self.get_lockscreen_option()))
+		action_options.connect('change-state', self.on_change_lockscreen_options)
 		self.add_action(action_options)
 
 	############################################################################
@@ -189,6 +197,53 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.set_check_24(False)
 
 	############################################################################
+	# Lockscreen settings ######################################################
+
+	def on_change_lockscreen_options(self, *args):
+		new_value = args[1].get_string()
+		self.set_lockscreen_option(new_value)
+		args[0].set_state(GLib.Variant.new_string(new_value))
+
+	def set_lockscreen_option(self, value):
+		gsettings, wp_path, wp_options = self.get_ls_setting_keys()
+		if gsettings is None:
+			return self.unsupported_desktop()
+		gsettings.set_string(wp_options, value)
+
+	def get_lockscreen_option(self):
+		gsettings, wp_path, wp_options = self.get_ls_setting_keys()
+		if gsettings is None:
+			return self.unsupported_desktop()
+		return gsettings.get_string(wp_options)
+
+	def unsupported_desktop(self):
+		self.show_notification(_("This desktop environnement isn't supported."))
+		self.lookup_action('ls_options').set_enabled(False)
+		self.lookup_action('set_as_lockscreen').set_enabled(False)
+		return ''
+
+	def get_ls_setting_keys(self):
+		"""Return the setting keys required for the used environnement.
+		CAUTION: it can return None, which can crash the app if the value is
+		used anyway for a GSettings operation !"""
+		gsettings = None
+		wp_path = None
+		wp_options = None
+		if 'GNOME' in self.desktop_env:
+			gsettings = Gio.Settings.new('org.gnome.desktop.screensaver')
+			wp_path = 'picture-uri'
+			wp_options = 'picture-options'
+		return gsettings, wp_path, wp_options
+
+	def action_set_lockscreen(self, *args):
+		gsettings, wp_path, wp_options = self.get_ls_setting_keys()
+		if gsettings is None:
+			return self.unsupported_desktop()
+		if 'GNOME' in self.desktop_env:
+			value = self.gio_file.get_uri()
+		gsettings.set_string(wp_path, value)
+
+	############################################################################
 	# Wallpaper settings #######################################################
 
 	def on_change_wallpaper_options(self, *args):
@@ -197,23 +252,24 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		args[0].set_state(GLib.Variant.new_string(new_value))
 
 	def set_wallpaper_option(self, value):
-		gsettings, wp_path, wp_options = self.get_setting_keys()
+		gsettings, wp_path, wp_options = self.get_wp_setting_keys()
 		if gsettings is None:
 			return self.unsupported_desktop()
 		gsettings.set_string(wp_options, value)
 
 	def get_wallpaper_option(self):
-		gsettings, wp_path, wp_options = self.get_setting_keys()
+		gsettings, wp_path, wp_options = self.get_wp_setting_keys()
 		if gsettings is None:
 			return self.unsupported_desktop()
 		return gsettings.get_string(wp_options)
 
 	def unsupported_desktop(self):
 		self.show_notification(_("This desktop environnement isn't supported."))
-		self.lookup_action('pic_options').set_enabled(False)
+		self.lookup_action('wp_options').set_enabled(False)
+		self.lookup_action('set_as_wallpaper').set_enabled(False)
 		return ''
 
-	def get_setting_keys(self):
+	def get_wp_setting_keys(self):
 		"""Return the setting keys required for the used environnement.
 		CAUTION: it can return None, which can crash the app if the value is
 		used anyway for a GSettings operation !"""
@@ -237,8 +293,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			wp_options = 'picture-options'
 		return gsettings, wp_path, wp_options
 
-	def action_set_as_wallpaper(self, *args):
-		gsettings, wp_path, wp_options = self.get_setting_keys()
+	def action_set_wallpaper(self, *args):
+		gsettings, wp_path, wp_options = self.get_wp_setting_keys()
 		if gsettings is None:
 			return self.unsupported_desktop()
 		if 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env:
@@ -548,6 +604,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			self.auto_detect_type()
 			self.lookup_action('set_as_wallpaper').set_enabled(True)
+			self.lookup_action('set_as_lockscreen').set_enabled(True)
 			self._is_saved = True
 		else:
 			self.gio_file = None
@@ -664,6 +721,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		# TODO ne pas mettre que des none peut-être
 		self._is_saved = True
 		self.lookup_action('set_as_wallpaper').set_enabled(True)
+		self.lookup_action('set_as_lockscreen').set_enabled(True)
 
 	def update_win_title(self, file_name):
 		self.set_title(file_name)
@@ -688,6 +746,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.ACCEPT:
 			self.lookup_action('set_as_wallpaper').set_enabled(True)
+			self.lookup_action('set_as_lockscreen').set_enabled(True)
 			self.gio_file = file_chooser.get_file()
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			is_saved = True

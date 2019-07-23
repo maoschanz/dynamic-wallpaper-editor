@@ -165,7 +165,11 @@ class Application(Gtk.Application):
 		self.about_dialog.set_website('https://github.com/maoschanz/dynamic-wallpaper-editor')
 		self.about_dialog.set_website_label(_("Report bugs or ideas"))
 		self.about_dialog.set_translator_credits(_("translator-credits"))
-		self.about_dialog.show()
+		self.about_dialog.connect('response', self.widget_destroy)
+		self.about_dialog.run()
+
+	def widget_destroy(self, widget, button):
+		widget.destroy()
 
 	def on_quit(self, *args):
 		self.quit()

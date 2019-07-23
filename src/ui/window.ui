@@ -145,7 +145,7 @@
                 <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="spacing">2</property>
+                    <property name="spacing">4</property>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>
@@ -163,21 +163,25 @@
               </object>
             </child>
             <child>
-              <object class="GtkBox">
+              <object class="GtkMenuButton" id="apply_btn">
                 <property name="visible">True</property>
-                <style><class name="linked"/></style>
+                <property name="tooltip-text" translatable="yes">Apply as wallpaper or lock screen, and set adjustment options</property>
                 <child>
-                  <object class="GtkButton" id="set_as_btn">
+                  <object class="GtkBox">
                     <property name="visible">True</property>
-                    <property name="action-name">win.set_as_wallpaper</property>
-                    <property name="label" translatable="yes">Set as wallpaper</property>
-                    <property name="expand">False</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkMenuButton" id="adj_btn">
-                    <property name="visible">True</property>
-                    <property name="tooltip-text" translatable="yes">Adjustment options for the wallpaper</property>
+                    <property name="spacing">4</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Apply</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon-name">pan-down-symbolic</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -335,5 +339,4 @@
     </child>
   </template>
 </interface>
-
 

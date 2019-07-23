@@ -12,15 +12,15 @@ IFS='
 '
 
 if [ $1 = "--all" ]; then
-	liste=`ls ./po/*po`
+	ninja -C _build dynamic-wallpaper-editor-update-po
 
-	for fichier in $liste
-	do
-		echo "Updating translation for: $fichier"
-		msgmerge $fichier ./po/dynamic-wallpaper-editor.pot > $fichier.temp.po
-		mv $fichier.temp.po $fichier
-	done
-
+	# liste=`ls ./po/*po`
+	# for fichier in $liste
+	# do
+	# 	echo "Updating translation for: $fichier"
+	# 	msgmerge $fichier ./po/dynamic-wallpaper-editor.pot > $fichier.temp.po
+	# 	mv $fichier.temp.po $fichier
+	# done
 else
 	for fichier in $@
 	do
