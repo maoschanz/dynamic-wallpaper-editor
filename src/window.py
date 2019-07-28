@@ -716,8 +716,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			if is_saved == False:
 				return
 		contents = self.generate_text().encode('utf-8')
-		self.gio_file.replace_contents_async(contents, None, False, \
-		                             Gio.FileCreateFlags.NONE, None, None, None)
+		self.gio_file.replace_contents(contents, None, False, \
+                                 Gio.FileCreateFlags.NONE, None)
 		# TODO ne pas mettre que des none peut-être
 		self._is_saved = True
 		self.lookup_action('set_as_wallpaper').set_enabled(True)
