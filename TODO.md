@@ -7,15 +7,14 @@
 
 ## Adding and managing pictures
 
-- Important: ensure the memory is freed when deleting a row
+- Very important: **ensure the memory is freed when deleting a row**
 - Important: less ridiculous "automatic fix"
 - Not important: ability to add a picture by drag-and-dropping the file from nautilus
 - Not important: search entry
 
 ## General
 
-- VERY important: WHAT THE HELL WITH THE FUCKING FILE CORRUPTIONS ??????
-- Very important: don't save the `/run/user/1000/doc/...` path in dconf ?????
+- Important: don't save the `/run/user/1000/doc/...` path in dconf???
 - Not important: more clear and useful error messages, including line numbers
 
 ## Translations

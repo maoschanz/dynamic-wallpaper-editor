@@ -233,6 +233,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			gsettings = Gio.Settings.new('org.gnome.desktop.screensaver')
 			wp_path = 'picture-uri'
 			wp_options = 'picture-options'
+		# TODO more desktop environnments? (doesn't it depends on the display manager?)
 		return gsettings, wp_path, wp_options
 
 	def action_set_lockscreen(self, *args):
@@ -300,7 +301,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		if 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env:
 			value = self.gio_file.get_uri()
 		elif 'MATE' in self.desktop_env:
-			value = self.gio_file.get_path() # XXX à tester
+			value = self.gio_file.get_path()
 		elif 'Cinnamon' in self.desktop_env:
 			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
 			use_folder.set_boolean('slideshow-enabled', False)
@@ -397,7 +398,8 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		"""Update the total time in the statusbar."""
 		self.status_bar.pop(0)
 		total_time, l, row_list = self.get_total_time()
-		message = str(_("%s pictures") % l + ' - ' + _("Total time: %s second(s)") % total_time)
+		message = str(_("%s pictures") % l + ' - ' + \
+		                             _("Total time: %s second(s)") % total_time)
 		if total_time >= 60:
 			message += ' = '
 			hours = math.floor(total_time / 3600)
@@ -448,7 +450,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			return True
 		elif result == Gtk.ResponseType.NO: # if discarded
 			return True
-		return False # if canceled or closed
+		return False # if cancelled or closed
 
 	############################################################################
 	# Adding pictures to the list_box ##########################################
@@ -492,7 +494,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		               use_preview_label=False)
 		self.add_pic_dialog_filters(file_chooser)
 		file_chooser.connect('update-preview', self.cb_update_preview)
-
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
 			array = file_chooser.get_filenames()
@@ -713,12 +714,11 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		"""Write the result of `self.generate_text()` in a file."""
 		if self.gio_file is None:
 			is_saved = self.run_save_file_chooser()
-			if is_saved == False:
+			if not is_saved:
 				return
 		contents = self.generate_text().encode('utf-8')
 		self.gio_file.replace_contents(contents, None, False, \
-                                 Gio.FileCreateFlags.NONE, None)
-		# TODO ne pas mettre que des none peut-être
+		                                         Gio.FileCreateFlags.NONE, None)
 		self._is_saved = True
 		self.lookup_action('set_as_wallpaper').set_enabled(True)
 		self.lookup_action('set_as_lockscreen').set_enabled(True)
@@ -733,7 +733,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			self.action_save()
 
 	def run_save_file_chooser(self):
-		"""Run the "save as" filechooser and return the filename."""
+		"""Run the 'save as' filechooser and return the filename."""
 		is_saved = False
 		file_chooser = Gtk.FileChooserNative.new(_("Save as…"), self, \
 		                     Gtk.FileChooserAction.SAVE, _("Save"), _("Cancel"))
@@ -785,8 +785,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 				raw_text = str(raw_text) + row_list[index].generate_static(st_time)
 				raw_text = str(raw_text) + row_list[index].generate_transition(tr_time, next_fn)
 		raw_text = str(raw_text) + """</background>
-\n
-\n
+
 """
 		return str(raw_text)
 
