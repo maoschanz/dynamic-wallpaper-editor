@@ -209,16 +209,16 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def set_lockscreen_option(self, value):
 		gsettings, wp_path, wp_options = self.get_ls_setting_keys()
 		if gsettings is None:
-			return self.unsupported_desktop()
+			return self.unsupported_desktop_ls()
 		gsettings.set_string(wp_options, value)
 
 	def get_lockscreen_option(self):
 		gsettings, wp_path, wp_options = self.get_ls_setting_keys()
 		if gsettings is None:
-			return self.unsupported_desktop()
+			return self.unsupported_desktop_ls()
 		return gsettings.get_string(wp_options)
 
-	def unsupported_desktop(self):
+	def unsupported_desktop_ls(self):
 		self.show_notification(_("This desktop environnement isn't supported."))
 		self.lookup_action('ls_options').set_enabled(False)
 		self.lookup_action('set_as_lockscreen').set_enabled(False)
@@ -241,10 +241,15 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def action_set_lockscreen(self, *args):
 		gsettings, wp_path, wp_options = self.get_ls_setting_keys()
 		if gsettings is None:
-			return self.unsupported_desktop()
+			return self.unsupported_desktop_ls()
+		source_file = open(self.gio_file.get_path())
+		dest_path = GLib.get_user_data_dir() + '/' + 'lockscreen.xml'
+		dest_file = open(dest_path, 'wb')
+		dest_file.write(source_file.read().encode('utf-8'))
+		dest_file.close()
+		source_file.close()
 		if 'GNOME' in self.desktop_env:
-			value = self.gio_file.get_uri()
-		gsettings.set_string(wp_path, value)
+			gsettings.set_string(wp_path, dest_path) # Path and URI both work actually
 
 	############################################################################
 	# Wallpaper settings #######################################################
@@ -257,16 +262,16 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def set_wallpaper_option(self, value):
 		gsettings, wp_path, wp_options = self.get_wp_setting_keys()
 		if gsettings is None:
-			return self.unsupported_desktop()
+			return self.unsupported_desktop_wp()
 		gsettings.set_string(wp_options, value)
 
 	def get_wallpaper_option(self):
 		gsettings, wp_path, wp_options = self.get_wp_setting_keys()
 		if gsettings is None:
-			return self.unsupported_desktop()
+			return self.unsupported_desktop_wp()
 		return gsettings.get_string(wp_options)
 
-	def unsupported_desktop(self):
+	def unsupported_desktop_wp(self):
 		self.show_notification(_("This desktop environnement isn't supported."))
 		self.lookup_action('wp_options').set_enabled(False)
 		self.lookup_action('set_as_wallpaper').set_enabled(False)
@@ -299,24 +304,17 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def action_set_wallpaper(self, *args):
 		gsettings, wp_path, wp_options = self.get_wp_setting_keys()
 		if gsettings is None:
-			return self.unsupported_desktop()
-		if 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env:
-			value = self.gio_file.get_uri()
-		elif 'MATE' in self.desktop_env:
-			value = self.gio_file.get_path()
-		elif 'Cinnamon' in self.desktop_env:
-			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
-			use_folder.set_boolean('slideshow-enabled', False)
-			value = self.gio_file.get_uri()
-		"""Apply XML-File as Wallpaper; To avoid broken paths in dconf, store a
-		copy of the file at a special directory and apply this"""
+			return self.unsupported_desktop_wp()
 		source_file = open(self.gio_file.get_path())
 		dest_path = GLib.get_user_data_dir() + '/' + 'wallpaper.xml'
 		dest_file = open(dest_path, 'wb')
 		dest_file.write(source_file.read().encode('utf-8'))
 		dest_file.close()
 		source_file.close()
-		gsettings.set_string(wp_path, dest_path)
+		if 'Cinnamon' in self.desktop_env:
+			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
+			use_folder.set_boolean('slideshow-enabled', False)
+		gsettings.set_string(wp_path, dest_path) # Path and URI both work actually
 
 	############################################################################
 	# Time management ##########################################################

@@ -14,7 +14,7 @@
 
 ## General
 
-- Important: don't save the `/run/user/1000/doc/...` path in dconf???
+- Very important: **refactor the DE detection and the dconf interaction**
 - Not important: more clear and useful error messages, including line numbers
 
 ## Translations
