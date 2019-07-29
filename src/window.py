@@ -306,7 +306,15 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
 			use_folder.set_boolean('slideshow-enabled', False)
 			value = self.gio_file.get_uri()
-		gsettings.set_string(wp_path, value)
+		"""Apply XML-File as Wallpaper; To avoid broken paths in dconf, store a
+		copy of the file at a special directory and apply this"""
+		source_file = open(gio_file.get_uri(), 'r', None, 'utf-8')
+		dest_path = Gio.get_user_data_dir() + '/' + 'wallpaper.xml'
+		dest_file = open(dest_path, 'wb')
+		dest_file.write(source_file.encode('utf-8'))
+		dest_file.close()
+		source_file.close()
+		gsettings.set_string(wp_path, dest_path)
 
 	############################################################################
 	# Time management ##########################################################
