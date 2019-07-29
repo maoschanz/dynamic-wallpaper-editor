@@ -249,7 +249,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		dest_file.close()
 		source_file.close()
 		if 'GNOME' in self.desktop_env:
-			gsettings.set_string(wp_path, dest_path) # Path and URI both work actually
+			gsettings.set_string(wp_path, 'file://' + dest_path) # Only URI working correctly!
 
 	############################################################################
 	# Wallpaper settings #######################################################
@@ -314,7 +314,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if 'Cinnamon' in self.desktop_env:
 			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
 			use_folder.set_boolean('slideshow-enabled', False)
-		gsettings.set_string(wp_path, dest_path) # Path and URI both work actually
+		gsettings.set_string(wp_path, 'file://' + dest_path) # Only URI working correctly!
 
 	############################################################################
 	# Time management ##########################################################
