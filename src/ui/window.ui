@@ -16,7 +16,7 @@
     <property name="value">0</property>
   </object>
 
-  <template class="DynamicWallpaperEditorWindow" parent="GtkApplicationWindow">
+  <template class="DWEWindow" parent="GtkApplicationWindow">
     <property name="default-width">810</property>
     <property name="default-height">500</property>
 
@@ -104,7 +104,7 @@
     <!-- End of the headerbar -->
 
     <child>
-      <object class="GtkBox" id="main_box">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
 
@@ -116,7 +116,7 @@
             <property name="margin">10</property>
             <property name="spacing">15</property>
             <child>
-              <object class="GtkButton" id="add_btn">
+              <object class="GtkButton">
                 <property name="visible">True</property>
                 <property name="action-name">win.add</property>
                 <property name="label" translatable="yes">Add pictures</property>
@@ -128,7 +128,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="add_folder_btn">
+              <object class="GtkButton">
                 <property name="visible">True</property>
                 <property name="action-name">win.add_folder</property>
                 <property name="label" translatable="yes">Add a folder</property>

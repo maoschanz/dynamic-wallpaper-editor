@@ -18,11 +18,11 @@
 from gi.repository import Gtk, GdkPixbuf, Pango, Gdk
 import math
 
-class PictureRow(Gtk.ListBoxRow):
+class DWEPictureRow(Gtk.ListBoxRow):
 	"""This is a row with the thumbnail and the path of the picture, and control
 	buttons (up/down, delete) for this picture. It also contains "spinbuttons" if
 	the user needs them."""
-	__gtype_name__ = 'PictureRow'
+	__gtype_name__ = 'DWEPictureRow'
 
 	def __init__(self, fn, stt, trt, index, window):
 		super().__init__()

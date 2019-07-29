@@ -19,13 +19,15 @@ from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
 import math, os
 import xml.etree.ElementTree as xml_parser
 
-from .picture_row import PictureRow
+from .picture_row import DWEPictureRow
+from .misc import add_pic_dialog_filters
+from .misc import add_xml_dialog_filters
 
 UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
 
 @Gtk.Template(resource_path = UI_PATH + 'window.ui')
-class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
-	__gtype_name__ = 'DynamicWallpaperEditorWindow'
+class DWEWindow(Gtk.ApplicationWindow):
+	__gtype_name__ = 'DWEWindow'
 
 	header_bar = Gtk.Template.Child()
 	start_btn = Gtk.Template.Child()
@@ -456,7 +458,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	# Adding pictures to the list_box ##########################################
 
 	def action_add_folder(self, *args):
-		"""Run an "open" dialog and create a list of PictureRow from the result.
+		"""Run an "open" dialog and create a list of DWEPictureRow from the result.
 		Actual paths are needed in XML files, so it can't be a native dialog."""
 		self.status_bar.push(1, _("Loading…"))
 		file_chooser = Gtk.FileChooserDialog(_("Add a folder"), self,
@@ -481,7 +483,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		file_chooser.destroy()
 
 	def action_add(self, *args):
-		"""Run an "open" dialog and create a list of PictureRow from the result.
+		"""Run an "open" dialog and create a list of DWEPictureRow from the result.
 		Actual paths are needed in XML files, so it can't be a native dialog: a
 		custom preview has to be set manually."""
 		self.status_bar.push(1, _("Loading…"))
@@ -492,7 +494,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		               select_multiple=True,
 		               preview_widget=self.preview_picture,
 		               use_preview_label=False)
-		self.add_pic_dialog_filters(file_chooser)
+		add_pic_dialog_filters(file_chooser)
 		file_chooser.connect('update-preview', self.cb_update_preview)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
@@ -511,28 +513,6 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(fc.get_filename(), 200, 200, True)
 		self.preview_picture.set_from_pixbuf(pixbuf)
 
-	def add_pic_dialog_filters(self, dialog):
-		"""Add file filters for images to a file chooser dialog."""
-		allPictures = Gtk.FileFilter()
-		allPictures.set_name(_("All pictures"))
-		allPictures.add_mime_type('image/png')
-		allPictures.add_mime_type('image/jpeg')
-		allPictures.add_mime_type('image/bmp')
-		allPictures.add_mime_type('image/svg')
-		allPictures.add_mime_type('image/tiff')
-
-		pngPictures = Gtk.FileFilter()
-		pngPictures.set_name(_("PNG images"))
-		pngPictures.add_mime_type('image/png')
-
-		jpegPictures = Gtk.FileFilter()
-		jpegPictures.set_name(_("JPEG images"))
-		jpegPictures.add_mime_type('image/jpeg')
-
-		dialog.add_filter(allPictures)
-		dialog.add_filter(pngPictures)
-		dialog.add_filter(jpegPictures)
-
 	def add_pictures_to_list2(self, array):
 		"""Add pictures from a list of paths."""
 		for path in array:
@@ -542,7 +522,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 	def add_one_picture(self, filename, stt, trt):
 		self._is_saved = False
 		l = len(self.list_box.get_children())
-		row = PictureRow(filename, stt, trt, l, self)
+		row = DWEPictureRow(filename, stt, trt, l, self)
 		self.list_box.add(row)
 
 	############################################################################
@@ -588,11 +568,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self.status_bar.push(1, _("Loading…"))
 		file_chooser = Gtk.FileChooserNative.new(_("Open"), self, \
 		                     Gtk.FileChooserAction.OPEN, _("Open"), _("Cancel"))
-		onlyXML = Gtk.FileFilter()
-		onlyXML.set_name(_("Dynamic wallpapers (XML)"))
-		onlyXML.add_mime_type('application/xml')
-		onlyXML.add_mime_type('text/xml')
-		file_chooser.add_filter(onlyXML)
+		add_xml_dialog_filters(file_chooser)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.ACCEPT:
 			self.load_gfile(file_chooser.get_file())
@@ -701,7 +677,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		self._is_saved = False
 		l = len(self.list_box.get_children())
 		for index in range(0, len(new_pics_list)):
-			row = PictureRow(new_pics_list[index]['filename'], \
+			row = DWEPictureRow(new_pics_list[index]['filename'], \
 			                 new_pics_list[index]['static_time'], \
 			                 new_pics_list[index]['trans_time'], l+index, self)
 			self.list_box.add(row)
@@ -738,10 +714,7 @@ class DynamicWallpaperEditorWindow(Gtk.ApplicationWindow):
 		file_chooser = Gtk.FileChooserNative.new(_("Save as…"), self, \
 		                     Gtk.FileChooserAction.SAVE, _("Save"), _("Cancel"))
 		file_chooser.set_current_name(_("Untitled") + '.xml')
-		onlyXML = Gtk.FileFilter()
-		onlyXML.set_name(_("Dynamic wallpapers (XML)"))
-		onlyXML.add_mime_type('application/xml')
-		file_chooser.add_filter(onlyXML)
+		add_xml_dialog_filters(file_chooser)
 		file_chooser.set_do_overwrite_confirmation(True)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.ACCEPT:

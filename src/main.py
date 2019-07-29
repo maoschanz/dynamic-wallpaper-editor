@@ -20,7 +20,8 @@ import sys, gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gio, GLib, Gdk
 
-from .window import DynamicWallpaperEditorWindow
+from .window import DWEWindow
+from .preview import DWEPreview
 
 APP_ID = 'com.github.maoschanz.DynamicWallpaperEditor'
 UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
@@ -124,6 +125,7 @@ class Application(Gtk.Application):
 
 	def build_app_actions(self):
 		self.add_action_simple('new_window', self.on_new_window, ['<Ctrl>n'])
+		self.add_action_simple('new_preview', self.on_new_preview, None)
 		self.add_action_simple('shortcuts', self.on_shortcuts, \
 		                                         ['<Ctrl>question', '<Ctrl>F1'])
 		self.add_action_simple('help', self.on_help_activate, ['F1'])
@@ -138,7 +140,12 @@ class Application(Gtk.Application):
 		return win
 
 	def on_new_window(self, *args):
-		win = DynamicWallpaperEditorWindow(application=self)
+		win = DWEWindow(application=self)
+		win.present()
+		return win
+
+	def on_new_preview(self, *args):
+		win = DWEPreview(application=self)
 		win.present()
 		return win
 

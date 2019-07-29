@@ -28,6 +28,8 @@ configure_file(
 dynamic_wallpaper_editor_sources = [
 	'__init__.py',
 	'main.py',
+	'misc.py',
+	'preview.py',
 	'window.py',
 	'picture_row.py'
 ]

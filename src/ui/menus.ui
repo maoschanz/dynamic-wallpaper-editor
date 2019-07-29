@@ -105,7 +105,7 @@
           <attribute name="action">win.set_as_wallpaper</attribute>
           <attribute name="label" translatable="yes">Set as wallpaper</attribute>
         </item>
-        <submenu>
+        <submenu id="wp-adj-menu">
           <attribute name="label" translatable="yes">Wallpaper adjustment</attribute>
           <section>
             <!-- <item> -->
@@ -151,7 +151,7 @@
           <attribute name="action">win.set_as_lockscreen</attribute>
           <attribute name="label" translatable="yes">Set as lock screen</attribute>
         </item>
-        <submenu>
+        <submenu id="ls-adj-menu">
           <attribute name="label" translatable="yes">Lock screen adjustment</attribute>
           <section>
             <!-- <item> -->
@@ -218,6 +218,11 @@
         <attribute name="action">app.new_window</attribute>
         <attribute name="label" translatable="yes">New Window</attribute>
       </item>
+      <!-- <item> -->
+             <!-- TODO -->
+      <!--   <attribute name="action">app.new_preview</attribute> -->
+      <!--   <attribute name="label" translatable="yes">Set an XML file as wallpaper…</attribute> -->
+      <!-- </item> -->
     </section>
     <section>
       <item>
