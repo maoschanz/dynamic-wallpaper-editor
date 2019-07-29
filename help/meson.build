@@ -1,9 +1,11 @@
 gnome = import('gnome')
 gnome.yelp(meson.project_name(),
-  sources: [
-    'index.page',
-    'legal.xml'
-  ],
-  media: 'figures/icon.png',
-  media: 'figures/screenshot.png'
+	sources: [
+		'index.page',
+		'legal.xml'
+	],
+	media: [
+		'figures/icon.png',
+		'figures/screenshot.png'
+	]
 )

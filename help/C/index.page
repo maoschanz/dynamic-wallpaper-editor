@@ -40,13 +40,13 @@
   </section>
 
   <section id="pictures">
-    <title>Add and order pictures</title>
+    <title>Add and arrange pictures</title>
     <p>Use the <gui style="button">Add Pictures</gui> button to append images to
     your wallpaper. It's possible to use a picture several times in the same
     slideshow. The <gui style="button">Add a folder</gui> button appends all
     pictures from a directory to the list.</p>
-    <p>Then you can order them as you want by drag-and-dropping rows, or remove
-   them with <gui style="button">Delete</gui> button.</p>
+    <p>Then you can arrange them as you want by drag-and-dropping rows, or
+   remove them with <gui style="button">Delete</gui> button.</p>
   </section>
 
   <section id="durations">
