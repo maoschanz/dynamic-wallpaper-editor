@@ -75,29 +75,41 @@
           <attribute name="label" translatable="yes">Add a folder</attribute>
         </item>
       </section>
-    </submenu>
+    <!-- </submenu> -->
     <!-- <submenu> -->
     <!--   <attribute name="label" translatable="yes">View</attribute> -->
     <!--   <section> -->
-             <!-- FIXME ne marche pas car on se repose sur l'activation des radiobuttons dans le code -->
-    <!--     <attribute name="label" translatable="yes">Wallpaper type</attribute> -->
     <!--     <item> -->
-    <!--       <attribute name="action">win.wallpaper-type</attribute> -->
-    <!--       <attribute name="label" translatable="yes">Slideshow</attribute> -->
-    <!--       <attribute name="target">slideshow</attribute> -->
+    <!--       <attribute name="action">win.content-layout</attribute> -->
+    <!--       <attribute name="label" translatable="yes">Rows</attribute> -->
+    <!--       <attribute name="target">rows</attribute> -->
     <!--     </item> -->
     <!--     <item> -->
-    <!--       <attribute name="action">win.wallpaper-type</attribute> -->
-    <!--       <attribute name="label" translatable="yes">Daylight</attribute> -->
-    <!--       <attribute name="target">daylight</attribute> -->
-    <!--     </item> -->
-    <!--     <item> -->
-    <!--       <attribute name="action">win.wallpaper-type</attribute> -->
-    <!--       <attribute name="label" translatable="yes">Custom</attribute> -->
-    <!--       <attribute name="target">custom</attribute> -->
+    <!--       <attribute name="action">win.content-layout</attribute> -->
+    <!--       <attribute name="label" translatable="yes">Grid</attribute> -->
+    <!--       <attribute name="target">grid</attribute> -->
     <!--     </item> -->
     <!--   </section> -->
-    <!-- </submenu> -->
+      <!-- <section> -->
+      <!--        FIXME ne marche pas car on se repose sur l'activation des radiobuttons dans le code -->
+      <!--   <attribute name="label" translatable="yes">Wallpaper type</attribute> -->
+      <!--   <item> -->
+      <!--     <attribute name="action">win.wallpaper-type</attribute> -->
+      <!--     <attribute name="label" translatable="yes">Slideshow</attribute> -->
+      <!--     <attribute name="target">slideshow</attribute> -->
+      <!--   </item> -->
+      <!--   <item> -->
+      <!--     <attribute name="action">win.wallpaper-type</attribute> -->
+      <!--     <attribute name="label" translatable="yes">Daylight</attribute> -->
+      <!--     <attribute name="target">daylight</attribute> -->
+      <!--   </item> -->
+      <!--   <item> -->
+      <!--     <attribute name="action">win.wallpaper-type</attribute> -->
+      <!--     <attribute name="label" translatable="yes">Custom</attribute> -->
+      <!--     <attribute name="target">custom</attribute> -->
+      <!--   </item> -->
+      <!-- </section> -->
+    </submenu>
     <submenu id="apply-menu">
       <attribute name="label" translatable="yes">Apply</attribute>
       <section>
@@ -223,6 +235,21 @@
       <!--   <attribute name="label" translatable="yes">Set an XML file as wallpaper…</attribute> -->
       <!-- </item> -->
     </section>
+    <!-- <section> -->
+    <!--   <attribute name="display-hint">horizontal-buttons</attribute> -->
+    <!--   <item> -->
+    <!--     <attribute name="action">win.content-layout</attribute> -->
+    <!--     <attribute name="label" translatable="yes">List</attribute> -->
+    <!--     <attribute name="target">list</attribute> -->
+    <!--     <attribute name="verb-icon">view-list-symbolic</attribute> -->
+    <!--   </item> -->
+    <!--   <item> -->
+    <!--     <attribute name="action">win.content-layout</attribute> -->
+    <!--     <attribute name="label" translatable="yes">Grid</attribute> -->
+    <!--     <attribute name="target">grid</attribute> -->
+    <!--     <attribute name="verb-icon">view-grid-symbolic</attribute> -->
+    <!--   </item> -->
+    <!-- </section> -->
     <section>
       <item>
         <attribute name="action">win.save_as</attribute>

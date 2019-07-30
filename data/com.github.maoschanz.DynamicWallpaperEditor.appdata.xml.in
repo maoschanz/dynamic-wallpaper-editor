@@ -1,65 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-	<id>com.github.maoschanz.DynamicWallpaperEditor.desktop</id>
-	<metadata_license>CC0-1.0</metadata_license>
-	<project_license>GPL-3.0-or-later</project_license>
+  <id>com.github.maoschanz.DynamicWallpaperEditor.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
 
-	<name>Dynamic Wallpaper Editor</name>
-	<summary>Create or edit XML dynamic wallpapers ("background slideshows") for the GNOME desktop</summary>
-	<description>
-		<p>Dynamic Wallpaper Editor is a simple utility to create or edit dynamic wallpapers for the GNOME desktop.</p>
-		<p>The duration of each picture and each transition can be set separately or globally.</p>
-	</description>
-	<screenshots>
-		<screenshot type="default">
-			<image type="source">https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot.png</image>
-			<caption>An example of a wallpaper changing with daylight</caption>
-		</screenshot>
-	</screenshots>
+  <name>Dynamic Wallpaper Editor</name>
+  <summary>Create or edit XML dynamic wallpapers ("background slideshows") for the GNOME desktop</summary>
+  <description>
+    <p>
+      Dynamic Wallpaper Editor is a simple utility to create or edit dynamic
+      wallpapers for the GNOME desktop.
+    </p>
+    <p>
+      The duration of each picture and each transition can be set separately or
+      globally. The total duration can be 24 hours to do a wallpaper fitting the
+      daylight.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">
+        https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot.png
+      </image>
+      <caption>An example of a wallpaper changing with daylight</caption>
+    </screenshot>
+  </screenshots>
 
-	<releases>
-		<release version="2.0" date="2018-07-09">
-			<description>
-				<ul>
-					<li>Better UI for the slideshow mode</li>
-					<li>More helpful labels for the daylight mode</li>
-					<li>Other desktop environments support</li>
-					<li>Various bug fixes</li>
-				</ul>
-			</description>
-		</release>
-		<release version="1.13" date="2018-07-05">
-			<description>
-				<ul>
-					<li>Bug fixes</li>
-					<li>Draggable rows</li>
-				</ul>
-			</description>
-		</release>
-		<release version="1.12" date="2018-07-04">
-			<description>
-				<ul>
-					<li>Bug fixes</li>
-					<li>New translations</li>
-					<li>Types of wallpaper displayed as the window's title</li>
-				</ul>
-			</description>
-		</release>
-	</releases>
+  <releases>
+    <release version="2.1" date="2019-07-31">
+      <description>
+        <p>
+          Finally fix the bug with corrupted files, and fix minor bugs
+          concerning "set as wallpaper".
+        </p>
+      </description>
+    </release>
+    <release version="2.0" date="2019-07-09">
+      <description>
+        <p>
+          Better UI for the slideshow mode, more helpful labels for the
+          daylight mode, other desktop environments support and various bug
+          fixes.
+        </p>
+      </description>
+    </release>
+    <release version="1.13" date="2019-07-05">
+      <description>
+        <p>
+          Various bug fixes and new reordering mechanism, with draggable rows.
+        </p>
+      </description>
+    </release>
+    <release version="1.12" date="2019-07-04">
+      <description>
+        <p>
+          Types of wallpaper displayed as the window's title, bug fixes and new
+          translations.
+        </p>
+      </description>
+    </release>
+  </releases>
 
-	<kudos>
-		<kudo>AppMenu</kudo>
-		<kudo>HiDpiIcon</kudo>
-		<kudo>ModernToolkit</kudo>
-		<kudo>UserDocs</kudo>
-	</kudos>
-	<content_rating type="oars-1.1" />
-	<url type="bugtracker">https://github.com/maoschanz/dynamic-wallpaper-editor/issues</url>
-	<url type="homepage">https://github.com/maoschanz/dynamic-wallpaper-editor</url>
-	<developer_name>Romain F. T.</developer_name>
-	<update_contact>rrroschan@gmail.com</update_contact>
+  <kudos>
+    <kudo>AppMenu</kudo>
+    <kudo>HiDpiIcon</kudo>
+    <kudo>ModernToolkit</kudo>
+    <kudo>UserDocs</kudo>
+  </kudos>
+  <content_rating type="oars-1.1" />
+  <url type="bugtracker">https://github.com/maoschanz/dynamic-wallpaper-editor/issues</url>
+  <url type="homepage">https://github.com/maoschanz/dynamic-wallpaper-editor</url>
+  <developer_name>Romain F. T.</developer_name>
+  <update_contact>rrroschan@gmail.com</update_contact>
 
-	<translation type="gettext">dynamic-wallpaper-editor</translation>
-	<launchable type="desktop-id">com.github.maoschanz.DynamicWallpaperEditor.desktop</launchable>
+  <translation type="gettext">dynamic-wallpaper-editor</translation>
+  <launchable type="desktop-id">com.github.maoschanz.DynamicWallpaperEditor.desktop</launchable>
 </component>
 

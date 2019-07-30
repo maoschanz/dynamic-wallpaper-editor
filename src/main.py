@@ -178,7 +178,7 @@ class Application(Gtk.Application):
 		self.about_dialog = Gtk.AboutDialog.new()
 		self.about_dialog.set_version(str(self._version))
 		self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
-		self.about_dialog.set_authors(['Romain F. T.'])
+		self.about_dialog.set_authors(['Romain F. T.', 'Felix "F3l1XQu1ll"'])
 		self.about_dialog.set_copyright('© 2018-2019 Romain F. T.')
 		self.about_dialog.set_license_type(Gtk.License.GPL_3_0)
 		self.about_dialog.set_logo_icon_name(APP_ID)
