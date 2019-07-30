@@ -178,7 +178,7 @@ class Application(Gtk.Application):
 		self.about_dialog = Gtk.AboutDialog.new()
 		self.about_dialog.set_version(str(self._version))
 		self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
-		self.about_dialog.set_authors(['Romain F. T.', 'Felix "F3l1XQu1ll"'])
+		self.about_dialog.set_authors(['Romain F. T.', 'Felix Quill'])
 		self.about_dialog.set_copyright('© 2018-2019 Romain F. T.')
 		self.about_dialog.set_license_type(Gtk.License.GPL_3_0)
 		self.about_dialog.set_logo_icon_name(APP_ID)
@@ -197,6 +197,8 @@ class Application(Gtk.Application):
 	############################################################################
 
 	def set_gsettings_values(self):
+		"""Set numerous attributes corresponding to the gsettings keys needed to
+		apply a file as the wallpaper or the lockscreen."""
 		self.desktop_env = os.getenv('XDG_CURRENT_DESKTOP', 'GNOME')
 
 		self.wp_schema = None
@@ -243,8 +245,6 @@ class Application(Gtk.Application):
 			return 'none'
 		return self.ls_schema.get_string(self.ls_options)
 
-	############################################################################
-
 	def on_change_lockscreen_options(self, *args):
 		new_value = args[1].get_string()
 		if self.ls_schema is None:
@@ -262,6 +262,9 @@ class Application(Gtk.Application):
 	############################################################################
 
 	def write_file(self, source_path, is_lockscreen):
+		"""Write a copy of the file from source_path (a "/run/user/" path) to
+		~/.var/app/APP_ID/config/*.xml so a durable path can be applied to the
+		gsettings database."""
 		if is_lockscreen:
 			schema = self.ls_schema
 			key = self.ls_path
@@ -286,8 +289,10 @@ class Application(Gtk.Application):
 		self.apply_path(schema, key, dest_path)
 		return True
 
-	def apply_path(self, schema, key, path):
-		schema.set_string(key, path) # Path and URI both work actually
+	def apply_path(self, schema, key, value):
+		"""Apply the value (either a path or an uri, it looks like the DE
+		doesn't really care) to the gsettings key from the specified schema."""
+		schema.set_string(key, value)
 
 	############################################################################
 ################################################################################

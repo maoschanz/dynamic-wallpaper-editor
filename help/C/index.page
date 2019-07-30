@@ -21,7 +21,6 @@
   pictures, or an image adapting to the daylight.</p>
   <p>Dynamic wallpapers are saved as XML files, and this utility helps you
   creating, editing, and applying them.</p>
-  <media type="image" mime="image/png" src="figures/screenshot.png" its:translate="no"/>
 
   <section id="type">
     <title>Select a type of wallpaper</title>
@@ -51,6 +50,7 @@
 
   <section id="durations">
     <title>Adjust images duration</title>
+    <media type="image" mime="image/png" src="figures/screenshot.png" its:translate="no"/>
     <p>Depending on the chosen type, you can set the duration of each picture
     globally (all pictures will last the same amount of seconds) or
     individually. You can also set the duration of the transition to the next
@@ -70,10 +70,11 @@
 
   <section id="save-apply">
     <title>Save and apply as wallpaper</title>
-    <p>Save your creation as an XML file (with the <gui style="button">Save</gui>
-    button), and apply it as a wallpaper with the <gui style="button">Set as
-    wallpaper</gui> button. Adjustment options (zoom, centered, stretched, etc.)
-    are available from the menu next to it.</p>
+    <p>Save your creation as an XML file with the <gui style="button">Save</gui>
+    button, or the <gui style="button">Save as…</gui> menu item.</p>
+    <p>You can then apply it as your wallpaper or as your lockscreen with the
+    <gui style="button">Apply</gui> menu. Adjustment options (zoom, centered,
+    stretched, etc.) are available.</p>
   </section>
 
 </page>

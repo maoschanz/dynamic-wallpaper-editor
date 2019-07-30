@@ -1,4 +1,4 @@
-# window.py
+# preview.py
 #
 # Copyright 2018-2019 Romain F. T.
 #
@@ -25,6 +25,9 @@ UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
 @Gtk.Template(resource_path = UI_PATH + 'preview.ui')
 class DWEPreview(Gtk.ApplicationWindow):
 	__gtype_name__ = 'DWEPreview'
+	"""Unexposed to the user, this window allows to preview (read-only) an XML
+	file and set it as the wallpaper or the lockscreen, with the usual
+	adjustement options. Images are displayed in a cool flowbox."""
 
 	wp_ajust = Gtk.Template.Child()
 	ls_ajust = Gtk.Template.Child()
@@ -185,3 +188,4 @@ class DWEPreview(Gtk.ApplicationWindow):
 
 	############################################################################
 ################################################################################
+
