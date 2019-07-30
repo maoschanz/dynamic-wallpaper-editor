@@ -18,11 +18,11 @@ conf.set('localedir', join_paths(get_option('prefix'), get_option('localedir')))
 conf.set('pkgdatadir', pkgdatadir)
 
 configure_file(
-  input: 'dynamic-wallpaper-editor.in',
-  output: 'dynamic-wallpaper-editor',
-  configuration: conf,
-  install: true,
-  install_dir: get_option('bindir')
+	input: 'dynamic-wallpaper-editor.in',
+	output: 'dynamic-wallpaper-editor',
+	configuration: conf,
+	install: true,
+	install_dir: get_option('bindir')
 )
 
 dynamic_wallpaper_editor_sources = [

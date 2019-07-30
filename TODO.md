@@ -14,7 +14,7 @@
 
 ## General
 
-- Very important: **refactor the DE detection and the dconf interaction**
+- Important: fix the not-working `set_as_wallpaper` method (name generation?)
 - Not important: more clear and useful error messages, including line numbers
 
 ## Translations

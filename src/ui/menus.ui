@@ -109,37 +109,37 @@
           <attribute name="label" translatable="yes">Wallpaper adjustment</attribute>
           <section>
             <!-- <item> -->
-            <!--   <attribute name="action">win.wp_options</attribute> -->
+            <!--   <attribute name="action">app.wp_options</attribute> -->
             <!--   <attribute name="label" translatable="yes">None</attribute> -->
             <!--   <attribute name="target">none</attribute> -->
             <!-- </item> -->
             <item>
-              <attribute name="action">win.wp_options</attribute>
+              <attribute name="action">app.wp_options</attribute>
               <attribute name="label" translatable="yes">Mosaic</attribute>
               <attribute name="target">wallpaper</attribute>
             </item>
             <item>
-              <attribute name="action">win.wp_options</attribute>
+              <attribute name="action">app.wp_options</attribute>
               <attribute name="label" translatable="yes">Centered</attribute>
               <attribute name="target">centered</attribute>
             </item>
             <item>
-              <attribute name="action">win.wp_options</attribute>
+              <attribute name="action">app.wp_options</attribute>
               <attribute name="label" translatable="yes">Scaled</attribute>
               <attribute name="target">scaled</attribute>
             </item>
             <item>
-              <attribute name="action">win.wp_options</attribute>
+              <attribute name="action">app.wp_options</attribute>
               <attribute name="label" translatable="yes">Streched</attribute>
               <attribute name="target">streched</attribute>
             </item>
             <item>
-              <attribute name="action">win.wp_options</attribute>
+              <attribute name="action">app.wp_options</attribute>
               <attribute name="label" translatable="yes">Zoom</attribute>
               <attribute name="target">zoom</attribute>
             </item>
             <item>
-              <attribute name="action">win.wp_options</attribute>
+              <attribute name="action">app.wp_options</attribute>
               <attribute name="label" translatable="yes">Spanned</attribute>
               <attribute name="target">spanned</attribute>
             </item>
@@ -155,37 +155,37 @@
           <attribute name="label" translatable="yes">Lock screen adjustment</attribute>
           <section>
             <!-- <item> -->
-            <!--   <attribute name="action">win.ls_options</attribute> -->
+            <!--   <attribute name="action">app.ls_options</attribute> -->
             <!--   <attribute name="label" translatable="yes">None</attribute> -->
             <!--   <attribute name="target">none</attribute> -->
             <!-- </item> -->
             <item>
-              <attribute name="action">win.ls_options</attribute>
+              <attribute name="action">app.ls_options</attribute>
               <attribute name="label" translatable="yes">Mosaic</attribute>
               <attribute name="target">wallpaper</attribute>
             </item>
             <item>
-              <attribute name="action">win.ls_options</attribute>
+              <attribute name="action">app.ls_options</attribute>
               <attribute name="label" translatable="yes">Centered</attribute>
               <attribute name="target">centered</attribute>
             </item>
             <item>
-              <attribute name="action">win.ls_options</attribute>
+              <attribute name="action">app.ls_options</attribute>
               <attribute name="label" translatable="yes">Scaled</attribute>
               <attribute name="target">scaled</attribute>
             </item>
             <item>
-              <attribute name="action">win.ls_options</attribute>
+              <attribute name="action">app.ls_options</attribute>
               <attribute name="label" translatable="yes">Streched</attribute>
               <attribute name="target">streched</attribute>
             </item>
             <item>
-              <attribute name="action">win.ls_options</attribute>
+              <attribute name="action">app.ls_options</attribute>
               <attribute name="label" translatable="yes">Zoom</attribute>
               <attribute name="target">zoom</attribute>
             </item>
             <item>
-              <attribute name="action">win.ls_options</attribute>
+              <attribute name="action">app.ls_options</attribute>
               <attribute name="label" translatable="yes">Spanned</attribute>
               <attribute name="target">spanned</attribute>
             </item>
@@ -219,7 +219,6 @@
         <attribute name="label" translatable="yes">New Window</attribute>
       </item>
       <!-- <item> -->
-             <!-- TODO -->
       <!--   <attribute name="action">app.new_preview</attribute> -->
       <!--   <attribute name="label" translatable="yes">Set an XML file as wallpaper…</attribute> -->
       <!-- </item> -->

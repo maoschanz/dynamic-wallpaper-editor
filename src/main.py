@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import sys, gi
+import sys, gi, os
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gio, GLib, Gdk
@@ -56,6 +56,7 @@ class Application(Gtk.Application):
 		                     GLib.OptionArg.NONE, _("Open a new window"), None)
 
 	def on_startup(self, *args):
+		self.set_gsettings_values()
 		self.build_app_actions()
 		builder = Gtk.Builder().new_from_resource(UI_PATH + 'menus.ui')
 		menubar_model = builder.get_object('menu-bar')
@@ -132,6 +133,18 @@ class Application(Gtk.Application):
 		self.add_action_simple('about', self.on_about, None)
 		self.add_action_simple('quit', self.on_quit, ['<Ctrl>q'])
 
+		action_options = Gio.SimpleAction().new_stateful('wp_options', \
+		                   GLib.VariantType.new('s'), \
+		                   GLib.Variant.new_string(self.get_wallpaper_option()))
+		action_options.connect('change-state', self.on_change_wallpaper_options)
+		self.add_action(action_options)
+
+		action_options = Gio.SimpleAction().new_stateful('ls_options', \
+		                   GLib.VariantType.new('s'), \
+		                   GLib.Variant.new_string(self.get_lockscreen_option()))
+		action_options.connect('change-state', self.on_change_lockscreen_options)
+		self.add_action(action_options)
+
 	############################################################################
 
 	def open_window_with_content(self, gfile):
@@ -181,5 +194,93 @@ class Application(Gtk.Application):
 	def on_quit(self, *args):
 		self.quit()
 
+	############################################################################
+
+	def set_gsettings_values(self):
+		self.desktop_env = os.getenv('XDG_CURRENT_DESKTOP', 'GNOME')
+
+		self.wp_schema = None
+		self.wp_path = None
+		self.wp_options = None
+		if 'Budgie' in self.desktop_env:
+			pass # Doesn't support XML wallpapers XXX ???
+		elif 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env \
+		                                         or 'Unity' in self.desktop_env:
+			self.wp_schema = Gio.Settings.new('org.gnome.desktop.background')
+			self.wp_path = 'picture-uri'
+			self.wp_options = 'picture-options'
+		elif 'Cinnamon' in self.desktop_env:
+			self.wp_schema = Gio.Settings.new('org.cinnamon.desktop.background')
+			self.wp_path = 'picture-uri'
+			self.wp_options = 'picture-options'
+		elif 'MATE' in self.desktop_env:
+			self.wp_schema = Gio.Settings.new('org.mate.desktop.background')
+			self.wp_path = 'picture-filename'
+			self.wp_options = 'picture-options'
+
+		self.ls_schema = None
+		self.ls_path = None
+		self.ls_options = None
+		if 'GNOME' in self.desktop_env: # FIXME check if GDM is used might be more pertinent
+			self.ls_schema = Gio.Settings.new('org.gnome.desktop.screensaver')
+			self.ls_path = 'picture-uri'
+			self.ls_options = 'picture-options'
+		# TODO more desktop environnments? (doesn't it depends on the display manager?)
+
+	############################################################################
+
+	def on_change_wallpaper_options(self, *args):
+		new_value = args[1].get_string()
+		if self.wp_schema is None:
+			self.lookup_action('wp_options').set_enabled(False)
+		else:
+			self.wp_schema.set_string(self.wp_options, new_value)
+			args[0].set_state(GLib.Variant.new_string(new_value))
+
+	def get_wallpaper_option(self):
+		if self.wp_schema is None:
+			self.lookup_action('wp_options').set_enabled(False)
+			return 'none'
+		return self.ls_schema.get_string(self.ls_options)
+
+	############################################################################
+
+	def on_change_lockscreen_options(self, *args):
+		new_value = args[1].get_string()
+		if self.ls_schema is None:
+			self.lookup_action('ls_options').set_enabled(False)
+		else:
+			self.ls_schema.set_string(self.ls_options, new_value)
+			args[0].set_state(GLib.Variant.new_string(new_value))
+
+	def get_lockscreen_option(self):
+		if self.ls_schema is None:
+			self.lookup_action('ls_options').set_enabled(False)
+			return 'none'
+		return self.ls_schema.get_string(self.wp_options)
+
+	############################################################################
+
+	def write_file(self, source_path, is_lockscreen):
+		if is_lockscreen:
+			schema = self.ls_schema
+			key = self.ls_path
+			fn = 'lockscreen'
+		else:
+			schema = self.wp_schema
+			key = self.wp_path
+			fn = 'wallpaper'
+		if schema is None:
+			return False
+		source_file = open(source_path)
+		dest_path = GLib.get_user_data_dir() + '/' + fn + '.xml'
+		dest_file = open(dest_path, 'wb')
+		dest_file.write(source_file.read().encode('utf-8'))
+		dest_file.close()
+		source_file.close()
+		schema.set_string(key, dest_path) # Path and URI both work actually
+		return True
+
+	############################################################################
 ################################################################################
 

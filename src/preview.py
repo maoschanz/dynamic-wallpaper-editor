@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
-import math, os
 import xml.etree.ElementTree as xml_parser
 
 from .misc import add_xml_dialog_filters
@@ -61,8 +60,6 @@ class DWEPreview(Gtk.ApplicationWindow):
 		self.wp_ajust.set_menu_model(builder.get_object('wp-adj-menu'))
 		self.ls_ajust.set_menu_model(builder.get_object('ls-adj-menu'))
 
-		self.desktop_env = os.getenv('XDG_CURRENT_DESKTOP', 'GNOME')
-
 		self.build_all_actions()
 
 		if self.load_list_from_xml():
@@ -80,134 +77,24 @@ class DWEPreview(Gtk.ApplicationWindow):
 		if shortcuts is not None:
 			self.app.set_accels_for_action('win.' + action_name, shortcuts)
 
-	def build_all_actions(self): # FIXME travailler avec une fenêtre pour avoir des actions
+	def build_all_actions(self):
 		self.add_action_simple('set_as_wallpaper', \
 		                                 self.action_set_wallpaper, ['<Ctrl>r'])
 		self.add_action_simple('set_as_lockscreen', self.action_set_lockscreen, None)
 
-		action_options = Gio.SimpleAction().new_stateful('wp_options', \
-		                   GLib.VariantType.new('s'), \
-		                   GLib.Variant.new_string(self.get_wallpaper_option()))
-		action_options.connect('change-state', self.on_change_wallpaper_options)
-		self.add_action(action_options)
-
-		action_options = Gio.SimpleAction().new_stateful('ls_options', \
-		                   GLib.VariantType.new('s'), \
-		                   GLib.Variant.new_string(self.get_lockscreen_option()))
-		action_options.connect('change-state', self.on_change_lockscreen_options)
-		self.add_action(action_options)
-
 	############################################################################
-	# Lockscreen settings ######################################################
-
-	def on_change_lockscreen_options(self, *args):
-		new_value = args[1].get_string()
-		self.set_lockscreen_option(new_value)
-		args[0].set_state(GLib.Variant.new_string(new_value))
-
-	def set_lockscreen_option(self, value):
-		gsettings, wp_path, wp_options = self.get_ls_setting_keys()
-		if gsettings is None:
-			return self.unsupported_desktop()
-		gsettings.set_string(wp_options, value)
-
-	def get_lockscreen_option(self):
-		gsettings, wp_path, wp_options = self.get_ls_setting_keys()
-		if gsettings is None:
-			return self.unsupported_desktop()
-		return gsettings.get_string(wp_options)
-
-	def unsupported_desktop(self):
-		self.show_notification(_("This desktop environnement isn't supported."))
-		self.lookup_action('ls_options').set_enabled(False)
-		self.lookup_action('set_as_lockscreen').set_enabled(False)
-		return ''
-
-	def get_ls_setting_keys(self):
-		"""Return the setting keys required for the used environnement.
-		CAUTION: it can return None, which can crash the app if the value is
-		used anyway for a GSettings operation !"""
-		gsettings = None
-		wp_path = None
-		wp_options = None
-		if 'GNOME' in self.desktop_env:
-			gsettings = Gio.Settings.new('org.gnome.desktop.screensaver')
-			wp_path = 'picture-uri'
-			wp_options = 'picture-options'
-		# TODO more desktop environnments? (doesn't it depends on the display manager?)
-		return gsettings, wp_path, wp_options
+	# Wallpaper and lockscreen settings ########################################
 
 	def action_set_lockscreen(self, *args):
-		gsettings, wp_path, wp_options = self.get_ls_setting_keys()
-		if gsettings is None:
-			return self.unsupported_desktop()
-		if 'GNOME' in self.desktop_env:
-			value = self.gio_file.get_uri()
-		gsettings.set_string(wp_path, value)
-
-	############################################################################
-	# Wallpaper settings #######################################################
-
-	def on_change_wallpaper_options(self, *args):
-		new_value = args[1].get_string()
-		self.set_wallpaper_option(new_value)
-		args[0].set_state(GLib.Variant.new_string(new_value))
-
-	def set_wallpaper_option(self, value):
-		gsettings, wp_path, wp_options = self.get_wp_setting_keys()
-		if gsettings is None:
-			return self.unsupported_desktop()
-		gsettings.set_string(wp_options, value)
-
-	def get_wallpaper_option(self):
-		gsettings, wp_path, wp_options = self.get_wp_setting_keys()
-		if gsettings is None:
-			return self.unsupported_desktop()
-		return gsettings.get_string(wp_options)
-
-	def unsupported_desktop(self):
-		self.show_notification(_("This desktop environnement isn't supported."))
-		self.lookup_action('wp_options').set_enabled(False)
-		self.lookup_action('set_as_wallpaper').set_enabled(False)
-		return ''
-
-	def get_wp_setting_keys(self):
-		"""Return the setting keys required for the used environnement.
-		CAUTION: it can return None, which can crash the app if the value is
-		used anyway for a GSettings operation !"""
-		gsettings = None
-		wp_path = None
-		wp_options = None
-		if 'Budgie' in self.desktop_env:
-			pass # Doesn't support XML wallpapers XXX ???
-		elif 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env \
-		                                         or 'Unity' in self.desktop_env:
-			gsettings = Gio.Settings.new('org.gnome.desktop.background')
-			wp_path = 'picture-uri'
-			wp_options = 'picture-options'
-		elif 'Cinnamon' in self.desktop_env:
-			gsettings = Gio.Settings.new('org.cinnamon.desktop.background')
-			wp_path = 'picture-uri'
-			wp_options = 'picture-options'
-		elif 'MATE' in self.desktop_env:
-			gsettings = Gio.Settings.new('org.mate.desktop.background')
-			wp_path = 'picture-filename'
-			wp_options = 'picture-options'
-		return gsettings, wp_path, wp_options
+		if not self.app.write_file(self.gio_file.get_path(), True):
+			self.unsupported_desktop(True)
 
 	def action_set_wallpaper(self, *args):
-		gsettings, wp_path, wp_options = self.get_wp_setting_keys()
-		if gsettings is None:
-			return self.unsupported_desktop()
-		if 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env:
-			value = self.gio_file.get_uri()
-		elif 'MATE' in self.desktop_env:
-			value = self.gio_file.get_path()
-		elif 'Cinnamon' in self.desktop_env:
+		if not self.app.write_file(self.gio_file.get_path(), False):
+			self.unsupported_desktop(False)
+		elif 'Cinnamon' in self.app.desktop_env:
 			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
 			use_folder.set_boolean('slideshow-enabled', False)
-			value = self.gio_file.get_uri()
-		gsettings.set_string(wp_path, value)
 
 	############################################################################
 	# Miscellaneous ############################################################
@@ -221,6 +108,16 @@ class DWEPreview(Gtk.ApplicationWindow):
 
 	def update_win_title(self, file_name):
 		self.set_title(file_name)
+
+	def unsupported_desktop(self, is_lockscreen):
+		self.show_notification(_("This desktop environnement isn't supported."))
+		if is_lockscreen:
+			self.app.lookup_action('ls_options').set_enabled(False)
+			self.lookup_action('set_as_lockscreen').set_enabled(False)
+		else:
+			self.app.lookup_action('wp_options').set_enabled(False)
+			self.lookup_action('set_as_wallpaper').set_enabled(False)
+		return ''
 
 	############################################################################
 	# Loading data from an XML file ############################################
