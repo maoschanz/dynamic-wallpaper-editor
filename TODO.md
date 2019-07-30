@@ -14,7 +14,7 @@
 
 ## General
 
-- Important: fix the not-working `set_as_wallpaper` method (name generation?)
+- Not important but cool: experiment things in preview.py and try a "line or grid" setting
 - Not important: more clear and useful error messages, including line numbers
 
 ## Translations

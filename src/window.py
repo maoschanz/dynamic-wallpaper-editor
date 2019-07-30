@@ -65,8 +65,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		# Connect signals
 		self.connect('delete-event', self.action_close)
-		self.trans_time_btn.connect('value-changed', self.update_status)
-		self.static_time_btn.connect('value-changed', self.update_status)
+		self.trans_time_btn.connect('value-changed', self.on_time_change)
+		self.static_time_btn.connect('value-changed', self.on_time_change)
 		self.fix_24_btn.connect('clicked', self.fix_24)
 		self.info_bar.connect('close', self.close_notification)
 		self.info_bar.connect('response', self.close_notification)
@@ -309,6 +309,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 				self.close_notification()
 		self.status_bar.push(0, message)
 		return total_time
+
+	def on_time_change(self, *args):
+		self._is_saved = False
+		self.update_status()
 
 	############################################################################
 	# Miscellaneous ############################################################

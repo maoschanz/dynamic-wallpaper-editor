@@ -125,13 +125,11 @@ class DWEPictureRow(Gtk.ListBoxRow):
 
 	def on_static_changed(self, *args):
 		self.update_static_tooltip()
-		self.window._is_saved = False
-		self.window.update_status()
+		self.window.on_time_change()
 
 	def on_transition_changed(self, *args):
 		self.update_transition_tooltip()
-		self.window._is_saved = False
-		self.window.update_status()
+		self.window.on_time_change()
 
 	def update_static_tooltip(self):
 		hours, minutes, seconds = self.get_static_duration()

@@ -86,15 +86,21 @@ class DWEPreview(Gtk.ApplicationWindow):
 	# Wallpaper and lockscreen settings ########################################
 
 	def action_set_lockscreen(self, *args):
-		if not self.app.write_file(self.gio_file.get_path(), True):
+		if self.app.ls_path is None:
 			self.unsupported_desktop(True)
+		else:
+			self.apply_path(self.app.ls_schema, self.app.ls_path, \
+			                                           self.gio_file.get_path())
 
 	def action_set_wallpaper(self, *args):
-		if not self.app.write_file(self.gio_file.get_path(), False):
-			self.unsupported_desktop(False)
-		elif 'Cinnamon' in self.app.desktop_env:
-			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
-			use_folder.set_boolean('slideshow-enabled', False)
+		if self.app.wp_path is None:
+			self.unsupported_desktop(True)
+		else:
+			self.apply_path(self.app.wp_schema, self.app.wp_path, \
+			                                           self.gio_file.get_path())
+			if 'Cinnamon' in self.app.desktop_env:
+				use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
+				use_folder.set_boolean('slideshow-enabled', False)
 
 	############################################################################
 	# Miscellaneous ############################################################

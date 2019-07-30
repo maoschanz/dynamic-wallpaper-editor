@@ -265,21 +265,29 @@ class Application(Gtk.Application):
 		if is_lockscreen:
 			schema = self.ls_schema
 			key = self.ls_path
-			fn = 'lockscreen'
+			filename = 'lockscreen'
 		else:
 			schema = self.wp_schema
 			key = self.wp_path
-			fn = 'wallpaper'
+			filename = 'wallpaper'
 		if schema is None:
 			return False
+
+		dest_path = GLib.get_user_data_dir() + '/' + filename + '.xml'
+		if schema.get_string(key) == dest_path:
+			filename = filename + '0'
+		dest_path = GLib.get_user_data_dir() + '/' + filename + '.xml'
+
 		source_file = open(source_path)
-		dest_path = GLib.get_user_data_dir() + '/' + fn + '.xml'
 		dest_file = open(dest_path, 'wb')
 		dest_file.write(source_file.read().encode('utf-8'))
 		dest_file.close()
 		source_file.close()
-		schema.set_string(key, dest_path) # Path and URI both work actually
+		self.apply_path(schema, key, dest_path)
 		return True
+
+	def apply_path(self, schema, key, path):
+		schema.set_string(key, path) # Path and URI both work actually
 
 	############################################################################
 ################################################################################
