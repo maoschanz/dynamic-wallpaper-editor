@@ -19,6 +19,8 @@ from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
 import math, os
 import xml.etree.ElementTree as xml_parser
 
+import time
+
 from .picture_row import DWEPictureRow
 from .misc import add_pic_dialog_filters
 from .misc import add_xml_dialog_filters
@@ -243,13 +245,13 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if gsettings is None:
 			return self.unsupported_desktop_ls()
 		source_file = open(self.gio_file.get_path())
-		dest_path = GLib.get_user_data_dir() + '/' + 'lockscreen.xml'
+		dest_path = GLib.get_user_data_dir() + '/' + 'wallpaper_'+ str(time.time()) + '.xml'
 		dest_file = open(dest_path, 'wb')
 		dest_file.write(source_file.read().encode('utf-8'))
 		dest_file.close()
 		source_file.close()
 		if 'GNOME' in self.desktop_env:
-			gsettings.set_string(wp_path, 'file://' + dest_path) # Only URI working correctly!
+			gsettings.set_string(wp_path, dest_path) # Actualy URI and Path working correctly!
 
 	############################################################################
 	# Wallpaper settings #######################################################
@@ -306,7 +308,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if gsettings is None:
 			return self.unsupported_desktop_wp()
 		source_file = open(self.gio_file.get_path())
-		dest_path = GLib.get_user_data_dir() + '/' + 'wallpaper.xml'
+		dest_path = GLib.get_user_data_dir() + '/' + 'wallpaper_'+ str(time.time()) + '.xml'
 		dest_file = open(dest_path, 'wb')
 		dest_file.write(source_file.read().encode('utf-8'))
 		dest_file.close()
@@ -314,7 +316,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if 'Cinnamon' in self.desktop_env:
 			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
 			use_folder.set_boolean('slideshow-enabled', False)
-		gsettings.set_string(wp_path, 'file://' + dest_path) # Only URI working correctly!
+		gsettings.set_string(wp_path, dest_path) # Actualy URI and Path working correctly!
 
 	############################################################################
 	# Time management ##########################################################
