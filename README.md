@@ -28,3 +28,16 @@ as your lock screen) from the app.
 
 Adjustment options are available (mosaic, zoom, centered, etc.)
 
+## Installation
+
+>**Recommended**
+
+You can install it from flathub.org using the instructions on [this page](https://flathub.org/apps/details/com.github.maoschanz.DynamicWallpaperEditor).
+
+### Native packages
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/dynamic-wallpaper-editor.svg)](https://repology.org/project/dynamic-wallpaper-editor/versions)
+
+- [Fedora (official repo)](https://apps.fedoraproject.org/packages/dynamic-wallpaper-editor) (29, 30 and Rawhide): `sudo dnf install dynamic-wallpaper-editor`
+- [openSUSE (OBS)](https://software.opensuse.org//download.html?project=home%3ADead_Mozay&package=dynamic-wallpaper-editor)
+- Arch and Manjaro ([AUR](https://aur.archlinux.org/packages/dynamic-wallpaper-editor))
