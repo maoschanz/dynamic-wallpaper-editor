@@ -1,0 +1,410 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the dynamic-wallpaper-editor package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: dynamic-wallpaper-editor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-30 18:03+0200\n"
+"PO-Revision-Date: 2019-08-05 13:18+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
+#: src/ui/window.ui:27 src/main.py:87
+msgid "Dynamic Wallpaper Editor"
+msgstr "Dynamische achtergrondbewerking"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
+#: src/main.py:180
+msgid "Create or edit dynamic wallpapers for GNOME."
+msgstr "Creëer of bewerk dynamische achtergronden voor GNOME."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:9
+msgid "Wallpaper;Daylight;XML;"
+msgstr "Achtergrond;Overdag;XML;"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:11
+msgid "com.github.maoschanz.DynamicWallpaperEditor"
+msgstr "com.github.maoschanz.DynamicWallpaperEditor"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:16
+#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:231
+#: src/ui/shortcuts.ui:17
+msgid "New Window"
+msgstr "Nieuw venster"
+
+#: src/ui/menus.ui:13 src/ui/menus.ui:213 src/ui/menus.ui:262
+msgid "Keyboard Shortcuts"
+msgstr "Sneltoetsen"
+
+#: src/ui/menus.ui:17 src/ui/menus.ui:209 src/ui/menus.ui:266
+msgid "Help"
+msgstr "Hulp"
+
+#: src/ui/menus.ui:21 src/ui/menus.ui:221 src/ui/menus.ui:270
+msgid "About"
+msgstr "Over"
+
+#: src/ui/menus.ui:25 src/ui/menus.ui:62
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: src/ui/menus.ui:32
+msgid "File"
+msgstr "Bestand"
+
+#: src/ui/menus.ui:42 src/ui/window.ui:33 src/window.py:472 src/window.py:473
+msgid "Open"
+msgstr "Openen"
+
+#: src/ui/menus.ui:48 src/ui/shortcuts.ui:79 src/ui/window.ui:95
+#: src/window.py:339 src/window.py:618
+msgid "Save"
+msgstr "Opslaan"
+
+#: src/ui/menus.ui:52 src/ui/menus.ui:256 src/ui/shortcuts.ui:86
+#: src/window.py:617
+msgid "Save as…"
+msgstr "Opslaan als…"
+
+#: src/ui/menus.ui:58
+msgid "Close"
+msgstr "Sluiten"
+
+#: src/ui/menus.ui:67
+msgid "Edit"
+msgstr "Bewerken"
+
+#: src/ui/menus.ui:71 src/ui/shortcuts.ui:65 src/ui/window.ui:122
+#: src/window.py:393
+msgid "Add pictures"
+msgstr "Afbeeldingen toevoegen"
+
+#: src/ui/menus.ui:75 src/ui/shortcuts.ui:72 src/ui/window.ui:134
+#: src/window.py:367
+msgid "Add a folder"
+msgstr "Map toevoegen"
+
+#: src/ui/menus.ui:114 src/ui/window.ui:176
+msgid "Apply"
+msgstr "Toepassen"
+
+#: src/ui/menus.ui:118 src/ui/shortcuts.ui:93
+msgid "Set as wallpaper"
+msgstr "Instellen als achtergrond"
+
+#: src/ui/menus.ui:121
+msgid "Wallpaper adjustment"
+msgstr "Achtergronduitlijning"
+
+#: src/ui/menus.ui:130 src/ui/menus.ui:176
+msgid "Mosaic"
+msgstr "Tegels"
+
+#: src/ui/menus.ui:135 src/ui/menus.ui:181
+msgid "Centered"
+msgstr "Gecentreerd"
+
+#: src/ui/menus.ui:140 src/ui/menus.ui:186
+msgid "Scaled"
+msgstr "Best passend"
+
+#: src/ui/menus.ui:145 src/ui/menus.ui:191
+msgid "Streched"
+msgstr "Uitgerekt"
+
+#: src/ui/menus.ui:150 src/ui/menus.ui:196
+msgid "Zoom"
+msgstr "Zoomen"
+
+#: src/ui/menus.ui:155 src/ui/menus.ui:201
+msgid "Spanned"
+msgstr "Omvatten"
+
+#: src/ui/menus.ui:164
+msgid "Set as lock screen"
+msgstr "Instellen op vergrendelscherm"
+
+#: src/ui/menus.ui:167
+msgid "Lock screen adjustment"
+msgstr "Vergrendelschermuitlijning"
+
+#: src/ui/menus.ui:217
+msgid "User manual"
+msgstr "Gebruikershandleiding"
+
+#: src/ui/picture_row.ui:97 src/ui/window.ui:287
+msgid "Time"
+msgstr "Duur"
+
+#: src/ui/picture_row.ui:108
+msgid ""
+"Time (in seconds) of this image. This doesn't include the time of the "
+"transition."
+msgstr ""
+"Hoe lang (in seconden) deze afbeelding getoond wordt. Dit staat los van de "
+"overgangsduur."
+
+#: src/ui/picture_row.ui:121 src/ui/window.ui:309
+msgid "Transition"
+msgstr "Overgang"
+
+#: src/ui/picture_row.ui:132
+msgid ""
+"Time (in seconds) of the transition between this image and the next one."
+msgstr ""
+"Duur (in seconden) van de overgang tussen deze en de volgende afbeelding."
+
+#: src/ui/picture_row.ui:151
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: src/ui/start_time.ui:55
+msgid "This is useful when the total duration is 24 hours."
+msgstr "Dit komt van pas als de totale duur meer dan 24 uur bedraagt."
+
+#: src/ui/start_time.ui:59
+msgid "Start time of the wallpaper"
+msgstr "Starttijd van achtergrond"
+
+#: src/ui/start_time.ui:78
+msgid "Year"
+msgstr "Jaar"
+
+#: src/ui/start_time.ui:101
+msgid "Month"
+msgstr "Maand"
+
+#: src/ui/start_time.ui:125
+msgid "Day"
+msgstr "Dag"
+
+#: src/ui/start_time.ui:149
+msgid "Hour"
+msgstr "Uur"
+
+#: src/ui/start_time.ui:173
+msgid "Minute"
+msgstr "Minuut"
+
+#: src/ui/start_time.ui:197
+msgid "Second"
+msgstr "Seconde"
+
+#: src/ui/shortcuts.ui:13
+msgid "General"
+msgstr "Algemeen"
+
+#: src/ui/shortcuts.ui:24
+msgid "Close the current window"
+msgstr "Huidige venster sluiten"
+
+#: src/ui/shortcuts.ui:31
+msgid "Quit all windows"
+msgstr "Alle vensters sluiten"
+
+#: src/ui/shortcuts.ui:38
+msgid "Show shortcuts"
+msgstr "Sneltoetsen tonen"
+
+#: src/ui/shortcuts.ui:45
+msgid "Show help"
+msgstr "Hulp tonen"
+
+#: src/ui/shortcuts.ui:54
+msgid "Wallpaper"
+msgstr "Achtergrond"
+
+#: src/ui/shortcuts.ui:58 src/ui/window.ui:34
+msgid "Open an existing dynamic wallpaper"
+msgstr "Bestaande dynamische achtergrond openen"
+
+#: src/ui/window.ui:48
+msgid "Slideshow"
+msgstr "Diavoorstelling"
+
+#: src/ui/window.ui:49
+msgid "A simple succession of pictures."
+msgstr "Afbeeldingen die elkaar opvolgen."
+
+#: src/ui/window.ui:57
+msgid "Daylight"
+msgstr "Overdag"
+
+#: src/ui/window.ui:58
+msgid "Pictures changing with the daylight."
+msgstr "Afbeeldingen die zich aanpassen aan de situatie overdag."
+
+#: src/ui/window.ui:66
+msgid "Custom"
+msgstr "Aangepast"
+
+#: src/ui/window.ui:67
+msgid "Set the durations you prefer."
+msgstr "Stel de gewenste duur in."
+
+#: src/ui/window.ui:78
+msgid "More actions"
+msgstr "Meer acties"
+
+#: src/ui/window.ui:144
+msgid "Set the exact start time of the wallpaper"
+msgstr "Stel het exacte tijdstip in waarop de achtergrond moet verschijnen"
+
+#: src/ui/window.ui:168
+msgid "Apply as wallpaper or lock screen, and set adjustment options"
+msgstr ""
+"Pas toe als bureaublad- of vergrendelschermachtergrond en stel de "
+"uitlijning in"
+
+#: src/ui/window.ui:218
+msgid "Error starting the application, please report this bug."
+msgstr ""
+"Het programma kan niet worden gestart. Meld deze bug aan de ontwikkelaar."
+
+#: src/ui/window.ui:223
+msgid "Automatic fix"
+msgstr "Automatisch oplossen"
+
+#: src/ui/window.ui:258
+msgid "Add new pictures, or open an existing XML file."
+msgstr "Voeg nieuwe afbeeldingen toe of open een bestaand XML-bestand."
+
+#: src/ui/window.ui:295
+msgid "Duration of each picture (seconds)"
+msgstr "Duur van elke afbeelding (in seconden)"
+
+#: src/ui/window.ui:317
+msgid "Duration of each transition (seconds)"
+msgstr "Duur van elke overgang (in seconden)"
+
+#: src/main.py:53
+msgid "Print the version and display the 'about' dialog"
+msgstr "Toon de versie en het scherm 'Over'"
+
+#: src/main.py:56
+msgid "Open a new window"
+msgstr "Nieuw venster openen"
+
+#: src/main.py:112
+#, python-format
+msgid "Error opening this file. Did you mean %s ?"
+msgstr "Dit bestand kan niet worden geopend. Bedoel je '%s'?"
+
+#: src/main.py:186
+msgid "Report bugs or ideas"
+msgstr "Bugs melden of ideëen aandragen"
+
+#: src/main.py:187
+msgid "translator-credits"
+msgstr "Heimen Stoffels"
+
+#: src/misc.py:12
+msgid "Dynamic wallpapers (XML)"
+msgstr "Dynamische achtergronden (XML)"
+
+#: src/misc.py:20
+msgid "All pictures"
+msgstr "Alle afbeeldingen"
+
+#: src/misc.py:28
+msgid "PNG images"
+msgstr "PNG-afbeeldingen"
+
+#: src/misc.py:32
+msgid "JPEG images"
+msgstr "JPEG-afbeeldingen"
+
+#: src/picture_row.py:71
+msgid "This picture doesn't exist"
+msgstr "Deze afbeelding bestaat niet"
+
+#: src/picture_row.py:137 src/picture_row.py:145 src/window.py:300
+#, python-format
+msgid "%s hour(s)"
+msgstr "%s uur"
+
+#: src/picture_row.py:138 src/picture_row.py:146 src/window.py:302
+#, python-format
+msgid "%s minute(s)"
+msgstr "%s minuut/minuten"
+
+#: src/picture_row.py:139 src/picture_row.py:147 src/window.py:303
+#, python-format
+msgid "%s second(s)"
+msgstr "%s seconde(n)"
+
+#: src/picture_row.py:154
+#, python-brace-format
+msgid "This picture lasts from {0} to {1}"
+msgstr "Deze afbeelding wordt getoond van {0} tot {1}"
+
+#: src/picture_row.py:168
+#, python-brace-format
+msgid "The transition to the next picture lasts from {0} to {1}"
+msgstr "De overgang naar de volgende afbeelding duurt {0} tot {1}"
+
+#: src/window.py:292
+#, python-format
+msgid "%s pictures"
+msgstr "%s afbeeldingen"
+
+#: src/window.py:293
+#, python-format
+msgid "Total time: %s second(s)"
+msgstr "Totaalduur: %s seconde(n)"
+
+#: src/window.py:306
+msgid "The total duration isn't 24 hours."
+msgstr "De totaalduur is geen 24 uur."
+
+#: src/window.py:336
+msgid "There are unsaved modifications to your wallpaper."
+msgstr "Je achtergrond bevat niet-opgeslagen aanpassingen."
+
+#: src/window.py:337 src/window.py:473 src/window.py:618
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: src/window.py:338
+msgid "Discard"
+msgstr "Verwerpen"
+
+#: src/window.py:351
+msgid "This desktop environnement isn't supported."
+msgstr "Deze werkomgeving wordt niet ondersteund."
+
+#: src/window.py:366 src/window.py:392 src/window.py:471
+msgid "Loading…"
+msgstr "Bezig met laden…"
+
+#: src/window.py:506 src/window.py:513
+msgid "This dynamic wallpaper is corrupted"
+msgstr "Deze dynamische achtergrond werkt niet"
+
+#: src/window.py:518
+msgid "This XML file doesn't describe a valid dynamic wallpaper"
+msgstr "Dit XML-bestand beschrijft geen geldige dynamische achtergrond"
+
+#: src/window.py:529
+#, python-format
+msgid "Unknown element: %s"
+msgstr "Onbekend element: %s"
+
+#: src/window.py:607
+#, python-format
+msgid "Save %s"
+msgstr "%s opslaan"
+
+#: src/window.py:619
+msgid "Untitled"
+msgstr "Naamloos"
