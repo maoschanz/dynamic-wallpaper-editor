@@ -30,7 +30,7 @@ msgstr "Creëer of bewerk dynamische achtergronden voor GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:9
 msgid "Wallpaper;Daylight;XML;"
-msgstr "Achtergrond;Overdag;XML;"
+msgstr "Achtergrond;Dagdeel;XML;"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:11
 msgid "com.github.maoschanz.DynamicWallpaperEditor"
@@ -238,11 +238,11 @@ msgstr "Afbeeldingen die elkaar opvolgen."
 
 #: src/ui/window.ui:57
 msgid "Daylight"
-msgstr "Overdag"
+msgstr "Per dagdeel"
 
 #: src/ui/window.ui:58
 msgid "Pictures changing with the daylight."
-msgstr "Afbeeldingen die zich aanpassen aan de situatie overdag."
+msgstr "Afbeeldingen die zich aanpassen aan het dagdeel."
 
 #: src/ui/window.ui:66
 msgid "Custom"
