@@ -8,7 +8,7 @@ edition of these XML wallpapers.
 
 ![screenshot](https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot.png)
 
-## Create XML files
+### Create XML files
 
 - Add pictures to the list
 - Rearrange the list
@@ -16,12 +16,12 @@ edition of these XML wallpapers.
 - Adjust the start time of the slideshow
 - Save as an XML file
 
-## Edit XML files
+### Edit XML files
 
 Easily open an XML file, add pictures, or remove pictures, or change their order
 or their durations, and save the modifications.
 
-## Set an XML file as a wallpaper
+### Set an XML file as a wallpaper
 
 An existing XML file (opened, or just created) can be set as your wallpaper (or
 as your lock screen) from the app.
@@ -29,6 +29,8 @@ as your lock screen) from the app.
 Adjustment options are available (mosaic, zoom, centered, etc.)
 
 ## Installation
+
+### Flatpak
 
 >**Recommended**
 
@@ -41,3 +43,4 @@ You can install it from flathub.org using the instructions on [this page](https:
 - [Fedora (official repo)](https://apps.fedoraproject.org/packages/dynamic-wallpaper-editor) (29, 30 and Rawhide): `sudo dnf install dynamic-wallpaper-editor`
 - [openSUSE (OBS)](https://software.opensuse.org//download.html?project=home%3ADead_Mozay&package=dynamic-wallpaper-editor)
 - Arch and Manjaro ([AUR](https://aur.archlinux.org/packages/dynamic-wallpaper-editor))
+

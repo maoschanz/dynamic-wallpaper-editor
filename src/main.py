@@ -47,6 +47,7 @@ class Application(Gtk.Application):
 		self.connect('command-line', self.on_cli)
 		self.register(None)
 		self._version = version
+		self._git_url = 'https://github.com/maoschanz/dynamic-wallpaper-editor'
 
 		self.add_main_option('version', b'v', GLib.OptionFlags.NONE,
 		                     GLib.OptionArg.NONE,
@@ -182,7 +183,7 @@ class Application(Gtk.Application):
 		self.about_dialog.set_copyright('© 2018-2019 Romain F. T.')
 		self.about_dialog.set_license_type(Gtk.License.GPL_3_0)
 		self.about_dialog.set_logo_icon_name(APP_ID)
-		self.about_dialog.set_website('https://github.com/maoschanz/dynamic-wallpaper-editor')
+		self.about_dialog.set_website(self._git_url)
 		self.about_dialog.set_website_label(_("Report bugs or ideas"))
 		self.about_dialog.set_translator_credits(_("translator-credits"))
 		self.about_dialog.connect('response', self.widget_destroy)

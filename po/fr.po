@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-30 18:03+0200\n"
+"POT-Creation-Date: 2019-08-07 02:19+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -17,10 +17,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:7
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
 #: src/ui/window.ui:27 src/main.py:87
 msgid "Dynamic Wallpaper Editor"
 msgstr "Éditeur de fonds d'écran dynamiques"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:8
+msgid ""
+"Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
+"GNOME desktop"
+msgstr ""
+"Créer ou éditer des fonds d'écrans dynamiques (\"diaporamas\") pour le "
+"bureau GNOME."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:10
+msgid ""
+"Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
+"wallpapers for the GNOME desktop."
+msgstr "Cet \"éditeur de fonds d'écran dynamiques\" est un utilitaire simple "
+"pour créer ou éditer des fonds d'écrans dynamiques pour le bureau GNOME."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:14
+msgid ""
+"The duration of each picture and each transition can be set separately or "
+"globally. The total duration can be 24 hours to do a wallpaper fitting the "
+"daylight."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:25
+msgid "An example of a wallpaper changing with daylight"
+msgstr "Un exemple de fond d'écran changeant avec la lumière du jour"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:32
+msgid ""
+"Finally fix the bug with corrupted files, and fix minor bugs concerning "
+"\"set as wallpaper\"."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:40
+msgid ""
+"Better UI for the slideshow mode, more helpful labels for the daylight mode, "
+"other desktop environments support and various bug fixes."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:49
+msgid "Various bug fixes and new reordering mechanism, with draggable rows."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:56
+msgid ""
+"Types of wallpaper displayed as the window's title, bug fixes and new "
+"translations."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:73
+msgid "Romain F. T."
+msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
 #: src/main.py:180
@@ -305,19 +358,19 @@ msgstr "Rapporter des bugs ou des idées"
 msgid "translator-credits"
 msgstr "Romain F. T."
 
-#: src/misc.py:12
+#: src/misc.py:26
 msgid "Dynamic wallpapers (XML)"
 msgstr "Fonds d'écran dynamiques"
 
-#: src/misc.py:20
+#: src/misc.py:34
 msgid "All pictures"
 msgstr "Toutes les images"
 
-#: src/misc.py:28
+#: src/misc.py:42
 msgid "PNG images"
 msgstr "Images PNG"
 
-#: src/misc.py:32
+#: src/misc.py:46
 msgid "JPEG images"
 msgstr "JPEG images"
 
@@ -405,25 +458,6 @@ msgstr "Enregistrer %s"
 #: src/window.py:619
 msgid "Untitled"
 msgstr "Sans titre"
-
-#~ msgid "Set the type of dynamic wallpaper you want"
-#~ msgstr "Régler le type de fond d'écran dynamique voulu"
-
-#~ msgid ""
-#~ "Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
-#~ "GNOME desktop"
-#~ msgstr ""
-#~ "Créer ou éditer des fonds d'écrans dynamiques (\"diaporamas\") pour le "
-#~ "bureau GNOME."
-
-#~ msgid ""
-#~ "A simple utility to create or edit dynamic wallpapers for GNOME Shell. "
-#~ "The duration of each picture and each transition can be set separately or "
-#~ "globally."
-#~ msgstr ""
-#~ "Un utilitaire simple pour créer ou éditer des fonds d'écrans dynamiques "
-#~ "pour GNOME.La durée de chaque image et de chaque transition peut être "
-#~ "réglée séparément ou globalement."
 
 #~ msgid "None"
 #~ msgstr "Aucun"

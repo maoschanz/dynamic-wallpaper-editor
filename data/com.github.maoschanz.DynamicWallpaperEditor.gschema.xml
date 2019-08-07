@@ -6,6 +6,13 @@
         "-\-env=DCONF_USER_CONFIG_DIR=.config/dconf",
 -->
 <schemalist gettext-domain="dynamic-wallpaper-editor">
-	<schema id="com.github.maoschanz.DynamicWallpaperEditor" path="/com/github/maoschanz/DynamicWallpaperEditor/">
-	</schema>
+  <schema id="com.github.maoschanz.DynamicWallpaperEditor" path="/com/github/maoschanz/DynamicWallpaperEditor/">
+    <!-- <key type="b" name="use-grid"> -->
+    <!--   <default>false</default> -->
+    <!--   <summary>Use a grid instead of a list</summary> -->
+    <!--   <description> -->
+    <!--     Display the pictures using a grid of thumbnails instead of a list. -->
+    <!--   </description> -->
+    <!-- </key> -->
+  </schema>
 </schemalist>

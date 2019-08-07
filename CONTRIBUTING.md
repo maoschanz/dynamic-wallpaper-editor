@@ -1,6 +1,8 @@
 # How to contribute
 
-This quite simple project uses Python3 and PyGObject. The build system is `meson`, and the project can be built as a flatpak package.
+This quite simple project uses Python3 and PyGObject. The build system is
+`meson`, and the project can easily be built as a flatpak package, for example
+using GNOME Builder.
 
 ----
 

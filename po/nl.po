@@ -7,21 +7,72 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-30 18:03+0200\n"
+"POT-Creation-Date: 2019-08-07 02:19+0200\n"
 "PO-Revision-Date: 2019-08-05 13:18+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.3\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: nl\n"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:7
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
 #: src/ui/window.ui:27 src/main.py:87
 msgid "Dynamic Wallpaper Editor"
 msgstr "Dynamische achtergrondbewerking"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:8
+#, fuzzy
+msgid ""
+"Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
+"GNOME desktop"
+msgstr "Creëer of bewerk dynamische achtergronden voor GNOME."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:10
+msgid ""
+"Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
+"wallpapers for the GNOME desktop."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:14
+msgid ""
+"The duration of each picture and each transition can be set separately or "
+"globally. The total duration can be 24 hours to do a wallpaper fitting the "
+"daylight."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:25
+msgid "An example of a wallpaper changing with daylight"
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:32
+msgid ""
+"Finally fix the bug with corrupted files, and fix minor bugs concerning "
+"\"set as wallpaper\"."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:40
+msgid ""
+"Better UI for the slideshow mode, more helpful labels for the daylight mode, "
+"other desktop environments support and various bug fixes."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:49
+msgid "Various bug fixes and new reordering mechanism, with draggable rows."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:56
+msgid ""
+"Types of wallpaper displayed as the window's title, bug fixes and new "
+"translations."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:73
+msgid "Romain F. T."
+msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
 #: src/main.py:180
@@ -263,8 +314,8 @@ msgstr "Stel het exacte tijdstip in waarop de achtergrond moet verschijnen"
 #: src/ui/window.ui:168
 msgid "Apply as wallpaper or lock screen, and set adjustment options"
 msgstr ""
-"Pas toe als bureaublad- of vergrendelschermachtergrond en stel de "
-"uitlijning in"
+"Pas toe als bureaublad- of vergrendelschermachtergrond en stel de uitlijning "
+"in"
 
 #: src/ui/window.ui:218
 msgid "Error starting the application, please report this bug."
@@ -308,19 +359,19 @@ msgstr "Bugs melden of ideëen aandragen"
 msgid "translator-credits"
 msgstr "Heimen Stoffels"
 
-#: src/misc.py:12
+#: src/misc.py:26
 msgid "Dynamic wallpapers (XML)"
 msgstr "Dynamische achtergronden (XML)"
 
-#: src/misc.py:20
+#: src/misc.py:34
 msgid "All pictures"
 msgstr "Alle afbeeldingen"
 
-#: src/misc.py:28
+#: src/misc.py:42
 msgid "PNG images"
 msgstr "PNG-afbeeldingen"
 
-#: src/misc.py:32
+#: src/misc.py:46
 msgid "JPEG images"
 msgstr "JPEG-afbeeldingen"
 

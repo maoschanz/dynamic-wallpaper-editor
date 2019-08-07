@@ -70,6 +70,7 @@
   <content_rating type="oars-1.1" />
   <url type="bugtracker">https://github.com/maoschanz/dynamic-wallpaper-editor/issues</url>
   <url type="homepage">https://github.com/maoschanz/dynamic-wallpaper-editor</url>
+  <!-- That's my name, don't translate it -->
   <developer_name>Romain F. T.</developer_name>
   <update_contact>rrroschan@gmail.com</update_contact>
 
