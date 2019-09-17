@@ -20,8 +20,6 @@ from gi.repository import Gtk
 from .picture_row import DWEPictureRow
 # from .picture_row import DWEPictureThumbnail
 
-# UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
-
 class DWEAbstractView():
 	__gtype_name__ = 'DWEAbstractView'
 
@@ -31,47 +29,48 @@ class DWEAbstractView():
 	def add_view(self, widget):
 		self.window.scrolled_window.add(widget)
 
+	def set_unsaved(self):
+		self.window._is_saved = False
+
+	def get_pictures_xml(self, st_time, tr_time):
+		return ''
+
+	def add_timed_pictures_to_list(self, new_pics_list):
+		"""Add pictures from a list of dicts as built by the `new_row_structure`
+		method."""
+		for index in range(0, len(new_pics_list)):
+			p = new_pics_list[index]
+			self.add_one_picture(p['filename'], p['static_time'], p['trans_time'])
+		self.window.update_status()
+
+	def add_untimed_pictures_to_list(self, array):
+		"""Add pictures from a list of paths.""" # TODO could be removed
+		for path in array:
+			self.add_one_picture(path, 10, 0)
+		self.restack_indexes()
+
+	def add_one_picture(self, filename, stt, trt):
+		pass
+
+	def get_length(self):
+		return 0
+
+	def get_row_at(self, index):
+		pass
+
+	############################################################################
+
+	def restack_indexes(self):
+		pass
+
 	def reset_view(self):
 		pass
 
+	def get_total_time(self, temp_time, wtype):
+		return 0
+
 	def update_to_mode(self, wtype):
 		pass
-
-	def sort_list(self, row1, row2, *args):
-		"""Returns int < 0 if row1 should be before row2, 0 if they are equal
-		and int > 0 otherwise"""
-		return row1.indx - row2.indx
-
-	# TODO better encapsulation with only 1 (abstracted) method for adding pics
-
-	############################################################################
-################################################################################
-
-class DWERowsView(DWEAbstractView):
-	__gtype_name__ = 'DWERowsView'
-
-	def __init__(self, window):
-		super().__init__(window)
-		self.list_box = Gtk.ListBox(visible=True, expand=True)
-		label = Gtk.Label(visible=True, \
-		             label=_("Add new pictures, or open an existing XML file."))
-		self.list_box.set_placeholder(label)
-		self.list_box.set_sort_func(self.sort_list)
-		self.add_view(self.list_box)
-
-	def get_length(self):
-		return len(self.list_box.get_children())
-
-	def get_total_time(self, temp_time, wtype):
-		total_time = 0
-		for index in range(0, self.get_length()):
-			r = self.get_row_at(index)
-			total_time += r.static_time_btn.get_value()
-			total_time += r.trans_time_btn.get_value()
-			if wtype == 'daylight':
-				temp_time = r.update_static_label(temp_time)
-				temp_time = r.update_transition_label(temp_time)
-		return total_time
 
 	def all_have_same_time(self):
 		st0 = self.get_row_at(0).static_time_btn.get_value()
@@ -84,8 +83,10 @@ class DWERowsView(DWEAbstractView):
 				return False, 0, 0
 		return True, st0, tr0
 
-	def get_row_at(self, index):
-		return self.list_box.get_children()[index]
+	def sort_list(self, row1, row2, *args):
+		"""Returns int < 0 if row1 should be before row2, 0 if they are equal
+		and int > 0 otherwise"""
+		return row1.indx - row2.indx
 
 	def fix_24(self, *args):
 		"""Automatically set the durations for each picture to reach a total of
@@ -126,6 +127,38 @@ class DWERowsView(DWEAbstractView):
 			static0.set_value(static0.get_value() + 1)
 
 	############################################################################
+################################################################################
+
+class DWERowsView(DWEAbstractView):
+	__gtype_name__ = 'DWERowsView'
+
+	def __init__(self, window):
+		super().__init__(window)
+		self.list_box = Gtk.ListBox(visible=True, expand=True)
+		label = Gtk.Label(visible=True, \
+		             label=_("Add new pictures, or open an existing XML file."))
+		self.list_box.set_placeholder(label)
+		self.list_box.set_sort_func(self.sort_list)
+		self.add_view(self.list_box)
+
+	def get_length(self):
+		return len(self.list_box.get_children())
+
+	def get_total_time(self, temp_time, wtype):
+		total_time = 0
+		for index in range(0, self.get_length()):
+			r = self.get_row_at(index)
+			total_time += r.static_time_btn.get_value()
+			total_time += r.trans_time_btn.get_value()
+			if wtype == 'daylight':
+				temp_time = r.update_static_label(temp_time)
+				temp_time = r.update_transition_label(temp_time)
+		return total_time
+
+	def get_row_at(self, index):
+		return self.list_box.get_children()[index]
+
+	############################################################################
 
 	def reset_view(self):
 		while self.get_length() > 0:
@@ -145,12 +178,12 @@ class DWERowsView(DWEAbstractView):
 		self.window.update_status()
 
 	def destroy_row(self, row):
-		self._is_saved = False
+		self.set_unsaved()
 		self.list_box.remove(row)
 		self.restack_indexes()
 
 	def move_row(self, index_from, index_to):
-		self._is_saved = False
+		self.set_unsaved()
 		if index_from > index_to:
 			self.list_box.get_children()[index_from].indx = index_to - 1
 		else:
@@ -160,28 +193,8 @@ class DWERowsView(DWEAbstractView):
 
 	############################################################################
 
-	def add_pictures_to_list1(self, new_pics_list):
-		"""Add pictures from a list of dicts as built by the `new_row_structure`
-		method."""
-		self._is_saved = False
-		l = self.get_length()
-		for index in range(0, len(new_pics_list)):
-			row = DWEPictureRow(new_pics_list[index]['filename'], \
-			                 new_pics_list[index]['static_time'], \
-			           new_pics_list[index]['trans_time'], l+index, self.window)
-			self.list_box.add(row)
-		self.window.update_status()
-
-	############################################################################
-
-	def add_pictures_to_list2(self, array):
-		"""Add pictures from a list of paths."""
-		for path in array:
-			self.add_one_picture(path, 10, 0)
-		self.restack_indexes()
-
 	def add_one_picture(self, filename, stt, trt):
-		self._is_saved = False
+		self.set_unsaved()
 		row = DWEPictureRow(filename, stt, trt, self.get_length(), self.window)
 		self.list_box.add(row)
 

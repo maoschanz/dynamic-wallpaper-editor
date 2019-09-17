@@ -18,6 +18,11 @@
 from gi.repository import Gtk, GdkPixbuf, Pango, Gdk
 import math
 
+from .misc import time_to_string
+from .misc import get_hms
+
+UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
+
 class DWEPictureRow(Gtk.ListBoxRow):
 	"""This is a row with the thumbnail and the path of the picture, and control
 	buttons (up/down, delete) for this picture. It also contains "spinbuttons" if
@@ -31,8 +36,7 @@ class DWEPictureRow(Gtk.ListBoxRow):
 		self.window = window
 		self.indx = index
 
-		builder = Gtk.Builder().new_from_resource( \
-		       '/com/github/maoschanz/DynamicWallpaperEditor/ui/picture_row.ui')
+		builder = Gtk.Builder().new_from_resource(UI_PATH + 'picture_row.ui')
 		row_box = builder.get_object('row_box')
 		self.time_box = builder.get_object('time_box')
 
@@ -105,24 +109,6 @@ class DWEPictureRow(Gtk.ListBoxRow):
 
 	############################################################################
 
-	def get_static_duration(self):
-		total_time = self.static_time_btn.get_value()
-		hours, minutes, seconds = self.get_hms(total_time)
-		return hours, minutes, seconds
-
-	def get_transition_duration(self):
-		total_time = self.trans_time_btn.get_value()
-		hours, minutes, seconds = self.get_hms(total_time)
-		return hours, minutes, seconds
-
-	def get_hms(self, total_time):
-		hours = math.floor(total_time / 3600)
-		minutes = math.floor((total_time % 3600) / 60)
-		seconds = math.floor(total_time % 60)
-		return hours, minutes, seconds
-
-	############################################################################
-
 	def on_static_changed(self, *args):
 		self.update_static_tooltip()
 		self.window.on_time_change()
@@ -132,50 +118,35 @@ class DWEPictureRow(Gtk.ListBoxRow):
 		self.window.on_time_change()
 
 	def update_static_tooltip(self):
-		hours, minutes, seconds = self.get_static_duration()
-		message = ""
-		message += str(_("%s hour(s)") % hours + ' ')
-		message += str(_("%s minute(s)") % minutes + ' ')
-		message += str(_("%s second(s)") % seconds)
-		self.static_time_btn.set_tooltip_text(message)
+		total = self.static_time_btn.get_value()
+		self.static_time_btn.set_tooltip_text(time_to_string(total))
 
 	def update_transition_tooltip(self):
-		hours, minutes, seconds = self.get_transition_duration()
-		message = ""
-		message += str(_("%s hour(s)") % hours + ' ')
-		message += str(_("%s minute(s)") % minutes + ' ')
-		message += str(_("%s second(s)") % seconds)
-		self.trans_time_btn.set_tooltip_text(message)
+		total = self.trans_time_btn.get_value()
+		self.trans_time_btn.set_tooltip_text(time_to_string(total))
 
 	############################################################################
 
-	def update_static_label(self, previous_end):
-		hours, minutes, seconds = self.get_static_duration()
-		message = _("This picture lasts from {0} to {1}")
-		start_time = str(previous_end[0]) + ':' + str(previous_end[1]) + ':' \
-		                                                  + str(previous_end[2])
-		total_seconds = ((previous_end[0] + hours) * 60 + previous_end[1] + \
-		                               minutes) * 60 + previous_end[2] + seconds
-		h, m, s = self.get_hms(total_seconds)
-		new_end = [h % 24, m, s]
-		end_time = str(new_end[0]) + ':' + str(new_end[1]) + ':' + str(new_end[2])
-		message = message.format(start_time, end_time)
-		self.static_label.set_label(message)
+	def update_static_label(self, prev):
+		msg = _("This picture lasts from {0} to {1}")
+		msg, new_end = self.update_label_common(prev, self.static_time_btn, msg)
+		self.static_label.set_label(msg)
 		return new_end
 
-	def update_transition_label(self, previous_end):
-		hours, minutes, seconds = self.get_transition_duration()
-		message = _("The transition to the next picture lasts from {0} to {1}")
-		start_time = str(previous_end[0]) + ':' + str(previous_end[1]) + ':' \
-		                                                  + str(previous_end[2])
-		total_seconds = ((previous_end[0] + hours) * 60 + previous_end[1] + \
-		                               minutes) * 60 + previous_end[2] + seconds
-		h, m, s = self.get_hms(total_seconds)
+	def update_transition_label(self, prev):
+		msg = _("The transition to the next picture lasts from {0} to {1}")
+		msg, new_end = self.update_label_common(prev, self.trans_time_btn, msg)
+		self.transition_label.set_label(msg)
+		return new_end
+
+	def update_label_common(self, prev, btn, msg):
+		hours, mins, seconds = get_hms(btn.get_value())
+		start_time = str(prev[0]) + ':' + str(prev[1]) + ':' + str(prev[2])
+		total = ((prev[0] + hours) * 60 + prev[1] + mins) * 60 + prev[2] + seconds
+		h, m, s = get_hms(total)
 		new_end = [h % 24, m, s]
 		end_time = str(new_end[0]) + ':' + str(new_end[1]) + ':' + str(new_end[2])
-		message = message.format(start_time, end_time)
-		self.transition_label.set_label(message)
-		return new_end
+		return msg.format(start_time, end_time), new_end
 
 	############################################################################
 

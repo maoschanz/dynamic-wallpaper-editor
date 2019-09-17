@@ -51,15 +51,19 @@ def add_pic_dialog_filters(dialog):
 	dialog.add_filter(jpegPictures)
 
 def time_to_string(total_time):
-	if total_time < 60:
-		return ''
-	message = ' = '
-	hours = math.floor(total_time / 3600)
-	minutes = math.floor((total_time % 3600) / 60)
-	seconds = math.floor(total_time % 60)
+	message = ''
+	hours, minutes, seconds = get_hms(total_time)
 	if hours > 0:
 		message += str(_("%s hour(s)") % hours + ' ')
 	if minutes > 0:
 		message += str(_("%s minute(s)") % minutes + ' ')
 	message += str(_("%s second(s)") % seconds)
 	return message
+
+def get_hms(total_time):
+	hours = math.floor(total_time / 3600)
+	mins = math.floor((total_time % 3600) / 60)
+	seconds = math.floor(total_time % 60)
+	return hours, mins, seconds
+
+

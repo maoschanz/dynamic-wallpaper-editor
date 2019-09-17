@@ -239,7 +239,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		total_time = self.get_total_time()
 		message = str(_("%s pictures") % self.view.get_length() + ' - ')
 		message += str(_("Total time: %s second(s)") % total_time)
-		message += time_to_string(total_time) # may be an empty string
+		if total_time >= 60:
+			message += ' = ' + time_to_string(total_time)
 		if self.check_24:
 			if total_time != 86400:
 				self.show_notification(_("The total duration isn't 24 hours."))
@@ -319,7 +320,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 				if 'image/' in f.get_content_type():
 					array.append(file_chooser.get_filename() + '/' + f.get_display_name())
 				f = enumerator.next_file(None)
-			self.view.add_pictures_to_list2(array)
+			self.view.add_untimed_pictures_to_list(array)
 		self.status_bar.pop(1)
 		file_chooser.destroy()
 
@@ -340,7 +341,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
 			array = file_chooser.get_filenames()
-			self.view.add_pictures_to_list2(array)
+			self.view.add_untimed_pictures_to_list(array)
 		self.status_bar.pop(1)
 		file_chooser.destroy()
 
@@ -420,7 +421,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 			else:
 				self.show_notification(str(_("Unknown element: %s") % child.tag))
 
-		self.view.add_pictures_to_list1(pic_list)
+		self.view.add_timed_pictures_to_list(pic_list)
 		return True
 
 	def set_start_time(self, xml_element):
