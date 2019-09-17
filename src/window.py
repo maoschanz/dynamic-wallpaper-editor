@@ -16,12 +16,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
-import math
 import xml.etree.ElementTree as xml_parser
 
-from .picture_row import DWEPictureRow
+from .view import DWERowsView
 from .misc import add_pic_dialog_filters
 from .misc import add_xml_dialog_filters
+from .misc import time_to_string
 
 UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
 
@@ -39,7 +39,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 	type_rbtn2 = Gtk.Template.Child()
 	type_rbtn3 = Gtk.Template.Child()
 
-	list_box = Gtk.Template.Child()
+	scrolled_window = Gtk.Template.Child()
 	trans_time_btn = Gtk.Template.Child()
 	static_time_btn = Gtk.Template.Child()
 
@@ -70,9 +70,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.fix_24_btn.connect('clicked', self.fix_24)
 		self.info_bar.connect('close', self.close_notification)
 		self.info_bar.connect('response', self.close_notification)
-		self.list_box.set_sort_func(self.sort_list)
 
 		# Build the UI
+		self.view = DWERowsView(self)
 		self.build_time_popover()
 		self.build_menus()
 		self.build_all_actions()
@@ -150,25 +150,20 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.update_status()
 
 	def auto_detect_type(self):
-		total_time, l, row_list = self.get_total_time()
+		total_time = self.get_total_time()
 		if total_time == 86400:
 			self.type_rbtn2.set_active(True)
-		elif self.is_slideshow(l, row_list):
+		elif self.is_slideshow():
 			self.type_rbtn1.set_active(True)
 		else:
 			self.type_rbtn3.set_active(True)
 
-	def is_slideshow(self, l, row_list):
-		st = row_list[0].static_time_btn.get_value()
-		tr = row_list[0].trans_time_btn.get_value()
-		for index in range(0, l):
-			if st != row_list[index].static_time_btn.get_value():
-				return False
-			if tr != row_list[index].trans_time_btn.get_value():
-				return False
-		self.static_time_btn.set_value(st)
-		self.trans_time_btn.set_value(tr)
-		return True
+	def is_slideshow(self):
+		same, st, tr = self.view.all_have_same_time()
+		if same:
+			self.static_time_btn.set_value(st)
+			self.trans_time_btn.set_value(tr)
+		return same
 
 	def set_type_slideshow(self):
 		self.start_btn.set_visible(False)
@@ -209,75 +204,28 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.update_status()
 
 	def fix_24(self, *args):
-		"""Automatically set the durations for each picture to reach a total of
-		24 hours, assuming there is only 1 picture for the night, and assuming
-		the night is 40% of a cycle. 5% of the total time is used for
-		transitions."""
-		total_time, l, row_list = self.get_total_time()
-
-		if l == 0:
-			pass
-		elif l == 1:
-			# Special case
-			row_list[0].static_time_btn.set_value(86400)
-			row_list[0].trans_time_btn.set_value(0)
-		else:
-			# General case
-			st_total = int(86400 * 0.95)
-			tr_total = 86400 - st_total
-			st_day_pics = int(st_total * 0.60 / (l-1))
-			st_night = st_total - st_day_pics * (l-1)
-			tr = tr_total / l
-			for index in range(0, l-1):
-				row_list[index].static_time_btn.set_value(st_day_pics)
-				row_list[index].trans_time_btn.set_value(tr)
-			row_list[-1].static_time_btn.set_value(st_night)
-			row_list[-1].trans_time_btn.set_value(tr)
-
-		# Update the tooltips and the status bar
-		for index in range(0, len(row_list)):
-			row_list[index].on_static_changed()
-			row_list[index].on_transition_changed()
-
-		# Ensure the total time is actually 86400 despite float → int conversions
-		while self.update_status() > 86400:
-			row_list[0].static_time_btn.set_value( \
-			                        row_list[0].static_time_btn.get_value() - 1)
-		while self.update_status() < 86400:
-			row_list[0].static_time_btn.set_value( \
-			                        row_list[0].static_time_btn.get_value() + 1)
+		self.view.fix_24()
 
 	def update_global_time_box(self, wtype):
 		"""Show relevant spinbuttons based on the active 'wallpaper-type'."""
 		is_global = (wtype == 'slideshow')
 		self.time_box.set_visible(is_global)
 		self.time_box_separator.set_visible(is_global)
-		row_list = self.list_box.get_children()
-		for index in range(0, len(row_list)):
-			row_list[index].update_to_type(wtype)
+		self.view.update_to_mode(wtype)
 		self.update_status()
 
 	def get_total_time(self):
 		total_time = 0
-		row_list = self.list_box.get_children()
-		l = len(row_list)
+		l = self.view.get_length()
 		wtype = self.lookup_action('wallpaper-type').get_state().get_string()
 		if wtype == 'slideshow':
 			for index in range(0, l):
 				total_time += self.static_time_btn.get_value()
 				total_time += self.trans_time_btn.get_value()
-		elif wtype == 'daylight':
-			temp_time = self.get_start_time()
-			for index in range(0, l):
-				total_time += row_list[index].static_time_btn.get_value()
-				total_time += row_list[index].trans_time_btn.get_value()
-				temp_time = row_list[index].update_static_label(temp_time)
-				temp_time = row_list[index].update_transition_label(temp_time)
 		else:
-			for index in range(0, l):
-				total_time += row_list[index].static_time_btn.get_value()
-				total_time += row_list[index].trans_time_btn.get_value()
-		return int(total_time), l, row_list
+			temp_time = self.get_start_time()
+			total_time = self.view.get_total_time(temp_time, wtype) # XXX on devrait transmettre un booléen
+		return int(total_time)
 
 	def get_start_time(self):
 		h = self.hour_spinbtn.get_value_as_int()
@@ -288,19 +236,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def update_status(self, *args):
 		"""Update the total time in the statusbar."""
 		self.status_bar.pop(0)
-		total_time, l, row_list = self.get_total_time()
-		message = str(_("%s pictures") % l + ' - ' + \
-		                             _("Total time: %s second(s)") % total_time)
-		if total_time >= 60:
-			message += ' = '
-			hours = math.floor(total_time / 3600)
-			minutes = math.floor((total_time % 3600) / 60)
-			seconds = math.floor(total_time % 60)
-			if hours > 0:
-				message += str(_("%s hour(s)") % hours + ' ')
-			if minutes > 0:
-				message += str(_("%s minute(s)") % minutes + ' ')
-			message += str(_("%s second(s)") % seconds)
+		total_time = self.get_total_time()
+		message = str(_("%s pictures") % self.view.get_length() + ' - ')
+		message += str(_("Total time: %s second(s)") % total_time)
+		message += time_to_string(total_time) # may be an empty string
 		if self.check_24:
 			if total_time != 86400:
 				self.show_notification(_("The total duration isn't 24 hours."))
@@ -358,7 +297,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		return ''
 
 	############################################################################
-	# Adding pictures to the list_box ##########################################
+	# Adding pictures to the view ##############################################
 
 	def action_add_folder(self, *args):
 		"""Run an "open" dialog and create a list of DWEPictureRow from the result.
@@ -371,7 +310,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		               select_multiple=False)
 
 		response = file_chooser.run()
-		# file_chooser.set_visible(False) # Does not do what i expected
 		if response == Gtk.ResponseType.OK:
 			enumerator = file_chooser.get_file().enumerate_children('standard::*', \
 			             Gio.FileQueryInfoFlags.NONE, None)
@@ -381,7 +319,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 				if 'image/' in f.get_content_type():
 					array.append(file_chooser.get_filename() + '/' + f.get_display_name())
 				f = enumerator.next_file(None)
-			self.add_pictures_to_list2(array)
+			self.view.add_pictures_to_list2(array)
 		self.status_bar.pop(1)
 		file_chooser.destroy()
 
@@ -402,7 +340,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
 			array = file_chooser.get_filenames()
-			self.add_pictures_to_list2(array)
+			self.view.add_pictures_to_list2(array)
 		self.status_bar.pop(1)
 		file_chooser.destroy()
 
@@ -415,52 +353,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		fc.set_preview_widget_active(True)
 		pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(fc.get_filename(), 200, 200, True)
 		self.preview_picture.set_from_pixbuf(pixbuf)
-
-	def add_pictures_to_list2(self, array):
-		"""Add pictures from a list of paths."""
-		for path in array:
-			self.add_one_picture(path, 10, 0)
-		self.restack_indexes()
-
-	def add_one_picture(self, filename, stt, trt):
-		self._is_saved = False
-		l = len(self.list_box.get_children())
-		row = DWEPictureRow(filename, stt, trt, l, self)
-		self.list_box.add(row)
-
-	############################################################################
-	# Rows management ##########################################################
-
-	def reset_list_box(self):
-		while len(self.list_box.get_children()) > 0:
-			self.list_box.get_children().pop().destroy()
-
-	def sort_list(self, row1, row2, *args):
-		"""Returns int < 0 if row1 should be before row2, 0 if they are equal
-		and int > 0 otherwise"""
-		return row1.indx - row2.indx
-
-	def restack_indexes(self):
-		"""Ensure rows' self.indx attribute corresponds to the actual index of
-		each row."""
-		rows = self.list_box.get_children()
-		for r in rows:
-			r.indx = r.get_index()
-		self.update_status()
-
-	def destroy_row(self, row):
-		self._is_saved = False
-		self.list_box.remove(row)
-		self.restack_indexes()
-
-	def move_row(self, index_from, index_to):
-		self._is_saved = False
-		if index_from > index_to:
-			self.list_box.get_children()[index_from].indx = index_to - 1
-		else:
-			self.list_box.get_children()[index_from].indx = index_to + 1
-		self.list_box.invalidate_sort()
-		self.restack_indexes()
 
 	############################################################################
 	# Loading data from an XML file ############################################
@@ -492,8 +384,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def load_list_from_xml(self):
 		"""This method parses the XML from `self.gio_file`, looking for the
 		pictures' paths and durations."""
-		# Clear the list_box content
-		self.reset_list_box()
+		# Clear the view content
+		self.view.reset_view()
 
 		# This is the list of pictures to add
 		pic_list = []
@@ -528,7 +420,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 			else:
 				self.show_notification(str(_("Unknown element: %s") % child.tag))
 
-		self.add_pictures_to_list1(pic_list)
+		self.view.add_pictures_to_list1(pic_list)
 		return True
 
 	def set_start_time(self, xml_element):
@@ -573,18 +465,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 			'trans_time': trans_time
 		}
 		return row_structure
-
-	def add_pictures_to_list1(self, new_pics_list):
-		"""Add pictures from a list of dicts as built by the `new_row_structure`
-		method."""
-		self._is_saved = False
-		l = len(self.list_box.get_children())
-		for index in range(0, len(new_pics_list)):
-			row = DWEPictureRow(new_pics_list[index]['filename'], \
-			                 new_pics_list[index]['static_time'], \
-			                 new_pics_list[index]['trans_time'], l+index, self)
-			self.list_box.add(row)
-		self.update_status()
 
 	############################################################################
 	# Saving ###################################################################
@@ -632,9 +512,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def generate_text(self):
 		"""This method generates valid XML code for a wallpaper. It might not be
 		correctly encoded."""
-		row_list = self.list_box.get_children()
 		raw_text = """
-
 <!-- Generated by com.github.maoschanz.DynamicWallpaperEditor -->
 <background>
 	<starttime>
@@ -651,16 +529,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		else:
 			st_time = None
 			tr_time = None
-		for index in range(0, len(row_list)):
-			image = row_list[index].filename
-			if index >= len(row_list)-1:
-				next_fn = row_list[0].filename
-			else:
-				next_fn = row_list[index+1].filename
-			if image is not None:
-				raw_text = str(raw_text) + row_list[index].generate_static(st_time)
-				raw_text = str(raw_text) + row_list[index].generate_transition(tr_time, next_fn)
-		raw_text = str(raw_text) + """</background>
+		raw_text += self.view.get_pictures_xml(st_time, tr_time)
+		raw_text += """</background>
 
 """
 		return str(raw_text)

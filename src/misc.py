@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import gi
+import gi, math
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
@@ -49,3 +49,17 @@ def add_pic_dialog_filters(dialog):
 	dialog.add_filter(allPictures)
 	dialog.add_filter(pngPictures)
 	dialog.add_filter(jpegPictures)
+
+def time_to_string(total_time):
+	if total_time < 60:
+		return ''
+	message = ' = '
+	hours = math.floor(total_time / 3600)
+	minutes = math.floor((total_time % 3600) / 60)
+	seconds = math.floor(total_time % 60)
+	if hours > 0:
+		message += str(_("%s hour(s)") % hours + ' ')
+	if minutes > 0:
+		message += str(_("%s minute(s)") % minutes + ' ')
+	message += str(_("%s second(s)") % seconds)
+	return message

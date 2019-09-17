@@ -235,25 +235,25 @@
       <!--   <attribute name="label" translatable="yes">Set an XML file as wallpaper…</attribute> -->
       <!-- </item> -->
     </section>
-    <!-- <section> -->
-    <!--   <attribute name="display-hint">horizontal-buttons</attribute> -->
-    <!--   <item> -->
-    <!--     <attribute name="action">win.content-layout</attribute> -->
-    <!--     <attribute name="label" translatable="yes">List</attribute> -->
-    <!--     <attribute name="target">list</attribute> -->
-    <!--     <attribute name="verb-icon">view-list-symbolic</attribute> -->
-    <!--   </item> -->
-    <!--   <item> -->
-    <!--     <attribute name="action">win.content-layout</attribute> -->
-    <!--     <attribute name="label" translatable="yes">Grid</attribute> -->
-    <!--     <attribute name="target">grid</attribute> -->
-    <!--     <attribute name="verb-icon">view-grid-symbolic</attribute> -->
-    <!--   </item> -->
-    <!-- </section> -->
     <section>
       <item>
         <attribute name="action">win.save_as</attribute>
         <attribute name="label" translatable="yes">Save as…</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="display-hint">horizontal-buttons</attribute>
+      <item>
+        <attribute name="action">win.content-layout</attribute>
+        <attribute name="label" translatable="yes">List</attribute>
+        <attribute name="target">list</attribute>
+        <attribute name="verb-icon">view-list-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.content-layout</attribute>
+        <attribute name="label" translatable="yes">Grid</attribute>
+        <attribute name="target">grid</attribute>
+        <attribute name="verb-icon">view-grid-symbolic</attribute>
       </item>
     </section>
     <section>

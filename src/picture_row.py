@@ -94,7 +94,7 @@ class DWEPictureRow(Gtk.ListBoxRow):
 
 	def on_drag_data_received(self, widget, drag_context, x, y, data, info, time):
 		index_from = int(data.get_text())
-		self.window.move_row(index_from, self.indx)
+		self.window.view.move_row(index_from, self.indx)
 
 	############################################################################
 
@@ -220,7 +220,7 @@ class DWEPictureRow(Gtk.ListBoxRow):
 	############################################################################
 
 	def destroy_row(self, *args):
-		self.window.destroy_row(self)
+		self.window.view.destroy_row(self)
 		self.destroy() # FIXME memory is not correctly freed
 
 	############################################################################

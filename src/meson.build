@@ -29,9 +29,10 @@ dynamic_wallpaper_editor_sources = [
 	'__init__.py',
 	'main.py',
 	'misc.py',
+	'picture_row.py',
 	'preview.py',
-	'window.py',
-	'picture_row.py'
+	'view.py',
+	'window.py'
 ]
 
 install_data(dynamic_wallpaper_editor_sources, install_dir: moduledir)

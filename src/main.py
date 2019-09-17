@@ -33,7 +33,6 @@ def main(version):
 ################################################################################
 
 class Application(Gtk.Application):
-	about_dialog = None
 	shortcuts_window = None
 
 	def __init__(self, version):
@@ -174,23 +173,18 @@ class Application(Gtk.Application):
 		Gtk.show_uri(None, 'help:dynamic-wallpaper-editor', Gdk.CURRENT_TIME)
 
 	def on_about(self, *args):
-		if self.about_dialog is not None:
-			self.about_dialog.destroy()
-		self.about_dialog = Gtk.AboutDialog.new()
-		self.about_dialog.set_version(str(self._version))
-		self.about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
-		self.about_dialog.set_authors(['Romain F. T.', 'Felix Quill'])
-		self.about_dialog.set_copyright('© 2018-2019 Romain F. T.')
-		self.about_dialog.set_license_type(Gtk.License.GPL_3_0)
-		self.about_dialog.set_logo_icon_name(APP_ID)
-		self.about_dialog.set_website(self._git_url)
-		self.about_dialog.set_website_label(_("Report bugs or ideas"))
-		self.about_dialog.set_translator_credits(_("translator-credits"))
-		self.about_dialog.connect('response', self.widget_destroy)
-		self.about_dialog.run()
-
-	def widget_destroy(self, widget, button):
-		widget.destroy()
+		about_dialog = Gtk.AboutDialog.new()
+		about_dialog.set_version(str(self._version))
+		about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
+		about_dialog.set_authors(['Romain F. T.', 'Felix Quill'])
+		about_dialog.set_copyright('© 2018-2019 Romain F. T.')
+		about_dialog.set_license_type(Gtk.License.GPL_3_0)
+		about_dialog.set_logo_icon_name(APP_ID)
+		about_dialog.set_website(self._git_url)
+		about_dialog.set_website_label(_("Report bugs or ideas"))
+		about_dialog.set_translator_credits(_("translator-credits"))
+		about_dialog.run()
+		about_dialog.destroy()
 
 	def on_quit(self, *args):
 		self.quit()
