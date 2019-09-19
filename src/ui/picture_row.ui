@@ -16,9 +16,9 @@
     <property name="value">0</property>
   </object>
 
-  <object class="GtkEventBox" id="row_box">
+  <object class="GtkEventBox" id="pic_box">
     <property name="visible">True</property>
-
+    <property name="expand">True</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
@@ -30,7 +30,7 @@
         <property name="orientation">horizontal</property>
 
         <child>
-          <object class="GtkImage" id="row_thumbnail">
+          <object class="GtkImage" id="pic_thumbnail">
             <property name="visible">True</property>
             <property name="expand">False</property>
           </object>
@@ -45,7 +45,7 @@
             <property name="homogeneous">True</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel" id="row_label">
+              <object class="GtkLabel" id="pic_label">
                 <property name="visible">True</property>
                 <property name="label">picture name</property>
               </object>

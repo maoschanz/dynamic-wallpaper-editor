@@ -230,10 +230,6 @@
         <attribute name="action">app.new_window</attribute>
         <attribute name="label" translatable="yes">New Window</attribute>
       </item>
-      <!-- <item> -->
-      <!--   <attribute name="action">app.new_preview</attribute> -->
-      <!--   <attribute name="label" translatable="yes">Set an XML file as wallpaper…</attribute> -->
-      <!-- </item> -->
     </section>
     <section>
       <item>

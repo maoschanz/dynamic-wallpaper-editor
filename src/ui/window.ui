@@ -248,21 +248,7 @@
               <object class="GtkScrolledWindow" id="scrolled_window">
                 <property name="visible">True</property>
                 <property name="expand">True</property>
-                <!-- <child> -->
-                <!--   <object class="GtkListBox" id="list_box"> -->
-                <!--     <property name="visible">True</property> -->
-                <!--     <property name="expand">True</property> -->
-                <!--     <child type="placeholder"> -->
-                <!--       <object class="GtkLabel"> -->
-                <!--         <property name="visible">True</property> -->
-                <!--         <property name="label" translatable="yes">Add new pictures, or open an existing XML file.</property> -->
-                <!--       </object> -->
-                <!--     </child> -->
-                <!--   </object> -->
-                <!--   <packing> -->
-                <!--     <property name="pack-type">start</property> -->
-                <!--   </packing> -->
-                <!-- </child> -->
+                <!-- Here will be the view with pics -->
               </object>
             </child>
 

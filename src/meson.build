@@ -29,8 +29,7 @@ dynamic_wallpaper_editor_sources = [
 	'__init__.py',
 	'main.py',
 	'misc.py',
-	'picture_row.py',
-	'preview.py',
+	'picture_widget.py',
 	'view.py',
 	'window.py'
 ]

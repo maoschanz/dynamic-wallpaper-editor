@@ -19,6 +19,7 @@ from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
 import xml.etree.ElementTree as xml_parser
 
 from .view import DWERowsView
+from .view import DWEThumbnailsView
 from .misc import add_pic_dialog_filters
 from .misc import add_xml_dialog_filters
 from .misc import time_to_string
@@ -72,7 +73,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.info_bar.connect('response', self.close_notification)
 
 		# Build the UI
-		self.view = DWERowsView(self)
+		# self.view = DWEThumbnailsView(self)
+		self.view = DWERowsView(self) # TODO conditional
 		self.build_time_popover()
 		self.build_menus()
 		self.build_all_actions()

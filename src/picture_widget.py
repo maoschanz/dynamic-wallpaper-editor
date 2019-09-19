@@ -1,4 +1,4 @@
-# picture_row.py
+# picture_widget.py
 #
 # Copyright 2018-2019 Romain F. T.
 #
@@ -23,25 +23,21 @@ from .misc import get_hms
 
 UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
 
-class DWEPictureRow(Gtk.ListBoxRow):
-	"""This is a row with the thumbnail and the path of the picture, and control
-	buttons (up/down, delete) for this picture. It also contains "spinbuttons" if
-	the user needs them."""
-	__gtype_name__ = 'DWEPictureRow'
+class DWEPictureWidget(Gtk.Box):
 
-	def __init__(self, fn, stt, trt, index, window):
+	def __init__(self, pic_path, index, window):
 		super().__init__()
-		self.set_selectable(False)
-		self.filename = fn
+		self.filename = pic_path
 		self.window = window
 		self.indx = index
 
-		builder = Gtk.Builder().new_from_resource(UI_PATH + 'picture_row.ui')
-		row_box = builder.get_object('row_box')
+	def build_ui(self, stt, trt, template, w, h):
+		builder = Gtk.Builder().new_from_resource(UI_PATH + template)
+		pic_box = builder.get_object('pic_box')
 		self.time_box = builder.get_object('time_box')
 
 		# File name
-		label = builder.get_object('row_label')
+		label = builder.get_object('pic_label')
 		label.set_label(self.filename)
 		label.set_ellipsize(Pango.EllipsizeMode.START)
 
@@ -51,9 +47,9 @@ class DWEPictureRow(Gtk.ListBoxRow):
 		self.transition_label = builder.get_object('transition_label')
 		self.transition_label.set_ellipsize(Pango.EllipsizeMode.START)
 
-		# Row controls
+		# Pic controls
 		delete_btn = builder.get_object('delete_btn')
-		delete_btn.connect('clicked', self.destroy_row)
+		delete_btn.connect('clicked', self.destroy_pic)
 
 		# Picture durations
 		self.static_time_btn = builder.get_object('static_btn')
@@ -64,10 +60,10 @@ class DWEPictureRow(Gtk.ListBoxRow):
 		self.trans_time_btn.set_value(float(trt))
 
 		# Thumbnail
-		image = builder.get_object('row_thumbnail')
+		image = builder.get_object('pic_thumbnail')
 		try:
 			# This size is totally arbitrary.
-			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, 114, 64, True)
+			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, w, h, True)
 			image.set_from_pixbuf(pixbuf)
 			pixbuf = None
 		except Exception:
@@ -77,16 +73,19 @@ class DWEPictureRow(Gtk.ListBoxRow):
 			# TODO a button for fixing that ?
 
 		# Ability to be dragged
-		row_box.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, None, Gdk.DragAction.MOVE)
-		row_box.connect('drag-data-get', self.on_drag_data_get)
-		row_box.drag_source_add_text_targets()
+		pic_box.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, None, Gdk.DragAction.MOVE)
+		pic_box.connect('drag-data-get', self.on_drag_data_get)
+		pic_box.drag_source_add_text_targets()
 
 		# Ability to receive drop
 		self.drag_dest_set(Gtk.DestDefaults.ALL, [], Gdk.DragAction.MOVE)
 		self.connect('drag-data-received', self.on_drag_data_received)
 		self.drag_dest_add_text_targets()
 
-		self.add(row_box)
+		self.add(pic_box)
+		return builder
+
+	def end_build_ui(self):
 		self.show_all()
 		wtype = self.window.lookup_action('wallpaper-type').get_state().get_string()
 		self.update_to_type(wtype)
@@ -98,7 +97,7 @@ class DWEPictureRow(Gtk.ListBoxRow):
 
 	def on_drag_data_received(self, widget, drag_context, x, y, data, info, time):
 		index_from = int(data.get_text())
-		self.window.view.move_row(index_from, self.indx)
+		self.window.view.move_pic(index_from, self.indx)
 
 	############################################################################
 
@@ -153,7 +152,7 @@ class DWEPictureRow(Gtk.ListBoxRow):
 	def generate_static(self, st_time):
 		"""Returns a valid XML code for this picture. The duration can
 		optionally be set as a parameter (if None, the spinbutton specific to
-		the row will be used)."""
+		the picture will be used)."""
 		if st_time is None:
 			time_str = str(self.static_time_btn.get_value())
 		else:
@@ -190,9 +189,49 @@ class DWEPictureRow(Gtk.ListBoxRow):
 
 	############################################################################
 
-	def destroy_row(self, *args):
-		self.window.view.destroy_row(self)
-		self.destroy() # FIXME memory is not correctly freed
+	def destroy_pic(self, *args):
+		self.window.view.destroy_pic(self.indx)
+		self.destroy()
+
+	############################################################################
+################################################################################
+
+class DWEPictureRow(DWEPictureWidget):
+	"""This is a row with the thumbnail and the path of the picture, and control
+	buttons (up/down, delete) for this picture. It also contains "spinbuttons"
+	if the user needs them."""
+	__gtype_name__ = 'DWEPictureRow'
+
+	def __init__(self, pic_path, stt, trt, index, window):
+		super().__init__(pic_path, index, window)
+		builder = self.build_ui(stt, trt, 'picture_row.ui', 114, 64)
+
+		# ... ?
+
+		self.end_build_ui()
+
+	############################################################################
+################################################################################
+
+class DWEPictureThumbnail(DWEPictureWidget):
+	__gtype_name__ = 'DWEPictureThumbnail'
+
+	def __init__(self, pic_path, stt, trt, index, window):
+		super().__init__(pic_path, index, window)
+		builder = self.build_ui(stt, trt, 'picture_thumbnail.ui', 250, 140)
+
+		builder.get_object('time_popover').popdown()
+		self.alt_label = builder.get_object('alt_label')
+		self.alt_label.set_label("…" + self.filename[-20:])
+		self.alt_label.set_ellipsize(Pango.EllipsizeMode.START)
+		self.time_btn = builder.get_object('time_btn')
+
+		self.end_build_ui()
+
+	def update_to_type(self, wtype):
+		super().update_to_type(wtype)
+		self.alt_label.set_visible(wtype == 'slideshow')
+		self.time_btn.set_visible(wtype != 'slideshow')
 
 	############################################################################
 ################################################################################

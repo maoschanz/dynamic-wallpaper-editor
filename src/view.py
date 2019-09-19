@@ -17,8 +17,8 @@
 
 from gi.repository import Gtk
 
-from .picture_row import DWEPictureRow
-# from .picture_row import DWEPictureThumbnail
+from .picture_widget import DWEPictureRow
+from .picture_widget import DWEPictureThumbnail
 
 class DWEAbstractView():
 	__gtype_name__ = 'DWEAbstractView'
@@ -55,7 +55,7 @@ class DWEAbstractView():
 	def get_length(self):
 		return 0
 
-	def get_row_at(self, index):
+	def get_pic_at(self, index):
 		pass
 
 	############################################################################
@@ -67,26 +67,35 @@ class DWEAbstractView():
 		pass
 
 	def get_total_time(self, temp_time, wtype):
-		return 0
+		total_time = 0
+		for index in range(0, self.get_length()):
+			r = self.get_pic_at(index)
+			total_time += r.static_time_btn.get_value()
+			total_time += r.trans_time_btn.get_value()
+			if wtype == 'daylight':
+				temp_time = r.update_static_label(temp_time)
+				temp_time = r.update_transition_label(temp_time)
+		return total_time
 
 	def update_to_mode(self, wtype):
-		pass
+		for index in range(0, self.get_length()):
+			self.get_pic_at(index).update_to_type(wtype)
 
 	def all_have_same_time(self):
-		st0 = self.get_row_at(0).static_time_btn.get_value()
-		tr0 = self.get_row_at(0).trans_time_btn.get_value()
+		st0 = self.get_pic_at(0).static_time_btn.get_value()
+		tr0 = self.get_pic_at(0).trans_time_btn.get_value()
 		for index in range(0, self.get_length()):
-			r = self.get_row_at(index)
+			r = self.get_pic_at(index)
 			if st0 != r.static_time_btn.get_value():
 				return False, 0, 0
 			if tr0 != r.trans_time_btn.get_value():
 				return False, 0, 0
 		return True, st0, tr0
 
-	def sort_list(self, row1, row2, *args):
-		"""Returns int < 0 if row1 should be before row2, 0 if they are equal
+	def sort_list(self, pic1, pic2, *args):
+		"""Returns int < 0 if pic1 should be before pic2, 0 if they are equal
 		and int > 0 otherwise"""
-		return row1.indx - row2.indx
+		return pic1.get_child().indx - pic2.get_child().indx
 
 	def fix_24(self, *args):
 		"""Automatically set the durations for each picture to reach a total of
@@ -99,8 +108,8 @@ class DWEAbstractView():
 			pass
 		elif l == 1:
 			# Special case
-			self.get_row_at(0).static_time_btn.set_value(86400)
-			self.get_row_at(0).trans_time_btn.set_value(0)
+			self.get_pic_at(0).static_time_btn.set_value(86400)
+			self.get_pic_at(0).trans_time_btn.set_value(0)
 		else:
 			# General case
 			st_total = int(86400 * 0.95)
@@ -109,18 +118,18 @@ class DWEAbstractView():
 			st_night = st_total - st_day_pics * (l-1)
 			tr = tr_total / l
 			for index in range(0, l-1):
-				self.get_row_at(index).static_time_btn.set_value(st_day_pics)
-				self.get_row_at(index).trans_time_btn.set_value(tr)
-			self.get_row_at(-1).static_time_btn.set_value(st_night)
-			self.get_row_at(-1).trans_time_btn.set_value(tr)
+				self.get_pic_at(index).static_time_btn.set_value(st_day_pics)
+				self.get_pic_at(index).trans_time_btn.set_value(tr)
+			self.get_pic_at(-1).static_time_btn.set_value(st_night)
+			self.get_pic_at(-1).trans_time_btn.set_value(tr)
 
 		# Update the tooltips and the status bar
 		for index in range(0, l):
-			self.get_row_at(index).on_static_changed()
-			self.get_row_at(index).on_transition_changed()
+			self.get_pic_at(index).on_static_changed()
+			self.get_pic_at(index).on_transition_changed()
 
 		# Ensure the total time is actually 86400 despite float → int conversions
-		static0 = self.get_row_at(0).static_time_btn
+		static0 = self.get_pic_at(0).static_time_btn
 		while self.window.get_total_time() > 86400:
 			static0.set_value(static0.get_value() - 1)
 		while self.window.get_total_time() < 86400:
@@ -144,19 +153,8 @@ class DWERowsView(DWEAbstractView):
 	def get_length(self):
 		return len(self.list_box.get_children())
 
-	def get_total_time(self, temp_time, wtype):
-		total_time = 0
-		for index in range(0, self.get_length()):
-			r = self.get_row_at(index)
-			total_time += r.static_time_btn.get_value()
-			total_time += r.trans_time_btn.get_value()
-			if wtype == 'daylight':
-				temp_time = r.update_static_label(temp_time)
-				temp_time = r.update_transition_label(temp_time)
-		return total_time
-
-	def get_row_at(self, index):
-		return self.list_box.get_children()[index]
+	def get_pic_at(self, index):
+		return self.list_box.get_children()[index].get_child()
 
 	############################################################################
 
@@ -164,30 +162,26 @@ class DWERowsView(DWEAbstractView):
 		while self.get_length() > 0:
 			self.list_box.get_children().pop().destroy()
 
-	def update_to_mode(self, wtype):
-		row_list = self.list_box.get_children()
-		for index in range(0, len(row_list)):
-			row_list[index].update_to_type(wtype)
-
 	def restack_indexes(self):
 		"""Ensure rows' self.indx attribute corresponds to the actual index of
 		each row."""
 		rows = self.list_box.get_children()
 		for r in rows:
-			r.indx = r.get_index()
+			r.get_child().indx = r.get_index()
 		self.window.update_status()
 
-	def destroy_row(self, row):
+	def destroy_pic(self, index):
 		self.set_unsaved()
-		self.list_box.remove(row)
+		direct_child = self.list_box.get_children()[index]
+		self.list_box.remove(direct_child)
 		self.restack_indexes()
 
-	def move_row(self, index_from, index_to):
+	def move_pic(self, index_from, index_to):
 		self.set_unsaved()
 		if index_from > index_to:
-			self.list_box.get_children()[index_from].indx = index_to - 1
+			self.get_pic_at(index_from).indx = index_to - 1
 		else:
-			self.list_box.get_children()[index_from].indx = index_to + 1
+			self.get_pic_at(index_from).indx = index_to + 1
 		self.list_box.invalidate_sort()
 		self.restack_indexes()
 
@@ -218,17 +212,60 @@ class DWERowsView(DWEAbstractView):
 	############################################################################
 ################################################################################
 
-# class DWEThumbnailsView(DWEAbstractView):
-# 	__gtype_name__ = 'DWEThumbnailsView'
+class DWEThumbnailsView(DWEAbstractView):
+	__gtype_name__ = 'DWEThumbnailsView'
 
-# 	def __init__(self, window):
-# 		super().__init(window)
+	def __init__(self, window):
+		super().__init__(window)
+		self.flow_box = Gtk.FlowBox(visible=True, expand=True)
+		# label = Gtk.Label(visible=True, \
+		#              label=_("Add new pictures, or open an existing XML file."))
+		# self.flow_box.set_placeholder(label)
+		# self.flow_box.set_sort_func(self.sort_list)
+		self.add_view(self.flow_box)
 
-#		TODO
+	def get_pictures_xml(self, st_time, tr_time):
+		return 'todo'
 
+	def add_one_picture(self, filename, stt, trt):
+		self.set_unsaved()
+		pic = DWEPictureThumbnail(filename, stt, trt, self.get_length(), self.window)
+		self.flow_box.add(pic)
 
+	def get_length(self):
+		return len(self.flow_box.get_children())
 
+	def get_pic_at(self, index):
+		return self.flow_box.get_children()[index].get_child()
 
+	############################################################################
+
+	def restack_indexes(self):
+		"""Ensure rows' self.indx attribute corresponds to the actual index of
+		each row."""
+		rows = self.flow_box.get_children()
+		for r in rows:
+			r.get_child().indx = r.get_index()
+		self.window.update_status()
+
+	def reset_view(self):
+		while self.get_length() > 0:
+			self.flow_box.get_children().pop().destroy()
+
+	def destroy_pic(self, index):
+		self.set_unsaved()
+		direct_child = self.flow_box.get_children()[index]
+		self.flow_box.remove(direct_child)
+		self.restack_indexes()
+
+	def move_pic(self, index_from, index_to):
+		self.set_unsaved()
+		if index_from > index_to:
+			self.get_pic_at(index_from).indx = index_to - 1
+		else:
+			self.get_pic_at(index_from).indx = index_to + 1
+		# self.list_box.invalidate_sort() # XXX ??? TODO
+		self.restack_indexes()
 
 	############################################################################
 ################################################################################

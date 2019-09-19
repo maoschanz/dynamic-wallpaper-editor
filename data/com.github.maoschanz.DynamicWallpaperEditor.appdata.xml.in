@@ -44,21 +44,6 @@
         </p>
       </description>
     </release>
-    <release version="1.13" date="2019-07-05">
-      <description>
-        <p>
-          Various bug fixes and new reordering mechanism, with draggable rows.
-        </p>
-      </description>
-    </release>
-    <release version="1.12" date="2019-07-04">
-      <description>
-        <p>
-          Types of wallpaper displayed as the window's title, bug fixes and new
-          translations.
-        </p>
-      </description>
-    </release>
   </releases>
 
   <kudos>
