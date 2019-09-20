@@ -27,6 +27,14 @@
   </screenshots>
 
   <releases>
+    <!-- <release version="2.2" date="2019-09-22"> -->
+    <!--   <description> -->
+    <!--     <p> -->
+    <!--       The app can now optionally display pictures using a grid layout -->
+    <!--       instead of a list. -->
+    <!--     </p> -->
+    <!--   </description> -->
+    <!-- </release> -->
     <release version="2.1" date="2019-07-31">
       <description>
         <p>

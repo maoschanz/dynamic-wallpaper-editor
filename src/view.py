@@ -25,6 +25,7 @@ class DWEAbstractView():
 
 	def __init__(self, window):
 		self.window = window
+		self.length = 0
 
 	def add_view(self, widget):
 		self.window.scrolled_window.add(widget)
@@ -37,8 +38,36 @@ class DWEAbstractView():
 	def set_unsaved(self):
 		self.window._is_saved = False
 
-	def get_pictures_xml(self, st_time, tr_time):
-		return ''
+	############################################################################
+
+	def get_view_widget(self):
+		pass
+
+	def get_pic_at(self, index):
+		return self.get_view_widget().get_children()[index].get_child()
+
+	def update_length(self):
+		self.length = len(self.get_view_widget().get_children())
+
+	def restack_indexes(self):
+		"""Ensure rows' self.indx attribute corresponds to the actual index of
+		each row."""
+		rows = self.get_view_widget().get_children()
+		for r in rows:
+			r.get_child().indx = r.get_index()
+		self.window.update_status()
+
+	def sort_list(self, pic1, pic2, *args):
+		"""Returns int < 0 if pic1 should be before pic2, 0 if they are equal
+		and int > 0 otherwise"""
+		return pic1.get_child().indx - pic2.get_child().indx
+
+	def reset_view(self):
+		while self.length > 0:
+			self.get_view_widget().get_children().pop().destroy()
+			self.update_length()
+
+	############################################################################
 
 	def add_timed_pictures_to_list(self, new_pics_list):
 		"""Add pictures from a list of dicts as built by the `new_row_structure`
@@ -57,23 +86,29 @@ class DWEAbstractView():
 	def add_one_picture(self, filename, stt, trt):
 		pass
 
-	def get_length(self):
-		return 0
+	############################################################################
 
-	def get_pic_at(self, index):
-		pass
+	def move_pic(self, index_from, index_to):
+		self.set_unsaved()
+		if index_from > index_to:
+			self.get_pic_at(index_from).indx = index_to - 1
+		else:
+			self.get_pic_at(index_from).indx = index_to + 1
+		self.get_view_widget().invalidate_sort()
+		self.restack_indexes()
+
+	def destroy_pic(self, index):
+		self.set_unsaved()
+		direct_child = self.get_view_widget().get_children()[index]
+		self.get_view_widget().remove(direct_child)
+		self.update_length()
+		self.restack_indexes()
 
 	############################################################################
 
-	def restack_indexes(self):
-		pass
-
-	def reset_view(self):
-		pass
-
 	def get_total_time(self, temp_time, wtype):
 		total_time = 0
-		for index in range(0, self.get_length()):
+		for index in range(0, self.length):
 			r = self.get_pic_at(index)
 			total_time += r.static_time_btn.get_value()
 			total_time += r.trans_time_btn.get_value()
@@ -83,13 +118,13 @@ class DWEAbstractView():
 		return total_time
 
 	def update_to_mode(self, wtype):
-		for index in range(0, self.get_length()):
+		for index in range(0, self.length):
 			self.get_pic_at(index).update_to_type(wtype)
 
 	def all_have_same_time(self):
 		st0 = self.get_pic_at(0).static_time_btn.get_value()
 		tr0 = self.get_pic_at(0).trans_time_btn.get_value()
-		for index in range(0, self.get_length()):
+		for index in range(0, self.length):
 			r = self.get_pic_at(index)
 			if st0 != r.static_time_btn.get_value():
 				return False, 0, 0
@@ -97,21 +132,15 @@ class DWEAbstractView():
 				return False, 0, 0
 		return True, st0, tr0
 
-	def sort_list(self, pic1, pic2, *args):
-		"""Returns int < 0 if pic1 should be before pic2, 0 if they are equal
-		and int > 0 otherwise"""
-		return pic1.get_child().indx - pic2.get_child().indx
-
 	def fix_24(self, *args):
 		"""Automatically set the durations for each picture to reach a total of
 		24 hours, assuming there is only 1 picture for the night, and assuming
 		the night is 40% of a cycle. 5% of the total time is used for
 		transitions."""
 
-		l = self.get_length()
-		if l == 0:
+		if self.length == 0:
 			pass
-		elif l == 1:
+		elif self.length == 1:
 			# Special case
 			self.get_pic_at(0).static_time_btn.set_value(86400)
 			self.get_pic_at(0).trans_time_btn.set_value(0)
@@ -119,9 +148,9 @@ class DWEAbstractView():
 			# General case
 			st_total = int(86400 * 0.95)
 			tr_total = 86400 - st_total
-			st_day_pics = int(st_total * 0.60 / (l-1))
-			st_night = st_total - st_day_pics * (l-1)
-			tr = tr_total / l
+			st_day_pics = int(st_total * 0.60 / (self.length-1))
+			st_night = st_total - st_day_pics * (self.length-1)
+			tr = tr_total / self.length
 			for index in range(0, l-1):
 				self.get_pic_at(index).static_time_btn.set_value(st_day_pics)
 				self.get_pic_at(index).trans_time_btn.set_value(tr)
@@ -129,7 +158,7 @@ class DWEAbstractView():
 			self.get_pic_at(-1).trans_time_btn.set_value(tr)
 
 		# Update the tooltips and the status bar
-		for index in range(0, l):
+		for index in range(0, self.length):
 			self.get_pic_at(index).on_static_changed()
 			self.get_pic_at(index).on_transition_changed()
 
@@ -141,6 +170,22 @@ class DWEAbstractView():
 			static0.set_value(static0.get_value() + 1)
 
 	############################################################################
+
+	def get_pictures_xml(self, st_time, tr_time):
+		raw_text = ''
+		for index in range(0, self.length):
+			r = self.get_pic_at(index)
+			image = r.filename
+			if index >= self.length-1:
+				next_fn = self.get_pic_at(0).filename
+			else:
+				next_fn = self.get_pic_at(index+1).filename
+			if image is not None:
+				raw_text = str(raw_text) + r.generate_static(st_time)
+				raw_text = str(raw_text) + r.generate_transition(tr_time, next_fn)
+		return str(raw_text)
+
+	############################################################################
 ################################################################################
 
 class DWERowsView(DWEAbstractView):
@@ -148,71 +193,22 @@ class DWERowsView(DWEAbstractView):
 
 	def __init__(self, window):
 		super().__init__(window)
-		self.list_box = Gtk.ListBox(visible=True, expand=True)
+		self.list_box = Gtk.ListBox(visible=True, expand=True, \
+		                                  selection_mode=Gtk.SelectionMode.NONE)
 		label = Gtk.Label(visible=True, \
 		             label=_("Add new pictures, or open an existing XML file."))
 		self.list_box.set_placeholder(label)
 		self.list_box.set_sort_func(self.sort_list)
 		self.add_view(self.list_box)
 
-	def get_length(self):
-		return len(self.list_box.get_children())
-
-	def get_pic_at(self, index):
-		return self.list_box.get_children()[index].get_child()
-
-	############################################################################
-
-	def reset_view(self):
-		while self.get_length() > 0:
-			self.list_box.get_children().pop().destroy()
-
-	def restack_indexes(self):
-		"""Ensure rows' self.indx attribute corresponds to the actual index of
-		each row."""
-		rows = self.list_box.get_children()
-		for r in rows:
-			r.get_child().indx = r.get_index()
-		self.window.update_status()
-
-	def destroy_pic(self, index):
-		self.set_unsaved()
-		direct_child = self.list_box.get_children()[index]
-		self.list_box.remove(direct_child)
-		self.restack_indexes()
-
-	def move_pic(self, index_from, index_to):
-		self.set_unsaved()
-		if index_from > index_to:
-			self.get_pic_at(index_from).indx = index_to - 1
-		else:
-			self.get_pic_at(index_from).indx = index_to + 1
-		self.list_box.invalidate_sort()
-		self.restack_indexes()
-
-	############################################################################
+	def get_view_widget(self):
+		return self.list_box
 
 	def add_one_picture(self, filename, stt, trt):
 		self.set_unsaved()
-		row = DWEPictureRow(filename, stt, trt, self.get_length(), self.window)
+		row = DWEPictureRow(filename, stt, trt, self.length, self.window)
 		self.list_box.add(row)
-
-	############################################################################
-
-	def get_pictures_xml(self, st_time, tr_time):
-		row_list = self.list_box.get_children()
-		raw_text = ''
-		for index in range(0, len(row_list)):
-			r = self.get_pic_at(index)
-			image = r.filename
-			if index >= len(row_list)-1:
-				next_fn = row_list[0].get_child().filename
-			else:
-				next_fn = row_list[index+1].get_child().filename
-			if image is not None:
-				raw_text = str(raw_text) + r.generate_static(st_time)
-				raw_text = str(raw_text) + r.generate_transition(tr_time, next_fn)
-		return str(raw_text)
+		self.update_length()
 
 	############################################################################
 ################################################################################
@@ -222,69 +218,22 @@ class DWEThumbnailsView(DWEAbstractView):
 
 	def __init__(self, window):
 		super().__init__(window)
-		self.flow_box = Gtk.FlowBox(visible=True, expand=True)
+		self.flow_box = Gtk.FlowBox(visible=True, expand=True, \
+		                                  selection_mode=Gtk.SelectionMode.NONE)
 		# label = Gtk.Label(visible=True, \
 		#              label=_("Add new pictures, or open an existing XML file."))
 		# self.flow_box.set_placeholder(label)
-		# self.flow_box.set_sort_func(self.sort_list)
+		self.flow_box.set_sort_func(self.sort_list)
 		self.add_view(self.flow_box)
+
+	def get_view_widget(self):
+		return self.flow_box
 
 	def add_one_picture(self, filename, stt, trt):
 		self.set_unsaved()
-		pic = DWEPictureThumbnail(filename, stt, trt, self.get_length(), self.window)
+		pic = DWEPictureThumbnail(filename, stt, trt, self.length, self.window)
 		self.flow_box.add(pic)
-
-	def get_length(self):
-		return len(self.flow_box.get_children())
-
-	def get_pic_at(self, index):
-		return self.flow_box.get_children()[index].get_child()
-
-	############################################################################
-
-	def restack_indexes(self):
-		"""Ensure rows' self.indx attribute corresponds to the actual index of
-		each row."""
-		rows = self.flow_box.get_children()
-		for r in rows:
-			r.get_child().indx = r.get_index()
-		self.window.update_status()
-
-	def reset_view(self):
-		while self.get_length() > 0:
-			self.flow_box.get_children().pop().destroy()
-
-	def destroy_pic(self, index):
-		self.set_unsaved()
-		direct_child = self.flow_box.get_children()[index]
-		self.flow_box.remove(direct_child)
-		self.restack_indexes()
-
-	def move_pic(self, index_from, index_to):
-		self.set_unsaved()
-		if index_from > index_to:
-			self.get_pic_at(index_from).indx = index_to - 1
-		else:
-			self.get_pic_at(index_from).indx = index_to + 1
-		# self.list_box.invalidate_sort() # XXX ??? TODO
-		self.restack_indexes()
-
-	############################################################################
-
-	def get_pictures_xml(self, st_time, tr_time):
-		row_list = self.flow_box.get_children()
-		raw_text = ''
-		for index in range(0, len(row_list)):
-			r = self.get_pic_at(index)
-			image = r.filename
-			if index >= len(row_list)-1:
-				next_fn = row_list[0].get_child().filename
-			else:
-				next_fn = row_list[index+1].get_child().filename
-			if image is not None:
-				raw_text = str(raw_text) + r.generate_static(st_time)
-				raw_text = str(raw_text) + r.generate_transition(tr_time, next_fn)
-		return str(raw_text)
+		self.update_length()
 
 	############################################################################
 ################################################################################

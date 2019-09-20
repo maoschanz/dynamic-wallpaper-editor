@@ -44,8 +44,11 @@
     your wallpaper. It's possible to use a picture several times in the same
     slideshow. The <gui style="button">Add a folder</gui> button appends all
     pictures from a directory to the list.</p>
-    <p>Then you can arrange them as you want by drag-and-dropping rows, or
+    <p>Then you can arrange them as you want by drag-and-dropping pictures, or
    remove them with <gui style="button">Delete</gui> button.</p>
+    <p>The pictures can be arranged as a list of rows or as a grid of
+    thumbnails, depending on what you set in the primary menu. With both
+    layouts, reordering the pictures works with drag-and-drop.</p>
   </section>
 
   <section id="durations">

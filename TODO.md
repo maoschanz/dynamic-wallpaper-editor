@@ -7,6 +7,7 @@
 
 ## Adding and managing pictures
 
+- Important: filtering what come from the "add pictures" dialog the same way as for "add a folder"
 - Very important: **ensure the memory is freed when deleting a row**
 - Important: **remove selectability** from pics' widgets
 - Not important: ability to add a picture by drag-and-dropping the file from nautilus
