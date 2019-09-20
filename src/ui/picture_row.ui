@@ -77,69 +77,60 @@
             <property name="spacing">5</property>
 
             <child>
-              <object class="GtkBox" id="time_box">
+              <object class="GtkGrid" id="time_box">
                 <property name="visible">True</property>
                 <property name="expand">False</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">2</property>
+                <property name="row-spacing">5</property>
+                <property name="column-spacing">5</property>
 
                 <child>
-                  <object class="GtkGrid">
+                  <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="expand">False</property>
-                    <property name="row-spacing">5</property>
-                    <property name="column-spacing">5</property>
-
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="expand">False</property>
-                        <property name="label" translatable="yes">Time</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton" id="static_btn">
-                        <property name="visible">True</property>
-                        <property name="expand">False</property>
-                        <property name="tooltip_text" translatable="yes">Time (in seconds) of this image. This doesn't include the time of the transition.</property>
-                        <property name="adjustment">adjustment_st</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">0</property>
-                      </packing>
-                    </child>
-
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="expand">False</property>
-                        <property name="label" translatable="yes">Transition</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">0</property>
-                        <property name="top-attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkSpinButton" id="transition_btn">
-                        <property name="expand">False</property>
-                        <property name="visible">True</property>
-                        <property name="tooltip_text" translatable="yes">Time (in seconds) of the transition between this image and the next one.</property>
-                        <property name="adjustment">adjustment_tr</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">1</property>
-                        <property name="top-attach">1</property>
-                      </packing>
-                    </child>
-
+                    <property name="label" translatable="yes">Time</property>
                   </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">0</property>
+                  </packing>
                 </child>
+                <child>
+                  <object class="GtkSpinButton" id="static_btn">
+                    <property name="visible">True</property>
+                    <property name="expand">False</property>
+                    <property name="tooltip_text" translatable="yes">Time (in seconds) of this image. This doesn't include the time of the transition.</property>
+                    <property name="adjustment">adjustment_st</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">0</property>
+                  </packing>
+                </child>
+
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="expand">False</property>
+                    <property name="label" translatable="yes">Transition</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="transition_btn">
+                    <property name="expand">False</property>
+                    <property name="visible">True</property>
+                    <property name="tooltip_text" translatable="yes">Time (in seconds) of the transition between this image and the next one.</property>
+                    <property name="adjustment">adjustment_tr</property>
+                  </object>
+                  <packing>
+                    <property name="left-attach">1</property>
+                    <property name="top-attach">1</property>
+                  </packing>
+                </child>
+
               </object>
             </child>
 
@@ -147,6 +138,7 @@
               <!-- il est hors de la grille parce que la grille on la cache -->
               <object class="GtkButton" id="delete_btn">
                 <property name="visible">True</property>
+                <property name="relief">none</property>
                 <property name="valign">center</property>
                 <property name="tooltip_text" translatable="yes">Delete</property>
                 <style><class name="destructive-action"/></style>

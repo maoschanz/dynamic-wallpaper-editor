@@ -75,21 +75,21 @@
           <attribute name="label" translatable="yes">Add a folder</attribute>
         </item>
       </section>
-    <!-- </submenu> -->
-    <!-- <submenu> -->
-    <!--   <attribute name="label" translatable="yes">View</attribute> -->
-    <!--   <section> -->
-    <!--     <item> -->
-    <!--       <attribute name="action">win.content-layout</attribute> -->
-    <!--       <attribute name="label" translatable="yes">Rows</attribute> -->
-    <!--       <attribute name="target">rows</attribute> -->
-    <!--     </item> -->
-    <!--     <item> -->
-    <!--       <attribute name="action">win.content-layout</attribute> -->
-    <!--       <attribute name="label" translatable="yes">Grid</attribute> -->
-    <!--       <attribute name="target">grid</attribute> -->
-    <!--     </item> -->
-    <!--   </section> -->
+    </submenu>
+    <submenu>
+      <attribute name="label" translatable="yes">View</attribute>
+      <section>
+        <item>
+          <attribute name="action">win.content-layout</attribute>
+          <attribute name="label" translatable="yes">Rows</attribute>
+          <attribute name="target">rows</attribute>
+        </item>
+        <item>
+          <attribute name="action">win.content-layout</attribute>
+          <attribute name="label" translatable="yes">Grid</attribute>
+          <attribute name="target">grid</attribute>
+        </item>
+      </section>
       <!-- <section> -->
       <!--        FIXME ne marche pas car on se repose sur l'activation des radiobuttons dans le code -->
       <!--   <attribute name="label" translatable="yes">Wallpaper type</attribute> -->
@@ -237,21 +237,21 @@
         <attribute name="label" translatable="yes">Save as…</attribute>
       </item>
     </section>
-    <!-- <section> -->
-    <!--   <attribute name="display-hint">horizontal-buttons</attribute> -->
-    <!--   <item> -->
-    <!--     <attribute name="action">win.content-layout</attribute> -->
-    <!--     <attribute name="label" translatable="yes">List</attribute> -->
-    <!--     <attribute name="target">list</attribute> -->
-    <!--     <attribute name="verb-icon">view-list-symbolic</attribute> -->
-    <!--   </item> -->
-    <!--   <item> -->
-    <!--     <attribute name="action">win.content-layout</attribute> -->
-    <!--     <attribute name="label" translatable="yes">Grid</attribute> -->
-    <!--     <attribute name="target">grid</attribute> -->
-    <!--     <attribute name="verb-icon">view-grid-symbolic</attribute> -->
-    <!--   </item> -->
-    <!-- </section> -->
+    <section>
+      <attribute name="display-hint">horizontal-buttons</attribute>
+      <item>
+        <attribute name="action">win.display-mode</attribute>
+        <attribute name="label" translatable="yes">List</attribute>
+        <attribute name="target">list</attribute>
+        <attribute name="verb-icon">view-list-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.display-mode</attribute>
+        <attribute name="label" translatable="yes">Grid</attribute>
+        <attribute name="target">grid</attribute>
+        <attribute name="verb-icon">view-grid-symbolic</attribute>
+      </item>
+    </section>
     <section>
       <item>
         <attribute name="action">app.shortcuts</attribute>

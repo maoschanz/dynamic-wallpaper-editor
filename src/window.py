@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk, Gio, GdkPixbuf, Pango, GLib
+from gi.repository import Gtk, Gio, GdkPixbuf, GLib
 import xml.etree.ElementTree as xml_parser
 
 from .view import DWERowsView
@@ -29,6 +29,8 @@ UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
 @Gtk.Template(resource_path = UI_PATH + 'window.ui')
 class DWEWindow(Gtk.ApplicationWindow):
 	__gtype_name__ = 'DWEWindow'
+
+	# _settings = Gio.Settings.new('com.github.maoschanz.DynamicWallpaperEditor')
 
 	header_bar = Gtk.Template.Child()
 	start_btn = Gtk.Template.Child()
@@ -73,8 +75,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.info_bar.connect('response', self.close_notification)
 
 		# Build the UI
-		# self.view = DWEThumbnailsView(self)
-		self.view = DWERowsView(self) # TODO conditional
+		self.view = None
+		# self.rebuild_view( self._settings.get_string('display-mode') )
+		self.rebuild_view('list')
 		self.build_time_popover()
 		self.build_menus()
 		self.build_all_actions()
@@ -84,6 +87,18 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	############################################################################
 	# Building the UI ##########################################################
+
+	def rebuild_view(self, display_mode):
+		xml_text = ''
+		if self.view is not None:
+			xml_text = self.generate_text()
+			self.view.destroy()
+		if display_mode == 'list':
+			self.view = DWERowsView(self)
+		else:
+			self.view = DWEThumbnailsView(self)
+		if xml_text != '':
+			self.load_list_from_string(xml_text)
 
 	def build_time_popover(self):
 		builder = Gtk.Builder().new_from_resource(UI_PATH + 'start_time.ui')
@@ -122,9 +137,16 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.lookup_action('set_as_wallpaper').set_enabled(False)
 		self.lookup_action('set_as_lockscreen').set_enabled(False)
 
+		saved_value = 'list' # TODO
+		action_display = Gio.SimpleAction().new_stateful('display-mode', \
+		                           GLib.VariantType.new('s'),
+		                           GLib.Variant.new_string(saved_value))
+		action_display.connect('change-state', self.on_view_changed)
+		self.add_action(action_display)
+
 		action_type = Gio.SimpleAction().new_stateful('wallpaper-type', \
-		                   GLib.VariantType.new('s'), \
-		                   GLib.Variant.new_string('custom'))
+		                           GLib.VariantType.new('s'), \
+		                           GLib.Variant.new_string('custom'))
 		action_type.connect('change-state', self.on_change_wallpaper_type)
 		self.add_action(action_type)
 
@@ -299,6 +321,11 @@ class DWEWindow(Gtk.ApplicationWindow):
 			self.lookup_action('set_as_wallpaper').set_enabled(False)
 		return ''
 
+	def on_view_changed(self, *args):
+		state_as_string = args[1].get_string()
+		args[0].set_state(GLib.Variant.new_string(state_as_string))
+		self.rebuild_view(state_as_string)
+
 	############################################################################
 	# Adding pictures to the view ##############################################
 
@@ -387,12 +414,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def load_list_from_xml(self):
 		"""This method parses the XML from `self.gio_file`, looking for the
 		pictures' paths and durations."""
-		# Clear the view content
-		self.view.reset_view()
-
-		# This is the list of pictures to add
-		pic_list = []
-
 		try:
 			f = open(self.gio_file.get_path(), 'r')
 			xml_text = f.read()
@@ -401,6 +422,11 @@ class DWEWindow(Gtk.ApplicationWindow):
 			self.show_notification(_("This dynamic wallpaper is corrupted"))
 			# So corrupted it can't even be read
 			return False
+		return self.load_list_from_string(xml_text)
+
+	def load_list_from_string(self, xml_text):
+		self.view.reset_view()
+		pic_list = []
 
 		try:
 			root = xml_parser.fromstring(xml_text)

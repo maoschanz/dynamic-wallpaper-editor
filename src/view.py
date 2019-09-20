@@ -29,6 +29,11 @@ class DWEAbstractView():
 	def add_view(self, widget):
 		self.window.scrolled_window.add(widget)
 
+	def destroy(self):
+		child = self.window.scrolled_window.get_child()
+		self.window.scrolled_window.remove(child)
+		child.destroy()
+
 	def set_unsaved(self):
 		self.window._is_saved = False
 
@@ -198,12 +203,12 @@ class DWERowsView(DWEAbstractView):
 		row_list = self.list_box.get_children()
 		raw_text = ''
 		for index in range(0, len(row_list)):
-			r = self.get_row_at(index)
+			r = self.get_pic_at(index)
 			image = r.filename
 			if index >= len(row_list)-1:
-				next_fn = row_list[0].filename
+				next_fn = row_list[0].get_child().filename
 			else:
-				next_fn = row_list[index+1].filename
+				next_fn = row_list[index+1].get_child().filename
 			if image is not None:
 				raw_text = str(raw_text) + r.generate_static(st_time)
 				raw_text = str(raw_text) + r.generate_transition(tr_time, next_fn)
@@ -223,9 +228,6 @@ class DWEThumbnailsView(DWEAbstractView):
 		# self.flow_box.set_placeholder(label)
 		# self.flow_box.set_sort_func(self.sort_list)
 		self.add_view(self.flow_box)
-
-	def get_pictures_xml(self, st_time, tr_time):
-		return 'todo'
 
 	def add_one_picture(self, filename, stt, trt):
 		self.set_unsaved()
@@ -266,6 +268,23 @@ class DWEThumbnailsView(DWEAbstractView):
 			self.get_pic_at(index_from).indx = index_to + 1
 		# self.list_box.invalidate_sort() # XXX ??? TODO
 		self.restack_indexes()
+
+	############################################################################
+
+	def get_pictures_xml(self, st_time, tr_time):
+		row_list = self.flow_box.get_children()
+		raw_text = ''
+		for index in range(0, len(row_list)):
+			r = self.get_pic_at(index)
+			image = r.filename
+			if index >= len(row_list)-1:
+				next_fn = row_list[0].get_child().filename
+			else:
+				next_fn = row_list[index+1].get_child().filename
+			if image is not None:
+				raw_text = str(raw_text) + r.generate_static(st_time)
+				raw_text = str(raw_text) + r.generate_transition(tr_time, next_fn)
+		return str(raw_text)
 
 	############################################################################
 ################################################################################
