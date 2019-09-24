@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-07 02:19+0200\n"
+"POT-Creation-Date: 2019-09-25 00:00+0200\n"
 "PO-Revision-Date: 2019-07-19 13:35+0200\n"
 "Last-Translator: Nicola S <nicola.sella@disroot.org>\n"
 "Language-Team: Italian <nicola.sella@disroot.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:7
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
-#: src/ui/window.ui:27 src/main.py:87
+#: src/ui/window.ui:27 src/main.py:86
 msgid "Dynamic Wallpaper Editor"
 msgstr "Editor di Sfondi Dinamici"
 
@@ -32,51 +32,55 @@ msgid ""
 "GNOME desktop"
 msgstr "Crea o modifica sfondi dinamici per GNOME."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:10
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:11
 msgid ""
 "Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
 "wallpapers for the GNOME desktop."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:14
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:15
 msgid ""
 "The duration of each picture and each transition can be set separately or "
 "globally. The total duration can be 24 hours to do a wallpaper fitting the "
 "daylight."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:25
+#. caption for screenshot 1
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:27
 msgid "An example of a wallpaper changing with daylight"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:32
+#. caption for screenshot 2
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:34
+msgid "The grid layout"
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:41
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:49
+msgid ""
+"The app can now optionally display pictures using a grid layout instead of a "
+"list."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:57
 msgid ""
 "Finally fix the bug with corrupted files, and fix minor bugs concerning "
 "\"set as wallpaper\"."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:40
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:65
 msgid ""
 "Better UI for the slideshow mode, more helpful labels for the daylight mode, "
 "other desktop environments support and various bug fixes."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:49
-msgid "Various bug fixes and new reordering mechanism, with draggable rows."
-msgstr ""
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:56
-msgid ""
-"Types of wallpaper displayed as the window's title, bug fixes and new "
-"translations."
-msgstr ""
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:73
+#. That's my name, don't translate it
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:84
 msgid "Romain F. T."
 msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
-#: src/main.py:180
+#: src/main.py:171
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Crea o modifica sfondi dinamici per GNOME."
 
@@ -94,15 +98,23 @@ msgstr "com.github.maoschanz.DynamicWallpaperEditor"
 msgid "New Window"
 msgstr "Nuova Finestra"
 
-#: src/ui/menus.ui:13 src/ui/menus.ui:213 src/ui/menus.ui:262
+#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml:6
+msgid "Use a grid or a list"
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml:7
+msgid "Display the pictures using a grid of thumbnails, or a list."
+msgstr ""
+
+#: src/ui/menus.ui:13 src/ui/menus.ui:213 src/ui/menus.ui:258
 msgid "Keyboard Shortcuts"
 msgstr "Scorciatoie da tastiera"
 
-#: src/ui/menus.ui:17 src/ui/menus.ui:209 src/ui/menus.ui:266
+#: src/ui/menus.ui:17 src/ui/menus.ui:209 src/ui/menus.ui:262
 msgid "Help"
 msgstr "Aiuto"
 
-#: src/ui/menus.ui:21 src/ui/menus.ui:221 src/ui/menus.ui:270
+#: src/ui/menus.ui:21 src/ui/menus.ui:221 src/ui/menus.ui:266
 msgid "About"
 msgstr "Informazioni"
 
@@ -114,17 +126,17 @@ msgstr "Chiudi"
 msgid "File"
 msgstr "File"
 
-#: src/ui/menus.ui:42 src/ui/window.ui:33 src/window.py:472 src/window.py:473
+#: src/ui/menus.ui:42 src/ui/window.ui:33 src/window.py:393 src/window.py:394
 msgid "Open"
 msgstr "Apri"
 
 #: src/ui/menus.ui:48 src/ui/shortcuts.ui:79 src/ui/window.ui:95
-#: src/window.py:339 src/window.py:618
+#: src/window.py:302 src/window.py:526
 msgid "Save"
 msgstr "Salva"
 
-#: src/ui/menus.ui:52 src/ui/menus.ui:256 src/ui/shortcuts.ui:86
-#: src/window.py:617
+#: src/ui/menus.ui:52 src/ui/menus.ui:237 src/ui/shortcuts.ui:86
+#: src/window.py:525
 msgid "Save as…"
 msgstr "Salva con nome..."
 
@@ -137,14 +149,26 @@ msgid "Edit"
 msgstr "Modifica"
 
 #: src/ui/menus.ui:71 src/ui/shortcuts.ui:65 src/ui/window.ui:122
-#: src/window.py:393
+#: src/window.py:360
 msgid "Add pictures"
 msgstr "Aggiungi immagini"
 
 #: src/ui/menus.ui:75 src/ui/shortcuts.ui:72 src/ui/window.ui:134
-#: src/window.py:367
+#: src/window.py:335
 msgid "Add a folder"
 msgstr "Aggiungi cartelle"
+
+#: src/ui/menus.ui:80
+msgid "View"
+msgstr ""
+
+#: src/ui/menus.ui:84
+msgid "Rows"
+msgstr ""
+
+#: src/ui/menus.ui:89 src/ui/menus.ui:250
+msgid "Grid"
+msgstr ""
 
 #: src/ui/menus.ui:114 src/ui/window.ui:176
 msgid "Apply"
@@ -196,11 +220,16 @@ msgstr "Adatta le immagini allo sfondo"
 msgid "User manual"
 msgstr "Manuale dell'utente"
 
-#: src/ui/picture_row.ui:97 src/ui/window.ui:287
+#: src/ui/menus.ui:244
+msgid "List"
+msgstr ""
+
+#: src/ui/picture_row.ui:90 src/ui/picture_thumbnail.ui:150
+#: src/ui/window.ui:273
 msgid "Time"
 msgstr "Durata"
 
-#: src/ui/picture_row.ui:108
+#: src/ui/picture_row.ui:101 src/ui/picture_thumbnail.ui:161
 msgid ""
 "Time (in seconds) of this image. This doesn't include the time of the "
 "transition."
@@ -208,20 +237,26 @@ msgstr ""
 "Durata (in secondi) della permanenza dell'immagine. Non include la durata "
 "della transizione."
 
-#: src/ui/picture_row.ui:121 src/ui/window.ui:309
+#: src/ui/picture_row.ui:114 src/ui/picture_thumbnail.ui:174
+#: src/ui/window.ui:295
 msgid "Transition"
 msgstr "Durata transizione"
 
-#: src/ui/picture_row.ui:132
+#: src/ui/picture_row.ui:125 src/ui/picture_thumbnail.ui:185
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr ""
 "Durata (in secondi) del tempo di transizione tra questa immagine e la "
 "prossima."
 
-#: src/ui/picture_row.ui:151
+#: src/ui/picture_row.ui:143 src/ui/picture_thumbnail.ui:84
 msgid "Delete"
 msgstr "Elimina"
+
+#: src/ui/picture_thumbnail.ui:58
+#, fuzzy
+msgid "Duration"
+msgstr "Durata transizione"
 
 #: src/ui/start_time.ui:55
 msgid "This is useful when the total duration is 24 hours."
@@ -327,36 +362,32 @@ msgstr "Errore all'avvio dell'applicazione, per favore, segnala questo bug."
 msgid "Automatic fix"
 msgstr "Risolvi in automatico"
 
-#: src/ui/window.ui:258
-msgid "Add new pictures, or open an existing XML file."
-msgstr "Aggiungi un'immagine o apri un file XML."
-
-#: src/ui/window.ui:295
+#: src/ui/window.ui:281
 msgid "Duration of each picture (seconds)"
 msgstr "Durata di ogni immagine (secondi)"
 
-#: src/ui/window.ui:317
+#: src/ui/window.ui:303
 msgid "Duration of each transition (seconds)"
 msgstr "Durata di ogni transizione (secondi)"
 
-#: src/main.py:53
+#: src/main.py:52
 msgid "Print the version and display the 'about' dialog"
 msgstr "Mostra la versione e la finestra di informazioni"
 
-#: src/main.py:56
+#: src/main.py:55
 msgid "Open a new window"
 msgstr "Apri una nuova finestra"
 
-#: src/main.py:112
+#: src/main.py:111
 #, python-format
 msgid "Error opening this file. Did you mean %s ?"
 msgstr "Errore nell'apertura del file. Volevi dire %s?"
 
-#: src/main.py:186
+#: src/main.py:177
 msgid "Report bugs or ideas"
 msgstr "Segnala bug o suggerisci idee"
 
-#: src/main.py:187
+#: src/main.py:178
 msgid "translator-credits"
 msgstr "inknos: nicola.sella AT disroot DOT org"
 
@@ -376,90 +407,93 @@ msgstr "Immagini PNG"
 msgid "JPEG images"
 msgstr "Immagini JPEG"
 
-#: src/picture_row.py:71
-msgid "This picture doesn't exist"
-msgstr "Questa immagine non esiste"
-
-#: src/picture_row.py:137 src/picture_row.py:145 src/window.py:300
+#: src/misc.py:57
 #, python-format
 msgid "%s hour(s)"
 msgstr "%s ora/e"
 
-#: src/picture_row.py:138 src/picture_row.py:146 src/window.py:302
+#: src/misc.py:59
 #, python-format
 msgid "%s minute(s)"
 msgstr "%s minuto/i"
 
-#: src/picture_row.py:139 src/picture_row.py:147 src/window.py:303
+#: src/misc.py:60
 #, python-format
 msgid "%s second(s)"
 msgstr "%s secondo/i"
 
-#: src/picture_row.py:154
+#: src/picture_widget.py:71
+msgid "This picture doesn't exist"
+msgstr "Questa immagine non esiste"
+
+#: src/picture_widget.py:130
 #, python-brace-format
 msgid "This picture lasts from {0} to {1}"
 msgstr "L'immagine inizierà alle {0} e finirà alle {1}"
 
-#: src/picture_row.py:168
+#: src/picture_widget.py:136
 #, python-brace-format
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr "La transizione inizierà alle {0} e finirà alle {1}"
 
-#: src/window.py:292
+#: src/window.py:263
 #, python-format
 msgid "%s pictures"
 msgstr "%s immagini"
 
-#: src/window.py:293
+#: src/window.py:264
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr "Durata totale: %s secondo/i"
 
-#: src/window.py:306
+#: src/window.py:269
 msgid "The total duration isn't 24 hours."
 msgstr "La durata totale non è 24 ore."
 
-#: src/window.py:336
+#: src/window.py:299
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Ci sono modifiche non salvate per il tuo sfondo."
 
-#: src/window.py:337 src/window.py:473 src/window.py:618
+#: src/window.py:300 src/window.py:394 src/window.py:526
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/window.py:338
+#: src/window.py:301
 msgid "Discard"
 msgstr "Esci senza salvare"
 
-#: src/window.py:351
+#: src/window.py:314
 msgid "This desktop environnement isn't supported."
 msgstr "Questo ambiente desktop non è supportato."
 
-#: src/window.py:366 src/window.py:392 src/window.py:471
+#: src/window.py:334 src/window.py:359 src/window.py:392
 msgid "Loading…"
 msgstr "Caricamento..."
 
-#: src/window.py:506 src/window.py:513
+#: src/window.py:421 src/window.py:433
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Questo sfondo dinamico è corrotto"
 
-#: src/window.py:518
+#: src/window.py:438
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Questo file XML non corrisponde a uno sfondo dinamico valido"
 
-#: src/window.py:529
+#: src/window.py:449
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Elemento sconosciuto: %s"
 
-#: src/window.py:607
+#: src/window.py:515
 #, python-format
 msgid "Save %s"
 msgstr "Salva %s"
 
-#: src/window.py:619
+#: src/window.py:527
 msgid "Untitled"
 msgstr "Senza Titolo"
+
+#~ msgid "Add new pictures, or open an existing XML file."
+#~ msgstr "Aggiungi un'immagine o apri un file XML."
 
 #~ msgid "Adjustment options for the wallpaper"
 #~ msgstr "Impostazioni: adatta le immagini allo sfondo"

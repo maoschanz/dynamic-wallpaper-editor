@@ -151,7 +151,7 @@ class DWEAbstractView():
 			st_day_pics = int(st_total * 0.60 / (self.length-1))
 			st_night = st_total - st_day_pics * (self.length-1)
 			tr = tr_total / self.length
-			for index in range(0, l-1):
+			for index in range(0, self.length-1):
 				self.get_pic_at(index).static_time_btn.set_value(st_day_pics)
 				self.get_pic_at(index).trans_time_btn.set_value(tr)
 			self.get_pic_at(-1).static_time_btn.set_value(st_night)

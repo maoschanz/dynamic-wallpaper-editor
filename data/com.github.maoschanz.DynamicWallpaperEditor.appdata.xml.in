@@ -5,7 +5,8 @@
   <project_license>GPL-3.0-or-later</project_license>
 
   <name>Dynamic Wallpaper Editor</name>
-  <summary>Create or edit XML dynamic wallpapers ("background slideshows") for the GNOME desktop</summary>
+  <summary>Create or edit XML dynamic wallpapers ("background slideshows") for
+  the GNOME desktop</summary>
   <description>
     <p>
       Dynamic Wallpaper Editor is a simple utility to create or edit dynamic
@@ -22,17 +23,27 @@
       <image type="source">
         https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot.png
       </image>
+      <!-- caption for screenshot 1 -->
       <caption>An example of a wallpaper changing with daylight</caption>
     </screenshot>
     <screenshot>
       <image type="source">
         https://pbs.twimg.com/media/EE31jEpWsAYeKv-.jpg
       </image>
+      <!-- caption for screenshot 2 -->
       <caption>The grid layout</caption>
     </screenshot>
   </screenshots>
 
   <releases>
+    <release version="2.2.1" date="2019-09-23">
+      <description>
+        <p>
+          The app can now optionally display pictures using a grid layout
+          instead of a list.
+        </p>
+      </description>
+    </release>
     <release version="2.2" date="2019-09-22">
       <description>
         <p>
