@@ -24,17 +24,23 @@
       </image>
       <caption>An example of a wallpaper changing with daylight</caption>
     </screenshot>
+    <screenshot>
+      <image type="source">
+        https://pbs.twimg.com/media/EE31jEpWsAYeKv-.jpg
+      </image>
+      <caption>The grid layout</caption>
+    </screenshot>
   </screenshots>
 
   <releases>
-    <!-- <release version="2.2" date="2019-09-22"> -->
-    <!--   <description> -->
-    <!--     <p> -->
-    <!--       The app can now optionally display pictures using a grid layout -->
-    <!--       instead of a list. -->
-    <!--     </p> -->
-    <!--   </description> -->
-    <!-- </release> -->
+    <release version="2.2" date="2019-09-22">
+      <description>
+        <p>
+          The app can now optionally display pictures using a grid layout
+          instead of a list.
+        </p>
+      </description>
+    </release>
     <release version="2.1" date="2019-07-31">
       <description>
         <p>
