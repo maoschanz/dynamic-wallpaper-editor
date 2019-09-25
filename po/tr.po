@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-25 00:00+0200\n"
+"POT-Creation-Date: 2019-09-25 03:14+0200\n"
 "PO-Revision-Date: 2019-03-18 02:19+0300\n"
 "Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Turkish <teknomobil@yandex.com>\n"
@@ -91,7 +91,7 @@ msgid "com.github.maoschanz.DynamicWallpaperEditor"
 msgstr "com.github.maoschanz.DynamicWallpaperEditor"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:16
-#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:231
+#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:239
 #: src/ui/shortcuts.ui:17
 #, fuzzy
 msgid "New Window"
@@ -105,15 +105,15 @@ msgstr ""
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 
-#: src/ui/menus.ui:13 src/ui/menus.ui:213 src/ui/menus.ui:258
+#: src/ui/menus.ui:13 src/ui/menus.ui:219 src/ui/menus.ui:266
 msgid "Keyboard Shortcuts"
 msgstr "Klavye Kısayolları"
 
-#: src/ui/menus.ui:17 src/ui/menus.ui:209 src/ui/menus.ui:262
+#: src/ui/menus.ui:17 src/ui/menus.ui:215 src/ui/menus.ui:270
 msgid "Help"
 msgstr "Yardım"
 
-#: src/ui/menus.ui:21 src/ui/menus.ui:221 src/ui/menus.ui:266
+#: src/ui/menus.ui:21 src/ui/menus.ui:229 src/ui/menus.ui:274
 msgid "About"
 msgstr "Hakkında"
 
@@ -125,17 +125,17 @@ msgstr "Çık"
 msgid "File"
 msgstr ""
 
-#: src/ui/menus.ui:42 src/ui/window.ui:33 src/window.py:393 src/window.py:394
+#: src/ui/menus.ui:42 src/ui/window.ui:33 src/window.py:404 src/window.py:405
 msgid "Open"
 msgstr "Aç"
 
-#: src/ui/menus.ui:48 src/ui/shortcuts.ui:79 src/ui/window.ui:95
-#: src/window.py:302 src/window.py:526
+#: src/ui/menus.ui:48 src/ui/shortcuts.ui:92 src/ui/window.ui:95
+#: src/window.py:315 src/window.py:537
 msgid "Save"
 msgstr "Kaydet"
 
-#: src/ui/menus.ui:52 src/ui/menus.ui:237 src/ui/shortcuts.ui:86
-#: src/window.py:525
+#: src/ui/menus.ui:52 src/ui/menus.ui:245 src/ui/shortcuts.ui:99
+#: src/window.py:536
 msgid "Save as…"
 msgstr "Farklı kaydet…"
 
@@ -147,84 +147,84 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: src/ui/menus.ui:71 src/ui/shortcuts.ui:65 src/ui/window.ui:122
-#: src/window.py:360
+#: src/ui/menus.ui:71 src/ui/shortcuts.ui:58 src/ui/window.ui:122
+#: src/window.py:371
 msgid "Add pictures"
 msgstr "Resim ekle"
 
-#: src/ui/menus.ui:75 src/ui/shortcuts.ui:72 src/ui/window.ui:134
-#: src/window.py:335
+#: src/ui/menus.ui:75 src/ui/shortcuts.ui:65 src/ui/window.ui:134
+#: src/window.py:346
 msgid "Add a folder"
 msgstr "Klasör ekle"
 
-#: src/ui/menus.ui:80
+#: src/ui/menus.ui:81
+msgid "Find"
+msgstr ""
+
+#: src/ui/menus.ui:86
 msgid "View"
 msgstr ""
 
-#: src/ui/menus.ui:84
-msgid "Rows"
+#: src/ui/menus.ui:90 src/ui/menus.ui:252
+msgid "List"
 msgstr ""
 
-#: src/ui/menus.ui:89 src/ui/menus.ui:250
+#: src/ui/menus.ui:95 src/ui/menus.ui:258
 msgid "Grid"
 msgstr ""
 
-#: src/ui/menus.ui:114 src/ui/window.ui:176
+#: src/ui/menus.ui:120 src/ui/window.ui:177
 msgid "Apply"
 msgstr ""
 
-#: src/ui/menus.ui:118 src/ui/shortcuts.ui:93
+#: src/ui/menus.ui:124 src/ui/shortcuts.ui:106
 msgid "Set as wallpaper"
 msgstr "Duvar kağıdı olarak ayarla"
 
-#: src/ui/menus.ui:121
+#: src/ui/menus.ui:127
 #, fuzzy
 msgid "Wallpaper adjustment"
 msgstr "Duvar kağıdı türü"
 
-#: src/ui/menus.ui:130 src/ui/menus.ui:176
+#: src/ui/menus.ui:136 src/ui/menus.ui:182
 msgid "Mosaic"
 msgstr "Mozaik"
 
-#: src/ui/menus.ui:135 src/ui/menus.ui:181
+#: src/ui/menus.ui:141 src/ui/menus.ui:187
 msgid "Centered"
 msgstr "Ortalanmış"
 
-#: src/ui/menus.ui:140 src/ui/menus.ui:186
+#: src/ui/menus.ui:146 src/ui/menus.ui:192
 msgid "Scaled"
 msgstr "Ölçekli"
 
-#: src/ui/menus.ui:145 src/ui/menus.ui:191
+#: src/ui/menus.ui:151 src/ui/menus.ui:197
 msgid "Streched"
 msgstr "Uzatılmış"
 
-#: src/ui/menus.ui:150 src/ui/menus.ui:196
+#: src/ui/menus.ui:156 src/ui/menus.ui:202
 msgid "Zoom"
 msgstr "Yakınlaşmış"
 
-#: src/ui/menus.ui:155 src/ui/menus.ui:201
+#: src/ui/menus.ui:161 src/ui/menus.ui:207
 msgid "Spanned"
 msgstr "Yayılmış"
 
-#: src/ui/menus.ui:164
+#: src/ui/menus.ui:170 src/ui/shortcuts.ui:113
 msgid "Set as lock screen"
 msgstr ""
 
-#: src/ui/menus.ui:167
+#: src/ui/menus.ui:173
 #, fuzzy
 msgid "Lock screen adjustment"
 msgstr "Arkaplan uyumu"
 
-#: src/ui/menus.ui:217
+#: src/ui/menus.ui:223
 msgid "User manual"
 msgstr ""
 
-#: src/ui/menus.ui:244
-msgid "List"
-msgstr ""
-
 #: src/ui/picture_row.ui:90 src/ui/picture_thumbnail.ui:150
-#: src/ui/window.ui:273
+#: src/ui/window.ui:283
 msgid "Time"
 msgstr "Zaman"
 
@@ -235,7 +235,7 @@ msgid ""
 msgstr "Bu görüntünün süresi (saniye olarak). Bu geçiş zamanını içermez."
 
 #: src/ui/picture_row.ui:114 src/ui/picture_thumbnail.ui:174
-#: src/ui/window.ui:295
+#: src/ui/window.ui:305
 msgid "Transition"
 msgstr "Geçiş"
 
@@ -308,10 +308,20 @@ msgid "Show help"
 msgstr "Yardımı göster"
 
 #: src/ui/shortcuts.ui:54
+#, fuzzy
+msgid "Pictures"
+msgstr "%s resimler"
+
+#: src/ui/shortcuts.ui:72 src/ui/window.ui:196
+#, fuzzy
+msgid "Find a picture"
+msgstr "Resim ekle"
+
+#: src/ui/shortcuts.ui:81
 msgid "Wallpaper"
 msgstr "Duvar kağıdı"
 
-#: src/ui/shortcuts.ui:58 src/ui/window.ui:34
+#: src/ui/shortcuts.ui:85 src/ui/window.ui:34
 msgid "Open an existing dynamic wallpaper"
 msgstr "Mevcut dinamik duvar kağıdını aç"
 
@@ -347,23 +357,23 @@ msgstr "Daha fazla eylem"
 msgid "Set the exact start time of the wallpaper"
 msgstr "Duvar kağıdının tam başlama zamanını ayarla"
 
-#: src/ui/window.ui:168
+#: src/ui/window.ui:169
 msgid "Apply as wallpaper or lock screen, and set adjustment options"
 msgstr ""
 
-#: src/ui/window.ui:218
+#: src/ui/window.ui:228
 msgid "Error starting the application, please report this bug."
 msgstr "Uygulama başlatma hatası, lütfen bu hatayı bildirin."
 
-#: src/ui/window.ui:223
+#: src/ui/window.ui:233
 msgid "Automatic fix"
 msgstr "Otomatik düzelt"
 
-#: src/ui/window.ui:281
+#: src/ui/window.ui:291
 msgid "Duration of each picture (seconds)"
 msgstr "Her resmin süresi (saniye)"
 
-#: src/ui/window.ui:303
+#: src/ui/window.ui:313
 msgid "Duration of each transition (seconds)"
 msgstr "Her geçişin süresi (saniye)"
 
@@ -420,73 +430,73 @@ msgstr "%s dakika"
 msgid "%s second(s)"
 msgstr "%s saniye"
 
-#: src/picture_widget.py:71
+#: src/picture_widget.py:70
 msgid "This picture doesn't exist"
 msgstr "Bu resim yok"
 
-#: src/picture_widget.py:130
+#: src/picture_widget.py:129
 #, python-brace-format
 msgid "This picture lasts from {0} to {1}"
 msgstr ""
 
-#: src/picture_widget.py:136
+#: src/picture_widget.py:135
 #, python-brace-format
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr ""
 
-#: src/window.py:263
+#: src/window.py:225
+msgid "This desktop environnement isn't supported."
+msgstr ""
+
+#: src/window.py:276
 #, python-format
 msgid "%s pictures"
 msgstr "%s resimler"
 
-#: src/window.py:264
+#: src/window.py:277
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr "Toplam zaman: %s saniye"
 
-#: src/window.py:269
+#: src/window.py:282
 msgid "The total duration isn't 24 hours."
 msgstr "Toplam süre 24 saat değil."
 
-#: src/window.py:299
+#: src/window.py:312
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Duvar kağıdınıza kaydedilmemiş değişiklikler var."
 
-#: src/window.py:300 src/window.py:394 src/window.py:526
+#: src/window.py:313 src/window.py:405 src/window.py:537
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/window.py:301
+#: src/window.py:314
 msgid "Discard"
 msgstr "Yoksay"
 
-#: src/window.py:314
-msgid "This desktop environnement isn't supported."
-msgstr ""
-
-#: src/window.py:334 src/window.py:359 src/window.py:392
+#: src/window.py:345 src/window.py:370 src/window.py:403
 msgid "Loading…"
 msgstr "Yükleniyor…"
 
-#: src/window.py:421 src/window.py:433
+#: src/window.py:432 src/window.py:444
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Bu dinamik duvar kağıdı bozuk"
 
-#: src/window.py:438
+#: src/window.py:449
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Bu XML dosyası geçerli bir dinamik duvar kağıdı tanımlamıyor"
 
-#: src/window.py:449
+#: src/window.py:460
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Bilinmeyen öge: %s"
 
-#: src/window.py:515
+#: src/window.py:526
 #, fuzzy, python-format
 msgid "Save %s"
 msgstr "Kaydet"
 
-#: src/window.py:527
+#: src/window.py:538
 msgid "Untitled"
 msgstr "Başlıksız"
 

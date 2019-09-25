@@ -9,15 +9,14 @@
 
 - Important: placeholder for the grid view too
 - Important: filtering what come from the "add pictures" dialog the same way as for "add a folder"
-- Very important: **ensure the memory is freed when deleting a row**
+<!-- - Very important: **ensure the memory is freed when deleting a row** FIXED?? -->
 - Not important: ability to add a picture by drag-and-dropping the file from nautilus
-- Not important: search entry, to find a specific file within huge lists?
 
 ## General
 
 - Important: less ridiculous "automatic fix"
 - Not important: more clear and useful error messages, including line numbers
-- Not important: title widget adapting to the window size
+- Important: headerbar widgets adapting to the window size
 
 ## Translations
 

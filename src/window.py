@@ -37,6 +37,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 	menu_btn = Gtk.Template.Child()
 	save_btn = Gtk.Template.Child()
 	apply_btn = Gtk.Template.Child()
+	search_entry = Gtk.Template.Child()
 
 	type_rbtn1 = Gtk.Template.Child()
 	type_rbtn2 = Gtk.Template.Child()
@@ -60,8 +61,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.gio_file = None
 		self._is_saved = True
 		self.check_24 = False
-		self.set_show_menubar(False) # TODO fix it, then show it with Cinnamon ??
-		# The issue with Cinnamon is with the start time popover
+		self.set_show_menubar(False)
 
 		# Used in the "add pictures" file chooser dialog
 		self.preview_picture = Gtk.Image(margin_right=5)
@@ -73,6 +73,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.fix_24_btn.connect('clicked', self.fix_24)
 		self.info_bar.connect('close', self.close_notification)
 		self.info_bar.connect('response', self.close_notification)
+		self.search_entry.connect('search-changed', self.search_pics_in_view)
 
 		# Build the UI
 		self.view = None
@@ -130,10 +131,12 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('add', self.action_add, ['<Ctrl>a'])
 		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
 		self.add_action_simple('close', self.action_close, ['<Ctrl>w'])
+		self.add_action_simple('search', self.action_search, ['<Ctrl>f'])
 
 		self.add_action_simple('set_as_wallpaper', \
 		                                 self.action_set_wallpaper, ['<Ctrl>r'])
-		self.add_action_simple('set_as_lockscreen', self.action_set_lockscreen, None)
+		self.add_action_simple('set_as_lockscreen', \
+		                                self.action_set_lockscreen, ['<Ctrl>l'])
 		self.lookup_action('set_as_wallpaper').set_enabled(False)
 		self.lookup_action('set_as_lockscreen').set_enabled(False)
 
@@ -217,6 +220,16 @@ class DWEWindow(Gtk.ApplicationWindow):
 		elif 'Cinnamon' in self.app.desktop_env:
 			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
 			use_folder.set_boolean('slideshow-enabled', False)
+
+	def unsupported_desktop(self, is_lockscreen):
+		self.show_notification(_("This desktop environnement isn't supported."))
+		if is_lockscreen:
+			self.app.lookup_action('ls_options').set_enabled(False)
+			self.lookup_action('set_as_lockscreen').set_enabled(False)
+		else:
+			self.app.lookup_action('wp_options').set_enabled(False)
+			self.lookup_action('set_as_wallpaper').set_enabled(False)
+		return ''
 
 	############################################################################
 	# Time management ##########################################################
@@ -310,20 +323,18 @@ class DWEWindow(Gtk.ApplicationWindow):
 			return True
 		return False # if cancelled or closed
 
-	def unsupported_desktop(self, is_lockscreen):
-		self.show_notification(_("This desktop environnement isn't supported."))
-		if is_lockscreen:
-			self.app.lookup_action('ls_options').set_enabled(False)
-			self.lookup_action('set_as_lockscreen').set_enabled(False)
-		else:
-			self.app.lookup_action('wp_options').set_enabled(False)
-			self.lookup_action('set_as_wallpaper').set_enabled(False)
-		return ''
-
 	def on_view_changed(self, *args):
 		state_as_string = args[1].get_string()
 		args[0].set_state(GLib.Variant.new_string(state_as_string))
 		self.rebuild_view(state_as_string)
+
+	############################################################################
+
+	def action_search(self, *args):
+		self.search_entry.grab_focus()
+
+	def search_pics_in_view(self, *args):
+		self.view.search_pic(args[0].get_text())
 
 	############################################################################
 	# Adding pictures to the view ##############################################

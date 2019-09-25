@@ -1,13 +1,13 @@
 # French translation of dynamic wallpaper editor.
 # This file is distributed under the same license as the dynamic-wallpaper-editor package.
 #
-# Romain F. T. 2018
+# Romain F. T. 2018-2019
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-25 00:00+0200\n"
+"POT-Creation-Date: 2019-09-25 03:14+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -96,7 +96,7 @@ msgid "com.github.maoschanz.DynamicWallpaperEditor"
 msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:16
-#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:231
+#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:239
 #: src/ui/shortcuts.ui:17
 msgid "New Window"
 msgstr "Nouvelle fenêtre"
@@ -110,15 +110,15 @@ msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 "Afficher les images en utilisant une grille de miniatures, ou une liste."
 
-#: src/ui/menus.ui:13 src/ui/menus.ui:213 src/ui/menus.ui:258
+#: src/ui/menus.ui:13 src/ui/menus.ui:219 src/ui/menus.ui:266
 msgid "Keyboard Shortcuts"
 msgstr "Raccourcis clavier"
 
-#: src/ui/menus.ui:17 src/ui/menus.ui:209 src/ui/menus.ui:262
+#: src/ui/menus.ui:17 src/ui/menus.ui:215 src/ui/menus.ui:270
 msgid "Help"
 msgstr "Aide"
 
-#: src/ui/menus.ui:21 src/ui/menus.ui:221 src/ui/menus.ui:266
+#: src/ui/menus.ui:21 src/ui/menus.ui:229 src/ui/menus.ui:274
 msgid "About"
 msgstr "À propos"
 
@@ -130,17 +130,17 @@ msgstr "Quitter"
 msgid "File"
 msgstr "Fichier"
 
-#: src/ui/menus.ui:42 src/ui/window.ui:33 src/window.py:393 src/window.py:394
+#: src/ui/menus.ui:42 src/ui/window.ui:33 src/window.py:404 src/window.py:405
 msgid "Open"
 msgstr "Ouvrir"
 
-#: src/ui/menus.ui:48 src/ui/shortcuts.ui:79 src/ui/window.ui:95
-#: src/window.py:302 src/window.py:526
+#: src/ui/menus.ui:48 src/ui/shortcuts.ui:92 src/ui/window.ui:95
+#: src/window.py:315 src/window.py:537
 msgid "Save"
 msgstr "Enregistrer"
 
-#: src/ui/menus.ui:52 src/ui/menus.ui:237 src/ui/shortcuts.ui:86
-#: src/window.py:525
+#: src/ui/menus.ui:52 src/ui/menus.ui:245 src/ui/shortcuts.ui:99
+#: src/window.py:536
 msgid "Save as…"
 msgstr "Enregistrer sous…"
 
@@ -152,82 +152,82 @@ msgstr "Fermer"
 msgid "Edit"
 msgstr "Édition"
 
-#: src/ui/menus.ui:71 src/ui/shortcuts.ui:65 src/ui/window.ui:122
-#: src/window.py:360
+#: src/ui/menus.ui:71 src/ui/shortcuts.ui:58 src/ui/window.ui:122
+#: src/window.py:371
 msgid "Add pictures"
 msgstr "Ajouter des images"
 
-#: src/ui/menus.ui:75 src/ui/shortcuts.ui:72 src/ui/window.ui:134
-#: src/window.py:335
+#: src/ui/menus.ui:75 src/ui/shortcuts.ui:65 src/ui/window.ui:134
+#: src/window.py:346
 msgid "Add a folder"
 msgstr "Ajouter un dossier"
 
-#: src/ui/menus.ui:80
+#: src/ui/menus.ui:81
+msgid "Find"
+msgstr "Rechercher"
+
+#: src/ui/menus.ui:86
 msgid "View"
 msgstr "Affichage"
 
-#: src/ui/menus.ui:84
-msgid "Rows"
-msgstr "Lignes"
-
-#: src/ui/menus.ui:89 src/ui/menus.ui:250
-msgid "Grid"
-msgstr "Grille"
-
-#: src/ui/menus.ui:114 src/ui/window.ui:176
-msgid "Apply"
-msgstr "Appliquer"
-
-#: src/ui/menus.ui:118 src/ui/shortcuts.ui:93
-msgid "Set as wallpaper"
-msgstr "Appliquer comme fond d'écran"
-
-#: src/ui/menus.ui:121
-msgid "Wallpaper adjustment"
-msgstr "Ajustement du fond d'écran"
-
-#: src/ui/menus.ui:130 src/ui/menus.ui:176
-msgid "Mosaic"
-msgstr "Mosaïque"
-
-#: src/ui/menus.ui:135 src/ui/menus.ui:181
-msgid "Centered"
-msgstr "Centré"
-
-#: src/ui/menus.ui:140 src/ui/menus.ui:186
-msgid "Scaled"
-msgstr "Mis à l'échelle"
-
-#: src/ui/menus.ui:145 src/ui/menus.ui:191
-msgid "Streched"
-msgstr "Étiré"
-
-#: src/ui/menus.ui:150 src/ui/menus.ui:196
-msgid "Zoom"
-msgstr "Zoomé"
-
-#: src/ui/menus.ui:155 src/ui/menus.ui:201
-msgid "Spanned"
-msgstr "Étalé"
-
-#: src/ui/menus.ui:164
-msgid "Set as lock screen"
-msgstr "Appliquer comme fond d'écran"
-
-#: src/ui/menus.ui:167
-msgid "Lock screen adjustment"
-msgstr "Ajustement de l'écran de verrouillage"
-
-#: src/ui/menus.ui:217
-msgid "User manual"
-msgstr "Manuel de l'utilisateur"
-
-#: src/ui/menus.ui:244
+#: src/ui/menus.ui:90 src/ui/menus.ui:252
 msgid "List"
 msgstr "Liste"
 
+#: src/ui/menus.ui:95 src/ui/menus.ui:258
+msgid "Grid"
+msgstr "Grille"
+
+#: src/ui/menus.ui:120 src/ui/window.ui:177
+msgid "Apply"
+msgstr "Appliquer"
+
+#: src/ui/menus.ui:124 src/ui/shortcuts.ui:106
+msgid "Set as wallpaper"
+msgstr "Appliquer comme fond d'écran"
+
+#: src/ui/menus.ui:127
+msgid "Wallpaper adjustment"
+msgstr "Ajustement du fond d'écran"
+
+#: src/ui/menus.ui:136 src/ui/menus.ui:182
+msgid "Mosaic"
+msgstr "Mosaïque"
+
+#: src/ui/menus.ui:141 src/ui/menus.ui:187
+msgid "Centered"
+msgstr "Centré"
+
+#: src/ui/menus.ui:146 src/ui/menus.ui:192
+msgid "Scaled"
+msgstr "Mis à l'échelle"
+
+#: src/ui/menus.ui:151 src/ui/menus.ui:197
+msgid "Streched"
+msgstr "Étiré"
+
+#: src/ui/menus.ui:156 src/ui/menus.ui:202
+msgid "Zoom"
+msgstr "Zoomé"
+
+#: src/ui/menus.ui:161 src/ui/menus.ui:207
+msgid "Spanned"
+msgstr "Étalé"
+
+#: src/ui/menus.ui:170 src/ui/shortcuts.ui:113
+msgid "Set as lock screen"
+msgstr "Appliquer comme fond d'écran"
+
+#: src/ui/menus.ui:173
+msgid "Lock screen adjustment"
+msgstr "Ajustement de l'écran de verrouillage"
+
+#: src/ui/menus.ui:223
+msgid "User manual"
+msgstr "Manuel de l'utilisateur"
+
 #: src/ui/picture_row.ui:90 src/ui/picture_thumbnail.ui:150
-#: src/ui/window.ui:273
+#: src/ui/window.ui:283
 msgid "Time"
 msgstr "Temps"
 
@@ -240,7 +240,7 @@ msgstr ""
 "transition."
 
 #: src/ui/picture_row.ui:114 src/ui/picture_thumbnail.ui:174
-#: src/ui/window.ui:295
+#: src/ui/window.ui:305
 msgid "Transition"
 msgstr "Transition"
 
@@ -310,10 +310,18 @@ msgid "Show help"
 msgstr "Afficher l'aide"
 
 #: src/ui/shortcuts.ui:54
+msgid "Pictures"
+msgstr "Images"
+
+#: src/ui/shortcuts.ui:72 src/ui/window.ui:196
+msgid "Find a picture"
+msgstr "Rechercher une image"
+
+#: src/ui/shortcuts.ui:81
 msgid "Wallpaper"
 msgstr "Fond d'écran"
 
-#: src/ui/shortcuts.ui:58 src/ui/window.ui:34
+#: src/ui/shortcuts.ui:85 src/ui/window.ui:34
 msgid "Open an existing dynamic wallpaper"
 msgstr "Ouvrir un fond d'écran dynamique existant"
 
@@ -349,25 +357,25 @@ msgstr "Plus d'actions"
 msgid "Set the exact start time of the wallpaper"
 msgstr "Régler l'heure exacte de début du fond d'écran"
 
-#: src/ui/window.ui:168
+#: src/ui/window.ui:169
 msgid "Apply as wallpaper or lock screen, and set adjustment options"
 msgstr ""
 "Appliquer comme fond d'écran ou comme écran de verrouillage, et régler les "
 "options d'ajustement."
 
-#: src/ui/window.ui:218
+#: src/ui/window.ui:228
 msgid "Error starting the application, please report this bug."
 msgstr "Erreur au démarrage de l'application, veuillez rapporter ce bug."
 
-#: src/ui/window.ui:223
+#: src/ui/window.ui:233
 msgid "Automatic fix"
 msgstr "Correction automatique"
 
-#: src/ui/window.ui:281
+#: src/ui/window.ui:291
 msgid "Duration of each picture (seconds)"
 msgstr "Durée de chaque image (secondes)"
 
-#: src/ui/window.ui:303
+#: src/ui/window.ui:313
 msgid "Duration of each transition (seconds)"
 msgstr "Durée de chaque transition (secondes)"
 
@@ -423,73 +431,73 @@ msgstr "%s minute(s)"
 msgid "%s second(s)"
 msgstr "%s seconde(s)"
 
-#: src/picture_widget.py:71
+#: src/picture_widget.py:70
 msgid "This picture doesn't exist"
 msgstr "Cette image n'existe pas"
 
-#: src/picture_widget.py:130
+#: src/picture_widget.py:129
 #, python-brace-format
 msgid "This picture lasts from {0} to {1}"
 msgstr "Cette image dure de {0} à {1}"
 
-#: src/picture_widget.py:136
+#: src/picture_widget.py:135
 #, python-brace-format
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr "La transition vers l'image suivante dure de {0} à {1}"
 
-#: src/window.py:263
+#: src/window.py:225
+msgid "This desktop environnement isn't supported."
+msgstr "Cet environnement de bureau n'est pas supporté."
+
+#: src/window.py:276
 #, python-format
 msgid "%s pictures"
 msgstr "%s images"
 
-#: src/window.py:264
+#: src/window.py:277
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr "Temps total : %s seconde(s)"
 
-#: src/window.py:269
+#: src/window.py:282
 msgid "The total duration isn't 24 hours."
 msgstr "La durée totale n'est pas 24 heures."
 
-#: src/window.py:299
+#: src/window.py:312
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Il y a des modifications non enregistrées à votre fond d'écran."
 
-#: src/window.py:300 src/window.py:394 src/window.py:526
+#: src/window.py:313 src/window.py:405 src/window.py:537
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/window.py:301
+#: src/window.py:314
 msgid "Discard"
 msgstr "Abandonner"
 
-#: src/window.py:314
-msgid "This desktop environnement isn't supported."
-msgstr "Cet environnement de bureau n'est pas supporté."
-
-#: src/window.py:334 src/window.py:359 src/window.py:392
+#: src/window.py:345 src/window.py:370 src/window.py:403
 msgid "Loading…"
 msgstr "Chargement…"
 
-#: src/window.py:421 src/window.py:433
+#: src/window.py:432 src/window.py:444
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Ce fond d'écran dynamique est corrompu"
 
-#: src/window.py:438
+#: src/window.py:449
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Ce fichier XML ne décrit pas un fond d'écran dynamique valide"
 
-#: src/window.py:449
+#: src/window.py:460
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Élément inconnu : %s"
 
-#: src/window.py:515
+#: src/window.py:526
 #, python-format
 msgid "Save %s"
 msgstr "Enregistrer %s"
 
-#: src/window.py:527
+#: src/window.py:538
 msgid "Untitled"
 msgstr "Sans titre"
 

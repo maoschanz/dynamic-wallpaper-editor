@@ -26,11 +26,15 @@ class DWEAbstractView():
 	def __init__(self, window):
 		self.window = window
 		self.length = 0
+		self.searched_str = ''
 
 	def add_view(self, widget):
+		widget.set_sort_func(self.sort_view)
+		widget.set_filter_func(self.filter_view)
 		self.window.scrolled_window.add(widget)
 
 	def destroy(self):
+		self.reset_view()
 		child = self.window.scrolled_window.get_child()
 		self.window.scrolled_window.remove(child)
 		child.destroy()
@@ -57,7 +61,7 @@ class DWEAbstractView():
 			r.get_child().indx = r.get_index()
 		self.window.update_status()
 
-	def sort_list(self, pic1, pic2, *args):
+	def sort_view(self, pic1, pic2, *args):
 		"""Returns int < 0 if pic1 should be before pic2, 0 if they are equal
 		and int > 0 otherwise"""
 		return pic1.get_child().indx - pic2.get_child().indx
@@ -66,6 +70,16 @@ class DWEAbstractView():
 		while self.length > 0:
 			self.get_view_widget().get_children().pop().destroy()
 			self.update_length()
+
+	############################################################################
+
+	def search_pic(self, string):
+		self.searched_str = string.lower()
+		self.get_view_widget().invalidate_filter()
+
+	def filter_view(self, pic):
+		target_text = pic.get_child().filename.lower()
+		return (self.searched_str in target_text)
 
 	############################################################################
 
@@ -78,13 +92,13 @@ class DWEAbstractView():
 		self.window.update_status()
 
 	def add_untimed_pictures_to_list(self, array):
-		"""Add pictures from a list of paths.""" # TODO could be removed
+		"""Add pictures from a list of paths.""" # XXX could be removed
 		for path in array:
 			self.add_one_picture(path, 10, 0)
 		self.restack_indexes()
 
 	def add_one_picture(self, filename, stt, trt):
-		pass
+		pass # Implemented in non-abstract classes
 
 	############################################################################
 
@@ -101,6 +115,7 @@ class DWEAbstractView():
 		self.set_unsaved()
 		direct_child = self.get_view_widget().get_children()[index]
 		self.get_view_widget().remove(direct_child)
+		direct_child.destroy()
 		self.update_length()
 		self.restack_indexes()
 
@@ -198,7 +213,6 @@ class DWERowsView(DWEAbstractView):
 		label = Gtk.Label(visible=True, \
 		             label=_("Add new pictures, or open an existing XML file."))
 		self.list_box.set_placeholder(label)
-		self.list_box.set_sort_func(self.sort_list)
 		self.add_view(self.list_box)
 
 	def get_view_widget(self):
@@ -223,7 +237,6 @@ class DWEThumbnailsView(DWEAbstractView):
 		# label = Gtk.Label(visible=True, \
 		#              label=_("Add new pictures, or open an existing XML file."))
 		# self.flow_box.set_placeholder(label)
-		self.flow_box.set_sort_func(self.sort_list)
 		self.add_view(self.flow_box)
 
 	def get_view_widget(self):

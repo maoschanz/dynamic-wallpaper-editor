@@ -17,7 +17,7 @@
   </object>
 
   <template class="DWEWindow" parent="GtkApplicationWindow">
-    <property name="default-width">810</property>
+    <property name="default-width">800</property>
     <property name="default-height">500</property>
 
     <child type="titlebar">
@@ -162,6 +162,7 @@
                 </child>
               </object>
             </child>
+
             <child>
               <object class="GtkMenuButton" id="apply_btn">
                 <property name="visible">True</property>
@@ -184,6 +185,15 @@
                     </child>
                   </object>
                 </child>
+              </object>
+              <packing>
+                <property name="pack-type">end</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSearchEntry" id="search_entry">
+                <property name="visible">True</property>
+                <property name="placeholder-text" translatable="yes">Find a picture</property>
               </object>
               <packing>
                 <property name="pack-type">end</property>
