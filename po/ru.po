@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-25 03:14+0200\n"
+"POT-Creation-Date: 2019-09-26 16:45+0200\n"
 "PO-Revision-Date: 2019-07-10 17:33+0600\n"
 "Last-Translator: Dead Mozay <dead_mozay@opensuse.org>\n"
 "Language-Team: Russian <dead_mozay@opensuse.org>\n"
@@ -56,27 +56,27 @@ msgstr ""
 msgid "The grid layout"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:41
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:49
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:57
 msgid ""
 "The app can now optionally display pictures using a grid layout instead of a "
 "list."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:57
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:65
 msgid ""
 "Finally fix the bug with corrupted files, and fix minor bugs concerning "
 "\"set as wallpaper\"."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:65
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:73
 msgid ""
 "Better UI for the slideshow mode, more helpful labels for the daylight mode, "
 "other desktop environments support and various bug fixes."
 msgstr ""
 
 #. That's my name, don't translate it
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:84
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:92
 msgid "Romain F. T."
 msgstr ""
 
@@ -94,7 +94,7 @@ msgid "com.github.maoschanz.DynamicWallpaperEditor"
 msgstr "com.github.maoschanz.DynamicWallpaperEditor"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:16
-#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:239
+#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:84
 #: src/ui/shortcuts.ui:17
 msgid "New Window"
 msgstr "Новое окно"
@@ -107,121 +107,121 @@ msgstr ""
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 
-#: src/ui/menus.ui:13 src/ui/menus.ui:219 src/ui/menus.ui:266
+#: src/ui/menus.ui:13 src/ui/menus.ui:63 src/ui/menus.ui:271
 msgid "Keyboard Shortcuts"
 msgstr "Комбинации клавиш"
 
-#: src/ui/menus.ui:17 src/ui/menus.ui:215 src/ui/menus.ui:270
+#: src/ui/menus.ui:17 src/ui/menus.ui:67 src/ui/menus.ui:267
 msgid "Help"
 msgstr "Справка"
 
-#: src/ui/menus.ui:21 src/ui/menus.ui:229 src/ui/menus.ui:274
+#: src/ui/menus.ui:21 src/ui/menus.ui:71 src/ui/menus.ui:281
 msgid "About"
 msgstr "О приложении"
 
-#: src/ui/menus.ui:25 src/ui/menus.ui:62
+#: src/ui/menus.ui:25 src/ui/menus.ui:110
 msgid "Quit"
 msgstr "Завершить"
 
-#: src/ui/menus.ui:32
-msgid "File"
-msgstr ""
-
-#: src/ui/menus.ui:42 src/ui/window.ui:33 src/window.py:404 src/window.py:405
-msgid "Open"
-msgstr "Открыть"
-
-#: src/ui/menus.ui:48 src/ui/shortcuts.ui:92 src/ui/window.ui:95
-#: src/window.py:315 src/window.py:537
-msgid "Save"
-msgstr "Сохранить"
-
-#: src/ui/menus.ui:52 src/ui/menus.ui:245 src/ui/shortcuts.ui:99
+#: src/ui/menus.ui:42 src/ui/menus.ui:100 src/ui/shortcuts.ui:99
 #: src/window.py:536
 msgid "Save as…"
 msgstr "Сохранить как…"
 
-#: src/ui/menus.ui:58
+#: src/ui/menus.ui:49 src/ui/menus.ui:140
+msgid "List"
+msgstr ""
+
+#: src/ui/menus.ui:55 src/ui/menus.ui:145
+msgid "Grid"
+msgstr ""
+
+#: src/ui/menus.ui:80
+msgid "File"
+msgstr ""
+
+#: src/ui/menus.ui:90 src/ui/window.ui:33 src/window.py:404 src/window.py:405
+msgid "Open"
+msgstr "Открыть"
+
+#: src/ui/menus.ui:96 src/ui/shortcuts.ui:92 src/ui/window.ui:95
+#: src/window.py:315 src/window.py:537
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/ui/menus.ui:106
 msgid "Close"
 msgstr ""
 
-#: src/ui/menus.ui:67
+#: src/ui/menus.ui:116
 msgid "Edit"
 msgstr ""
 
-#: src/ui/menus.ui:71 src/ui/shortcuts.ui:58 src/ui/window.ui:122
+#: src/ui/menus.ui:120 src/ui/shortcuts.ui:58 src/ui/window.ui:122
 #: src/window.py:371
 msgid "Add pictures"
 msgstr "Добавить изображения"
 
-#: src/ui/menus.ui:75 src/ui/shortcuts.ui:65 src/ui/window.ui:134
+#: src/ui/menus.ui:124 src/ui/shortcuts.ui:65 src/ui/window.ui:134
 #: src/window.py:346
 msgid "Add a folder"
 msgstr "Добавить папку"
 
-#: src/ui/menus.ui:81
+#: src/ui/menus.ui:130
 msgid "Find"
 msgstr ""
 
-#: src/ui/menus.ui:86
+#: src/ui/menus.ui:136
 msgid "View"
 msgstr ""
 
-#: src/ui/menus.ui:90 src/ui/menus.ui:252
-msgid "List"
-msgstr ""
-
-#: src/ui/menus.ui:95 src/ui/menus.ui:258
-msgid "Grid"
-msgstr ""
-
-#: src/ui/menus.ui:120 src/ui/window.ui:177
+#: src/ui/menus.ui:171 src/ui/window.ui:177
 msgid "Apply"
 msgstr ""
 
-#: src/ui/menus.ui:124 src/ui/shortcuts.ui:106
+#: src/ui/menus.ui:175 src/ui/shortcuts.ui:106
 msgid "Set as wallpaper"
 msgstr "Сделать фоном рабочего стола"
 
-#: src/ui/menus.ui:127
+#: src/ui/menus.ui:178
 #, fuzzy
 msgid "Wallpaper adjustment"
 msgstr "Настройка фона"
 
-#: src/ui/menus.ui:136 src/ui/menus.ui:182
+#: src/ui/menus.ui:187 src/ui/menus.ui:233
 msgid "Mosaic"
 msgstr "Мозаика"
 
-#: src/ui/menus.ui:141 src/ui/menus.ui:187
+#: src/ui/menus.ui:192 src/ui/menus.ui:238
 msgid "Centered"
 msgstr "Центровать"
 
-#: src/ui/menus.ui:146 src/ui/menus.ui:192
+#: src/ui/menus.ui:197 src/ui/menus.ui:243
 msgid "Scaled"
 msgstr "Масштабировать"
 
-#: src/ui/menus.ui:151 src/ui/menus.ui:197
+#: src/ui/menus.ui:202 src/ui/menus.ui:248
 msgid "Streched"
 msgstr "Растянуть"
 
-#: src/ui/menus.ui:156 src/ui/menus.ui:202
+#: src/ui/menus.ui:207 src/ui/menus.ui:253
 msgid "Zoom"
 msgstr "Увеличить"
 
-#: src/ui/menus.ui:161 src/ui/menus.ui:207
+#: src/ui/menus.ui:212 src/ui/menus.ui:258
 msgid "Spanned"
 msgstr "Натянутое"
 
-#: src/ui/menus.ui:170 src/ui/shortcuts.ui:113
+#: src/ui/menus.ui:221 src/ui/shortcuts.ui:113
 msgid "Set as lock screen"
 msgstr ""
 
-#: src/ui/menus.ui:173
+#: src/ui/menus.ui:224
 #, fuzzy
 msgid "Lock screen adjustment"
 msgstr "Настройка фона"
 
-#: src/ui/menus.ui:223
+#: src/ui/menus.ui:275
 msgid "User manual"
 msgstr ""
 
@@ -443,6 +443,10 @@ msgstr "Это изображение длится от {0} до {1}"
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr "Переход к следующему изображению длится от {0} до {1}"
 
+#: src/view.py:214
+msgid "Add new pictures, or open an existing XML file."
+msgstr "Добавьте новые изображения или откройте существующий файл XML."
+
 #: src/window.py:225
 msgid "This desktop environnement isn't supported."
 msgstr "Эта среда рабочего стола не поддерживается."
@@ -498,9 +502,6 @@ msgstr "Сохранить %s"
 #: src/window.py:538
 msgid "Untitled"
 msgstr "Без названия"
-
-#~ msgid "Add new pictures, or open an existing XML file."
-#~ msgstr "Добавьте новые изображения или откройте существующий файл XML."
 
 #~ msgid "Adjustment options for the wallpaper"
 #~ msgstr "Варианты настройки для обоев"

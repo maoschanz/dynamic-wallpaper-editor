@@ -36,6 +36,8 @@
     <title>Delete pictures</title>
     <p>You can remove a picture using its <gui style="button">Delete</gui>
     button.</p>
+    <p>When you have a lot of pictures, you can find the one you want to delete
+    using the search entry.</p>
   </section>
 
 </page>

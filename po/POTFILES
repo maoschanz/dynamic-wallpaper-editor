@@ -10,4 +10,5 @@ src/ui/window.ui
 src/main.py
 src/misc.py
 src/picture_widget.py
+src/view.py
 src/window.py
