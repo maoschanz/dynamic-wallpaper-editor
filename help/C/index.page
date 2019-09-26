@@ -22,62 +22,12 @@
   <p>Dynamic wallpapers are saved as XML files, and this utility helps you
   creating, editing, and applying them.</p>
 
-  <section id="type">
-    <title>Select a type of wallpaper</title>
-    <p>The three available types are:</p>
-    <list>
-      <item><p><gui style="button">Slideshow</gui> (all pictures have the same
-      duration)</p></item>
-      <item><p><gui style="button">Time of the day</gui> (each picture has its
-      own duration, and the total is 24 hours)</p></item>
-      <item><p><gui style="button">Custom</gui> (each picture has its own
-      duration).</p></item>
-    </list>
-    <p>When you open an empty window to create a new wallpaper, the default
-    value is <gui style="button">Custom</gui>.</p>
-    <p>When you open an existing XML file, the existing type is detected.</p>
+  <section id="pictures" style="2column">
+    <title>Managing pictures</title>
   </section>
 
-  <section id="pictures">
-    <title>Add and arrange pictures</title>
-    <p>Use the <gui style="button">Add Pictures</gui> button to append images to
-    your wallpaper. It's possible to use a picture several times in the same
-    slideshow. The <gui style="button">Add a folder</gui> button appends all
-    pictures from a directory to the list.</p>
-    <p>Then you can arrange them as you want by drag-and-dropping pictures, or
-   remove them with <gui style="button">Delete</gui> button.</p>
-    <p>The pictures can be arranged as a list of rows or as a grid of
-    thumbnails, depending on what you set in the primary menu. With both
-    layouts, reordering the pictures works with drag-and-drop.</p>
-  </section>
-
-  <section id="durations">
-    <title>Adjust images duration</title>
-    <media type="image" mime="image/png" src="figures/screenshot.png" its:translate="no"/>
-    <p>Depending on the chosen type, you can set the duration of each picture
-    globally (all pictures will last the same amount of seconds) or
-    individually. You can also set the duration of the transition to the next
-    image, in seconds.</p>
-    <p>If you want to do a wallpaper changing with the daylight, the total
-    amount of time should be 24 hours (86400 seconds), transitions included.
-    The total duration is displayed in the statusbar, at the bottom of the
-    window.</p>
-  </section>
-
-  <section id="start-time">
-    <title>Set the start time</title>
-    <p>If the type is <gui style="menuitem">Daylight</gui>, you should set the
-    moment the slideshow begins from the <gui style="button">Start time</gui>
-    menu.</p>
-  </section>
-
-  <section id="save-apply">
-    <title>Save and apply as wallpaper</title>
-    <p>Save your creation as an XML file with the <gui style="button">Save</gui>
-    button, or the <gui style="button">Save as…</gui> menu item.</p>
-    <p>You can then apply it as your wallpaper or as your lockscreen with the
-    <gui style="button">Apply</gui> menu. Adjustment options (zoom, centered,
-    stretched, etc.) are available.</p>
+  <section id="wallpapers" style="2column">
+    <title>Wallpapers</title>
   </section>
 
 </page>

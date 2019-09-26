@@ -7,6 +7,7 @@
 
 ## Adding and managing pictures
 
+- Important: less ridiculous "automatic fix"
 - Important: placeholder for the grid view too
 - Important: filtering what come from the "add pictures" dialog the same way as for "add a folder"
 <!-- - Very important: **ensure the memory is freed when deleting a row** FIXED?? -->
@@ -14,9 +15,10 @@
 
 ## General
 
-- Important: less ridiculous "automatic fix"
-- Not important: more clear and useful error messages, including line numbers
+- **Important: update HELP and README and SCREENSHOTS**
+- Important: useful help, with several pages
 - Important: headerbar widgets adapting to the window size
+- Not important: more clear and useful error messages, including line numbers
 
 ## Translations
 

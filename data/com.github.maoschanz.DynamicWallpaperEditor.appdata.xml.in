@@ -36,6 +36,14 @@
   </screenshots>
 
   <releases>
+    <!-- <release version="2.3" date="2019-09-30"> -->
+    <!--   <description> -->
+    <!--     <p> -->
+    <!--       Add the ability to search among pictures, fix a memory leak, and -->
+    <!--       update translations. -->
+    <!--     </p> -->
+    <!--   </description> -->
+    <!-- </release> -->
     <release version="2.2.1" date="2019-09-23">
       <description>
         <p>

@@ -1,6 +1,6 @@
 project(
 	'dynamic-wallpaper-editor',
-	version: '2.2.1',
+	version: '2.3.0',
 	meson_version: '>= 0.50.0',
 )
 

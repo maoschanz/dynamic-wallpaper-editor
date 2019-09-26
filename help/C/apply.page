@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its" type="task" style="task"
+      id="apply">
+
+  <info>
+    <link type="guide" xref="index#wallpapers"/>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+    <credit type="author">
+      <name>Romain F. T.</name>
+      <email its:translate="no">rrroschan@gmail.com</email>
+    </credit>
+    <desc>Set your file as wallpaper or as lock screen</desc>
+  </info>
+
+  <title>Apply the wallpaper</title>
+
+  <section id="apply-wp">
+    <title>Apply as wallpaper</title>
+    <p>Once your XML file is <link xref="open_and_save">saved</link>, you can
+    then apply it as your wallpaper with the <gui style="button">Apply</gui>
+    menu.</p>
+    <p>Adjustment options (zoom, centered, stretched, etc.) are available.</p>
+  </section>
+
+  <section id="apply-ls">
+    <title>Apply as wallpaper</title>
+    <p>Once your XML file is saved, you can then apply it as your lockscreen
+    with the <gui style="button">Apply</gui> menu.</p>
+    <p>Adjustment options (zoom, centered, stretched, etc.) are available.</p>
+    <p>This feature is only available if you use GDM3 as your display manager.</p>
+  </section>
+
+</page>

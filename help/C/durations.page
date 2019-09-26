@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its" type="task" style="task"
+      id="durations">
+
+  <info>
+    <link type="guide" xref="index#pictures"/>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+    <credit type="author">
+      <name>Romain F. T.</name>
+      <email its:translate="no">rrroschan@gmail.com</email>
+    </credit>
+    <desc>Pictures and transitions durations</desc>
+  </info>
+
+  <title>Set pictures durations</title>
+
+  <p>You can control the duration of each picture and each transition.</p>
+
+  <section id="type">
+    <title>Select a type of wallpaper</title>
+    <p>To help you doing this, three presets are available:</p>
+    <list>
+      <item><p><gui style="button">Slideshow</gui> (all pictures have the same
+      duration)</p></item>
+      <item><p><gui style="button">Time of the day</gui> (each picture has its
+      own duration, and the total is 24 hours)</p></item>
+      <item><p><gui style="button">Custom</gui> (each picture has its own
+      duration).</p></item>
+    </list>
+    <p>When you open an empty window to create a new wallpaper, the default
+    value is <gui style="button">Custom</gui>.</p>
+    <p>When you <link xref="open_and_save">open an existing XML file</link>, the
+    existing type is detected.</p>
+  </section>
+
+  <section id="durations">
+    <title>Adjust images duration</title>
+    <media type="image" mime="image/png" src="figures/screenshot.png" its:translate="no"/>
+    <p>Depending on the chosen type, you can set the duration of each picture
+    globally (all pictures will last the same amount of seconds) or
+    individually. You can also set the duration of the transition to the next
+    image, in seconds.</p>
+    <p>If you want to do a wallpaper changing with the daylight, the total
+    amount of time should be 24 hours (86400 seconds), transitions included.
+    The total duration is displayed in the statusbar, at the bottom of the
+    window.</p>
+  </section>
+
+  <section id="start-time">
+    <title>Set the start time</title>
+    <p>If the type is <gui style="menuitem">Daylight</gui>, you should set the
+    moment the slideshow begins from the <gui style="button">Start time</gui>
+    menu.</p>
+  </section>
+
+</page>

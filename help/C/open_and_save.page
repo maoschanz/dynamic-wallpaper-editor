@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its" type="task" style="task"
+      id="open_and_save">
+
+  <info>
+    <link type="guide" xref="index#wallpapers"/>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+    <credit type="author">
+      <name>Romain F. T.</name>
+      <email its:translate="no">rrroschan@gmail.com</email>
+    </credit>
+    <desc>Opening and saving your dynamic wallpapers</desc>
+  </info>
+
+  <title>Opening and saving files</title>
+
+  <p>Dynamic wallpapers are saved as XML files.</p>
+
+  <section id="open">
+    <title>Open an existing file</title>
+    <p>With the <gui style="button">Open</gui> button, you can open previously
+    saved dynamic wallpaper files (.xml), and <link xref="add_and_order">edit
+    them</link>.</p>
+  </section>
+
+  <section id="save">
+    <title>Save and apply as wallpaper</title>
+    <p>Save your creation as an XML file with the <gui style="button">Save</gui>
+    button, or the <gui style="button">Save as…</gui> menu item.</p>
+    <p>You can then <link xref="apply">apply it</link> as your wallpaper or
+    as your lockscreen.</p>
+  </section>
+
+</page>

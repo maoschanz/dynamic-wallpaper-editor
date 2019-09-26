@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its" type="task" style="task"
+      id="add_and_order">
+
+  <info>
+    <link type="guide" xref="index#pictures"/>
+    <include xmlns="http://www.w3.org/2001/XInclude" href="legal.xml"/>
+    <credit type="author">
+      <name>Romain F. T.</name>
+      <email its:translate="no">rrroschan@gmail.com</email>
+    </credit>
+    <desc>Add pictures, order them, or delete them</desc>
+  </info>
+
+  <title>Add and order pictures</title>
+
+  <section id="add">
+    <title>Add and arrange pictures</title>
+    <p>Use the <gui style="button">Add Pictures</gui> button to append images to
+    your wallpaper. It's possible to use a picture several times in the same
+    slideshow.</p>
+    <p>The <gui style="button">Add a folder</gui> button appends all
+    pictures from a directory to the list.</p>
+  </section>
+
+  <section id="reorder">
+    <title>Arrange pictures</title>
+    <p>Pictures can be displayed as a grid or as a list, depending on what you
+    set in the primary menu.</p>
+    <p>With both layouts, they can be reordered by drag-and-drop.</p>
+    <!-- TODO illustrer les 2 layouts -->
+  </section>
+
+  <section id="delete">
+    <title>Delete pictures</title>
+    <p>You can remove a picture using its <gui style="button">Delete</gui>
+    button.</p>
+  </section>
+
+</page>

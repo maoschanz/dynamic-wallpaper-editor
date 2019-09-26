@@ -39,7 +39,7 @@
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="valign">center</property>
-            <property name="homogeneous">True</property>
+            <!-- <property name="homogeneous">True</property> -->
             <style><class name="linked"/></style>
             <child>
               <object class="GtkRadioButton" id="type_rbtn1">
