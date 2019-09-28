@@ -19,8 +19,6 @@ using GNOME Builder.
 
 ## If you want to translate the app
 
-#### I assume this will be the most usual contribution so i detail:
-
 - Fork the repo and clone it on your disk.
 - Add your language to `po/LINGUAS`.
 - Build the app once, and then run `ninja -C _build dynamic-wallpaper-editor-update-po`
@@ -78,10 +76,12 @@ permissions in the home, we don't know where the file is, and only get a
 
 - `misc.py` contains general purpose methods, mainly for managing file-chooser
 dialogs, and for generic calculations on durations.
-- `picture_row.py` is the widget corresponding to a row with the thumbnail,
-path, durations and UI elements for a given picture. Rows can be dragged and
-dropped, or deleted.
-- `view.py` manages the list of rows. It is strongly related to its window.
+- `picture_widget.py` defines row and thumbnail objects. Both have an icon,
+a file path, durations and various labels for a given picture. Rows/thumbnails
+can be dragged and dropped, or deleted.
+- `view.py` manages the list of rows, or the grid of thumbnail (depending on the
+user's preference). It provides methods for filtering, sorting, adding, moving,
+or removing pictures. It is strongly related to its window.
 - `window.py` is the window, with:
 	- window-wide actions
 	- management of UI elements corresponding to the selected type of wallpaper

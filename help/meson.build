@@ -10,6 +10,8 @@ gnome.yelp(meson.project_name(),
 	],
 	media: [
 		'figures/icon.png',
-		'figures/screenshot.png'
+		'figures/screenshot_list.png',
+		'figures/screenshot_grid.png',
+		'figures/screenshot_grid_popover.png'
 	]
 )

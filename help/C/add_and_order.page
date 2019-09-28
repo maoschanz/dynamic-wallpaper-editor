@@ -28,8 +28,19 @@
     <title>Arrange pictures</title>
     <p>Pictures can be displayed as a grid or as a list, depending on what you
     set in the primary menu.</p>
-    <p>With both layouts, they can be reordered by drag-and-drop.</p>
-    <!-- TODO illustrer les 2 layouts -->
+    <table rules="colgroups">
+      <tr>
+        <td>
+          <media type="image" mime="image/png" width="100%"
+                 src="figures/screenshot_list.png" its:translate="no" />
+        </td>
+        <td>
+          <media type="image" mime="image/png" width="100%"
+                 src="figures/screenshot_grid.png" its:translate="no" />
+        </td>
+      </tr>
+    </table>
+    <p>With both layouts, pictures can be reordered using drag-and-drop.</p>
   </section>
 
   <section id="delete">

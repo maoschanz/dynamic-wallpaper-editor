@@ -36,11 +36,12 @@
 
   <section id="durations">
     <title>Adjust images duration</title>
-    <media type="image" mime="image/png" src="figures/screenshot.png" its:translate="no"/>
     <p>Depending on the chosen type, you can set the duration of each picture
     globally (all pictures will last the same amount of seconds) or
     individually. You can also set the duration of the transition to the next
     image, in seconds.</p>
+    <media type="image" mime="image/png" width="100%"
+           src="figures/screenshot_grid_popover.png" its:translate="no" />
     <p>If you want to do a wallpaper changing with the daylight, the total
     amount of time should be 24 hours (86400 seconds), transitions included.
     The total duration is displayed in the statusbar, at the bottom of the

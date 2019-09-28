@@ -35,9 +35,16 @@ class DWEWindow(Gtk.ApplicationWindow):
 	header_bar = Gtk.Template.Child()
 	start_btn = Gtk.Template.Child()
 	menu_btn = Gtk.Template.Child()
-	save_btn = Gtk.Template.Child()
+	# save_btn = Gtk.Template.Child()
 	apply_btn = Gtk.Template.Child()
 	search_entry = Gtk.Template.Child()
+
+	label_add_pic = Gtk.Template.Child()
+	icon_add_pic = Gtk.Template.Child()
+	label_add_dir = Gtk.Template.Child()
+	icon_add_dir = Gtk.Template.Child()
+	label_save_btn = Gtk.Template.Child()
+	icon_save_btn = Gtk.Template.Child()
 
 	type_rbtn1 = Gtk.Template.Child()
 	type_rbtn2 = Gtk.Template.Child()
@@ -68,6 +75,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		# Connect signals
 		self.connect('delete-event', self.action_close)
+		self.connect('configure-event', self.adapt_to_window_size)
 		self.trans_time_btn.connect('value-changed', self.on_time_change)
 		self.static_time_btn.connect('value-changed', self.on_time_change)
 		self.fix_24_btn.connect('clicked', self.fix_24)
@@ -156,6 +164,37 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.type_rbtn1.connect('toggled', self.radio_btn_helper, 'slideshow')
 		self.type_rbtn2.connect('toggled', self.radio_btn_helper, 'daylight')
 		self.type_rbtn3.connect('toggled', self.radio_btn_helper, 'custom')
+
+	############################################################################
+	# Window size ##############################################################
+
+	def adapt_to_window_size(self, *args):
+		w = self.get_allocated_width()
+		if w < 600:
+			self.set_size([True, True, True])
+		elif w < 690:
+			self.set_size([False, True, True])
+		elif w < 780:
+			self.set_size([False, False, True])
+		else:
+			self.set_size([False, False, False])
+
+	def set_size(self, array):
+		self.set_addpic_compact(array[0])
+		self.set_adddir_compact(array[1])
+		self.set_save_compact(array[2])
+
+	def set_addpic_compact(self, state):
+		self.label_add_pic.set_visible(not state)
+		self.icon_add_pic.set_visible(state)
+
+	def set_adddir_compact(self, state):
+		self.label_add_dir.set_visible(not state)
+		self.icon_add_dir.set_visible(state)
+
+	def set_save_compact(self, state):
+		self.label_save_btn.set_visible(not state)
+		self.icon_save_btn.set_visible(state)
 
 	############################################################################
 	# Wallpaper type ###########################################################
@@ -523,7 +562,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	def update_win_title(self, file_name):
 		self.set_title(file_name)
-		self.save_btn.set_tooltip_text(_("Save %s") % file_name)
+		self.icon_save_btn.set_tooltip_text(_("Save %s") % file_name)
+		self.label_save_btn.set_tooltip_text(_("Save %s") % file_name)
 
 	def action_save_as(self, *args):
 		is_saved = self.run_save_file_chooser()

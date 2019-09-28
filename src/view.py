@@ -28,7 +28,7 @@ class DWEAbstractView():
 		self.length = 0
 		self.searched_str = ''
 
-	def add_view(self, widget):
+	def add_to_view(self, widget):
 		widget.set_sort_func(self.sort_view)
 		widget.set_filter_func(self.filter_view)
 		self.window.scrolled_window.add(widget)
@@ -213,7 +213,7 @@ class DWERowsView(DWEAbstractView):
 		label = Gtk.Label(visible=True, \
 		             label=_("Add new pictures, or open an existing XML file."))
 		self.list_box.set_placeholder(label)
-		self.add_view(self.list_box)
+		self.add_to_view(self.list_box)
 
 	def get_view_widget(self):
 		return self.list_box
@@ -236,8 +236,8 @@ class DWEThumbnailsView(DWEAbstractView):
 		                                  selection_mode=Gtk.SelectionMode.NONE)
 		# label = Gtk.Label(visible=True, \
 		#              label=_("Add new pictures, or open an existing XML file."))
-		# self.flow_box.set_placeholder(label)
-		self.add_view(self.flow_box)
+		# self.flow_box.set_placeholder(label) # FIXME
+		self.add_to_view(self.flow_box)
 
 	def get_view_widget(self):
 		return self.flow_box

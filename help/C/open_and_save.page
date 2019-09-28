@@ -22,6 +22,9 @@
     <p>With the <gui style="button">Open</gui> button, you can open previously
     saved dynamic wallpaper files (.xml), and <link xref="add_and_order">edit
     them</link>.</p>
+    <p>From your file manager, you can also right-click on a dynamic wallpaper
+    XML file, click <gui style="menuitem">Open with an other application</gui>,
+    and select "Dynamic Wallpaper Editor".</p>
   </section>
 
   <section id="save">

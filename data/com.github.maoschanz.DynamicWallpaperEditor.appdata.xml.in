@@ -21,14 +21,14 @@
   <screenshots>
     <screenshot type="default">
       <image type="source">
-        https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot.png
+        https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot_list.png
       </image>
       <!-- caption for screenshot 1 -->
       <caption>An example of a wallpaper changing with daylight</caption>
     </screenshot>
     <screenshot>
       <image type="source">
-        https://pbs.twimg.com/media/EE31jEpWsAYeKv-.jpg
+        https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot_grid.png
       </image>
       <!-- caption for screenshot 2 -->
       <caption>The grid layout</caption>
@@ -36,14 +36,14 @@
   </screenshots>
 
   <releases>
-    <!-- <release version="2.3" date="2019-09-30"> -->
-    <!--   <description> -->
-    <!--     <p> -->
-    <!--       Add the ability to search among pictures, fix a memory leak, and -->
-    <!--       update translations. -->
-    <!--     </p> -->
-    <!--   </description> -->
-    <!-- </release> -->
+    <release version="2.3" date="2019-09-30">
+      <description>
+        <p>
+          Add the ability to search among pictures, fix a memory leak, and
+          update translations.
+        </p>
+      </description>
+    </release>
     <release version="2.2.1" date="2019-09-23">
       <description>
         <p>

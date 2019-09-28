@@ -30,8 +30,8 @@
             <property name="visible">True</property>
             <property name="valign">center</property>
             <property name="action-name">win.open</property>
-            <property name="label" translatable="yes">Open</property>
             <property name="tooltip-text" translatable="yes">Open an existing dynamic wallpaper</property>
+            <property name="label" translatable="yes">Open</property>
           </object>
         </child>
 
@@ -45,6 +45,7 @@
               <object class="GtkRadioButton" id="type_rbtn1">
                 <property name="visible">True</property>
                 <property name="draw-indicator">False</property>
+                <!-- This string must be translated SHORTLY -->
                 <property name="label" translatable="yes">Slideshow</property>
                 <property name="tooltip-text" translatable="yes">A simple succession of pictures.</property>
               </object>
@@ -54,6 +55,7 @@
                 <property name="visible">True</property>
                 <property name="draw-indicator">False</property>
                 <property name="group">type_rbtn1</property>
+                <!-- This string must be translated SHORTLY -->
                 <property name="label" translatable="yes">Daylight</property>
                 <property name="tooltip-text" translatable="yes">Pictures changing with the daylight.</property>
               </object>
@@ -63,6 +65,7 @@
                 <property name="visible">True</property>
                 <property name="draw-indicator">False</property>
                 <property name="group">type_rbtn1</property>
+                <!-- This string must be translated SHORTLY -->
                 <property name="label" translatable="yes">Custom</property>
                 <property name="tooltip-text" translatable="yes">Set the durations you prefer.</property>
               </object>
@@ -88,11 +91,29 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="save_btn">
+          <object class="GtkButton" id="label_save_btn">
             <property name="valign">center</property>
             <property name="visible">True</property>
             <property name="action-name">win.save</property>
+            <property name="tooltip_text" translatable="yes">Save</property>
             <property name="label" translatable="yes">Save</property>
+          </object>
+          <packing>
+            <property name="pack-type">end</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="icon_save_btn">
+            <property name="valign">center</property>
+            <property name="visible">False</property>
+            <property name="action-name">win.save</property>
+            <property name="tooltip_text" translatable="yes">Save</property>
+            <child>
+              <object class="GtkImage" id="icon_save">
+                <property name="visible">True</property>
+                <property name="icon-name">document-save-symbolic</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="pack-type">end</property>
@@ -116,27 +137,54 @@
             <property name="margin">10</property>
             <property name="spacing">15</property>
             <child>
-              <object class="GtkButton">
+              <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="action-name">win.add</property>
-                <property name="label" translatable="yes">Add pictures</property>
                 <property name="expand">False</property>
-                <style><class name="suggested-action"/></style>
+                <property name="orientation">horizontal</property>
+                <child>
+                  <object class="GtkButton" id="label_add_pic">
+                    <property name="visible">True</property>
+                    <property name="action-name">win.add</property>
+                    <property name="label" translatable="yes">Add pictures</property>
+                    <style><class name="suggested-action"/></style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="icon_add_pic">
+                    <property name="visible">True</property>
+                    <property name="action-name">win.add</property>
+                    <property name="tooltip_text" translatable="yes">Add pictures</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon-name">list-add-symbolic</property>
+                      </object>
+                    </child>
+                    <style><class name="suggested-action"/></style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="label_add_dir">
+                    <property name="visible">True</property>
+                    <property name="action-name">win.add_folder</property>
+                    <property name="label" translatable="yes">Add a folder</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="icon_add_dir">
+                    <property name="visible">False</property>
+                    <property name="action-name">win.add_folder</property>
+                    <property name="tooltip_text" translatable="yes">Add a folder</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon-name">folder-open-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <style><class name="linked"/></style>
               </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton">
-                <property name="visible">True</property>
-                <property name="action-name">win.add_folder</property>
-                <property name="label" translatable="yes">Add a folder</property>
-                <property name="expand">False</property>
-              </object>
-              <packing>
-                <property name="pack-type">start</property>
-              </packing>
             </child>
             <child>
               <object class="GtkMenuButton" id="start_btn">
@@ -201,6 +249,8 @@
             </child>
           </object>
         </child>
+
+        <!-- End of the toolbar -->
 
         <child>
           <object class="GtkInfoBar" id="info_bar">

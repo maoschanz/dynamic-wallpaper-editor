@@ -6,7 +6,7 @@ These dynamic wallpapers are XML files, and you don't want to write these files
 yourself: *Dynamic Wallpaper Editor* is a little utility for the creation or the
 edition of these XML wallpapers.
 
-![screenshot (list view)](https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot.png)
+![screenshot (list view)](https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot_list.png)
 
 ### Create XML files
 
@@ -50,6 +50,6 @@ You can install it from flathub.org using the instructions on [this page](https:
 
 ----
 
-![screenshot (grid view)](https://pbs.twimg.com/media/EE31jEpWsAYeKv-.jpg)
+![screenshot (grid view)](https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot_grid_popover.png)
 
 
