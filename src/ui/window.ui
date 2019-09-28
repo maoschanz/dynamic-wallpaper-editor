@@ -280,7 +280,9 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="fix_24_btn">
+                    <property name="action-name">win.fix_24h</property>
                     <property name="label" translatable="yes">Automatic fix</property>
+                    <property name="tooltip_text" translatable="yes">Set durations for a total of 24 hours</property>
                   </object>
                   <packing>
                     <property name="pack-type">end</property>

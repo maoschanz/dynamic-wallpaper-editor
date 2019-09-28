@@ -142,9 +142,9 @@ class DWEAbstractView():
 		for index in range(0, self.length):
 			r = self.get_pic_at(index)
 			if st0 != r.static_time_btn.get_value():
-				return False, 0, 0
+				return False, st0, tr0
 			if tr0 != r.trans_time_btn.get_value():
-				return False, 0, 0
+				return False, st0, tr0
 		return True, st0, tr0
 
 	def fix_24(self, *args):
@@ -161,16 +161,9 @@ class DWEAbstractView():
 			self.get_pic_at(0).trans_time_btn.set_value(0)
 		else:
 			# General case
-			st_total = int(86400 * 0.95)
-			tr_total = 86400 - st_total
-			st_day_pics = int(st_total * 0.60 / (self.length-1))
-			st_night = st_total - st_day_pics * (self.length-1)
-			tr = tr_total / self.length
-			for index in range(0, self.length-1):
-				self.get_pic_at(index).static_time_btn.set_value(st_day_pics)
-				self.get_pic_at(index).trans_time_btn.set_value(tr)
-			self.get_pic_at(-1).static_time_btn.set_value(st_night)
-			self.get_pic_at(-1).trans_time_btn.set_value(tr)
+			self.fix24_method2()
+			self.fix24_method2()
+			self.fix24_method2()
 
 		# Update the tooltips and the status bar
 		for index in range(0, self.length):
@@ -183,6 +176,32 @@ class DWEAbstractView():
 			static0.set_value(static0.get_value() - 1)
 		while self.window.get_total_time() < 86400:
 			static0.set_value(static0.get_value() + 1)
+
+	# def fix24_method1(self):
+	# 	st_total = int(86400 * 0.95)
+	# 	tr_total = 86400 - st_total
+	# 	st_day_pics = int(st_total * 0.60 / (self.length-1))
+	# 	st_night = st_total - st_day_pics * (self.length-1)
+	# 	tr = tr_total / self.length
+	# 	for index in range(0, self.length-1):
+	# 		self.get_pic_at(index).static_time_btn.set_value(st_day_pics)
+	# 		self.get_pic_at(index).trans_time_btn.set_value(tr)
+	# 	self.get_pic_at(-1).static_time_btn.set_value(st_night)
+	# 	self.get_pic_at(-1).trans_time_btn.set_value(tr)
+
+	def fix24_method2(self):
+		current_total = self.window.get_total_time()
+		missing_time = 86400 - current_total
+		for index in range(0, self.length):
+			st_spinbtn = self.get_pic_at(index).static_time_btn
+			self.spinbtn_fix24_update(st_spinbtn, current_total, missing_time)
+			tr_spinbtn = self.get_pic_at(index).trans_time_btn
+			self.spinbtn_fix24_update(tr_spinbtn, current_total, missing_time)
+
+	def spinbtn_fix24_update(self, spinbtn, current_total, missing_time):
+		sb_time = spinbtn.get_value()
+		sb_time += (sb_time / current_total) * missing_time
+		spinbtn.set_value(int(sb_time))
 
 	############################################################################
 

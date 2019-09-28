@@ -78,7 +78,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.connect('configure-event', self.adapt_to_window_size)
 		self.trans_time_btn.connect('value-changed', self.on_time_change)
 		self.static_time_btn.connect('value-changed', self.on_time_change)
-		self.fix_24_btn.connect('clicked', self.fix_24)
 		self.info_bar.connect('close', self.close_notification)
 		self.info_bar.connect('response', self.close_notification)
 		self.search_entry.connect('search-changed', self.search_pics_in_view)
@@ -140,6 +139,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
 		self.add_action_simple('close', self.action_close, ['<Ctrl>w'])
 		self.add_action_simple('search', self.action_search, ['<Ctrl>f'])
+		self.add_action_simple('fix_24h', self.fix_24, None)
 
 		self.add_action_simple('set_as_wallpaper', \
 		                                 self.action_set_wallpaper, ['<Ctrl>r'])
@@ -217,18 +217,18 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	def auto_detect_type(self):
 		total_time = self.get_total_time()
+		is_slideshow = self.is_slideshow()
 		if total_time == 86400:
 			self.type_rbtn2.set_active(True)
-		elif self.is_slideshow():
+		elif is_slideshow:
 			self.type_rbtn1.set_active(True)
 		else:
 			self.type_rbtn3.set_active(True)
 
 	def is_slideshow(self):
 		same, st, tr = self.view.all_have_same_time()
-		if same:
-			self.static_time_btn.set_value(st)
-			self.trans_time_btn.set_value(tr)
+		self.static_time_btn.set_value(st)
+		self.trans_time_btn.set_value(tr)
 		return same
 
 	def set_type_slideshow(self):
@@ -534,6 +534,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 				path_to = child.text
 		if path_from == pic_list[-1]['filename']:
 			pic_list[-1]['trans_time'] = tduration
+		# else: # TODO ?
+		# 	print('transition incorrectly added', path_from, pic_list[-1]['filename'])
 		return pic_list
 
 	def new_row_structure(self, filename, static_time, trans_time):

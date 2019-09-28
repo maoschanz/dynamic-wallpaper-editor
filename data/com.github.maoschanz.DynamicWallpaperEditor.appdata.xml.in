@@ -36,10 +36,11 @@
   </screenshots>
 
   <releases>
-    <release version="2.3" date="2019-09-30">
+    <release version="2.3" date="2019-09-29">
       <description>
         <p>
-          Add the ability to search among pictures, fix a memory leak, and
+          Add the ability to search among pictures, fix a memory leak, improve
+          the automatic duration setting, make the window easier to resize, and
           update translations.
         </p>
       </description>
@@ -49,31 +50,6 @@
         <p>
           The app can now optionally display pictures using a grid layout
           instead of a list.
-        </p>
-      </description>
-    </release>
-    <release version="2.2" date="2019-09-22">
-      <description>
-        <p>
-          The app can now optionally display pictures using a grid layout
-          instead of a list.
-        </p>
-      </description>
-    </release>
-    <release version="2.1" date="2019-07-31">
-      <description>
-        <p>
-          Finally fix the bug with corrupted files, and fix minor bugs
-          concerning "set as wallpaper".
-        </p>
-      </description>
-    </release>
-    <release version="2.0" date="2019-07-09">
-      <description>
-        <p>
-          Better UI for the slideshow mode, more helpful labels for the
-          daylight mode, other desktop environments support and various bug
-          fixes.
         </p>
       </description>
     </release>
@@ -88,6 +64,7 @@
   <content_rating type="oars-1.1" />
   <url type="bugtracker">https://github.com/maoschanz/dynamic-wallpaper-editor/issues</url>
   <url type="homepage">https://github.com/maoschanz/dynamic-wallpaper-editor</url>
+  <url type="donation">https://paypal.me/maoschannz</url>
   <!-- That's my name, don't translate it -->
   <developer_name>Romain F. T.</developer_name>
   <update_contact>rrroschan@gmail.com</update_contact>

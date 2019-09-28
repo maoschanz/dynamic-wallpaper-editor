@@ -66,10 +66,15 @@ class DWEPictureWidget(Gtk.Box):
 			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, w, h, True)
 			image.set_from_pixbuf(pixbuf)
 		except Exception:
-			image.set_from_icon_name('dialog-error-symbolic', Gtk.IconSize.BUTTON)
-			self.set_tooltip_text(_("This picture doesn't exist"))
-			self.time_box.set_sensitive(False)
-			# TODO a button for fixing that ?
+			if self.filename[:5] != '/home/':
+				image.set_from_icon_name('face-uncertain-symbolic', Gtk.IconSize.DIALOG)
+				self.set_tooltip_text(_("This picture might exist, but " + \
+				             "it isn't in your home folder so I can't see it."))
+			else:
+				image.set_from_icon_name('dialog-error-symbolic', Gtk.IconSize.DIALOG)
+				self.set_tooltip_text(_("This picture doesn't exist"))
+				# TODO a button for fixing that ?
+				self.time_box.set_sensitive(False)
 
 		# Ability to be dragged
 		pic_box.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, None, Gdk.DragAction.MOVE)

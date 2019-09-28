@@ -130,6 +130,12 @@
           <attribute name="label" translatable="yes">Find</attribute>
         </item>
       </section>
+      <section>
+        <item>
+          <attribute name="action">win.fix_24h</attribute>
+          <attribute name="label" translatable="yes">Set durations for a total of 24 hours</attribute>
+        </item>
+      </section>
     </submenu>
 
     <submenu>
