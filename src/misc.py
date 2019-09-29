@@ -56,7 +56,11 @@ def time_to_string(total_time):
 	if hours > 0:
 		message += str(_("%s hour(s)") % hours + ' ')
 	if minutes > 0:
+		if minutes < 10:
+			minutes = '0' + str(minutes)
 		message += str(_("%s minute(s)") % minutes + ' ')
+	if seconds < 10:
+		seconds = '0' + str(seconds)
 	message += str(_("%s second(s)") % seconds)
 	return message
 
@@ -66,4 +70,5 @@ def get_hms(total_time):
 	seconds = math.floor(total_time % 60)
 	return hours, mins, seconds
 
+################################################################################
 

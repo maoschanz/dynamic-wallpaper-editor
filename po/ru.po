@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-28 20:12+0200\n"
+"POT-Creation-Date: 2019-09-29 03:06+0200\n"
 "PO-Revision-Date: 2019-07-10 17:33+0600\n"
 "Last-Translator: Dead Mozay <dead_mozay@opensuse.org>\n"
 "Language-Team: Russian <dead_mozay@opensuse.org>\n"
@@ -70,7 +70,7 @@ msgid ""
 msgstr ""
 
 #. That's my name, don't translate it
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:68
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:69
 msgid "Romain F. T."
 msgstr ""
 
@@ -118,7 +118,7 @@ msgid "Quit"
 msgstr "Завершить"
 
 #: src/ui/menus.ui:42 src/ui/menus.ui:100 src/ui/shortcuts.ui:99
-#: src/window.py:578
+#: src/window.py:576
 msgid "Save as…"
 msgstr "Сохранить как…"
 
@@ -134,12 +134,12 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: src/ui/menus.ui:90 src/ui/window.ui:34 src/window.py:443 src/window.py:444
+#: src/ui/menus.ui:90 src/ui/window.ui:34 src/window.py:441 src/window.py:442
 msgid "Open"
 msgstr "Открыть"
 
 #: src/ui/menus.ui:96 src/ui/shortcuts.ui:92 src/ui/window.ui:98
-#: src/ui/window.ui:99 src/ui/window.ui:110 src/window.py:354 src/window.py:579
+#: src/ui/window.ui:99 src/ui/window.ui:110 src/window.py:352 src/window.py:577
 msgid "Save"
 msgstr "Сохранить"
 
@@ -152,12 +152,12 @@ msgid "Edit"
 msgstr ""
 
 #: src/ui/menus.ui:120 src/ui/shortcuts.ui:58 src/ui/window.ui:148
-#: src/ui/window.ui:156 src/window.py:410
+#: src/ui/window.ui:156 src/window.py:408
 msgid "Add pictures"
 msgstr "Добавить изображения"
 
 #: src/ui/menus.ui:124 src/ui/shortcuts.ui:65 src/ui/window.ui:170
-#: src/ui/window.ui:177 src/window.py:385
+#: src/ui/window.ui:177 src/window.py:383
 msgid "Add a folder"
 msgstr "Добавить папку"
 
@@ -421,12 +421,12 @@ msgstr "JPEG изображения"
 msgid "%s hour(s)"
 msgstr "%s час(ы)"
 
-#: src/misc.py:59
+#: src/misc.py:61
 #, python-format
 msgid "%s minute(s)"
 msgstr "%s минут(ы)"
 
-#: src/misc.py:60
+#: src/misc.py:64
 #, python-format
 msgid "%s second(s)"
 msgstr "%s секунд(ы)"
@@ -454,59 +454,59 @@ msgstr "Переход к следующему изображению длитс
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Добавьте новые изображения или откройте существующий файл XML."
 
-#: src/window.py:264
+#: src/window.py:262
 msgid "This desktop environnement isn't supported."
 msgstr "Эта среда рабочего стола не поддерживается."
 
-#: src/window.py:315
+#: src/window.py:313
 #, python-format
 msgid "%s pictures"
 msgstr "%s изображения"
 
-#: src/window.py:316
+#: src/window.py:314
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr "Общее время: %s секунд(ы)"
 
-#: src/window.py:321
+#: src/window.py:319
 msgid "The total duration isn't 24 hours."
 msgstr "Общая продолжительность не 24 часа."
 
-#: src/window.py:351
+#: src/window.py:349
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Существуют несохраненные изменения ваших обоев."
 
-#: src/window.py:352 src/window.py:444 src/window.py:579
+#: src/window.py:350 src/window.py:442 src/window.py:577
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.py:353
+#: src/window.py:351
 msgid "Discard"
 msgstr "Сбросить"
 
-#: src/window.py:384 src/window.py:409 src/window.py:442
+#: src/window.py:382 src/window.py:407 src/window.py:440
 msgid "Loading…"
 msgstr "Загрузка…"
 
-#: src/window.py:471 src/window.py:483
+#: src/window.py:469 src/window.py:481
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Динамические обои повреждены"
 
-#: src/window.py:488
+#: src/window.py:486
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Этот XML-файл не описывает действительные динамические обои"
 
-#: src/window.py:499
+#: src/window.py:497
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Неизвестный элемент: %s"
 
-#: src/window.py:567 src/window.py:568
+#: src/window.py:565 src/window.py:566
 #, python-format
 msgid "Save %s"
 msgstr "Сохранить %s"
 
-#: src/window.py:580
+#: src/window.py:578
 msgid "Untitled"
 msgstr "Без названия"
 

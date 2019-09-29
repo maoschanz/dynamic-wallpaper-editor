@@ -66,7 +66,7 @@ class DWEPictureWidget(Gtk.Box):
 			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, w, h, True)
 			image.set_from_pixbuf(pixbuf)
 		except Exception:
-			if self.filename[:5] != '/home/':
+			if self.filename[:6] != '/home/':
 				image.set_from_icon_name('face-uncertain-symbolic', Gtk.IconSize.DIALOG)
 				self.set_tooltip_text(_("This picture might exist, but " + \
 				             "it isn't in your home folder so I can't see it."))

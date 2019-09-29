@@ -32,10 +32,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	_settings = Gio.Settings.new('com.github.maoschanz.DynamicWallpaperEditor')
 
-	header_bar = Gtk.Template.Child()
 	start_btn = Gtk.Template.Child()
 	menu_btn = Gtk.Template.Child()
-	# save_btn = Gtk.Template.Child()
 	apply_btn = Gtk.Template.Child()
 	search_entry = Gtk.Template.Child()
 
@@ -51,9 +49,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 	type_rbtn3 = Gtk.Template.Child()
 
 	scrolled_window = Gtk.Template.Child()
+
 	trans_time_btn = Gtk.Template.Child()
 	static_time_btn = Gtk.Template.Child()
-
 	time_box_separator = Gtk.Template.Child()
 	time_box = Gtk.Template.Child()
 
@@ -68,7 +66,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.gio_file = None
 		self._is_saved = True
 		self.check_24 = False
-		self.set_show_menubar(False)
 
 		# Used in the "add pictures" file chooser dialog
 		self.preview_picture = Gtk.Image(margin_right=5)
@@ -83,6 +80,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.search_entry.connect('search-changed', self.search_pics_in_view)
 
 		# Build the UI
+		self.set_show_menubar(False)
 		self.view = None
 		self.rebuild_view( self._settings.get_string('display-mode') )
 		self.build_time_popover()
@@ -150,14 +148,14 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		saved_value = self._settings.get_string('display-mode')
 		action_display = Gio.SimpleAction().new_stateful('display-mode', \
-		                           GLib.VariantType.new('s'),
-		                           GLib.Variant.new_string(saved_value))
+		                                   GLib.VariantType.new('s'),
+		                                   GLib.Variant.new_string(saved_value))
 		action_display.connect('change-state', self.on_view_changed)
 		self.add_action(action_display)
 
 		action_type = Gio.SimpleAction().new_stateful('wallpaper-type', \
-		                           GLib.VariantType.new('s'), \
-		                           GLib.Variant.new_string('custom'))
+		                                      GLib.VariantType.new('s'), \
+		                                      GLib.Variant.new_string('custom'))
 		action_type.connect('change-state', self.on_change_wallpaper_type)
 		self.add_action(action_type)
 
@@ -610,7 +608,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 			st_time = None
 			tr_time = None
 		raw_text += self.view.get_pictures_xml(st_time, tr_time)
-		raw_text += """</background>"""
+		raw_text += "</background>"
 		return str(raw_text)
 
 	############################################################################

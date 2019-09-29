@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-28 20:12+0200\n"
+"POT-Creation-Date: 2019-09-29 03:06+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -75,7 +75,7 @@ msgstr ""
 "de grille au lieu d'une liste."
 
 #. That's my name, don't translate it
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:68
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:69
 msgid "Romain F. T."
 msgstr ""
 
@@ -124,7 +124,7 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: src/ui/menus.ui:42 src/ui/menus.ui:100 src/ui/shortcuts.ui:99
-#: src/window.py:578
+#: src/window.py:576
 msgid "Save as…"
 msgstr "Enregistrer sous…"
 
@@ -140,12 +140,12 @@ msgstr "Grille"
 msgid "File"
 msgstr "Fichier"
 
-#: src/ui/menus.ui:90 src/ui/window.ui:34 src/window.py:443 src/window.py:444
+#: src/ui/menus.ui:90 src/ui/window.ui:34 src/window.py:441 src/window.py:442
 msgid "Open"
 msgstr "Ouvrir"
 
 #: src/ui/menus.ui:96 src/ui/shortcuts.ui:92 src/ui/window.ui:98
-#: src/ui/window.ui:99 src/ui/window.ui:110 src/window.py:354 src/window.py:579
+#: src/ui/window.ui:99 src/ui/window.ui:110 src/window.py:352 src/window.py:577
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -158,12 +158,12 @@ msgid "Edit"
 msgstr "Édition"
 
 #: src/ui/menus.ui:120 src/ui/shortcuts.ui:58 src/ui/window.ui:148
-#: src/ui/window.ui:156 src/window.py:410
+#: src/ui/window.ui:156 src/window.py:408
 msgid "Add pictures"
 msgstr "Ajouter des images"
 
 #: src/ui/menus.ui:124 src/ui/shortcuts.ui:65 src/ui/window.ui:170
-#: src/ui/window.ui:177 src/window.py:385
+#: src/ui/window.ui:177 src/window.py:383
 msgid "Add a folder"
 msgstr "Ajouter un dossier"
 
@@ -425,12 +425,12 @@ msgstr "JPEG images"
 msgid "%s hour(s)"
 msgstr "%s heures(s)"
 
-#: src/misc.py:59
+#: src/misc.py:61
 #, python-format
 msgid "%s minute(s)"
 msgstr "%s minute(s)"
 
-#: src/misc.py:60
+#: src/misc.py:64
 #, python-format
 msgid "%s second(s)"
 msgstr "%s seconde(s)"
@@ -460,59 +460,59 @@ msgstr "La transition vers l'image suivante dure de {0} à {1}"
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Ajoutez de nouvelles images, ou ouvrez un fichier XML existant."
 
-#: src/window.py:264
+#: src/window.py:262
 msgid "This desktop environnement isn't supported."
 msgstr "Cet environnement de bureau n'est pas supporté."
 
-#: src/window.py:315
+#: src/window.py:313
 #, python-format
 msgid "%s pictures"
 msgstr "%s images"
 
-#: src/window.py:316
+#: src/window.py:314
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr "Temps total : %s seconde(s)"
 
-#: src/window.py:321
+#: src/window.py:319
 msgid "The total duration isn't 24 hours."
 msgstr "La durée totale n'est pas 24 heures."
 
-#: src/window.py:351
+#: src/window.py:349
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Il y a des modifications non enregistrées à votre fond d'écran."
 
-#: src/window.py:352 src/window.py:444 src/window.py:579
+#: src/window.py:350 src/window.py:442 src/window.py:577
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/window.py:353
+#: src/window.py:351
 msgid "Discard"
 msgstr "Abandonner"
 
-#: src/window.py:384 src/window.py:409 src/window.py:442
+#: src/window.py:382 src/window.py:407 src/window.py:440
 msgid "Loading…"
 msgstr "Chargement…"
 
-#: src/window.py:471 src/window.py:483
+#: src/window.py:469 src/window.py:481
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Ce fond d'écran dynamique est corrompu"
 
-#: src/window.py:488
+#: src/window.py:486
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Ce fichier XML ne décrit pas un fond d'écran dynamique valide"
 
-#: src/window.py:499
+#: src/window.py:497
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Élément inconnu : %s"
 
-#: src/window.py:567 src/window.py:568
+#: src/window.py:565 src/window.py:566
 #, python-format
 msgid "Save %s"
 msgstr "Enregistrer %s"
 
-#: src/window.py:580
+#: src/window.py:578
 msgid "Untitled"
 msgstr "Sans titre"
 
