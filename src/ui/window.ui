@@ -34,44 +34,39 @@
             <property name="label" translatable="yes">Open</property>
           </object>
         </child>
-
-        <child type="title">
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="valign">center</property>
-            <!-- <property name="homogeneous">True</property> -->
-            <style><class name="linked"/></style>
-            <child>
-              <object class="GtkRadioButton" id="type_rbtn1">
-                <property name="visible">True</property>
-                <property name="draw-indicator">False</property>
-                <!-- This string must be translated SHORTLY -->
-                <property name="label" translatable="yes">Slideshow</property>
-                <property name="tooltip-text" translatable="yes">A simple succession of pictures.</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkRadioButton" id="type_rbtn2">
-                <property name="visible">True</property>
-                <property name="draw-indicator">False</property>
-                <property name="group">type_rbtn1</property>
-                <!-- This string must be translated SHORTLY -->
-                <property name="label" translatable="yes">Daylight</property>
-                <property name="tooltip-text" translatable="yes">Pictures changing with the daylight.</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkRadioButton" id="type_rbtn3">
-                <property name="visible">True</property>
-                <property name="draw-indicator">False</property>
-                <property name="group">type_rbtn1</property>
-                <!-- This string must be translated SHORTLY -->
-                <property name="label" translatable="yes">Custom</property>
-                <property name="tooltip-text" translatable="yes">Set the durations you prefer.</property>
-              </object>
-            </child>
-          </object>
-        </child>
+        <!-- <child> -->
+        <!--   <object class="GtkBox"> -->
+        <!--     <property name="visible">True</property> -->
+        <!--     <property name="orientation">horizontal</property> -->
+        <!--     <child> -->
+        <!--       <object class="GtkButton"> -->
+        <!--         <property name="visible">True</property> -->
+        <!--         <property name="action-name">win.undo</property> -->
+        <!--         <property name="tooltip_text" translatable="yes">Undo</property> -->
+        <!--         <child> -->
+        <!--           <object class="GtkImage"> -->
+        <!--             <property name="visible">True</property> -->
+        <!--             <property name="icon-name">edit-undo-symbolic</property> -->
+        <!--           </object> -->
+        <!--         </child> -->
+        <!--       </object> -->
+        <!--     </child> -->
+        <!--     <child> -->
+        <!--       <object class="GtkButton"> -->
+        <!--         <property name="visible">True</property> -->
+        <!--         <property name="action-name">win.redo</property> -->
+        <!--         <property name="tooltip_text" translatable="yes">Redo</property> -->
+        <!--         <child> -->
+        <!--           <object class="GtkImage"> -->
+        <!--             <property name="visible">True</property> -->
+        <!--             <property name="icon-name">edit-redo-symbolic</property> -->
+        <!--           </object> -->
+        <!--         </child> -->
+        <!--       </object> -->
+        <!--     </child> -->
+        <!--     <style><class name="linked"/></style> -->
+        <!--   </object> -->
+        <!-- </child> -->
 
         <child>
           <object class="GtkMenuButton" id="menu_btn">
@@ -240,12 +235,13 @@
             </child>
 
             <child>
-              <object class="GtkBox">
-                <!-- <property name="visible">True</property> -->
+              <object class="GtkBox" id="find_btns_box">
+                <property name="visible">True</property>
                 <child>
                   <object class="GtkRadioButton" id="find_rbtn1">
                     <property name="visible">True</property>
                     <property name="draw-indicator">False</property>
+                    <property name="tooltip-text" translatable="yes">Find a filename</property>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>
@@ -259,6 +255,7 @@
                     <property name="visible">True</property>
                     <property name="draw-indicator">False</property>
                     <property name="group">find_rbtn1</property>
+                    <property name="tooltip-text" translatable="yes">Find and replace</property>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>
@@ -275,7 +272,7 @@
             </child>
 
             <child>
-              <object class="GtkBox">
+              <object class="GtkBox" id="search_box">
                 <property name="visible">True</property>
                 <property name="spacing">5</property>
                 <child>
@@ -285,19 +282,19 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkBox">
-                    <!-- <property name="visible">True</property> -->
+                  <object class="GtkBox" id="replace_box">
+                    <property name="visible">True</property>
                     <child>
-                      <object class="GtkSearchEntry" id="replace_entry">
+                      <object class="GtkEntry" id="replace_entry">
                         <property name="visible">True</property>
-                        <property name="placeholder-text" translatable="yes">Replace string</property>
+                        <property name="placeholder-text" translatable="yes">Replace a filename</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkButton" id="replace_btn">
                         <property name="visible">True</property>
                         <property name="action-name">win.apply_replace</property>
-                        <property name="tooltip_text" translatable="yes">Replace string</property>
+                        <property name="tooltip-text" translatable="yes">Replace a filename</property>
                         <child>
                           <object class="GtkImage">
                             <property name="visible">True</property>
@@ -311,7 +308,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="find_rbtn3">
-                    <!-- <property name="visible">True</property> -->
+                    <property name="visible">True</property>
                     <property name="draw-indicator">False</property>
                     <property name="group">find_rbtn1</property>
                     <child>

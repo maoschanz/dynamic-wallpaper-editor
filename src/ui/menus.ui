@@ -59,6 +59,17 @@
     </section>
     <section>
       <item>
+        <attribute name="action">win.same_duration</attribute>
+        <!-- "all" refers to "all pictures" -->
+        <attribute name="label" translatable="yes">Same duration for all</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.total_24</attribute>
+        <attribute name="label" translatable="yes">Fit the daylight</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="action">app.shortcuts</attribute>
         <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
       </item>
@@ -114,6 +125,16 @@
 
     <submenu>
       <attribute name="label" translatable="yes">Edit</attribute>
+      <!-- <section> -->
+      <!--   <item> -->
+      <!--     <attribute name="action">win.undo</attribute> -->
+      <!--     <attribute name="label" translatable="yes">Undo</attribute> -->
+      <!--   </item> -->
+      <!--   <item> -->
+      <!--     <attribute name="action">win.redo</attribute> -->
+      <!--     <attribute name="label" translatable="yes">Redo</attribute> -->
+      <!--   </item> -->
+      <!-- </section> -->
       <section>
         <item>
           <attribute name="action">win.add</attribute>
@@ -129,15 +150,15 @@
           <attribute name="action">win.find</attribute>
           <attribute name="label" translatable="yes">Find</attribute>
         </item>
-        <!-- <item> -->
-        <!--   <attribute name="action">win.find_replace</attribute> -->
-        <!--   <attribute name="label" translatable="yes">Find and replace</attribute> -->
-        <!-- </item> -->
+        <item>
+          <attribute name="action">win.find_replace</attribute>
+          <attribute name="label" translatable="yes">Find and replace</attribute>
+        </item>
       </section>
       <section>
         <item>
           <attribute name="action">win.fix_24h</attribute>
-          <attribute name="label" translatable="yes">Set durations for a total of 24 hours</attribute>
+          <attribute name="label" translatable="yes">Automatically set a total of 24 hours</attribute>
         </item>
       </section>
     </submenu>
@@ -156,25 +177,16 @@
           <attribute name="target">grid</attribute>
         </item>
       </section>
-      <!-- <section> -->
-      <!--        FIXME ne marche pas car on se repose sur l'activation des radiobuttons dans le code -->
-      <!--   <attribute name="label" translatable="yes">Wallpaper type</attribute> -->
-      <!--   <item> -->
-      <!--     <attribute name="action">win.wallpaper-type</attribute> -->
-      <!--     <attribute name="label" translatable="yes">Slideshow</attribute> -->
-      <!--     <attribute name="target">slideshow</attribute> -->
-      <!--   </item> -->
-      <!--   <item> -->
-      <!--     <attribute name="action">win.wallpaper-type</attribute> -->
-      <!--     <attribute name="label" translatable="yes">Daylight</attribute> -->
-      <!--     <attribute name="target">daylight</attribute> -->
-      <!--   </item> -->
-      <!--   <item> -->
-      <!--     <attribute name="action">win.wallpaper-type</attribute> -->
-      <!--     <attribute name="label" translatable="yes">Custom</attribute> -->
-      <!--     <attribute name="target">custom</attribute> -->
-      <!--   </item> -->
-      <!-- </section> -->
+      <section>
+        <item>
+          <attribute name="action">win.same_duration</attribute>
+          <attribute name="label" translatable="yes">Same duration for all pictures</attribute>
+        </item>
+        <item>
+          <attribute name="action">win.total_24</attribute>
+          <attribute name="label" translatable="yes">Durations fitting the daylight</attribute>
+        </item>
+      </section>
     </submenu>
 
     <submenu id="apply-menu">

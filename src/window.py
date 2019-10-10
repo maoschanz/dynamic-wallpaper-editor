@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk, Gio, GdkPixbuf, GLib
+from gi.repository import Gtk, Gio, GdkPixbuf, GLib, Gdk
 import xml.etree.ElementTree as xml_parser
 
 from .view import DWERowsView
@@ -45,9 +45,12 @@ class DWEWindow(Gtk.ApplicationWindow):
 	label_save_btn = Gtk.Template.Child()
 	icon_save_btn = Gtk.Template.Child()
 
-	type_rbtn1 = Gtk.Template.Child()
-	type_rbtn2 = Gtk.Template.Child()
-	type_rbtn3 = Gtk.Template.Child()
+	find_rbtn1 = Gtk.Template.Child()
+	find_rbtn2 = Gtk.Template.Child()
+	find_rbtn3 = Gtk.Template.Child()
+	search_box = Gtk.Template.Child()
+	replace_box = Gtk.Template.Child()
+	find_btns_box = Gtk.Template.Child()
 
 	scrolled_window = Gtk.Template.Child()
 
@@ -73,7 +76,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		# Connect signals
 		self.connect('delete-event', self.action_close)
-		self.connect('configure-event', self.adapt_to_window_size)
+		# self.connect('configure-event', self.adapt_to_window_size)
 		self.trans_time_btn.connect('value-changed', self.on_time_change)
 		self.static_time_btn.connect('value-changed', self.on_time_change)
 		self.info_bar.connect('close', self.close_notification)
@@ -81,13 +84,13 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.search_entry.connect('search-changed', self.search_pics_in_view)
 
 		# Build the UI
-		# self.set_show_menubar(False)
+		self.set_show_menubar(False)
 		self.view = None
 		self.rebuild_view( self._settings.get_string('display-mode') )
 		self.build_time_popover()
 		self.build_menus()
 		self.build_all_actions()
-		self.type_rbtn3.set_active(True) # Set the default active type to 'custom'
+		self.find_rbtn3.set_active(True) # Hide the search bar
 		self.update_status()
 		self.close_notification()
 
@@ -130,6 +133,12 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if shortcuts is not None:
 			self.app.set_accels_for_action('win.' + action_name, shortcuts)
 
+	def add_action_boolean(self, action_name, default, callback):
+		gvbool = GLib.Variant.new_boolean(default)
+		action = Gio.SimpleAction().new_stateful(action_name, None, gvbool)
+		action.connect('change-state', callback)
+		self.add_action(action)
+
 	def build_all_actions(self):
 		self.add_action_simple('save', self.action_save, ['<Ctrl>s'])
 		self.add_action_simple('save_as', self.action_save_as, ['<Ctrl><Shift>s'])
@@ -138,9 +147,17 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
 		self.add_action_simple('close', self.action_close, ['<Ctrl>w'])
 		self.add_action_simple('find', self.action_find, ['<Ctrl>f'])
-		# self.add_action_simple('find_replace', self.action_f_r, ['<Ctrl>h'])
+		self.add_action_simple('find_replace', self.action_f_r, ['<Ctrl>h'])
 		self.add_action_simple('apply_replace', self.action_replace_str, None)
 		self.add_action_simple('fix_24h', self.fix_24, None)
+
+		self.add_action_simple('pic_replace', self.action_pic_replace, None)
+		self.add_action_simple('pic_open', self.action_pic_open, None)
+		self.add_action_simple('pic_directory', self.action_pic_directory, None)
+		self.add_action_simple('pic_first', self.action_pic_first, None)
+		self.add_action_simple('pic_up', self.action_pic_up, None)
+		self.add_action_simple('pic_down', self.action_pic_down, None)
+		self.add_action_simple('pic_last', self.action_pic_last, None)
 
 		self.add_action_simple('set_as_wallpaper', \
 		                                 self.action_set_wallpaper, ['<Ctrl>r'])
@@ -156,19 +173,18 @@ class DWEWindow(Gtk.ApplicationWindow):
 		action_display.connect('change-state', self.on_view_changed)
 		self.add_action(action_display)
 
-		action_type = Gio.SimpleAction().new_stateful('wallpaper-type', \
-		                                      GLib.VariantType.new('s'), \
-		                                      GLib.Variant.new_string('custom'))
-		action_type.connect('change-state', self.on_change_wallpaper_type)
-		self.add_action(action_type)
+		self.add_action_boolean('same_duration', False, self.set_type_slideshow)
+		self.add_action_boolean('total_24', False, self.set_type_daylight)
 
-		self.type_rbtn1.connect('toggled', self.radio_btn_helper, 'slideshow')
-		self.type_rbtn2.connect('toggled', self.radio_btn_helper, 'daylight')
-		self.type_rbtn3.connect('toggled', self.radio_btn_helper, 'custom')
+		self.find_rbtn1.connect('toggled', self.radio_btn_helper, 'find')
+		self.find_rbtn2.connect('toggled', self.radio_btn_helper, 'replace')
+		self.find_rbtn3.connect('toggled', self.radio_btn_helper, 'hide')
 
 	############################################################################
 	# Window size ##############################################################
 
+	# This method is NOT connected to anything because hardcoded sizes make no
+	# sense in the context of the find&replace widgets being hidden or shown
 	def adapt_to_window_size(self, *args):
 		w = self.get_allocated_width()
 		if w < 660: # TODO do not hardcode the limits
@@ -201,9 +217,19 @@ class DWEWindow(Gtk.ApplicationWindow):
 	# Wallpaper type ###########################################################
 
 	def radio_btn_helper(self, *args):
-		if args[0].get_active():
-			action = self.lookup_action('wallpaper-type')
-			action.change_state(GLib.Variant.new_string(args[1]))
+		if not args[0].get_active():
+			return
+		compact_to_replace = (args[1] == 'replace')
+		self.replace_box.set_visible(compact_to_replace)
+		self.set_addpic_compact(compact_to_replace)
+		self.set_adddir_compact(compact_to_replace)
+		if args[1] == 'hide':
+			self.find_btns_box.set_visible(True)
+			self.search_box.set_visible(False)
+		else:
+			self.find_btns_box.set_visible(False)
+			self.search_box.set_visible(True)
+			self.search_entry.grab_focus()
 
 	def on_change_wallpaper_type(self, *args):
 		new_value = args[1].get_string()
@@ -217,14 +243,11 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.update_status()
 
 	def auto_detect_type(self):
-		total_time = self.get_total_time()
-		is_slideshow = self.is_slideshow()
-		if total_time == 86400:
-			self.type_rbtn2.set_active(True)
-		elif is_slideshow:
-			self.type_rbtn1.set_active(True)
-		else:
-			self.type_rbtn3.set_active(True)
+		is_daylight = self.get_total_time() == 86400
+		gvbool1 = GLib.Variant.new_boolean(is_daylight)
+		self.lookup_action('total_24').set_state(gvbool1)
+		gvb = GLib.Variant.new_boolean(self.is_slideshow() and not is_daylight)
+		self.lookup_action('same_duration').set_state(gvb)
 
 	def is_slideshow(self):
 		same, st, tr = self.view.all_have_same_time()
@@ -232,20 +255,23 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.trans_time_btn.set_value(tr)
 		return same
 
-	def set_type_slideshow(self):
-		self.start_btn.set_visible(False)
-		self.update_global_time_box('slideshow')
-		self.set_check_24(False)
+	def set_type_slideshow(self, *args):
+		is_now_slideshow = not args[0].get_state()
+		args[0].set_state(GLib.Variant.new_boolean(is_now_slideshow))
+		self.start_btn.set_visible(not is_now_slideshow)
+		if is_now_slideshow:
+			gvbool2 = GLib.Variant.new_boolean(False)
+			self.lookup_action('total_24').set_state(gvbool2)
+		self.update_global_time_box()
 
-	def set_type_daylight(self):
-		self.start_btn.set_visible(True)
-		self.update_global_time_box('daylight')
-		self.set_check_24(True)
-
-	def set_type_custom(self):
-		self.start_btn.set_visible(True)
-		self.update_global_time_box('custom')
-		self.set_check_24(False)
+	def set_type_daylight(self, *args):
+		is_now_daylight = not args[0].get_state()
+		args[0].set_state(GLib.Variant.new_boolean(is_now_daylight))
+		self.set_check_24(is_now_daylight)
+		if is_now_daylight:
+			gvbool2 = GLib.Variant.new_boolean(False)
+			self.lookup_action('same_duration').set_state(gvbool2)
+		self.update_global_time_box()
 
 	############################################################################
 	# Wallpaper and lockscreen settings ########################################
@@ -283,24 +309,25 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def fix_24(self, *args):
 		self.view.fix_24()
 
-	def update_global_time_box(self, wtype):
-		"""Show relevant spinbuttons based on the active 'wallpaper-type'."""
-		is_global = (wtype == 'slideshow')
+	def update_global_time_box(self):
+		"""Show relevant spinbuttons based on the active options."""
+		is_global = self.lookup_action('same_duration').get_state()
+		is_daylight = self.lookup_action('total_24').get_state()
 		self.time_box.set_visible(is_global)
 		self.time_box_separator.set_visible(is_global)
-		self.view.update_to_mode(wtype)
+		self.view.update_to_mode(is_global, is_daylight)
 		self.update_status()
 
 	def get_total_time(self):
 		total_time = 0
-		wtype = self.lookup_action('wallpaper-type').get_state().get_string()
-		if wtype == 'slideshow':
+		if self.lookup_action('same_duration').get_state():
 			for index in range(0, self.view.length):
 				total_time += self.static_time_btn.get_value()
 				total_time += self.trans_time_btn.get_value()
 		else:
 			temp_time = self.get_start_time()
-			total_time = self.view.get_total_time(temp_time, wtype) # XXX on devrait transmettre un booléen
+			is_daylight = self.lookup_action('total_24').get_state()
+			total_time = self.view.get_total_time(temp_time, is_daylight)
 		return int(total_time)
 
 	def get_start_time(self):
@@ -370,17 +397,46 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	############################################################################
 
+	def action_pic_replace(self, *args):
+		pic = self.view.get_active_pic()
+		self.status_bar.push(1, _("Loading…"))
+		title = _("Replace %s") % pic.filename
+		file_chooser = self.get_add_pic_dialog(title, False)
+		response = file_chooser.run()
+		if response == Gtk.ResponseType.OK:
+			pic.filename = file_chooser.get_filename()
+			pic.update_filename()
+		self.status_bar.pop(1)
+		file_chooser.destroy()
+
+	def action_pic_open(self, *args):
+		uri = 'file://' + self.view.get_active_pic().filename
+		Gtk.show_uri(None, uri, Gdk.CURRENT_TIME)
+
+	def action_pic_directory(self, *args):
+		trunc = -1 * len(self.view.get_active_pic().filename.split('/')[-1])
+		uri = 'file://' + self.view.get_active_pic().filename
+		Gtk.show_uri(None, uri[0:trunc], Gdk.CURRENT_TIME)
+
+	def action_pic_first(self, *args):
+		self.view.abs_move_pic(-1)
+
+	def action_pic_up(self, *args):
+		self.view.rel_move_pic(False)
+
+	def action_pic_down(self, *args):
+		self.view.rel_move_pic(True)
+
+	def action_pic_last(self, *args):
+		self.view.abs_move_pic(self.view.length)
+
+	############################################################################
+
 	def action_find(self, *args):
-		self.search_entry.grab_focus()
-		# TODO
+		self.find_rbtn1.set_active(True)
 
 	def action_f_r(self, *args):
-		self.search_entry.grab_focus()
-		self.show_all()
-		# TODO
-
-	def action_replace_pic(self, *args):
-		pass # TODO si possible
+		self.find_rbtn2.set_active(True)
 
 	def action_replace_str(self, *args):
 		self._is_saved = False
@@ -421,21 +477,25 @@ class DWEWindow(Gtk.ApplicationWindow):
 		Actual paths are needed in XML files, so it can't be a native dialog: a
 		custom preview has to be set manually."""
 		self.status_bar.push(1, _("Loading…"))
-		file_chooser = Gtk.FileChooserDialog(_("Add pictures"), self,
-		               Gtk.FileChooserAction.OPEN,
-		               (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-		               Gtk.STOCK_OPEN, Gtk.ResponseType.OK),
-		               select_multiple=True,
-		               preview_widget=self.preview_picture,
-		               use_preview_label=False)
-		add_pic_dialog_filters(file_chooser)
-		file_chooser.connect('update-preview', self.cb_update_preview)
+		file_chooser = self.get_add_pic_dialog(_("Add pictures"), True)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
 			array = file_chooser.get_filenames()
 			self.view.add_untimed_pictures_to_list(array)
 		self.status_bar.pop(1)
 		file_chooser.destroy()
+
+	def get_add_pic_dialog(self, title, allow_multiple):
+		file_chooser = Gtk.FileChooserDialog(title, self,
+		               Gtk.FileChooserAction.OPEN,
+		               (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+		               Gtk.STOCK_OPEN, Gtk.ResponseType.OK),
+		               select_multiple=allow_multiple,
+		               preview_widget=self.preview_picture,
+		               use_preview_label=False)
+		add_pic_dialog_filters(file_chooser)
+		file_chooser.connect('update-preview', self.cb_update_preview)
+		return file_chooser
 
 	def cb_update_preview(self, fc):
 		if fc.get_preview_file() is None:
@@ -617,7 +677,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		<minute>""" + str(self.minute_spinbtn.get_value_as_int()) + """</minute>
 		<second>""" + str(self.second_spinbtn.get_value_as_int()) + """</second>
 	</starttime>\n"""
-		if 'slideshow' == self.lookup_action('wallpaper-type').get_state().get_string():
+		if self.lookup_action('same_duration').get_state():
 			st_time = str(self.static_time_btn.get_value())
 			tr_time = str(self.trans_time_btn.get_value())
 		else:

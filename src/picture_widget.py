@@ -36,10 +36,14 @@ class DWEPictureWidget(Gtk.Box):
 		pic_box = builder.get_object('pic_box')
 		self.time_box = builder.get_object('time_box')
 
+		# Thumbnail
+		self.image = builder.get_object('pic_thumbnail')
+		# self.generate_thumbnail() will be called later by self.update_filename
+
 		# File name
 		self.label_widget = builder.get_object('pic_label')
 		self.label_widget.set_ellipsize(Pango.EllipsizeMode.START)
-		self.update_label()
+		self.update_filename()
 
 		# Schedule labels
 		self.static_label = builder.get_object('static_label')
@@ -62,23 +66,6 @@ class DWEPictureWidget(Gtk.Box):
 		self.static_time_btn.set_value(float(stt))
 		self.trans_time_btn.set_value(float(trt))
 
-		# Thumbnail
-		image = builder.get_object('pic_thumbnail')
-		try:
-			# This size is totally arbitrary.
-			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, w, h, True)
-			image.set_from_pixbuf(pixbuf)
-		except Exception:
-			if self.filename[:6] != '/home/':
-				image.set_from_icon_name('face-uncertain-symbolic', Gtk.IconSize.DIALOG)
-				self.set_tooltip_text(_("This picture might exist, but " + \
-				             "it isn't in your home folder so I can't see it."))
-			else:
-				image.set_from_icon_name('dialog-error-symbolic', Gtk.IconSize.DIALOG)
-				self.set_tooltip_text(_("This picture doesn't exist"))
-				# TODO a button for fixing that ?
-				self.time_box.set_sensitive(False)
-
 		# Ability to be dragged
 		pic_box.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, None, Gdk.DragAction.MOVE)
 		pic_box.connect('drag-data-get', self.on_drag_data_get)
@@ -94,9 +81,9 @@ class DWEPictureWidget(Gtk.Box):
 
 	def end_build_ui(self):
 		self.show_all()
-		wtype = self.window.lookup_action('wallpaper-type').get_state().get_string()
-		self.update_to_type(wtype)
-		self.menu_btn.set_visible(False) # XXX à virer
+		is_global = self.window.lookup_action('same_duration').get_state()
+		is_daylight = self.window.lookup_action('total_24').get_state()
+		self.update_to_type(is_global, is_daylight)
 
 	############################################################################
 
@@ -109,19 +96,35 @@ class DWEPictureWidget(Gtk.Box):
 
 	############################################################################
 
-	def update_to_type(self, wtype):
-		self.time_box.set_visible(wtype != 'slideshow')
-		self.static_label.set_visible(wtype == 'daylight')
-		self.transition_label.set_visible(wtype == 'daylight')
+	def update_to_type(self, is_global, is_daylight):
+		self.time_box.set_visible(not is_global)
+		self.static_label.set_visible(is_daylight)
+		self.transition_label.set_visible(is_daylight)
 
 	############################################################################
 
 	def replace(self, searched_str, new_str):
 		self.filename = self.filename.replace(searched_str, new_str)
-		self.update_label()
+		self.update_filename()
 
-	def update_label(self):
+	def update_filename(self):
 		self.label_widget.set_label(self.filename)
+		# the concrete classes will call generate_thumbnail themselves
+
+	def generate_thumbnail(self, w, h):
+		try:
+			# This size is totally arbitrary.
+			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, w, h, True)
+			self.image.set_from_pixbuf(pixbuf)
+		except Exception:
+			if self.filename[:6] != '/home/':
+				self.image.set_from_icon_name('face-uncertain-symbolic', Gtk.IconSize.DIALOG)
+				self.set_tooltip_text(_("This picture might exist, but " + \
+				             "it isn't in your home folder so I can't see it."))
+			else:
+				self.image.set_from_icon_name('dialog-error-symbolic', Gtk.IconSize.DIALOG)
+				self.set_tooltip_text(_("This picture doesn't exist"))
+				self.time_box.set_sensitive(False)
 
 	############################################################################
 
@@ -222,10 +225,12 @@ class DWEPictureRow(DWEPictureWidget):
 	def __init__(self, pic_path, stt, trt, index, window):
 		super().__init__(pic_path, index, window)
 		builder = self.build_ui(stt, trt, 'picture_row.ui', 114, 64)
-
 		# ... ?
-
 		self.end_build_ui()
+
+	def update_filename(self):
+		super().update_filename()
+		self.generate_thumbnail(114, 64)
 
 	############################################################################
 ################################################################################
@@ -245,10 +250,14 @@ class DWEPictureThumbnail(DWEPictureWidget):
 
 		self.end_build_ui()
 
-	def update_to_type(self, wtype):
-		super().update_to_type(wtype)
-		self.alt_label.set_visible(wtype == 'slideshow')
-		self.time_btn.set_visible(wtype != 'slideshow')
+	def update_to_type(self, is_global, is_daylight):
+		super().update_to_type(is_global, is_daylight)
+		self.alt_label.set_visible(is_global)
+		self.time_btn.set_visible(not is_global)
+
+	def update_filename(self):
+		super().update_filename()
+		self.generate_thumbnail(250, 140)
 
 	############################################################################
 ################################################################################

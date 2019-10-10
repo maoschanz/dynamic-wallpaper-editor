@@ -73,6 +73,13 @@ class DWEAbstractView():
 
 	############################################################################
 
+	def get_active_pic(self):
+		rows = self.get_view_widget().get_children()
+		for r in rows:
+			# if btn.get_active() or btn.get_inconsistent() or
+			if r.get_child().menu_btn.get_popover().get_visible():
+				return r.get_child()
+
 	def replace_str(self, new_str):
 		rows = self.get_view_widget().get_children()
 		for r in rows:
@@ -107,6 +114,17 @@ class DWEAbstractView():
 
 	############################################################################
 
+	def rel_move_pic(self, is_down):
+		old_index = self.get_active_pic().indx
+		if is_down:
+			new_index = old_index + 1
+		else:
+			new_index = old_index - 1
+		self.move_pic(old_index, new_index)
+
+	def abs_move_pic(self, new_index):
+		self.move_pic(self.get_active_pic().indx, new_index)
+
 	def move_pic(self, index_from, index_to):
 		self.set_unsaved()
 		if index_from > index_to:
@@ -126,20 +144,20 @@ class DWEAbstractView():
 
 	############################################################################
 
-	def get_total_time(self, temp_time, wtype):
+	def get_total_time(self, temp_time, is_daylight):
 		total_time = 0
 		for index in range(0, self.length):
 			r = self.get_pic_at(index)
 			total_time += r.static_time_btn.get_value()
 			total_time += r.trans_time_btn.get_value()
-			if wtype == 'daylight':
+			if is_daylight:
 				temp_time = r.update_static_label(temp_time)
 				temp_time = r.update_transition_label(temp_time)
 		return total_time
 
-	def update_to_mode(self, wtype):
+	def update_to_mode(self, is_global, is_daylight):
 		for index in range(0, self.length):
-			self.get_pic_at(index).update_to_type(wtype)
+			self.get_pic_at(index).update_to_type(is_global, is_daylight)
 
 	def all_have_same_time(self):
 		st0 = self.get_pic_at(0).static_time_btn.get_value()
