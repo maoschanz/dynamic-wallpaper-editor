@@ -136,6 +136,21 @@
 
             <child>
               <!-- il est hors de la grille parce que la grille on la cache -->
+              <object class="GtkMenuButton" id="menu_btn">
+                <property name="visible">True</property>
+                <property name="relief">none</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="icon-name">view-more-symbolic</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <!-- il est hors de la grille parce que la grille on la cache -->
               <object class="GtkButton" id="delete_btn">
                 <property name="visible">True</property>
                 <property name="relief">none</property>

@@ -126,9 +126,13 @@
       </section>
       <section>
         <item>
-          <attribute name="action">win.search</attribute>
+          <attribute name="action">win.find</attribute>
           <attribute name="label" translatable="yes">Find</attribute>
         </item>
+        <!-- <item> -->
+        <!--   <attribute name="action">win.find_replace</attribute> -->
+        <!--   <attribute name="label" translatable="yes">Find and replace</attribute> -->
+        <!-- </item> -->
       </section>
       <section>
         <item>

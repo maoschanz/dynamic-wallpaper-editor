@@ -238,15 +238,96 @@
                 <property name="pack-type">end</property>
               </packing>
             </child>
+
             <child>
-              <object class="GtkSearchEntry" id="search_entry">
-                <property name="visible">True</property>
-                <property name="placeholder-text" translatable="yes">Find a picture</property>
+              <object class="GtkBox">
+                <!-- <property name="visible">True</property> -->
+                <child>
+                  <object class="GtkRadioButton" id="find_rbtn1">
+                    <property name="visible">True</property>
+                    <property name="draw-indicator">False</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon-name">edit-find-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="find_rbtn2">
+                    <property name="visible">True</property>
+                    <property name="draw-indicator">False</property>
+                    <property name="group">find_rbtn1</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon-name">edit-find-replace-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <style><class name="linked"/></style>
               </object>
               <packing>
                 <property name="pack-type">end</property>
               </packing>
             </child>
+
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="spacing">5</property>
+                <child>
+                  <object class="GtkSearchEntry" id="search_entry">
+                    <property name="visible">True</property>
+                    <property name="placeholder-text" translatable="yes">Find a picture</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <!-- <property name="visible">True</property> -->
+                    <child>
+                      <object class="GtkSearchEntry" id="replace_entry">
+                        <property name="visible">True</property>
+                        <property name="placeholder-text" translatable="yes">Replace string</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="replace_btn">
+                        <property name="visible">True</property>
+                        <property name="action-name">win.apply_replace</property>
+                        <property name="tooltip_text" translatable="yes">Replace string</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="visible">True</property>
+                            <property name="icon-name">error-correct-symbolic</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <style><class name="linked"/></style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkRadioButton" id="find_rbtn3">
+                    <!-- <property name="visible">True</property> -->
+                    <property name="draw-indicator">False</property>
+                    <property name="group">find_rbtn1</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="icon-name">window-close-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="pack-type">end</property>
+              </packing>
+            </child>
+
           </object>
         </child>
 

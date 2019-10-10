@@ -37,9 +37,9 @@ class DWEPictureWidget(Gtk.Box):
 		self.time_box = builder.get_object('time_box')
 
 		# File name
-		label = builder.get_object('pic_label')
-		label.set_label(self.filename)
-		label.set_ellipsize(Pango.EllipsizeMode.START)
+		self.label_widget = builder.get_object('pic_label')
+		self.label_widget.set_ellipsize(Pango.EllipsizeMode.START)
+		self.update_label()
 
 		# Schedule labels
 		self.static_label = builder.get_object('static_label')
@@ -50,6 +50,9 @@ class DWEPictureWidget(Gtk.Box):
 		# Pic controls
 		delete_btn = builder.get_object('delete_btn')
 		delete_btn.connect('clicked', self.destroy_pic)
+		self.menu_btn = builder.get_object('menu_btn')
+		builder.add_from_resource(UI_PATH + 'picture_menu.ui')
+		self.menu_btn.set_menu_model( builder.get_object('pic-menu') )
 
 		# Picture durations
 		self.static_time_btn = builder.get_object('static_btn')
@@ -93,6 +96,7 @@ class DWEPictureWidget(Gtk.Box):
 		self.show_all()
 		wtype = self.window.lookup_action('wallpaper-type').get_state().get_string()
 		self.update_to_type(wtype)
+		self.menu_btn.set_visible(False) # XXX à virer
 
 	############################################################################
 
@@ -109,6 +113,15 @@ class DWEPictureWidget(Gtk.Box):
 		self.time_box.set_visible(wtype != 'slideshow')
 		self.static_label.set_visible(wtype == 'daylight')
 		self.transition_label.set_visible(wtype == 'daylight')
+
+	############################################################################
+
+	def replace(self, searched_str, new_str):
+		self.filename = self.filename.replace(searched_str, new_str)
+		self.update_label()
+
+	def update_label(self):
+		self.label_widget.set_label(self.filename)
 
 	############################################################################
 

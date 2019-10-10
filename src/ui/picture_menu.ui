@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<interface domain="dynamic-wallpaper-editor">
+  <menu id="pic-menu">
+    <section>
+      <item>
+        <attribute name="action">win.pic_replace</attribute>
+        <attribute name="label" translatable="yes">Replace with…</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="action">win.pic_open</attribute>
+        <attribute name="label" translatable="yes">View picture</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.pic_directory</attribute>
+        <attribute name="label" translatable="yes">View containing directory</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="display-hint">horizontal-buttons</attribute>
+      <item>
+        <attribute name="action">win.pic_first</attribute>
+        <attribute name="label" translatable="yes">Move to first position</attribute>
+        <attribute name="verb-icon">go-top-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.pic_up</attribute>
+        <attribute name="label" translatable="yes">Move up</attribute>
+        <attribute name="verb-icon">go-up-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.pic_down</attribute>
+        <attribute name="label" translatable="yes">Move down</attribute>
+        <attribute name="verb-icon">go-down-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.pic_last</attribute>
+        <attribute name="label" translatable="yes">Move to last position</attribute>
+        <attribute name="verb-icon">go-bottom-symbolic</attribute>
+      </item>
+    </section>
+  </menu>
+
+</interface>

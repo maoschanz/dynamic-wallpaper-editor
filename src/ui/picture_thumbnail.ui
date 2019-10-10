@@ -95,6 +95,23 @@
               </packing>
             </child>
 
+            <child>
+              <object class="GtkMenuButton" id="menu_btn">
+                <property name="visible">True</property>
+                <property name="relief">none</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="icon-name">view-more-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="pack-type">end</property>
+              </packing>
+            </child>
+
           </object>
           <packing>
             <property name="pack-type">end</property>

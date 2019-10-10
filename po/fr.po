@@ -217,7 +217,7 @@ msgstr "Étalé"
 
 #: src/ui/menus.ui:227 src/ui/shortcuts.ui:113
 msgid "Set as lock screen"
-msgstr "Appliquer comme fond d'écran"
+msgstr "Appliquer comme écran de verrouillage"
 
 #: src/ui/menus.ui:230
 msgid "Lock screen adjustment"

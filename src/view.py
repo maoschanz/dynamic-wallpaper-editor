@@ -73,6 +73,11 @@ class DWEAbstractView():
 
 	############################################################################
 
+	def replace_str(self, new_str):
+		rows = self.get_view_widget().get_children()
+		for r in rows:
+			r.get_child().replace(self.searched_str, new_str)
+
 	def search_pic(self, string):
 		self.searched_str = string.lower()
 		self.get_view_widget().invalidate_filter()
@@ -177,21 +182,11 @@ class DWEAbstractView():
 		while self.window.get_total_time() < 86400:
 			static0.set_value(static0.get_value() + 1)
 
-	# def fix24_method1(self):
-	# 	st_total = int(86400 * 0.95)
-	# 	tr_total = 86400 - st_total
-	# 	st_day_pics = int(st_total * 0.60 / (self.length-1))
-	# 	st_night = st_total - st_day_pics * (self.length-1)
-	# 	tr = tr_total / self.length
-	# 	for index in range(0, self.length-1):
-	# 		self.get_pic_at(index).static_time_btn.set_value(st_day_pics)
-	# 		self.get_pic_at(index).trans_time_btn.set_value(tr)
-	# 	self.get_pic_at(-1).static_time_btn.set_value(st_night)
-	# 	self.get_pic_at(-1).trans_time_btn.set_value(tr)
-
 	def fix24_method2(self):
 		current_total = self.window.get_total_time()
 		missing_time = 86400 - current_total
+		if missing_time == 0:
+			return
 		for index in range(0, self.length):
 			st_spinbtn = self.get_pic_at(index).static_time_btn
 			self.spinbtn_fix24_update(st_spinbtn, current_total, missing_time)

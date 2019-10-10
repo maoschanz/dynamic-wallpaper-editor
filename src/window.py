@@ -36,6 +36,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 	menu_btn = Gtk.Template.Child()
 	apply_btn = Gtk.Template.Child()
 	search_entry = Gtk.Template.Child()
+	replace_entry = Gtk.Template.Child()
 
 	label_add_pic = Gtk.Template.Child()
 	icon_add_pic = Gtk.Template.Child()
@@ -80,7 +81,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.search_entry.connect('search-changed', self.search_pics_in_view)
 
 		# Build the UI
-		self.set_show_menubar(False)
+		# self.set_show_menubar(False)
 		self.view = None
 		self.rebuild_view( self._settings.get_string('display-mode') )
 		self.build_time_popover()
@@ -136,7 +137,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('add', self.action_add, ['<Ctrl>a'])
 		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
 		self.add_action_simple('close', self.action_close, ['<Ctrl>w'])
-		self.add_action_simple('search', self.action_search, ['<Ctrl>f'])
+		self.add_action_simple('find', self.action_find, ['<Ctrl>f'])
+		# self.add_action_simple('find_replace', self.action_f_r, ['<Ctrl>h'])
+		self.add_action_simple('apply_replace', self.action_replace_str, None)
 		self.add_action_simple('fix_24h', self.fix_24, None)
 
 		self.add_action_simple('set_as_wallpaper', \
@@ -168,13 +171,13 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	def adapt_to_window_size(self, *args):
 		w = self.get_allocated_width()
-		if w < 600:
+		if w < 660: # TODO do not hardcode the limits
 			self.set_size([True, True, True])
-		elif w < 690:
+		elif w < 720:
 			self.set_size([False, True, True])
-		elif w < 780:
+		elif w < 800:
 			self.set_size([False, False, True])
-		else:
+		else: # Default size or higher
 			self.set_size([False, False, False])
 
 	def set_size(self, array):
@@ -367,8 +370,21 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	############################################################################
 
-	def action_search(self, *args):
+	def action_find(self, *args):
 		self.search_entry.grab_focus()
+		# TODO
+
+	def action_f_r(self, *args):
+		self.search_entry.grab_focus()
+		self.show_all()
+		# TODO
+
+	def action_replace_pic(self, *args):
+		pass # TODO si possible
+
+	def action_replace_str(self, *args):
+		self._is_saved = False
+		self.view.replace_str( self.replace_entry.get_text() )
 
 	def search_pics_in_view(self, *args):
 		self.view.search_pic(args[0].get_text())

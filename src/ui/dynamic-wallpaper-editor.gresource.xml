@@ -2,6 +2,7 @@
 <gresources>
   <gresource prefix="/com/github/maoschanz/DynamicWallpaperEditor">
     <file>ui/menus.ui</file>
+    <file>ui/picture_menu.ui</file>
     <file>ui/picture_row.ui</file>
     <file>ui/picture_thumbnail.ui</file>
     <file>ui/start_time.ui</file>
