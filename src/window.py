@@ -150,6 +150,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('find_replace', self.action_f_r, ['<Ctrl>h'])
 		self.add_action_simple('apply_replace', self.action_replace_str, None)
 		self.add_action_simple('fix_24h', self.fix_24, None)
+		# self.add_action_simple('undo', self.action_undo, ['<Ctrl>z']) # TODO
+		# self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
 
 		self.add_action_simple('pic_replace', self.action_pic_replace, None)
 		self.add_action_simple('pic_open', self.action_pic_open, None)

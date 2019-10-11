@@ -36,6 +36,19 @@
   </screenshots>
 
   <releases>
+    <release version="2.4" date="2019-10-15">
+      <description>
+        <p>
+          Add a picture-wide menu with actions such as "Replace with…", thus
+          missing pictures can be replaces without the necessity to set the
+          durations again, or "View file" to open the file in the system image
+          viewer.
+        </p>
+        <p>
+          Wallpaper types are now managed from the primary menu again.
+        </p>
+      </description>
+    </release>
     <release version="2.3" date="2019-09-29">
       <description>
         <p>

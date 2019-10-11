@@ -6,7 +6,7 @@
       <object class="GtkShortcutsSection">
         <property name="visible">True</property>
         <property name="section-name">shortcuts</property>
-        <property name="max-height">8</property>
+        <property name="max-height">7</property>
         <child>
           <object class="GtkShortcutsGroup">
             <property name="visible">True</property>
@@ -73,8 +73,35 @@
                 <property name="accelerator">&lt;Primary&gt;f</property>
               </object>
             </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="visible">True</property>
+                <property name="title" translatable="yes">Replace a part of filenames</property>
+                <property name="accelerator">&lt;Primary&gt;h</property>
+              </object>
+            </child>
           </object>
         </child>
+        <!-- <child> -->
+        <!--   <object class="GtkShortcutsGroup"> -->
+        <!--     <property name="visible">True</property> -->
+        <!--     <property name="title" translatable="yes">Edition</property> -->
+        <!--     <child> -->
+        <!--       <object class="GtkShortcutsShortcut"> -->
+        <!--         <property name="visible">True</property> -->
+        <!--         <property name="title" translatable="yes">Undo</property> -->
+        <!--         <property name="accelerator">&lt;Primary&gt;z</property> -->
+        <!--       </object> -->
+        <!--     </child> -->
+        <!--     <child> -->
+        <!--       <object class="GtkShortcutsShortcut"> -->
+        <!--         <property name="visible">True</property> -->
+        <!--         <property name="title" translatable="yes">Redo</property> -->
+        <!--         <property name="accelerator">&lt;Primary&gt;&lt;Shift&gt;z</property> -->
+        <!--       </object> -->
+        <!--     </child> -->
+        <!--   </object> -->
+        <!-- </child> -->
         <child>
           <object class="GtkShortcutsGroup">
             <property name="visible">True</property>

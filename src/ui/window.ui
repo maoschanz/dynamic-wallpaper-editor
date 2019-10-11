@@ -287,14 +287,14 @@
                     <child>
                       <object class="GtkEntry" id="replace_entry">
                         <property name="visible">True</property>
-                        <property name="placeholder-text" translatable="yes">Replace a filename</property>
+                        <property name="placeholder-text" translatable="yes">Replace in filenames</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkButton" id="replace_btn">
                         <property name="visible">True</property>
                         <property name="action-name">win.apply_replace</property>
-                        <property name="tooltip-text" translatable="yes">Replace a filename</property>
+                        <property name="tooltip-text" translatable="yes">Replace in filenames</property>
                         <child>
                           <object class="GtkImage">
                             <property name="visible">True</property>

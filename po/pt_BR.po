@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-29 03:06+0200\n"
+"POT-Creation-Date: 2019-10-11 22:54+0200\n"
 "PO-Revision-Date: 2019-05-15 11:25-0300\n"
 "Last-Translator: Antonio HaureN\n"
 "Language-Team: none\n"
@@ -86,7 +86,7 @@ msgid "com.github.maoschanz.DynamicWallpaperEditor"
 msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:16
-#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:84
+#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:95
 #: src/ui/shortcuts.ui:17
 #, fuzzy
 msgid "New Window"
@@ -100,151 +100,212 @@ msgstr ""
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 
-#: src/ui/menus.ui:13 src/ui/menus.ui:63 src/ui/menus.ui:277
+#: src/ui/menus.ui:13 src/ui/menus.ui:74 src/ui/menus.ui:295
 msgid "Keyboard Shortcuts"
 msgstr "com.github.maoschanz.DynamicWallpaperEditor"
 
-#: src/ui/menus.ui:17 src/ui/menus.ui:67 src/ui/menus.ui:273
+#: src/ui/menus.ui:17 src/ui/menus.ui:78 src/ui/menus.ui:291
 msgid "Help"
 msgstr "Ajuda"
 
-#: src/ui/menus.ui:21 src/ui/menus.ui:71 src/ui/menus.ui:287
+#: src/ui/menus.ui:21 src/ui/menus.ui:82 src/ui/menus.ui:305
 msgid "About"
 msgstr "Sobre"
 
-#: src/ui/menus.ui:25 src/ui/menus.ui:110
+#: src/ui/menus.ui:25 src/ui/menus.ui:121
 msgid "Quit"
 msgstr "Sair"
 
-#: src/ui/menus.ui:42 src/ui/menus.ui:100 src/ui/shortcuts.ui:99
-#: src/window.py:576
+#: src/ui/menus.ui:42 src/ui/menus.ui:111 src/ui/shortcuts.ui:126
+#: src/window.py:654
 msgid "Save as…"
 msgstr "Salvar como..."
 
-#: src/ui/menus.ui:49 src/ui/menus.ui:146
+#: src/ui/menus.ui:49 src/ui/menus.ui:173
 msgid "List"
 msgstr ""
 
-#: src/ui/menus.ui:55 src/ui/menus.ui:151
+#: src/ui/menus.ui:55 src/ui/menus.ui:178
 msgid "Grid"
 msgstr ""
 
-#: src/ui/menus.ui:80
+#. "all" refers to "all pictures"
+#: src/ui/menus.ui:64
+#, fuzzy
+msgid "Same duration for all"
+msgstr "A duracao total nao e 24 horas"
+
+#: src/ui/menus.ui:68
+msgid "Fit the daylight"
+msgstr ""
+
+#: src/ui/menus.ui:91
 msgid "File"
 msgstr ""
 
-#: src/ui/menus.ui:90 src/ui/window.ui:34 src/window.py:441 src/window.py:442
+#: src/ui/menus.ui:101 src/ui/window.ui:34 src/window.py:519 src/window.py:520
 msgid "Open"
 msgstr "Abrir"
 
-#: src/ui/menus.ui:96 src/ui/shortcuts.ui:92 src/ui/window.ui:98
-#: src/ui/window.ui:99 src/ui/window.ui:110 src/window.py:352 src/window.py:577
+#: src/ui/menus.ui:107 src/ui/shortcuts.ui:119 src/ui/window.ui:93
+#: src/ui/window.ui:94 src/ui/window.ui:105 src/window.py:384 src/window.py:655
 msgid "Save"
 msgstr "Salvar"
 
-#: src/ui/menus.ui:106
+#: src/ui/menus.ui:117
 msgid "Close"
 msgstr ""
 
-#: src/ui/menus.ui:116
+#: src/ui/menus.ui:127
 msgid "Edit"
 msgstr ""
 
-#: src/ui/menus.ui:120 src/ui/shortcuts.ui:58 src/ui/window.ui:148
-#: src/ui/window.ui:156 src/window.py:408
+#: src/ui/menus.ui:131
+msgid "Undo"
+msgstr ""
+
+#: src/ui/menus.ui:136
+msgid "Redo"
+msgstr ""
+
+#: src/ui/menus.ui:143 src/ui/shortcuts.ui:58 src/ui/window.ui:143
+#: src/ui/window.ui:151 src/window.py:482
 msgid "Add pictures"
 msgstr "Adicionar imagens"
 
-#: src/ui/menus.ui:124 src/ui/shortcuts.ui:65 src/ui/window.ui:170
-#: src/ui/window.ui:177 src/window.py:383
+#: src/ui/menus.ui:147 src/ui/shortcuts.ui:65 src/ui/window.ui:165
+#: src/ui/window.ui:172 src/window.py:457
 msgid "Add a folder"
 msgstr "Adicionar pasta"
 
-#: src/ui/menus.ui:130
+#: src/ui/menus.ui:153
 msgid "Find"
 msgstr ""
 
-#: src/ui/menus.ui:136 src/ui/window.ui:285
+#: src/ui/menus.ui:157 src/ui/window.ui:258
 #, fuzzy
-msgid "Set durations for a total of 24 hours"
+msgid "Find and replace"
+msgstr "Adicionar imagens"
+
+#: src/ui/menus.ui:163
+#, fuzzy
+msgid "Automatically set a total of 24 hours"
 msgstr "A duracao total nao e 24 horas"
 
-#: src/ui/menus.ui:142
+#: src/ui/menus.ui:169
 msgid "View"
 msgstr ""
 
-#: src/ui/menus.ui:177 src/ui/window.ui:225
+#: src/ui/menus.ui:185
+#, fuzzy
+msgid "Same duration for all pictures"
+msgstr "A duracao total nao e 24 horas"
+
+#: src/ui/menus.ui:189
+msgid "Durations fitting the daylight"
+msgstr ""
+
+#: src/ui/menus.ui:195 src/ui/window.ui:220
 msgid "Apply"
 msgstr ""
 
-#: src/ui/menus.ui:181 src/ui/shortcuts.ui:106
+#: src/ui/menus.ui:199 src/ui/shortcuts.ui:133
 msgid "Set as wallpaper"
 msgstr "Definir plano de fundo"
 
-#: src/ui/menus.ui:184
+#: src/ui/menus.ui:202
 #, fuzzy
 msgid "Wallpaper adjustment"
 msgstr "Tipo do Wallpaper"
 
-#: src/ui/menus.ui:193 src/ui/menus.ui:239
+#: src/ui/menus.ui:211 src/ui/menus.ui:257
 msgid "Mosaic"
 msgstr "Mosaico"
 
-#: src/ui/menus.ui:198 src/ui/menus.ui:244
+#: src/ui/menus.ui:216 src/ui/menus.ui:262
 msgid "Centered"
 msgstr "Centralizar"
 
-#: src/ui/menus.ui:203 src/ui/menus.ui:249
+#: src/ui/menus.ui:221 src/ui/menus.ui:267
 msgid "Scaled"
 msgstr "Dimencionar"
 
-#: src/ui/menus.ui:208 src/ui/menus.ui:254
+#: src/ui/menus.ui:226 src/ui/menus.ui:272
 msgid "Streched"
 msgstr "Esticar"
 
-#: src/ui/menus.ui:213 src/ui/menus.ui:259
+#: src/ui/menus.ui:231 src/ui/menus.ui:277
 msgid "Zoom"
 msgstr "Zoom"
 
-#: src/ui/menus.ui:218 src/ui/menus.ui:264
+#: src/ui/menus.ui:236 src/ui/menus.ui:282
 msgid "Spanned"
 msgstr "Incluir"
 
-#: src/ui/menus.ui:227 src/ui/shortcuts.ui:113
+#: src/ui/menus.ui:245 src/ui/shortcuts.ui:140
 msgid "Set as lock screen"
 msgstr ""
 
-#: src/ui/menus.ui:230
+#: src/ui/menus.ui:248
 #, fuzzy
 msgid "Lock screen adjustment"
 msgstr "Ajustes de plano de fundo"
 
-#: src/ui/menus.ui:281
+#: src/ui/menus.ui:299
 msgid "User manual"
 msgstr ""
 
-#: src/ui/picture_row.ui:90 src/ui/picture_thumbnail.ui:150
-#: src/ui/window.ui:335
+#: src/ui/picture_menu.ui:7
+msgid "Replace with…"
+msgstr ""
+
+#: src/ui/picture_menu.ui:13
+#, fuzzy
+msgid "View picture"
+msgstr "%s imagens"
+
+#: src/ui/picture_menu.ui:17
+msgid "View containing directory"
+msgstr ""
+
+#: src/ui/picture_menu.ui:24
+msgid "Move to first position"
+msgstr ""
+
+#: src/ui/picture_menu.ui:29
+msgid "Move up"
+msgstr ""
+
+#: src/ui/picture_menu.ui:34
+msgid "Move down"
+msgstr ""
+
+#: src/ui/picture_menu.ui:39
+msgid "Move to last position"
+msgstr ""
+
+#: src/ui/picture_row.ui:90 src/ui/picture_thumbnail.ui:167
+#: src/ui/window.ui:413
 msgid "Time"
 msgstr "Tempo"
 
-#: src/ui/picture_row.ui:101 src/ui/picture_thumbnail.ui:161
+#: src/ui/picture_row.ui:101 src/ui/picture_thumbnail.ui:178
 msgid ""
 "Time (in seconds) of this image. This doesn't include the time of the "
 "transition."
 msgstr "Tempo (em segundos) dessa imagem. Isso nao inclui o tempo daTransicao"
 
-#: src/ui/picture_row.ui:114 src/ui/picture_thumbnail.ui:174
-#: src/ui/window.ui:357
+#: src/ui/picture_row.ui:114 src/ui/picture_thumbnail.ui:191
+#: src/ui/window.ui:435
 msgid "Transition"
 msgstr "Transicao"
 
-#: src/ui/picture_row.ui:125 src/ui/picture_thumbnail.ui:185
+#: src/ui/picture_row.ui:125 src/ui/picture_thumbnail.ui:202
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr "Tempo (em segundos) da transicao entre essa imagem e a proxima."
 
-#: src/ui/picture_row.ui:143 src/ui/picture_thumbnail.ui:84
+#: src/ui/picture_row.ui:158 src/ui/picture_thumbnail.ui:84
 msgid "Delete"
 msgstr "Excluir"
 
@@ -311,71 +372,63 @@ msgstr "Mostrar ajuda"
 msgid "Pictures"
 msgstr "%s imagens"
 
-#: src/ui/shortcuts.ui:72 src/ui/window.ui:244
+#: src/ui/shortcuts.ui:72 src/ui/window.ui:281
 #, fuzzy
 msgid "Find a picture"
 msgstr "Adicionar imagens"
 
-#: src/ui/shortcuts.ui:81
+#: src/ui/shortcuts.ui:79
+msgid "Replace a part of filenames"
+msgstr ""
+
+#: src/ui/shortcuts.ui:108
 msgid "Wallpaper"
 msgstr "Plano de fundo"
 
-#: src/ui/shortcuts.ui:85 src/ui/window.ui:33
+#: src/ui/shortcuts.ui:112 src/ui/window.ui:33
 msgid "Open an existing dynamic wallpaper"
 msgstr "Abrir um plano de fundo dinamico existente"
 
-#. This string must be translated SHORTLY
-#: src/ui/window.ui:49
-msgid "Slideshow"
-msgstr "Slideshow"
-
-#: src/ui/window.ui:50
-msgid "A simple succession of pictures."
-msgstr ""
-
-#. This string must be translated SHORTLY
-#: src/ui/window.ui:59
-msgid "Daylight"
-msgstr "Daylight"
-
-#: src/ui/window.ui:60
-msgid "Pictures changing with the daylight."
-msgstr ""
-
-#. This string must be translated SHORTLY
-#: src/ui/window.ui:69
-msgid "Custom"
-msgstr "Customizado"
-
-#: src/ui/window.ui:70
-msgid "Set the durations you prefer."
-msgstr ""
-
-#: src/ui/window.ui:81
+#: src/ui/window.ui:76
 msgid "More actions"
 msgstr "Mais acoes"
 
-#: src/ui/window.ui:192
+#: src/ui/window.ui:187
 msgid "Set the exact start time of the wallpaper"
 msgstr "Definir o horario de inicio do wallpaper"
 
-#: src/ui/window.ui:217
+#: src/ui/window.ui:212
 msgid "Apply as wallpaper or lock screen, and set adjustment options"
 msgstr ""
 
-#: src/ui/window.ui:278
+#: src/ui/window.ui:244
+#, fuzzy
+msgid "Find a filename"
+msgstr "Adicionar imagens"
+
+#: src/ui/window.ui:290 src/ui/window.ui:297
+#, fuzzy
+msgid "Replace in filenames"
+msgstr "Adicionar imagens"
+
+#: src/ui/window.ui:356
 msgid "Error starting the application, please report this bug."
 msgstr "Erro ao iniciar a aplicacao, porfavor reportar o bug."
 
-#: src/ui/window.ui:284
+#: src/ui/window.ui:362
 msgid "Automatic fix"
 msgstr "Correcao automarica"
 
-#: src/ui/window.ui:343
+#: src/ui/window.ui:363
+#, fuzzy
+msgid "Set durations for a total of 24 hours"
+msgstr "A duracao total nao e 24 horas"
+
+#: src/ui/window.ui:421
 msgid "Duration of each picture (seconds)"
 msgstr "Duracao de cada imagem (em segundos)"
 
-#: src/ui/window.ui:365
+#: src/ui/window.ui:443
 msgid "Duration of each transition (seconds)"
 msgstr "Duracao de cada transicao (em segundos)"
 
@@ -432,81 +485,95 @@ msgstr "%s minuto(s)"
 msgid "%s second(s)"
 msgstr "%s segundo(s)"
 
-#: src/picture_widget.py:71
+#: src/picture_widget.py:122
 msgid ""
 "This picture might exist, but it isn't in your home folder so I can't see it."
 msgstr ""
 
-#: src/picture_widget.py:75
+#: src/picture_widget.py:126
 msgid "This picture doesn't exist"
 msgstr "Essa imagem nao existe"
 
-#: src/picture_widget.py:134
+#: src/picture_widget.py:150
 #, python-brace-format
 msgid "This picture lasts from {0} to {1}"
 msgstr ""
 
-#: src/picture_widget.py:140
+#: src/picture_widget.py:156
 #, python-brace-format
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr ""
 
-#: src/view.py:233
+#: src/view.py:246
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Adicionar novas imagens, ou abrir uma configuracao XML existente."
 
-#: src/window.py:262
+#: src/window.py:293
 msgid "This desktop environnement isn't supported."
 msgstr ""
 
-#: src/window.py:313
+#: src/window.py:345
 #, python-format
 msgid "%s pictures"
 msgstr "%s imagens"
 
-#: src/window.py:314
+#: src/window.py:346
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr "Tempo total: %s segundo(s)"
 
-#: src/window.py:319
+#: src/window.py:351
 msgid "The total duration isn't 24 hours."
 msgstr "A duracao total nao e 24 horas"
 
-#: src/window.py:349
+#: src/window.py:381
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Existe modificacoes nao salvas no seu wallpaper"
 
-#: src/window.py:350 src/window.py:442 src/window.py:577
+#: src/window.py:382 src/window.py:520 src/window.py:655
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/window.py:351
+#: src/window.py:383
 msgid "Discard"
 msgstr "Discartar"
 
-#: src/window.py:382 src/window.py:407 src/window.py:440
+#: src/window.py:404 src/window.py:456 src/window.py:481 src/window.py:518
 msgid "Loading…"
 msgstr "Carregando..."
 
-#: src/window.py:469 src/window.py:481
+#: src/window.py:405
+#, python-format
+msgid "Replace %s"
+msgstr ""
+
+#: src/window.py:547 src/window.py:559
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Esse wallpaper dinamico no e valido ou esta corrompido"
 
-#: src/window.py:486
+#: src/window.py:564
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Esse arquivo XML nao e um wallpaper dinamico valido"
 
-#: src/window.py:497
+#: src/window.py:575
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Elemento desconhecido: %s"
 
-#: src/window.py:565 src/window.py:566
+#: src/window.py:643 src/window.py:644
 #, fuzzy, python-format
 msgid "Save %s"
 msgstr "Salvar"
 
-#: src/window.py:578
+#: src/window.py:656
 msgid "Untitled"
 msgstr "Sem titulo"
+
+#~ msgid "Slideshow"
+#~ msgstr "Slideshow"
+
+#~ msgid "Daylight"
+#~ msgstr "Daylight"
+
+#~ msgid "Custom"
+#~ msgstr "Customizado"

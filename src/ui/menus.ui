@@ -125,16 +125,18 @@
 
     <submenu>
       <attribute name="label" translatable="yes">Edit</attribute>
-      <!-- <section> -->
-      <!--   <item> -->
-      <!--     <attribute name="action">win.undo</attribute> -->
-      <!--     <attribute name="label" translatable="yes">Undo</attribute> -->
-      <!--   </item> -->
-      <!--   <item> -->
-      <!--     <attribute name="action">win.redo</attribute> -->
-      <!--     <attribute name="label" translatable="yes">Redo</attribute> -->
-      <!--   </item> -->
-      <!-- </section> -->
+      <section>
+        <item>
+          <attribute name="action">win.undo</attribute>
+          <attribute name="label" translatable="yes">Undo</attribute>
+          <attribute name="hidden-when">action-missing</attribute>
+        </item>
+        <item>
+          <attribute name="action">win.redo</attribute>
+          <attribute name="label" translatable="yes">Redo</attribute>
+          <attribute name="hidden-when">action-missing</attribute>
+        </item>
+      </section>
       <section>
         <item>
           <attribute name="action">win.add</attribute>
