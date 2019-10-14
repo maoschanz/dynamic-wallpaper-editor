@@ -32,8 +32,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	_settings = Gio.Settings.new('com.github.maoschanz.DynamicWallpaperEditor')
 
-	start_btn = Gtk.Template.Child()
 	menu_btn = Gtk.Template.Child()
+
+	start_btn = Gtk.Template.Child()
 	apply_btn = Gtk.Template.Child()
 	search_entry = Gtk.Template.Child()
 	replace_entry = Gtk.Template.Child()
@@ -161,22 +162,20 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('pic_down', self.action_pic_down, None)
 		self.add_action_simple('pic_last', self.action_pic_last, None)
 
-		self.add_action_simple('set_as_wallpaper', \
-		                                 self.action_set_wallpaper, ['<Ctrl>r'])
-		self.add_action_simple('set_as_lockscreen', \
-		                                self.action_set_lockscreen, ['<Ctrl>l'])
-		self.lookup_action('set_as_wallpaper').set_enabled(False)
-		self.lookup_action('set_as_lockscreen').set_enabled(False)
+		self.add_action_simple('set_wp', self.action_set_wallpaper, ['<Ctrl>r'])
+		self.add_action_simple('set_ls', self.action_set_lockscreen, ['<Ctrl>l'])
+		self.lookup_action('set_wp').set_enabled(False)
+		self.lookup_action('set_ls').set_enabled(False)
 
-		saved_value = self._settings.get_string('display-mode')
+		saved_value = self._settings.get_string('display-mode') # grid or list
 		action_display = Gio.SimpleAction().new_stateful('display-mode', \
 		                                   GLib.VariantType.new('s'),
 		                                   GLib.Variant.new_string(saved_value))
 		action_display.connect('change-state', self.on_view_changed)
 		self.add_action(action_display)
 
-		self.add_action_boolean('same_duration', False, self.set_type_slideshow)
-		self.add_action_boolean('total_24', False, self.set_type_daylight)
+		self.add_action_boolean('same_duration', False, self.update_type_slideshow)
+		self.add_action_boolean('total_24', False, self.update_type_daylight)
 
 		self.find_rbtn1.connect('toggled', self.radio_btn_helper, 'find')
 		self.find_rbtn2.connect('toggled', self.radio_btn_helper, 'replace')
@@ -218,38 +217,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 	############################################################################
 	# Wallpaper type ###########################################################
 
-	def radio_btn_helper(self, *args):
-		if not args[0].get_active():
-			return
-		compact_to_replace = (args[1] == 'replace')
-		self.replace_box.set_visible(compact_to_replace)
-		self.set_addpic_compact(compact_to_replace)
-		self.set_adddir_compact(compact_to_replace)
-		if args[1] == 'hide':
-			self.find_btns_box.set_visible(True)
-			self.search_box.set_visible(False)
-		else:
-			self.find_btns_box.set_visible(False)
-			self.search_box.set_visible(True)
-			self.search_entry.grab_focus()
-
-	def on_change_wallpaper_type(self, *args):
-		new_value = args[1].get_string()
-		if new_value == 'slideshow':
-			self.set_type_slideshow()
-		elif new_value == 'daylight':
-			self.set_type_daylight()
-		else: # elif new_value == 'custom':
-			self.set_type_custom()
-		args[0].set_state(GLib.Variant.new_string(new_value))
-		self.update_status()
-
 	def auto_detect_type(self):
 		is_daylight = self.get_total_time() == 86400
-		gvbool1 = GLib.Variant.new_boolean(is_daylight)
-		self.lookup_action('total_24').set_state(gvbool1)
-		gvb = GLib.Variant.new_boolean(self.is_slideshow() and not is_daylight)
-		self.lookup_action('same_duration').set_state(gvb)
+		self.set_type_daylight(is_daylight)
+		self.set_type_slideshow(self.is_slideshow() and not is_daylight)
 
 	def is_slideshow(self):
 		same, st, tr = self.view.all_have_same_time()
@@ -257,23 +228,33 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.trans_time_btn.set_value(tr)
 		return same
 
-	def set_type_slideshow(self, *args):
+	def update_type_slideshow(self, *args):
 		is_now_slideshow = not args[0].get_state()
-		args[0].set_state(GLib.Variant.new_boolean(is_now_slideshow))
+		self.set_type_slideshow(is_now_slideshow)
+
+	def set_type_slideshow(self, is_now_slideshow):
+		gvb = GLib.Variant.new_boolean(is_now_slideshow)
+		self.lookup_action('same_duration').set_state(gvb)
 		self.start_btn.set_visible(not is_now_slideshow)
 		if is_now_slideshow:
-			gvbool2 = GLib.Variant.new_boolean(False)
-			self.lookup_action('total_24').set_state(gvbool2)
-		self.update_global_time_box()
+			self.set_type_daylight(False)
+		is_24 = self.lookup_action('total_24').get_state()
+		self.update_global_time_box(is_now_slideshow, is_24)
 
-	def set_type_daylight(self, *args):
+	def update_type_daylight(self, *args):
 		is_now_daylight = not args[0].get_state()
-		args[0].set_state(GLib.Variant.new_boolean(is_now_daylight))
+		self.set_type_daylight(is_now_daylight)
+
+	def set_type_daylight(self, is_now_daylight):
+		gvb = GLib.Variant.new_boolean(is_now_daylight)
+		self.lookup_action('total_24').set_state(gvb)
 		self.set_check_24(is_now_daylight)
 		if is_now_daylight:
-			gvbool2 = GLib.Variant.new_boolean(False)
-			self.lookup_action('same_duration').set_state(gvbool2)
-		self.update_global_time_box()
+			self.set_type_slideshow(False)
+		else:
+			self.close_notification()
+		is_slideshow = self.lookup_action('same_duration').get_state()
+		self.update_global_time_box(is_slideshow, is_now_daylight)
 
 	############################################################################
 	# Wallpaper and lockscreen settings ########################################
@@ -293,10 +274,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.show_notification(_("This desktop environnement isn't supported."))
 		if is_lockscreen:
 			self.app.lookup_action('ls_options').set_enabled(False)
-			self.lookup_action('set_as_lockscreen').set_enabled(False)
+			self.lookup_action('set_ls').set_enabled(False)
 		else:
 			self.app.lookup_action('wp_options').set_enabled(False)
-			self.lookup_action('set_as_wallpaper').set_enabled(False)
+			self.lookup_action('set_wp').set_enabled(False)
 		return ''
 
 	############################################################################
@@ -311,10 +292,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def fix_24(self, *args):
 		self.view.fix_24()
 
-	def update_global_time_box(self):
+	def update_global_time_box(self, is_global, is_daylight):
 		"""Show relevant spinbuttons based on the active options."""
-		is_global = self.lookup_action('same_duration').get_state()
-		is_daylight = self.lookup_action('total_24').get_state()
+		# is_global = self.lookup_action('same_duration').get_state()
+		# is_daylight = self.lookup_action('total_24').get_state()
 		self.time_box.set_visible(is_global)
 		self.time_box_separator.set_visible(is_global)
 		self.view.update_to_mode(is_global, is_daylight)
@@ -433,6 +414,22 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.view.abs_move_pic(self.view.length)
 
 	############################################################################
+	# Find and replace #########################################################
+
+	def radio_btn_helper(self, *args):
+		if not args[0].get_active():
+			return
+		compact_to_replace = (args[1] == 'replace')
+		self.replace_box.set_visible(compact_to_replace)
+		self.set_addpic_compact(compact_to_replace)
+		self.set_adddir_compact(compact_to_replace)
+		if args[1] == 'hide':
+			self.find_btns_box.set_visible(True)
+			self.search_box.set_visible(False)
+		else:
+			self.find_btns_box.set_visible(False)
+			self.search_box.set_visible(True)
+			self.search_entry.grab_focus()
 
 	def action_find(self, *args):
 		self.find_rbtn1.set_active(True)
@@ -530,8 +527,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if self.load_list_from_xml():
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			self.auto_detect_type()
-			self.lookup_action('set_as_wallpaper').set_enabled(True)
-			self.lookup_action('set_as_lockscreen').set_enabled(True)
+			self.lookup_action('set_wp').set_enabled(True)
+			self.lookup_action('set_ls').set_enabled(True)
 			self._is_saved = True
 		else:
 			self.gio_file = None
@@ -635,8 +632,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.gio_file.replace_contents(contents, None, False, \
 		                                         Gio.FileCreateFlags.NONE, None)
 		self._is_saved = True
-		self.lookup_action('set_as_wallpaper').set_enabled(True)
-		self.lookup_action('set_as_lockscreen').set_enabled(True)
+		self.lookup_action('set_wp').set_enabled(True)
+		self.lookup_action('set_ls').set_enabled(True)
 
 	def update_win_title(self, file_name):
 		self.set_title(file_name)
@@ -658,8 +655,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		file_chooser.set_do_overwrite_confirmation(True)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.ACCEPT:
-			self.lookup_action('set_as_wallpaper').set_enabled(True)
-			self.lookup_action('set_as_lockscreen').set_enabled(True)
+			self.lookup_action('set_wp').set_enabled(True)
+			self.lookup_action('set_ls').set_enabled(True)
 			self.gio_file = file_chooser.get_file()
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			is_saved = True

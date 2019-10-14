@@ -19,33 +19,29 @@
 
   <section id="type">
     <title>Select a type of wallpaper</title>
-    <p>To help you doing this, three presets are available:</p>
+    <p>To help you doing this, two presets are available:</p>
     <list>
-      <item><p><gui style="button">Slideshow</gui> (all pictures have the same
-      duration)</p></item>
-      <item><p><gui style="button">Time of the day</gui> (each picture has its
-      own duration, and the total is 24 hours)</p></item>
-      <item><p><gui style="button">Custom</gui> (each picture has its own
-      duration).</p></item>
+      <item><p><gui style="menuitem">Same duration for all</gui> (all pictures
+      will have the same duration)</p></item>
+      <item><p><gui style="menuitem">Fit the daylight</gui> (each picture has
+      its own duration, and the total duration is 24 hours)</p></item>
     </list>
-    <p>When you open an empty window to create a new wallpaper, the default
-    value is <gui style="button">Custom</gui>.</p>
     <p>When you <link xref="open_and_save">open an existing XML file</link>, the
     existing type is detected.</p>
   </section>
 
   <section id="durations">
     <title>Adjust images duration</title>
-    <p>Depending on the chosen type, you can set the duration of each picture
+    <p>Depending on the chosen options, you can set the duration of each picture
     globally (all pictures will last the same amount of seconds) or
     individually. You can also set the duration of the transition to the next
     image, in seconds.</p>
     <media type="image" mime="image/png" width="100%"
            src="figures/screenshot_grid_popover.png" its:translate="no" />
     <p>If you want to do a wallpaper changing with the daylight, the total
-    amount of time should be 24 hours (86400 seconds), transitions included.
-    The total duration is displayed in the statusbar, at the bottom of the
-    window.</p>
+    amount of time should be 24 hours (86400 seconds), transitions included.</p>
+    <p>The total duration is displayed in the statusbar, at the bottom of the
+    window. A button can help you to set the accurate durations.</p>
   </section>
 
   <section id="start-time">

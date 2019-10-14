@@ -32,6 +32,7 @@ class DWEAbstractView():
 		widget.set_sort_func(self.sort_view)
 		widget.set_filter_func(self.filter_view)
 		self.window.scrolled_window.add(widget)
+		self.update_length() # because it couldn't be done before
 
 	def destroy(self):
 		self.reset_view()
@@ -41,6 +42,13 @@ class DWEAbstractView():
 
 	def set_unsaved(self):
 		self.window._is_saved = False
+
+	def update_subtitle(self, is_empty):
+		if is_empty:
+			label = _("Add new pictures, or open an existing XML file.")
+		else:
+			label = _("Drag-and-drop pictures to reorder them.")
+		self.window.get_titlebar().set_subtitle(label)
 
 	############################################################################
 
@@ -52,6 +60,7 @@ class DWEAbstractView():
 
 	def update_length(self):
 		self.length = len(self.get_view_widget().get_children())
+		self.update_subtitle(self.length == 0)
 
 	def restack_indexes(self):
 		"""Ensure rows' self.indx attribute corresponds to the actual index of

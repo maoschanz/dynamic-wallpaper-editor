@@ -10,7 +10,7 @@
       <name>Romain F. T.</name>
       <email its:translate="no">rrroschan@gmail.com</email>
     </credit>
-    <desc>Add pictures, order them, or delete them</desc>
+    <desc>Add pictures, order them, replace them, or delete them</desc>
   </info>
 
   <title>Add and order pictures</title>
@@ -41,6 +41,16 @@
       </tr>
     </table>
     <p>With both layouts, pictures can be reordered using drag-and-drop.</p>
+  </section>
+
+  <section id="replace">
+    <title>Replace pictures</title>
+    <p>If one of your file has been moved or renamed, you can replace a picture
+    using its <gui style="menuitem">Replace with…</gui> menu item.</p>
+    <p>If a lot of picture changed, for example if you renamed their folder, you
+    can use the <gui style="button">Find and replace</gui> feature: search for
+    the part of the filename you want to replace, type what you want as a
+    replacement, and apply.</p>
   </section>
 
   <section id="delete">

@@ -195,7 +195,7 @@
       <attribute name="label" translatable="yes">Apply</attribute>
       <section>
         <item>
-          <attribute name="action">win.set_as_wallpaper</attribute>
+          <attribute name="action">win.set_wp</attribute>
           <attribute name="label" translatable="yes">Set as wallpaper</attribute>
         </item>
         <submenu id="wp-adj-menu">
@@ -241,7 +241,7 @@
       </section>
       <section>
         <item>
-          <attribute name="action">win.set_as_lockscreen</attribute>
+          <attribute name="action">win.set_ls</attribute>
           <attribute name="label" translatable="yes">Set as lock screen</attribute>
         </item>
         <submenu id="ls-adj-menu">
