@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-11 22:54+0200\n"
+"POT-Creation-Date: 2019-10-14 17:08+0200\n"
 "PO-Revision-Date: 2019-07-10 17:33+0600\n"
 "Last-Translator: Dead Mozay <dead_mozay@opensuse.org>\n"
 "Language-Team: Russian <dead_mozay@opensuse.org>\n"
@@ -58,19 +58,30 @@ msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:41
 msgid ""
+"Add a picture-wide menu with actions such as \"Replace with…\", thus missing "
+"pictures can be replaces without the necessity to set the durations again, "
+"or \"View file\" to open the file in the system image viewer."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:47
+msgid "Wallpaper types are now managed from the primary menu again."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:54
+msgid ""
 "Add the ability to search among pictures, fix a memory leak, improve the "
 "automatic duration setting, make the window easier to resize, and update "
 "translations."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:50
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:63
 msgid ""
 "The app can now optionally display pictures using a grid layout instead of a "
 "list."
 msgstr ""
 
 #. That's my name, don't translate it
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:69
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:82
 msgid "Romain F. T."
 msgstr ""
 
@@ -118,7 +129,7 @@ msgid "Quit"
 msgstr "Завершить"
 
 #: src/ui/menus.ui:42 src/ui/menus.ui:111 src/ui/shortcuts.ui:126
-#: src/window.py:654
+#: src/window.py:651
 msgid "Save as…"
 msgstr "Сохранить как…"
 
@@ -144,12 +155,12 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: src/ui/menus.ui:101 src/ui/window.ui:34 src/window.py:519 src/window.py:520
+#: src/ui/menus.ui:101 src/ui/window.ui:34 src/window.py:516 src/window.py:517
 msgid "Open"
 msgstr "Открыть"
 
 #: src/ui/menus.ui:107 src/ui/shortcuts.ui:119 src/ui/window.ui:93
-#: src/ui/window.ui:94 src/ui/window.ui:105 src/window.py:384 src/window.py:655
+#: src/ui/window.ui:94 src/ui/window.ui:105 src/window.py:365 src/window.py:652
 msgid "Save"
 msgstr "Сохранить"
 
@@ -170,12 +181,12 @@ msgid "Redo"
 msgstr ""
 
 #: src/ui/menus.ui:143 src/ui/shortcuts.ui:58 src/ui/window.ui:143
-#: src/ui/window.ui:151 src/window.py:482
+#: src/ui/window.ui:151 src/window.py:479
 msgid "Add pictures"
 msgstr "Добавить изображения"
 
 #: src/ui/menus.ui:147 src/ui/shortcuts.ui:65 src/ui/window.ui:165
-#: src/ui/window.ui:172 src/window.py:457
+#: src/ui/window.ui:172 src/window.py:454
 msgid "Add a folder"
 msgstr "Добавить папку"
 
@@ -504,68 +515,72 @@ msgstr "Это изображение длится от {0} до {1}"
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr "Переход к следующему изображению длится от {0} до {1}"
 
-#: src/view.py:246
+#: src/view.py:48 src/view.py:255
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Добавьте новые изображения или откройте существующий файл XML."
 
-#: src/window.py:293
+#: src/view.py:50
+msgid "Drag-and-drop pictures to reorder them."
+msgstr ""
+
+#: src/window.py:274
 msgid "This desktop environnement isn't supported."
 msgstr "Эта среда рабочего стола не поддерживается."
 
-#: src/window.py:345
+#: src/window.py:326
 #, python-format
 msgid "%s pictures"
 msgstr "%s изображения"
 
-#: src/window.py:346
+#: src/window.py:327
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr "Общее время: %s секунд(ы)"
 
-#: src/window.py:351
+#: src/window.py:332
 msgid "The total duration isn't 24 hours."
 msgstr "Общая продолжительность не 24 часа."
 
-#: src/window.py:381
+#: src/window.py:362
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Существуют несохраненные изменения ваших обоев."
 
-#: src/window.py:382 src/window.py:520 src/window.py:655
+#: src/window.py:363 src/window.py:517 src/window.py:652
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.py:383
+#: src/window.py:364
 msgid "Discard"
 msgstr "Сбросить"
 
-#: src/window.py:404 src/window.py:456 src/window.py:481 src/window.py:518
+#: src/window.py:385 src/window.py:453 src/window.py:478 src/window.py:515
 msgid "Loading…"
 msgstr "Загрузка…"
 
-#: src/window.py:405
+#: src/window.py:386
 #, python-format
 msgid "Replace %s"
 msgstr ""
 
-#: src/window.py:547 src/window.py:559
+#: src/window.py:544 src/window.py:556
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Динамические обои повреждены"
 
-#: src/window.py:564
+#: src/window.py:561
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Этот XML-файл не описывает действительные динамические обои"
 
-#: src/window.py:575
+#: src/window.py:572
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Неизвестный элемент: %s"
 
-#: src/window.py:643 src/window.py:644
+#: src/window.py:640 src/window.py:641
 #, python-format
 msgid "Save %s"
 msgstr "Сохранить %s"
 
-#: src/window.py:656
+#: src/window.py:653
 msgid "Untitled"
 msgstr "Без названия"
 

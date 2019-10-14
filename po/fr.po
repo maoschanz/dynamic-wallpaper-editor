@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-11 22:54+0200\n"
+"POT-Creation-Date: 2019-10-14 17:08+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -44,9 +44,10 @@ msgid ""
 "The duration of each picture and each transition can be set separately or "
 "globally. The total duration can be 24 hours to do a wallpaper fitting the "
 "daylight."
-msgstr "La durée de chaque image et de chaque transition peut être réglée "
-"séparément ou de manière globale. La durée totale peut être de 24 heures pour "
-"faire un fond d'écran s'adaptant à la lumière du jour."
+msgstr ""
+"La durée de chaque image et de chaque transition peut être réglée séparément "
+"ou de manière globale. La durée totale peut être de 24 heures pour faire un "
+"fond d'écran s'adaptant à la lumière du jour."
 
 #. caption for screenshot 1
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:27
@@ -60,6 +61,22 @@ msgstr "La vue en grille"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:41
 msgid ""
+"Add a picture-wide menu with actions such as \"Replace with…\", thus missing "
+"pictures can be replaces without the necessity to set the durations again, "
+"or \"View file\" to open the file in the system image viewer."
+msgstr ""
+"Ajout d'actions à l'échelle de chaque image, telle que \"Remplacer par…\", "
+"ainsi les images manquantes peuvent être remplacées plus facilement ; mais "
+"aussi \"Afficher l'image\" pour ouvrir les images avec le lecteur système."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:47
+msgid "Wallpaper types are now managed from the primary menu again."
+msgstr ""
+"Les types de fond d'écran sont maintenant à nouveau gérés depuis le menu "
+"principal."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:54
+msgid ""
 "Add the ability to search among pictures, fix a memory leak, improve the "
 "automatic duration setting, make the window easier to resize, and update "
 "translations."
@@ -68,7 +85,7 @@ msgstr ""
 "mémoire, améliore le réglage automatique des durées, rend la fenêtre plus "
 "facile à redimensionner, et met à jour les traductions."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:50
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:63
 msgid ""
 "The app can now optionally display pictures using a grid layout instead of a "
 "list."
@@ -77,7 +94,7 @@ msgstr ""
 "de grille au lieu d'une liste."
 
 #. That's my name, don't translate it
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:69
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:82
 msgid "Romain F. T."
 msgstr ""
 
@@ -126,7 +143,7 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: src/ui/menus.ui:42 src/ui/menus.ui:111 src/ui/shortcuts.ui:126
-#: src/window.py:654
+#: src/window.py:651
 msgid "Save as…"
 msgstr "Enregistrer sous…"
 
@@ -151,12 +168,12 @@ msgstr "Concorder avec la lumière du jour"
 msgid "File"
 msgstr "Fichier"
 
-#: src/ui/menus.ui:101 src/ui/window.ui:34 src/window.py:519 src/window.py:520
+#: src/ui/menus.ui:101 src/ui/window.ui:34 src/window.py:516 src/window.py:517
 msgid "Open"
 msgstr "Ouvrir"
 
 #: src/ui/menus.ui:107 src/ui/shortcuts.ui:119 src/ui/window.ui:93
-#: src/ui/window.ui:94 src/ui/window.ui:105 src/window.py:384 src/window.py:655
+#: src/ui/window.ui:94 src/ui/window.ui:105 src/window.py:365 src/window.py:652
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -177,12 +194,12 @@ msgid "Redo"
 msgstr "Rétablir"
 
 #: src/ui/menus.ui:143 src/ui/shortcuts.ui:58 src/ui/window.ui:143
-#: src/ui/window.ui:151 src/window.py:482
+#: src/ui/window.ui:151 src/window.py:479
 msgid "Add pictures"
 msgstr "Ajouter des images"
 
 #: src/ui/menus.ui:147 src/ui/shortcuts.ui:65 src/ui/window.ui:165
-#: src/ui/window.ui:172 src/window.py:457
+#: src/ui/window.ui:172 src/window.py:454
 msgid "Add a folder"
 msgstr "Ajouter un dossier"
 
@@ -504,68 +521,72 @@ msgstr "Cette image dure de {0} à {1}"
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr "La transition vers l'image suivante dure de {0} à {1}"
 
-#: src/view.py:246
+#: src/view.py:48 src/view.py:255
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Ajoutez de nouvelles images, ou ouvrez un fichier XML existant."
 
-#: src/window.py:293
+#: src/view.py:50
+msgid "Drag-and-drop pictures to reorder them."
+msgstr "Glisser-déposer les images pour les réordonner."
+
+#: src/window.py:274
 msgid "This desktop environnement isn't supported."
 msgstr "Cet environnement de bureau n'est pas supporté."
 
-#: src/window.py:345
+#: src/window.py:326
 #, python-format
 msgid "%s pictures"
 msgstr "%s images"
 
-#: src/window.py:346
+#: src/window.py:327
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr "Temps total : %s seconde(s)"
 
-#: src/window.py:351
+#: src/window.py:332
 msgid "The total duration isn't 24 hours."
 msgstr "La durée totale n'est pas 24 heures."
 
-#: src/window.py:381
+#: src/window.py:362
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Il y a des modifications non enregistrées à votre fond d'écran."
 
-#: src/window.py:382 src/window.py:520 src/window.py:655
+#: src/window.py:363 src/window.py:517 src/window.py:652
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/window.py:383
+#: src/window.py:364
 msgid "Discard"
 msgstr "Abandonner"
 
-#: src/window.py:404 src/window.py:456 src/window.py:481 src/window.py:518
+#: src/window.py:385 src/window.py:453 src/window.py:478 src/window.py:515
 msgid "Loading…"
 msgstr "Chargement…"
 
-#: src/window.py:405
+#: src/window.py:386
 #, python-format
 msgid "Replace %s"
 msgstr "Remplacer %s"
 
-#: src/window.py:547 src/window.py:559
+#: src/window.py:544 src/window.py:556
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Ce fond d'écran dynamique est corrompu"
 
-#: src/window.py:564
+#: src/window.py:561
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Ce fichier XML ne décrit pas un fond d'écran dynamique valide"
 
-#: src/window.py:575
+#: src/window.py:572
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Élément inconnu : %s"
 
-#: src/window.py:643 src/window.py:644
+#: src/window.py:640 src/window.py:641
 #, python-format
 msgid "Save %s"
 msgstr "Enregistrer %s"
 
-#: src/window.py:656
+#: src/window.py:653
 msgid "Untitled"
 msgstr "Sans titre"
 
