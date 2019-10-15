@@ -43,8 +43,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 	icon_add_pic = Gtk.Template.Child()
 	label_add_dir = Gtk.Template.Child()
 	icon_add_dir = Gtk.Template.Child()
-	label_save_btn = Gtk.Template.Child()
-	icon_save_btn = Gtk.Template.Child()
 
 	find_rbtn1 = Gtk.Template.Child()
 	find_rbtn2 = Gtk.Template.Child()
@@ -151,8 +149,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('find_replace', self.action_f_r, ['<Ctrl>h'])
 		self.add_action_simple('apply_replace', self.action_replace_str, None)
 		self.add_action_simple('fix_24h', self.fix_24, None)
-		# self.add_action_simple('undo', self.action_undo, ['<Ctrl>z']) # TODO
-		# self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
+		self.add_action_simple('undo', self.action_undo, ['<Ctrl>z']) # TODO
+		self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
 
 		self.add_action_simple('pic_replace', self.action_pic_replace, None)
 		self.add_action_simple('pic_open', self.action_pic_open, None)
@@ -182,25 +180,29 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.find_rbtn3.connect('toggled', self.radio_btn_helper, 'hide')
 
 	############################################################################
+	# History ##################################################################
+
+	def action_undo(self, *args):
+		pass # TODO
+
+	def action_redo(self, *args):
+		pass # TODO
+
+	############################################################################
 	# Window size ##############################################################
 
-	# This method is NOT connected to anything because hardcoded sizes make no
-	# sense in the context of the find&replace widgets being hidden or shown
-	def adapt_to_window_size(self, *args):
-		w = self.get_allocated_width()
-		if w < 660: # TODO do not hardcode the limits
-			self.set_size([True, True, True])
-		elif w < 720:
-			self.set_size([False, True, True])
-		elif w < 800:
-			self.set_size([False, False, True])
-		else: # Default size or higher
-			self.set_size([False, False, False])
+	# def adapt_to_window_size(self, *args):
+	# 	w = self.get_allocated_width()
+	# 	if w < 660: # TODO do not hardcode the limits
+	# 		self.set_size([True, True])
+	# 	elif w < 720:
+	# 		self.set_size([False, True])
+	# 	else: # Default size or higher
+	# 		self.set_size([False, False])
 
-	def set_size(self, array):
-		self.set_addpic_compact(array[0])
-		self.set_adddir_compact(array[1])
-		self.set_save_compact(array[2])
+	# def set_size(self, array):
+	# 	self.set_addpic_compact(array[0])
+	# 	self.set_adddir_compact(array[1])
 
 	def set_addpic_compact(self, state):
 		self.label_add_pic.set_visible(not state)
@@ -209,10 +211,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def set_adddir_compact(self, state):
 		self.label_add_dir.set_visible(not state)
 		self.icon_add_dir.set_visible(state)
-
-	def set_save_compact(self, state):
-		self.label_save_btn.set_visible(not state)
-		self.icon_save_btn.set_visible(state)
 
 	############################################################################
 	# Wallpaper type ###########################################################
@@ -379,6 +377,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.rebuild_view(state_as_string)
 
 	############################################################################
+	# Picture-wide actions #####################################################
+
+	# TODO these actions are currently not available from the menubar, and not
+	# bound to keyboard shortcuts.
 
 	def action_pic_replace(self, *args):
 		pic = self.view.get_active_pic()

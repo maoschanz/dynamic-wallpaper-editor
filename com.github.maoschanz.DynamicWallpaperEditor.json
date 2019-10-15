@@ -1,29 +1,25 @@
 {
-    "app-id" : "com.github.maoschanz.DynamicWallpaperEditor",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.34",
-    "sdk" : "org.gnome.Sdk",
-    "command" : "dynamic-wallpaper-editor",
-    "finish-args" : [
-        "--share=ipc",
-        "--socket=x11",
-        "--socket=wayland",
-        "--filesystem=home:ro",
-        "--filesystem=xdg-run/dconf",
-        "--filesystem=~/.config/dconf:ro",
-        "--talk-name=ca.desrt.dconf",
-        "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
-    ],
-    "modules" : [
-        {
-            "name" : "dynamic-wallpaper-editor",
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://github.com/maoschanz/dynamic-wallpaper-editor.git"
-                }
-            ]
-        }
-    ]
+	"app-id" : "com.github.maoschanz.DynamicWallpaperEditor",
+	"runtime" : "org.gnome.Platform",
+	"runtime-version" : "3.34",
+	"sdk" : "org.gnome.Sdk",
+	"command" : "dynamic-wallpaper-editor",
+	"finish-args" : [
+		"--share=ipc",
+		"--socket=x11",
+		"--socket=wayland",
+		"--filesystem=home:ro",
+		"--filesystem=xdg-run/dconf",
+		"--filesystem=~/.config/dconf:ro",
+		"--talk-name=ca.desrt.dconf",
+		"--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+	],
+	"modules" : [{
+		"name" : "dynamic-wallpaper-editor",
+		"buildsystem" : "meson",
+		"sources" : [{
+			"type" : "git",
+			"url" : "https://github.com/maoschanz/dynamic-wallpaper-editor.git"
+		}]
+	}]
 }

@@ -129,12 +129,10 @@
         <item>
           <attribute name="action">win.undo</attribute>
           <attribute name="label" translatable="yes">Undo</attribute>
-          <attribute name="hidden-when">action-missing</attribute>
         </item>
         <item>
           <attribute name="action">win.redo</attribute>
           <attribute name="label" translatable="yes">Redo</attribute>
-          <attribute name="hidden-when">action-missing</attribute>
         </item>
       </section>
       <section>
