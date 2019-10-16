@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-14 17:08+0200\n"
-"PO-Revision-Date: 2019-09-26 14:12+0200\n"
+"PO-Revision-Date: 2019-10-16 20:02+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
-"Language-Team: Dutch <kde-i18n-doc@kde.org>\n"
+"Language-Team: Dutch <vistausss@outlook.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.11.70\n"
+"X-Generator: Lokalize 19.08.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:7
@@ -65,10 +65,16 @@ msgid ""
 "pictures can be replaces without the necessity to set the durations again, "
 "or \"View file\" to open the file in the system image viewer."
 msgstr ""
+"Menu toegevoegd aan afbeeldingen met acties als 'Vervangen door...' (om"
+" afbeeldingen "
+"te vervangen zonder de timers opnieuw in te stellen) en 'Bestand tonen' (om"
+" het bestand "
+"te tonen in het afbeeldingsprogramma van je computer."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:47
 msgid "Wallpaper types are now managed from the primary menu again."
 msgstr ""
+"Achtergrondsoorten kunnen als vanouds worden beheerd middels het hoofdmenu."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:54
 msgid ""
@@ -76,6 +82,10 @@ msgid ""
 "automatic duration setting, make the window easier to resize, and update "
 "translations."
 msgstr ""
+"Functie toegevoegd om afbeeldingen te doorzoeken, geheugenprobleem opgelost, "
+"automatische duurinstelling verbeterd, venstergrootte is eenvoudiger"
+" aanpasbaar, "
+"en vertaalupdates."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:63
 msgid ""
@@ -149,13 +159,12 @@ msgstr "Raster"
 
 #. "all" refers to "all pictures"
 #: src/ui/menus.ui:64
-#, fuzzy
 msgid "Same duration for all"
-msgstr "De totaalduur is geen 24 uur."
+msgstr "Alle afbeeldingen op dezelfde duur instellen"
 
 #: src/ui/menus.ui:68
 msgid "Fit the daylight"
-msgstr ""
+msgstr "Tijdens daglicht"
 
 #: src/ui/menus.ui:91
 msgid "File"
@@ -180,11 +189,11 @@ msgstr "Bewerken"
 
 #: src/ui/menus.ui:131
 msgid "Undo"
-msgstr ""
+msgstr "Ongedaan maken"
 
 #: src/ui/menus.ui:136
 msgid "Redo"
-msgstr ""
+msgstr "Opnieuw uitvoeren"
 
 #: src/ui/menus.ui:143 src/ui/shortcuts.ui:58 src/ui/window.ui:143
 #: src/ui/window.ui:151 src/window.py:479
@@ -201,28 +210,24 @@ msgid "Find"
 msgstr "Zoeken"
 
 #: src/ui/menus.ui:157 src/ui/window.ui:258
-#, fuzzy
 msgid "Find and replace"
-msgstr "Zoek een afbeelding"
+msgstr "Zoeken en vervangen"
 
 #: src/ui/menus.ui:163
-#, fuzzy
 msgid "Automatically set a total of 24 hours"
-msgstr "De totaalduur is geen 24 uur."
+msgstr "Automatische totaalduur van 24 uur instellen"
 
 #: src/ui/menus.ui:169
 msgid "View"
 msgstr "Weergave"
 
 #: src/ui/menus.ui:185
-#, fuzzy
 msgid "Same duration for all pictures"
-msgstr "De totaalduur is geen 24 uur."
+msgstr "Alle afbeeldingen op dezelfde duur instellen"
 
 #: src/ui/menus.ui:189
-#, fuzzy
 msgid "Durations fitting the daylight"
-msgstr "Afbeeldingen die zich aanpassen aan het dagdeel."
+msgstr "Timers aanpassen aan daglichturen"
 
 #: src/ui/menus.ui:195 src/ui/window.ui:220
 msgid "Apply"
@@ -274,32 +279,31 @@ msgstr "Gebruikershandleiding"
 
 #: src/ui/picture_menu.ui:7
 msgid "Replace with…"
-msgstr ""
+msgstr "Vervangen door…"
 
 #: src/ui/picture_menu.ui:13
-#, fuzzy
 msgid "View picture"
-msgstr "%s afbeeldingen"
+msgstr "Afbeelding tonen"
 
 #: src/ui/picture_menu.ui:17
 msgid "View containing directory"
-msgstr ""
+msgstr "Bijbehorende map openen"
 
 #: src/ui/picture_menu.ui:24
 msgid "Move to first position"
-msgstr ""
+msgstr "Naar bovenkant verplaatsen"
 
 #: src/ui/picture_menu.ui:29
 msgid "Move up"
-msgstr ""
+msgstr "Omhoog verplaatsen"
 
 #: src/ui/picture_menu.ui:34
 msgid "Move down"
-msgstr ""
+msgstr "Omlaag verplaatsen"
 
 #: src/ui/picture_menu.ui:39
 msgid "Move to last position"
-msgstr ""
+msgstr "Naar onderkant verplaatsen"
 
 #: src/ui/picture_row.ui:90 src/ui/picture_thumbnail.ui:167
 #: src/ui/window.ui:413
@@ -395,7 +399,7 @@ msgstr "Zoek een afbeelding"
 
 #: src/ui/shortcuts.ui:79
 msgid "Replace a part of filenames"
-msgstr ""
+msgstr "Deel van bestandsnamen vervangen"
 
 #: src/ui/shortcuts.ui:108
 msgid "Wallpaper"
@@ -420,14 +424,12 @@ msgstr ""
 "in"
 
 #: src/ui/window.ui:244
-#, fuzzy
 msgid "Find a filename"
-msgstr "Zoek een afbeelding"
+msgstr "Bestandsnaam zoeken"
 
 #: src/ui/window.ui:290 src/ui/window.ui:297
-#, fuzzy
 msgid "Replace in filenames"
-msgstr "Zoek een afbeelding"
+msgstr "Vervangen in bestandsnamen"
 
 #: src/ui/window.ui:356
 msgid "Error starting the application, please report this bug."
@@ -439,9 +441,8 @@ msgid "Automatic fix"
 msgstr "Automatisch oplossen"
 
 #: src/ui/window.ui:363
-#, fuzzy
 msgid "Set durations for a total of 24 hours"
-msgstr "De totaalduur is geen 24 uur."
+msgstr "Stel de duur in (in totaal 24 uur)"
 
 #: src/ui/window.ui:421
 msgid "Duration of each picture (seconds)"
@@ -507,6 +508,8 @@ msgstr "%s seconde(n)"
 msgid ""
 "This picture might exist, but it isn't in your home folder so I can't see it."
 msgstr ""
+"Deze afbeelding bestaat mogelijk wel, maar is niet aanwezig in je"
+" persoonlijke map, en dus onbruikbaar."
 
 #: src/picture_widget.py:126
 msgid "This picture doesn't exist"
@@ -528,7 +531,7 @@ msgstr "Voeg nieuwe afbeeldingen toe of open een bestaand XML-bestand."
 
 #: src/view.py:50
 msgid "Drag-and-drop pictures to reorder them."
-msgstr ""
+msgstr "Versleep afbeeldingen om de volgorde aan te passen."
 
 #: src/window.py:274
 msgid "This desktop environnement isn't supported."
@@ -567,7 +570,7 @@ msgstr "Bezig met laden…"
 #: src/window.py:386
 #, python-format
 msgid "Replace %s"
-msgstr ""
+msgstr "%s vervangen"
 
 #: src/window.py:544 src/window.py:556
 msgid "This dynamic wallpaper is corrupted"
