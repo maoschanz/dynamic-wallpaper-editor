@@ -49,7 +49,7 @@ class Application(Gtk.Application):
 
 		self.add_main_option('version', b'v', GLib.OptionFlags.NONE,
 		                     GLib.OptionArg.NONE,
-		                     _("Print the version and display the 'about' dialog"),
+		                     _("Print the version"),
 		                     None)
 		self.add_main_option('new-window', b'n', GLib.OptionFlags.NONE,
 		                     GLib.OptionArg.NONE, _("Open a new window"), None)
@@ -84,7 +84,6 @@ class Application(Gtk.Application):
 
 		if options.contains('version'):
 			print(_("Dynamic Wallpaper Editor") + ' ' + self._version)
-			self.on_about()
 		elif options.contains('new-window') and len(arguments) == 1:
 			self.on_new_window() # If no file given as argument
 		elif len(arguments) == 1:

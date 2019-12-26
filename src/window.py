@@ -36,8 +36,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	start_btn = Gtk.Template.Child()
 	apply_btn = Gtk.Template.Child()
-	search_entry = Gtk.Template.Child()
-	replace_entry = Gtk.Template.Child()
 
 	label_add_pic = Gtk.Template.Child()
 	icon_add_pic = Gtk.Template.Child()
@@ -48,7 +46,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 	find_rbtn2 = Gtk.Template.Child()
 	find_rbtn3 = Gtk.Template.Child()
 	search_box = Gtk.Template.Child()
-	replace_box = Gtk.Template.Child()
+	search_entry = Gtk.Template.Child()
+	replace_entry = Gtk.Template.Child()
+	replace_btn = Gtk.Template.Child()
 	find_btns_box = Gtk.Template.Child()
 
 	scrolled_window = Gtk.Template.Child()
@@ -69,6 +69,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.gio_file = None
 		self._is_saved = True
 		self.check_24 = False
+		self.undo_history = []
+		self.redo_history = []
 
 		# Used in the "add pictures" file chooser dialog
 		self.preview_picture = Gtk.Image(margin_right=5)
@@ -142,15 +144,18 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('save', self.action_save, ['<Ctrl>s'])
 		self.add_action_simple('save_as', self.action_save_as, ['<Ctrl><Shift>s'])
 		self.add_action_simple('open', self.action_open, ['<Ctrl>o'])
+		self.add_action_simple('close', self.action_close, ['<Ctrl>w'])
+
 		self.add_action_simple('add', self.action_add, ['<Ctrl>a'])
 		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
-		self.add_action_simple('close', self.action_close, ['<Ctrl>w'])
 		self.add_action_simple('find', self.action_find, ['<Ctrl>f'])
-		self.add_action_simple('find_replace', self.action_f_r, ['<Ctrl>h'])
-		self.add_action_simple('apply_replace', self.action_replace_str, None)
+		# self.add_action_simple('find_replace', self.action_f_r, ['<Ctrl>h'])
+		# self.add_action_simple('apply_replace', self.action_replace_str, None)
 		self.add_action_simple('fix_24h', self.fix_24, None)
-		self.add_action_simple('undo', self.action_undo, ['<Ctrl>z']) # TODO
+
+		self.add_action_simple('undo', self.action_undo, ['<Ctrl>z'])
 		self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
+		self.update_history_actions()
 
 		self.add_action_simple('pic_replace', self.action_pic_replace, None)
 		self.add_action_simple('pic_open', self.action_pic_open, None)
@@ -182,10 +187,34 @@ class DWEWindow(Gtk.ApplicationWindow):
 	############################################################################
 	# History ##################################################################
 
+	def add_to_history(self, operation):
+		if operation['scale'] == 'window':
+			self.do_window_wide_operation(operation)
+		elif operation['scale'] == 'view':
+			pass # TODO
+		elif operation['scale'] == 'picture':
+			pass # TODO
+		else: # invalid operation
+			return
+		self._is_saved = False
+		self.undo_history.append(operation)
+		self.update_history_actions()
+
 	def action_undo(self, *args):
 		pass # TODO
+		self.update_history_actions()
 
 	def action_redo(self, *args):
+		operation = self.redo_history.pop()
+		self.add_to_history(operation)
+
+	def update_history_actions(self):
+		if len(self.undo_history) == 0:
+			self.lookup_action('undo').set_enabled(False)
+		if len(self.redo_history) == 0:
+			self.lookup_action('redo').set_enabled(False)
+
+	def do_window_wide_operation(self, operation):
 		pass # TODO
 
 	############################################################################
@@ -422,7 +451,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if not args[0].get_active():
 			return
 		compact_to_replace = (args[1] == 'replace')
-		self.replace_box.set_visible(compact_to_replace)
+		self.replace_btn.set_visible(compact_to_replace)
+		self.replace_entry.set_visible(compact_to_replace)
 		self.set_addpic_compact(compact_to_replace)
 		self.set_adddir_compact(compact_to_replace)
 		if args[1] == 'hide':

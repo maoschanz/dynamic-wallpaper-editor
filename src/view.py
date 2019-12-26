@@ -277,7 +277,7 @@ class DWEThumbnailsView(DWEAbstractView):
 		                                  selection_mode=Gtk.SelectionMode.NONE)
 		# label = Gtk.Label(visible=True, \
 		#              label=_("Add new pictures, or open an existing XML file."))
-		# self.flow_box.set_placeholder(label) # FIXME
+		# self.flow_box.set_placeholder(label)
 		self.add_to_view(self.flow_box)
 
 	def get_view_widget(self):

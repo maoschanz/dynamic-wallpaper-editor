@@ -151,6 +151,7 @@
           <attribute name="label" translatable="yes">Find</attribute>
         </item>
         <item>
+          <attribute name="hidden-when">action-missing</attribute>
           <attribute name="action">win.find_replace</attribute>
           <attribute name="label" translatable="yes">Find and replace</attribute>
         </item>

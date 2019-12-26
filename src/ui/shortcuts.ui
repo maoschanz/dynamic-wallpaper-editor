@@ -75,7 +75,7 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="visible">True</property>
+                <!-- <property name="visible">True</property> -->
                 <property name="title" translatable="yes">Replace a part of filenames</property>
                 <property name="accelerator">&lt;Primary&gt;h</property>
               </object>

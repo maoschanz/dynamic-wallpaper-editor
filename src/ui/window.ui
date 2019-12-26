@@ -113,7 +113,7 @@
             <property name="expand">False</property>
             <property name="orientation">horizontal</property>
             <property name="margin">10</property>
-            <property name="spacing">15</property>
+            <property name="spacing">12</property>
             <child>
               <object class="GtkBox">
                 <property name="visible">True</property>
@@ -235,7 +235,7 @@
                 </child>
                 <child>
                   <object class="GtkRadioButton" id="find_rbtn2">
-                    <property name="visible">True</property>
+                    <!-- <property name="visible">True</property> -->
                     <property name="draw-indicator">False</property>
                     <property name="group">find_rbtn1</property>
                     <property name="tooltip-text" translatable="yes">Find and replace</property>
@@ -257,7 +257,6 @@
             <child>
               <object class="GtkBox" id="search_box">
                 <property name="visible">True</property>
-                <property name="spacing">5</property>
                 <child>
                   <object class="GtkSearchEntry" id="search_entry">
                     <property name="visible">True</property>
@@ -265,28 +264,23 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkBox" id="replace_box">
+                  <object class="GtkEntry" id="replace_entry">
                     <property name="visible">True</property>
+                    <property name="placeholder-text" translatable="yes">Replace in filenames</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="replace_btn">
+                    <property name="visible">True</property>
+                    <property name="action-name">win.apply_replace</property>
+                    <property name="tooltip-text" translatable="yes">Replace in filenames</property>
                     <child>
-                      <object class="GtkEntry" id="replace_entry">
+                      <object class="GtkImage">
                         <property name="visible">True</property>
-                        <property name="placeholder-text" translatable="yes">Replace in filenames</property>
+                        <property name="icon-name">error-correct-symbolic</property>
                       </object>
                     </child>
-                    <child>
-                      <object class="GtkButton" id="replace_btn">
-                        <property name="visible">True</property>
-                        <property name="action-name">win.apply_replace</property>
-                        <property name="tooltip-text" translatable="yes">Replace in filenames</property>
-                        <child>
-                          <object class="GtkImage">
-                            <property name="visible">True</property>
-                            <property name="icon-name">error-correct-symbolic</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <style><class name="linked"/></style>
+                    <style><class name="destructive-action"/></style>
                   </object>
                 </child>
                 <child>
@@ -302,6 +296,7 @@
                     </child>
                   </object>
                 </child>
+                <style><class name="linked"/></style>
               </object>
               <packing>
                 <property name="pack-type">end</property>
