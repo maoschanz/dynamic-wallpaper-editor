@@ -134,13 +134,6 @@
                 <property name="accelerator">&lt;Primary&gt;r</property>
               </object>
             </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="visible">True</property>
-                <property name="title" translatable="yes">Set as lock screen</property>
-                <property name="accelerator">&lt;Primary&gt;l</property>
-              </object>
-            </child>
           </object>
         </child>
       </object>

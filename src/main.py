@@ -136,12 +136,6 @@ class Application(Gtk.Application):
 		action_options.connect('change-state', self.on_change_wallpaper_options)
 		self.add_action(action_options)
 
-		action_options = Gio.SimpleAction().new_stateful('ls_options', \
-		                   GLib.VariantType.new('s'), \
-		                   GLib.Variant.new_string(self.get_lockscreen_option()))
-		action_options.connect('change-state', self.on_change_lockscreen_options)
-		self.add_action(action_options)
-
 	############################################################################
 
 	def open_window_with_content(self, gfile):
@@ -185,7 +179,7 @@ class Application(Gtk.Application):
 
 	def set_gsettings_values(self):
 		"""Set numerous attributes corresponding to the gsettings keys needed to
-		apply a file as the wallpaper or the lockscreen."""
+		apply a file as the wallpaper"""
 		self.desktop_env = os.getenv('XDG_CURRENT_DESKTOP', 'GNOME')
 
 		self.wp_schema = None
@@ -207,15 +201,6 @@ class Application(Gtk.Application):
 			self.wp_path = 'picture-filename'
 			self.wp_options = 'picture-options'
 
-		self.ls_schema = None
-		self.ls_path = None
-		self.ls_options = None
-		if 'GNOME' in self.desktop_env: # FIXME check if GDM is used might be more pertinent
-			self.ls_schema = Gio.Settings.new('org.gnome.desktop.screensaver')
-			self.ls_path = 'picture-uri'
-			self.ls_options = 'picture-options'
-		# TODO more desktop environnments? (doesn't it depends on the display manager?)
-
 	############################################################################
 
 	def on_change_wallpaper_options(self, *args):
@@ -230,36 +215,18 @@ class Application(Gtk.Application):
 		if self.wp_schema is None:
 			self.lookup_action('wp_options').set_enabled(False)
 			return 'none'
-		return self.ls_schema.get_string(self.ls_options)
-
-	def on_change_lockscreen_options(self, *args):
-		new_value = args[1].get_string()
-		if self.ls_schema is None:
-			self.lookup_action('ls_options').set_enabled(False)
-		else:
-			self.ls_schema.set_string(self.ls_options, new_value)
-			args[0].set_state(GLib.Variant.new_string(new_value))
-
-	def get_lockscreen_option(self):
-		if self.ls_schema is None:
-			self.lookup_action('ls_options').set_enabled(False)
-			return 'none'
-		return self.ls_schema.get_string(self.wp_options)
+		return self.wp_schema.get_string(self.wp_options)
 
 	############################################################################
 
-	def write_file(self, source_path, is_lockscreen):
+	def write_file(self, source_path):
 		"""Write a copy of the file from source_path (a "/run/user/" path) to
 		~/.var/app/APP_ID/config/*.xml so a durable path can be applied to the
 		gsettings database."""
-		if is_lockscreen:
-			schema = self.ls_schema
-			key = self.ls_path
-			filename = 'lockscreen'
-		else:
-			schema = self.wp_schema
-			key = self.wp_path
-			filename = 'wallpaper'
+
+		schema = self.wp_schema
+		key = self.wp_path
+		filename = 'wallpaper'
 		if schema is None:
 			return False
 

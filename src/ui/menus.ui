@@ -197,92 +197,44 @@
           <attribute name="action">win.set_wp</attribute>
           <attribute name="label" translatable="yes">Set as wallpaper</attribute>
         </item>
-        <submenu id="wp-adj-menu">
-          <attribute name="label" translatable="yes">Wallpaper adjustment</attribute>
-          <section>
-            <!-- <item> -->
-            <!--   <attribute name="action">app.wp_options</attribute> -->
-            <!--   <attribute name="label" translatable="yes">None</attribute> -->
-            <!--   <attribute name="target">none</attribute> -->
-            <!-- </item> -->
-            <item>
-              <attribute name="action">app.wp_options</attribute>
-              <attribute name="label" translatable="yes">Mosaic</attribute>
-              <attribute name="target">wallpaper</attribute>
-            </item>
-            <item>
-              <attribute name="action">app.wp_options</attribute>
-              <attribute name="label" translatable="yes">Centered</attribute>
-              <attribute name="target">centered</attribute>
-            </item>
-            <item>
-              <attribute name="action">app.wp_options</attribute>
-              <attribute name="label" translatable="yes">Scaled</attribute>
-              <attribute name="target">scaled</attribute>
-            </item>
-            <item>
-              <attribute name="action">app.wp_options</attribute>
-              <attribute name="label" translatable="yes">Streched</attribute>
-              <attribute name="target">streched</attribute>
-            </item>
-            <item>
-              <attribute name="action">app.wp_options</attribute>
-              <attribute name="label" translatable="yes">Zoom</attribute>
-              <attribute name="target">zoom</attribute>
-            </item>
-            <item>
-              <attribute name="action">app.wp_options</attribute>
-              <attribute name="label" translatable="yes">Spanned</attribute>
-              <attribute name="target">spanned</attribute>
-            </item>
-          </section>
-        </submenu>
       </section>
       <section>
+      <!-- <attribute name="label" translatable="yes">Wallpaper adjustment</attribute> -->
+        <!-- <item> -->
+        <!--   <attribute name="action">app.wp_options</attribute> -->
+        <!--   <attribute name="label" translatable="yes">None</attribute> -->
+        <!--   <attribute name="target">none</attribute> -->
+        <!-- </item> -->
         <item>
-          <attribute name="action">win.set_ls</attribute>
-          <attribute name="label" translatable="yes">Set as lock screen</attribute>
+          <attribute name="action">app.wp_options</attribute>
+          <attribute name="label" translatable="yes">Mosaic</attribute>
+          <attribute name="target">wallpaper</attribute>
         </item>
-        <submenu id="ls-adj-menu">
-          <attribute name="label" translatable="yes">Lock screen adjustment</attribute>
-          <section>
-            <!-- <item> -->
-            <!--   <attribute name="action">app.ls_options</attribute> -->
-            <!--   <attribute name="label" translatable="yes">None</attribute> -->
-            <!--   <attribute name="target">none</attribute> -->
-            <!-- </item> -->
-            <item>
-              <attribute name="action">app.ls_options</attribute>
-              <attribute name="label" translatable="yes">Mosaic</attribute>
-              <attribute name="target">wallpaper</attribute>
-            </item>
-            <item>
-              <attribute name="action">app.ls_options</attribute>
-              <attribute name="label" translatable="yes">Centered</attribute>
-              <attribute name="target">centered</attribute>
-            </item>
-            <item>
-              <attribute name="action">app.ls_options</attribute>
-              <attribute name="label" translatable="yes">Scaled</attribute>
-              <attribute name="target">scaled</attribute>
-            </item>
-            <item>
-              <attribute name="action">app.ls_options</attribute>
-              <attribute name="label" translatable="yes">Streched</attribute>
-              <attribute name="target">streched</attribute>
-            </item>
-            <item>
-              <attribute name="action">app.ls_options</attribute>
-              <attribute name="label" translatable="yes">Zoom</attribute>
-              <attribute name="target">zoom</attribute>
-            </item>
-            <item>
-              <attribute name="action">app.ls_options</attribute>
-              <attribute name="label" translatable="yes">Spanned</attribute>
-              <attribute name="target">spanned</attribute>
-            </item>
-          </section>
-        </submenu>
+        <item>
+          <attribute name="action">app.wp_options</attribute>
+          <attribute name="label" translatable="yes">Centered</attribute>
+          <attribute name="target">centered</attribute>
+        </item>
+        <item>
+          <attribute name="action">app.wp_options</attribute>
+          <attribute name="label" translatable="yes">Scaled</attribute>
+          <attribute name="target">scaled</attribute>
+        </item>
+        <item>
+          <attribute name="action">app.wp_options</attribute>
+          <attribute name="label" translatable="yes">Streched</attribute>
+          <attribute name="target">streched</attribute>
+        </item>
+        <item>
+          <attribute name="action">app.wp_options</attribute>
+          <attribute name="label" translatable="yes">Zoom</attribute>
+          <attribute name="target">zoom</attribute>
+        </item>
+        <item>
+          <attribute name="action">app.wp_options</attribute>
+          <attribute name="label" translatable="yes">Spanned</attribute>
+          <attribute name="target">spanned</attribute>
+        </item>
       </section>
     </submenu>
 

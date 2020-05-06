@@ -166,9 +166,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('pic_last', self.action_pic_last, None)
 
 		self.add_action_simple('set_wp', self.action_set_wallpaper, ['<Ctrl>r'])
-		self.add_action_simple('set_ls', self.action_set_lockscreen, ['<Ctrl>l'])
 		self.lookup_action('set_wp').set_enabled(False)
-		self.lookup_action('set_ls').set_enabled(False)
 
 		saved_value = self._settings.get_string('display-mode') # grid or list
 		action_display = Gio.SimpleAction().new_stateful('display-mode', \
@@ -181,7 +179,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_boolean('total_24', False, self.update_type_daylight)
 
 		self.find_rbtn1.connect('toggled', self.radio_btn_helper, 'find')
-		self.find_rbtn2.connect('toggled', self.radio_btn_helper, 'replace')
+		# self.find_rbtn2.connect('toggled', self.radio_btn_helper, 'replace')
 		self.find_rbtn3.connect('toggled', self.radio_btn_helper, 'hide')
 
 	############################################################################
@@ -284,27 +282,19 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.update_global_time_box(is_slideshow, is_now_daylight)
 
 	############################################################################
-	# Wallpaper and lockscreen settings ########################################
-
-	def action_set_lockscreen(self, *args):
-		if not self.app.write_file(self.gio_file.get_path(), True):
-			self.unsupported_desktop(True)
+	# Wallpaper settings #######################################################
 
 	def action_set_wallpaper(self, *args):
-		if not self.app.write_file(self.gio_file.get_path(), False):
-			self.unsupported_desktop(False)
+		if not self.app.write_file(self.gio_file.get_path()):
+			self.unsupported_desktop()
 		elif 'Cinnamon' in self.app.desktop_env:
 			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
 			use_folder.set_boolean('slideshow-enabled', False)
 
-	def unsupported_desktop(self, is_lockscreen):
+	def unsupported_desktop(self):
 		self.show_notification(_("This desktop environnement isn't supported."))
-		if is_lockscreen:
-			self.app.lookup_action('ls_options').set_enabled(False)
-			self.lookup_action('set_ls').set_enabled(False)
-		else:
-			self.app.lookup_action('wp_options').set_enabled(False)
-			self.lookup_action('set_wp').set_enabled(False)
+		self.app.lookup_action('wp_options').set_enabled(False)
+		self.lookup_action('set_wp').set_enabled(False)
 		return ''
 
 	############################################################################
@@ -387,6 +377,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		dialog = Gtk.MessageDialog(modal=True, transient_for=self, message_format= \
 		                _("There are unsaved modifications to your wallpaper."))
+		# TODO include filename if possible
 		dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
 		dialog.add_button(_("Discard"), Gtk.ResponseType.NO)
 		dialog.add_button(_("Save"), Gtk.ResponseType.APPLY)
@@ -450,14 +441,16 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def radio_btn_helper(self, *args):
 		if not args[0].get_active():
 			return
-		compact_to_replace = (args[1] == 'replace')
+		compact_to_replace = (args[1] == 'replace') # XXX hidden, but still
 		self.replace_btn.set_visible(compact_to_replace)
 		self.replace_entry.set_visible(compact_to_replace)
 		self.set_addpic_compact(compact_to_replace)
 		self.set_adddir_compact(compact_to_replace)
+
 		if args[1] == 'hide':
 			self.find_btns_box.set_visible(True)
 			self.search_box.set_visible(False)
+			self.search_entry.set_text("")
 		else:
 			self.find_btns_box.set_visible(False)
 			self.search_box.set_visible(True)
@@ -518,12 +511,12 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	def get_add_pic_dialog(self, title, allow_multiple):
 		file_chooser = Gtk.FileChooserDialog(title, self,
-		               Gtk.FileChooserAction.OPEN,
-		               (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-		               Gtk.STOCK_OPEN, Gtk.ResponseType.OK),
-		               select_multiple=allow_multiple,
-		               preview_widget=self.preview_picture,
-		               use_preview_label=False)
+			Gtk.FileChooserAction.OPEN, # the type of dialog
+			(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, # the left button
+			Gtk.STOCK_OPEN, Gtk.ResponseType.OK), # the right button
+			select_multiple=allow_multiple,
+			preview_widget=self.preview_picture,
+			use_preview_label=False)
 		add_pic_dialog_filters(file_chooser)
 		file_chooser.connect('update-preview', self.cb_update_preview)
 		return file_chooser
@@ -560,7 +553,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			self.auto_detect_type()
 			self.lookup_action('set_wp').set_enabled(True)
-			self.lookup_action('set_ls').set_enabled(True)
 			self._is_saved = True
 		else:
 			self.gio_file = None
@@ -665,12 +657,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 		                                         Gio.FileCreateFlags.NONE, None)
 		self._is_saved = True
 		self.lookup_action('set_wp').set_enabled(True)
-		self.lookup_action('set_ls').set_enabled(True)
 
 	def update_win_title(self, file_name):
 		self.set_title(file_name)
-		self.icon_save_btn.set_tooltip_text(_("Save %s") % file_name)
-		self.label_save_btn.set_tooltip_text(_("Save %s") % file_name)
 
 	def action_save_as(self, *args):
 		is_saved = self.run_save_file_chooser()
@@ -688,7 +677,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.ACCEPT:
 			self.lookup_action('set_wp').set_enabled(True)
-			self.lookup_action('set_ls').set_enabled(True)
 			self.gio_file = file_chooser.get_file()
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			is_saved = True
