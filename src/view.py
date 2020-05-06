@@ -26,7 +26,7 @@ class DWEAbstractView():
 	def __init__(self, window):
 		self.window = window
 		self.length = 0
-		self.searched_str = ''
+		self.searched_str = ""
 
 	def add_to_view(self, widget):
 		widget.set_sort_func(self.sort_view)
@@ -74,6 +74,40 @@ class DWEAbstractView():
 		"""Returns int < 0 if pic1 should be before pic2, 0 if they are equal
 		and int > 0 otherwise"""
 		return pic1.get_child().indx - pic2.get_child().indx
+
+	def sort_by_name(self):
+		rows = self.get_view_widget().get_children()
+		images_list = []
+		for r in rows:
+			images_list.append(r.get_child().filename)
+		sorted_list = sorted(images_list, key=self._filter_nums)
+		new_index = 0
+		for fn in sorted_list:
+			for r in rows:
+				if r.get_child().filename == fn:
+					r.get_child().indx = new_index
+			new_index = new_index + 1
+		self.get_view_widget().invalidate_sort()
+
+	def _filter_nums(self, full_path):
+		"""If the filename begins with a number, it will sort according to these
+		numbers. That will work only in a quite specific case where the number
+		are at the beginning of the name, and are followed by a space, a dash,
+		a dot, or a underscore."""
+		filename = full_path.split('/')[-1]
+		num_prefix = None
+		if filename.split(' ')[0].isdigit():
+			num_prefix = filename.split(' ')[0]
+		elif filename.split('.')[0].isdigit():
+			num_prefix = filename.split('.')[0]
+		elif filename.split('_')[0].isdigit():
+			num_prefix = filename.split('_')[0]
+		elif filename.split('-')[0].isdigit():
+			num_prefix = filename.split('-')[0]
+		if num_prefix is not None:
+			zeros = "0" * (12 - len(num_prefix))
+			full_path = full_path.replace(filename, zeros + filename)
+		return full_path
 
 	def reset_view(self):
 		while self.length > 0:

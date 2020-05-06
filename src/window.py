@@ -178,6 +178,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_boolean('same_duration', False, self.update_type_slideshow)
 		self.add_action_boolean('total_24', False, self.update_type_daylight)
 
+		self.add_action_simple('sort-pics', self.sort_pics_by_name, None)
+
 		self.find_rbtn1.connect('toggled', self.radio_btn_helper, 'find')
 		# self.find_rbtn2.connect('toggled', self.radio_btn_helper, 'replace')
 		self.find_rbtn3.connect('toggled', self.radio_btn_helper, 'hide')
@@ -395,6 +397,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 		state_as_string = args[1].get_string()
 		args[0].set_state(GLib.Variant.new_string(state_as_string))
 		self.rebuild_view(state_as_string)
+
+	def sort_pics_by_name(self, *args):
+		self.view.sort_by_name()
 
 	############################################################################
 	# Picture-wide actions #####################################################

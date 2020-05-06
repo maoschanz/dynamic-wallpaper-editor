@@ -112,6 +112,7 @@ class DWEPictureWidget(Gtk.Box):
 		# the concrete classes will call generate_thumbnail themselves
 
 	def generate_thumbnail(self, w, h):
+		self.time_box.set_sensitive(True)
 		try:
 			# This size is totally arbitrary.
 			pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(self.filename, w, h, True)
