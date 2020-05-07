@@ -1,1 +1,1 @@
-i18n.gettext('dynamic-wallpaper-editor', preset: 'glib')
+i18n.gettext('dynamic-wallpaper-editor', args: '--no-location', preset: 'glib')

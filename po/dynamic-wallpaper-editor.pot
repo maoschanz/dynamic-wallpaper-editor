@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 17:08+0200\n"
+"POT-Creation-Date: 2020-05-07 13:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,25 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:7
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
-#: src/ui/window.ui:27 src/main.py:86
 msgid "Dynamic Wallpaper Editor"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:8
 msgid ""
 "Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
 "GNOME desktop"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:11
 msgid ""
 "Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
 "wallpapers for the GNOME desktop."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:15
 msgid ""
 "The duration of each picture and each transition can be set separately or "
 "globally. The total duration can be 24 hours to do a wallpaper fitting the "
@@ -43,525 +37,409 @@ msgid ""
 msgstr ""
 
 #. caption for screenshot 1
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:27
 msgid "An example of a wallpaper changing with daylight"
 msgstr ""
 
 #. caption for screenshot 2
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:34
 msgid "The grid layout"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:41
+msgid "The images can now be easily sorted according to their filename."
+msgstr ""
+
+msgid ""
+"This update also removes obsolete or unreliable features like \"find and "
+"replace\", or the possibility to set a file as lockscreen (which was not "
+"possible with most environments, and is not even possible GDM since the "
+"version 3.36)."
+msgstr ""
+
+msgid ""
+"Minor bugs have been fixed too, like the weird behavior when closing the "
+"\"find\" entry, or actions that were disabled when they shouldn't."
+msgstr ""
+
 msgid ""
 "Add a picture-wide menu with actions such as \"Replace with…\", thus missing "
-"pictures can be replaces without the necessity to set the durations again, "
+"pictures can be replaced without the necessity to set the durations again, "
 "or \"View file\" to open the file in the system image viewer."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:47
 msgid "Wallpaper types are now managed from the primary menu again."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:54
 msgid ""
 "Add the ability to search among pictures, fix a memory leak, improve the "
 "automatic duration setting, make the window easier to resize, and update "
 "translations."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:63
 msgid ""
 "The app can now optionally display pictures using a grid layout instead of a "
 "list."
 msgstr ""
 
 #. That's my name, don't translate it
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:82
 msgid "Romain F. T."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
-#: src/main.py:171
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:9
 msgid "Wallpaper;Daylight;XML;"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:11
 msgid "com.github.maoschanz.DynamicWallpaperEditor"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:16
-#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:95
-#: src/ui/shortcuts.ui:17
 msgid "New Window"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml:6
 msgid "Use a grid or a list"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml:7
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 
-#: src/ui/menus.ui:13 src/ui/menus.ui:74 src/ui/menus.ui:295
 msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: src/ui/menus.ui:17 src/ui/menus.ui:78 src/ui/menus.ui:291
 msgid "Help"
 msgstr ""
 
-#: src/ui/menus.ui:21 src/ui/menus.ui:82 src/ui/menus.ui:305
 msgid "About"
 msgstr ""
 
-#: src/ui/menus.ui:25 src/ui/menus.ui:121
 msgid "Quit"
 msgstr ""
 
-#: src/ui/menus.ui:42 src/ui/menus.ui:111 src/ui/shortcuts.ui:126
-#: src/window.py:651
 msgid "Save as…"
 msgstr ""
 
-#: src/ui/menus.ui:49 src/ui/menus.ui:173
 msgid "List"
 msgstr ""
 
-#: src/ui/menus.ui:55 src/ui/menus.ui:178
 msgid "Grid"
 msgstr ""
 
 #. "all" refers to "all pictures"
-#: src/ui/menus.ui:64
 msgid "Same duration for all"
 msgstr ""
 
-#: src/ui/menus.ui:68
 msgid "Fit the daylight"
 msgstr ""
 
-#: src/ui/menus.ui:91
 msgid "File"
 msgstr ""
 
-#: src/ui/menus.ui:101 src/ui/window.ui:34 src/window.py:516 src/window.py:517
 msgid "Open"
 msgstr ""
 
-#: src/ui/menus.ui:107 src/ui/shortcuts.ui:119 src/ui/window.ui:93
-#: src/ui/window.ui:94 src/ui/window.ui:105 src/window.py:365 src/window.py:652
 msgid "Save"
 msgstr ""
 
-#: src/ui/menus.ui:117
 msgid "Close"
 msgstr ""
 
-#: src/ui/menus.ui:127
 msgid "Edit"
 msgstr ""
 
-#: src/ui/menus.ui:131
 msgid "Undo"
 msgstr ""
 
-#: src/ui/menus.ui:136
 msgid "Redo"
 msgstr ""
 
-#: src/ui/menus.ui:143 src/ui/shortcuts.ui:58 src/ui/window.ui:143
-#: src/ui/window.ui:151 src/window.py:479
 msgid "Add pictures"
 msgstr ""
 
-#: src/ui/menus.ui:147 src/ui/shortcuts.ui:65 src/ui/window.ui:165
-#: src/ui/window.ui:172 src/window.py:454
 msgid "Add a folder"
 msgstr ""
 
-#: src/ui/menus.ui:153
 msgid "Find"
 msgstr ""
 
-#: src/ui/menus.ui:157 src/ui/window.ui:258
 msgid "Find and replace"
 msgstr ""
 
-#: src/ui/menus.ui:163
 msgid "Automatically set a total of 24 hours"
 msgstr ""
 
-#: src/ui/menus.ui:169
 msgid "View"
 msgstr ""
 
-#: src/ui/menus.ui:185
 msgid "Same duration for all pictures"
 msgstr ""
 
-#: src/ui/menus.ui:189
 msgid "Durations fitting the daylight"
 msgstr ""
 
-#: src/ui/menus.ui:195 src/ui/window.ui:220
+msgid "Sort by name"
+msgstr ""
+
 msgid "Apply"
 msgstr ""
 
-#: src/ui/menus.ui:199 src/ui/shortcuts.ui:133
 msgid "Set as wallpaper"
 msgstr ""
 
-#: src/ui/menus.ui:202
-msgid "Wallpaper adjustment"
-msgstr ""
-
-#: src/ui/menus.ui:211 src/ui/menus.ui:257
 msgid "Mosaic"
 msgstr ""
 
-#: src/ui/menus.ui:216 src/ui/menus.ui:262
 msgid "Centered"
 msgstr ""
 
-#: src/ui/menus.ui:221 src/ui/menus.ui:267
 msgid "Scaled"
 msgstr ""
 
-#: src/ui/menus.ui:226 src/ui/menus.ui:272
 msgid "Streched"
 msgstr ""
 
-#: src/ui/menus.ui:231 src/ui/menus.ui:277
 msgid "Zoom"
 msgstr ""
 
-#: src/ui/menus.ui:236 src/ui/menus.ui:282
 msgid "Spanned"
 msgstr ""
 
-#: src/ui/menus.ui:245 src/ui/shortcuts.ui:140
-msgid "Set as lock screen"
-msgstr ""
-
-#: src/ui/menus.ui:248
-msgid "Lock screen adjustment"
-msgstr ""
-
-#: src/ui/menus.ui:299
 msgid "User manual"
 msgstr ""
 
-#: src/ui/picture_menu.ui:7
 msgid "Replace with…"
 msgstr ""
 
-#: src/ui/picture_menu.ui:13
 msgid "View picture"
 msgstr ""
 
-#: src/ui/picture_menu.ui:17
 msgid "View containing directory"
 msgstr ""
 
-#: src/ui/picture_menu.ui:24
 msgid "Move to first position"
 msgstr ""
 
-#: src/ui/picture_menu.ui:29
 msgid "Move up"
 msgstr ""
 
-#: src/ui/picture_menu.ui:34
 msgid "Move down"
 msgstr ""
 
-#: src/ui/picture_menu.ui:39
 msgid "Move to last position"
 msgstr ""
 
-#: src/ui/picture_row.ui:90 src/ui/picture_thumbnail.ui:167
-#: src/ui/window.ui:413
 msgid "Time"
 msgstr ""
 
-#: src/ui/picture_row.ui:101 src/ui/picture_thumbnail.ui:178
 msgid ""
 "Time (in seconds) of this image. This doesn't include the time of the "
 "transition."
 msgstr ""
 
-#: src/ui/picture_row.ui:114 src/ui/picture_thumbnail.ui:191
-#: src/ui/window.ui:435
 msgid "Transition"
 msgstr ""
 
-#: src/ui/picture_row.ui:125 src/ui/picture_thumbnail.ui:202
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr ""
 
-#: src/ui/picture_row.ui:158 src/ui/picture_thumbnail.ui:84
 msgid "Delete"
 msgstr ""
 
-#: src/ui/picture_thumbnail.ui:58
 msgid "Duration"
 msgstr ""
 
-#: src/ui/start_time.ui:55
 msgid "This is useful when the total duration is 24 hours."
 msgstr ""
 
-#: src/ui/start_time.ui:59
 msgid "Start time of the wallpaper"
 msgstr ""
 
-#: src/ui/start_time.ui:78
 msgid "Year"
 msgstr ""
 
-#: src/ui/start_time.ui:101
 msgid "Month"
 msgstr ""
 
-#: src/ui/start_time.ui:125
 msgid "Day"
 msgstr ""
 
-#: src/ui/start_time.ui:149
 msgid "Hour"
 msgstr ""
 
-#: src/ui/start_time.ui:173
 msgid "Minute"
 msgstr ""
 
-#: src/ui/start_time.ui:197
 msgid "Second"
 msgstr ""
 
-#: src/ui/shortcuts.ui:13
 msgid "General"
 msgstr ""
 
-#: src/ui/shortcuts.ui:24
 msgid "Close the current window"
 msgstr ""
 
-#: src/ui/shortcuts.ui:31
 msgid "Quit all windows"
 msgstr ""
 
-#: src/ui/shortcuts.ui:38
 msgid "Show shortcuts"
 msgstr ""
 
-#: src/ui/shortcuts.ui:45
 msgid "Show help"
 msgstr ""
 
-#: src/ui/shortcuts.ui:54
 msgid "Pictures"
 msgstr ""
 
-#: src/ui/shortcuts.ui:72 src/ui/window.ui:281
 msgid "Find a picture"
 msgstr ""
 
-#: src/ui/shortcuts.ui:79
+#. <property name="visible">True</property>
 msgid "Replace a part of filenames"
 msgstr ""
 
-#: src/ui/shortcuts.ui:108
+#. <property name="visible">True</property>
+msgid "Editing"
+msgstr ""
+
 msgid "Wallpaper"
 msgstr ""
 
-#: src/ui/shortcuts.ui:112 src/ui/window.ui:33
 msgid "Open an existing dynamic wallpaper"
 msgstr ""
 
-#: src/ui/window.ui:76
 msgid "More actions"
 msgstr ""
 
-#: src/ui/window.ui:187
 msgid "Set the exact start time of the wallpaper"
 msgstr ""
 
-#: src/ui/window.ui:212
 msgid "Apply as wallpaper or lock screen, and set adjustment options"
 msgstr ""
 
-#: src/ui/window.ui:244
 msgid "Find a filename"
 msgstr ""
 
-#: src/ui/window.ui:290 src/ui/window.ui:297
 msgid "Replace in filenames"
 msgstr ""
 
-#: src/ui/window.ui:356
 msgid "Error starting the application, please report this bug."
 msgstr ""
 
-#: src/ui/window.ui:362
 msgid "Automatic fix"
 msgstr ""
 
-#: src/ui/window.ui:363
 msgid "Set durations for a total of 24 hours"
 msgstr ""
 
-#: src/ui/window.ui:421
 msgid "Duration of each picture (seconds)"
 msgstr ""
 
-#: src/ui/window.ui:443
 msgid "Duration of each transition (seconds)"
 msgstr ""
 
-#: src/main.py:52
-msgid "Print the version and display the 'about' dialog"
+msgid "Tell the version of the app"
 msgstr ""
 
-#: src/main.py:55
 msgid "Open a new window"
 msgstr ""
 
-#: src/main.py:111
+#. FIXME pas ouf
 #, python-format
 msgid "Error opening this file. Did you mean %s ?"
 msgstr ""
 
-#: src/main.py:177
 msgid "Report bugs or ideas"
 msgstr ""
 
-#: src/main.py:178
 msgid "translator-credits"
 msgstr ""
 
-#: src/misc.py:26
 msgid "Dynamic wallpapers (XML)"
 msgstr ""
 
-#: src/misc.py:34
 msgid "All pictures"
 msgstr ""
 
-#: src/misc.py:42
 msgid "PNG images"
 msgstr ""
 
-#: src/misc.py:46
 msgid "JPEG images"
 msgstr ""
 
-#: src/misc.py:57
 #, python-format
 msgid "%s hour(s)"
 msgstr ""
 
-#: src/misc.py:61
 #, python-format
 msgid "%s minute(s)"
 msgstr ""
 
-#: src/misc.py:64
 #, python-format
 msgid "%s second(s)"
 msgstr ""
 
-#: src/picture_widget.py:122
 msgid ""
 "This picture might exist, but it isn't in your home folder so I can't see it."
 msgstr ""
 
-#: src/picture_widget.py:126
 msgid "This picture doesn't exist"
 msgstr ""
 
-#: src/picture_widget.py:150
 #, python-brace-format
 msgid "This picture lasts from {0} to {1}"
 msgstr ""
 
-#: src/picture_widget.py:156
 #, python-brace-format
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr ""
 
-#: src/view.py:48 src/view.py:255
 msgid "Add new pictures, or open an existing XML file."
 msgstr ""
 
-#: src/view.py:50
 msgid "Drag-and-drop pictures to reorder them."
 msgstr ""
 
-#: src/window.py:274
 msgid "This desktop environnement isn't supported."
 msgstr ""
 
-#: src/window.py:326
 #, python-format
 msgid "%s pictures"
 msgstr ""
 
-#: src/window.py:327
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr ""
 
-#: src/window.py:332
 msgid "The total duration isn't 24 hours."
 msgstr ""
 
-#: src/window.py:362
 msgid "There are unsaved modifications to your wallpaper."
 msgstr ""
 
-#: src/window.py:363 src/window.py:517 src/window.py:652
+#, python-format
+msgid "There are unsaved modifications to %s"
+msgstr ""
+
 msgid "Cancel"
 msgstr ""
 
-#: src/window.py:364
 msgid "Discard"
 msgstr ""
 
-#: src/window.py:385 src/window.py:453 src/window.py:478 src/window.py:515
 msgid "Loading…"
 msgstr ""
 
-#: src/window.py:386
 #, python-format
 msgid "Replace %s"
 msgstr ""
 
-#: src/window.py:544 src/window.py:556
 msgid "This dynamic wallpaper is corrupted"
 msgstr ""
 
-#: src/window.py:561
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr ""
 
-#: src/window.py:572
 #, python-format
 msgid "Unknown element: %s"
 msgstr ""
 
-#: src/window.py:640 src/window.py:641
-#, python-format
-msgid "Save %s"
-msgstr ""
-
-#: src/window.py:653
 msgid "Untitled"
 msgstr ""

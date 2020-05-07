@@ -49,7 +49,7 @@ class Application(Gtk.Application):
 
 		self.add_main_option('version', b'v', GLib.OptionFlags.NONE,
 		                     GLib.OptionArg.NONE,
-		                     _("Print the version"),
+		                     _("Tell the version of the app"),
 		                     None)
 		self.add_main_option('new-window', b'n', GLib.OptionFlags.NONE,
 		                     GLib.OptionArg.NONE, _("Open a new window"), None)
@@ -106,7 +106,7 @@ class Application(Gtk.Application):
 				return f
 			else:
 				return None
-		except:
+		except: # FIXME pas ouf
 			err = _("Error opening this file. Did you mean %s ?")
 			command = "\n\tflatpak run --file-forwarding {0} @@ {1} @@\n"
 			command = command.format(APP_ID, path)

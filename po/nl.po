@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-14 17:08+0200\n"
+"POT-Creation-Date: 2020-05-07 13:56+0200\n"
 "PO-Revision-Date: 2019-10-16 20:02+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -17,13 +17,9 @@ msgstr ""
 "X-Generator: Lokalize 19.08.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:7
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:3
-#: src/ui/window.ui:27 src/main.py:86
 msgid "Dynamic Wallpaper Editor"
 msgstr "Dynamische achtergrondbewerking"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:8
 msgid ""
 "Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
 "GNOME desktop"
@@ -31,7 +27,6 @@ msgstr ""
 "Maak of bewerk dynamische XML-achtergronden ('diavoorstellingen') voor de "
 "GNOME- werkomgeving"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:11
 msgid ""
 "Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
 "wallpapers for the GNOME desktop."
@@ -39,7 +34,6 @@ msgstr ""
 "Dynamische achtergrondbewerking is een eenvoudig hulpmiddel om dynamische "
 "achtergronden voor de GNOME-werkomgeving te maken of bewerken."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:15
 msgid ""
 "The duration of each picture and each transition can be set separately or "
 "globally. The total duration can be 24 hours to do a wallpaper fitting the "
@@ -49,45 +43,53 @@ msgstr ""
 "totaalduur is 24 uur voor een overgang naar daglicht."
 
 #. caption for screenshot 1
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:27
 msgid "An example of a wallpaper changing with daylight"
 msgstr ""
 "Voorbeeld van achtergrond die verandert naarmate er meer/minder daglicht is"
 
 #. caption for screenshot 2
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:34
 msgid "The grid layout"
 msgstr "Rasterindeling"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:41
+msgid "The images can now be easily sorted according to their filename."
+msgstr ""
+
+msgid ""
+"This update also removes obsolete or unreliable features like \"find and "
+"replace\", or the possibility to set a file as lockscreen (which was not "
+"possible with most environments, and is not even possible GDM since the "
+"version 3.36)."
+msgstr ""
+
+msgid ""
+"Minor bugs have been fixed too, like the weird behavior when closing the "
+"\"find\" entry, or actions that were disabled when they shouldn't."
+msgstr ""
+
+#, fuzzy
 msgid ""
 "Add a picture-wide menu with actions such as \"Replace with…\", thus missing "
-"pictures can be replaces without the necessity to set the durations again, "
+"pictures can be replaced without the necessity to set the durations again, "
 "or \"View file\" to open the file in the system image viewer."
 msgstr ""
-"Menu toegevoegd aan afbeeldingen met acties als 'Vervangen door...' (om"
-" afbeeldingen "
-"te vervangen zonder de timers opnieuw in te stellen) en 'Bestand tonen' (om"
-" het bestand "
-"te tonen in het afbeeldingsprogramma van je computer."
+"Menu toegevoegd aan afbeeldingen met acties als 'Vervangen door...' (om "
+"afbeeldingen te vervangen zonder de timers opnieuw in te stellen) en "
+"'Bestand tonen' (om het bestand te tonen in het afbeeldingsprogramma van je "
+"computer."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:47
 msgid "Wallpaper types are now managed from the primary menu again."
 msgstr ""
 "Achtergrondsoorten kunnen als vanouds worden beheerd middels het hoofdmenu."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:54
 msgid ""
 "Add the ability to search among pictures, fix a memory leak, improve the "
 "automatic duration setting, make the window easier to resize, and update "
 "translations."
 msgstr ""
 "Functie toegevoegd om afbeeldingen te doorzoeken, geheugenprobleem opgelost, "
-"automatische duurinstelling verbeterd, venstergrootte is eenvoudiger"
-" aanpasbaar, "
-"en vertaalupdates."
+"automatische duurinstelling verbeterd, venstergrootte is eenvoudiger "
+"aanpasbaar, en vertaalupdates."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:63
 msgid ""
 "The app can now optionally display pictures using a grid layout instead of a "
 "list."
@@ -96,221 +98,155 @@ msgstr ""
 "een lijst (optioneel)."
 
 #. That's my name, don't translate it
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in:82
 msgid "Romain F. T."
 msgstr "Romain F. T."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:5
-#: src/main.py:171
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Maak of bewerk dynamische achtergronden voor GNOME."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:9
 msgid "Wallpaper;Daylight;XML;"
 msgstr "Achtergrond;Dagdeel;XML;"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:11
 msgid "com.github.maoschanz.DynamicWallpaperEditor"
 msgstr "com.github.maoschanz.DynamicWallpaperEditor"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in:16
-#: src/ui/menus.ui:7 src/ui/menus.ui:36 src/ui/menus.ui:95
-#: src/ui/shortcuts.ui:17
 msgid "New Window"
 msgstr "Nieuw venster"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml:6
 msgid "Use a grid or a list"
 msgstr "Gebruik een raster of lijst"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml:7
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 "Toon afbeeldingen in een raster met miniatuurvoorbeelden of in een lijst."
 
-#: src/ui/menus.ui:13 src/ui/menus.ui:74 src/ui/menus.ui:295
 msgid "Keyboard Shortcuts"
 msgstr "Sneltoetsen"
 
-#: src/ui/menus.ui:17 src/ui/menus.ui:78 src/ui/menus.ui:291
 msgid "Help"
 msgstr "Hulp"
 
-#: src/ui/menus.ui:21 src/ui/menus.ui:82 src/ui/menus.ui:305
 msgid "About"
 msgstr "Over"
 
-#: src/ui/menus.ui:25 src/ui/menus.ui:121
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: src/ui/menus.ui:42 src/ui/menus.ui:111 src/ui/shortcuts.ui:126
-#: src/window.py:651
 msgid "Save as…"
 msgstr "Opslaan als…"
 
-#: src/ui/menus.ui:49 src/ui/menus.ui:173
 msgid "List"
 msgstr "Lijst"
 
-#: src/ui/menus.ui:55 src/ui/menus.ui:178
 msgid "Grid"
 msgstr "Raster"
 
 #. "all" refers to "all pictures"
-#: src/ui/menus.ui:64
 msgid "Same duration for all"
 msgstr "Alle afbeeldingen op dezelfde duur instellen"
 
-#: src/ui/menus.ui:68
 msgid "Fit the daylight"
 msgstr "Tijdens daglicht"
 
-#: src/ui/menus.ui:91
 msgid "File"
 msgstr "Bestand"
 
-#: src/ui/menus.ui:101 src/ui/window.ui:34 src/window.py:516 src/window.py:517
 msgid "Open"
 msgstr "Openen"
 
-#: src/ui/menus.ui:107 src/ui/shortcuts.ui:119 src/ui/window.ui:93
-#: src/ui/window.ui:94 src/ui/window.ui:105 src/window.py:365 src/window.py:652
 msgid "Save"
 msgstr "Opslaan"
 
-#: src/ui/menus.ui:117
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/ui/menus.ui:127
 msgid "Edit"
 msgstr "Bewerken"
 
-#: src/ui/menus.ui:131
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: src/ui/menus.ui:136
 msgid "Redo"
 msgstr "Opnieuw uitvoeren"
 
-#: src/ui/menus.ui:143 src/ui/shortcuts.ui:58 src/ui/window.ui:143
-#: src/ui/window.ui:151 src/window.py:479
 msgid "Add pictures"
 msgstr "Afbeeldingen toevoegen"
 
-#: src/ui/menus.ui:147 src/ui/shortcuts.ui:65 src/ui/window.ui:165
-#: src/ui/window.ui:172 src/window.py:454
 msgid "Add a folder"
 msgstr "Map toevoegen"
 
-#: src/ui/menus.ui:153
 msgid "Find"
 msgstr "Zoeken"
 
-#: src/ui/menus.ui:157 src/ui/window.ui:258
 msgid "Find and replace"
 msgstr "Zoeken en vervangen"
 
-#: src/ui/menus.ui:163
 msgid "Automatically set a total of 24 hours"
 msgstr "Automatische totaalduur van 24 uur instellen"
 
-#: src/ui/menus.ui:169
 msgid "View"
 msgstr "Weergave"
 
-#: src/ui/menus.ui:185
 msgid "Same duration for all pictures"
 msgstr "Alle afbeeldingen op dezelfde duur instellen"
 
-#: src/ui/menus.ui:189
 msgid "Durations fitting the daylight"
 msgstr "Timers aanpassen aan daglichturen"
 
-#: src/ui/menus.ui:195 src/ui/window.ui:220
+msgid "Sort by name"
+msgstr ""
+
 msgid "Apply"
 msgstr "Toepassen"
 
-#: src/ui/menus.ui:199 src/ui/shortcuts.ui:133
 msgid "Set as wallpaper"
 msgstr "Instellen als achtergrond"
 
-#: src/ui/menus.ui:202
-msgid "Wallpaper adjustment"
-msgstr "Achtergronduitlijning"
-
-#: src/ui/menus.ui:211 src/ui/menus.ui:257
 msgid "Mosaic"
 msgstr "Tegels"
 
-#: src/ui/menus.ui:216 src/ui/menus.ui:262
 msgid "Centered"
 msgstr "Gecentreerd"
 
-#: src/ui/menus.ui:221 src/ui/menus.ui:267
 msgid "Scaled"
 msgstr "Best passend"
 
-#: src/ui/menus.ui:226 src/ui/menus.ui:272
 msgid "Streched"
 msgstr "Uitgerekt"
 
-#: src/ui/menus.ui:231 src/ui/menus.ui:277
 msgid "Zoom"
 msgstr "Zoomen"
 
-#: src/ui/menus.ui:236 src/ui/menus.ui:282
 msgid "Spanned"
 msgstr "Omvatten"
 
-#: src/ui/menus.ui:245 src/ui/shortcuts.ui:140
-msgid "Set as lock screen"
-msgstr "Instellen op vergrendelscherm"
-
-#: src/ui/menus.ui:248
-msgid "Lock screen adjustment"
-msgstr "Vergrendelschermuitlijning"
-
-#: src/ui/menus.ui:299
 msgid "User manual"
 msgstr "Gebruikershandleiding"
 
-#: src/ui/picture_menu.ui:7
 msgid "Replace with…"
 msgstr "Vervangen door…"
 
-#: src/ui/picture_menu.ui:13
 msgid "View picture"
 msgstr "Afbeelding tonen"
 
-#: src/ui/picture_menu.ui:17
 msgid "View containing directory"
 msgstr "Bijbehorende map openen"
 
-#: src/ui/picture_menu.ui:24
 msgid "Move to first position"
 msgstr "Naar bovenkant verplaatsen"
 
-#: src/ui/picture_menu.ui:29
 msgid "Move up"
 msgstr "Omhoog verplaatsen"
 
-#: src/ui/picture_menu.ui:34
 msgid "Move down"
 msgstr "Omlaag verplaatsen"
 
-#: src/ui/picture_menu.ui:39
 msgid "Move to last position"
 msgstr "Naar onderkant verplaatsen"
 
-#: src/ui/picture_row.ui:90 src/ui/picture_thumbnail.ui:167
-#: src/ui/window.ui:413
 msgid "Time"
 msgstr "Duur"
 
-#: src/ui/picture_row.ui:101 src/ui/picture_thumbnail.ui:178
 msgid ""
 "Time (in seconds) of this image. This doesn't include the time of the "
 "transition."
@@ -318,281 +254,238 @@ msgstr ""
 "Hoe lang (in seconden) deze afbeelding getoond wordt. Dit staat los van de "
 "overgangsduur."
 
-#: src/ui/picture_row.ui:114 src/ui/picture_thumbnail.ui:191
-#: src/ui/window.ui:435
 msgid "Transition"
 msgstr "Overgang"
 
-#: src/ui/picture_row.ui:125 src/ui/picture_thumbnail.ui:202
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr ""
 "Duur (in seconden) van de overgang tussen deze en de volgende afbeelding."
 
-#: src/ui/picture_row.ui:158 src/ui/picture_thumbnail.ui:84
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: src/ui/picture_thumbnail.ui:58
 msgid "Duration"
 msgstr "Duur"
 
-#: src/ui/start_time.ui:55
 msgid "This is useful when the total duration is 24 hours."
 msgstr "Dit komt van pas als de totale duur meer dan 24 uur bedraagt."
 
-#: src/ui/start_time.ui:59
 msgid "Start time of the wallpaper"
 msgstr "Starttijd van achtergrond"
 
-#: src/ui/start_time.ui:78
 msgid "Year"
 msgstr "Jaar"
 
-#: src/ui/start_time.ui:101
 msgid "Month"
 msgstr "Maand"
 
-#: src/ui/start_time.ui:125
 msgid "Day"
 msgstr "Dag"
 
-#: src/ui/start_time.ui:149
 msgid "Hour"
 msgstr "Uur"
 
-#: src/ui/start_time.ui:173
 msgid "Minute"
 msgstr "Minuut"
 
-#: src/ui/start_time.ui:197
 msgid "Second"
 msgstr "Seconde"
 
-#: src/ui/shortcuts.ui:13
 msgid "General"
 msgstr "Algemeen"
 
-#: src/ui/shortcuts.ui:24
 msgid "Close the current window"
 msgstr "Huidig venster sluiten"
 
-#: src/ui/shortcuts.ui:31
 msgid "Quit all windows"
 msgstr "Alle vensters sluiten"
 
-#: src/ui/shortcuts.ui:38
 msgid "Show shortcuts"
 msgstr "Sneltoetsen tonen"
 
-#: src/ui/shortcuts.ui:45
 msgid "Show help"
 msgstr "Hulp tonen"
 
-#: src/ui/shortcuts.ui:54
 msgid "Pictures"
 msgstr "Afbeeldingen"
 
-#: src/ui/shortcuts.ui:72 src/ui/window.ui:281
 msgid "Find a picture"
 msgstr "Zoek een afbeelding"
 
-#: src/ui/shortcuts.ui:79
+#. <property name="visible">True</property>
 msgid "Replace a part of filenames"
 msgstr "Deel van bestandsnamen vervangen"
 
-#: src/ui/shortcuts.ui:108
+#. <property name="visible">True</property>
+#, fuzzy
+msgid "Editing"
+msgstr "Bewerken"
+
 msgid "Wallpaper"
 msgstr "Achtergrond"
 
-#: src/ui/shortcuts.ui:112 src/ui/window.ui:33
 msgid "Open an existing dynamic wallpaper"
 msgstr "Bestaande dynamische achtergrond openen"
 
-#: src/ui/window.ui:76
 msgid "More actions"
 msgstr "Meer acties"
 
-#: src/ui/window.ui:187
 msgid "Set the exact start time of the wallpaper"
 msgstr "Stel het exacte tijdstip in waarop de achtergrond moet verschijnen"
 
-#: src/ui/window.ui:212
 msgid "Apply as wallpaper or lock screen, and set adjustment options"
 msgstr ""
 "Pas toe als bureaublad- of vergrendelschermachtergrond en stel de uitlijning "
 "in"
 
-#: src/ui/window.ui:244
 msgid "Find a filename"
 msgstr "Bestandsnaam zoeken"
 
-#: src/ui/window.ui:290 src/ui/window.ui:297
 msgid "Replace in filenames"
 msgstr "Vervangen in bestandsnamen"
 
-#: src/ui/window.ui:356
 msgid "Error starting the application, please report this bug."
 msgstr ""
 "Het programma kan niet worden gestart. Meld deze bug aan de ontwikkelaar."
 
-#: src/ui/window.ui:362
 msgid "Automatic fix"
 msgstr "Automatisch oplossen"
 
-#: src/ui/window.ui:363
 msgid "Set durations for a total of 24 hours"
 msgstr "Stel de duur in (in totaal 24 uur)"
 
-#: src/ui/window.ui:421
 msgid "Duration of each picture (seconds)"
 msgstr "Duur van elke afbeelding (in seconden)"
 
-#: src/ui/window.ui:443
 msgid "Duration of each transition (seconds)"
 msgstr "Duur van elke overgang (in seconden)"
 
-#: src/main.py:52
-msgid "Print the version and display the 'about' dialog"
-msgstr "Toon de versie en het scherm 'Over'"
+msgid "Tell the version of the app"
+msgstr ""
 
-#: src/main.py:55
 msgid "Open a new window"
 msgstr "Nieuw venster openen"
 
-#: src/main.py:111
+#. FIXME pas ouf
 #, python-format
 msgid "Error opening this file. Did you mean %s ?"
 msgstr "Dit bestand kan niet worden geopend. Bedoel je '%s'?"
 
-#: src/main.py:177
 msgid "Report bugs or ideas"
 msgstr "Bugs melden of ideëen aandragen"
 
-#: src/main.py:178
 msgid "translator-credits"
 msgstr "Heimen Stoffels"
 
-#: src/misc.py:26
 msgid "Dynamic wallpapers (XML)"
 msgstr "Dynamische achtergronden (XML)"
 
-#: src/misc.py:34
 msgid "All pictures"
 msgstr "Alle afbeeldingen"
 
-#: src/misc.py:42
 msgid "PNG images"
 msgstr "PNG-afbeeldingen"
 
-#: src/misc.py:46
 msgid "JPEG images"
 msgstr "JPEG-afbeeldingen"
 
-#: src/misc.py:57
 #, python-format
 msgid "%s hour(s)"
 msgstr "%s uur"
 
-#: src/misc.py:61
 #, python-format
 msgid "%s minute(s)"
 msgstr "%s minuut/minuten"
 
-#: src/misc.py:64
 #, python-format
 msgid "%s second(s)"
 msgstr "%s seconde(n)"
 
-#: src/picture_widget.py:122
 msgid ""
 "This picture might exist, but it isn't in your home folder so I can't see it."
 msgstr ""
-"Deze afbeelding bestaat mogelijk wel, maar is niet aanwezig in je"
-" persoonlijke map, en dus onbruikbaar."
+"Deze afbeelding bestaat mogelijk wel, maar is niet aanwezig in je "
+"persoonlijke map, en dus onbruikbaar."
 
-#: src/picture_widget.py:126
 msgid "This picture doesn't exist"
 msgstr "Deze afbeelding bestaat niet"
 
-#: src/picture_widget.py:150
 #, python-brace-format
 msgid "This picture lasts from {0} to {1}"
 msgstr "Deze afbeelding wordt getoond van {0} tot {1}"
 
-#: src/picture_widget.py:156
 #, python-brace-format
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr "De overgang naar de volgende afbeelding duurt {0} tot {1}"
 
-#: src/view.py:48 src/view.py:255
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Voeg nieuwe afbeeldingen toe of open een bestaand XML-bestand."
 
-#: src/view.py:50
 msgid "Drag-and-drop pictures to reorder them."
 msgstr "Versleep afbeeldingen om de volgorde aan te passen."
 
-#: src/window.py:274
 msgid "This desktop environnement isn't supported."
 msgstr "Deze werkomgeving wordt niet ondersteund."
 
-#: src/window.py:326
 #, python-format
 msgid "%s pictures"
 msgstr "%s afbeeldingen"
 
-#: src/window.py:327
 #, python-format
 msgid "Total time: %s second(s)"
 msgstr "Totaalduur: %s seconde(n)"
 
-#: src/window.py:332
 msgid "The total duration isn't 24 hours."
 msgstr "De totaalduur is geen 24 uur."
 
-#: src/window.py:362
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Je achtergrond bevat niet-opgeslagen aanpassingen."
 
-#: src/window.py:363 src/window.py:517 src/window.py:652
+#, fuzzy, python-format
+msgid "There are unsaved modifications to %s"
+msgstr "Je achtergrond bevat niet-opgeslagen aanpassingen."
+
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/window.py:364
 msgid "Discard"
 msgstr "Verwerpen"
 
-#: src/window.py:385 src/window.py:453 src/window.py:478 src/window.py:515
 msgid "Loading…"
 msgstr "Bezig met laden…"
 
-#: src/window.py:386
 #, python-format
 msgid "Replace %s"
 msgstr "%s vervangen"
 
-#: src/window.py:544 src/window.py:556
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Deze dynamische achtergrond werkt niet"
 
-#: src/window.py:561
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Dit XML-bestand beschrijft geen geldige dynamische achtergrond"
 
-#: src/window.py:572
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Onbekend element: %s"
 
-#: src/window.py:640 src/window.py:641
-#, python-format
-msgid "Save %s"
-msgstr "%s opslaan"
-
-#: src/window.py:653
 msgid "Untitled"
 msgstr "Naamloos"
+
+#~ msgid "Wallpaper adjustment"
+#~ msgstr "Achtergronduitlijning"
+
+#~ msgid "Set as lock screen"
+#~ msgstr "Instellen op vergrendelscherm"
+
+#~ msgid "Lock screen adjustment"
+#~ msgstr "Vergrendelschermuitlijning"
+
+#~ msgid "Print the version and display the 'about' dialog"
+#~ msgstr "Toon de versie en het scherm 'Over'"
+
+#~ msgid "Save %s"
+#~ msgstr "%s opslaan"
 
 #~ msgid "Slideshow"
 #~ msgstr "Diavoorstelling"
