@@ -52,6 +52,11 @@ class DWEAbstractView():
 
 	############################################################################
 
+	def do_view_wide_operation(self, operation):
+		pass # TODO
+
+	############################################################################
+
 	def get_view_widget(self):
 		pass
 

@@ -173,7 +173,15 @@ class Application(Gtk.Application):
 		about_dialog.destroy()
 
 	def on_quit(self, *args):
-		self.quit()
+		all_windows = self.get_windows()
+		for w in all_windows:
+			if w.action_close():
+				# User clicked on "cancel"
+				can_quit = False
+			else:
+				w.close()
+				w.destroy()
+		# self.quit() # no, too violent
 
 	############################################################################
 

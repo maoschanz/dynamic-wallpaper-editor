@@ -77,7 +77,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		# Connect signals
 		self.connect('delete-event', self.action_close)
-		# self.connect('configure-event', self.adapt_to_window_size)
 		self.trans_time_btn.connect('value-changed', self.on_time_change)
 		self.static_time_btn.connect('value-changed', self.on_time_change)
 		self.info_bar.connect('close', self.close_notification)
@@ -148,14 +147,17 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		self.add_action_simple('add', self.action_add, ['<Ctrl>a'])
 		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
+
 		self.add_action_simple('find', self.action_find, ['<Ctrl>f'])
 		# self.add_action_simple('find_replace', self.action_f_r, ['<Ctrl>h'])
 		# self.add_action_simple('apply_replace', self.action_replace_str, None)
-		self.add_action_simple('fix_24h', self.fix_24, None)
 
-		self.add_action_simple('undo', self.action_undo, ['<Ctrl>z'])
-		self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
-		self.update_history_actions()
+		self.add_action_simple('fix_24h', self.fix_24, None)
+		self.add_action_simple('sort-pics', self.sort_pics_by_name, None)
+
+		# self.add_action_simple('undo', self.action_undo, ['<Ctrl>z'])
+		# self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
+		# self.update_history_actions()
 
 		self.add_action_simple('pic_replace', self.action_pic_replace, None)
 		self.add_action_simple('pic_open', self.action_pic_open, None)
@@ -178,8 +180,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_boolean('same_duration', False, self.update_type_slideshow)
 		self.add_action_boolean('total_24', False, self.update_type_daylight)
 
-		self.add_action_simple('sort-pics', self.sort_pics_by_name, None)
-
 		self.find_rbtn1.connect('toggled', self.radio_btn_helper, 'find')
 		# self.find_rbtn2.connect('toggled', self.radio_btn_helper, 'replace')
 		self.find_rbtn3.connect('toggled', self.radio_btn_helper, 'hide')
@@ -187,17 +187,17 @@ class DWEWindow(Gtk.ApplicationWindow):
 	############################################################################
 	# History ##################################################################
 
-	def add_to_history(self, operation):
-		if operation['scale'] == 'window':
-			self.do_window_wide_operation(operation)
-		elif operation['scale'] == 'view':
-			pass # TODO
-		elif operation['scale'] == 'picture':
-			pass # TODO
+	def add_to_history(self, op):
+		if op['scale'] == 'window':
+			self.do_window_wide_operation(op)
+		elif op['scale'] == 'view':
+			self.view.do_view_wide_operation(op)
+		elif op['scale'] == 'picture':
+			self.view.get_pic_at(op['index']).do_pic_wide_operation(op)
 		else: # invalid operation
 			return
 		self._is_saved = False
-		self.undo_history.append(operation)
+		self.undo_history.append(op)
 		self.update_history_actions()
 
 	def action_undo(self, *args):
@@ -219,19 +219,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	############################################################################
 	# Window size ##############################################################
-
-	# def adapt_to_window_size(self, *args):
-	# 	w = self.get_allocated_width()
-	# 	if w < 660: # TODO do not hardcode the limits
-	# 		self.set_size([True, True])
-	# 	elif w < 720:
-	# 		self.set_size([False, True])
-	# 	else: # Default size or higher
-	# 		self.set_size([False, False])
-
-	# def set_size(self, array):
-	# 	self.set_addpic_compact(array[0])
-	# 	self.set_adddir_compact(array[1])
 
 	def set_addpic_compact(self, state):
 		self.label_add_pic.set_visible(not state)
