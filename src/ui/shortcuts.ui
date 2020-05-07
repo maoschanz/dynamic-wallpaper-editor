@@ -84,7 +84,7 @@
         </child>
         <child>
           <object class="GtkShortcutsGroup">
-            <!-- <property name="visible">True</property> -->
+            <property name="visible">True</property>
             <property name="title" translatable="yes">Editing</property>
             <child>
               <object class="GtkShortcutsShortcut">

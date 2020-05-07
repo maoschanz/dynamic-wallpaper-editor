@@ -52,11 +52,6 @@ class DWEAbstractView():
 
 	############################################################################
 
-	def do_view_wide_operation(self, operation):
-		pass # TODO
-
-	############################################################################
-
 	def get_view_widget(self):
 		pass
 
@@ -73,7 +68,7 @@ class DWEAbstractView():
 		rows = self.get_view_widget().get_children()
 		for r in rows:
 			r.get_child().indx = r.get_index()
-		self.window.update_status()
+		self.window.on_time_change()
 
 	def sort_view(self, pic1, pic2, *args):
 		"""Returns int < 0 if pic1 should be before pic2, 0 if they are equal

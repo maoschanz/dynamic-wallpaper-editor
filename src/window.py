@@ -67,10 +67,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 		super().__init__(**kwargs)
 		self.app = kwargs['application']
 		self.gio_file = None
-		self._is_saved = True
-		self.check_24 = False
-		self.undo_history = []
-		self.redo_history = []
+		self.check_24 = False # XXX still needed???? the action should be enough
+		self.update_time_lock = False
+		self.init_history()
 
 		# Used in the "add pictures" file chooser dialog
 		self.preview_picture = Gtk.Image(margin_right=5)
@@ -155,9 +154,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('fix_24h', self.fix_24, None)
 		self.add_action_simple('sort-pics', self.sort_pics_by_name, None)
 
-		# self.add_action_simple('undo', self.action_undo, ['<Ctrl>z'])
-		# self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
-		# self.update_history_actions()
+		self.add_action_simple('undo', self.action_undo, ['<Ctrl>z'])
+		self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
+		self.update_history_actions()
 
 		self.add_action_simple('pic_replace', self.action_pic_replace, None)
 		self.add_action_simple('pic_open', self.action_pic_open, None)
@@ -187,35 +186,38 @@ class DWEWindow(Gtk.ApplicationWindow):
 	############################################################################
 	# History ##################################################################
 
-	def add_to_history(self, op):
-		if op['scale'] == 'window':
-			self.do_window_wide_operation(op)
-		elif op['scale'] == 'view':
-			self.view.do_view_wide_operation(op)
-		elif op['scale'] == 'picture':
-			self.view.get_pic_at(op['index']).do_pic_wide_operation(op)
-		else: # invalid operation
-			return
+	def init_history(self):
+		self._is_saved = True
+		self.undo_history = []
+		self.redo_history = []
+
+	def add_to_history(self):
+		new_state = self.generate_text()
 		self._is_saved = False
-		self.undo_history.append(op)
+		#print(len(self.undo_history))
+		self.undo_history.append(new_state)
+		self.redo_history = [] # XXX vérifier la libération de la mémoire
 		self.update_history_actions()
 
 	def action_undo(self, *args):
-		pass # TODO
+		restored_state = self.undo_history.pop()
+		self.load_state(restored_state)
+		self.redo_history.append(restored_state)
 		self.update_history_actions()
 
 	def action_redo(self, *args):
-		operation = self.redo_history.pop()
-		self.add_to_history(operation)
+		restored_state = self.redo_history.pop()
+		self.load_state(restored_state)
+		self.add_to_history()
 
 	def update_history_actions(self):
-		if len(self.undo_history) == 0:
-			self.lookup_action('undo').set_enabled(False)
-		if len(self.redo_history) == 0:
-			self.lookup_action('redo').set_enabled(False)
+		self.lookup_action('undo').set_enabled(len(self.undo_history) > 0)
+		self.lookup_action('redo').set_enabled(len(self.redo_history) > 0)
 
-	def do_window_wide_operation(self, operation):
-		pass # TODO
+	def load_state(self, state):
+		self.update_time_lock = True
+		self.load_list_from_string(state)
+		self.update_time_lock = False
 
 	############################################################################
 	# Window size ##############################################################
@@ -296,7 +298,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.update_status()
 
 	def fix_24(self, *args):
+		self.update_time_lock = True
 		self.view.fix_24()
+		self.update_time_lock = False
+		self.on_time_change()
 
 	def update_global_time_box(self, is_global, is_daylight):
 		"""Show relevant spinbuttons based on the active options."""
@@ -343,8 +348,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 		return total_time
 
 	def on_time_change(self, *args):
-		self._is_saved = False
+		if self.update_time_lock: # all spinbuttons are being updated at the
+			return # same time, we will update things only at the end
 		self.update_status()
+		self.add_to_history()
 
 	############################################################################
 	# Miscellaneous ############################################################
@@ -391,6 +398,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	def sort_pics_by_name(self, *args):
 		self.view.sort_by_name()
+		self.add_to_history()
 
 	############################################################################
 	# Picture-wide actions #####################################################
@@ -459,8 +467,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.find_rbtn2.set_active(True)
 
 	def action_replace_str(self, *args):
-		self._is_saved = False
 		self.view.replace_str( self.replace_entry.get_text() )
+		self.add_to_history()
 
 	def search_pics_in_view(self, *args):
 		self.view.search_pic(args[0].get_text())
@@ -480,6 +488,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
+			self.update_time_lock = True
 			enumerator = file_chooser.get_file().enumerate_children('standard::*', \
 			             Gio.FileQueryInfoFlags.NONE, None)
 			f = enumerator.next_file(None)
@@ -489,6 +498,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 					array.append(file_chooser.get_filename() + '/' + f.get_display_name())
 				f = enumerator.next_file(None)
 			self.view.add_untimed_pictures_to_list(array)
+			self.update_time_lock = False
+			self.on_time_change()
 		self.status_bar.pop(1)
 		file_chooser.destroy()
 
@@ -500,8 +511,11 @@ class DWEWindow(Gtk.ApplicationWindow):
 		file_chooser = self.get_add_pic_dialog(_("Add pictures"), True)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
+			self.update_time_lock = True
 			array = file_chooser.get_filenames()
 			self.view.add_untimed_pictures_to_list(array)
+			self.update_time_lock = False
+			self.on_time_change()
 		self.status_bar.pop(1)
 		file_chooser.destroy()
 
@@ -539,7 +553,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 		add_xml_dialog_filters(file_chooser)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.ACCEPT:
+			self.update_time_lock = True
 			self.load_gfile(file_chooser.get_file())
+			self.update_time_lock = False
+			self.on_time_change()
 		file_chooser.destroy()
 		self.status_bar.pop(1)
 
@@ -549,7 +566,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			self.auto_detect_type()
 			self.lookup_action('set_wp').set_enabled(True)
-			self._is_saved = True
+			self.init_history()
 		else:
 			self.gio_file = None
 

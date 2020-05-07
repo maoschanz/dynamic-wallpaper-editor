@@ -40,7 +40,7 @@
             <property name="orientation">horizontal</property>
             <child>
               <object class="GtkButton">
-                <!-- <property name="visible">True</property> -->
+                <property name="visible">True</property>
                 <property name="action-name">win.undo</property>
                 <property name="tooltip_text" translatable="yes">Undo</property>
                 <child>
@@ -53,7 +53,7 @@
             </child>
             <child>
               <object class="GtkButton">
-                <!-- <property name="visible">True</property> -->
+                <property name="visible">True</property>
                 <property name="action-name">win.redo</property>
                 <property name="tooltip_text" translatable="yes">Redo</property>
                 <child>

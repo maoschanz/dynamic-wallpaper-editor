@@ -170,11 +170,6 @@ class DWEPictureWidget(Gtk.Box):
 
 	############################################################################
 
-	def do_pic_wide_operation(self, operation):
-		pass # TODO
-
-	############################################################################
-
 	def generate_static(self, st_time):
 		"""Returns a valid XML code for this picture. The duration can
 		optionally be set as a parameter (if None, the spinbutton specific to
