@@ -364,9 +364,13 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if self._is_saved:
 			return True
 
-		dialog = Gtk.MessageDialog(modal=True, transient_for=self, message_format= \
-		                _("There are unsaved modifications to your wallpaper."))
-		# TODO include filename if possible
+		if self.gio_file is None:
+			msg_text = _("There are unsaved modifications to your wallpaper.")
+		else:
+			fn = self.gio_file.get_path().split('/')[-1]
+			msg_text = _("There are unsaved modifications to %s") % fn
+		dialog = Gtk.MessageDialog(modal=True, transient_for=self, \
+		                                                message_format=msg_text)
 		dialog.add_button(_("Cancel"), Gtk.ResponseType.CANCEL)
 		dialog.add_button(_("Discard"), Gtk.ResponseType.NO)
 		dialog.add_button(_("Save"), Gtk.ResponseType.APPLY)

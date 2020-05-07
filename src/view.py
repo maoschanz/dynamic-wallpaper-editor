@@ -225,7 +225,7 @@ class DWEAbstractView():
 		transitions."""
 
 		if self.length == 0:
-			pass
+			return
 		elif self.length == 1:
 			# Special case
 			self.get_pic_at(0).static_time_btn.set_value(86400)
