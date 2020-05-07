@@ -23,10 +23,10 @@ or their durations, and save the modifications.
 
 The list of pictures can conveniently be displayed as a list or as a grid.
 
-### Set an XML file as a wallpaper
+### Set an XML file as your wallpaper
 
-An existing XML file (opened, or just created) can be set as your wallpaper (or
-as your lock screen) from the app.
+You can set an XML file (that you opened or newly created) as your wallpaper
+from the app.
 
 Adjustment options are available (mosaic, zoom, centered, etc.)
 
@@ -43,10 +43,6 @@ You can install it from flathub.org using the instructions on [this page](https:
 ### Native packages
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/dynamic-wallpaper-editor.svg)](https://repology.org/project/dynamic-wallpaper-editor/versions)
-
-- [Fedora (official repo)](https://apps.fedoraproject.org/packages/dynamic-wallpaper-editor) (29, 30 and Rawhide): `sudo dnf install dynamic-wallpaper-editor`
-- [openSUSE (OBS)](https://software.opensuse.org//download.html?project=home%3ADead_Mozay&package=dynamic-wallpaper-editor)
-- Arch and Manjaro ([AUR](https://aur.archlinux.org/packages/dynamic-wallpaper-editor))
 
 ----
 

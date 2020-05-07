@@ -4,8 +4,6 @@ gnome.yelp(meson.project_name(),
 		'index.page',
 		'add_and_order.page',
 		'durations.page',
-		'open_and_save.page',
-		'apply.page',
 		'legal.xml'
 	],
 	media: [

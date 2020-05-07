@@ -26,7 +26,7 @@
       <item><p><gui style="menuitem">Fit the daylight</gui> (each picture has
       its own duration, and the total duration is 24 hours)</p></item>
     </list>
-    <p>When you <link xref="open_and_save">open an existing XML file</link>, the
+    <p>When you <link xref="index#open">open an existing XML file</link>, the
     existing type is detected.</p>
   </section>
 
@@ -52,3 +52,4 @@
   </section>
 
 </page>
+

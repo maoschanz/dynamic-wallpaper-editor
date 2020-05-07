@@ -41,16 +41,15 @@
       </tr>
     </table>
     <p>With both layouts, pictures can be reordered using drag-and-drop.</p>
+    <p>Using a button in the toolbar, you can sort the pictures by their
+    filename.</p>
   </section>
 
   <section id="replace">
     <title>Replace pictures</title>
     <p>If one of your file has been moved or renamed, you can replace a picture
-    using its <gui style="menuitem">Replace with…</gui> menu item.</p>
-    <p>If a lot of picture changed, for example if you renamed their folder, you
-    can use the <gui style="button">Find and replace</gui> feature: search for
-    the part of the filename you want to replace, type what you want as a
-    replacement, and apply.</p>
+    using its <gui style="menuitem">Replace with…</gui> menu item, available in
+    the menu at the right of each picture.</p>
   </section>
 
   <section id="delete">
@@ -62,3 +61,4 @@
   </section>
 
 </page>
+
