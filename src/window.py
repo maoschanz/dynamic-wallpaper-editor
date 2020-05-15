@@ -335,11 +335,11 @@ class DWEWindow(Gtk.ApplicationWindow):
 		"""Update the total time in the statusbar."""
 		self.status_bar.pop(0)
 		total_time = self.get_total_time()
-		message = str(_("%s pictures") % self.view.length + ' - ')
+		message = str(ngettext("%s picture", "%s pictures",
+		                       self.view.length) % self.view.length + ' - ')
 		message += str(ngettext("Total time: %s second",
 		                        "Total time: %s seconds",
-		                        total_time)
-		                        % total_time + ' ')
+		                        total_time) % total_time)
 		if total_time >= 60:
 			message += ' = ' + time_to_string(total_time)
 		if self.check_24:

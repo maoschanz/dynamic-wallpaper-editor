@@ -62,7 +62,7 @@ def time_to_string(total_time):
 		message += str(ngettext("%s minute", "%s minutes", minutes) % minutes + ' ')
 	if seconds < 10:
 		seconds = '0' + str(seconds)
-	message += str(ngettext("%s second", "%s seconds", seconds) % seconds + ' ')
+	message += str(ngettext("%s second", "%s seconds", seconds) % seconds)
 	return message
 
 def get_hms(total_time):
