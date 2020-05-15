@@ -20,6 +20,10 @@ function help_all () {
 	ninja -C _build help-dynamic-wallpaper-editor-update-po
 }
 
+function help_pot () {
+	ninja -C _build help-dynamic-wallpaper-editor-pot
+}
+
 if [ $# = 0 ]; then
 	declare -F
 	exit 1
