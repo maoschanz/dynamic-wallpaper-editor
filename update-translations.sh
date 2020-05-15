@@ -1,33 +1,30 @@
 #!/bin/bash
 
-echo "Generating .pot file..."
-xgettext --from-code=UTF-8 --files-from=po/POTFILES --output=po/dynamic-wallpaper-editor.pot
+function src_lang () {
+	echo "Updating .pot file"
+	src_pot
+	echo "Updating translation for: $1"
+	msgmerge ./po/$1.po ./po/dynamic-wallpaper-editor.pot > ./po/$1.temp.po
+	mv ./po/$1.temp.po ./po/$1.po
+}
+
+function src_all () {
+	ninja -C _build dynamic-wallpaper-editor-update-po
+}
+
+function src_pot () {
+	ninja -C _build dynamic-wallpaper-editor-pot
+}
+
+function help_all () {
+	ninja -C _build help-dynamic-wallpaper-editor-update-po
+}
 
 if [ $# = 0 ]; then
-	echo "No parameter, exiting now."
+	declare -F
 	exit 1
-fi
-
-IFS='
-'
-
-if [ $1 = "--all" ]; then
-	ninja -C _build dynamic-wallpaper-editor-update-po
-
-	# liste=`ls ./po/*po`
-	# for fichier in $liste
-	# do
-	# 	echo "Updating translation for: $fichier"
-	# 	msgmerge $fichier ./po/dynamic-wallpaper-editor.pot > $fichier.temp.po
-	# 	mv $fichier.temp.po $fichier
-	# done
 else
-	for fichier in $@
-	do
-		echo "Updating translation for: $fichier"
-		msgmerge ./po/$fichier.po ./po/dynamic-wallpaper-editor.pot > ./po/$fichier.temp.po
-		mv ./po/$fichier.temp.po ./po/$fichier.po
-	done
+	$1 $2
 fi
 
 exit 0
