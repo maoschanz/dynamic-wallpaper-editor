@@ -284,7 +284,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 			use_folder.set_boolean('slideshow-enabled', False)
 
 	def unsupported_desktop(self):
-		self.show_notification(_("This desktop environnement isn't supported."))
+		self.show_notification(_("This desktop environment isn't supported."))
 		self.app.lookup_action('wp_options').set_enabled(False)
 		self.lookup_action('set_wp').set_enabled(False)
 		return ''

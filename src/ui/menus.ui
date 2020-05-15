@@ -228,8 +228,8 @@
         </item>
         <item>
           <attribute name="action">app.wp_options</attribute>
-          <attribute name="label" translatable="yes">Streched</attribute>
-          <attribute name="target">streched</attribute>
+          <attribute name="label" translatable="yes">Stretched</attribute>
+          <attribute name="target">stretched</attribute>
         </item>
         <item>
           <attribute name="action">app.wp_options</attribute>
