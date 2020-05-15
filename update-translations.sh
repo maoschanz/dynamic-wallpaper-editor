@@ -1,7 +1,11 @@
 #!/bin/bash
 
+echo "Configuring build directory \"_build\"..."
+[ -d _build ] && rm -rf _build
+meson . _build > /dev/null
+
 echo "Generating .pot file..."
-xgettext --from-code=UTF-8 --files-from=po/POTFILES --output=po/dynamic-wallpaper-editor.pot
+ninja -C _build dynamic-wallpaper-editor-pot
 
 if [ $# = 0 ]; then
 	echo "No parameter, exiting now."
