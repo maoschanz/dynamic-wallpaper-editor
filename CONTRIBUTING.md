@@ -105,9 +105,9 @@ me about it.
 	- application-wide actions, such as the about dialog or the help
 	- changing user's settings depending on their desktop environment
 		- wallpaper URI
-		- wallpaper adjustement
+		- wallpaper adjustment
 		- lockscreen URI
-		- lockscreen adjustement
+		- lockscreen adjustment
 	- writing files to `~/.var/app/com.github.maoschanz.DynamicWallpaperEditor/config/*.xml`
 
 >The point of writing files to this directory are:
