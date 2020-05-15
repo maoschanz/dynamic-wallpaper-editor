@@ -19,26 +19,69 @@ using GNOME Builder.
 
 ## If you want to translate the app
 
-1. Fork the repo and clone it on your disk.
-2. Add your language to `po/LINGUAS`.
-3. Build the app once, and then run `ninja -C _build dynamic-wallpaper-editor-update-po`
-at the root of the project. It should produce a `.po` file for your language.
-It's also possible to run `./update-translations.sh xx`, where `xx` is the code
-for your language.
-4. Use a text editor or [an adequate app](https://flathub.org/apps/details/org.gnome.Gtranslator)
-to translate the strings of this `.po` file. The string `translator-credits`
-should be translated by your name(s), it will be displayed in the "About" dialog.
-5. If you want to test your translation: GNOME Builder isn't able to run a
-translated version of the app so export it as a `.flatpak` file and install it.
-6. Run
+For translating UI or help files, these introductory instructions apply to both
+UI and help files translation:
+
+1. Before starting the translation, fork the repo and clone it on your disk.
+   If already have it forked/cloned, make sure to rebase your fork first.
+2. Enable the language and generate the translation file as detailed in next
+   sections
+3. Translate using a text editor or [an adequate app](https://flathub.org/apps/details/org.gnome.Gtranslator)
+   to translate the strings of this `.po` file. The string `translator-credits`
+   should be translated by your name(s), it will be displayed in the "About"
+   dialog.
+4. Please test your translation by placing your `.po` file in the proper place,
+   building and installing the application.
+5. Once your translation is ready to be submitted, run
 ```
-git add po
+git add path/to/your/file.po
 git commit
 git push
 ```
-7. And submit a "pull request"/"merge request".
+6. And submit a "pull request"/"merge request".
 
-If you're just updating an existing translation, skip steps 2 and 3.
+NOTE: In the sessions below: `LANG` is your language code typically represented
+by a language specification of the form ll or a combined language and country
+specification of the form ll_CC
+
+### Translating UI
+
+*Make sure to check more instructions regarding translation in above section*
+
+If adding translation, do the following at the project's root directory:
+
+1. Include your language code LANG in `po/LINGUAS`.
+2. Run `meson _build` (add `--reconfigure` if `_build` dir exists)
+3. Run `ninja -C _build dynamic-wallpaper-editor-update-po`
+4. Your translation file should be in `po/LANG.po`
+
+If updating your translation, just run `./update-translations.sh src_lang LANG`
+and your `po/LANG.po` will be updated with latest strings for translation
+
+If you want to test your translation: GNOME Builder isn't able to run a
+translated version of the app so export it as a `.flatpak` file and install it.
+
+### Translation help files
+
+*Make sure to check more instructions regarding translation in above section*
+
+If adding translation, do the following at the project's root directory:
+
+1. Include your language code LANG in `help/LINGUAS`.
+2. Run `meson _build` (add `--reconfigure` if `_build` dir exists)
+3. Run `ninja -C _build help-dynamic-wallpaper-editor-pot`
+4. Create directory for your language running `mkdir help/LANG`
+5. Run `msginit -i help/dynamic-wallpaper-editor.pot -o help/LANG/LANG.po`
+6. Now your translation file `help/LANG/LANG.po` is ready for translation
+
+If updating your translation, just run `./update-translations.sh help_all`
+and your `po/LANG/LANG.po` will be updated with latest strings for translation
+
+If you want to test your translation:
+
+1. Run `DESTDIR="/tmp" ninja -C _build install`
+2. View it running `yelp /tmp/usr/local/share/help/LANG/index.page`
+3. Alternatively, build and install the app and press F1 key for help pages
 
 ----
 

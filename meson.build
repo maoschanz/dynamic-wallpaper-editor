@@ -6,6 +6,8 @@ project(
 
 i18n = import('i18n')
 
+itstool = find_program('itstool')
+
 subdir('data')
 subdir('help')
 subdir('src')
