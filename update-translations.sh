@@ -4,8 +4,7 @@ function src_lang () {
 	echo "Updating .pot file"
 	src_pot
 	echo "Updating translation for: $1"
-	msgmerge ./po/$1.po ./po/dynamic-wallpaper-editor.pot > ./po/$1.temp.po
-	mv ./po/$1.temp.po ./po/$1.po
+	msgmerge --update --previous ./po/$1.po ./po/dynamic-wallpaper-editor.pot
 }
 
 function src_all () {
@@ -18,6 +17,10 @@ function src_pot () {
 
 function help_all () {
 	ninja -C _build help-dynamic-wallpaper-editor-update-po
+}
+
+function help_pot () {
+	ninja -C _build help-dynamic-wallpaper-editor-pot
 }
 
 if [ $# = 0 ]; then
