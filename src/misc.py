@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import gi, math
+from gettext import ngettext
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
@@ -54,14 +55,14 @@ def time_to_string(total_time):
 	message = ''
 	hours, minutes, seconds = get_hms(total_time)
 	if hours > 0:
-		message += str(_("%s hour(s)") % hours + ' ')
+		message += str(ngettext("%s hour", "%s hours", hours) % hours + ' ')
 	if minutes > 0:
 		if minutes < 10:
 			minutes = '0' + str(minutes)
-		message += str(_("%s minute(s)") % minutes + ' ')
+		message += str(ngettext("%s minute", "%s minutes", minutes) % minutes + ' ')
 	if seconds < 10:
 		seconds = '0' + str(seconds)
-	message += str(_("%s second(s)") % seconds)
+	message += str(ngettext("%s second", "%s seconds", seconds) % seconds)
 	return message
 
 def get_hms(total_time):
