@@ -19,24 +19,26 @@ using GNOME Builder.
 
 ## If you want to translate the app
 
-- Fork the repo and clone it on your disk.
-- Add your language to `po/LINGUAS`.
-- Build the app once, and then run `ninja -C _build dynamic-wallpaper-editor-update-po`
+1. Fork the repo and clone it on your disk.
+2. Add your language to `po/LINGUAS`.
+3. Build the app once, and then run `ninja -C _build dynamic-wallpaper-editor-update-po`
 at the root of the project. It should produce a `.po` file for your language.
 It's also possible to run `./update-translations.sh xx`, where `xx` is the code
 for your language.
-- Use a text editor or [an adequate app](https://flathub.org/apps/details/org.gnome.Gtranslator)
+4. Use a text editor or [an adequate app](https://flathub.org/apps/details/org.gnome.Gtranslator)
 to translate the strings of this `.po` file. The string `translator-credits`
 should be translated by your name(s), it will be displayed in the "About" dialog.
-- If you want to test your translation: GNOME Builder isn't able to run a
+5. If you want to test your translation: GNOME Builder isn't able to run a
 translated version of the app so export it as a `.flatpak` file and install it.
-- Run
+6. Run
 ```
-git add .
+git add po
 git commit
 git push
 ```
-And submit a "pull request"/"merge request".
+7. And submit a "pull request"/"merge request".
+
+If you're just updating an existing translation, skip steps 2 and 3.
 
 ----
 
@@ -45,11 +47,12 @@ And submit a "pull request"/"merge request".
 - The issue has to be reported first. Tell on the issue that you'll do a patch.
 - Use tabs in `.py` files, but 2 spaces in `.ui` or `.xml` files.
 - In python code, use double quotes for strings the user will see and single quotes otherwise.
-- Concerning design, try to respect GNOME Human Interface Guidelines as much as possible.
-- Concerning the UI, use GMenuModel for all menus, and prefer `.ui` files for the rest.
+- Concerning design, try to respect the GNOME Human Interface Guidelines as much as possible.
+- Concerning the UI, use GMenuModel for all menus.
 - Code comments should explain **why** the code is doing what it is doing, **not what** it does.
 
-If you find some bullshit in the code, or don't understand it, feel free to ask me about it.
+If you find some bullshit in the code, or don't understand it, feel free to ask
+me about it.
 
 ### Code content
 
