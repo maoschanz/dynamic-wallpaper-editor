@@ -1,3 +1,6 @@
+# Tool required for dealing with translated help files
+itstool = find_program('itstool')
+
 gnome = import('gnome')
 gnome.yelp(meson.project_name(),
 	sources: [
