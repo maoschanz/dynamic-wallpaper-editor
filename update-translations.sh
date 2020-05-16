@@ -15,6 +15,13 @@ function src_pot () {
 	ninja -C _build dynamic-wallpaper-editor-pot
 }
 
+function help_lang () {
+	echo "Updating .pot file"
+	help_pot
+	echo "Updating translation for: $1"
+	msgmerge --update --previous ./help/$1/$1.po ./help/dynamic-wallpaper-editor.pot
+}
+
 function help_all () {
 	ninja -C _build help-dynamic-wallpaper-editor-update-po
 }
