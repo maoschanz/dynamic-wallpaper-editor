@@ -30,7 +30,7 @@ UI and help files translation:
    to translate the strings of this `.po` file. The string `translator-credits`
    should be translated by your name(s), it will be displayed in the "About"
    dialog.
-4. Please test your translation by placing your `.po` file in the proper place,
+4. You can test your translation by placing your `.po` file in the proper place,
    building and installing the application.
 5. Once your translation is ready to be submitted, run
 ```
@@ -40,7 +40,7 @@ git push
 ```
 6. And submit a "pull request"/"merge request".
 
-NOTE: In the sessions below: `LANG` is your language code typically represented
+NOTE: In the sections below: `LANG` is your language code typically represented
 by a language specification of the form ll or a combined language and country
 specification of the form ll_CC
 
