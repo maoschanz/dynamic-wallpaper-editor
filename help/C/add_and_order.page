@@ -42,7 +42,7 @@
     </table>
     <p>With both layouts, pictures can be reordered using drag-and-drop.</p>
     <p>Using a button in the toolbar, you can sort the pictures by their
-    filename.</p>
+    filename.</p> <!-- TODO "a button"? "the toolbar"? mdr non -->
   </section>
 
   <section id="replace">

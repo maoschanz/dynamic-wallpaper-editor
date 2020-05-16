@@ -1,6 +1,6 @@
 # main.py
 #
-# Copyright 2018-2019 Romain F. T.
+# Copyright 2018-2020 Romain F. T.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -48,11 +48,9 @@ class Application(Gtk.Application):
 		self._git_url = 'https://github.com/maoschanz/dynamic-wallpaper-editor'
 
 		self.add_main_option('version', b'v', GLib.OptionFlags.NONE,
-		                     GLib.OptionArg.NONE,
-		                     _("Tell the version of the app"),
-		                     None)
+		            GLib.OptionArg.NONE, _("Tell the version of the app"), None)
 		self.add_main_option('new-window', b'n', GLib.OptionFlags.NONE,
-		                     GLib.OptionArg.NONE, _("Open a new window"), None)
+		                      GLib.OptionArg.NONE, _("Open a new window"), None)
 
 	def on_startup(self, *args):
 		self.set_gsettings_values()

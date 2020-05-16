@@ -21,13 +21,19 @@
     <title>Select a type of wallpaper</title>
     <p>To help you doing this, two presets are available:</p>
     <list>
-      <item><p><gui style="menuitem">Same duration for all</gui> (all pictures
-      will have the same duration)</p></item>
-      <item><p><gui style="menuitem">Fit the daylight</gui> (each picture has
-      its own duration, and the total duration is 24 hours)</p></item>
+      <item><p>
+        <gui style="menuitem">Same duration for all</gui> (all pictures will
+        have the same duration)
+      </p></item>
+      <item><p>
+        <gui style="menuitem">Fit the daylight</gui> (each picture has its own
+        duration, and the total duration is 24 hours)
+      </p></item>
     </list>
+    <p>Of course, you can let these items unchecked, and edit any duration as
+    you prefer.</p>
     <p>When you <link xref="index#open">open an existing XML file</link>, the
-    existing type is detected.</p>
+    existing type is detected (if any).</p>
   </section>
 
   <section id="durations">
@@ -38,10 +44,12 @@
     image, in seconds.</p>
     <media type="image" mime="image/png" width="100%"
            src="figures/screenshot_grid_popover.png" its:translate="no" />
+
     <p>If you want to do a wallpaper changing with the daylight, the total
     amount of time should be 24 hours (86400 seconds), transitions included.</p>
     <p>The total duration is displayed in the statusbar, at the bottom of the
-    window. A button can help you to set the accurate durations.</p>
+    window. With the <gui style="menuitem">Fit the daylight</gui> preset, a
+    button can help you to set the accurate durations.</p>
   </section>
 
   <section id="start-time">

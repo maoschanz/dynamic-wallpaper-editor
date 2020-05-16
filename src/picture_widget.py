@@ -53,7 +53,7 @@ class DWEPictureWidget(Gtk.Box):
 
 		# Pic controls
 		delete_btn = builder.get_object('delete_btn')
-		delete_btn.connect('clicked', self.destroy_pic)
+		delete_btn.connect('clicked', self.destroy_pic) # XXX isnt a GioAction
 		self.menu_btn = builder.get_object('menu_btn')
 		builder.add_from_resource(UI_PATH + 'picture_menu.ui')
 		self.menu_btn.set_menu_model( builder.get_object('pic-menu') )

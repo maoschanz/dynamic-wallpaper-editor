@@ -1,6 +1,6 @@
 # window.py
 #
-# Copyright 2018-2019 Romain F. T.
+# Copyright 2018-2020 Romain F. T.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -335,11 +335,11 @@ class DWEWindow(Gtk.ApplicationWindow):
 		"""Update the total time in the statusbar."""
 		self.status_bar.pop(0)
 		total_time = self.get_total_time()
-		message = str(ngettext("%s picture", "%s pictures",
-		                       self.view.length) % self.view.length + ' - ')
-		message += str(ngettext("Total time: %s second",
-		                        "Total time: %s seconds",
-		                        total_time) % total_time)
+		message = ngettext("%s picture", "%s pictures", self.view.length) \
+		                                              % self.view.length + ' - '
+		# XXX ça prend en compte le 0 comme un pluriel cette merde
+		message += ngettext("Total time: %s second", "Total time: %s seconds", \
+		                                                total_time) % total_time
 		if total_time >= 60:
 			message += ' = ' + time_to_string(total_time)
 		if self.check_24:
@@ -408,7 +408,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 	# Picture-wide actions #####################################################
 
 	# TODO these actions are currently not available from the menubar, and not
-	# bound to keyboard shortcuts.
+	# bound to keyboard shortcuts, because they call self.view.get_active_pic(),
+	# whose behavior is to return the DWEPictureWidget whose menu is opened.
 
 	def action_pic_replace(self, *args):
 		pic = self.view.get_active_pic()
@@ -725,3 +726,4 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	############################################################################
 ################################################################################
+

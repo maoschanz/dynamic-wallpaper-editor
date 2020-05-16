@@ -135,7 +135,7 @@
             </child>
 
             <child>
-              <!-- il est hors de la grille parce que la grille on la cache -->
+              <!-- this widget is out of the grid because grid can be hidden -->
               <object class="GtkMenuButton" id="menu_btn">
                 <property name="visible">True</property>
                 <property name="relief">none</property>
@@ -150,7 +150,7 @@
             </child>
 
             <child>
-              <!-- il est hors de la grille parce que la grille on la cache -->
+              <!-- this widget is out of the grid because grid can be hidden -->
               <object class="GtkButton" id="delete_btn">
                 <property name="visible">True</property>
                 <property name="relief">none</property>

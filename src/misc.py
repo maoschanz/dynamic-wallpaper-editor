@@ -1,6 +1,6 @@
 # misc.py
 #
-# Copyright 2018-2019 Romain F. T.
+# Copyright 2018-2020 Romain F. T.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,10 +16,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import gi, math
-from gettext import ngettext
-
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
+from gettext import ngettext
 
 def add_xml_dialog_filters(dialog):
 	"""Add file filters for images to a file chooser dialog."""
