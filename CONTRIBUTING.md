@@ -74,15 +74,26 @@ If adding translation, do the following at the project's root directory:
 5. Run `msginit -i help/dynamic-wallpaper-editor.pot -o help/LANG/LANG.po`
 6. Now your translation file `help/LANG/LANG.po` is ready for translation
 
-If updating your translation, just run `./update-translations.sh help_all`
+If updating your translation, just run `./update-translations.sh help_lang LANG`
 and your `po/LANG/LANG.po` will be updated with latest strings for translation
 
-If you want to test your translation:
+If you want to test your translation, do the following from the directory where
+your language is located in the source code repository (e.g. `help/fr/fr.po`)
 
-1. Run `DESTDIR="/tmp" ninja -C _build install`
-2. View it running `yelp /tmp/usr/local/share/help/LANG/index.page`
-3. Alternatively, build and install the app and press F1 key for help pages
-
+1. Replacing `LANG` with your language code, run the command below:
+```
+lang=LANG
+msgfmt -co "$lang.mo" "$lang.po"
+for page in ../C/*.page; do  itstool -m "$lang.mo" -o . "$page"; done
+ln -s ../C/legal.xml .
+ln -s ../C/figures figures
+```
+2. See the documentation running:
+```
+yelp index.page
+```
+3. If satisfied with the translation, submit your `help/LANG/LANG.po`
+   (ignoring .page files and legal.xml and figures symlinks)
 ----
 
 ## If you want to fix a bug or to add a new feature
