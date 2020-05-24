@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-07 13:56+0200\n"
-"PO-Revision-Date: 2019-10-16 20:02+0200\n"
+"PO-Revision-Date: 2020-05-24 17:06+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.08.2\n"
+"X-Generator: Poedit 2.3.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Dynamic Wallpaper Editor"
@@ -52,7 +52,7 @@ msgid "The grid layout"
 msgstr "Rasterindeling"
 
 msgid "The images can now be easily sorted according to their filename."
-msgstr ""
+msgstr "Afbeeldingen kunnen vanaf nu worden gesorteerd op bestandsnaam."
 
 msgid ""
 "This update also removes obsolete or unreliable features like \"find and "
@@ -60,13 +60,17 @@ msgid ""
 "possible with most environments, and is not even possible GDM since the "
 "version 3.36)."
 msgstr ""
+"In deze update zijn verouderde en onbetrouwbare functies, zoals zoeken en "
+"vervangen en het instellen van een vergrendelschermachtergrond, verwijderd. "
+"Dat laatste is ook niet meer mogelijk sinds GDM 3.36."
 
 msgid ""
 "Minor bugs have been fixed too, like the weird behavior when closing the "
 "\"find\" entry, or actions that were disabled when they shouldn't."
 msgstr ""
+"Er zijn ook kleine fouten opgelost, zoals vreemd gedrag na het sluiten van "
+"de zoekbalk of acties die onterecht uitgeschakeld waren."
 
-#, fuzzy
 msgid ""
 "Add a picture-wide menu with actions such as \"Replace with…\", thus missing "
 "pictures can be replaced without the necessity to set the durations again, "
@@ -194,7 +198,7 @@ msgid "Durations fitting the daylight"
 msgstr "Timers aanpassen aan daglichturen"
 
 msgid "Sort by name"
-msgstr ""
+msgstr "Sorteren op naam"
 
 msgid "Apply"
 msgstr "Toepassen"
@@ -318,7 +322,6 @@ msgid "Replace a part of filenames"
 msgstr "Deel van bestandsnamen vervangen"
 
 #. <property name="visible">True</property>
-#, fuzzy
 msgid "Editing"
 msgstr "Bewerken"
 
@@ -362,7 +365,7 @@ msgid "Duration of each transition (seconds)"
 msgstr "Duur van elke overgang (in seconden)"
 
 msgid "Tell the version of the app"
-msgstr ""
+msgstr "Toon de toepassingsversie"
 
 msgid "Open a new window"
 msgstr "Nieuw venster openen"
@@ -442,9 +445,9 @@ msgstr "De totaalduur is geen 24 uur."
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Je achtergrond bevat niet-opgeslagen aanpassingen."
 
-#, fuzzy, python-format
+#, python-format
 msgid "There are unsaved modifications to %s"
-msgstr "Je achtergrond bevat niet-opgeslagen aanpassingen."
+msgstr "%s bevat niet-opgeslagen aanpassingen"
 
 msgid "Cancel"
 msgstr "Annuleren"
