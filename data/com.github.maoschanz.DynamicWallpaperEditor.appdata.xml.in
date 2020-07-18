@@ -36,6 +36,17 @@
   </screenshots>
 
   <releases>
+    <!-- <release version="2.6" date="2020-07-25"> -->
+    <!--   <description> -->
+    <!--     <p> -->
+    <!--       An editing history is now available to undo or redo your changes. -->
+    <!--     </p> -->
+    <!--     <p> -->
+    <!--       Also, the images can now be reordered, previewed, or deleted using -->
+    <!--       keyboard shortcuts. -->
+    <!--     </p> -->
+    <!--   </description> -->
+    <!-- </release> -->
     <release version="2.5" date="2020-05-07">
       <description>
         <p>
@@ -57,7 +68,7 @@
       <description>
         <p>
           Add a picture-wide menu with actions such as "Replace with…", thus
-          missing pictures can be replaced without the necessity to set the
+          missing pictures can be replaced without having to set the
           durations again, or "View file" to open the file in the system image
           viewer.
         </p>
