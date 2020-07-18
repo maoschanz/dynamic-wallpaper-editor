@@ -200,6 +200,10 @@
       <attribute name="label" translatable="yes">Picture</attribute>
       <section>
         <item>
+          <attribute name="action">win.pic_delete</attribute>
+          <attribute name="label" translatable="yes">Delete</attribute>
+        </item>
+        <item>
           <attribute name="action">win.pic_replace</attribute>
           <attribute name="label" translatable="yes">Replace with…</attribute>
         </item>

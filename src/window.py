@@ -149,7 +149,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
 
 		self.add_action_simple('find', self.action_find, ['<Ctrl>f'])
-		# self.add_action_simple('find_replace', self.action_f_r, ['<Ctrl>h'])
+		# self.add_action_simple('find_replace', self.action_f_r, None)
 		# self.add_action_simple('apply_replace', self.action_replace_str, None)
 
 		self.add_action_simple('fix_24h', self.fix_24, None)
@@ -159,13 +159,13 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
 		self.update_history_actions()
 
-		# TODO keyboard shortcuts !!
+		self.add_action_simple('pic_delete', self.action_pic_delete, ['Delete'])
 		self.add_action_simple('pic_replace', self.action_pic_replace, None)
-		self.add_action_simple('pic_open', self.action_pic_open, None)
+		self.add_action_simple('pic_open', self.action_pic_open, ['<Ctrl>space'])
 		self.add_action_simple('pic_directory', self.action_pic_directory, None)
 		self.add_action_simple('pic_first', self.action_pic_first, None)
-		self.add_action_simple('pic_up', self.action_pic_up, None)
-		self.add_action_simple('pic_down', self.action_pic_down, None)
+		self.add_action_simple('pic_up', self.action_pic_up, ['<Ctrl>Up'])
+		self.add_action_simple('pic_down', self.action_pic_down, ['<Ctrl>Down'])
 		self.add_action_simple('pic_last', self.action_pic_last, None)
 
 		self.add_action_simple('set_wp', self.action_set_wallpaper, ['<Ctrl>r'])
@@ -408,6 +408,12 @@ class DWEWindow(Gtk.ApplicationWindow):
 	############################################################################
 	# Picture-wide actions #####################################################
 
+	def action_pic_delete(self, *args):
+		"""Delete the selected row. The red button does NOT use this action, it
+		calls directly `destroy_pic` (user can click on an unselect row's
+		'delete' button)."""
+		pic = self.view.get_active_pic()
+		pic.destroy_pic()
 
 	def action_pic_replace(self, *args):
 		pic = self.view.get_active_pic()
