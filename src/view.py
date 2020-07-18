@@ -122,6 +122,8 @@ class DWEAbstractView():
 			# if btn.get_active() or btn.get_inconsistent() or
 			if r.get_child().menu_btn.get_popover().get_visible():
 				return r.get_child()
+		return self.get_view_widget().get_selected_row().get_child()
+		# XXX what if nothing is selected?
 
 	def replace_str(self, new_str):
 		rows = self.get_view_widget().get_children()
@@ -283,8 +285,7 @@ class DWERowsView(DWEAbstractView):
 
 	def __init__(self, window):
 		super().__init__(window)
-		self.list_box = Gtk.ListBox(visible=True, expand=True, \
-		                                  selection_mode=Gtk.SelectionMode.NONE)
+		self.list_box = Gtk.ListBox(visible=True, expand=True)
 		label = Gtk.Label(visible=True, \
 		             label=_("Add new pictures, or open an existing XML file."))
 		self.list_box.set_placeholder(label)
@@ -307,8 +308,7 @@ class DWEThumbnailsView(DWEAbstractView):
 
 	def __init__(self, window):
 		super().__init__(window)
-		self.flow_box = Gtk.FlowBox(visible=True, expand=True, \
-		                                  selection_mode=Gtk.SelectionMode.NONE)
+		self.flow_box = Gtk.FlowBox(visible=True, expand=True)
 		# label = Gtk.Label(visible=True, \
 		#              label=_("Add new pictures, or open an existing XML file."))
 		# self.flow_box.set_placeholder(label)

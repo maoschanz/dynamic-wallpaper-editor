@@ -159,6 +159,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
 		self.update_history_actions()
 
+		# TODO keyboard shortcuts !!
 		self.add_action_simple('pic_replace', self.action_pic_replace, None)
 		self.add_action_simple('pic_open', self.action_pic_open, None)
 		self.add_action_simple('pic_directory', self.action_pic_directory, None)
@@ -407,9 +408,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 	############################################################################
 	# Picture-wide actions #####################################################
 
-	# TODO these actions are currently not available from the menubar, and not
-	# bound to keyboard shortcuts, because they call self.view.get_active_pic(),
-	# whose behavior is to return the DWEPictureWidget whose menu is opened.
 
 	def action_pic_replace(self, *args):
 		pic = self.view.get_active_pic()
