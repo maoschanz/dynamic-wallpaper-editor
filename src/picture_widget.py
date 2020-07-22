@@ -66,16 +66,6 @@ class DWEPictureWidget(Gtk.Box):
 		self.static_time_btn.set_value(float(stt))
 		self.trans_time_btn.set_value(float(trt))
 
-		# Time spinn buttons
-		self.time_select_menu_btn = builder.get_object('time_select_menu_btn')
-		self.hour_sp = builder.get_object('hour_sp')
-		self.minute_sp = builder.get_object('minute_sp')
-		self.second_sp = builder.get_object('second_sp')
-		self.time_select_menu_btn.connect('toggled', self.on_time_select_menu_show)
-		self.hour_sp.connect('value-changed', self.on_hour_changed)
-		self.minute_sp.connect('value-changed', self.on_minute_changed)
-		self.second_sp.connect('value-changed', self.on_second_changed)
-
 		# Ability to be dragged
 		pic_box.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, None, Gdk.DragAction.MOVE)
 		pic_box.connect('drag-data-get', self.on_drag_data_get)
@@ -136,30 +126,6 @@ class DWEPictureWidget(Gtk.Box):
 				self.image.set_from_icon_name('dialog-error-symbolic', Gtk.IconSize.DIALOG)
 				self.set_tooltip_text(_("This picture doesn't exist"))
 				self.time_box.set_sensitive(False)
-
-	############################################################################
-
-	def on_time_select_menu_show(self, *args):
-		value = self.static_time_btn.get_value()
-		seconds = value % 60
-		minutes = (value // 60) % 60
-		hours = ((value // 60) // 60) % 24
-		self.hour_sp.set_value(hours)
-		self.minute_sp.set_value(minutes)
-		self.second_sp.set_value(seconds)
-
-	def on_hour_changed(self, *args):
-		self.update_static()
-
-	def on_minute_changed(self, *args):
-		self.update_static()
-
-	def on_second_changed(self, *args):
-		self.update_static()
-
-	def update_static(self):
-		total = self.hour_sp.get_value() * 60 * 60 + self.minute_sp.get_value() * 60 + self.second_sp.get_value()
-		self.static_time_btn.set_value(total)
 
 	############################################################################
 

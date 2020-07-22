@@ -8,5 +8,6 @@
     <file>ui/start_time.ui</file>
     <file>ui/shortcuts.ui</file>
     <file>ui/window.ui</file>
+    <file>ui/time_selector_popup.ui</file>
   </gresource>
 </gresources>
