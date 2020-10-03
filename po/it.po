@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-07 13:56+0200\n"
-"PO-Revision-Date: 2020-09-05 14:35+0100\n"
+"PO-Revision-Date: 2020-10-03 14:35+0200\n"
 "Last-Translator:  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language-Team: Italian  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language: it\n"
@@ -234,7 +234,7 @@ msgid "View picture"
 msgstr "Visualizza immagine"
 
 msgid "View containing directory"
-msgstr ""
+msgstr "Visualizza la directory contenente"
 
 msgid "Move to first position"
 msgstr "Sposta in prima posizione"
@@ -443,7 +443,7 @@ msgstr "Ci sono modifiche non salvate per il tuo sfondo."
 
 #, fuzzy, python-format
 msgid "There are unsaved modifications to %s"
-msgstr "Sono presenti modifiche non salvate a%s"
+msgstr "Sono presenti modifiche non salvate a %s"
 
 msgid "Cancel"
 msgstr "Annulla"
@@ -471,7 +471,6 @@ msgstr "Elemento sconosciuto: %s"
 msgid "Untitled"
 msgstr "Senza Titolo"
 
-#, fuzzy
 #~ msgid "Wallpaper adjustment"
 #~ msgstr "Regolazione dello sfondo"
 
