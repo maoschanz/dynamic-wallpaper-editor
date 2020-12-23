@@ -67,6 +67,10 @@
         <attribute name="action">win.total_24</attribute>
         <attribute name="label" translatable="yes">Fit the daylight</attribute>
       </item>
+      <item>
+        <attribute name="action">win.use_durations</attribute>
+        <attribute name="label" translatable="yes">Use durations</attribute>
+      </item>
     </section>
     <section>
       <item>
@@ -186,6 +190,11 @@
         <item>
           <attribute name="action">win.total_24</attribute>
           <attribute name="label" translatable="yes">Durations fitting the daylight</attribute>
+        </item>
+        <item>
+          <attribute name="action">win.use_durations</attribute>
+          <!-- TODO the label should be "use durations instead of [horaires??]" -->
+          <attribute name="label" translatable="yes">Use durations</attribute>
         </item>
       </section>
       <section>

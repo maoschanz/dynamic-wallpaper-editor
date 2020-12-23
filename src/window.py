@@ -180,6 +180,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		self.add_action_boolean('same_duration', False, self.update_type_slideshow)
 		self.add_action_boolean('total_24', False, self.update_type_daylight)
+		self.add_action_boolean('use_durations', True, self.update_daylight_mode)
+		self.lookup_action('use_durations').set_enabled(False)
 
 		self.find_rbtn1.connect('toggled', self.radio_btn_helper, 'find')
 		# self.find_rbtn2.connect('toggled', self.radio_btn_helper, 'replace')
@@ -266,6 +268,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def set_type_daylight(self, is_now_daylight):
 		gvb = GLib.Variant.new_boolean(is_now_daylight)
 		self.lookup_action('total_24').set_state(gvb)
+		self.lookup_action('use_durations').set_enabled(gvb)
 		self.set_check_24(is_now_daylight)
 		if is_now_daylight:
 			self.set_type_slideshow(False)
@@ -292,6 +295,13 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	############################################################################
 	# Time management ##########################################################
+
+	def update_daylight_mode(self, *args):
+		"""Set durations directly, or set the start and finish times. This
+		option should exist only for 24h wallpapers."""
+		is_now_durations = not args[0].get_state()
+		gvb = GLib.Variant.new_boolean(is_now_durations)
+		self.lookup_action('use_durations').set_state(gvb)
 
 	def set_check_24(self, should_check):
 		self.check_24 = should_check
