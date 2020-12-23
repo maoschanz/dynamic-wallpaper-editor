@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the dynamic-wallpaper-editor package.
 # Automatically generated, 2019.
 # Nicola S <nicola.sella@disroot.org>, 2019.
-#
+# Albano Battistella <albano battistella@hotmail.com>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-07 13:56+0200\n"
-"PO-Revision-Date: 2019-07-19 13:35+0200\n"
-"Last-Translator: Nicola S <nicola.sella@disroot.org>\n"
-"Language-Team: Italian <nicola.sella@disroot.org>\n"
+"PO-Revision-Date: 2020-10-03 14:35+0200\n"
+"Last-Translator:  Albano Battistella <albano battistella@hotmail.com>\n"
+"Language-Team: Italian  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Gtranslator 3.32.1\n"
 
 msgid "Dynamic Wallpaper Editor"
-msgstr "Editor di Sfondi Dinamici"
+msgstr "Dynamic Wallpaper Editor"
 
 #, fuzzy
 msgid ""
@@ -31,24 +31,28 @@ msgstr "Crea o modifica sfondi dinamici per GNOME."
 msgid ""
 "Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
 "wallpapers for the GNOME desktop."
-msgstr ""
+msgstr "Dynamic Wallpaper Editor è una semplice utility per creare o modificare sfondi "
+"dinamici per il desktop GNOME."
 
 msgid ""
 "The duration of each picture and each transition can be set separately or "
 "globally. The total duration can be 24 hours to do a wallpaper fitting the "
 "daylight."
 msgstr ""
+"La durata di ogni immagine e di ogni transizione può essere impostata separatamente o"
+"a livello globale. La durata totale può essere di 24 ore per realizzare uno sfondo che si adatti al
+"luce del giorno."
 
 #. caption for screenshot 1
 msgid "An example of a wallpaper changing with daylight"
-msgstr ""
+msgstr "Un esempio di wallpaper che cambia con la luce del giorno"
 
 #. caption for screenshot 2
 msgid "The grid layout"
-msgstr ""
+msgstr "Il layout della griglia"
 
 msgid "The images can now be easily sorted according to their filename."
-msgstr ""
+msgstr "Le immagini possono ora essere facilmente ordinate in base al nome del file."
 
 msgid ""
 "This update also removes obsolete or unreliable features like \"find and "
@@ -56,31 +60,47 @@ msgid ""
 "possible with most environments, and is not even possible GDM since the "
 "version 3.36)."
 msgstr ""
+"Questo aggiornamento rimuove anche funzionalità obsolete o inaffidabili come \" trova e "
+"sostituisci\", o la possibilità di impostare un file come lockscreen (che non era "
+"possibile con la maggior parte degli ambienti e non è nemmeno possibile GDM dalla "
+"versione 3.36)."
 
 msgid ""
 "Minor bugs have been fixed too, like the weird behavior when closing the "
 "\"find\" entry, or actions that were disabled when they shouldn't."
-msgstr ""
+msgstr "Sono stati corretti anche bug minori, come lo strano comportamento alla chiusura del "
+"\"trova\" una voce o azioni che sono state disabilitate quando non dovrebbero."
+
 
 msgid ""
 "Add a picture-wide menu with actions such as \"Replace with…\", thus missing "
 "pictures can be replaced without the necessity to set the durations again, "
 "or \"View file\" to open the file in the system image viewer."
 msgstr ""
+"Aggiunto un menu a livello di immagine con azioni come \"Sostituisci con ...\ ", quindi mancante "
+"le immagini possono essere sostituite senza la necessità di impostare nuovamente la durata, "
+"o \"Visualizzare file\" per aprire il file nel visualizzatore di immagini di sistema."
+
 
 msgid "Wallpaper types are now managed from the primary menu again."
-msgstr ""
+msgstr "I tipi di sfondo ora sono nuovamente gestiti dal menu principale."
 
 msgid ""
 "Add the ability to search among pictures, fix a memory leak, improve the "
 "automatic duration setting, make the window easier to resize, and update "
 "translations."
 msgstr ""
+"Aggiunta la possibilità di cercare tra le immagini, corretto una perdita di memoria, migliora "
+"l'impostazione automatica della durata, reso la finestra più facile da ridimensionare e aggiornato "
+"traduzioni."
 
 msgid ""
 "The app can now optionally display pictures using a grid layout instead of a "
 "list."
 msgstr ""
+"L'app può ora visualizzare facoltativamente le immagini utilizzando un layout a griglia anziché un"
+"elenco."
+
 
 #. That's my name, don't translate it
 msgid "Romain F. T."
@@ -99,10 +119,10 @@ msgid "New Window"
 msgstr "Nuova Finestra"
 
 msgid "Use a grid or a list"
-msgstr ""
+msgstr "Usa una griglia o un elenco"
 
 msgid "Display the pictures using a grid of thumbnails, or a list."
-msgstr ""
+msgstr "Visualizza le immagini utilizzando una griglia di miniature o un elenco."
 
 msgid "Keyboard Shortcuts"
 msgstr "Scorciatoie da tastiera"
@@ -120,18 +140,17 @@ msgid "Save as…"
 msgstr "Salva con nome..."
 
 msgid "List"
-msgstr ""
+msgstr "Elenco"
 
 msgid "Grid"
-msgstr ""
+msgstr "Griglia"
 
 #. "all" refers to "all pictures"
-#, fuzzy
 msgid "Same duration for all"
-msgstr "La durata totale non è 24 ore."
+msgstr "Stessa durata per tutti"
 
 msgid "Fit the daylight"
-msgstr ""
+msgstr "Adatta alla luce del giorno"
 
 msgid "File"
 msgstr "File"
@@ -149,10 +168,10 @@ msgid "Edit"
 msgstr "Modifica"
 
 msgid "Undo"
-msgstr ""
+msgstr "Annulla"
 
 msgid "Redo"
-msgstr ""
+msgstr "Rifai"
 
 msgid "Add pictures"
 msgstr "Aggiungi immagini"
@@ -161,32 +180,28 @@ msgid "Add a folder"
 msgstr "Aggiungi cartelle"
 
 msgid "Find"
-msgstr ""
+msgstr "Trova"
 
-#, fuzzy
 msgid "Find and replace"
-msgstr "Aggiungi immagini"
+msgstr "Trova e sostituisci"
 
-#, fuzzy
 msgid "Automatically set a total of 24 hours"
-msgstr "La durata totale non è 24 ore."
+msgstr "Imposta automaticamente un totale di 24 ore"
 
 msgid "View"
-msgstr ""
+msgstr "Vista"
 
-#, fuzzy
 msgid "Same duration for all pictures"
-msgstr "La durata totale non è 24 ore."
+msgstr "Stessa durata per tutte le immagini"
 
-#, fuzzy
 msgid "Durations fitting the daylight"
-msgstr "Le immagini cambiano con la luce del giorno."
+msgstr "Durate adatte alla luce del giorno"
 
 msgid "Sort by name"
-msgstr ""
+msgstr "Ordina per nome"
 
 msgid "Apply"
-msgstr ""
+msgstr "Applica"
 
 msgid "Set as wallpaper"
 msgstr "Imposta come sfondo"
@@ -213,26 +228,25 @@ msgid "User manual"
 msgstr "Manuale dell'utente"
 
 msgid "Replace with…"
-msgstr ""
+msgstr "Sostituisci con..."
 
-#, fuzzy
 msgid "View picture"
-msgstr "%s immagini"
+msgstr "Visualizza immagine"
 
 msgid "View containing directory"
-msgstr ""
+msgstr "Visualizza la directory contenente"
 
 msgid "Move to first position"
-msgstr ""
+msgstr "Sposta in prima posizione"
 
 msgid "Move up"
-msgstr ""
+msgstr "Sposta su"
 
 msgid "Move down"
-msgstr ""
+msgstr "Sposta giù"
 
 msgid "Move to last position"
-msgstr ""
+msgstr "Sposta in ultima posizione"
 
 msgid "Time"
 msgstr "Durata"
@@ -256,7 +270,6 @@ msgstr ""
 msgid "Delete"
 msgstr "Elimina"
 
-#, fuzzy
 msgid "Duration"
 msgstr "Durata transizione"
 
@@ -299,20 +312,17 @@ msgstr "Mostra scorciatoie da tastiera"
 msgid "Show help"
 msgstr "Mostra la finestra di aiuto"
 
-#, fuzzy
 msgid "Pictures"
-msgstr "%s immagini"
+msgstr "Immagini"
 
-#, fuzzy
 msgid "Find a picture"
-msgstr "Aggiungi immagini"
+msgstr "Trova un' immagini"
 
 #. <property name="visible">True</property>
 msgid "Replace a part of filenames"
-msgstr ""
+msgstr "Sostituisci una parte dei nomi file"
 
 #. <property name="visible">True</property>
-#, fuzzy
 msgid "Editing"
 msgstr "Modifica"
 
@@ -329,15 +339,13 @@ msgid "Set the exact start time of the wallpaper"
 msgstr "Imposta la data esatta di inizio dello sfondo"
 
 msgid "Apply as wallpaper or lock screen, and set adjustment options"
-msgstr ""
+msgstr "Applica come sfondo o schermata di blocco e imposta le opzioni di regolazione"
 
-#, fuzzy
 msgid "Find a filename"
-msgstr "Aggiungi immagini"
+msgstr "Trova un nome file"
 
-#, fuzzy
 msgid "Replace in filenames"
-msgstr "Aggiungi immagini"
+msgstr "Sostituisci nomi dei file"
 
 msgid "Error starting the application, please report this bug."
 msgstr "Errore all'avvio dell'applicazione, per favore, segnala questo bug."
@@ -345,9 +353,8 @@ msgstr "Errore all'avvio dell'applicazione, per favore, segnala questo bug."
 msgid "Automatic fix"
 msgstr "Risolvi in automatico"
 
-#, fuzzy
 msgid "Set durations for a total of 24 hours"
-msgstr "La durata totale non è 24 ore."
+msgstr "Imposta la durata per un totale di 24 ore"
 
 msgid "Duration of each picture (seconds)"
 msgstr "Durata di ogni immagine (secondi)"
@@ -356,7 +363,7 @@ msgid "Duration of each transition (seconds)"
 msgstr "Durata di ogni transizione (secondi)"
 
 msgid "Tell the version of the app"
-msgstr ""
+msgstr "Indica la versione dell'app"
 
 msgid "Open a new window"
 msgstr "Apri una nuova finestra"
@@ -398,7 +405,7 @@ msgstr "%s secondo/i"
 
 msgid ""
 "This picture might exist, but it isn't in your home folder so I can't see it."
-msgstr ""
+msgstr ""Questa immagine potrebbe esistere, ma non è nella tua cartella home, quindi non posso vederla."
 
 msgid "This picture doesn't exist"
 msgstr "Questa immagine non esiste"
@@ -415,7 +422,7 @@ msgid "Add new pictures, or open an existing XML file."
 msgstr "Aggiungi un'immagine o apri un file XML."
 
 msgid "Drag-and-drop pictures to reorder them."
-msgstr ""
+msgstr "Trascina le immagini per riordinarle."
 
 msgid "This desktop environnement isn't supported."
 msgstr "Questo ambiente desktop non è supportato."
@@ -436,7 +443,7 @@ msgstr "Ci sono modifiche non salvate per il tuo sfondo."
 
 #, fuzzy, python-format
 msgid "There are unsaved modifications to %s"
-msgstr "Ci sono modifiche non salvate per il tuo sfondo."
+msgstr "Sono presenti modifiche non salvate a %s"
 
 msgid "Cancel"
 msgstr "Annulla"
@@ -449,7 +456,7 @@ msgstr "Caricamento..."
 
 #, python-format
 msgid "Replace %s"
-msgstr ""
+msgstr "Sostituisci %s"
 
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Questo sfondo dinamico è corrotto"
@@ -464,13 +471,11 @@ msgstr "Elemento sconosciuto: %s"
 msgid "Untitled"
 msgstr "Senza Titolo"
 
-#, fuzzy
 #~ msgid "Wallpaper adjustment"
-#~ msgstr "Adatta le immagini allo sfondo"
+#~ msgstr "Regolazione dello sfondo"
 
-#, fuzzy
 #~ msgid "Lock screen adjustment"
-#~ msgstr "Adatta le immagini allo sfondo"
+#~ msgstr "Regolazione dello schermo di blocco"
 
 #~ msgid "Print the version and display the 'about' dialog"
 #~ msgstr "Mostra la versione e la finestra di informazioni"
