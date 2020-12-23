@@ -58,9 +58,6 @@ class Application(Gtk.Application):
 		builder = Gtk.Builder().new_from_resource(UI_PATH + 'menus.ui')
 		menubar_model = builder.get_object('menu-bar')
 		self.set_menubar(menubar_model)
-		if self.prefers_app_menu():
-			menu = builder.get_object('app-menu')
-			self.set_app_menu(menu)
 
 	def on_activate(self, *args):
 		"""I don't know if this is ever called from the 'activate' signal, but
