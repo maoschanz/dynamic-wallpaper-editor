@@ -2,7 +2,7 @@
 
 This quite simple project uses Python3 and PyGObject. The build system is
 `meson`, and the project can easily be built as a flatpak package, for example
-using GNOME Builder.
+using **GNOME Builder**.
 
 ----
 
@@ -19,88 +19,74 @@ using GNOME Builder.
 
 ## If you want to translate the app
 
-For translating UI or help files, these introductory instructions apply to both
-UI and help files translation:
+In the instructions below, `LANG` is your language code typically of the form
+`ll` or `ll_CC`. Examples: `es`, `pt_BR`, `it`, `zh_TW`, …
 
 1. Before starting the translation, fork the repo and clone it on your disk.
-   If already have it forked/cloned, make sure to rebase your fork first.
-2. Enable the language and generate the translation file as detailed in next
-   sections
-3. Translate using a text editor or [an adequate app](https://flathub.org/apps/details/org.gnome.Gtranslator)
-   to translate the strings of this `.po` file. The string `translator-credits`
-   should be translated by your name(s), it will be displayed in the "About"
-   dialog.
-4. You can test your translation by placing your `.po` file in the proper place,
-   building and installing the application.
-5. Once your translation is ready to be submitted, run
+2. Add your language code to `po/LINGUAS`.
+3. Build the app once (using GNOME Builder).
+4. Run `ninja -C _build dynamic-wallpaper-editor-update-po` at the root of the
+project. It should produce a `.po` file for your language, at `po/LANG.po`.
+If you're updating an existing translation, you can run
+`./update-translations.sh src_lang LANG` instead.
+5. Use a text editor or [an adequate app](https://flathub.org/apps/details/org.gnome.Gtranslator)
+to translate the strings of this `.po` file. The string `translator-credits`
+should be translated by your name(s), it will be displayed in the "About" dialog.
+6. If you want to test your translation: GNOME Builder isn't able to run a
+translated version of the app so export it as a `.flatpak` file and install it.
+7. Upload your changes to your github account:
 ```
-git add path/to/your/file.po
+git add po
 git commit
 git push
 ```
-6. And submit a "pull request"/"merge request".
+8. And submit a "pull request"/"merge request".
 
-NOTE: In the sections below: `LANG` is your language code typically represented
-by a language specification of the form ll or a combined language and country
-specification of the form ll_CC
+## If you want to translate the help manual
 
-### Translating UI
+1. Same as above.
+2. Add your language code to `help/LINGUAS`.
+3. Same as above.
+<!-- 4. Run `ninja -C _build help-dynamic-wallpaper-editor-update-po` at the root of -->
+<!-- the project. It should produce a `.po` file for your language, at `po/LANG.po`. -->
+<!-- FIXME ^ -->
+4. Try to:
+	- Run `ninja -C _build help-dynamic-wallpaper-editor-pot`
+	- Create directory for your language running `mkdir help/LANG`
+	- Run `msginit -i help/dynamic-wallpaper-editor.pot -o help/LANG/LANG.po`
+	- Now your translation file `help/LANG/LANG.po` is ready for translation.
+If you're updating an existing translation, you can run
+`./update-translations.sh help_lang LANG` instead.
+5. Same as above.
+6. Same as above.
+7. Same as above.
+8. Same as above.
 
-*Make sure to check more instructions regarding translation in above section*
+<!-- If you want to test your translation, try the following instructions from the -->
+<!-- directory where your language is located (e.g. `help/fr/fr.po`): -->
 
-If adding translation, do the following at the project's root directory:
+<!-- 1. Replacing `LANG` with your language code, run the command below: -->
+<!-- ``` -->
+<!-- lang=LANG -->
+<!-- msgfmt -co "$lang.mo" "$lang.po" -->
+<!-- for page in ../C/*.page; do itstool -m "$lang.mo" -o . "$page"; done -->
+<!-- ln -s ../C/legal.xml . -->
+<!-- ln -s ../C/figures figures -->
+<!-- ``` -->
+<!-- 2. See the documentation running: -->
+<!-- ``` -->
+<!-- yelp index.page -->
+<!-- ``` -->
+<!-- 3. If satisfied with the translation, submit your `help/LANG/LANG.po` (ignore -->
+<!-- the .page files and legal.xml and figures symlinks) -->
 
-1. Include your language code LANG in `po/LINGUAS`.
-2. Run `meson _build` (add `--reconfigure` if `_build` dir exists)
-3. Run `ninja -C _build dynamic-wallpaper-editor-update-po`
-4. Your translation file should be in `po/LANG.po`
-
-If updating your translation, just run `./update-translations.sh src_lang LANG`
-and your `po/LANG.po` will be updated with latest strings for translation
-
-If you want to test your translation: GNOME Builder isn't able to run a
-translated version of the app so export it as a `.flatpak` file and install it.
-
-### Translation help files
-
-*Make sure to check more instructions regarding translation in above section*
-
-If adding translation, do the following at the project's root directory:
-
-1. Include your language code LANG in `help/LINGUAS`.
-2. Run `meson _build` (add `--reconfigure` if `_build` dir exists)
-3. Run `ninja -C _build help-dynamic-wallpaper-editor-pot`
-4. Create directory for your language running `mkdir help/LANG`
-5. Run `msginit -i help/dynamic-wallpaper-editor.pot -o help/LANG/LANG.po`
-6. Now your translation file `help/LANG/LANG.po` is ready for translation
-
-If updating your translation, just run `./update-translations.sh help_lang LANG`
-and your `po/LANG/LANG.po` will be updated with latest strings for translation
-
-If you want to test your translation, do the following from the directory where
-your language is located in the source code repository (e.g. `help/fr/fr.po`)
-
-1. Replacing `LANG` with your language code, run the command below:
-```
-lang=LANG
-msgfmt -co "$lang.mo" "$lang.po"
-for page in ../C/*.page; do  itstool -m "$lang.mo" -o . "$page"; done
-ln -s ../C/legal.xml .
-ln -s ../C/figures figures
-```
-2. See the documentation running:
-```
-yelp index.page
-```
-3. If satisfied with the translation, submit your `help/LANG/LANG.po`
-   (ignoring .page files and legal.xml and figures symlinks)
 ----
 
 ## If you want to fix a bug or to add a new feature
 
 - The issue has to be reported first. Tell on the issue that you'll do a patch.
 - Use tabs in `.py` files, but 2 spaces in `.ui` or `.xml` files.
-- In python code, use double quotes for strings the user will see and single quotes otherwise.
+- In python code, use double quotes for strings the user will see, and single quotes otherwise.
 - Concerning design, try to respect the GNOME Human Interface Guidelines as much as possible.
 - Concerning the UI, use GMenuModel for all menus.
 - Code comments should explain **why** the code is doing what it is doing, **not what** it does.
@@ -169,3 +155,4 @@ sudo ninja install
 ```
 
 ----
+

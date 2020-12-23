@@ -18,35 +18,22 @@
       daylight.
     </p>
   </description>
-  <screenshots>
-    <screenshot type="default">
-      <image type="source">
-        https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot_list.png
-      </image>
-      <!-- caption for screenshot 1 -->
-      <caption>An example of a wallpaper changing with daylight</caption>
-    </screenshot>
-    <screenshot>
-      <image type="source">
-        https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot_grid.png
-      </image>
-      <!-- caption for screenshot 2 -->
-      <caption>The grid layout</caption>
-    </screenshot>
-  </screenshots>
 
   <releases>
-    <!-- <release version="2.6" date="2020-07-25"> -->
-    <!--   <description> -->
-    <!--     <p> -->
-    <!--       An editing history is now available to undo or redo your changes. -->
-    <!--     </p> -->
-    <!--     <p> -->
-    <!--       Also, the images can now be reordered, previewed, or deleted using -->
-    <!--       keyboard shortcuts. -->
-    <!--     </p> -->
-    <!--   </description> -->
-    <!-- </release> -->
+    <release version="2.6" date="2020-12-23">
+      <description>
+        <p>
+          An editing history is now available to undo or redo your changes.
+        </p>
+        <p>
+          An new icon is available, following the recent GNOME guidelines.
+        </p>
+        <p>
+          The images can now be reordered, previewed, or deleted using keyboard
+          shortcuts.
+        </p>
+      </description>
+    </release>
     <release version="2.5" date="2020-05-07">
       <description>
         <p>
@@ -95,6 +82,23 @@
       </description>
     </release>
   </releases>
+
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">
+        https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot_list.png
+      </image>
+      <!-- caption for screenshot 1 -->
+      <caption>An example of a wallpaper changing with daylight</caption>
+    </screenshot>
+    <screenshot>
+      <image type="source">
+        https://raw.githubusercontent.com/maoschanz/dynamic-wallpaper-editor/master/help/C/figures/screenshot_grid.png
+      </image>
+      <!-- caption for screenshot 2 -->
+      <caption>The grid layout</caption>
+    </screenshot>
+  </screenshots>
 
   <kudos>
     <kudo>AppMenu</kudo>
