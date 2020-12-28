@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-07 13:56+0200\n"
-"PO-Revision-Date: 2020-10-03 14:35+0200\n"
+"PO-Revision-Date: 2020-12-28 14:35+0200\n"
 "Last-Translator:  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language-Team: Italian  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language: it\n"
@@ -22,11 +22,12 @@ msgstr ""
 msgid "Dynamic Wallpaper Editor"
 msgstr "Dynamic Wallpaper Editor"
 
-#, fuzzy
 msgid ""
 "Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
 "GNOME desktop"
-msgstr "Crea o modifica sfondi dinamici per GNOME."
+msgstr ""
+"Crea o modifica sfondi dinamici XML (\"presentazioni in background\") per "
+"GNOME Desktop."
 
 msgid ""
 "Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
@@ -405,7 +406,8 @@ msgstr "%s secondo/i"
 
 msgid ""
 "This picture might exist, but it isn't in your home folder so I can't see it."
-msgstr ""Questa immagine potrebbe esistere, ma non è nella tua cartella home, quindi non posso vederla."
+msgstr """
+Questa immagine potrebbe esistere, ma non è nella tua cartella home, quindi non posso vederla."
 
 msgid "This picture doesn't exist"
 msgstr "Questa immagine non esiste"
@@ -441,9 +443,9 @@ msgstr "La durata totale non è 24 ore."
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Ci sono modifiche non salvate per il tuo sfondo."
 
-#, fuzzy, python-format
+#, python-format
 msgid "There are unsaved modifications to %s"
-msgstr "Sono presenti modifiche non salvate a %s"
+msgstr "Sono presenti modifiche non salvate in %s"
 
 msgid "Cancel"
 msgstr "Annulla"
