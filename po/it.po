@@ -41,9 +41,9 @@ msgid ""
 "globally. The total duration can be 24 hours to do a wallpaper fitting the "
 "daylight."
 msgstr ""
-"La durata di ogni immagine e di ogni transizione può essere impostata separatamente o"
-"a livello globale. La durata totale può essere di 24 ore per realizzare uno sfondo che si adatti al
-"luce del giorno."
+"La durata di ogni immagine e di ogni transizione può essere impostata separatamente o "
+"a livello globale. La durata totale può essere di 24 ore per realizzare uno "
+"sfondo che si adatti al luce del giorno."
 
 #. caption for screenshot 1
 msgid "An example of a wallpaper changing with daylight"
@@ -73,16 +73,14 @@ msgid ""
 msgstr "Sono stati corretti anche bug minori, come lo strano comportamento alla chiusura del "
 "\"trova\" una voce o azioni che sono state disabilitate quando non dovrebbero."
 
-
 msgid ""
 "Add a picture-wide menu with actions such as \"Replace with…\", thus missing "
 "pictures can be replaced without the necessity to set the durations again, "
 "or \"View file\" to open the file in the system image viewer."
 msgstr ""
-"Aggiunto un menu a livello di immagine con azioni come \"Sostituisci con ...\ ", quindi mancante "
+"Aggiunto un menu a livello di immagine con azioni come \"Sostituisci con ...\", quindi mancante "
 "le immagini possono essere sostituite senza la necessità di impostare nuovamente la durata, "
 "o \"Visualizzare file\" per aprire il file nel visualizzatore di immagini di sistema."
-
 
 msgid "Wallpaper types are now managed from the primary menu again."
 msgstr "I tipi di sfondo ora sono nuovamente gestiti dal menu principale."
@@ -102,7 +100,6 @@ msgid ""
 msgstr ""
 "L'app può ora visualizzare facoltativamente le immagini utilizzando un layout a griglia anziché un"
 "elenco."
-
 
 #. That's my name, don't translate it
 msgid "Romain F. T."
@@ -407,7 +404,7 @@ msgstr "%s secondo/i"
 
 msgid ""
 "This picture might exist, but it isn't in your home folder so I can't see it."
-msgstr ""Questa immagine potrebbe esistere, ma non è nella tua cartella home, quindi non posso vederla."
+msgstr "Questa immagine potrebbe esistere, ma non è nella tua cartella home, quindi non posso vederla."
 
 msgid "This picture doesn't exist"
 msgstr "Questa immagine non esiste"
@@ -475,12 +472,6 @@ msgstr "Senza Titolo"
 
 #~ msgid "Wallpaper adjustment"
 #~ msgstr "Regolazione dello sfondo"
-
-#~ msgid "Lock screen adjustment"
-#~ msgstr "Regolazione dello schermo di blocco"
-
-#~ msgid "Print the version and display the 'about' dialog"
-#~ msgstr "Mostra la versione e la finestra di informazioni"
 
 #~ msgid "Save %s"
 #~ msgstr "Salva %s"
