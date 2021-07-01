@@ -1,5 +1,4 @@
 # Croatian translation of dynamic-wallpaper-editor.
-# Copyright (C) 2018-2020 Romain F. T.
 # This file is distributed under the same license as the dynamic-wallpaper-editor package.
 # Milo Ivir <mail@milotype.de>, 2020.
 #

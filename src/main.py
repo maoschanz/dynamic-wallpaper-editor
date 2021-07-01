@@ -1,6 +1,6 @@
 # main.py
 #
-# Copyright 2018-2020 Romain F. T.
+# Copyright 2018-2021 Romain F. T.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -163,7 +163,7 @@ class Application(Gtk.Application):
 			"Rafael Fontenelle"
 		])
 		about_dialog.set_artists(["Tobias Bernard"])
-		about_dialog.set_copyright("© 2018-2020 Romain F. T.")
+		about_dialog.set_copyright("© 2018-2021 Romain F. T.")
 		about_dialog.set_license_type(Gtk.License.GPL_3_0)
 		about_dialog.set_logo_icon_name(APP_ID)
 		about_dialog.set_website(self._git_url)

@@ -1,6 +1,6 @@
 # window.py
 #
-# Copyright 2018-2020 Romain F. T.
+# Copyright 2018-2021 Romain F. T.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -429,7 +429,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		pic = self.view.get_active_pic()
 		self.status_bar.push(1, _("Loading…"))
 		title = _("Replace %s") % pic.filename
-		file_chooser = self.get_add_pic_dialog(title, False)
+		file_chooser = self._get_add_pic_dialog(title, False)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
 			pic.filename = file_chooser.get_filename()
@@ -516,7 +516,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 				if 'image/' in f.get_content_type():
 					array.append(file_chooser.get_filename() + '/' + f.get_display_name())
 				f = enumerator.next_file(None)
-			self.view.add_untimed_pictures_to_list(array)
+			self._add_pictures_from_untimed_list(array)
 			self.update_time_lock = False
 			self.on_time_change()
 		self.status_bar.pop(1)
@@ -527,18 +527,28 @@ class DWEWindow(Gtk.ApplicationWindow):
 		Actual paths are needed in XML files, so it can't be a native dialog: a
 		custom preview has to be set manually."""
 		self.status_bar.push(1, _("Loading…"))
-		file_chooser = self.get_add_pic_dialog(_("Add pictures"), True)
+		file_chooser = self._get_add_pic_dialog(_("Add pictures"), True)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
 			self.update_time_lock = True
 			array = file_chooser.get_filenames()
-			self.view.add_untimed_pictures_to_list(array)
+			self._add_pictures_from_untimed_list(array)
 			self.update_time_lock = False
 			self.on_time_change()
 		self.status_bar.pop(1)
 		file_chooser.destroy()
 
-	def get_add_pic_dialog(self, title, allow_multiple):
+	def _add_pictures_from_untimed_list(self, pictures_array):
+		pictures_dicts = []
+		for pic_path in pictures_array:
+			pictures_dicts.append({
+				'filename': pic_path,
+				'static_time': 10,
+				'trans_time': 0
+			})
+		self.view.add_pictures_to_list(pictures_dicts)
+
+	def _get_add_pic_dialog(self, title, allow_multiple):
 		file_chooser = Gtk.FileChooserDialog(title, self,
 			Gtk.FileChooserAction.OPEN, # the type of dialog
 			(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL, # the left button
@@ -547,10 +557,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 			preview_widget=self.preview_picture,
 			use_preview_label=False)
 		add_pic_dialog_filters(file_chooser)
-		file_chooser.connect('update-preview', self.cb_update_preview)
+		file_chooser.connect('update-preview', self._cb_update_preview)
 		return file_chooser
 
-	def cb_update_preview(self, fc):
+	def _cb_update_preview(self, fc):
 		if fc.get_preview_file() is None:
 			return
 		if fc.get_preview_file().query_file_type(Gio.FileQueryInfoFlags.NONE) is not Gio.FileType.REGULAR:
@@ -627,7 +637,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 			else:
 				self.show_notification(str(_("Unknown element: %s") % child.tag))
 
-		self.view.add_timed_pictures_to_list(pic_list)
+		self.view.add_pictures_to_list(pic_list)
 		return True
 
 	def set_start_time(self, xml_element):

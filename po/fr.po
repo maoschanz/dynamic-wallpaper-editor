@@ -1,7 +1,7 @@
 # French translation of dynamic wallpaper editor.
 # This file is distributed under the same license as the dynamic-wallpaper-editor package.
 #
-# Romain F. T. 2018-2020
+# Romain F. T. 2018-2021
 #
 msgid ""
 msgstr ""

@@ -1,6 +1,6 @@
 # view.py
 #
-# Copyright 2018-2020 Romain F. T.
+# Copyright 2018-2021 Romain F. T.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -140,21 +140,16 @@ class DWEAbstractView():
 
 	############################################################################
 
-	def add_timed_pictures_to_list(self, new_pics_list):
+	def add_pictures_to_list(self, new_pics_list):
 		"""Add pictures from a list of dicts as built by the `new_row_structure`
 		method."""
 		for index in range(0, len(new_pics_list)):
 			p = new_pics_list[index]
-			self.add_one_picture(p['filename'], p['static_time'], p['trans_time'])
+			self._add_one_picture(p['filename'], p['static_time'], p['trans_time'])
+		self.restack_indexes()
 		self.window.update_status()
 
-	def add_untimed_pictures_to_list(self, array):
-		"""Add pictures from a list of paths.""" # XXX could be removed
-		for path in array:
-			self.add_one_picture(path, 10, 0)
-		self.restack_indexes()
-
-	def add_one_picture(self, filename, stt, trt):
+	def _add_one_picture(self, filename, stt, trt):
 		pass # Implemented in non-abstract classes
 
 	############################################################################
@@ -294,7 +289,7 @@ class DWERowsView(DWEAbstractView):
 	def get_view_widget(self):
 		return self.list_box
 
-	def add_one_picture(self, filename, stt, trt):
+	def _add_one_picture(self, filename, stt, trt):
 		self.set_unsaved()
 		row = DWEPictureRow(filename, stt, trt, self.length, self.window)
 		self.list_box.add(row)
@@ -317,7 +312,7 @@ class DWEThumbnailsView(DWEAbstractView):
 	def get_view_widget(self):
 		return self.flow_box
 
-	def add_one_picture(self, filename, stt, trt):
+	def _add_one_picture(self, filename, stt, trt):
 		self.set_unsaved()
 		pic = DWEPictureThumbnail(filename, stt, trt, self.length, self.window)
 		self.flow_box.add(pic)
