@@ -119,11 +119,13 @@ class DWEAbstractView():
 	def get_active_pic(self):
 		rows = self.get_view_widget().get_children()
 		for r in rows:
-			# if btn.get_active() or btn.get_inconsistent() or
 			if r.get_child().menu_btn.get_popover().get_visible():
 				return r.get_child()
-		return self.get_view_widget().get_selected_row().get_child()
 		# XXX what if nothing is selected?
+		return self.get_selected_child()
+
+	def get_selected_child(self):
+		pass # Implemented in non-abstract classes
 
 	def replace_str(self, new_str):
 		rows = self.get_view_widget().get_children()
@@ -289,6 +291,13 @@ class DWERowsView(DWEAbstractView):
 	def get_view_widget(self):
 		return self.list_box
 
+	def get_selected_child(self):
+		row = self.get_view_widget().get_selected_row()
+		if row is None:
+			return None
+		else:
+			return row.get_child()
+
 	def _add_one_picture(self, filename, stt, trt):
 		self.set_unsaved()
 		row = DWEPictureRow(filename, stt, trt, self.length, self.window)
@@ -311,6 +320,13 @@ class DWEThumbnailsView(DWEAbstractView):
 
 	def get_view_widget(self):
 		return self.flow_box
+
+	def get_selected_child(self):
+		children = self.get_view_widget().get_selected_children()
+		if len(children) == 0:
+			return None
+		else:
+			return children[0].get_child()
 
 	def _add_one_picture(self, filename, stt, trt):
 		self.set_unsaved()
