@@ -1,21 +1,21 @@
 # French translation of dynamic wallpaper editor.
 # This file is distributed under the same license as the dynamic-wallpaper-editor package.
-#
-# Romain F. T. 2018-2021
+# Romain F. T. <>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: 2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 02:21+0200\n"
-"PO-Revision-Date: 2018-06-16 20:01+0200\n"
-"Last-Translator: Romain F. T.>\n"
+"POT-Creation-Date: 2021-07-02 12:10+0200\n"
+"PO-Revision-Date: 2021-07-02 12:10+0200\n"
+"Last-Translator: Romain F. T. <>\n"
 "Language-Team: français\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 40.0\n"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/window.ui
@@ -48,12 +48,6 @@ msgstr ""
 "La durée de chaque image et de chaque transition peut être réglée séparément "
 "ou de manière globale. La durée totale peut être de 24 heures pour faire un "
 "fond d'écran s'adaptant à la lumière du jour."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "An editing history is now available to undo or redo your changes."
-msgstr ""
-"Un historique d'édition est maintenant disponible, pour défaire ou refaire "
-"vos changements."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
@@ -179,10 +173,6 @@ msgid "Fit the daylight"
 msgstr "Concorder avec la lumière du jour"
 
 #: src/ui/menus.ui
-msgid "Use durations"
-msgstr "Utiliser des durées"
-
-#: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
 msgstr "Raccourcis clavier"
 
@@ -217,14 +207,6 @@ msgstr "Quitter"
 #: src/ui/menus.ui
 msgid "Edit"
 msgstr "Édition"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr "Annuler"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr "Rétablir"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add pictures"
@@ -421,12 +403,8 @@ msgid "Open an existing dynamic wallpaper"
 msgstr "Ouvrir un fond d'écran dynamique existant"
 
 #: src/ui/shortcuts.ui
-msgid "History"
-msgstr ""
-
-#: src/ui/shortcuts.ui
 msgid "Pictures management"
-msgstr ""
+msgstr "Gestion des images"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Find a picture"

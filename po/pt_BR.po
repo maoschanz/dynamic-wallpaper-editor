@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 02:21+0200\n"
+"POT-Creation-Date: 2021-07-02 12:10+0200\n"
 "PO-Revision-Date: 2020-05-15 03:04+0200\n"
 "Last-Translator: Daniel Maciel <bobbed@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -51,10 +51,6 @@ msgstr ""
 "e um tempo de transição para todos os papéis de parede do conjunto. É "
 "possível definir duração total de todos os papéis de parede para 24 horas, e "
 "assim criar um papel de parede dinâmico que se adapta aos períodos do dia."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "An editing history is now available to undo or redo your changes."
-msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
@@ -187,11 +183,6 @@ msgid "Fit the daylight"
 msgstr "Ajustar para horários do dia"
 
 #: src/ui/menus.ui
-#, fuzzy
-msgid "Use durations"
-msgstr "Duração"
-
-#: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
@@ -226,14 +217,6 @@ msgstr "Sair"
 #: src/ui/menus.ui
 msgid "Edit"
 msgstr "Editar"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr "Desfazer"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr "Refazer"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add pictures"
@@ -428,10 +411,6 @@ msgstr "Papel de parede"
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Open an existing dynamic wallpaper"
 msgstr "Abrir um papel de parede dinâmico existente"
-
-#: src/ui/shortcuts.ui
-msgid "History"
-msgstr ""
 
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
@@ -643,3 +622,4 @@ msgstr "Elemento desconhecido: %s"
 #: src/window.py
 msgid "Untitled"
 msgstr "Sem título"
+

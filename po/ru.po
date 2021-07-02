@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 02:21+0200\n"
+"POT-Creation-Date: 2021-07-02 12:10+0200\n"
 "PO-Revision-Date: 2021-05-13 09:11+0600\n"
 "Last-Translator: Dead Mozay <dead_mozay@opensuse.org>\n"
 "Language-Team: Russian <dead_mozay@opensuse.org>\n"
@@ -53,10 +53,6 @@ msgstr ""
 "Продолжительность каждого изображения и каждого перехода можно установить "
 "отдельно или глобально. Полная продолжительность может составлять 24 часа, "
 "чтобы сделать обои, подходящие для дневного света."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "An editing history is now available to undo or redo your changes."
-msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
@@ -180,11 +176,6 @@ msgstr "Одинаковая продолжительность для всех"
 msgid "Fit the daylight"
 msgstr "Установите дневное освещение"
 
-#. TODO the label should be "use durations instead of [horaires??]"
-#: src/ui/menus.ui
-msgid "Use durations"
-msgstr "Продолжительность использования"
-
 #: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
 msgstr "Комбинации клавиш"
@@ -220,14 +211,6 @@ msgstr "Завершить"
 #: src/ui/menus.ui
 msgid "Edit"
 msgstr "Изменить"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr "Отменить"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr "Повторить"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add pictures"
@@ -420,10 +403,6 @@ msgstr "Обои"
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Open an existing dynamic wallpaper"
 msgstr "Откройте существующие динамические обои"
-
-#: src/ui/shortcuts.ui
-msgid "History"
-msgstr "История"
 
 #: src/ui/shortcuts.ui
 msgid "Pictures management"

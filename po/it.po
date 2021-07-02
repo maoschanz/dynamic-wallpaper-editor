@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 02:21+0200\n"
+"POT-Creation-Date: 2021-07-02 12:10+0200\n"
 "PO-Revision-Date: 2021-03-19 21:35+0100\n"
 "Last-Translator:  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language-Team: Italian  Albano Battistella <albano battistella@hotmail.com>\n"
@@ -51,10 +51,6 @@ msgstr ""
 "La durata di ogni immagine e di ogni transizione può essere impostata "
 "separatamente o a livello globale. La durata totale può essere di 24 ore per "
 "realizzare uno sfondo che si adatti al luce del giorno."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "An editing history is now available to undo or redo your changes."
-msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
@@ -185,11 +181,6 @@ msgid "Fit the daylight"
 msgstr "Adatta alla luce del giorno"
 
 #: src/ui/menus.ui
-#, fuzzy
-msgid "Use durations"
-msgstr "Durata transizione"
-
-#: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
 msgstr "Scorciatoie da tastiera"
 
@@ -224,14 +215,6 @@ msgstr "Chiudi"
 #: src/ui/menus.ui
 msgid "Edit"
 msgstr "Modifica"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr "Annulla"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr "Rifai"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add pictures"
@@ -430,10 +413,6 @@ msgstr "Sfondo"
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Open an existing dynamic wallpaper"
 msgstr "Apri uno sfondo dinamico preesistente"
-
-#: src/ui/shortcuts.ui
-msgid "History"
-msgstr ""
 
 #: src/ui/shortcuts.ui
 msgid "Pictures management"

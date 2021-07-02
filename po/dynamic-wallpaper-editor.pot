@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 02:21+0200\n"
+"POT-Creation-Date: 2021-07-02 12:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,10 +41,6 @@ msgid ""
 "The duration of each picture and each transition can be set separately or "
 "globally. The total duration can be 24 hours to do a wallpaper fitting the "
 "daylight."
-msgstr ""
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "An editing history is now available to undo or redo your changes."
 msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
@@ -157,10 +153,6 @@ msgid "Fit the daylight"
 msgstr ""
 
 #: src/ui/menus.ui
-msgid "Use durations"
-msgstr ""
-
-#: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
 msgstr ""
 
@@ -194,14 +186,6 @@ msgstr ""
 
 #: src/ui/menus.ui
 msgid "Edit"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
 msgstr ""
 
 #: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
@@ -394,10 +378,6 @@ msgstr ""
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Open an existing dynamic wallpaper"
-msgstr ""
-
-#: src/ui/shortcuts.ui
-msgid "History"
 msgstr ""
 
 #: src/ui/shortcuts.ui

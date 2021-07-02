@@ -155,10 +155,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('fix_24h', self.fix_24, None)
 		self.add_action_simple('sort-pics', self.sort_pics_by_name, None)
 
-		self.add_action_simple('undo', self.action_undo, ['<Ctrl>z'])
-		self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
-		self.update_history_actions()
-
 		self.add_action_simple('pic_delete', self.action_pic_delete, ['Delete'])
 		self.add_action_simple('pic_replace', self.action_pic_replace, None)
 		self.add_action_simple('pic_open', self.action_pic_open, ['<Ctrl>space'])
@@ -180,8 +176,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		self.add_action_boolean('same_duration', False, self.update_type_slideshow)
 		self.add_action_boolean('total_24', False, self.update_type_daylight)
-		self.add_action_boolean('use_durations', True, self.update_daylight_mode)
-		self.lookup_action('use_durations').set_enabled(False)
 
 		self.find_rbtn1.connect('toggled', self.radio_btn_helper, 'find')
 		# self.find_rbtn2.connect('toggled', self.radio_btn_helper, 'replace')
@@ -196,27 +190,16 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.redo_history = []
 
 	def add_to_history(self):
-		new_state = self.generate_text()
-		self._is_saved = False
-		#print(len(self.undo_history))
-		self.undo_history.append(new_state)
-		self.redo_history = [] # XXX vérifier la libération de la mémoire
-		self.update_history_actions()
+		pass
 
 	def action_undo(self, *args):
-		restored_state = self.undo_history.pop()
-		self.load_state(restored_state)
-		self.redo_history.append(restored_state)
-		self.update_history_actions()
+		pass
 
 	def action_redo(self, *args):
-		restored_state = self.redo_history.pop()
-		self.load_state(restored_state)
-		self.add_to_history()
+		pass
 
 	def update_history_actions(self):
-		self.lookup_action('undo').set_enabled(len(self.undo_history) > 0)
-		self.lookup_action('redo').set_enabled(len(self.redo_history) > 0)
+		pass
 
 	def load_state(self, state):
 		self.update_time_lock = True
@@ -268,7 +251,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def set_type_daylight(self, is_now_daylight):
 		gvb = GLib.Variant.new_boolean(is_now_daylight)
 		self.lookup_action('total_24').set_state(gvb)
-		self.lookup_action('use_durations').set_enabled(gvb)
 		self.set_check_24(is_now_daylight)
 		if is_now_daylight:
 			self.set_type_slideshow(False)
@@ -295,13 +277,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	############################################################################
 	# Time management ##########################################################
-
-	def update_daylight_mode(self, *args):
-		"""Set durations directly, or set the start and finish times. This
-		option should exist only for 24h wallpapers."""
-		is_now_durations = not args[0].get_state()
-		gvb = GLib.Variant.new_boolean(is_now_durations)
-		self.lookup_action('use_durations').set_state(gvb)
 
 	def set_check_24(self, should_check):
 		self.check_24 = should_check

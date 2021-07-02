@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 02:21+0200\n"
+"POT-Creation-Date: 2021-07-02 12:10+0200\n"
 "PO-Revision-Date: 2020-05-24 17:06+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -47,10 +47,6 @@ msgid ""
 msgstr ""
 "De duur en overgang kan globaal of per afbeelding worden ingesteld. De "
 "totaalduur is 24 uur voor een overgang naar daglicht."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "An editing history is now available to undo or redo your changes."
-msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
@@ -180,11 +176,6 @@ msgid "Fit the daylight"
 msgstr "Tijdens daglicht"
 
 #: src/ui/menus.ui
-#, fuzzy
-msgid "Use durations"
-msgstr "Duur"
-
-#: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
 msgstr "Sneltoetsen"
 
@@ -219,14 +210,6 @@ msgstr "Afsluiten"
 #: src/ui/menus.ui
 msgid "Edit"
 msgstr "Bewerken"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr "Ongedaan maken"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr "Opnieuw uitvoeren"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add pictures"
@@ -424,10 +407,6 @@ msgstr "Achtergrond"
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Open an existing dynamic wallpaper"
 msgstr "Bestaande dynamische achtergrond openen"
-
-#: src/ui/shortcuts.ui
-msgid "History"
-msgstr ""
 
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
