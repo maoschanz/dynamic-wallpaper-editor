@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 13:56+0200\n"
+"POT-Creation-Date: 2021-07-02 02:21+0200\n"
 "PO-Revision-Date: 2020-01-25 01:21+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
@@ -18,9 +18,13 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/window.ui
+#: src/main.py
 msgid "Dynamic Wallpaper Editor"
 msgstr "Uređivač dinamičnih pozadina"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
 "GNOME desktop"
@@ -28,6 +32,7 @@ msgstr ""
 "Izradi ili uredi dinamične XML pozadine („pozadinske prezentacije”) za GNOME "
 "desktop"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
 "wallpapers for the GNOME desktop."
@@ -35,6 +40,7 @@ msgstr ""
 "Uređivač dinamičnih pozadina je jednostavni program za izradu i uređivanje "
 "pozadina za GNOME desktop"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The duration of each picture and each transition can be set separately or "
 "globally. The total duration can be 24 hours to do a wallpaper fitting the "
@@ -43,17 +49,25 @@ msgstr ""
 "Trajanje svake slike i svakog prijelaza može se postaviti zasebno ili "
 "globalno. Ukupno trajanje tapeta za dnevnu svjetlost može biti 24 sata."
 
-#. caption for screenshot 1
-msgid "An example of a wallpaper changing with daylight"
-msgstr "Primjer pozadine koja se mijenja ovisno o danjem svjetlu"
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "An editing history is now available to undo or redo your changes."
+msgstr ""
 
-#. caption for screenshot 2
-msgid "The grid layout"
-msgstr "Pločasti raspored"
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "An new icon is available, following the recent GNOME guidelines."
+msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"The images can now be reordered, previewed, or deleted using keyboard "
+"shortcuts."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "The images can now be easily sorted according to their filename."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "This update also removes obsolete or unreliable features like \"find and "
 "replace\", or the possibility to set a file as lockscreen (which was not "
@@ -61,15 +75,17 @@ msgid ""
 "version 3.36)."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "Minor bugs have been fixed too, like the weird behavior when closing the "
 "\"find\" entry, or actions that were disabled when they shouldn't."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 #, fuzzy
 msgid ""
-"Add a picture-wide menu with actions such as \"Replace with…\", thus missing "
-"pictures can be replaced without the necessity to set the durations again, "
+"Add a picture-wide menu with actions such as \"Replace with…\" (thus, "
+"missing pictures can be replaced without having to set the durations again), "
 "or \"View file\" to open the file in the system image viewer."
 msgstr ""
 "Dodaj izbornik za cijelu sliku s radnjom „Zamijeni s …”, tako da se "
@@ -77,9 +93,11 @@ msgstr ""
 "trajanja ili s radnjom „Prikaži datoteku” za otvaranje datoteke u sustavskom "
 "pregledniku za slike."
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Wallpaper types are now managed from the primary menu again."
 msgstr "Vrstama pozadina se sada ponovo upravlja putem glavnog izbornika."
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "Add the ability to search among pictures, fix a memory leak, improve the "
 "automatic duration setting, make the window easier to resize, and update "
@@ -89,6 +107,7 @@ msgstr ""
 "postavke automatskog trajanja, pojednostavni mijenjanje veličine  prozora i "
 "aktualiziraj prijevod."
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The app can now optionally display pictures using a grid layout instead of a "
 "list."
@@ -96,386 +115,525 @@ msgstr ""
 "Program sada može opcionalno prikazivati slike u obliku pločica umjesto "
 "popisa."
 
+#. caption for screenshot 1
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "An example of a wallpaper changing with daylight"
+msgstr "Primjer pozadine koja se mijenja ovisno o danjem svjetlu"
+
+#. caption for screenshot 2
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "The grid layout"
+msgstr "Pločasti raspored"
+
 #. That's my name, don't translate it
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Romain F. T."
 msgstr "Romain F. T."
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/main.py
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Stvori ili uredi dinamične pozadine za GNOME."
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Wallpaper;Daylight;XML;"
 msgstr "Pozadine;Danje svjetlo;XML;"
 
-msgid "com.github.maoschanz.DynamicWallpaperEditor"
-msgstr "com.github.maoschanz.DynamicWallpaperEditor"
-
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
+#: src/ui/shortcuts.ui
 msgid "New Window"
 msgstr "Novi prozor"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
 msgid "Use a grid or a list"
 msgstr "Koristi pločasti prikaz ili popis"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr "Prikaži slike kao pločice ili kao popis"
 
-msgid "Keyboard Shortcuts"
-msgstr "Prečaci na tipkovnici"
-
-msgid "Help"
-msgstr "Pomoć"
-
-msgid "About"
-msgstr "Informacije"
-
-msgid "Quit"
-msgstr "Izlaz"
-
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save as…"
 msgstr "Spremi kao …"
 
+#: src/ui/menus.ui
 msgid "List"
 msgstr "Popis"
 
+#: src/ui/menus.ui
 msgid "Grid"
 msgstr "Pločice"
 
 #. "all" refers to "all pictures"
+#: src/ui/menus.ui
 msgid "Same duration for all"
 msgstr "Jednako trajanje za sve"
 
+#: src/ui/menus.ui
 msgid "Fit the daylight"
 msgstr "Prilagodi danjem svjetlu"
 
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Use durations"
+msgstr "Trajanje"
+
+#: src/ui/menus.ui
+msgid "Keyboard Shortcuts"
+msgstr "Prečaci na tipkovnici"
+
+#: src/ui/menus.ui
+msgid "Help"
+msgstr "Pomoć"
+
+#: src/ui/menus.ui
+msgid "About"
+msgstr "Informacije"
+
+#: src/ui/menus.ui
 msgid "File"
 msgstr "Datoteka"
 
+#: src/ui/menus.ui src/ui/window.ui src/window.py
 msgid "Open"
 msgstr "Otvori"
 
+#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Save"
 msgstr "Spremi"
 
+#: src/ui/menus.ui
 msgid "Close"
 msgstr "Zatvori"
 
+#: src/ui/menus.ui
+msgid "Quit"
+msgstr "Izlaz"
+
+#: src/ui/menus.ui
 msgid "Edit"
 msgstr "Uredi"
 
+#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
 msgid "Undo"
 msgstr "Poništi"
 
+#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
 msgid "Redo"
 msgstr "Ponovi"
 
+#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add pictures"
 msgstr "Dodaj slike"
 
+#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add a folder"
 msgstr "Dodaj mapu"
 
+#: src/ui/menus.ui
 msgid "Find"
 msgstr "Nađi"
 
+#: src/ui/menus.ui src/ui/window.ui
 msgid "Find and replace"
 msgstr "Nađi i zamijeni"
 
+#: src/ui/menus.ui
 msgid "Automatically set a total of 24 hours"
 msgstr "Automatski postavi ukupno 24 sata"
 
+#: src/ui/menus.ui
 msgid "View"
 msgstr "Prikaz"
 
+#: src/ui/menus.ui
 msgid "Same duration for all pictures"
 msgstr "Jednako trajanje za sve slike"
 
+#: src/ui/menus.ui
 msgid "Durations fitting the daylight"
 msgstr "Trajanja prilagođena danjem svjetlu"
 
+#: src/ui/menus.ui src/ui/window.ui
 msgid "Sort by name"
 msgstr ""
 
-msgid "Apply"
-msgstr "Primijeni"
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Picture"
+msgstr "Slike"
 
-msgid "Set as wallpaper"
-msgstr "Postavi kao pozadinu"
+#: src/ui/menus.ui src/ui/picture_row.ui src/ui/picture_thumbnail.ui
+#: src/ui/shortcuts.ui
+msgid "Delete"
+msgstr "Izbriši"
 
-msgid "Mosaic"
-msgstr "Mozaik"
-
-msgid "Centered"
-msgstr "Centrirano"
-
-msgid "Scaled"
-msgstr "Skalirano"
-
-msgid "Streched"
-msgstr "Razvučeno"
-
-msgid "Zoom"
-msgstr "Zumiranje"
-
-msgid "Spanned"
-msgstr "Razapeto"
-
-msgid "User manual"
-msgstr "Korisnički priručnik"
-
+#: src/ui/menus.ui src/ui/picture_menu.ui
 msgid "Replace with…"
 msgstr "Zamijeni s …"
 
+#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
 msgid "View picture"
 msgstr "Prikaži sliku"
 
+#: src/ui/menus.ui src/ui/picture_menu.ui
 msgid "View containing directory"
 msgstr "Prikaži sadržavajuću mapu"
 
+#: src/ui/menus.ui src/ui/picture_menu.ui
 msgid "Move to first position"
 msgstr "Premjesti na prvo mjesto"
 
+#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
 msgid "Move up"
 msgstr "Premjesti prema gore"
 
+#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
 msgid "Move down"
 msgstr "Premjesti prema dolje"
 
+#: src/ui/menus.ui src/ui/picture_menu.ui
 msgid "Move to last position"
 msgstr "Premjesti na zadnje mjesto"
 
+#: src/ui/menus.ui src/ui/window.ui
+msgid "Apply"
+msgstr "Primijeni"
+
+#: src/ui/menus.ui src/ui/shortcuts.ui
+msgid "Set as wallpaper"
+msgstr "Postavi kao pozadinu"
+
+#: src/ui/menus.ui
+msgid "Mosaic"
+msgstr "Mozaik"
+
+#: src/ui/menus.ui
+msgid "Centered"
+msgstr "Centrirano"
+
+#: src/ui/menus.ui
+msgid "Scaled"
+msgstr "Skalirano"
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Stretched"
+msgstr "Razvučeno"
+
+#: src/ui/menus.ui
+msgid "Zoom"
+msgstr "Zumiranje"
+
+#: src/ui/menus.ui
+msgid "Spanned"
+msgstr "Razapeto"
+
+#: src/ui/menus.ui
+msgid "User manual"
+msgstr "Korisnički priručnik"
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Time"
 msgstr "Vrijeme"
 
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
 msgid ""
 "Time (in seconds) of this image. This doesn't include the time of the "
 "transition."
 msgstr "Vrijeme (u sekundama) ove slike. Ne uključuje vrijeme prijelaza."
 
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Transition"
 msgstr "Prijelaz"
 
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr "Vrijeme (u sekundama) prijelaza između ove i sljedeće slike."
 
-msgid "Delete"
-msgstr "Izbriši"
-
+#: src/ui/picture_thumbnail.ui
 msgid "Duration"
 msgstr "Trajanje"
 
+#: src/ui/start_time.ui
 msgid "This is useful when the total duration is 24 hours."
 msgstr "Ovo je korisno, kad je ukupno trajanje 24 sata."
 
+#: src/ui/start_time.ui
 msgid "Start time of the wallpaper"
 msgstr "Početno vrijeme pozadine"
 
+#: src/ui/start_time.ui
 msgid "Year"
 msgstr "Godina"
 
+#: src/ui/start_time.ui
 msgid "Month"
 msgstr "Mjesec"
 
+#: src/ui/start_time.ui
 msgid "Day"
 msgstr "Dan"
 
+#: src/ui/start_time.ui
 msgid "Hour"
 msgstr "Sat"
 
+#: src/ui/start_time.ui
 msgid "Minute"
 msgstr "Minuta"
 
+#: src/ui/start_time.ui
 msgid "Second"
 msgstr "Sekunda"
 
+#: src/ui/shortcuts.ui
 msgid "General"
 msgstr "Opće"
 
+#: src/ui/shortcuts.ui
 msgid "Close the current window"
 msgstr "Zatvori trenutačni prozor"
 
+#: src/ui/shortcuts.ui
 msgid "Quit all windows"
 msgstr "Zatvori sve prozore"
 
+#: src/ui/shortcuts.ui
 msgid "Show shortcuts"
 msgstr "Prikaži prečace na tipkovnici"
 
+#: src/ui/shortcuts.ui
 msgid "Show help"
 msgstr "Prikaži pomoć"
 
-msgid "Pictures"
-msgstr "Slike"
-
-msgid "Find a picture"
-msgstr "Nađi sliku"
-
-#. <property name="visible">True</property>
-msgid "Replace a part of filenames"
-msgstr "Zamijeni dio imena datoteke"
-
-#. <property name="visible">True</property>
-#, fuzzy
-msgid "Editing"
-msgstr "Uredi"
-
+#: src/ui/shortcuts.ui
 msgid "Wallpaper"
 msgstr "Pozadina"
 
+#: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Open an existing dynamic wallpaper"
 msgstr "Otvori postojeću dinamičnu pozadinu"
 
+#: src/ui/shortcuts.ui
+msgid "History"
+msgstr ""
+
+#: src/ui/shortcuts.ui
+msgid "Pictures management"
+msgstr ""
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Find a picture"
+msgstr "Nađi sliku"
+
+#: src/ui/shortcuts.ui
+#, fuzzy
+msgid "Selected picture"
+msgstr "Dodaj slike"
+
+#: src/ui/window.ui
 msgid "More actions"
 msgstr "Daljnje radnje"
 
+#: src/ui/window.ui
 msgid "Set the exact start time of the wallpaper"
 msgstr "Postavi točno početno vrijeme pozadine"
 
-msgid "Apply as wallpaper or lock screen, and set adjustment options"
+#: src/ui/window.ui
+#, fuzzy
+msgid "Apply as wallpaper, and set adjustment options"
 msgstr ""
 "Primijeni kao pozadinu ili kao zaključani erkan i postavi opcije za "
 "prilagođavanje"
 
+#: src/ui/window.ui
 msgid "Find a filename"
 msgstr "Nađi ime datoteke"
 
+#: src/ui/window.ui
 msgid "Replace in filenames"
 msgstr "Zamijeni u imenu datoteke"
 
+#: src/ui/window.ui
 msgid "Error starting the application, please report this bug."
 msgstr "Greška pri pokretanju programa. Prijavi grešku."
 
+#: src/ui/window.ui
 msgid "Automatic fix"
 msgstr "Automatsko popravljanje"
 
+#: src/ui/window.ui
 msgid "Set durations for a total of 24 hours"
 msgstr "Postavi trajanje za ukupno 24 sata"
 
+#: src/ui/window.ui
 msgid "Duration of each picture (seconds)"
 msgstr "Trajanje svake slike (sekunde)"
 
+#: src/ui/window.ui
 msgid "Duration of each transition (seconds)"
 msgstr "Trajanje svakog prijelaza (sekunde)"
 
+#: src/main.py
 msgid "Tell the version of the app"
 msgstr ""
 
+#: src/main.py
 msgid "Open a new window"
 msgstr "Otvori novi prozor"
 
-#. FIXME pas ouf
+#: src/main.py
 #, python-format
 msgid "Error opening this file. Did you mean %s ?"
 msgstr "Greška pri otvaranju datoteke. Jesi li mislio/la na %s?"
 
+#: src/main.py
 msgid "Report bugs or ideas"
 msgstr "Prijavi greške ili ideje"
 
+#: src/main.py
 msgid "translator-credits"
 msgstr "Milo Ivir <mail@milotype.de>, 2020."
 
+#: src/misc.py
 msgid "Dynamic wallpapers (XML)"
 msgstr "Dinamične pozadine (XML)"
 
+#: src/misc.py
 msgid "All pictures"
 msgstr "Sve slike"
 
+#: src/misc.py
 msgid "PNG images"
 msgstr "PNG slike"
 
+#: src/misc.py
 msgid "JPEG images"
 msgstr "JPEG slike"
 
-#, python-format
-msgid "%s hour(s)"
-msgstr "%s h"
+#: src/misc.py
+#, fuzzy, python-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s h"
+msgstr[1] "%s h"
+msgstr[2] "%s h"
 
-#, python-format
-msgid "%s minute(s)"
-msgstr "%s min"
+#: src/misc.py
+#, fuzzy, python-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s min"
+msgstr[1] "%s min"
+msgstr[2] "%s min"
 
-#, python-format
-msgid "%s second(s)"
-msgstr "%s s"
+#: src/misc.py
+#, fuzzy, python-format
+msgid "%s second"
+msgid_plural "%s seconds"
+msgstr[0] "%s s"
+msgstr[1] "%s s"
+msgstr[2] "%s s"
 
+#: src/picture_widget.py
 msgid ""
 "This picture might exist, but it isn't in your home folder so I can't see it."
 msgstr ""
 "Slika možda postoji, ali se ne nalazi u početnoj mapi, pa je ne mogu vidjeti."
 
+#: src/picture_widget.py
 msgid "This picture doesn't exist"
 msgstr "Ova slika ne postoji"
 
+#: src/picture_widget.py
 #, python-brace-format
 msgid "This picture lasts from {0} to {1}"
 msgstr "Slika traje od {0} do {1}"
 
+#: src/picture_widget.py
 #, python-brace-format
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr "Prijelaz na sljedeću sliku traje od {0} do {1}"
 
+#: src/view.py
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Dodaj novu sliku ili otvori postojeću XML datoteku."
 
+#: src/view.py
 msgid "Drag-and-drop pictures to reorder them."
 msgstr "Za mijenjanje rasporeda, povuci-i-ispusti slike."
 
-msgid "This desktop environnement isn't supported."
+#: src/window.py
+#, fuzzy
+msgid "This desktop environment isn't supported."
 msgstr "Desktop okruženje nije podržano."
 
-#, python-format
-msgid "%s pictures"
-msgstr "%s slike(a)"
+#: src/window.py
+#, fuzzy, python-format
+msgid "%s picture"
+msgid_plural "%s pictures"
+msgstr[0] "%s slike(a)"
+msgstr[1] "%s slike(a)"
+msgstr[2] "%s slike(a)"
 
-#, python-format
-msgid "Total time: %s second(s)"
-msgstr "Ukupno vrijeme: %s s"
+#: src/window.py
+#, fuzzy, python-format
+msgid "Total time: %s second"
+msgid_plural "Total time: %s seconds"
+msgstr[0] "Ukupno vrijeme: %s s"
+msgstr[1] "Ukupno vrijeme: %s s"
+msgstr[2] "Ukupno vrijeme: %s s"
 
+#: src/window.py
 msgid "The total duration isn't 24 hours."
 msgstr "Ukupno vrijeme nije 24 sata."
 
+#: src/window.py
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Tvoja pozadina sadrži nespremljene promjene."
 
+#: src/window.py
 #, fuzzy, python-format
 msgid "There are unsaved modifications to %s"
 msgstr "Tvoja pozadina sadrži nespremljene promjene."
 
+#: src/window.py
 msgid "Cancel"
 msgstr "Odustani"
 
+#: src/window.py
 msgid "Discard"
 msgstr "Odbaci"
 
+#: src/window.py
 msgid "Loading…"
 msgstr "Učitava se …"
 
+#: src/window.py
 #, python-format
 msgid "Replace %s"
 msgstr "Zamijeni %s"
 
+#: src/window.py
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Ova dinamična pozadina nije ispravna"
 
+#: src/window.py
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Ova XML datoteka ne opisuje ispravnu dinamičnu pozadinu"
 
+#: src/window.py
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Nepoznati element: %s"
 
+#: src/window.py
 msgid "Untitled"
 msgstr "Bezimeno"
 
 #~ msgid "Wallpaper adjustment"
 #~ msgstr "Prilagođavanje pozadine"
-
-#~ msgid "Set as lock screen"
-#~ msgstr "Postavi kao zaključani erkan"
-
-#~ msgid "Lock screen adjustment"
-#~ msgstr "Prilagođavanje zaključanog erkana"
-
-#~ msgid "Print the version and display the 'about' dialog"
-#~ msgstr "Ispiši verziju i prikaži dijaloški okvir za „Informacije”"
 
 #~ msgid "Save %s"
 #~ msgstr "Spremi %s"

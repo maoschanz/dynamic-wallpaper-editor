@@ -20,11 +20,8 @@
   </description>
 
   <releases>
-    <release version="2.6" date="2020-12-23">
+    <release version="2.6" date="2021-07-03">
       <description>
-        <p>
-          An editing history is now available to undo or redo your changes.
-        </p>
         <p>
           An new icon is available, following the recent GNOME guidelines.
         </p>
@@ -54,9 +51,9 @@
     <release version="2.4" date="2019-10-15">
       <description>
         <p>
-          Add a picture-wide menu with actions such as "Replace with…", thus
+          Add a picture-wide menu with actions such as "Replace with…" (thus,
           missing pictures can be replaced without having to set the
-          durations again, or "View file" to open the file in the system image
+          durations again), or "View file" to open the file in the system image
           viewer.
         </p>
         <p>

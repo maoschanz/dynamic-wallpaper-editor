@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-15 18:15+0200\n"
+"POT-Creation-Date: 2021-07-02 02:21+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -49,15 +49,24 @@ msgstr ""
 "ou de manière globale. La durée totale peut être de 24 heures pour faire un "
 "fond d'écran s'adaptant à la lumière du jour."
 
-#. caption for screenshot 1
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "An example of a wallpaper changing with daylight"
-msgstr "Un exemple de fond d'écran changeant avec la lumière du jour"
+msgid "An editing history is now available to undo or redo your changes."
+msgstr ""
+"Un historique d'édition est maintenant disponible, pour défaire ou refaire "
+"vos changements."
 
-#. caption for screenshot 2
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "The grid layout"
-msgstr "La vue en grille"
+msgid "An new icon is available, following the recent GNOME guidelines."
+msgstr ""
+"Une nouvelle icône est disponible, respectant les recommendations de GNOME."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"The images can now be reordered, previewed, or deleted using keyboard "
+"shortcuts."
+msgstr ""
+"Les images peuvent être réordonnées, prévisualisées, ou supprimées en "
+"utilisant les raccourcis clavier."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "The images can now be easily sorted according to their filename."
@@ -79,8 +88,8 @@ msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
-"Add a picture-wide menu with actions such as \"Replace with…\", thus missing "
-"pictures can be replaced without the necessity to set the durations again, "
+"Add a picture-wide menu with actions such as \"Replace with…\" (thus, "
+"missing pictures can be replaced without having to set the durations again), "
 "or \"View file\" to open the file in the system image viewer."
 msgstr ""
 "Ajout d'actions à l'échelle de chaque image, telle que \"Remplacer par…\", "
@@ -111,6 +120,16 @@ msgstr ""
 "L'application peut maintenant optionnellement afficher les images sous forme "
 "de grille au lieu d'une liste."
 
+#. caption for screenshot 1
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "An example of a wallpaper changing with daylight"
+msgstr "Un exemple de fond d'écran changeant avec la lumière du jour"
+
+#. caption for screenshot 2
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "The grid layout"
+msgstr "La vue en grille"
+
 #. That's my name, don't translate it
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Romain F. T."
@@ -123,10 +142,6 @@ msgstr "Créer ou éditer des fonds d'écrans dynamiques pour GNOME."
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Wallpaper;Daylight;XML;"
 msgstr "Fond d'écran;Lumière du jour;XML;"
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
-msgid "com.github.maoschanz.DynamicWallpaperEditor"
-msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
 #: src/ui/shortcuts.ui
@@ -141,22 +156,6 @@ msgstr "Utiliser une grille ou une liste"
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 "Afficher les images en utilisant une grille de miniatures, ou une liste."
-
-#: src/ui/menus.ui
-msgid "Keyboard Shortcuts"
-msgstr "Raccourcis clavier"
-
-#: src/ui/menus.ui
-msgid "Help"
-msgstr "Aide"
-
-#: src/ui/menus.ui
-msgid "About"
-msgstr "À propos"
-
-#: src/ui/menus.ui
-msgid "Quit"
-msgstr "Quitter"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save as…"
@@ -180,6 +179,22 @@ msgid "Fit the daylight"
 msgstr "Concorder avec la lumière du jour"
 
 #: src/ui/menus.ui
+msgid "Use durations"
+msgstr "Utiliser des durées"
+
+#: src/ui/menus.ui
+msgid "Keyboard Shortcuts"
+msgstr "Raccourcis clavier"
+
+#: src/ui/menus.ui
+msgid "Help"
+msgstr "Aide"
+
+#: src/ui/menus.ui
+msgid "About"
+msgstr "À propos"
+
+#: src/ui/menus.ui
 msgid "File"
 msgstr "Fichier"
 
@@ -194,6 +209,10 @@ msgstr "Enregistrer"
 #: src/ui/menus.ui
 msgid "Close"
 msgstr "Fermer"
+
+#: src/ui/menus.ui
+msgid "Quit"
+msgstr "Quitter"
 
 #: src/ui/menus.ui
 msgid "Edit"
@@ -243,6 +262,43 @@ msgstr "Durées concordant avec la lumière du jour"
 msgid "Sort by name"
 msgstr "Trier par nom"
 
+#: src/ui/menus.ui
+msgid "Picture"
+msgstr "Image"
+
+#: src/ui/menus.ui src/ui/picture_row.ui src/ui/picture_thumbnail.ui
+#: src/ui/shortcuts.ui
+msgid "Delete"
+msgstr "Supprimer"
+
+#: src/ui/menus.ui src/ui/picture_menu.ui
+msgid "Replace with…"
+msgstr "Remplacer par…"
+
+#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "View picture"
+msgstr "Voir l'image"
+
+#: src/ui/menus.ui src/ui/picture_menu.ui
+msgid "View containing directory"
+msgstr "Voir le dossier parent"
+
+#: src/ui/menus.ui src/ui/picture_menu.ui
+msgid "Move to first position"
+msgstr "Déplacer en première position"
+
+#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move up"
+msgstr "Déplacer vers le haut"
+
+#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move down"
+msgstr "Déplacer vers le bas"
+
+#: src/ui/menus.ui src/ui/picture_menu.ui
+msgid "Move to last position"
+msgstr "Déplacer en dernière position"
+
 #: src/ui/menus.ui src/ui/window.ui
 msgid "Apply"
 msgstr "Appliquer"
@@ -264,7 +320,7 @@ msgid "Scaled"
 msgstr "Mis à l'échelle"
 
 #: src/ui/menus.ui
-msgid "Streched"
+msgid "Stretched"
 msgstr "Étiré"
 
 #: src/ui/menus.ui
@@ -278,34 +334,6 @@ msgstr "Étalé"
 #: src/ui/menus.ui
 msgid "User manual"
 msgstr "Manuel de l'utilisateur"
-
-#: src/ui/picture_menu.ui
-msgid "Replace with…"
-msgstr "Remplacer par…"
-
-#: src/ui/picture_menu.ui
-msgid "View picture"
-msgstr "Voir l'image"
-
-#: src/ui/picture_menu.ui
-msgid "View containing directory"
-msgstr "Voir le dossier parent"
-
-#: src/ui/picture_menu.ui
-msgid "Move to first position"
-msgstr "Déplacer en première position"
-
-#: src/ui/picture_menu.ui
-msgid "Move up"
-msgstr "Déplacer vers le haut"
-
-#: src/ui/picture_menu.ui
-msgid "Move down"
-msgstr "Déplacer vers le bas"
-
-#: src/ui/picture_menu.ui
-msgid "Move to last position"
-msgstr "Déplacer en dernière position"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Time"
@@ -327,10 +355,6 @@ msgstr "Transition"
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr "Temps (en secondes) de la transition entre cette image et la suivante."
-
-#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
-msgid "Delete"
-msgstr "Supprimer"
 
 #: src/ui/picture_thumbnail.ui
 msgid "Duration"
@@ -389,29 +413,28 @@ msgid "Show help"
 msgstr "Afficher l'aide"
 
 #: src/ui/shortcuts.ui
-msgid "Pictures"
-msgstr "Images"
-
-#: src/ui/shortcuts.ui src/ui/window.ui
-msgid "Find a picture"
-msgstr "Rechercher une image"
-
-#. <property name="visible">True</property>
-#: src/ui/shortcuts.ui
-msgid "Replace a part of filenames"
-msgstr "Remplacer une partie des noms de fichiers"
-
-#: src/ui/shortcuts.ui
-msgid "Editing"
-msgstr "Édition"
-
-#: src/ui/shortcuts.ui
 msgid "Wallpaper"
 msgstr "Fond d'écran"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Open an existing dynamic wallpaper"
 msgstr "Ouvrir un fond d'écran dynamique existant"
+
+#: src/ui/shortcuts.ui
+msgid "History"
+msgstr ""
+
+#: src/ui/shortcuts.ui
+msgid "Pictures management"
+msgstr ""
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Find a picture"
+msgstr "Rechercher une image"
+
+#: src/ui/shortcuts.ui
+msgid "Selected picture"
+msgstr "Image sélectionnée"
 
 #: src/ui/window.ui
 msgid "More actions"
@@ -422,10 +445,8 @@ msgid "Set the exact start time of the wallpaper"
 msgstr "Régler l'heure exacte de début du fond d'écran"
 
 #: src/ui/window.ui
-msgid "Apply as wallpaper or lock screen, and set adjustment options"
-msgstr ""
-"Appliquer comme fond d'écran ou comme écran de verrouillage, et régler les "
-"options d'ajustement."
+msgid "Apply as wallpaper, and set adjustment options"
+msgstr "Appliquer comme fond d'écran, et régler les options d'ajustement."
 
 #: src/ui/window.ui
 msgid "Find a filename"
@@ -543,7 +564,7 @@ msgid "Drag-and-drop pictures to reorder them."
 msgstr "Glisser-déposer les images pour les réordonner."
 
 #: src/window.py
-msgid "This desktop environnement isn't supported."
+msgid "This desktop environment isn't supported."
 msgstr "Cet environnement de bureau n'est pas supporté."
 
 #: src/window.py

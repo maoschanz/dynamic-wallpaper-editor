@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 13:56+0200\n"
+"POT-Creation-Date: 2021-07-02 02:21+0200\n"
 "PO-Revision-Date: 2019-03-18 02:19+0300\n"
 "Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Turkish <teknomobil@yandex.com>\n"
@@ -17,37 +17,51 @@ msgstr ""
 "X-Generator: Gtranslator 3.32.0\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/window.ui
+#: src/main.py
 msgid "Dynamic Wallpaper Editor"
 msgstr "Dinamik Duvar Kağıdı Düzenleyici"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 #, fuzzy
 msgid ""
 "Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
 "GNOME desktop"
 msgstr "GNOME için dinamik duvar kağıtları oluşturun veya düzenleyin."
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
 "wallpapers for the GNOME desktop."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The duration of each picture and each transition can be set separately or "
 "globally. The total duration can be 24 hours to do a wallpaper fitting the "
 "daylight."
 msgstr ""
 
-#. caption for screenshot 1
-msgid "An example of a wallpaper changing with daylight"
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "An editing history is now available to undo or redo your changes."
 msgstr ""
 
-#. caption for screenshot 2
-msgid "The grid layout"
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "An new icon is available, following the recent GNOME guidelines."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"The images can now be reordered, previewed, or deleted using keyboard "
+"shortcuts."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "The images can now be easily sorted according to their filename."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "This update also removes obsolete or unreliable features like \"find and "
 "replace\", or the possibility to set a file as lockscreen (which was not "
@@ -55,422 +69,551 @@ msgid ""
 "version 3.36)."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "Minor bugs have been fixed too, like the weird behavior when closing the "
 "\"find\" entry, or actions that were disabled when they shouldn't."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
-"Add a picture-wide menu with actions such as \"Replace with…\", thus missing "
-"pictures can be replaced without the necessity to set the durations again, "
+"Add a picture-wide menu with actions such as \"Replace with…\" (thus, "
+"missing pictures can be replaced without having to set the durations again), "
 "or \"View file\" to open the file in the system image viewer."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Wallpaper types are now managed from the primary menu again."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "Add the ability to search among pictures, fix a memory leak, improve the "
 "automatic duration setting, make the window easier to resize, and update "
 "translations."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The app can now optionally display pictures using a grid layout instead of a "
 "list."
 msgstr ""
 
+#. caption for screenshot 1
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "An example of a wallpaper changing with daylight"
+msgstr ""
+
+#. caption for screenshot 2
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "The grid layout"
+msgstr ""
+
 #. That's my name, don't translate it
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Romain F. T."
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/main.py
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "GNOME için dinamik duvar kağıtları oluşturun veya düzenleyin."
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Wallpaper;Daylight;XML;"
 msgstr ""
 
-msgid "com.github.maoschanz.DynamicWallpaperEditor"
-msgstr "com.github.maoschanz.DynamicWallpaperEditor"
-
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
+#: src/ui/shortcuts.ui
 #, fuzzy
 msgid "New Window"
 msgstr "Yeni pencere"
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
 msgid "Use a grid or a list"
 msgstr ""
 
+#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 
-msgid "Keyboard Shortcuts"
-msgstr "Klavye Kısayolları"
-
-msgid "Help"
-msgstr "Yardım"
-
-msgid "About"
-msgstr "Hakkında"
-
-msgid "Quit"
-msgstr "Çık"
-
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save as…"
 msgstr "Farklı kaydet…"
 
+#: src/ui/menus.ui
 msgid "List"
 msgstr ""
 
+#: src/ui/menus.ui
 msgid "Grid"
 msgstr ""
 
 #. "all" refers to "all pictures"
+#: src/ui/menus.ui
 #, fuzzy
 msgid "Same duration for all"
 msgstr "Toplam süre 24 saat değil."
 
+#: src/ui/menus.ui
 msgid "Fit the daylight"
 msgstr ""
 
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Use durations"
+msgstr "Geçiş"
+
+#: src/ui/menus.ui
+msgid "Keyboard Shortcuts"
+msgstr "Klavye Kısayolları"
+
+#: src/ui/menus.ui
+msgid "Help"
+msgstr "Yardım"
+
+#: src/ui/menus.ui
+msgid "About"
+msgstr "Hakkında"
+
+#: src/ui/menus.ui
 msgid "File"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/window.ui src/window.py
 msgid "Open"
 msgstr "Aç"
 
+#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Save"
 msgstr "Kaydet"
 
+#: src/ui/menus.ui
 msgid "Close"
 msgstr ""
 
+#: src/ui/menus.ui
+msgid "Quit"
+msgstr "Çık"
+
+#: src/ui/menus.ui
 msgid "Edit"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
 msgid "Undo"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
 msgid "Redo"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add pictures"
 msgstr "Resim ekle"
 
+#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add a folder"
 msgstr "Klasör ekle"
 
+#: src/ui/menus.ui
 msgid "Find"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/window.ui
 #, fuzzy
 msgid "Find and replace"
 msgstr "Resim ekle"
 
+#: src/ui/menus.ui
 #, fuzzy
 msgid "Automatically set a total of 24 hours"
 msgstr "Toplam süre 24 saat değil."
 
+#: src/ui/menus.ui
 msgid "View"
 msgstr ""
 
+#: src/ui/menus.ui
 #, fuzzy
 msgid "Same duration for all pictures"
 msgstr "Toplam süre 24 saat değil."
 
+#: src/ui/menus.ui
 msgid "Durations fitting the daylight"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/window.ui
 msgid "Sort by name"
 msgstr ""
 
-msgid "Apply"
-msgstr ""
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Picture"
+msgstr "%s resimler"
 
-msgid "Set as wallpaper"
-msgstr "Duvar kağıdı olarak ayarla"
+#: src/ui/menus.ui src/ui/picture_row.ui src/ui/picture_thumbnail.ui
+#: src/ui/shortcuts.ui
+msgid "Delete"
+msgstr "Sil"
 
-msgid "Mosaic"
-msgstr "Mozaik"
-
-msgid "Centered"
-msgstr "Ortalanmış"
-
-msgid "Scaled"
-msgstr "Ölçekli"
-
-msgid "Streched"
-msgstr "Uzatılmış"
-
-msgid "Zoom"
-msgstr "Yakınlaşmış"
-
-msgid "Spanned"
-msgstr "Yayılmış"
-
-msgid "User manual"
-msgstr ""
-
+#: src/ui/menus.ui src/ui/picture_menu.ui
 msgid "Replace with…"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
 #, fuzzy
 msgid "View picture"
 msgstr "%s resimler"
 
+#: src/ui/menus.ui src/ui/picture_menu.ui
 msgid "View containing directory"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/picture_menu.ui
 msgid "Move to first position"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
 msgid "Move up"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
 msgid "Move down"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/picture_menu.ui
 msgid "Move to last position"
 msgstr ""
 
+#: src/ui/menus.ui src/ui/window.ui
+msgid "Apply"
+msgstr ""
+
+#: src/ui/menus.ui src/ui/shortcuts.ui
+msgid "Set as wallpaper"
+msgstr "Duvar kağıdı olarak ayarla"
+
+#: src/ui/menus.ui
+msgid "Mosaic"
+msgstr "Mozaik"
+
+#: src/ui/menus.ui
+msgid "Centered"
+msgstr "Ortalanmış"
+
+#: src/ui/menus.ui
+msgid "Scaled"
+msgstr "Ölçekli"
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Stretched"
+msgstr "Uzatılmış"
+
+#: src/ui/menus.ui
+msgid "Zoom"
+msgstr "Yakınlaşmış"
+
+#: src/ui/menus.ui
+msgid "Spanned"
+msgstr "Yayılmış"
+
+#: src/ui/menus.ui
+msgid "User manual"
+msgstr ""
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Time"
 msgstr "Zaman"
 
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
 msgid ""
 "Time (in seconds) of this image. This doesn't include the time of the "
 "transition."
 msgstr "Bu görüntünün süresi (saniye olarak). Bu geçiş zamanını içermez."
 
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Transition"
 msgstr "Geçiş"
 
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr ""
 "Bu görüntü ile sonraki görüntü arasındaki geçişin süresi (saniye olarak)."
 
-msgid "Delete"
-msgstr "Sil"
-
+#: src/ui/picture_thumbnail.ui
 #, fuzzy
 msgid "Duration"
 msgstr "Geçiş"
 
+#: src/ui/start_time.ui
 msgid "This is useful when the total duration is 24 hours."
 msgstr "Toplam süre 24 saat olduğunda bu kullanışlıdır."
 
+#: src/ui/start_time.ui
 msgid "Start time of the wallpaper"
 msgstr "Duvar kağıdının başlama zamanı"
 
+#: src/ui/start_time.ui
 msgid "Year"
 msgstr "Yıl"
 
+#: src/ui/start_time.ui
 msgid "Month"
 msgstr "Ay"
 
+#: src/ui/start_time.ui
 msgid "Day"
 msgstr "Gün"
 
+#: src/ui/start_time.ui
 msgid "Hour"
 msgstr "Saat"
 
+#: src/ui/start_time.ui
 msgid "Minute"
 msgstr "Dakika"
 
+#: src/ui/start_time.ui
 msgid "Second"
 msgstr "Saniye"
 
+#: src/ui/shortcuts.ui
 msgid "General"
 msgstr "Genel"
 
+#: src/ui/shortcuts.ui
 msgid "Close the current window"
 msgstr ""
 
+#: src/ui/shortcuts.ui
 msgid "Quit all windows"
 msgstr "Tüm pencerelerden çık"
 
+#: src/ui/shortcuts.ui
 #, fuzzy
 msgid "Show shortcuts"
 msgstr "Klavye Kısayolları"
 
+#: src/ui/shortcuts.ui
 msgid "Show help"
 msgstr "Yardımı göster"
 
-#, fuzzy
-msgid "Pictures"
-msgstr "%s resimler"
+#: src/ui/shortcuts.ui
+msgid "Wallpaper"
+msgstr "Duvar kağıdı"
 
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Open an existing dynamic wallpaper"
+msgstr "Mevcut dinamik duvar kağıdını aç"
+
+#: src/ui/shortcuts.ui
+msgid "History"
+msgstr ""
+
+#: src/ui/shortcuts.ui
+msgid "Pictures management"
+msgstr ""
+
+#: src/ui/shortcuts.ui src/ui/window.ui
 #, fuzzy
 msgid "Find a picture"
 msgstr "Resim ekle"
 
-#. <property name="visible">True</property>
-msgid "Replace a part of filenames"
-msgstr ""
+#: src/ui/shortcuts.ui
+#, fuzzy
+msgid "Selected picture"
+msgstr "Resim ekle"
 
-#. <property name="visible">True</property>
-msgid "Editing"
-msgstr ""
-
-msgid "Wallpaper"
-msgstr "Duvar kağıdı"
-
-msgid "Open an existing dynamic wallpaper"
-msgstr "Mevcut dinamik duvar kağıdını aç"
-
+#: src/ui/window.ui
 msgid "More actions"
 msgstr "Daha fazla eylem"
 
+#: src/ui/window.ui
 msgid "Set the exact start time of the wallpaper"
 msgstr "Duvar kağıdının tam başlama zamanını ayarla"
 
-msgid "Apply as wallpaper or lock screen, and set adjustment options"
+#: src/ui/window.ui
+msgid "Apply as wallpaper, and set adjustment options"
 msgstr ""
 
+#: src/ui/window.ui
 #, fuzzy
 msgid "Find a filename"
 msgstr "Resim ekle"
 
+#: src/ui/window.ui
 #, fuzzy
 msgid "Replace in filenames"
 msgstr "Resim ekle"
 
+#: src/ui/window.ui
 msgid "Error starting the application, please report this bug."
 msgstr "Uygulama başlatma hatası, lütfen bu hatayı bildirin."
 
+#: src/ui/window.ui
 msgid "Automatic fix"
 msgstr "Otomatik düzelt"
 
+#: src/ui/window.ui
 #, fuzzy
 msgid "Set durations for a total of 24 hours"
 msgstr "Toplam süre 24 saat değil."
 
+#: src/ui/window.ui
 msgid "Duration of each picture (seconds)"
 msgstr "Her resmin süresi (saniye)"
 
+#: src/ui/window.ui
 msgid "Duration of each transition (seconds)"
 msgstr "Her geçişin süresi (saniye)"
 
+#: src/main.py
 msgid "Tell the version of the app"
 msgstr ""
 
+#: src/main.py
 #, fuzzy
 msgid "Open a new window"
 msgstr "Yeni pencere"
 
-#. FIXME pas ouf
+#: src/main.py
 #, python-format
 msgid "Error opening this file. Did you mean %s ?"
 msgstr ""
 
+#: src/main.py
 msgid "Report bugs or ideas"
 msgstr "Hata raporla veya öneri gönder"
 
+#: src/main.py
 msgid "translator-credits"
 msgstr "Serdar Sağlam <teknomobil@yandex.com>"
 
+#: src/misc.py
 msgid "Dynamic wallpapers (XML)"
 msgstr "Dinamik duvar kağıtları (XML)"
 
+#: src/misc.py
 msgid "All pictures"
 msgstr "Tüm resimler"
 
+#: src/misc.py
 msgid "PNG images"
 msgstr "PNG görüntüler"
 
+#: src/misc.py
 msgid "JPEG images"
 msgstr "JPEG görüntüler"
 
-#, python-format
-msgid "%s hour(s)"
-msgstr "%s saat"
+#: src/misc.py
+#, fuzzy, python-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s saat"
 
-#, python-format
-msgid "%s minute(s)"
-msgstr "%s dakika"
+#: src/misc.py
+#, fuzzy, python-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s dakika"
 
-#, python-format
-msgid "%s second(s)"
-msgstr "%s saniye"
+#: src/misc.py
+#, fuzzy, python-format
+msgid "%s second"
+msgid_plural "%s seconds"
+msgstr[0] "%s saniye"
 
+#: src/picture_widget.py
 msgid ""
 "This picture might exist, but it isn't in your home folder so I can't see it."
 msgstr ""
 
+#: src/picture_widget.py
 msgid "This picture doesn't exist"
 msgstr "Bu resim yok"
 
+#: src/picture_widget.py
 #, python-brace-format
 msgid "This picture lasts from {0} to {1}"
 msgstr ""
 
+#: src/picture_widget.py
 #, python-brace-format
 msgid "The transition to the next picture lasts from {0} to {1}"
 msgstr ""
 
+#: src/view.py
 msgid "Add new pictures, or open an existing XML file."
 msgstr "Yeni resimler ekle veya mevcut bir XML dosyasını aç."
 
+#: src/view.py
 msgid "Drag-and-drop pictures to reorder them."
 msgstr ""
 
-msgid "This desktop environnement isn't supported."
+#: src/window.py
+msgid "This desktop environment isn't supported."
 msgstr ""
 
-#, python-format
-msgid "%s pictures"
-msgstr "%s resimler"
+#: src/window.py
+#, fuzzy, python-format
+msgid "%s picture"
+msgid_plural "%s pictures"
+msgstr[0] "%s resimler"
 
-#, python-format
-msgid "Total time: %s second(s)"
-msgstr "Toplam zaman: %s saniye"
+#: src/window.py
+#, fuzzy, python-format
+msgid "Total time: %s second"
+msgid_plural "Total time: %s seconds"
+msgstr[0] "Toplam zaman: %s saniye"
 
+#: src/window.py
 msgid "The total duration isn't 24 hours."
 msgstr "Toplam süre 24 saat değil."
 
+#: src/window.py
 msgid "There are unsaved modifications to your wallpaper."
 msgstr "Duvar kağıdınıza kaydedilmemiş değişiklikler var."
 
+#: src/window.py
 #, fuzzy, python-format
 msgid "There are unsaved modifications to %s"
 msgstr "Duvar kağıdınıza kaydedilmemiş değişiklikler var."
 
+#: src/window.py
 msgid "Cancel"
 msgstr "İptal"
 
+#: src/window.py
 msgid "Discard"
 msgstr "Yoksay"
 
+#: src/window.py
 msgid "Loading…"
 msgstr "Yükleniyor…"
 
+#: src/window.py
 #, python-format
 msgid "Replace %s"
 msgstr ""
 
+#: src/window.py
 msgid "This dynamic wallpaper is corrupted"
 msgstr "Bu dinamik duvar kağıdı bozuk"
 
+#: src/window.py
 msgid "This XML file doesn't describe a valid dynamic wallpaper"
 msgstr "Bu XML dosyası geçerli bir dinamik duvar kağıdı tanımlamıyor"
 
+#: src/window.py
 #, python-format
 msgid "Unknown element: %s"
 msgstr "Bilinmeyen öge: %s"
 
+#: src/window.py
 msgid "Untitled"
 msgstr "Başlıksız"
-
-#, fuzzy
-#~ msgid "Wallpaper adjustment"
-#~ msgstr "Duvar kağıdı türü"
-
-#, fuzzy
-#~ msgid "Lock screen adjustment"
-#~ msgstr "Arkaplan uyumu"
-
-#, fuzzy
-#~ msgid "Save %s"
-#~ msgstr "Kaydet"
 
 #~ msgid "Slideshow"
 #~ msgstr "Sunu gösterimi"

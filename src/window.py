@@ -348,9 +348,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 		total_time = self.get_total_time()
 		message = ngettext("%s picture", "%s pictures", self.view.length) \
 		                                              % self.view.length + ' - '
-		# XXX ça prend en compte le 0 comme un pluriel cette merde
 		message += ngettext("Total time: %s second", "Total time: %s seconds", \
 		                                                total_time) % total_time
+		# XXX ça prend en compte le 0 comme un pluriel cette merde ^
 		if total_time >= 60:
 			message += ' = ' + time_to_string(total_time)
 		if self.check_24:
