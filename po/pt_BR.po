@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 02:21+0200\n"
+"POT-Creation-Date: 2021-07-03 01:56+0200\n"
 "PO-Revision-Date: 2020-05-15 03:04+0200\n"
 "Last-Translator: Daniel Maciel <bobbed@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -53,6 +53,10 @@ msgstr ""
 "assim criar um papel de parede dinâmico que se adapta aos períodos do dia."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "Version 3.0 greatly improves performances."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An editing history is now available to undo or redo your changes."
 msgstr ""
 
@@ -65,68 +69,6 @@ msgid ""
 "The images can now be reordered, previewed, or deleted using keyboard "
 "shortcuts."
 msgstr ""
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "The images can now be easily sorted according to their filename."
-msgstr ""
-"As imagens agora podem ser facilmente classificadas de acordo com o nome do "
-"arquivo."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"This update also removes obsolete or unreliable features like \"find and "
-"replace\", or the possibility to set a file as lockscreen (which was not "
-"possible with most environments, and is not even possible GDM since the "
-"version 3.36)."
-msgstr ""
-"Essa atualização também remove recursos obsoletos ou que não funcionam de "
-"forma confiável, como o “localizar e substituir” e a opção de definir um "
-"arquivo como fundo da tela de bloqueio (esta última já não funcionava na "
-"maioria dos ambientes, e agora deixou de funcionar também com o GDM desde a "
-"versão 3.36)."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Minor bugs have been fixed too, like the weird behavior when closing the "
-"\"find\" entry, or actions that were disabled when they shouldn't."
-msgstr ""
-"Erros menores também foram corrigidos, como o comportamento estranho ao "
-"fechar o campo “localizar” ou opções que são desativadas quando não deveriam."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-#, fuzzy
-msgid ""
-"Add a picture-wide menu with actions such as \"Replace with…\" (thus, "
-"missing pictures can be replaced without having to set the durations again), "
-"or \"View file\" to open the file in the system image viewer."
-msgstr ""
-"Novo menu para cada imagem, com ações como “Substituir por…” (para que seja "
-"possível substituir uma imagem que não pode ser encontrada sem a necessidade "
-"de definir as durações novamente) ou “Visualizar arquivo” (para abrir o a "
-"imagem no visualizador de imagens do sistema)."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "Wallpaper types are now managed from the primary menu again."
-msgstr ""
-"Os tipos de papel de parede voltaram a ser gerenciados no menu principal."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Add the ability to search among pictures, fix a memory leak, improve the "
-"automatic duration setting, make the window easier to resize, and update "
-"translations."
-msgstr ""
-"Inclusão da capacidade de pesquisar imagens, correção de um vazamento de "
-"memória, melhoria na configuração automática da duração,  redimensionamento "
-"da janela facilitado e atualização das traduções."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"The app can now optionally display pictures using a grid layout instead of a "
-"list."
-msgstr ""
-"O aplicativo agora tem a opção de exibir imagens usando um layout de grade "
-"em vez de lista."
 
 #. caption for screenshot 1
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in

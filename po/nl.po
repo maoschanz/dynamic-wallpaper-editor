@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 02:21+0200\n"
+"POT-Creation-Date: 2021-07-03 01:56+0200\n"
 "PO-Revision-Date: 2020-05-24 17:06+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -49,6 +49,10 @@ msgstr ""
 "totaalduur is 24 uur voor een overgang naar daglicht."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "Version 3.0 greatly improves performances."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An editing history is now available to undo or redo your changes."
 msgstr ""
 
@@ -61,64 +65,6 @@ msgid ""
 "The images can now be reordered, previewed, or deleted using keyboard "
 "shortcuts."
 msgstr ""
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "The images can now be easily sorted according to their filename."
-msgstr "Afbeeldingen kunnen vanaf nu worden gesorteerd op bestandsnaam."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"This update also removes obsolete or unreliable features like \"find and "
-"replace\", or the possibility to set a file as lockscreen (which was not "
-"possible with most environments, and is not even possible GDM since the "
-"version 3.36)."
-msgstr ""
-"In deze update zijn verouderde en onbetrouwbare functies, zoals zoeken en "
-"vervangen en het instellen van een vergrendelschermachtergrond, verwijderd. "
-"Dat laatste is ook niet meer mogelijk sinds GDM 3.36."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Minor bugs have been fixed too, like the weird behavior when closing the "
-"\"find\" entry, or actions that were disabled when they shouldn't."
-msgstr ""
-"Er zijn ook kleine fouten opgelost, zoals vreemd gedrag na het sluiten van "
-"de zoekbalk of acties die onterecht uitgeschakeld waren."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-#, fuzzy
-msgid ""
-"Add a picture-wide menu with actions such as \"Replace with…\" (thus, "
-"missing pictures can be replaced without having to set the durations again), "
-"or \"View file\" to open the file in the system image viewer."
-msgstr ""
-"Menu toegevoegd aan afbeeldingen met acties als 'Vervangen door...' (om "
-"afbeeldingen te vervangen zonder de timers opnieuw in te stellen) en "
-"'Bestand tonen' (om het bestand te tonen in het afbeeldingsprogramma van je "
-"computer."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "Wallpaper types are now managed from the primary menu again."
-msgstr ""
-"Achtergrondsoorten kunnen als vanouds worden beheerd middels het hoofdmenu."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Add the ability to search among pictures, fix a memory leak, improve the "
-"automatic duration setting, make the window easier to resize, and update "
-"translations."
-msgstr ""
-"Functie toegevoegd om afbeeldingen te doorzoeken, geheugenprobleem opgelost, "
-"automatische duurinstelling verbeterd, venstergrootte is eenvoudiger "
-"aanpasbaar, en vertaalupdates."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"The app can now optionally display pictures using a grid layout instead of a "
-"list."
-msgstr ""
-"Afbeeldingen kunnen nu worden getoond in een rasterindeling in plaats van "
-"een lijst (optioneel)."
 
 #. caption for screenshot 1
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in

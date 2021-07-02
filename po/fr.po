@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 02:21+0200\n"
+"POT-Creation-Date: 2021-07-03 01:56+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -50,6 +50,10 @@ msgstr ""
 "fond d'écran s'adaptant à la lumière du jour."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "Version 3.0 greatly improves performances."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An editing history is now available to undo or redo your changes."
 msgstr ""
 "Un historique d'édition est maintenant disponible, pour défaire ou refaire "
@@ -67,58 +71,6 @@ msgid ""
 msgstr ""
 "Les images peuvent être réordonnées, prévisualisées, ou supprimées en "
 "utilisant les raccourcis clavier."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "The images can now be easily sorted according to their filename."
-msgstr "Les images peuvent désormais être facilement triées selon leur noms."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"This update also removes obsolete or unreliable features like \"find and "
-"replace\", or the possibility to set a file as lockscreen (which was not "
-"possible with most environments, and is not even possible GDM since the "
-"version 3.36)."
-msgstr ""
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Minor bugs have been fixed too, like the weird behavior when closing the "
-"\"find\" entry, or actions that were disabled when they shouldn't."
-msgstr ""
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Add a picture-wide menu with actions such as \"Replace with…\" (thus, "
-"missing pictures can be replaced without having to set the durations again), "
-"or \"View file\" to open the file in the system image viewer."
-msgstr ""
-"Ajout d'actions à l'échelle de chaque image, telle que \"Remplacer par…\", "
-"ainsi les images manquantes peuvent être remplacées plus facilement ; mais "
-"aussi \"Afficher l'image\" pour ouvrir les images avec le lecteur système."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "Wallpaper types are now managed from the primary menu again."
-msgstr ""
-"Les types de fond d'écran sont maintenant à nouveau gérés depuis le menu "
-"principal."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Add the ability to search among pictures, fix a memory leak, improve the "
-"automatic duration setting, make the window easier to resize, and update "
-"translations."
-msgstr ""
-"Ajoute la possibilité de chercher parmi les images, corrige une fuite "
-"mémoire, améliore le réglage automatique des durées, rend la fenêtre plus "
-"facile à redimensionner, et met à jour les traductions."
-
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"The app can now optionally display pictures using a grid layout instead of a "
-"list."
-msgstr ""
-"L'application peut maintenant optionnellement afficher les images sous forme "
-"de grille au lieu d'une liste."
 
 #. caption for screenshot 1
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in

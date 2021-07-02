@@ -105,6 +105,7 @@ class Application(Gtk.Application):
 			err = _("Error opening this file. Did you mean %s ?")
 			command = "\n\tflatpak run --file-forwarding {0} @@ {1} @@\n"
 			command = command.format(APP_ID, path) # FIXME pas ouf ^
+			# TODO reprendre le fonctionnement de drawing là
 			print(err % command)
 			return None
 
