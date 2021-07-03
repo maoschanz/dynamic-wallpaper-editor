@@ -18,12 +18,13 @@
 import sys, gi, os
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Gio, GLib, Gdk
+from gi.repository import Gtk, Gio, GLib, Gdk, GdkX11
 
 from .window import DWEWindow
 
 APP_ID = 'com.github.maoschanz.DynamicWallpaperEditor'
 UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
+NATIVE_DCONF_ACCESS = False
 
 def main(version):
 	app = Application(version)
@@ -185,6 +186,76 @@ class Application(Gtk.Application):
 
 	############################################################################
 
+	def _call_portal(self, path_value):
+		gio_dbus_connection = Gio.bus_get_sync(Gio.BusType.SESSION, None)
+		proxy = Gio.DBusProxy.new_sync(
+			gio_dbus_connection,
+			Gio.DBusProxyFlags.NONE, None,
+			'org.freedesktop.portal.Wallpaper',
+			'/org/freedesktop/portal/wallpaper',
+			'org.freedesktop.portal.Wallpaper',
+			None
+		)
+
+		parent_window_id = ""
+		win = self.props.active_window
+		# https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#parent_window
+		gdk_backend = os.getenv('XDG_SESSION_TYPE', 'unrecognized')
+		if gdk_backend == 'x11':
+			xid = GdkX11.X11Window.get_xid(win.get_window())
+			parent_window_id = "x11:" + str(xid) # doesn't even work
+		# elif gdk_backend == 'wayland':
+		# 	handle = "" # XXX GDK4 only?
+		# 	parent_window_id = "wayland:" + handle
+
+		gfile = Gio.File.new_for_path(path_value)
+		stream = gfile.read()
+		file_descriptor = stream.get_fd()
+		print(file_descriptor) # mdrrr genre "12" c'est un id solide ? FIXME
+
+		options = {
+			'show-preview': GLib.Variant.new_boolean(True),
+			'set-on': GLib.Variant.new_string('background')
+		}
+		args = GLib.Variant('(sha{sv})', (parent_window_id, file_descriptor, options))
+
+		try:
+			# We provide the args to the portal, and expect an "object path" in
+			# return (None if an error occurs).
+			# method_name, parameters, flags, timeout_msec, cancellable
+			result_GVariant = proxy.call_sync('SetWallpaperFile', args, \
+			                         Gio.DBusCallFlags.NO_AUTO_START, 500, None)
+			# TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO c'est lui ^ qui merdoie
+			if result_GVariant is None:
+				raise Exception("The DBus proxy didn't return an object path." \
+				                 + "\nThe portal can't suscribe to the signal.")
+
+			# sender, interface_name, member, object_path, arg0, flags, callback, *user_data
+			response_id = gio_dbus_connection.signal_subscribe(
+				'org.freedesktop.portal.Desktop',
+				'org.freedesktop.portal.Request',
+				'Response',
+				result_GVariant[0],
+				None,
+				Gio.DBusSignalFlags.NO_MATCH_RULE,
+				self.receive_answer,
+				None
+			)
+		except Exception as e:
+			print("[DWE] Error while calling the wallpaper portal:")
+			print(e)
+			print("[DWE] args were", args)
+
+	# https://flatpak.github.io/xdg-desktop-portal/portal-docs.html#gdbus-org.freedesktop.portal.Wallpaper
+
+	def receive_answer(self, *args):
+		win = self.props.active_window
+		print(args)
+		if False: # TODO
+			win.show_notification("portal failed :(")
+
+	############################################################################
+
 	def _set_gsettings_values(self):
 		"""Set numerous attributes corresponding to the gsettings keys needed to
 		apply a file as the wallpaper. Is called on app startup."""
@@ -248,7 +319,10 @@ class Application(Gtk.Application):
 		dest_file.write(source_file.read().encode('utf-8'))
 		dest_file.close()
 		source_file.close()
-		self.wp_schema.set_string(self.wp_path, dest_path)
+		if NATIVE_DCONF_ACCESS:
+			self.wp_schema.set_string(self.wp_path, dest_path)
+		else:
+			self._call_portal(dest_path)
 		return True
 
 	############################################################################
