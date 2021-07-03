@@ -53,7 +53,7 @@ class Application(Gtk.Application):
 		                      GLib.OptionArg.NONE, _("Open a new window"), None)
 
 	def on_startup(self, *args):
-		self.set_gsettings_values()
+		self._set_gsettings_values()
 		self.build_app_actions()
 		builder = Gtk.Builder().new_from_resource(UI_PATH + 'menus.ui')
 		menubar_model = builder.get_object('menu-bar')
@@ -126,9 +126,9 @@ class Application(Gtk.Application):
 		self.add_action_simple('quit', self.on_quit, ['<Ctrl>q'])
 
 		action_options = Gio.SimpleAction().new_stateful('wp_options', \
-		                   GLib.VariantType.new('s'), \
-		                   GLib.Variant.new_string(self.get_wallpaper_option()))
-		action_options.connect('change-state', self.on_change_wallpaper_options)
+		                 GLib.VariantType.new('s'), \
+		                 GLib.Variant.new_string(self._get_wallpaper_options()))
+		action_options.connect('change-state', self._on_change_wp_options)
 		self.add_action(action_options)
 
 	############################################################################
@@ -185,9 +185,9 @@ class Application(Gtk.Application):
 
 	############################################################################
 
-	def set_gsettings_values(self):
+	def _set_gsettings_values(self):
 		"""Set numerous attributes corresponding to the gsettings keys needed to
-		apply a file as the wallpaper"""
+		apply a file as the wallpaper. Is called on app startup."""
 		self.desktop_env = os.getenv('XDG_CURRENT_DESKTOP', 'GNOME')
 
 		self.wp_schema = None
@@ -211,7 +211,7 @@ class Application(Gtk.Application):
 
 	############################################################################
 
-	def on_change_wallpaper_options(self, *args):
+	def _on_change_wp_options(self, *args):
 		new_value = args[1].get_string()
 		if self.wp_schema is None:
 			self.lookup_action('wp_options').set_enabled(False)
@@ -219,7 +219,7 @@ class Application(Gtk.Application):
 			self.wp_schema.set_string(self.wp_options, new_value)
 			args[0].set_state(GLib.Variant.new_string(new_value))
 
-	def get_wallpaper_option(self):
+	def _get_wallpaper_options(self):
 		if self.wp_schema is None:
 			self.lookup_action('wp_options').set_enabled(False)
 			return 'none'
@@ -231,15 +231,15 @@ class Application(Gtk.Application):
 		"""Write a copy of the file from source_path (a "/run/user/" path) to
 		~/.var/app/APP_ID/config/*.xml so a durable path can be applied to the
 		gsettings database."""
+		# Is called from window.py
 
-		schema = self.wp_schema
-		key = self.wp_path
+		self.wp_path = self.wp_path
 		filename = 'wallpaper'
-		if schema is None:
+		if self.wp_schema is None:
 			return False
 
 		dest_path = GLib.get_user_data_dir() + '/' + filename + '.xml'
-		if schema.get_string(key) == dest_path:
+		if self.wp_schema.get_string(self.wp_path) == dest_path:
 			filename = filename + '0'
 		dest_path = GLib.get_user_data_dir() + '/' + filename + '.xml'
 
@@ -248,13 +248,8 @@ class Application(Gtk.Application):
 		dest_file.write(source_file.read().encode('utf-8'))
 		dest_file.close()
 		source_file.close()
-		self.apply_path(schema, key, dest_path)
+		self.wp_schema.set_string(self.wp_path, dest_path)
 		return True
-
-	def apply_path(self, schema, key, value):
-		"""Apply the value (either a path or an uri, it looks like the DE
-		doesn't really care) to the gsettings key from the specified schema."""
-		schema.set_string(key, value)
 
 	############################################################################
 ################################################################################
