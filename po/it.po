@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-03 01:56+0200\n"
-"PO-Revision-Date: 2021-03-19 21:35+0100\n"
+"PO-Revision-Date: 2021-07-10 15:35+0200\n"
 "Last-Translator:  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language-Team: Italian  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language: it\n"
@@ -26,7 +26,6 @@ msgid "Dynamic Wallpaper Editor"
 msgstr "Dynamic Wallpaper Editor"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-#, fuzzy
 msgid ""
 "Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
 "GNOME desktop"
@@ -54,21 +53,23 @@ msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Version 3.0 greatly improves performances."
-msgstr ""
+msgstr "La versione 3.0 migliora notevolmente le prestazioni."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An editing history is now available to undo or redo your changes."
-msgstr ""
+msgstr "È ora disponibile una cronologia delle modifiche per annullare o ripristinare le modifiche."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
-msgstr ""
+msgstr "È disponibile una nuova icona, seguendo le recenti linee guida di GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The images can now be reordered, previewed, or deleted using keyboard "
 "shortcuts."
 msgstr ""
+"Le immagini possono ora essere riordinate, visualizzate in anteprima o eliminate utilizzando le scorciatoie "
+"da tastiera."
 
 #. caption for screenshot 1
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
@@ -83,7 +84,7 @@ msgstr "Il layout della griglia"
 #. That's my name, don't translate it
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Romain F. T."
-msgstr ""
+msgstr "Romain F. T."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/main.py
 msgid "Create or edit dynamic wallpapers for GNOME."
@@ -214,7 +215,6 @@ msgid "Sort by name"
 msgstr "Ordina per nome"
 
 #: src/ui/menus.ui
-#, fuzzy
 msgid "Picture"
 msgstr "Immagini"
 
@@ -225,7 +225,7 @@ msgstr "Elimina"
 
 #: src/ui/menus.ui src/ui/picture_menu.ui
 msgid "Replace with…"
-msgstr "Sostituisci con..."
+msgstr "Sostituisci con…"
 
 #: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
 msgid "View picture"
@@ -272,7 +272,6 @@ msgid "Scaled"
 msgstr "Adatta allo schermo"
 
 #: src/ui/menus.ui
-#, fuzzy
 msgid "Stretched"
 msgstr "Amplia per riempire lo schermo"
 
@@ -286,7 +285,7 @@ msgstr "Riempi"
 
 #: src/ui/menus.ui
 msgid "User manual"
-msgstr "Manuale dell'utente"
+msgstr "Manuale utente"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Time"
@@ -302,7 +301,7 @@ msgstr ""
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Transition"
-msgstr "Durata transizione"
+msgstr "Transizione"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
 msgid ""
@@ -377,20 +376,19 @@ msgstr "Apri uno sfondo dinamico preesistente"
 
 #: src/ui/shortcuts.ui
 msgid "History"
-msgstr ""
+msgstr "Cronologia"
 
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
-msgstr ""
+msgstr "Gestione delle immagini"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Find a picture"
 msgstr "Trova un' immagini"
 
 #: src/ui/shortcuts.ui
-#, fuzzy
 msgid "Selected picture"
-msgstr "Aggiungi immagini"
+msgstr "Immagine selezionata"
 
 #: src/ui/window.ui
 msgid "More actions"
@@ -401,10 +399,9 @@ msgid "Set the exact start time of the wallpaper"
 msgstr "Imposta la data esatta di inizio dello sfondo"
 
 #: src/ui/window.ui
-#, fuzzy
 msgid "Apply as wallpaper, and set adjustment options"
 msgstr ""
-"Applica come sfondo o schermata di blocco e imposta le opzioni di regolazione"
+"Applica come sfondo e imposta le opzioni di regolazione"
 
 #: src/ui/window.ui
 msgid "Find a filename"
@@ -472,25 +469,22 @@ msgid "JPEG images"
 msgstr "Immagini JPEG"
 
 #: src/misc.py
-#, fuzzy, python-format
 msgid "%s hour"
 msgid_plural "%s hours"
-msgstr[0] "%s ora/e"
-msgstr[1] "%s ora/e"
+msgstr[0] "%s ora"
+msgstr[1] "%s ore"
 
 #: src/misc.py
-#, fuzzy, python-format
 msgid "%s minute"
 msgid_plural "%s minutes"
-msgstr[0] "%s minuto/i"
-msgstr[1] "%s minuto/i"
+msgstr[0] "%s minuto"
+msgstr[1] "%s minuti"
 
 #: src/misc.py
-#, fuzzy, python-format
 msgid "%s second"
 msgid_plural "%s seconds"
-msgstr[0] "%s secondo/i"
-msgstr[1] "%s secondo/i"
+msgstr[0] "%s secondo"
+msgstr[1] "%s secondi"
 
 #: src/picture_widget.py
 msgid ""
@@ -522,23 +516,20 @@ msgid "Drag-and-drop pictures to reorder them."
 msgstr "Trascina le immagini per riordinarle."
 
 #: src/window.py
-#, fuzzy
 msgid "This desktop environment isn't supported."
 msgstr "Questo ambiente desktop non è supportato."
 
 #: src/window.py
-#, fuzzy, python-format
 msgid "%s picture"
 msgid_plural "%s pictures"
-msgstr[0] "%s immagini"
+msgstr[0] "%s immagine"
 msgstr[1] "%s immagini"
 
 #: src/window.py
-#, fuzzy, python-format
 msgid "Total time: %s second"
 msgid_plural "Total time: %s seconds"
-msgstr[0] "Durata totale: %s secondo/i"
-msgstr[1] "Durata totale: %s secondo/i"
+msgstr[0] "Durata totale: %s secondo"
+msgstr[1] "Durata totale: %s secondi"
 
 #: src/window.py
 msgid "The total duration isn't 24 hours."
@@ -549,7 +540,6 @@ msgid "There are unsaved modifications to your wallpaper."
 msgstr "Ci sono modifiche non salvate per il tuo sfondo."
 
 #: src/window.py
-#, fuzzy, python-format
 msgid "There are unsaved modifications to %s"
 msgstr "Sono presenti modifiche non salvate a %s"
 
@@ -563,7 +553,7 @@ msgstr "Esci senza salvare"
 
 #: src/window.py
 msgid "Loading…"
-msgstr "Caricamento..."
+msgstr "Caricamento…"
 
 #: src/window.py
 #, python-format
@@ -600,4 +590,4 @@ msgstr "Senza Titolo"
 #~ msgstr "Luce del giorno"
 
 #~ msgid "Custom"
-#~ msgstr "Personalizza"
+#~ msgstr "Personalizzata"
