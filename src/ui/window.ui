@@ -37,20 +37,6 @@
         </child>
 
         <child>
-          <object class="GtkButton">
-            <property name="visible">True</property>
-            <property name="action-name">app.new_window</property>
-            <property name="tooltip_text" translatable="yes">New window</property>
-            <child>
-              <object class="GtkImage">
-                <property name="visible">True</property>
-                <property name="icon-name">window-new-symbolic</property>
-              </object>
-            </child>
-          </object>
-        </child>
-
-        <child>
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="orientation">horizontal</property>

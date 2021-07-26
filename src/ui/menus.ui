@@ -3,6 +3,12 @@
 
   <menu id="primary-menu">
     <section>
+      <item>
+        <attribute name="action">app.new_window</attribute>
+        <attribute name="label" translatable="yes">New Window</attribute>
+      </item>
+    </section>
+    <section>
       <attribute name="display-hint">horizontal-buttons</attribute>
       <item>
         <attribute name="action">win.display-mode</attribute>

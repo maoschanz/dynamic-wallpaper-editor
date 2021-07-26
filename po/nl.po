@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 05:12+0200\n"
+"POT-Creation-Date: 2021-07-26 20:18+0200\n"
 "PO-Revision-Date: 2021-07-04 21:25+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -59,6 +59,18 @@ msgstr ""
 "op opnieuw toepassen."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"This version now detects when it runs in a flatpak sandbox, and tells you "
+"when a feature isn't available because of it (instead of silently doing "
+"nothing)."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"The help manual has been updated to tell you workarounds about this problem."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
 msgstr "[NIEUW] Nieuw pictogram op basis van de recente GNOME-richtlijnen."
 
@@ -95,7 +107,7 @@ msgstr "Maak of bewerk dynamische achtergronden voor GNOME."
 msgid "Wallpaper;Daylight;XML;"
 msgstr "Achtergrond;Dagdeel;XML;"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
 #: src/ui/shortcuts.ui
 msgid "New Window"
 msgstr "Nieuw venster"
@@ -341,11 +353,6 @@ msgid "Open"
 msgstr "Openen"
 
 #: src/ui/window.ui
-#, fuzzy
-msgid "New window"
-msgstr "Nieuw venster"
-
-#: src/ui/window.ui
 msgid "More actions"
 msgstr "Meer acties"
 
@@ -405,9 +412,13 @@ msgid "Open a new window"
 msgstr "Nieuw venster openen"
 
 #: src/main.py
+msgid "Error opening this file."
+msgstr "Dit bestand kan niet worden geopend."
+
+#: src/main.py
 #, python-format
-msgid "Error opening this file. Did you mean %s ?"
-msgstr "Dit bestand kan niet worden geopend. Bedoelde je ‘%s’?"
+msgid "Did you mean %s ?"
+msgstr "Bedoelde je ‘%s’?"
 
 #: src/main.py
 msgid "Report bugs or ideas"
@@ -416,6 +427,20 @@ msgstr "Bugs melden of ideëen aandragen"
 #: src/main.py
 msgid "translator-credits"
 msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+
+#: src/main.py
+msgid "This feature isn't available with Flatpak."
+msgstr ""
+
+#: src/main.py
+msgid ""
+"Don't worry, your XML file can still be set as your wallpaper from GNOME "
+"Tweaks."
+msgstr ""
+
+#: src/main.py
+msgid "This desktop environment isn't supported."
+msgstr "Deze werkomgeving wordt niet ondersteund."
 
 #: src/misc.py
 msgid "Dynamic wallpapers (XML)"
@@ -482,10 +507,6 @@ msgstr "Voeg nieuwe afbeeldingen toe of open een bestaand xml-bestand."
 #: src/view.py
 msgid "Drag-and-drop pictures to reorder them."
 msgstr "Versleep afbeeldingen om de volgorde aan te passen."
-
-#: src/window.py
-msgid "This desktop environment isn't supported."
-msgstr "Deze werkomgeving wordt niet ondersteund."
 
 #: src/window.py
 #, python-format

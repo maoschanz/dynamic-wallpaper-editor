@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 05:12+0200\n"
+"POT-Creation-Date: 2021-07-26 20:18+0200\n"
 "PO-Revision-Date: 2020-01-25 01:21+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
@@ -58,6 +58,18 @@ msgid "An editing history is now available to undo or redo your changes."
 msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"This version now detects when it runs in a flatpak sandbox, and tells you "
+"when a feature isn't available because of it (instead of silently doing "
+"nothing)."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"The help manual has been updated to tell you workarounds about this problem."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
 msgstr ""
 
@@ -90,7 +102,7 @@ msgstr "Stvori ili uredi dinamične pozadine za GNOME."
 msgid "Wallpaper;Daylight;XML;"
 msgstr "Pozadine;Danje svjetlo;XML;"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
 #: src/ui/shortcuts.ui
 msgid "New Window"
 msgstr "Novi prozor"
@@ -334,11 +346,6 @@ msgid "Open"
 msgstr "Otvori"
 
 #: src/ui/window.ui
-#, fuzzy
-msgid "New window"
-msgstr "Novi prozor"
-
-#: src/ui/window.ui
 msgid "More actions"
 msgstr "Daljnje radnje"
 
@@ -397,9 +404,13 @@ msgid "Open a new window"
 msgstr "Otvori novi prozor"
 
 #: src/main.py
+msgid "Error opening this file."
+msgstr "Greška pri otvaranju datoteke."
+
+#: src/main.py
 #, python-format
-msgid "Error opening this file. Did you mean %s ?"
-msgstr "Greška pri otvaranju datoteke. Jesi li mislio/la na %s?"
+msgid "Did you mean %s ?"
+msgstr "Jesi li mislio/la na %s?"
 
 #: src/main.py
 msgid "Report bugs or ideas"
@@ -408,6 +419,21 @@ msgstr "Prijavi greške ili ideje"
 #: src/main.py
 msgid "translator-credits"
 msgstr "Milo Ivir <mail@milotype.de>, 2020."
+
+#: src/main.py
+msgid "This feature isn't available with Flatpak."
+msgstr ""
+
+#: src/main.py
+msgid ""
+"Don't worry, your XML file can still be set as your wallpaper from GNOME "
+"Tweaks."
+msgstr ""
+
+#: src/main.py
+#, fuzzy
+msgid "This desktop environment isn't supported."
+msgstr "Desktop okruženje nije podržano."
 
 #: src/misc.py
 msgid "Dynamic wallpapers (XML)"
@@ -476,11 +502,6 @@ msgstr "Dodaj novu sliku ili otvori postojeću XML datoteku."
 #: src/view.py
 msgid "Drag-and-drop pictures to reorder them."
 msgstr "Za mijenjanje rasporeda, povuci-i-ispusti slike."
-
-#: src/window.py
-#, fuzzy
-msgid "This desktop environment isn't supported."
-msgstr "Desktop okruženje nije podržano."
 
 #: src/window.py
 #, fuzzy, python-format
@@ -556,7 +577,6 @@ msgstr "Bezimeno"
 
 #~ msgid "Apply"
 #~ msgstr "Primijeni"
-
 
 #~ msgid "Save %s"
 #~ msgstr "Spremi %s"

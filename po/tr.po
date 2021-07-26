@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 05:12+0200\n"
+"POT-Creation-Date: 2021-07-26 20:18+0200\n"
 "PO-Revision-Date: 2019-03-18 02:19+0300\n"
 "Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Turkish <teknomobil@yandex.com>\n"
@@ -52,6 +52,18 @@ msgid "An editing history is now available to undo or redo your changes."
 msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"This version now detects when it runs in a flatpak sandbox, and tells you "
+"when a feature isn't available because of it (instead of silently doing "
+"nothing)."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"The help manual has been updated to tell you workarounds about this problem."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
 msgstr ""
 
@@ -84,9 +96,8 @@ msgstr "GNOME için dinamik duvar kağıtları oluşturun veya düzenleyin."
 msgid "Wallpaper;Daylight;XML;"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
 #: src/ui/shortcuts.ui
-#, fuzzy
 msgid "New Window"
 msgstr "Yeni pencere"
 
@@ -337,11 +348,6 @@ msgid "Open"
 msgstr "Aç"
 
 #: src/ui/window.ui
-#, fuzzy
-msgid "New window"
-msgstr "Yeni pencere"
-
-#: src/ui/window.ui
 msgid "More actions"
 msgstr "Daha fazla eylem"
 
@@ -402,8 +408,12 @@ msgid "Open a new window"
 msgstr "Yeni pencere"
 
 #: src/main.py
+msgid "Error opening this file."
+msgstr ""
+
+#: src/main.py
 #, python-format
-msgid "Error opening this file. Did you mean %s ?"
+msgid "Did you mean %s ?"
 msgstr ""
 
 #: src/main.py
@@ -413,6 +423,20 @@ msgstr "Hata raporla veya öneri gönder"
 #: src/main.py
 msgid "translator-credits"
 msgstr "Serdar Sağlam <teknomobil@yandex.com>"
+
+#: src/main.py
+msgid "This feature isn't available with Flatpak."
+msgstr ""
+
+#: src/main.py
+msgid ""
+"Don't worry, your XML file can still be set as your wallpaper from GNOME "
+"Tweaks."
+msgstr ""
+
+#: src/main.py
+msgid "This desktop environment isn't supported."
+msgstr ""
 
 #: src/misc.py
 msgid "Dynamic wallpapers (XML)"
@@ -473,10 +497,6 @@ msgstr "Yeni resimler ekle veya mevcut bir XML dosyasını aç."
 
 #: src/view.py
 msgid "Drag-and-drop pictures to reorder them."
-msgstr ""
-
-#: src/window.py
-msgid "This desktop environment isn't supported."
 msgstr ""
 
 #: src/window.py
