@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 01:56+0200\n"
+"POT-Creation-Date: 2021-07-26 05:12+0200\n"
 "PO-Revision-Date: 2021-05-13 09:11+0600\n"
 "Last-Translator: Dead Mozay <dead_mozay@opensuse.org>\n"
 "Language-Team: Russian <dead_mozay@opensuse.org>\n"
@@ -95,7 +95,7 @@ msgstr "Создание или редактирование динамичес�
 msgid "Wallpaper;Daylight;XML;"
 msgstr "Обои;Ночной режим;XML;"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 #: src/ui/shortcuts.ui
 msgid "New Window"
 msgstr "Новое окно"
@@ -108,10 +108,6 @@ msgstr "Использовать сетку или список"
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr "Отобразить изображения, используя сетку миниатюр или список."
 
-#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
-msgid "Save as…"
-msgstr "Сохранить как…"
-
 #: src/ui/menus.ui
 msgid "List"
 msgstr "Список"
@@ -119,20 +115,6 @@ msgstr "Список"
 #: src/ui/menus.ui
 msgid "Grid"
 msgstr "Сетка"
-
-#. "all" refers to "all pictures"
-#: src/ui/menus.ui
-msgid "Same duration for all"
-msgstr "Одинаковая продолжительность для всех"
-
-#: src/ui/menus.ui
-msgid "Fit the daylight"
-msgstr "Установите дневное освещение"
-
-#. TODO the label should be "use durations instead of [horaires??]"
-#: src/ui/menus.ui
-msgid "Use durations"
-msgstr "Продолжительность использования"
 
 #: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
@@ -146,118 +128,22 @@ msgstr "Справка"
 msgid "About"
 msgstr "О приложении"
 
-#: src/ui/menus.ui
-msgid "File"
-msgstr "Файл"
-
-#: src/ui/menus.ui src/ui/window.ui src/window.py
-msgid "Open"
-msgstr "Открыть"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/ui/menus.ui
-msgid "Close"
-msgstr "Закрыть"
-
-#: src/ui/menus.ui
-msgid "Quit"
-msgstr "Завершить"
-
-#: src/ui/menus.ui
-msgid "Edit"
-msgstr "Изменить"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr "Отменить"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr "Повторить"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add pictures"
-msgstr "Добавить изображения"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add a folder"
-msgstr "Добавить папку"
-
-#: src/ui/menus.ui
-msgid "Find"
-msgstr "Найти"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Find and replace"
-msgstr "Найти и зменить"
-
-#: src/ui/menus.ui
-msgid "Automatically set a total of 24 hours"
-msgstr "Автоматически установить в общей сложности 24 часа"
-
-#: src/ui/menus.ui
-msgid "View"
-msgstr "Вид"
-
-#: src/ui/menus.ui
-msgid "Same duration for all pictures"
-msgstr "Одинаковая продолжительность для всех изображений"
-
-#: src/ui/menus.ui
-msgid "Durations fitting the daylight"
-msgstr "Продолжительность соответствует дневному освещению"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Sort by name"
-msgstr "Сортировать по имени"
-
-#: src/ui/menus.ui
-msgid "Picture"
-msgstr "Изображение"
-
-#: src/ui/menus.ui src/ui/picture_row.ui src/ui/picture_thumbnail.ui
-#: src/ui/shortcuts.ui
-msgid "Delete"
-msgstr "Удалить"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Replace with…"
-msgstr "Заменить…"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "View picture"
-msgstr "Просмотр изображения"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "View containing directory"
-msgstr "Просмотр содержащий каталог"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to first position"
-msgstr "Переместить в начало"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move up"
-msgstr "Переместить вверх"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move down"
-msgstr "Переместить вниз"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to last position"
-msgstr "Переместить в конец"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Apply"
-msgstr "Применить"
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
+msgid "Save as…"
+msgstr "Сохранить как…"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui
 msgid "Set as wallpaper"
 msgstr "Сделать фоном рабочего стола"
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Wallpaper adjustment"
+msgstr "Обои"
 
 #: src/ui/menus.ui
 msgid "Mosaic"
@@ -284,8 +170,49 @@ msgid "Spanned"
 msgstr "Натянутое"
 
 #: src/ui/menus.ui
-msgid "User manual"
-msgstr "Руководство пользователя"
+msgid "Same duration for all pictures"
+msgstr "Одинаковая продолжительность для всех"
+
+#: src/ui/menus.ui
+msgid "Fit the daylight"
+msgstr "Установите дневное освещение"
+
+#: src/ui/menus.ui
+msgid "Automatically set a total of 24 hours"
+msgstr "Автоматически установить в общей сложности 24 часа"
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Use durations instead of times"
+msgstr "Продолжительность использования"
+
+#: src/ui/picture_menu.ui
+msgid "Replace with…"
+msgstr "Заменить…"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "View picture"
+msgstr "Просмотр изображения"
+
+#: src/ui/picture_menu.ui
+msgid "View containing directory"
+msgstr "Просмотр содержащий каталог"
+
+#: src/ui/picture_menu.ui
+msgid "Move to first position"
+msgstr "Переместить в начало"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move up"
+msgstr "Переместить вверх"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move down"
+msgstr "Переместить вниз"
+
+#: src/ui/picture_menu.ui
+msgid "Move to last position"
+msgstr "Переместить в конец"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Time"
@@ -305,6 +232,10 @@ msgstr "Переход"
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr "Время (в секундах) перехода между этим изображением и следующим."
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/shortcuts.ui
+msgid "Delete"
+msgstr "Удалить"
 
 #: src/ui/picture_thumbnail.ui
 msgid "Duration"
@@ -374,9 +305,25 @@ msgstr "Откройте существующие динамические об�
 msgid "History"
 msgstr "История"
 
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Undo"
+msgstr "Отменить"
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Redo"
+msgstr "Повторить"
+
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
 msgstr "Управление изображениями"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add pictures"
+msgstr "Добавить изображения"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add a folder"
+msgstr "Добавить папку"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Find a picture"
@@ -386,25 +333,44 @@ msgstr "Найти изображение"
 msgid "Selected picture"
 msgstr "Выбрать изображение"
 
+#: src/ui/window.ui src/window.py
+msgid "Open"
+msgstr "Открыть"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "New window"
+msgstr "Новое окно"
+
 #: src/ui/window.ui
 msgid "More actions"
 msgstr "Больше действий"
+
+#: src/ui/window.ui
+msgid "Save the file and apply it as your wallpaper"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "Save and apply"
+msgstr ""
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Manage how you set the durations of your pictures"
+msgstr "Одинаковая продолжительность для всех изображений"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Durations options"
+msgstr "Продолжительность"
 
 #: src/ui/window.ui
 msgid "Set the exact start time of the wallpaper"
 msgstr "Установите точное время начала"
 
 #: src/ui/window.ui
-msgid "Apply as wallpaper, and set adjustment options"
-msgstr "Применить в качестве обоев и установить параметры настройки"
-
-#: src/ui/window.ui
-msgid "Find a filename"
-msgstr "Найти имя файла"
-
-#: src/ui/window.ui
-msgid "Replace in filenames"
-msgstr "Заменить имя файла"
+msgid "Sort by name"
+msgstr "Сортировать по имени"
 
 #: src/ui/window.ui
 msgid "Error starting the application, please report this bug."
@@ -582,6 +548,24 @@ msgstr "Неизвестный элемент: %s"
 #: src/window.py
 msgid "Untitled"
 msgstr "Без названия"
+
+#~ msgid "Find"
+#~ msgstr "Найти"
+
+#~ msgid "View"
+#~ msgstr "Вид"
+
+#~ msgid "Durations fitting the daylight"
+#~ msgstr "Продолжительность соответствует дневному освещению"
+
+#~ msgid "Picture"
+#~ msgstr "Изображение"
+
+#~ msgid "Apply"
+#~ msgstr "Применить"
+
+#~ msgid "Apply as wallpaper, and set adjustment options"
+#~ msgstr "Применить в качестве обоев и установить параметры настройки"
 
 #~ msgid "Start Time"
 #~ msgstr "Время начала"

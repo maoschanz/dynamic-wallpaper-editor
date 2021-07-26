@@ -22,7 +22,7 @@
     <p>To help you doing this, two presets are available:</p>
     <list>
       <item><p>
-        <gui style="menuitem">Same duration for all</gui> (all pictures will
+        <gui style="menuitem">Same duration for all pictures</gui> (all pictures will
         have the same duration)
       </p></item>
       <item><p>

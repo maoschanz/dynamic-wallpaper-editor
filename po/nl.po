@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 01:56+0200\n"
+"POT-Creation-Date: 2021-07-26 05:12+0200\n"
 "PO-Revision-Date: 2021-07-04 21:25+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -95,7 +95,7 @@ msgstr "Maak of bewerk dynamische achtergronden voor GNOME."
 msgid "Wallpaper;Daylight;XML;"
 msgstr "Achtergrond;Dagdeel;XML;"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 #: src/ui/shortcuts.ui
 msgid "New Window"
 msgstr "Nieuw venster"
@@ -109,10 +109,6 @@ msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 "Toon afbeeldingen in een rooster met miniatuurvoorbeelden of in een lijst."
 
-#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
-msgid "Save as…"
-msgstr "Opslaan als…"
-
 #: src/ui/menus.ui
 msgid "List"
 msgstr "Lijst"
@@ -120,19 +116,6 @@ msgstr "Lijst"
 #: src/ui/menus.ui
 msgid "Grid"
 msgstr "Rooster"
-
-#. "all" refers to "all pictures"
-#: src/ui/menus.ui
-msgid "Same duration for all"
-msgstr "Alle afbeeldingen op dezelfde duur instellen"
-
-#: src/ui/menus.ui
-msgid "Fit the daylight"
-msgstr "Tijdens daglicht"
-
-#: src/ui/menus.ui
-msgid "Use durations"
-msgstr "Tijdstippen gebruiken"
 
 #: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
@@ -146,118 +129,21 @@ msgstr "Hulp"
 msgid "About"
 msgstr "Over"
 
-#: src/ui/menus.ui
-msgid "File"
-msgstr "Bestand"
-
-#: src/ui/menus.ui src/ui/window.ui src/window.py
-msgid "Open"
-msgstr "Openen"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save"
 msgstr "Opslaan"
 
-#: src/ui/menus.ui
-msgid "Close"
-msgstr "Sluiten"
-
-#: src/ui/menus.ui
-msgid "Quit"
-msgstr "Afsluiten"
-
-#: src/ui/menus.ui
-msgid "Edit"
-msgstr "Bewerken"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr "Ongedaan maken"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr "Opnieuw uitvoeren"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add pictures"
-msgstr "Afbeeldingen toevoegen"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add a folder"
-msgstr "Map toevoegen"
-
-#: src/ui/menus.ui
-msgid "Find"
-msgstr "Zoeken"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Find and replace"
-msgstr "Zoeken en vervangen"
-
-#: src/ui/menus.ui
-msgid "Automatically set a total of 24 hours"
-msgstr "Automatische totaalduur van 24 uur instellen"
-
-#: src/ui/menus.ui
-msgid "View"
-msgstr "Weergave"
-
-#: src/ui/menus.ui
-msgid "Same duration for all pictures"
-msgstr "Alle afbeeldingen op dezelfde duur instellen"
-
-#: src/ui/menus.ui
-msgid "Durations fitting the daylight"
-msgstr "Tijdklokken aanpassen aan daglichturen"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Sort by name"
-msgstr "Sorteren op naam"
-
-#: src/ui/menus.ui
-msgid "Picture"
-msgstr "Afbeelding"
-
-#: src/ui/menus.ui src/ui/picture_row.ui src/ui/picture_thumbnail.ui
-#: src/ui/shortcuts.ui
-msgid "Delete"
-msgstr "Verwijderen"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Replace with…"
-msgstr "Vervangen door…"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "View picture"
-msgstr "Afbeelding tonen"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "View containing directory"
-msgstr "Bijbehorende map openen"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to first position"
-msgstr "Naar bovenkant verplaatsen"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move up"
-msgstr "Omhoog verplaatsen"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move down"
-msgstr "Omlaag verplaatsen"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to last position"
-msgstr "Naar onderkant verplaatsen"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Apply"
-msgstr "Toepassen"
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
+msgid "Save as…"
+msgstr "Opslaan als…"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui
 msgid "Set as wallpaper"
 msgstr "Instellen als achtergrond"
+
+#: src/ui/menus.ui
+msgid "Wallpaper adjustment"
+msgstr "Achtergronduitlijning"
 
 #: src/ui/menus.ui
 msgid "Mosaic"
@@ -284,8 +170,49 @@ msgid "Spanned"
 msgstr "Omvatten"
 
 #: src/ui/menus.ui
-msgid "User manual"
-msgstr "Gebruikershandleiding"
+msgid "Same duration for all pictures"
+msgstr "Alle afbeeldingen op dezelfde duur instellen"
+
+#: src/ui/menus.ui
+msgid "Fit the daylight"
+msgstr "Tijdens daglicht"
+
+#: src/ui/menus.ui
+msgid "Automatically set a total of 24 hours"
+msgstr "Automatische totaalduur van 24 uur instellen"
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Use durations instead of times"
+msgstr "Tijdstippen gebruiken"
+
+#: src/ui/picture_menu.ui
+msgid "Replace with…"
+msgstr "Vervangen door…"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "View picture"
+msgstr "Afbeelding tonen"
+
+#: src/ui/picture_menu.ui
+msgid "View containing directory"
+msgstr "Bijbehorende map openen"
+
+#: src/ui/picture_menu.ui
+msgid "Move to first position"
+msgstr "Naar bovenkant verplaatsen"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move up"
+msgstr "Omhoog verplaatsen"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move down"
+msgstr "Omlaag verplaatsen"
+
+#: src/ui/picture_menu.ui
+msgid "Move to last position"
+msgstr "Naar onderkant verplaatsen"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Time"
@@ -308,6 +235,10 @@ msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr ""
 "Duur (in seconden) van de overgang tussen deze en de volgende afbeelding."
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/shortcuts.ui
+msgid "Delete"
+msgstr "Verwijderen"
 
 #: src/ui/picture_thumbnail.ui
 msgid "Duration"
@@ -377,9 +308,25 @@ msgstr "Bestaande dynamische achtergrond openen"
 msgid "History"
 msgstr "Geschiedenis"
 
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Undo"
+msgstr "Ongedaan maken"
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Redo"
+msgstr "Opnieuw uitvoeren"
+
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
 msgstr "Afbeeldingsbeheer"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add pictures"
+msgstr "Afbeeldingen toevoegen"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add a folder"
+msgstr "Map toevoegen"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Find a picture"
@@ -389,27 +336,44 @@ msgstr "Afbeelding zoeken"
 msgid "Selected picture"
 msgstr "Geselecteerde afbeelding"
 
+#: src/ui/window.ui src/window.py
+msgid "Open"
+msgstr "Openen"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "New window"
+msgstr "Nieuw venster"
+
 #: src/ui/window.ui
 msgid "More actions"
 msgstr "Meer acties"
+
+#: src/ui/window.ui
+msgid "Save the file and apply it as your wallpaper"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "Save and apply"
+msgstr ""
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Manage how you set the durations of your pictures"
+msgstr "Alle afbeeldingen op dezelfde duur instellen"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Durations options"
+msgstr "Duur"
 
 #: src/ui/window.ui
 msgid "Set the exact start time of the wallpaper"
 msgstr "Stel het exacte tijdstip in waarop de achtergrond moet verschijnen"
 
 #: src/ui/window.ui
-msgid "Apply as wallpaper, and set adjustment options"
-msgstr ""
-"Stel in als bureaublad- of vergrendelschermachtergrond en stel de uitlijning "
-"in"
-
-#: src/ui/window.ui
-msgid "Find a filename"
-msgstr "Bestandsnaam zoeken"
-
-#: src/ui/window.ui
-msgid "Replace in filenames"
-msgstr "Vervangen in bestandsnamen"
+msgid "Sort by name"
+msgstr "Sorteren op naam"
 
 #: src/ui/window.ui
 msgid "Error starting the application, please report this bug."
@@ -584,8 +548,28 @@ msgstr "Onbekend element: %s"
 msgid "Untitled"
 msgstr "Naamloos"
 
-#~ msgid "Wallpaper adjustment"
-#~ msgstr "Achtergronduitlijning"
+#~ msgid "Edit"
+#~ msgstr "Bewerken"
+
+#~ msgid "Find"
+#~ msgstr "Zoeken"
+
+#~ msgid "View"
+#~ msgstr "Weergave"
+
+#~ msgid "Durations fitting the daylight"
+#~ msgstr "Tijdklokken aanpassen aan daglichturen"
+
+#~ msgid "Picture"
+#~ msgstr "Afbeelding"
+
+#~ msgid "Apply"
+#~ msgstr "Toepassen"
+
+#~ msgid "Apply as wallpaper, and set adjustment options"
+#~ msgstr ""
+#~ "Stel in als bureaublad- of vergrendelschermachtergrond en stel de "
+#~ "uitlijning in"
 
 #~ msgid "Save %s"
 #~ msgstr "%s opslaan"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 01:56+0200\n"
+"POT-Creation-Date: 2021-07-26 05:12+0200\n"
 "PO-Revision-Date: 2020-05-15 03:04+0200\n"
 "Last-Translator: Daniel Maciel <bobbed@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -94,7 +94,7 @@ msgstr "Crie ou edite papéis de parede dinâmicos para o GNOME."
 msgid "Wallpaper;Daylight;XML;"
 msgstr "Wallpaper;Daylight;XML;"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 #: src/ui/shortcuts.ui
 msgid "New Window"
 msgstr "Nova janela"
@@ -107,10 +107,6 @@ msgstr "Usar grade ou lista"
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr "Exibir as imagens usando uma grade de miniaturas ou uma lista."
 
-#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
-msgid "Save as…"
-msgstr "Salvar como…"
-
 #: src/ui/menus.ui
 msgid "List"
 msgstr "Lista"
@@ -118,20 +114,6 @@ msgstr "Lista"
 #: src/ui/menus.ui
 msgid "Grid"
 msgstr "Grade"
-
-#. "all" refers to "all pictures"
-#: src/ui/menus.ui
-msgid "Same duration for all"
-msgstr "Mesma duração para todos"
-
-#: src/ui/menus.ui
-msgid "Fit the daylight"
-msgstr "Ajustar para horários do dia"
-
-#: src/ui/menus.ui
-#, fuzzy
-msgid "Use durations"
-msgstr "Duração"
 
 #: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
@@ -145,119 +127,22 @@ msgstr "Ajuda"
 msgid "About"
 msgstr "Sobre"
 
-#: src/ui/menus.ui
-msgid "File"
-msgstr "Arquivo"
-
-#: src/ui/menus.ui src/ui/window.ui src/window.py
-msgid "Open"
-msgstr "Abrir"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save"
 msgstr "Salvar"
 
-#: src/ui/menus.ui
-msgid "Close"
-msgstr "Fechar"
-
-#: src/ui/menus.ui
-msgid "Quit"
-msgstr "Sair"
-
-#: src/ui/menus.ui
-msgid "Edit"
-msgstr "Editar"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr "Desfazer"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr "Refazer"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add pictures"
-msgstr "Abrir imagem"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add a folder"
-msgstr "Abrir pasta"
-
-#: src/ui/menus.ui
-msgid "Find"
-msgstr "Localizar"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Find and replace"
-msgstr "Localizar e substituir"
-
-#: src/ui/menus.ui
-msgid "Automatically set a total of 24 hours"
-msgstr "Ajustar total para 24 horas automaticamente"
-
-#: src/ui/menus.ui
-msgid "View"
-msgstr "Visualizar"
-
-#: src/ui/menus.ui
-msgid "Same duration for all pictures"
-msgstr "Mesma duração para todas as fotos"
-
-#: src/ui/menus.ui
-msgid "Durations fitting the daylight"
-msgstr "Durações se ajustam aos períodos do dia"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Sort by name"
-msgstr "Classificar por nome"
-
-#: src/ui/menus.ui
-#, fuzzy
-msgid "Picture"
-msgstr "Imagens"
-
-#: src/ui/menus.ui src/ui/picture_row.ui src/ui/picture_thumbnail.ui
-#: src/ui/shortcuts.ui
-msgid "Delete"
-msgstr "Excluir"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Replace with…"
-msgstr "Substituir por…"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "View picture"
-msgstr "Ver imagem"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "View containing directory"
-msgstr "Mostrar na pasta"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to first position"
-msgstr "Mover para a primeira posição"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move up"
-msgstr "Subir uma posição"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move down"
-msgstr "Descer uma posição"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to last position"
-msgstr "Mover para a última posição"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Apply"
-msgstr "Aplicar"
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
+msgid "Save as…"
+msgstr "Salvar como…"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui
 msgid "Set as wallpaper"
 msgstr "Definir como Papel de Parede"
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Wallpaper adjustment"
+msgstr "Papel de parede"
 
 #: src/ui/menus.ui
 msgid "Mosaic"
@@ -285,8 +170,49 @@ msgid "Spanned"
 msgstr "Estendido"
 
 #: src/ui/menus.ui
-msgid "User manual"
-msgstr "Manual do usuário"
+msgid "Same duration for all pictures"
+msgstr "Mesma duração para todos"
+
+#: src/ui/menus.ui
+msgid "Fit the daylight"
+msgstr "Ajustar para horários do dia"
+
+#: src/ui/menus.ui
+msgid "Automatically set a total of 24 hours"
+msgstr "Ajustar total para 24 horas automaticamente"
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Use durations instead of times"
+msgstr "Duração"
+
+#: src/ui/picture_menu.ui
+msgid "Replace with…"
+msgstr "Substituir por…"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "View picture"
+msgstr "Ver imagem"
+
+#: src/ui/picture_menu.ui
+msgid "View containing directory"
+msgstr "Mostrar na pasta"
+
+#: src/ui/picture_menu.ui
+msgid "Move to first position"
+msgstr "Mover para a primeira posição"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move up"
+msgstr "Subir uma posição"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move down"
+msgstr "Descer uma posição"
+
+#: src/ui/picture_menu.ui
+msgid "Move to last position"
+msgstr "Mover para a última posição"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Time"
@@ -306,6 +232,10 @@ msgstr "Transição"
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr "Tempo (em segundos) de transição entre esta imagem e a próxima."
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/shortcuts.ui
+msgid "Delete"
+msgstr "Excluir"
 
 #: src/ui/picture_thumbnail.ui
 msgid "Duration"
@@ -375,9 +305,25 @@ msgstr "Abrir um papel de parede dinâmico existente"
 msgid "History"
 msgstr ""
 
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Undo"
+msgstr "Desfazer"
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Redo"
+msgstr "Refazer"
+
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
 msgstr ""
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add pictures"
+msgstr "Abrir imagem"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add a folder"
+msgstr "Abrir pasta"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Find a picture"
@@ -388,28 +334,44 @@ msgstr "Encontrar uma imagem"
 msgid "Selected picture"
 msgstr "Abrir imagem"
 
+#: src/ui/window.ui src/window.py
+msgid "Open"
+msgstr "Abrir"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "New window"
+msgstr "Nova janela"
+
 #: src/ui/window.ui
 msgid "More actions"
 msgstr "Mais ações"
+
+#: src/ui/window.ui
+msgid "Save the file and apply it as your wallpaper"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "Save and apply"
+msgstr ""
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Manage how you set the durations of your pictures"
+msgstr "Mesma duração para todas as fotos"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Durations options"
+msgstr "Duração"
 
 #: src/ui/window.ui
 msgid "Set the exact start time of the wallpaper"
 msgstr "Definir a hora exata de início do papel de parede"
 
 #: src/ui/window.ui
-#, fuzzy
-msgid "Apply as wallpaper, and set adjustment options"
-msgstr ""
-"Aplicar como papel de parede da área de trabalho ou da tela de bloqueio e "
-"aplicar as configurações"
-
-#: src/ui/window.ui
-msgid "Find a filename"
-msgstr "Encontrar um nome de arquivo"
-
-#: src/ui/window.ui
-msgid "Replace in filenames"
-msgstr "Substituir nos nomes dos arquivos"
+msgid "Sort by name"
+msgstr "Classificar por nome"
 
 #: src/ui/window.ui
 msgid "Error starting the application, please report this bug."
@@ -585,3 +547,19 @@ msgstr "Elemento desconhecido: %s"
 #: src/window.py
 msgid "Untitled"
 msgstr "Sem título"
+
+#~ msgid "Find"
+#~ msgstr "Localizar"
+
+#~ msgid "View"
+#~ msgstr "Visualizar"
+
+#~ msgid "Durations fitting the daylight"
+#~ msgstr "Durações se ajustam aos períodos do dia"
+
+#~ msgid "Apply"
+#~ msgstr "Aplicar"
+
+#~ msgid "User manual"
+#~ msgstr "Manual do usuário"
+

@@ -100,8 +100,7 @@
     <section>
       <item>
         <attribute name="action">win.same_duration</attribute>
-        <!-- "all" refers to "all pictures" -->
-        <attribute name="label" translatable="yes">Same duration for all</attribute>
+        <attribute name="label" translatable="yes">Same duration for all pictures</attribute>
       </item>
     </section>
     <section>

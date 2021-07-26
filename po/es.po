@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 01:56+0200\n"
+"POT-Creation-Date: 2021-07-26 05:12+0200\n"
 "PO-Revision-Date: 2019-03-01 19:00-0500\n"
 "Last-Translator: Julian Reyes <julian.reyes.escrigas@gmail.com>\n"
 "Language-Team: Spanish; Castilian <julian.reyes.escrigas@gmail.com>\n"
@@ -82,7 +82,7 @@ msgstr "Crea o edita Fondos de pantalla dinamicos para GNOME."
 msgid "Wallpaper;Daylight;XML;"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 #: src/ui/shortcuts.ui
 #, fuzzy
 msgid "New Window"
@@ -96,10 +96,6 @@ msgstr ""
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 
-#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
-msgid "Save as…"
-msgstr "Guardar como…"
-
 #: src/ui/menus.ui
 msgid "List"
 msgstr ""
@@ -107,21 +103,6 @@ msgstr ""
 #: src/ui/menus.ui
 msgid "Grid"
 msgstr ""
-
-#. "all" refers to "all pictures"
-#: src/ui/menus.ui
-#, fuzzy
-msgid "Same duration for all"
-msgstr "Usa la misma duración para todas las imágenes"
-
-#: src/ui/menus.ui
-msgid "Fit the daylight"
-msgstr ""
-
-#: src/ui/menus.ui
-#, fuzzy
-msgid "Use durations"
-msgstr "Transición"
 
 #: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
@@ -135,123 +116,22 @@ msgstr "Ayuda"
 msgid "About"
 msgstr "Acerca de"
 
-#: src/ui/menus.ui
-msgid "File"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/window.ui src/window.py
-msgid "Open"
-msgstr "Abrir"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save"
 msgstr "Guardar"
 
-#: src/ui/menus.ui
-msgid "Close"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "Quit"
-msgstr "Salir"
-
-#: src/ui/menus.ui
-msgid "Edit"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add pictures"
-msgstr "Agregar imagenes"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add a folder"
-msgstr "Agregar una carpeta"
-
-#: src/ui/menus.ui
-msgid "Find"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/window.ui
-#, fuzzy
-msgid "Find and replace"
-msgstr "Agregar imagenes"
-
-#: src/ui/menus.ui
-#, fuzzy
-msgid "Automatically set a total of 24 hours"
-msgstr "Esto es útil, por ejemplo, si la duración total es de 24 horas."
-
-#: src/ui/menus.ui
-msgid "View"
-msgstr ""
-
-#: src/ui/menus.ui
-#, fuzzy
-msgid "Same duration for all pictures"
-msgstr "Usa la misma duración para todas las imágenes"
-
-#: src/ui/menus.ui
-msgid "Durations fitting the daylight"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Sort by name"
-msgstr ""
-
-#: src/ui/menus.ui
-#, fuzzy
-msgid "Picture"
-msgstr "%s imagenes"
-
-#: src/ui/menus.ui src/ui/picture_row.ui src/ui/picture_thumbnail.ui
-#: src/ui/shortcuts.ui
-msgid "Delete"
-msgstr "Eliminar"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Replace with…"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-#, fuzzy
-msgid "View picture"
-msgstr "%s imagenes"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "View containing directory"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to first position"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move up"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move down"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to last position"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Apply"
-msgstr ""
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
+msgid "Save as…"
+msgstr "Guardar como…"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui
 msgid "Set as wallpaper"
 msgstr "Fijar como fondo"
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Wallpaper adjustment"
+msgstr "Fondo de pantalla"
 
 #: src/ui/menus.ui
 msgid "Mosaic"
@@ -278,7 +158,51 @@ msgid "Spanned"
 msgstr ""
 
 #: src/ui/menus.ui
-msgid "User manual"
+#, fuzzy
+msgid "Same duration for all pictures"
+msgstr "Usa la misma duración para todas las imágenes"
+
+#: src/ui/menus.ui
+msgid "Fit the daylight"
+msgstr ""
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Automatically set a total of 24 hours"
+msgstr "Esto es útil, por ejemplo, si la duración total es de 24 horas."
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Use durations instead of times"
+msgstr "Transición"
+
+#: src/ui/picture_menu.ui
+msgid "Replace with…"
+msgstr ""
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+#, fuzzy
+msgid "View picture"
+msgstr "%s imagenes"
+
+#: src/ui/picture_menu.ui
+msgid "View containing directory"
+msgstr ""
+
+#: src/ui/picture_menu.ui
+msgid "Move to first position"
+msgstr ""
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move up"
+msgstr ""
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move down"
+msgstr ""
+
+#: src/ui/picture_menu.ui
+msgid "Move to last position"
 msgstr ""
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
@@ -302,6 +226,10 @@ msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr ""
 "Tiempo (en segundos) de la transición entre esta imagen y la siguiente."
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/shortcuts.ui
+msgid "Delete"
+msgstr "Eliminar"
 
 #: src/ui/picture_thumbnail.ui
 #, fuzzy
@@ -374,9 +302,25 @@ msgstr "Abrir un fondo dinamico existente"
 msgid "History"
 msgstr ""
 
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Undo"
+msgstr ""
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Redo"
+msgstr ""
+
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
 msgstr ""
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add pictures"
+msgstr "Agregar imagenes"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add a folder"
+msgstr "Agregar una carpeta"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 #, fuzzy
@@ -388,27 +332,44 @@ msgstr "Agregar imagenes"
 msgid "Selected picture"
 msgstr "Agregar imagenes"
 
+#: src/ui/window.ui src/window.py
+msgid "Open"
+msgstr "Abrir"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "New window"
+msgstr "Nueva ventana"
+
 #: src/ui/window.ui
 msgid "More actions"
 msgstr "Mas acciones"
+
+#: src/ui/window.ui
+msgid "Save the file and apply it as your wallpaper"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "Save and apply"
+msgstr ""
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Manage how you set the durations of your pictures"
+msgstr "Usa la misma duración para todas las imágenes"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Durations options"
+msgstr "Transición"
 
 #: src/ui/window.ui
 msgid "Set the exact start time of the wallpaper"
 msgstr "Establecer la hora exacta de inicio del fondo de pantalla"
 
 #: src/ui/window.ui
-msgid "Apply as wallpaper, and set adjustment options"
+msgid "Sort by name"
 msgstr ""
-
-#: src/ui/window.ui
-#, fuzzy
-msgid "Find a filename"
-msgstr "Agregar imagenes"
-
-#: src/ui/window.ui
-#, fuzzy
-msgid "Replace in filenames"
-msgstr "Agregar imagenes"
 
 #: src/ui/window.ui
 msgid "Error starting the application, please report this bug."

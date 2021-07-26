@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 01:56+0200\n"
+"POT-Creation-Date: 2021-07-26 05:12+0200\n"
 "PO-Revision-Date: 2020-01-25 01:21+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
@@ -90,7 +90,7 @@ msgstr "Stvori ili uredi dinamične pozadine za GNOME."
 msgid "Wallpaper;Daylight;XML;"
 msgstr "Pozadine;Danje svjetlo;XML;"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 #: src/ui/shortcuts.ui
 msgid "New Window"
 msgstr "Novi prozor"
@@ -103,10 +103,6 @@ msgstr "Koristi pločasti prikaz ili popis"
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr "Prikaži slike kao pločice ili kao popis"
 
-#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
-msgid "Save as…"
-msgstr "Spremi kao …"
-
 #: src/ui/menus.ui
 msgid "List"
 msgstr "Popis"
@@ -114,20 +110,6 @@ msgstr "Popis"
 #: src/ui/menus.ui
 msgid "Grid"
 msgstr "Pločice"
-
-#. "all" refers to "all pictures"
-#: src/ui/menus.ui
-msgid "Same duration for all"
-msgstr "Jednako trajanje za sve"
-
-#: src/ui/menus.ui
-msgid "Fit the daylight"
-msgstr "Prilagodi danjem svjetlu"
-
-#: src/ui/menus.ui
-#, fuzzy
-msgid "Use durations"
-msgstr "Trajanje"
 
 #: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
@@ -141,119 +123,21 @@ msgstr "Pomoć"
 msgid "About"
 msgstr "Informacije"
 
-#: src/ui/menus.ui
-msgid "File"
-msgstr "Datoteka"
-
-#: src/ui/menus.ui src/ui/window.ui src/window.py
-msgid "Open"
-msgstr "Otvori"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save"
 msgstr "Spremi"
 
-#: src/ui/menus.ui
-msgid "Close"
-msgstr "Zatvori"
-
-#: src/ui/menus.ui
-msgid "Quit"
-msgstr "Izlaz"
-
-#: src/ui/menus.ui
-msgid "Edit"
-msgstr "Uredi"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr "Poništi"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr "Ponovi"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add pictures"
-msgstr "Dodaj slike"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add a folder"
-msgstr "Dodaj mapu"
-
-#: src/ui/menus.ui
-msgid "Find"
-msgstr "Nađi"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Find and replace"
-msgstr "Nađi i zamijeni"
-
-#: src/ui/menus.ui
-msgid "Automatically set a total of 24 hours"
-msgstr "Automatski postavi ukupno 24 sata"
-
-#: src/ui/menus.ui
-msgid "View"
-msgstr "Prikaz"
-
-#: src/ui/menus.ui
-msgid "Same duration for all pictures"
-msgstr "Jednako trajanje za sve slike"
-
-#: src/ui/menus.ui
-msgid "Durations fitting the daylight"
-msgstr "Trajanja prilagođena danjem svjetlu"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Sort by name"
-msgstr ""
-
-#: src/ui/menus.ui
-#, fuzzy
-msgid "Picture"
-msgstr "Slike"
-
-#: src/ui/menus.ui src/ui/picture_row.ui src/ui/picture_thumbnail.ui
-#: src/ui/shortcuts.ui
-msgid "Delete"
-msgstr "Izbriši"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Replace with…"
-msgstr "Zamijeni s …"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "View picture"
-msgstr "Prikaži sliku"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "View containing directory"
-msgstr "Prikaži sadržavajuću mapu"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to first position"
-msgstr "Premjesti na prvo mjesto"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move up"
-msgstr "Premjesti prema gore"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move down"
-msgstr "Premjesti prema dolje"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to last position"
-msgstr "Premjesti na zadnje mjesto"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Apply"
-msgstr "Primijeni"
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
+msgid "Save as…"
+msgstr "Spremi kao …"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui
 msgid "Set as wallpaper"
 msgstr "Postavi kao pozadinu"
+
+#: src/ui/menus.ui
+msgid "Wallpaper adjustment"
+msgstr "Prilagođavanje pozadine"
 
 #: src/ui/menus.ui
 msgid "Mosaic"
@@ -281,8 +165,49 @@ msgid "Spanned"
 msgstr "Razapeto"
 
 #: src/ui/menus.ui
-msgid "User manual"
-msgstr "Korisnički priručnik"
+msgid "Same duration for all pictures"
+msgstr "Jednako trajanje za sve"
+
+#: src/ui/menus.ui
+msgid "Fit the daylight"
+msgstr "Prilagodi danjem svjetlu"
+
+#: src/ui/menus.ui
+msgid "Automatically set a total of 24 hours"
+msgstr "Automatski postavi ukupno 24 sata"
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Use durations instead of times"
+msgstr "Trajanje"
+
+#: src/ui/picture_menu.ui
+msgid "Replace with…"
+msgstr "Zamijeni s …"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "View picture"
+msgstr "Prikaži sliku"
+
+#: src/ui/picture_menu.ui
+msgid "View containing directory"
+msgstr "Prikaži sadržavajuću mapu"
+
+#: src/ui/picture_menu.ui
+msgid "Move to first position"
+msgstr "Premjesti na prvo mjesto"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move up"
+msgstr "Premjesti prema gore"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move down"
+msgstr "Premjesti prema dolje"
+
+#: src/ui/picture_menu.ui
+msgid "Move to last position"
+msgstr "Premjesti na zadnje mjesto"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Time"
@@ -302,6 +227,10 @@ msgstr "Prijelaz"
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
 msgstr "Vrijeme (u sekundama) prijelaza između ove i sljedeće slike."
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/shortcuts.ui
+msgid "Delete"
+msgstr "Izbriši"
 
 #: src/ui/picture_thumbnail.ui
 msgid "Duration"
@@ -371,9 +300,25 @@ msgstr "Otvori postojeću dinamičnu pozadinu"
 msgid "History"
 msgstr ""
 
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Undo"
+msgstr "Poništi"
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Redo"
+msgstr "Ponovi"
+
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
 msgstr ""
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add pictures"
+msgstr "Dodaj slike"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add a folder"
+msgstr "Dodaj mapu"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Find a picture"
@@ -384,28 +329,44 @@ msgstr "Nađi sliku"
 msgid "Selected picture"
 msgstr "Dodaj slike"
 
+#: src/ui/window.ui src/window.py
+msgid "Open"
+msgstr "Otvori"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "New window"
+msgstr "Novi prozor"
+
 #: src/ui/window.ui
 msgid "More actions"
 msgstr "Daljnje radnje"
+
+#: src/ui/window.ui
+msgid "Save the file and apply it as your wallpaper"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "Save and apply"
+msgstr ""
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Manage how you set the durations of your pictures"
+msgstr "Jednako trajanje za sve slike"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Durations options"
+msgstr "Trajanje"
 
 #: src/ui/window.ui
 msgid "Set the exact start time of the wallpaper"
 msgstr "Postavi točno početno vrijeme pozadine"
 
 #: src/ui/window.ui
-#, fuzzy
-msgid "Apply as wallpaper, and set adjustment options"
+msgid "Sort by name"
 msgstr ""
-"Primijeni kao pozadinu ili kao zaključani erkan i postavi opcije za "
-"prilagođavanje"
-
-#: src/ui/window.ui
-msgid "Find a filename"
-msgstr "Nađi ime datoteke"
-
-#: src/ui/window.ui
-msgid "Replace in filenames"
-msgstr "Zamijeni u imenu datoteke"
 
 #: src/ui/window.ui
 msgid "Error starting the application, please report this bug."
@@ -584,8 +545,18 @@ msgstr "Nepoznati element: %s"
 msgid "Untitled"
 msgstr "Bezimeno"
 
-#~ msgid "Wallpaper adjustment"
-#~ msgstr "Prilagođavanje pozadine"
+#~ msgid "Find"
+#~ msgstr "Nađi"
+
+#~ msgid "View"
+#~ msgstr "Prikaz"
+
+#~ msgid "Durations fitting the daylight"
+#~ msgstr "Trajanja prilagođena danjem svjetlu"
+
+#~ msgid "Apply"
+#~ msgstr "Primijeni"
+
 
 #~ msgid "Save %s"
 #~ msgstr "Spremi %s"

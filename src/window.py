@@ -176,6 +176,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_boolean('same_duration', False, self.update_type_slideshow)
 		self.add_action_boolean('total_24', False, self.update_type_daylight)
 		self.add_action_boolean('use_durations', True, self.update_daylight_mode)
+		# TODO au final ça devra être false par défaut quand ça marchera
 		self.lookup_action('use_durations').set_enabled(False)
 
 		self.find_rbtn_open.connect('toggled', self.radio_btn_helper, 'find')

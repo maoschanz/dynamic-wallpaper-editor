@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 01:56+0200\n"
+"POT-Creation-Date: 2021-07-26 05:12+0200\n"
 "PO-Revision-Date: 2021-07-10 15:35+0200\n"
 "Last-Translator:  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language-Team: Italian  Albano Battistella <albano battistella@hotmail.com>\n"
@@ -57,19 +57,22 @@ msgstr "La versione 3.0 migliora notevolmente le prestazioni."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An editing history is now available to undo or redo your changes."
-msgstr "È ora disponibile una cronologia delle modifiche per annullare o ripristinare le modifiche."
+msgstr ""
+"È ora disponibile una cronologia delle modifiche per annullare o "
+"ripristinare le modifiche."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
-msgstr "È disponibile una nuova icona, seguendo le recenti linee guida di GNOME."
+msgstr ""
+"È disponibile una nuova icona, seguendo le recenti linee guida di GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The images can now be reordered, previewed, or deleted using keyboard "
 "shortcuts."
 msgstr ""
-"Le immagini possono ora essere riordinate, visualizzate in anteprima o eliminate utilizzando le scorciatoie "
-"da tastiera."
+"Le immagini possono ora essere riordinate, visualizzate in anteprima o "
+"eliminate utilizzando le scorciatoie da tastiera."
 
 #. caption for screenshot 1
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
@@ -94,7 +97,7 @@ msgstr "Crea o modifica sfondi dinamici per GNOME."
 msgid "Wallpaper;Daylight;XML;"
 msgstr "Wallpaper;Daylight;XML;"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 #: src/ui/shortcuts.ui
 msgid "New Window"
 msgstr "Nuova Finestra"
@@ -108,10 +111,6 @@ msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 "Visualizza le immagini utilizzando una griglia di miniature o un elenco."
 
-#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
-msgid "Save as…"
-msgstr "Salva con nome..."
-
 #: src/ui/menus.ui
 msgid "List"
 msgstr "Elenco"
@@ -119,20 +118,6 @@ msgstr "Elenco"
 #: src/ui/menus.ui
 msgid "Grid"
 msgstr "Griglia"
-
-#. "all" refers to "all pictures"
-#: src/ui/menus.ui
-msgid "Same duration for all"
-msgstr "Stessa durata per tutti"
-
-#: src/ui/menus.ui
-msgid "Fit the daylight"
-msgstr "Adatta alla luce del giorno"
-
-#: src/ui/menus.ui
-#, fuzzy
-msgid "Use durations"
-msgstr "Durata transizione"
 
 #: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
@@ -146,118 +131,21 @@ msgstr "Aiuto"
 msgid "About"
 msgstr "Informazioni"
 
-#: src/ui/menus.ui
-msgid "File"
-msgstr "File"
-
-#: src/ui/menus.ui src/ui/window.ui src/window.py
-msgid "Open"
-msgstr "Apri"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save"
 msgstr "Salva"
 
-#: src/ui/menus.ui
-msgid "Close"
-msgstr "Chiudi"
-
-#: src/ui/menus.ui
-msgid "Quit"
-msgstr "Chiudi"
-
-#: src/ui/menus.ui
-msgid "Edit"
-msgstr "Modifica"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr "Annulla"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr "Rifai"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add pictures"
-msgstr "Aggiungi immagini"
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add a folder"
-msgstr "Aggiungi cartelle"
-
-#: src/ui/menus.ui
-msgid "Find"
-msgstr "Trova"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Find and replace"
-msgstr "Trova e sostituisci"
-
-#: src/ui/menus.ui
-msgid "Automatically set a total of 24 hours"
-msgstr "Imposta automaticamente un totale di 24 ore"
-
-#: src/ui/menus.ui
-msgid "View"
-msgstr "Vista"
-
-#: src/ui/menus.ui
-msgid "Same duration for all pictures"
-msgstr "Stessa durata per tutte le immagini"
-
-#: src/ui/menus.ui
-msgid "Durations fitting the daylight"
-msgstr "Durate adatte alla luce del giorno"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Sort by name"
-msgstr "Ordina per nome"
-
-#: src/ui/menus.ui
-msgid "Picture"
-msgstr "Immagini"
-
-#: src/ui/menus.ui src/ui/picture_row.ui src/ui/picture_thumbnail.ui
-#: src/ui/shortcuts.ui
-msgid "Delete"
-msgstr "Elimina"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Replace with…"
-msgstr "Sostituisci con…"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "View picture"
-msgstr "Visualizza immagine"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "View containing directory"
-msgstr "Visualizza la directory contenente"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to first position"
-msgstr "Sposta in prima posizione"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move up"
-msgstr "Sposta su"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move down"
-msgstr "Sposta giù"
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to last position"
-msgstr "Sposta in ultima posizione"
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Apply"
-msgstr "Applica"
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
+msgid "Save as…"
+msgstr "Salva con nome..."
 
 #: src/ui/menus.ui src/ui/shortcuts.ui
 msgid "Set as wallpaper"
 msgstr "Imposta come sfondo"
+
+#: src/ui/menus.ui
+msgid "Wallpaper adjustment"
+msgstr "Regolazione dello sfondo"
 
 #: src/ui/menus.ui
 msgid "Mosaic"
@@ -284,8 +172,49 @@ msgid "Spanned"
 msgstr "Riempi"
 
 #: src/ui/menus.ui
-msgid "User manual"
-msgstr "Manuale utente"
+msgid "Same duration for all pictures"
+msgstr "Stessa durata per tutti"
+
+#: src/ui/menus.ui
+msgid "Fit the daylight"
+msgstr "Adatta alla luce del giorno"
+
+#: src/ui/menus.ui
+msgid "Automatically set a total of 24 hours"
+msgstr "Imposta automaticamente un totale di 24 ore"
+
+#: src/ui/menus.ui
+#, fuzzy
+msgid "Use durations instead of times"
+msgstr "Durata transizione"
+
+#: src/ui/picture_menu.ui
+msgid "Replace with…"
+msgstr "Sostituisci con…"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "View picture"
+msgstr "Visualizza immagine"
+
+#: src/ui/picture_menu.ui
+msgid "View containing directory"
+msgstr "Visualizza la directory contenente"
+
+#: src/ui/picture_menu.ui
+msgid "Move to first position"
+msgstr "Sposta in prima posizione"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move up"
+msgstr "Sposta su"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move down"
+msgstr "Sposta giù"
+
+#: src/ui/picture_menu.ui
+msgid "Move to last position"
+msgstr "Sposta in ultima posizione"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Time"
@@ -309,6 +238,10 @@ msgid ""
 msgstr ""
 "Durata (in secondi) del tempo di transizione tra questa immagine e la "
 "prossima."
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/shortcuts.ui
+msgid "Delete"
+msgstr "Elimina"
 
 #: src/ui/picture_thumbnail.ui
 msgid "Duration"
@@ -378,9 +311,25 @@ msgstr "Apri uno sfondo dinamico preesistente"
 msgid "History"
 msgstr "Cronologia"
 
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Undo"
+msgstr "Annulla"
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Redo"
+msgstr "Rifai"
+
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
 msgstr "Gestione delle immagini"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add pictures"
+msgstr "Aggiungi immagini"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add a folder"
+msgstr "Aggiungi cartelle"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Find a picture"
@@ -390,26 +339,44 @@ msgstr "Trova un' immagini"
 msgid "Selected picture"
 msgstr "Immagine selezionata"
 
+#: src/ui/window.ui src/window.py
+msgid "Open"
+msgstr "Apri"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "New window"
+msgstr "Nuova Finestra"
+
 #: src/ui/window.ui
 msgid "More actions"
 msgstr "Più azioni"
+
+#: src/ui/window.ui
+msgid "Save the file and apply it as your wallpaper"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "Save and apply"
+msgstr ""
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Manage how you set the durations of your pictures"
+msgstr "Stessa durata per tutte le immagini"
+
+#: src/ui/window.ui
+#, fuzzy
+msgid "Durations options"
+msgstr "Durata transizione"
 
 #: src/ui/window.ui
 msgid "Set the exact start time of the wallpaper"
 msgstr "Imposta la data esatta di inizio dello sfondo"
 
 #: src/ui/window.ui
-msgid "Apply as wallpaper, and set adjustment options"
-msgstr ""
-"Applica come sfondo e imposta le opzioni di regolazione"
-
-#: src/ui/window.ui
-msgid "Find a filename"
-msgstr "Trova un nome file"
-
-#: src/ui/window.ui
-msgid "Replace in filenames"
-msgstr "Sostituisci nomi dei file"
+msgid "Sort by name"
+msgstr "Ordina per nome"
 
 #: src/ui/window.ui
 msgid "Error starting the application, please report this bug."
@@ -469,18 +436,21 @@ msgid "JPEG images"
 msgstr "Immagini JPEG"
 
 #: src/misc.py
+#, python-format
 msgid "%s hour"
 msgid_plural "%s hours"
 msgstr[0] "%s ora"
 msgstr[1] "%s ore"
 
 #: src/misc.py
+#, python-format
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minuto"
 msgstr[1] "%s minuti"
 
 #: src/misc.py
+#, python-format
 msgid "%s second"
 msgid_plural "%s seconds"
 msgstr[0] "%s secondo"
@@ -520,12 +490,14 @@ msgid "This desktop environment isn't supported."
 msgstr "Questo ambiente desktop non è supportato."
 
 #: src/window.py
+#, python-format
 msgid "%s picture"
 msgid_plural "%s pictures"
 msgstr[0] "%s immagine"
 msgstr[1] "%s immagini"
 
 #: src/window.py
+#, python-format
 msgid "Total time: %s second"
 msgid_plural "Total time: %s seconds"
 msgstr[0] "Durata totale: %s secondo"
@@ -540,6 +512,7 @@ msgid "There are unsaved modifications to your wallpaper."
 msgstr "Ci sono modifiche non salvate per il tuo sfondo."
 
 #: src/window.py
+#, python-format
 msgid "There are unsaved modifications to %s"
 msgstr "Sono presenti modifiche non salvate a %s"
 
@@ -577,8 +550,23 @@ msgstr "Elemento sconosciuto: %s"
 msgid "Untitled"
 msgstr "Senza Titolo"
 
-#~ msgid "Wallpaper adjustment"
-#~ msgstr "Regolazione dello sfondo"
+#~ msgid "Find"
+#~ msgstr "Trova"
+
+#~ msgid "View"
+#~ msgstr "Vista"
+
+#~ msgid "Durations fitting the daylight"
+#~ msgstr "Durate adatte alla luce del giorno"
+
+#~ msgid "Picture"
+#~ msgstr "Immagini"
+
+#~ msgid "Apply"
+#~ msgstr "Applica"
+
+#~ msgid "Apply as wallpaper, and set adjustment options"
+#~ msgstr "Applica come sfondo e imposta le opzioni di regolazione"
 
 #~ msgid "Save %s"
 #~ msgstr "Salva %s"

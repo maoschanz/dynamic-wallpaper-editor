@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-03 01:56+0200\n"
+"POT-Creation-Date: 2021-07-26 05:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Wallpaper;Daylight;XML;"
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 #: src/ui/shortcuts.ui
 msgid "New Window"
 msgstr ""
@@ -97,29 +97,12 @@ msgstr ""
 msgid "Display the pictures using a grid of thumbnails, or a list."
 msgstr ""
 
-#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
-msgid "Save as…"
-msgstr ""
-
 #: src/ui/menus.ui
 msgid "List"
 msgstr ""
 
 #: src/ui/menus.ui
 msgid "Grid"
-msgstr ""
-
-#. "all" refers to "all pictures"
-#: src/ui/menus.ui
-msgid "Same duration for all"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "Fit the daylight"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "Use durations"
 msgstr ""
 
 #: src/ui/menus.ui
@@ -134,117 +117,20 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: src/ui/menus.ui
-msgid "File"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/window.ui src/window.py
-msgid "Open"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save"
 msgstr ""
 
-#: src/ui/menus.ui
-msgid "Close"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "Quit"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "Edit"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Undo"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui
-msgid "Redo"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add pictures"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/shortcuts.ui src/ui/window.ui src/window.py
-msgid "Add a folder"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "Find"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Find and replace"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "Automatically set a total of 24 hours"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "View"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "Same duration for all pictures"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "Durations fitting the daylight"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Sort by name"
-msgstr ""
-
-#: src/ui/menus.ui
-msgid "Picture"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_row.ui src/ui/picture_thumbnail.ui
-#: src/ui/shortcuts.ui
-msgid "Delete"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Replace with…"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "View picture"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "View containing directory"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to first position"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move up"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui src/ui/shortcuts.ui
-msgid "Move down"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/picture_menu.ui
-msgid "Move to last position"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Apply"
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
+msgid "Save as…"
 msgstr ""
 
 #: src/ui/menus.ui src/ui/shortcuts.ui
 msgid "Set as wallpaper"
+msgstr ""
+
+#: src/ui/menus.ui
+msgid "Wallpaper adjustment"
 msgstr ""
 
 #: src/ui/menus.ui
@@ -272,7 +158,47 @@ msgid "Spanned"
 msgstr ""
 
 #: src/ui/menus.ui
-msgid "User manual"
+msgid "Same duration for all pictures"
+msgstr ""
+
+#: src/ui/menus.ui
+msgid "Fit the daylight"
+msgstr ""
+
+#: src/ui/menus.ui
+msgid "Automatically set a total of 24 hours"
+msgstr ""
+
+#: src/ui/menus.ui
+msgid "Use durations instead of times"
+msgstr ""
+
+#: src/ui/picture_menu.ui
+msgid "Replace with…"
+msgstr ""
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "View picture"
+msgstr ""
+
+#: src/ui/picture_menu.ui
+msgid "View containing directory"
+msgstr ""
+
+#: src/ui/picture_menu.ui
+msgid "Move to first position"
+msgstr ""
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move up"
+msgstr ""
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move down"
+msgstr ""
+
+#: src/ui/picture_menu.ui
+msgid "Move to last position"
 msgstr ""
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
@@ -292,6 +218,10 @@ msgstr ""
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
 msgid ""
 "Time (in seconds) of the transition between this image and the next one."
+msgstr ""
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/shortcuts.ui
+msgid "Delete"
 msgstr ""
 
 #: src/ui/picture_thumbnail.ui
@@ -362,8 +292,24 @@ msgstr ""
 msgid "History"
 msgstr ""
 
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Undo"
+msgstr ""
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Redo"
+msgstr ""
+
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
+msgstr ""
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add pictures"
+msgstr ""
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add a folder"
 msgstr ""
 
 #: src/ui/shortcuts.ui src/ui/window.ui
@@ -374,8 +320,32 @@ msgstr ""
 msgid "Selected picture"
 msgstr ""
 
+#: src/ui/window.ui src/window.py
+msgid "Open"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "New window"
+msgstr ""
+
 #: src/ui/window.ui
 msgid "More actions"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "Save the file and apply it as your wallpaper"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "Save and apply"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "Manage how you set the durations of your pictures"
+msgstr ""
+
+#: src/ui/window.ui
+msgid "Durations options"
 msgstr ""
 
 #: src/ui/window.ui
@@ -383,15 +353,7 @@ msgid "Set the exact start time of the wallpaper"
 msgstr ""
 
 #: src/ui/window.ui
-msgid "Apply as wallpaper, and set adjustment options"
-msgstr ""
-
-#: src/ui/window.ui
-msgid "Find a filename"
-msgstr ""
-
-#: src/ui/window.ui
-msgid "Replace in filenames"
+msgid "Sort by name"
 msgstr ""
 
 #: src/ui/window.ui

@@ -212,7 +212,7 @@
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
-                            <property name="label" translatable="yes">Time options</property>
+                            <property name="label" translatable="yes">Durations options</property>
                           </object>
                         </child>
                         <child>
