@@ -43,14 +43,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 	label_add_dir = Gtk.Template.Child()
 	icon_add_dir = Gtk.Template.Child()
 
-	find_rbtn1 = Gtk.Template.Child()
-	find_rbtn2 = Gtk.Template.Child()
-	find_rbtn3 = Gtk.Template.Child()
+	find_rbtn_open = Gtk.Template.Child()
+	find_rbtn_close = Gtk.Template.Child()
 	search_box = Gtk.Template.Child()
 	search_entry = Gtk.Template.Child()
-	replace_entry = Gtk.Template.Child()
-	replace_btn = Gtk.Template.Child()
-	find_btns_box = Gtk.Template.Child()
 
 	scrolled_window = Gtk.Template.Child()
 
@@ -90,7 +86,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.build_time_popover()
 		self.build_menus()
 		self.build_all_actions()
-		self.find_rbtn3.set_active(True) # Hide the search bar
+		self.find_rbtn_close.set_active(True) # Hide the search bar
 		self.update_status()
 		self.close_notification()
 
@@ -149,8 +145,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
 
 		self.add_action_simple('find', self.action_find, ['<Ctrl>f'])
-		# self.add_action_simple('find_replace', self.action_f_r, None)
-		# self.add_action_simple('apply_replace', self.action_replace_str, None)
 
 		self.add_action_simple('fix_24h', self.fix_24, None)
 		self.add_action_simple('sort-pics', self.sort_pics_by_name, None)
@@ -177,9 +171,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_boolean('same_duration', False, self.update_type_slideshow)
 		self.add_action_boolean('total_24', False, self.update_type_daylight)
 
-		self.find_rbtn1.connect('toggled', self.radio_btn_helper, 'find')
-		# self.find_rbtn2.connect('toggled', self.radio_btn_helper, 'replace')
-		self.find_rbtn3.connect('toggled', self.radio_btn_helper, 'hide')
+		self.find_rbtn_open.connect('toggled', self.radio_btn_helper, 'find')
+		self.find_rbtn_close.connect('toggled', self.radio_btn_helper, 'hide')
 
 	############################################################################
 	# History ##################################################################
@@ -263,17 +256,18 @@ class DWEWindow(Gtk.ApplicationWindow):
 	# Wallpaper settings #######################################################
 
 	def action_set_wallpaper(self, *args):
-		if not self.app.write_file(self.gio_file.get_path()):
-			self.unsupported_desktop()
-		elif 'Cinnamon' in self.app.desktop_env:
-			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
-			use_folder.set_boolean('slideshow-enabled', False)
+		try:
+			self.app.write_file(self.gio_file.get_path())
+			if 'Cinnamon' in self.app.desktop_env:
+				use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
+				use_folder.set_boolean('slideshow-enabled', False)
+		except Exception as err:
+			self._plateform_not_supported(str(err))
 
-	def unsupported_desktop(self):
-		self.show_notification(_("This desktop environment isn't supported."))
+	def _plateform_not_supported(self, error_message):
+		self.show_notification(error_message)
 		self.app.lookup_action('wp_options').set_enabled(False)
 		self.lookup_action('set_wp').set_enabled(False)
-		return ''
 
 	############################################################################
 	# Time management ##########################################################
@@ -439,30 +433,21 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def radio_btn_helper(self, *args):
 		if not args[0].get_active():
 			return
-		compact_to_replace = (args[1] == 'replace') # XXX hidden, but still
-		self.replace_btn.set_visible(compact_to_replace)
-		self.replace_entry.set_visible(compact_to_replace)
-		self.set_addpic_compact(compact_to_replace)
-		self.set_adddir_compact(compact_to_replace)
+		compact_to_find = (args[1] == 'find')
+		self.set_addpic_compact(compact_to_find)
+		self.set_adddir_compact(compact_to_find)
 
 		if args[1] == 'hide':
-			self.find_btns_box.set_visible(True)
+			self.find_rbtn_open.set_visible(True)
 			self.search_box.set_visible(False)
 			self.search_entry.set_text("")
 		else:
-			self.find_btns_box.set_visible(False)
+			self.find_rbtn_open.set_visible(False)
 			self.search_box.set_visible(True)
 			self.search_entry.grab_focus()
 
 	def action_find(self, *args):
-		self.find_rbtn1.set_active(True)
-
-	def action_f_r(self, *args):
-		self.find_rbtn2.set_active(True)
-
-	def action_replace_str(self, *args):
-		self.view.replace_str( self.replace_entry.get_text() )
-		self.add_to_history()
+		self.find_rbtn_open.set_active(True)
 
 	def search_pics_in_view(self, *args):
 		self.view.search_pic(args[0].get_text())

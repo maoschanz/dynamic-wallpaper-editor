@@ -19,38 +19,42 @@
   <p>GNOME Shell natively allows the wallpaper to change automatically over
   time, so your wallpaper can be for example a slideshow of your favorite
   pictures, or an image adapting to the daylight.</p>
+  <p>A few other desktop environments such as Cinnamon or Mate support this
+  format, but some other ones like Budgie are NOT compatible.</p>
 
-  <section id="wallpapers">
+  <section id="open">
     <title>XML dynamic wallpapers</title>
     <p>Dynamic wallpapers are saved as XML files, and this utility helps you
     creating, editing, saving, and applying them.</p>
 
-    <subsection id="open">
-      <title>Open an existing file</title>
-      <p>With the <gui style="button">Open</gui> button, you can open previously
-      saved dynamic wallpaper files (.xml), and <link xref="add_and_order">edit
-      them</link>.</p>
-      <p>From your file manager, you can also right-click on a dynamic wallpaper
-      XML file, click <gui style="menuitem">Open with an other application</gui>,
-      and select "Dynamic Wallpaper Editor".</p>
-    </subsection>
-
-    <subsection id="save">
-      <title>Save</title>
-      <p>Save your creation as an XML file with the <gui style="button">Save</gui>
-      button, or the <gui style="button">Save as…</gui> menu item.</p>
-    </subsection>
-
-    <subsection id="apply">
-      <title>Apply as your wallpaper</title>
-      <p>Once your XML file is saved, you can then apply it as your wallpaper
-      with the <gui style="button">Apply</gui> menu.</p>
-      <p>Adjustment options (zoom, centered, stretched, etc.) are available.</p>
-    </subsection>
+    <p>With the <gui style="button">Open</gui> button, you can open previously
+    saved dynamic wallpaper files (.xml), and <link xref="add_and_order">edit
+    them</link>.</p>
+    <p>From your file manager, you can also right-click on a dynamic wallpaper
+    XML file, click <gui style="menuitem">Open with an other application</gui>,
+    and select "Dynamic Wallpaper Editor".</p>
   </section>
 
   <section id="pictures" style="2column">
     <title>Managing the pictures</title>
+  </section>
+
+  <section id="save">
+    <title>Save</title>
+    <p>Save your creation as an XML file with the <gui style="button">Save</gui>
+    button, or the <gui style="button">Save as…</gui> menu item.</p>
+  </section>
+
+  <section id="apply">
+    <title>Apply as your wallpaper</title>
+    <note style="warning">
+      <p>This isn't possible if the app has been installed using Flatpak!</p>
+      <p>As a workaround, you may need to use GNOME Tweaks to apply the XML
+      file as your wallpaper.</p>
+    </note>
+    <p>Once your XML file is saved, you can then apply it as your wallpaper
+    with the <gui style="button">Apply</gui> menu.</p>
+    <p>Adjustment options (zoom, centered, stretched, etc.) are available.</p>
   </section>
 
 </page>

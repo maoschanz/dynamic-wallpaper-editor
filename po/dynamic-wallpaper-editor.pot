@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 12:10+0200\n"
+"POT-Creation-Date: 2021-07-26 19:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,18 @@ msgid ""
 "The duration of each picture and each transition can be set separately or "
 "globally. The total duration can be 24 hours to do a wallpaper fitting the "
 "daylight."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"This version now detects when it runs in a flatpak sandbox, and tells you "
+"when a feature isn't available because of it (instead of silently doing "
+"nothing)."
+msgstr ""
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"The help manual has been updated to tell you workarounds about this problem."
 msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
@@ -198,10 +210,6 @@ msgstr ""
 
 #: src/ui/menus.ui
 msgid "Find"
-msgstr ""
-
-#: src/ui/menus.ui src/ui/window.ui
-msgid "Find and replace"
 msgstr ""
 
 #: src/ui/menus.ui
@@ -405,14 +413,6 @@ msgid "Apply as wallpaper, and set adjustment options"
 msgstr ""
 
 #: src/ui/window.ui
-msgid "Find a filename"
-msgstr ""
-
-#: src/ui/window.ui
-msgid "Replace in filenames"
-msgstr ""
-
-#: src/ui/window.ui
 msgid "Error starting the application, please report this bug."
 msgstr ""
 
@@ -441,8 +441,12 @@ msgid "Open a new window"
 msgstr ""
 
 #: src/main.py
+msgid "Error opening this file."
+msgstr ""
+
+#: src/main.py
 #, python-format
-msgid "Error opening this file. Did you mean %s ?"
+msgid "Did you mean %s ?"
 msgstr ""
 
 #: src/main.py
@@ -451,6 +455,20 @@ msgstr ""
 
 #: src/main.py
 msgid "translator-credits"
+msgstr ""
+
+#: src/main.py
+msgid "This feature isn't available with Flatpak."
+msgstr ""
+
+#: src/main.py
+msgid ""
+"Don't worry, your XML file can still be set as your wallpaper from GNOME "
+"Tweaks."
+msgstr ""
+
+#: src/main.py
+msgid "This desktop environment isn't supported."
 msgstr ""
 
 #: src/misc.py
@@ -515,10 +533,6 @@ msgstr ""
 
 #: src/view.py
 msgid "Drag-and-drop pictures to reorder them."
-msgstr ""
-
-#: src/window.py
-msgid "This desktop environment isn't supported."
 msgstr ""
 
 #: src/window.py

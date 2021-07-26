@@ -24,6 +24,9 @@ from .window import DWEWindow
 
 APP_ID = 'com.github.maoschanz.DynamicWallpaperEditor'
 UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
+BUG_REPORT_URL = 'https://github.com/maoschanz/dynamic-wallpaper-editor/issues'
+FLATPAK_BINARY_PATH = '/app/bin/dynamic-wallpaper-editor'
+CURRENT_BINARY_PATH = '/app/bin/dynamic-wallpaper-editor'
 
 def main(version):
 	app = Application(version)
@@ -45,7 +48,7 @@ class Application(Gtk.Application):
 		self.connect('command-line', self.on_cli)
 		self.register(None)
 		self._version = version
-		self._git_url = 'https://github.com/maoschanz/dynamic-wallpaper-editor'
+		self.runs_in_sandbox = False
 
 		self.add_main_option('version', b'v', GLib.OptionFlags.NONE,
 		            GLib.OptionArg.NONE, _("Tell the version of the app"), None)
@@ -70,21 +73,29 @@ class Application(Gtk.Application):
 
 	def on_cli(self, *args):
 		"""Main handler, managing options and CLI arguments."""
-		# This is the list of files given by the command line. If there is none,
-		# it will be ['/app/bin/dynamic-wallpaper-editor'] which has a length of 1.
+		# This is the list of files given by the command line. If there is no
+		# argument, there is still a non-empty array with the path of the
+		# binary, e.g. ['/app/bin/dynamic-wallpaper-editor']
 		arguments = args[1].get_arguments()
+
+		CURRENT_BINARY_PATH = arguments[0]
+		if CURRENT_BINARY_PATH == FLATPAK_BINARY_PATH:
+			self.runs_in_sandbox = True
 
 		# Possible options are 'version' and 'new-window'.
 		options = args[1].get_options_dict()
 
 		if options.contains('version'):
 			print(_("Dynamic Wallpaper Editor") + ' ' + self._version)
+
 		elif options.contains('new-window') and len(arguments) == 1:
 			self.on_new_window() # If no file given as argument
+
 		elif len(arguments) == 1:
 			self.on_activate() # If no option
+
 		else:
-			# If file(s) given as argument
+			# If file(s) given as argument(s)
 			for path in arguments:
 				f = self.get_valid_file(args[1], path)
 				if f is not None:
@@ -93,6 +104,11 @@ class Application(Gtk.Application):
 		return 0
 
 	def get_valid_file(self, app, path):
+		if path == CURRENT_BINARY_PATH:
+			# when it's CURRENT_BINARY_PATH, the situation is normal (no error)
+			# and nothing to open.
+			return None
+
 		try:
 			f = app.create_file_for_arg(path)
 			info = f.query_info('standard::*', \
@@ -101,11 +117,15 @@ class Application(Gtk.Application):
 				return f
 			else:
 				return None
-		except:
-			err = _("Error opening this file. Did you mean %s ?")
-			command = "\n\tflatpak run --file-forwarding {0} @@ {1} @@\n"
-			command = command.format(APP_ID, path) # FIXME pas ouf ^
-			print(err % command)
+		except Exception as exception:
+			err = _("Error opening this file.")
+			if self.runs_in_sandbox:
+				err += "\n" + _("Did you mean %s ?")
+				command = "\n\tflatpak run --file-forwarding {0} @@ {1} @@\n"
+				command = command.format(APP_ID, path)
+				print(err % command)
+			else:
+				print(err + "\n" + str(exception))
 			return None
 
 	############################################################################
@@ -166,7 +186,7 @@ class Application(Gtk.Application):
 		about_dialog.set_copyright("© 2018-2021 Romain F. T.")
 		about_dialog.set_license_type(Gtk.License.GPL_3_0)
 		about_dialog.set_logo_icon_name(APP_ID)
-		about_dialog.set_website(self._git_url)
+		about_dialog.set_website(BUG_REPORT_URL)
 		about_dialog.set_website_label(_("Report bugs or ideas"))
 		about_dialog.set_translator_credits(_("translator-credits"))
 		about_dialog.run()
@@ -231,12 +251,16 @@ class Application(Gtk.Application):
 		"""Write a copy of the file from source_path (a "/run/user/" path) to
 		~/.var/app/APP_ID/config/*.xml so a durable path can be applied to the
 		gsettings database."""
+		if self.runs_in_sandbox:
+			raise Exception(_("This feature isn't available with Flatpak.") + \
+			     "\n" + _("Don't worry, your XML file can still be set as " + \
+			                            "your wallpaper from GNOME Tweaks."))
 
 		schema = self.wp_schema
 		key = self.wp_path
 		filename = 'wallpaper'
 		if schema is None:
-			return False
+			raise Exception(_("This desktop environment isn't supported."))
 
 		dest_path = GLib.get_user_data_dir() + '/' + filename + '.xml'
 		if schema.get_string(key) == dest_path:
@@ -249,7 +273,6 @@ class Application(Gtk.Application):
 		dest_file.close()
 		source_file.close()
 		self.apply_path(schema, key, dest_path)
-		return True
 
 	def apply_path(self, schema, key, value):
 		"""Apply the value (either a path or an uri, it looks like the DE

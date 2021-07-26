@@ -20,6 +20,19 @@
   </description>
 
   <releases>
+    <release version="2.7" date="2021-07-26">
+      <description>
+        <p>
+          This version now detects when it runs in a flatpak sandbox, and tells
+          you when a feature isn't available because of it (instead of silently
+          doing nothing).
+        </p>
+        <p>
+          The help manual has been updated to tell you workarounds about this
+          problem.
+        </p>
+      </description>
+    </release>
     <release version="2.6" date="2021-07-03">
       <description>
         <p>
