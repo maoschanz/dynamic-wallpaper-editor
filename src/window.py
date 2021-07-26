@@ -298,6 +298,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		is_now_durations = not args[0].get_state()
 		gvb = GLib.Variant.new_boolean(is_now_durations)
 		self.lookup_action('use_durations').set_state(gvb)
+		# TODO... TODO TODO TODO TODO TODO TODO
 
 	def set_check_24(self, should_check):
 		self.check_24 = should_check

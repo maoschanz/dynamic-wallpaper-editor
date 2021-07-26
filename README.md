@@ -36,13 +36,25 @@ Adjustment options are available (mosaic, zoom, centered, etc.)
 
 ### Flatpak
 
->**Recommended**
-
 You can install it from flathub.org using the instructions on [this page](https://flathub.org/apps/details/com.github.maoschanz.DynamicWallpaperEditor).
+
+The flatpak sandbox may cause issues with a few features.
 
 ### Native packages
 
+Several distributions package the app in their native repositories:
+
 [![Packaging status](https://repology.org/badge/vertical-allrepos/dynamic-wallpaper-editor.svg)](https://repology.org/project/dynamic-wallpaper-editor/versions)
+
+----
+
+## Compatible desktop environments
+
+- GNOME Shell
+- Cinnamon
+- MATE
+
+Other environments such as Budgie does **not** support XML wallpapers.
 
 ----
 
