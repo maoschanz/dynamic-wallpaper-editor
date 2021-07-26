@@ -1,19 +1,7 @@
 <?xml version="1.0"?>
 <interface domain="dynamic-wallpaper-editor">
 
-  <menu id="window-menu">
-    <section>
-      <item>
-        <attribute name="action">app.new_window</attribute>
-        <attribute name="label" translatable="yes">New Window</attribute>
-      </item>
-    </section>
-    <section>
-      <item>
-        <attribute name="action">win.save_as</attribute>
-        <attribute name="label" translatable="yes">Save as…</attribute>
-      </item>
-    </section>
+  <menu id="primary-menu">
     <section>
       <attribute name="display-hint">horizontal-buttons</attribute>
       <item>
@@ -27,21 +15,6 @@
         <attribute name="label" translatable="yes">Grid</attribute>
         <attribute name="target">grid</attribute>
         <attribute name="verb-icon">view-grid-symbolic</attribute>
-      </item>
-    </section>
-    <section>
-      <item>
-        <attribute name="action">win.same_duration</attribute>
-        <!-- "all" refers to "all pictures" -->
-        <attribute name="label" translatable="yes">Same duration for all</attribute>
-      </item>
-      <item>
-        <attribute name="action">win.total_24</attribute>
-        <attribute name="label" translatable="yes">Fit the daylight</attribute>
-      </item>
-      <item>
-        <attribute name="action">win.use_durations</attribute>
-        <attribute name="label" translatable="yes">Use durations</attribute>
       </item>
     </section>
     <section>
@@ -62,9 +35,89 @@
 
   <!-- * -->
 
-  <menu id="menu-bar">
+  <menu id="save-and-apply-menu">
+    <section>
+      <item>
+        <attribute name="action">win.save</attribute>
+        <attribute name="label" translatable="yes">Save</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.save_as</attribute>
+        <attribute name="label" translatable="yes">Save as…</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="action">win.set_wp</attribute>
+        <attribute name="label" translatable="yes">Set as wallpaper</attribute>
+      </item>
+      <submenu id="apply-menu">
+        <attribute name="label" translatable="yes">Wallpaper adjustment</attribute>
+        <section>
+          <!-- <item> -->
+          <!--   <attribute name="action">app.wp_options</attribute> -->
+          <!--   <attribute name="label" translatable="yes">None</attribute> -->
+          <!--   <attribute name="target">none</attribute> -->
+          <!-- </item> -->
+          <item>
+            <attribute name="action">app.wp_options</attribute>
+            <attribute name="label" translatable="yes">Mosaic</attribute>
+            <attribute name="target">wallpaper</attribute>
+          </item>
+          <item>
+            <attribute name="action">app.wp_options</attribute>
+            <attribute name="label" translatable="yes">Centered</attribute>
+            <attribute name="target">centered</attribute>
+          </item>
+          <item>
+            <attribute name="action">app.wp_options</attribute>
+            <attribute name="label" translatable="yes">Scaled</attribute>
+            <attribute name="target">scaled</attribute>
+          </item>
+          <item>
+            <attribute name="action">app.wp_options</attribute>
+            <attribute name="label" translatable="yes">Stretched</attribute>
+            <attribute name="target">stretched</attribute>
+          </item>
+          <item>
+            <attribute name="action">app.wp_options</attribute>
+            <attribute name="label" translatable="yes">Zoom</attribute>
+            <attribute name="target">zoom</attribute>
+          </item>
+          <item>
+            <attribute name="action">app.wp_options</attribute>
+            <attribute name="label" translatable="yes">Spanned</attribute>
+            <attribute name="target">spanned</attribute>
+          </item>
+        </section>
+      </submenu>
+    </section>
+  </menu>
 
+  <!-- * -->
 
+  <menu id="time-options-menu">
+    <section>
+      <item>
+        <attribute name="action">win.same_duration</attribute>
+        <!-- "all" refers to "all pictures" -->
+        <attribute name="label" translatable="yes">Same duration for all</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="action">win.total_24</attribute>
+        <attribute name="label" translatable="yes">Fit the daylight</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.fix_24h</attribute>
+        <attribute name="label" translatable="yes">Automatically set a total of 24 hours</attribute>
+      </item>
+      <item>
+        <attribute name="action">win.use_durations</attribute>
+        <attribute name="label" translatable="yes">Use durations instead of times</attribute>
+      </item>
+    </section>
   </menu>
 
 </interface>
