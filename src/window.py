@@ -84,7 +84,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.search_entry.connect('search-changed', self.search_pics_in_view)
 
 		# Build the UI
-		self.set_show_menubar(False)
 		self.view = None
 		self.rebuild_view( self._settings.get_string('display-mode') )
 		self.build_time_popover()
