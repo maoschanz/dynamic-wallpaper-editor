@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-26 20:18+0200\n"
-"PO-Revision-Date: 2021-07-04 21:25+0200\n"
+"PO-Revision-Date: 2021-07-26 21:08+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
@@ -56,7 +56,7 @@ msgstr "Versie 3.0 heeft aanzienlijk verbeterde prestaties."
 msgid "An editing history is now available to undo or redo your changes."
 msgstr ""
 "[NIEUW] Bewerkgeschiedenis - hiermee kun je je aanpassingen ongedaan maken "
-"op opnieuw toepassen."
+"of opnieuw toepassen."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
@@ -64,11 +64,15 @@ msgid ""
 "when a feature isn't available because of it (instead of silently doing "
 "nothing)."
 msgstr ""
+"[NIEUW] Detectie van Flatpak-sandboxen. Tevens wordt er voortaan een melding "
+"getoond als een functie niet beschikbaar is (in plaats van niks te tonen)."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The help manual has been updated to tell you workarounds about this problem."
 msgstr ""
+"[VERBETERD] De hulpgids is bijgewerkt en toont je tussenoplossingen omtrent "
+"dit probleem."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
@@ -105,7 +109,7 @@ msgstr "Maak of bewerk dynamische achtergronden voor GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Wallpaper;Daylight;XML;"
-msgstr "Achtergrond;Dagdeel;XML;"
+msgstr "Achtergrond;Dagdeel;XML;Bureaublad;Werkblad;"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
 #: src/ui/shortcuts.ui
@@ -194,9 +198,8 @@ msgid "Automatically set a total of 24 hours"
 msgstr "Automatische totaalduur van 24 uur instellen"
 
 #: src/ui/menus.ui
-#, fuzzy
 msgid "Use durations instead of times"
-msgstr "Tijdstippen gebruiken"
+msgstr "Tijdsduur gebruiken in plaats van tijdstippen"
 
 #: src/ui/picture_menu.ui
 msgid "Replace with…"
@@ -358,21 +361,19 @@ msgstr "Meer acties"
 
 #: src/ui/window.ui
 msgid "Save the file and apply it as your wallpaper"
-msgstr ""
+msgstr "Sla het bestand op en stel het in als je achtergrond"
 
 #: src/ui/window.ui
 msgid "Save and apply"
-msgstr ""
+msgstr "Opslaan en instellen"
 
 #: src/ui/window.ui
-#, fuzzy
 msgid "Manage how you set the durations of your pictures"
-msgstr "Alle afbeeldingen op dezelfde duur instellen"
+msgstr "Geef aan hoe je de duur van afbeeldingen wilt instellen"
 
 #: src/ui/window.ui
-#, fuzzy
 msgid "Durations options"
-msgstr "Duur"
+msgstr "Duuropties"
 
 #: src/ui/window.ui
 msgid "Set the exact start time of the wallpaper"
@@ -430,13 +431,15 @@ msgstr "Heimen Stoffels <vistausss@fastmail.com>"
 
 #: src/main.py
 msgid "This feature isn't available with Flatpak."
-msgstr ""
+msgstr "Deze functie is niet beschikbaar in de Flatpak-versie."
 
 #: src/main.py
 msgid ""
 "Don't worry, your XML file can still be set as your wallpaper from GNOME "
 "Tweaks."
 msgstr ""
+"Geen zorgen: je xml-bestand kan worden ingesteld als achtergrond vanuit de "
+"toepassing ‘GNOME Afstellingen’."
 
 #: src/main.py
 msgid "This desktop environment isn't supported."
