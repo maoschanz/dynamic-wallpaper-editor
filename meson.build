@@ -1,6 +1,6 @@
 project(
 	'dynamic-wallpaper-editor',
-	version: '2.6.0',
+	version: '2.99.0',
 	meson_version: '>= 0.50.0',
 )
 
@@ -12,3 +12,4 @@ subdir('src')
 subdir('po')
 
 meson.add_install_script('build-aux/meson/postinstall.py')
+

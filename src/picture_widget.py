@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk, GdkPixbuf, Pango, Gdk
+from gi.repository import Gtk, GdkPixbuf, Pango, Gdk, GLib
 import math
 
 from .misc import time_to_string
@@ -43,7 +43,7 @@ class DWEPictureWidget(Gtk.Box):
 		# File name
 		self.label_widget = builder.get_object('pic_label')
 		self.label_widget.set_ellipsize(Pango.EllipsizeMode.START)
-		self.update_filename()
+		GLib.timeout_add(500, self.update_filename, {})
 
 		# Schedule labels
 		self.static_label = builder.get_object('static_label')
@@ -107,9 +107,10 @@ class DWEPictureWidget(Gtk.Box):
 		self.filename = self.filename.replace(searched_str, new_str)
 		self.update_filename()
 
-	def update_filename(self):
+	def update_filename(self, content_params={}):
 		self.label_widget.set_label(self.filename)
 		# the concrete classes will call generate_thumbnail themselves
+		return False
 
 	def generate_thumbnail(self, w, h):
 		self.time_box.set_sensitive(True)
@@ -229,9 +230,10 @@ class DWEPictureRow(DWEPictureWidget):
 		# ... ?
 		self.end_build_ui()
 
-	def update_filename(self):
+	def update_filename(self, content_params={}):
 		super().update_filename()
 		self.generate_thumbnail(114, 64)
+		return False
 
 	############################################################################
 ################################################################################
@@ -256,9 +258,10 @@ class DWEPictureThumbnail(DWEPictureWidget):
 		self.alt_label.set_visible(is_global)
 		self.time_btn.set_visible(not is_global)
 
-	def update_filename(self):
+	def update_filename(self, content_params={}):
 		super().update_filename()
 		self.generate_thumbnail(250, 140)
+		return False
 
 	############################################################################
 ################################################################################
