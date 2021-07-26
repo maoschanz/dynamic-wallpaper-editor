@@ -320,6 +320,13 @@
           </object>
         </child>
 
+        <child>
+          <object class="GtkSeparator">
+            <property name="visible">True</property>
+            <property name="expand">False</property>
+          </object>
+        </child>
+
         <!-- End of the toolbar ******************************************** -->
 
         <child>
@@ -360,13 +367,6 @@
                 </child>
               </object>
             </child>
-          </object>
-        </child>
-
-        <child>
-          <object class="GtkSeparator">
-            <property name="visible">True</property>
-            <property name="expand">False</property>
           </object>
         </child>
 

@@ -276,17 +276,18 @@ class DWEWindow(Gtk.ApplicationWindow):
 	# Wallpaper settings #######################################################
 
 	def action_set_wallpaper(self, *args):
-		if not self.app.write_file(self.gio_file.get_path()):
-			self.unsupported_desktop()
-		elif 'Cinnamon' in self.app.desktop_env:
-			use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
-			use_folder.set_boolean('slideshow-enabled', False)
+		try:
+			self.app.write_file(self.gio_file.get_path())
+			if 'Cinnamon' in self.app.desktop_env:
+				use_folder = Gio.Settings.new('org.cinnamon.desktop.background.slideshow')
+				use_folder.set_boolean('slideshow-enabled', False)
+		except Exception as err:
+			self._plateform_not_supported(str(err))
 
-	def unsupported_desktop(self):
-		self.show_notification(_("This desktop environment isn't supported."))
+	def _plateform_not_supported(self, error_message):
+		self.show_notification(error_message)
 		self.app.lookup_action('wp_options').set_enabled(False)
 		self.lookup_action('set_wp').set_enabled(False)
-		return ''
 
 	############################################################################
 	# Time management ##########################################################
@@ -604,9 +605,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		try:
 			root = xml_parser.fromstring(xml_text)
-		except Exception:
+		except Exception as err:
 			self.show_notification(_("This dynamic wallpaper is corrupted"))
 			# TODO can be improved, the parseerror from the module gives the line number
+			# what's in err?
 			return False
 
 		if root.tag != 'background':
