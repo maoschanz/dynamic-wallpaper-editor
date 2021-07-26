@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the dynamic-wallpaper-editor package.
 # Automatically generated, 2019.
 # Nicola S <nicola.sella@disroot.org>, 2019.
-# Albano Battistella <albano battistella@hotmail.com>, 2020.
+# Albano Battistella <albano battistella@hotmail.com>, 2020,2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-26 20:18+0200\n"
-"PO-Revision-Date: 2021-07-10 15:35+0200\n"
+"PO-Revision-Date: 2021-07-26 15:35+0200\n"
 "Last-Translator:  Albano Battistella <albano battistella@hotmail.com>\n"
-"Language-Team: Italian  Albano Battistella <albano battistella@hotmail.com>\n"
+"Language-Team: Italian\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,11 +67,15 @@ msgid ""
 "when a feature isn't available because of it (instead of silently doing "
 "nothing)."
 msgstr ""
+"Questa versione ora rileva quando viene eseguita in una sandbox flatpak e ti dice "
+"quando una funzione non è disponibile a causa di essa (invece di fare silenziosamente "
+"niente)."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The help manual has been updated to tell you workarounds about this problem."
 msgstr ""
+"Il manuale della guida è stato aggiornato per fornire soluzioni alternative a questo problema."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
@@ -149,7 +153,7 @@ msgstr "Salva"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
 msgid "Save as…"
-msgstr "Salva con nome..."
+msgstr "Salva con nome…"
 
 #: src/ui/menus.ui src/ui/shortcuts.ui
 msgid "Set as wallpaper"
@@ -196,9 +200,8 @@ msgid "Automatically set a total of 24 hours"
 msgstr "Imposta automaticamente un totale di 24 ore"
 
 #: src/ui/menus.ui
-#, fuzzy
 msgid "Use durations instead of times"
-msgstr "Durata transizione"
+msgstr "Usa le durate invece dei tempi"
 
 #: src/ui/picture_menu.ui
 msgid "Replace with…"
@@ -361,21 +364,19 @@ msgstr "Più azioni"
 
 #: src/ui/window.ui
 msgid "Save the file and apply it as your wallpaper"
-msgstr ""
+msgstr "Salva il file e applicalo come sfondo"
 
 #: src/ui/window.ui
 msgid "Save and apply"
-msgstr ""
+msgstr "Salva e applica"
 
 #: src/ui/window.ui
-#, fuzzy
 msgid "Manage how you set the durations of your pictures"
-msgstr "Stessa durata per tutte le immagini"
+msgstr "Gestisci come imposti la durata delle tue immagini"
 
 #: src/ui/window.ui
-#, fuzzy
 msgid "Durations options"
-msgstr "Durata transizione"
+msgstr "Opzioni di durata"
 
 #: src/ui/window.ui
 msgid "Set the exact start time of the wallpaper"
@@ -428,17 +429,19 @@ msgstr "Segnala bug o suggerisci idee"
 
 #: src/main.py
 msgid "translator-credits"
-msgstr "inknos: nicola.sella AT disroot DOT org"
+msgstr "inknos: nicola.sella AT disroot DOT org,Albano Battistella"
 
 #: src/main.py
 msgid "This feature isn't available with Flatpak."
-msgstr ""
+msgstr "Questa funzione non è disponibile con Flatpak."
 
 #: src/main.py
 msgid ""
 "Don't worry, your XML file can still be set as your wallpaper from GNOME "
 "Tweaks."
 msgstr ""
+"Non preoccuparti, il tuo file XML può ancora essere impostato come sfondo da GNOME "
+"Tweaks."
 
 #: src/main.py
 msgid "This desktop environment isn't supported."
