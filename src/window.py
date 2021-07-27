@@ -122,6 +122,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.apply_btn.set_menu_model(builder.get_object('save-and-apply-menu'))
 		self.time_options_btn.set_menu_model(builder.get_object('time-options-menu'))
 
+	############################################################################
+	# GioActions ###############################################################
+
 	def add_action_simple(self, action_name, callback, shortcuts):
 		action = Gio.SimpleAction.new(action_name, None)
 		action.connect('activate', callback)
@@ -134,6 +137,16 @@ class DWEWindow(Gtk.ApplicationWindow):
 		action = Gio.SimpleAction().new_stateful(action_name, None, gvbool)
 		action.connect('change-state', callback)
 		self.add_action(action)
+
+	def set_action_sensitive(self, action_name, sensitive):
+		self.lookup_action(action_name).set_enabled(sensitive)
+
+	def set_action_boolean_state(self, action_name, state):
+		gvb = GLib.Variant.new_boolean(state)
+		self.lookup_action(action_name).set_state(gvb)
+
+	def get_action_boolean_state(self, action_name):
+		self.lookup_action(action_name).get_state()
 
 	def build_all_actions(self):
 		self.add_action_simple('save', self.action_save, ['<Ctrl>s'])
@@ -164,7 +177,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('pic_last', self.action_pic_last, None)
 
 		self.add_action_simple('set_wp', self.action_set_wallpaper, ['<Ctrl>r'])
-		self.lookup_action('set_wp').set_enabled(False)
+		self.set_action_sensitive('set_wp', False)
 
 		saved_value = self._settings.get_string('display-mode') # grid or list
 		action_display = Gio.SimpleAction().new_stateful('display-mode', \
@@ -177,7 +190,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_boolean('total_24', False, self.update_type_daylight)
 		self.add_action_boolean('use_durations', True, self.update_daylight_mode)
 		# TODO au final ça devra être false par défaut quand ça marchera
-		self.lookup_action('use_durations').set_enabled(False)
+		self.set_action_sensitive('use_durations', False)
 
 	############################################################################
 	# History ##################################################################
@@ -250,7 +263,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.start_btn.set_visible(not is_now_slideshow)
 		if is_now_slideshow:
 			self.set_type_daylight(False)
-		is_24 = self.lookup_action('total_24').get_state()
+		is_24 = self.get_action_boolean_state('total_24')
 		self.update_global_time_box(is_now_slideshow, is_24)
 
 	def update_type_daylight(self, *args):
@@ -260,13 +273,13 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def set_type_daylight(self, is_now_daylight):
 		gvb = GLib.Variant.new_boolean(is_now_daylight)
 		self.lookup_action('total_24').set_state(gvb)
-		self.lookup_action('use_durations').set_enabled(gvb)
+		self.set_action_sensitive('use_durations', is_now_daylight)
 		self.set_check_24(is_now_daylight)
 		if is_now_daylight:
 			self.set_type_slideshow(False)
 		else:
 			self.close_notification()
-		is_slideshow = self.lookup_action('same_duration').get_state()
+		is_slideshow = self.get_action_boolean_state('same_duration')
 		self.update_global_time_box(is_slideshow, is_now_daylight)
 
 	############################################################################
@@ -284,7 +297,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def _plateform_not_supported(self, error_message):
 		self.show_notification(error_message)
 		self.app.lookup_action('wp_options').set_enabled(False)
-		self.lookup_action('set_wp').set_enabled(False)
+		self.set_action_sensitive('set_wp', False)
 
 	############################################################################
 	# Time management ##########################################################
@@ -311,8 +324,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	def update_global_time_box(self, is_global, is_daylight):
 		"""Show relevant spinbuttons based on the active options."""
-		# is_global = self.lookup_action('same_duration').get_state()
-		# is_daylight = self.lookup_action('total_24').get_state()
+		# is_global = self.get_action_boolean_state('same_duration')
+		# is_daylight = self.get_action_boolean_state('total_24')
 		self.time_box.set_visible(is_global)
 		self.time_box_separator.set_visible(is_global)
 		self.view.update_to_mode(is_global, is_daylight)
@@ -320,13 +333,13 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	def get_total_time(self):
 		total_time = 0
-		if self.lookup_action('same_duration').get_state():
+		if self.get_action_boolean_state('same_duration'):
 			for index in range(0, self.view.length):
 				total_time += self.static_time_btn.get_value()
 				total_time += self.trans_time_btn.get_value()
 		else:
 			temp_time = self.get_start_time()
-			is_daylight = self.lookup_action('total_24').get_state()
+			is_daylight = self.get_action_boolean_state('total_24')
 			total_time = self.view.get_total_time(temp_time, is_daylight)
 		return int(total_time)
 
@@ -574,8 +587,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if self.load_list_from_xml():
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			self.auto_detect_type()
-			self.lookup_action('set_wp').set_enabled(True)
 			self.init_history()
+			self.set_action_sensitive('set_wp', True)
 		else:
 			self.gio_file = None
 
@@ -679,7 +692,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.gio_file.replace_contents(contents, None, False, \
 		                                         Gio.FileCreateFlags.NONE, None)
 		self._is_saved = True
-		self.lookup_action('set_wp').set_enabled(True)
+		self.set_action_sensitive('set_wp', True)
 
 	def update_win_title(self, file_name):
 		self.set_title(file_name)
@@ -699,7 +712,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		file_chooser.set_do_overwrite_confirmation(True)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.ACCEPT:
-			self.lookup_action('set_wp').set_enabled(True)
+			self.set_action_sensitive('set_wp', True)
 			self.gio_file = file_chooser.get_file()
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			is_saved = True
@@ -719,7 +732,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		<minute>""" + str(self.minute_spinbtn.get_value_as_int()) + """</minute>
 		<second>""" + str(self.second_spinbtn.get_value_as_int()) + """</second>
 	</starttime>\n"""
-		if self.lookup_action('same_duration').get_state():
+		if self.get_action_boolean_state('same_duration'):
 			st_time = str(self.static_time_btn.get_value())
 			tr_time = str(self.trans_time_btn.get_value())
 		else:
