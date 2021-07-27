@@ -27,6 +27,7 @@ configure_file(
 
 dynamic_wallpaper_editor_sources = [
 	'__init__.py',
+	'data_model.py',
 	'main.py',
 	'misc.py',
 	'picture_widget.py',

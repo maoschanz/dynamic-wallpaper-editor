@@ -19,6 +19,7 @@ from gi.repository import Gtk, Gio, GdkPixbuf, GLib, Gdk
 import xml.etree.ElementTree as xml_parser
 from gettext import ngettext
 
+from .data_model import DWEDataModel
 from .view import DWERowsView
 from .view import DWEThumbnailsView
 from .misc import add_pic_dialog_filters
@@ -66,7 +67,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.gio_file = None
 		self.check_24 = False # XXX still needed???? the action should be enough
 		self.update_time_lock = False
-		self.init_history()
+		self._data_model = DWEDataModel(self)
+		self._is_saved = True # FIXME moche + mal implémenté
 
 		# Used in the "add pictures" file chooser dialog
 		self.preview_picture = Gtk.Image(margin_right=5)
@@ -165,7 +167,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		self.add_action_simple('undo', self.action_undo, ['<Ctrl>z'])
 		self.add_action_simple('redo', self.action_redo, ['<Ctrl><Shift>z'])
-		self.update_history_actions()
+		self._data_model.update_history_actions()
 
 		self.add_action_simple('pic_delete', self.action_pic_delete, ['Delete'])
 		self.add_action_simple('pic_replace', self.action_pic_replace, None)
@@ -195,38 +197,11 @@ class DWEWindow(Gtk.ApplicationWindow):
 	############################################################################
 	# History ##################################################################
 
-	def init_history(self):
-		self._is_saved = True
-		self.undo_history = []
-		self.redo_history = []
-
-	def add_to_history(self):
-		new_state = self.generate_text()
-		self._is_saved = False
-		#print(len(self.undo_history))
-		self.undo_history.append(new_state)
-		self.redo_history = [] # XXX vérifier la libération de la mémoire
-		self.update_history_actions()
-
 	def action_undo(self, *args):
-		restored_state = self.undo_history.pop()
-		self.load_state(restored_state)
-		self.redo_history.append(restored_state)
-		self.update_history_actions()
+		self._data_model.undo()
 
 	def action_redo(self, *args):
-		restored_state = self.redo_history.pop()
-		self.load_state(restored_state)
-		self.add_to_history()
-
-	def update_history_actions(self):
-		self.lookup_action('undo').set_enabled(len(self.undo_history) > 0)
-		self.lookup_action('redo').set_enabled(len(self.redo_history) > 0)
-
-	def load_state(self, state):
-		self.update_time_lock = True
-		self.load_list_from_string(state)
-		self.update_time_lock = False
+		self._data_model.undo()
 
 	############################################################################
 	# Window size ##############################################################
@@ -373,7 +348,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if self.update_time_lock: # all spinbuttons are being updated at the
 			return # same time, we will update things only at the end
 		self.update_status()
-		self.add_to_history()
 
 	############################################################################
 	# Miscellaneous ############################################################
@@ -420,7 +394,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	def sort_pics_by_name(self, *args):
 		self.view.sort_by_name()
-		self.add_to_history()
 
 	############################################################################
 	# Picture-wide actions #####################################################
@@ -587,7 +560,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		if self.load_list_from_xml():
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			self.auto_detect_type()
-			self.init_history()
 			self.set_action_sensitive('set_wp', True)
 		else:
 			self.gio_file = None

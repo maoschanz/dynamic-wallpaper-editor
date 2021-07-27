@@ -27,27 +27,6 @@ class DWEDataModel():
 		self._history = []
 		self._undone = []
 
-	def end_model_change(self, operation):
-		if self._history_lock:
-			return
-		self.history.append(operation)
-		self._window.view.update(self._dw_data)
-
-	def undo(self):
-		operation = self.history.pop()
-		self.undone.append(operation)
-		self._history_lock = True
-		self._dw_data = copy.copy(self._initial_state) # .deepcopy maybe?
-		for operation in self._history:
-			self.do_operation(operation)
-		self._history_lock = False
-		self._window.view.update(self._dw_data)
-
-	def redo(self):
-		operation = self.undone.pop()
-		self.history.append(operation)
-		self.do_operation(operation)
-
 	def do_operation(self, operation):
 		op_type = operation['type']
 
@@ -83,6 +62,38 @@ class DWEDataModel():
 			self.delete_picture(pic_id)
 			return
 
+	def end_model_change(self, operation):
+		if self._history_lock:
+			return
+		self.history.append(operation)
+		self.update_view()
+
+	def update_view(self):
+		self.update_history_actions()
+		self._history_lock = False
+		self._window.view.update(self._dw_data)
+
+	############################################################################
+	# History ##################################################################
+
+	def update_history_actions(self):
+		self._window.set_action_sensitive('undo', len(self._history) > 0)
+		self._window.set_action_sensitive('redo', len(self._undone) > 0)
+
+	def undo(self):
+		operation = self.history.pop()
+		self.undone.append(operation)
+		self._history_lock = True
+		self._dw_data = copy.copy(self._initial_state) # .deepcopy maybe?
+		for operation in self._history:
+			self.do_operation(operation)
+		self.update_view()
+
+	def redo(self):
+		operation = self.undone.pop()
+		self.history.append(operation)
+		self.do_operation(operation)
+
 	############################################################################
 
 	def load_from_xml(self, xml_text):
@@ -92,8 +103,7 @@ class DWEDataModel():
 		# TODO foreach pic self.add_picture
 
 		self._initial_state = copy.copy(self._dw_data) # .deepcopy maybe?
-		self._history_lock = False
-		self._window.view.update(self._dw_data)
+		self.update_view()
 
 	def export_to_xml(self):
 		return ''
