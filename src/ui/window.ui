@@ -258,9 +258,9 @@
             </child>
 
             <child>
-              <object class="GtkRadioButton" id="find_rbtn_open">
+              <object class="GtkButton" id="find_btn_open">
                 <property name="visible">True</property>
-                <property name="draw-indicator">False</property>
+                <property name="action-name">win.find</property>
                 <property name="tooltip-text" translatable="yes">Find a picture</property>
                 <child>
                   <object class="GtkImage">
@@ -284,10 +284,9 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkRadioButton" id="find_rbtn_close">
+                  <object class="GtkButton">
                     <property name="visible">True</property>
-                    <property name="draw-indicator">False</property>
-                    <property name="group">find_rbtn_open</property>
+                    <property name="action-name">win.find_close</property>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>

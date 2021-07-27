@@ -44,8 +44,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 	label_add_dir = Gtk.Template.Child()
 	icon_add_dir = Gtk.Template.Child()
 
-	find_rbtn_open = Gtk.Template.Child()
-	find_rbtn_close = Gtk.Template.Child()
+	find_btn_open = Gtk.Template.Child()
 	search_box = Gtk.Template.Child()
 	search_entry = Gtk.Template.Child()
 
@@ -86,7 +85,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.build_time_popover()
 		self.build_menus()
 		self.build_all_actions()
-		self.find_rbtn_close.set_active(True) # Hide the search bar
+		self.action_find_hide()
 		self.update_status()
 		self.close_notification()
 
@@ -145,7 +144,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_simple('add', self.action_add, ['<Ctrl>a'])
 		self.add_action_simple('add_folder', self.action_add_folder, ['<Ctrl><Shift>a'])
 
-		self.add_action_simple('find', self.action_find, ['<Ctrl>f'])
+		self.add_action_simple('find', self.action_find_show, ['<Ctrl>f'])
+		self.add_action_simple('find_close', self.action_find_hide, None)
 
 		self.add_action_simple('fix_24h', self.fix_24, None)
 		self.add_action_simple('sort-pics', self.sort_pics_by_name, None)
@@ -178,9 +178,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.add_action_boolean('use_durations', True, self.update_daylight_mode)
 		# TODO au final ça devra être false par défaut quand ça marchera
 		self.lookup_action('use_durations').set_enabled(False)
-
-		self.find_rbtn_open.connect('toggled', self.radio_btn_helper, 'find')
-		self.find_rbtn_close.connect('toggled', self.radio_btn_helper, 'hide')
 
 	############################################################################
 	# History ##################################################################
@@ -456,26 +453,21 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.view.abs_move_pic(self.view.length)
 
 	############################################################################
-	# Find and replace #########################################################
+	# Find #####################################################################
 
-	def radio_btn_helper(self, *args):
-		if not args[0].get_active():
-			return
-		compact_to_find = (args[1] == 'find')
-		self.set_addpic_compact(compact_to_find)
-		self.set_adddir_compact(compact_to_find)
+	def action_find_show(self, *args):
+		self.set_addpic_compact(True)
+		self.set_adddir_compact(True)
+		self.find_btn_open.set_visible(False)
+		self.search_box.set_visible(True)
+		self.search_entry.grab_focus()
 
-		if args[1] == 'hide':
-			self.find_rbtn_open.set_visible(True)
-			self.search_box.set_visible(False)
-			self.search_entry.set_text("")
-		else:
-			self.find_rbtn_open.set_visible(False)
-			self.search_box.set_visible(True)
-			self.search_entry.grab_focus()
-
-	def action_find(self, *args):
-		self.find_rbtn_open.set_active(True)
+	def action_find_hide(self, *args):
+		self.set_addpic_compact(False)
+		self.set_adddir_compact(False)
+		self.find_btn_open.set_visible(True)
+		self.search_box.set_visible(False)
+		self.search_entry.set_text("")
 
 	def search_pics_in_view(self, *args):
 		self.view.search_pic(args[0].get_text())
