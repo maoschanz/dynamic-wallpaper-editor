@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from gi.repository import Gtk, Gio, GdkPixbuf, GLib, Gdk
-import xml.etree.ElementTree as xml_parser
 from gettext import ngettext
 
 from .data_model import DWEDataModel
@@ -537,7 +536,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.preview_picture.set_from_pixbuf(pixbuf)
 
 	############################################################################
-	# Loading data from an XML file ############################################
+	# Opening an XML file ######################################################
 
 	def action_open(self, *args):
 		if not self.confirm_save_modifs():
@@ -576,78 +575,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		except Exception as err:
 			raise Exception(_("This dynamic wallpaper is corrupted"))
 			# So corrupted it can't even be read as a text file
-		self.load_list_from_string(xml_text)
-
-	def load_list_from_string(self, xml_text):
-		self.view.reset_view()
-		pic_list = []
-
-		try:
-			root = xml_parser.fromstring(xml_text)
-		except Exception as err:
-			raise Exception(_("This dynamic wallpaper is corrupted"))
-			# TODO can be improved, the parseerror from the module gives the line number
-			# what's in err?
-
-		if root.tag != 'background':
-			raise Exception(_("This XML file doesn't describe a valid dynamic wallpaper"))
-
-		for child in root:
-			if child.tag == 'starttime':
-				self.set_start_time(child)
-			elif child.tag == 'static':
-				pic_list = pic_list + self.add_picture_from_element(child)
-			elif child.tag == 'transition':
-				pic_list = self.add_transition_to_last_pic(child, pic_list)
-			else:
-				self.show_notification(str(_("Unknown element: %s") % child.tag))
-
-		self.view.add_pictures_to_list(pic_list)
-
-	def set_start_time(self, xml_element):
-		for child in xml_element:
-			if child.tag == 'year':
-				self.year_spinbtn.set_value(int(child.text))
-			elif child.tag == 'month':
-				self.month_spinbtn.set_value(int(child.text))
-			elif child.tag == 'day':
-				self.day_spinbtn.set_value(int(child.text))
-			elif child.tag == 'hour':
-				self.hour_spinbtn.set_value(int(child.text))
-			elif child.tag == 'minute':
-				self.minute_spinbtn.set_value(int(child.text))
-			elif child.tag == 'second':
-				self.second_spinbtn.set_value(int(child.text))
-
-	def add_picture_from_element(self, xml_element_static):
-		for child in xml_element_static:
-			if child.tag == 'duration':
-				sduration = float(child.text)
-			elif child.tag == 'file':
-				pic_path = child.text
-		return [self.new_row_structure(pic_path, sduration, 0)]
-
-	def add_transition_to_last_pic(self, xml_element_transition, pic_list):
-		for child in xml_element_transition:
-			if child.tag == 'duration':
-				tduration = float(child.text)
-			elif child.tag == 'from':
-				path_from = child.text
-			elif child.tag == 'to':
-				path_to = child.text
-		if path_from == pic_list[-1]['filename']:
-			pic_list[-1]['trans_time'] = tduration
-		# else: # TODO ?
-		# 	print('transition incorrectly added', path_from, pic_list[-1]['filename'])
-		return pic_list
-
-	def new_row_structure(self, filename, static_time, trans_time):
-		row_structure = {
-			'filename': filename,
-			'static_time': static_time,
-			'trans_time': trans_time
-		}
-		return row_structure
+		self._data_model.load_from_xml(xml_text)
 
 	############################################################################
 	# Saving ###################################################################
