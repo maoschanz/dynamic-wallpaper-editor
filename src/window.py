@@ -557,11 +557,13 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 	def load_gfile(self, gfile):
 		self.gio_file = gfile
-		if self.load_list_from_xml():
+		try:
+			self.load_list_from_xml()
 			self.update_win_title(self.gio_file.get_path().split('/')[-1])
 			self.auto_detect_type()
 			self.set_action_sensitive('set_wp', True)
-		else:
+		except Exception as err:
+			self.show_notification(str(err))
 			self.gio_file = None
 
 	def load_list_from_xml(self):
@@ -571,11 +573,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 			f = open(self.gio_file.get_path(), 'r')
 			xml_text = f.read()
 			f.close()
-		except Exception:
-			self.show_notification(_("This dynamic wallpaper is corrupted"))
-			# So corrupted it can't even be read
-			return False
-		return self.load_list_from_string(xml_text)
+		except Exception as err:
+			raise Exception(_("This dynamic wallpaper is corrupted"))
+			# So corrupted it can't even be read as a text file
+		self.load_list_from_string(xml_text)
 
 	def load_list_from_string(self, xml_text):
 		self.view.reset_view()
@@ -584,14 +585,12 @@ class DWEWindow(Gtk.ApplicationWindow):
 		try:
 			root = xml_parser.fromstring(xml_text)
 		except Exception as err:
-			self.show_notification(_("This dynamic wallpaper is corrupted"))
+			raise Exception(_("This dynamic wallpaper is corrupted"))
 			# TODO can be improved, the parseerror from the module gives the line number
 			# what's in err?
-			return False
 
 		if root.tag != 'background':
-			self.show_notification(_("This XML file doesn't describe a valid dynamic wallpaper"))
-			return False
+			raise Exception(_("This XML file doesn't describe a valid dynamic wallpaper"))
 
 		for child in root:
 			if child.tag == 'starttime':
@@ -604,7 +603,6 @@ class DWEWindow(Gtk.ApplicationWindow):
 				self.show_notification(str(_("Unknown element: %s") % child.tag))
 
 		self.view.add_pictures_to_list(pic_list)
-		return True
 
 	def set_start_time(self, xml_element):
 		for child in xml_element:
