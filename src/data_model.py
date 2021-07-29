@@ -21,9 +21,9 @@ class DWEDataModel():
 
 	def __init__(self, window):
 		self._window = window
-		self._dw_data = []
+		self._dw_data = {}
 		self._history_lock = False
-		self._initial_state = []
+		self._initial_state = {}
 		self._history = []
 		self._undone = []
 
@@ -60,6 +60,16 @@ class DWEDataModel():
 		if op_type == 'delete':
 			pic_id = operation['pic_id']
 			self.delete_picture(pic_id)
+			return
+
+		if op_type == 'start-time':
+			year = operation['year']
+			month = operation['month']
+			day = operation['day']
+			hour = operation['hour']
+			minute = operation['minute']
+			second = operation['second']
+			self.change_start_time(year, month, day, hour, minute, second)
 			return
 
 	def end_model_change(self, operation):
@@ -127,6 +137,9 @@ class DWEDataModel():
 		pass
 
 	def change_transition_time(self, pic_id, new_value):
+		pass
+
+	def change_start_time(self, year, month, day, hour, minute, second):
 		pass
 
 	############################################################################
