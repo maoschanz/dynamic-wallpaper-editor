@@ -22,11 +22,12 @@ class DWEDataModel():
 
 	def __init__(self, window):
 		self._window = window
-		self._dw_data = {}
+		self._dw_data = {'start-time': {}, 'pictures': []}
 		self._history_lock = False
-		self._initial_state = {}
+		self._initial_state = {'start-time': {}, 'pictures': []}
 		self._history = []
 		self._undone = []
+		self._next_id = 0
 
 	def do_operation(self, operation):
 		op_type = operation['type']
@@ -37,14 +38,12 @@ class DWEDataModel():
 		if op_type == 'multi':
 			for pic_sub_op in operation['list']:
 				self.do_operation(pic_sub_op)
-			return
 
 		if op_type == 'add':
 			path = operation['path']
 			static = operation['static']
 			transition = operation['transition']
 			self.add_picture(path, static, transition)
-			return
 
 		if op_type == 'edit':
 			pic_id = operation['pic_id']
@@ -56,12 +55,10 @@ class DWEDataModel():
 				self.change_static_time(pic_id, operation['static'])
 			if 'transition' in operation:
 				self.change_transition_time(pic_id, operation['transition'])
-			return
 
 		if op_type == 'delete':
 			pic_id = operation['pic_id']
 			self.delete_picture(pic_id)
-			return
 
 		if op_type == 'start-time':
 			year = operation['year']
@@ -71,7 +68,12 @@ class DWEDataModel():
 			minute = operation['minute']
 			second = operation['second']
 			self.change_start_time(year, month, day, hour, minute, second)
-			return
+
+		# If `do_operation` is called because the user interacted with a widget
+		# then it'll really add the operation to the history & update the view,
+		# but otherwise (loading a file, undoing, 'multi' operation, whatever
+		# there is a guard clause.
+		self.end_model_change(operation)
 
 	def end_model_change(self, operation):
 		if self._history_lock:
@@ -195,23 +197,39 @@ class DWEDataModel():
 	############################################################################
 
 	def add_picture(self, path, static, transition):
-		# TODO generate a pic_id before inserting into dw_data
-		pass
+		pic_id = self._next_id
+		self._next_id += 1
+		pic_structure = {
+			'pic_id': pic_id,
+			'path': path,
+			'static': static,
+			'transition': transition,
+			'index': len(self._dw_data['pictures']),
+		}
+		self._dw_data['pictures'].append(pic_structure)
 
 	def delete_picture(self, pic_id):
 		pass
 
 	def change_picture_path(self, pic_id, new_value):
-		pass
+		for pic in self._dw_data['pictures']:
+			if pic['pic_id'] == pic_id:
+				pic['path'] = new_value
 
 	def change_picture_index(self, pic_id, new_value):
-		pass
+		for pic in self._dw_data['pictures']:
+			if pic['pic_id'] == pic_id:
+				pic['index'] = new_value
 
 	def change_static_time(self, pic_id, new_value):
-		pass
+		for pic in self._dw_data['pictures']:
+			if pic['pic_id'] == pic_id:
+				pic['static'] = new_value
 
 	def change_transition_time(self, pic_id, new_value):
-		pass
+		for pic in self._dw_data['pictures']:
+			if pic['pic_id'] == pic_id:
+				pic['transition'] = new_value
 
 	def change_start_time(self, year, month, day, hour, minute, second):
 		pass
