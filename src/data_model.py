@@ -144,9 +144,6 @@ class DWEDataModel():
 				msg = _("Unknown element: %s") % child.tag
 				self._window.show_notification(msg)
 
-		self._window.view.reset_view()
-		self._window.view.add_pictures_to_list(self._dw_data['pictures'])
-
 		self._initial_state = copy.copy(self._dw_data) # .deepcopy maybe?
 		self.update_view()
 

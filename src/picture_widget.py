@@ -1,6 +1,6 @@
 # picture_widget.py
 #
-# Copyright 2018-2019 Romain F. T.
+# Copyright 2018-2021 Romain F. T.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -170,46 +170,6 @@ class DWEPictureWidget(Gtk.Box):
 		new_end = [h % 24, m, s]
 		end_time = str(new_end[0]) + ':' + str(new_end[1]) + ':' + str(new_end[2])
 		return msg.format(start_time, end_time), new_end
-
-	############################################################################
-
-	def generate_static(self, st_time):
-		"""Returns a valid XML code for this picture. The duration can
-		optionally be set as a parameter (if None, the spinbutton specific to
-		the picture will be used)."""
-		if st_time is None:
-			time_str = str(self.static_time_btn.get_value())
-		else:
-			time_str = str(st_time)
-		raw_string = (
-'''
-	<static>
-		<file>{fn}</file>
-		<duration>{dur}</duration>
-	</static>
-''').format(fn=self.filename, dur=time_str)
-		return str(raw_string)
-
-	def generate_transition(self, tr_time, next_fn):
-		"""Returns a valid XML code for a transition from this picture to the
-		filename given as a parameter. The duration can	optionally be set as a
-		parameter too (if None, self's spinbutton will be used)."""
-		if tr_time is None:
-			time_str = str(self.trans_time_btn.get_value())
-		else:
-			time_str = str(tr_time)
-		if time_str == '0.0':
-			raw_string = ''
-		else:
-			raw_string = (
-'''
-	<transition type="overlay">
-		<duration>{dur}</duration>
-		<from>{fn}</from>
-		<to>{nfn}</to>
-	</transition>
-''').format(dur=time_str, fn=self.filename, nfn=next_fn)
-		return str(raw_string)
 
 	############################################################################
 
