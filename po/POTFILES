@@ -8,6 +8,7 @@ src/ui/picture_thumbnail.ui
 src/ui/start_time.ui
 src/ui/shortcuts.ui
 src/ui/window.ui
+src/data_model.py
 src/main.py
 src/misc.py
 src/picture_widget.py

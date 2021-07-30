@@ -22,6 +22,9 @@ class DWEDataModel():
 
 	def __init__(self, window):
 		self._window = window
+		self._reset()
+
+	def _reset(self):
 		self._dw_data = {'start-time': {}, 'pictures': []}
 		self._history_lock = False
 		self._initial_state = {'start-time': {}, 'pictures': []}
@@ -108,12 +111,11 @@ class DWEDataModel():
 		self.do_operation(operation)
 
 	############################################################################
+	# Loading from a string of XML #############################################
 
 	def load_from_xml(self, xml_text):
+		self._reset()
 		self._history_lock = True
-
-		self._window.view.reset_view()
-		pic_list = []
 
 		try:
 			root = xml_parser.fromstring(xml_text)
@@ -129,16 +131,15 @@ class DWEDataModel():
 			if child.tag == 'starttime':
 				self._set_start_time(child)
 			elif child.tag == 'static':
-				pic_list = pic_list + self._add_picture_from_element(child)
+				self._add_picture_from_xml_element(child)
 			elif child.tag == 'transition':
-				pic_list = self._add_transition_to_last_pic(child, pic_list)
+				self._add_transition_to_last_pic(child)
 			else:
-				self.show_notification(str(_("Unknown element: %s") % child.tag))
+				msg = _("Unknown element: %s") % child.tag
+				self._window.show_notification(msg)
 
-		self._window.view.add_pictures_to_list(pic_list)
-
-		# TODO parse
-		# TODO foreach pic self.add_picture
+		self._window.view.reset_view()
+		self._window.view.add_pictures_to_list(self._dw_data['pictures'])
 
 		self._initial_state = copy.copy(self._dw_data) # .deepcopy maybe?
 		self.update_view()
@@ -158,35 +159,44 @@ class DWEDataModel():
 			elif child.tag == 'second':
 				self._window.second_spinbtn.set_value(int(child.text))
 
-	def _add_picture_from_element(self, xml_element_static):
+	def _add_picture_from_xml_element(self, xml_element_static):
+		pic_path = ''
+		static_duration = 0
 		for child in xml_element_static:
 			if child.tag == 'duration':
-				sduration = float(child.text)
+				static_duration = float(child.text)
 			elif child.tag == 'file':
 				pic_path = child.text
-		return [self._new_row_structure(pic_path, sduration, 0)]
+		operation = {
+			'type': 'add',
+			'path': pic_path,
+			'static': static_duration,
+			'transition': 0,
+		}
+		self.do_operation(operation)
 
-	def _add_transition_to_last_pic(self, xml_element_transition, pic_list):
+	def _add_transition_to_last_pic(self, xml_element_transition):
+		tr_duration = 0
+		last_pic_added = self._dw_data['pictures'][-1]
+
 		for child in xml_element_transition:
 			if child.tag == 'duration':
-				tduration = float(child.text)
+				tr_duration = float(child.text)
 			elif child.tag == 'from':
 				path_from = child.text
 			elif child.tag == 'to':
 				path_to = child.text
-		if path_from == pic_list[-1]['filename']:
-			pic_list[-1]['trans_time'] = tduration
-		# else: # TODO ?
-		# 	print('transition incorrectly added', path_from, pic_list[-1]['filename'])
-		return pic_list
 
-	def _new_row_structure(self, filename, static_time, trans_time):
-		row_structure = {
-			'filename': filename,
-			'static_time': static_time,
-			'trans_time': trans_time
-		}
-		return row_structure
+		if path_from == last_pic_added['path']:
+			operation = {
+				'type': 'edit',
+				'pic_id': last_pic_added['pic_id'],
+				'transition': tr_duration,
+			}
+			self.do_operation(operation)
+		else:
+			# XXX could be more pertinent
+			print('transition incorrectly added, wtf')
 
 	############################################################################
 	# Export to a string of XML ################################################

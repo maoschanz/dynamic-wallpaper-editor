@@ -148,11 +148,14 @@ class DWEAbstractView():
 	############################################################################
 
 	def add_pictures_to_list(self, new_pics_list):
-		"""Add pictures from a list of dicts as built by the `new_row_structure`
-		method."""
-		for index in range(0, len(new_pics_list)):
-			p = new_pics_list[index]
-			self._add_one_picture(p['filename'], p['static_time'], p['trans_time'])
+		"""Add pictures from a list of dicts."""
+		for pic in new_pics_list:
+			if 'filename' in pic:
+				# version 2.x (directly from window.py) (TODO remove that shit)
+				self._add_one_picture(pic['filename'], pic['static_time'], pic['trans_time'])
+			elif 'path' in pic:
+				# version 3.x (from data_model.py)
+				self._add_one_picture(pic['path'], pic['static'], pic['transition'])
 		self.restack_indexes()
 		self.window.update_status()
 

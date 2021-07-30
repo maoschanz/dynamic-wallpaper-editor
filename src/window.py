@@ -82,7 +82,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 
 		# Build the UI
 		self.view = None
-		self.rebuild_view( self._settings.get_string('display-mode') )
+		self.rebuild_view()
 		self.build_time_popover()
 		self.build_menus()
 		self.build_all_actions()
@@ -93,7 +93,10 @@ class DWEWindow(Gtk.ApplicationWindow):
 	############################################################################
 	# Building the UI ##########################################################
 
-	def rebuild_view(self, display_mode):
+	def rebuild_view(self):
+		"""Build the view based on the type of view ('list' or 'grid') persisted
+		as a setting."""
+		display_mode = self._settings.get_string('display-mode')
 		xml_text = ''
 		if self.view is not None:
 			xml_text = self.generate_text()
@@ -102,9 +105,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 			self.view = DWERowsView(self)
 		else:
 			self.view = DWEThumbnailsView(self)
-		self._settings.set_string('display-mode', display_mode)
 		if xml_text != '':
-			self.load_list_from_string(xml_text)
+			self._data_model.load_from_xml(xml_text)
 
 	def build_time_popover(self):
 		builder = Gtk.Builder().new_from_resource(UI_PATH + 'start_time.ui')
@@ -257,7 +259,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.update_global_time_box(is_slideshow, is_now_daylight)
 
 	############################################################################
-	# Wallpaper settings #######################################################
+	# Setting as wallpaper #####################################################
 
 	def action_set_wallpaper(self, *args):
 		try:
@@ -389,7 +391,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def on_view_changed(self, *args):
 		state_as_string = args[1].get_string()
 		args[0].set_state(GLib.Variant.new_string(state_as_string))
-		self.rebuild_view(state_as_string)
+		self._settings.set_string('display-mode', state_as_string)
+		self.rebuild_view()
 
 	def sort_pics_by_name(self, *args):
 		self.view.sort_by_name()
