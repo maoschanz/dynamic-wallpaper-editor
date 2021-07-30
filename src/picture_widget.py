@@ -161,6 +161,8 @@ class DWEPictureWidget(Gtk.Box):
 		return new_end
 
 	def update_label_common(self, prev, btn, msg):
+		if btn.get_value() == 0:
+			return "", prev
 		hours, mins, seconds = get_hms(btn.get_value())
 		start_time = str(prev[0]) + ':' + str(prev[1]) + ':' + str(prev[2])
 		total = ((prev[0] + hours) * 60 + prev[1] + mins) * 60 + prev[2] + seconds
@@ -219,9 +221,6 @@ class DWEPictureWidget(Gtk.Box):
 ################################################################################
 
 class DWEPictureRow(DWEPictureWidget):
-	"""This is a row with the thumbnail and the path of the picture, and control
-	buttons (up/down, delete) for this picture. It also contains "spinbuttons"
-	if the user needs them."""
 	__gtype_name__ = 'DWEPictureRow'
 
 	def __init__(self, pic_path, stt, trt, index, window):

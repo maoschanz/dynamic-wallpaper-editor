@@ -149,7 +149,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.lookup_action(action_name).set_state(gvb)
 
 	def get_action_boolean_state(self, action_name):
-		self.lookup_action(action_name).get_state()
+		return self.lookup_action(action_name).get_state()
 
 	def build_all_actions(self):
 		self.add_action_simple('save', self.action_save, ['<Ctrl>s'])
