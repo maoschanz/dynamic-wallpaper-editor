@@ -1,6 +1,6 @@
 # data_model.py
 #
-# Copyright 2018-2021 Romain F. T.
+# Copyright 2021 Romain F. T.
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -81,6 +81,9 @@ class DWEDataModel():
 	def end_model_change(self, operation):
 		if self._history_lock:
 			return
+		# The array has to be sorted because it optimized the view update, and
+		# it is necessary to the XML export
+		self._dw_data['pictures'].sort(key=self._getIndex)
 		self.history.append(operation)
 		self.update_view()
 
@@ -88,6 +91,9 @@ class DWEDataModel():
 		self.update_history_actions()
 		self._history_lock = False
 		self._window.view.update(self._dw_data)
+
+	def _getIndex(self, pic):
+		return pic['index']
 
 	############################################################################
 	# History ##################################################################
@@ -145,19 +151,30 @@ class DWEDataModel():
 		self.update_view()
 
 	def _set_start_time(self, xml_element):
+		year = month = day = hour = minute = second = 0
 		for child in xml_element:
 			if child.tag == 'year':
-				self._window.year_spinbtn.set_value(int(child.text))
+				year = int(child.text)
 			elif child.tag == 'month':
-				self._window.month_spinbtn.set_value(int(child.text))
+				month = int(child.text)
 			elif child.tag == 'day':
-				self._window.day_spinbtn.set_value(int(child.text))
+				day = int(child.text)
 			elif child.tag == 'hour':
-				self._window.hour_spinbtn.set_value(int(child.text))
+				hour = int(child.text)
 			elif child.tag == 'minute':
-				self._window.minute_spinbtn.set_value(int(child.text))
+				minute = int(child.text)
 			elif child.tag == 'second':
-				self._window.second_spinbtn.set_value(int(child.text))
+				second = int(child.text)
+		operation = {
+			'type': 'start-time',
+			'year': year,
+			'month': month,
+			'day': day,
+			'hour': hour,
+			'minute': minute,
+			'second': second,
+		}
+		self.do_operation(operation)
 
 	def _add_picture_from_xml_element(self, xml_element_static):
 		pic_path = ''
@@ -248,6 +265,7 @@ class DWEDataModel():
 		return self._dw_data['pictures'][0]['path']
 
 	############################################################################
+	# Private (?) methods used by `do_operation` ###############################
 
 	def add_picture(self, path, static, transition):
 		pic_id = self._next_id
@@ -262,7 +280,9 @@ class DWEDataModel():
 		self._dw_data['pictures'].append(pic_structure)
 
 	def delete_picture(self, pic_id):
-		pass
+		for pic in self._dw_data['pictures']:
+			if pic['pic_id'] == pic_id:
+				self._dw_data['pictures'].remove(pic)
 
 	def change_picture_path(self, pic_id, new_value):
 		for pic in self._dw_data['pictures']:
@@ -285,7 +305,14 @@ class DWEDataModel():
 				pic['transition'] = new_value
 
 	def change_start_time(self, year, month, day, hour, minute, second):
-		pass
+		self._dw_data['start-time'] = {
+			'year': year,
+			'month': month,
+			'day': day,
+			'hour': hour,
+			'minute': minute,
+			'second': second,
+		}
 
 	############################################################################
 ################################################################################
