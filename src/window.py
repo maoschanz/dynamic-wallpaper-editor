@@ -402,8 +402,12 @@ class DWEWindow(Gtk.ApplicationWindow):
 		"""Delete the selected row. The red button does NOT use this action, it
 		calls directly `destroy_pic` (user can click on an unselect row's
 		'delete' button)."""
-		pic = self.view.get_active_pic()
-		pic.destroy_pic()
+		pic_id = self.view.get_active_pic().pic_id
+		operation = {
+			'type': 'delete',
+			'pic_id': pic_id,
+		}
+		self._data_model.do_operation(operation)
 
 	def action_pic_replace(self, *args):
 		pic = self.view.get_active_pic()

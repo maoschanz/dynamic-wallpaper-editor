@@ -175,8 +175,11 @@ class DWEPictureWidget(Gtk.Box):
 	############################################################################
 
 	def destroy_pic(self, *args):
-		self.window.view.destroy_pic(self.indx)
-		self.destroy()
+		operation = {
+			'type': 'delete',
+			'pic_id': self.pic_id,
+		}
+		self.window._data_model.do_operation(operation)
 
 	############################################################################
 ################################################################################
