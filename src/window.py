@@ -312,9 +312,11 @@ class DWEWindow(Gtk.ApplicationWindow):
 				total_time += self.static_time_btn.get_value()
 				total_time += self.trans_time_btn.get_value()
 		else:
-			temp_time = self.get_start_time()
-			is_daylight = self.get_action_boolean_state('total_24')
-			total_time = self.view.get_total_time(temp_time, is_daylight)
+			total_time = self.view.get_view_total_time()
+
+			if self.get_action_boolean_state('total_24'):
+				temp_time = self.get_start_time()
+				self.view.update_daylight_timings(temp_time)
 		return int(total_time)
 
 	def get_start_time(self):

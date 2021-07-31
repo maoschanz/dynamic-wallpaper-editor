@@ -201,16 +201,19 @@ class DWEAbstractView():
 
 	############################################################################
 
-	def get_total_time(self, temp_time, is_daylight):
+	def get_view_total_time(self):
 		total_time = 0
-		for index in range(0, self.length):
-			r = self.get_pic_at(index)
-			total_time += r.static_time_btn.get_value()
-			total_time += r.trans_time_btn.get_value()
-			if is_daylight:
-				temp_time = r.update_static_label(temp_time)
-				temp_time = r.update_transition_label(temp_time)
+		for w in self.get_view_widget().get_children():
+			row = w.get_child()
+			total_time += row.static_time_btn.get_value()
+			total_time += row.trans_time_btn.get_value()
 		return total_time
+
+	def update_daylight_timings(self, temp_time):
+		for w in self.get_view_widget().get_children():
+			row = w.get_child()
+			temp_time = row.update_static_label(temp_time)
+			temp_time = row.update_transition_label(temp_time)
 
 	def update_to_mode(self, is_global, is_daylight):
 		for index in range(0, self.length):

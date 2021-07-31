@@ -230,6 +230,20 @@ class DWEPictureThumbnail(DWEPictureWidget):
 		self.generate_thumbnail(250, 140)
 		return False
 
+	def update_static_label(self, prev):
+		new_end = super().update_static_label(prev)
+		label = self.static_label.get_label()
+		label += "\n" + self.transition_label.get_label()
+		self.time_btn.set_tooltip_text(label)
+		return new_end
+
+	def update_transition_label(self, prev):
+		new_end = super().update_transition_label(prev)
+		label = self.static_label.get_label()
+		label += "\n" + self.transition_label.get_label()
+		self.time_btn.set_tooltip_text(label)
+		return new_end
+
 	############################################################################
 ################################################################################
 
