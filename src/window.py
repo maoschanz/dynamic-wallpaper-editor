@@ -505,14 +505,18 @@ class DWEWindow(Gtk.ApplicationWindow):
 		file_chooser.destroy()
 
 	def _add_pictures_from_untimed_list(self, pictures_array):
-		pictures_dicts = []
+		operation = {
+			'type': 'multi',
+			'list': [],
+		}
 		for pic_path in pictures_array:
-			pictures_dicts.append({
-				'filename': pic_path,
-				'static_time': 10,
-				'trans_time': 0
+			operation['list'].append({
+				'type': 'add',
+				'path': pic_path,
+				'static': 10,
+				'transition': 0
 			})
-		self.view.add_pictures_to_list(pictures_dicts)
+		self._data_model.do_operation(operation)
 
 	def _get_add_pic_dialog(self, title, allow_multiple):
 		file_chooser = Gtk.FileChooserDialog(title, self,

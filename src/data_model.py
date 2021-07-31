@@ -84,7 +84,7 @@ class DWEDataModel():
 		# The array has to be sorted because it optimized the view update, and
 		# it is necessary to the XML export
 		self._dw_data['pictures'].sort(key=self._getIndex)
-		self.history.append(operation)
+		self._history.append(operation)
 		self.update_view()
 
 	def update_view(self):
@@ -103,7 +103,7 @@ class DWEDataModel():
 		self._window.set_action_sensitive('redo', len(self._undone) > 0)
 
 	def undo(self):
-		operation = self.history.pop()
+		operation = self._history.pop()
 		self.undone.append(operation)
 		self._history_lock = True
 		self._dw_data = copy.copy(self._initial_state) # .deepcopy maybe?
@@ -113,7 +113,7 @@ class DWEDataModel():
 
 	def redo(self):
 		operation = self.undone.pop()
-		self.history.append(operation)
+		self._history.append(operation)
 		self.do_operation(operation)
 
 	############################################################################

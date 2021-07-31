@@ -53,7 +53,28 @@ class DWEAbstractView():
 	############################################################################
 
 	def update(self, dw_data):
-		pass
+		widgets = self.get_view_widget().get_children()
+		delta_removed = []
+		delta_added = []
+		for p in dw_data['pictures']:
+			delta_added.append(p['pic_id'])
+		for w in widgets:
+			widget_pic_id = w.get_child().pic_id
+			if widget_pic_id in delta_added:
+				delta_added.remove(widget_pic_id)
+			delta_removed.append(widget_pic_id)
+		for p in dw_data['pictures']:
+			if p['pic_id'] in delta_removed:
+				delta_removed.remove(p['pic_id'])
+
+		for w in widgets:
+			if w.get_child().pic_id in delta_removed:
+				self.get_view_widget().remove(w)
+				w.destroy()
+
+		for pic in dw_data['pictures']:
+			if pic['pic_id'] in delta_added:
+				self._add_one_picture(pic)
 
 	############################################################################
 
@@ -121,6 +142,9 @@ class DWEAbstractView():
 
 	############################################################################
 
+	def _add_one_picture(self, pic_structure):
+		pass # Implemented in non-abstract classes
+
 	def get_active_pic(self):
 		rows = self.get_view_widget().get_children()
 		for r in rows:
@@ -144,23 +168,6 @@ class DWEAbstractView():
 	def filter_view(self, pic):
 		target_text = pic.get_child().filename.lower()
 		return (self.searched_str in target_text)
-
-	############################################################################
-
-	def add_pictures_to_list(self, new_pics_list):
-		"""Add pictures from a list of dicts."""
-		for pic in new_pics_list:
-			if 'filename' in pic:
-				# version 2.x (directly from window.py) (TODO remove that shit)
-				self._add_one_picture(pic['filename'], pic['static_time'], pic['trans_time'])
-			elif 'path' in pic:
-				# version 3.x (from data_model.py)
-				self._add_one_picture(pic['path'], pic['static'], pic['transition'])
-		self.restack_indexes()
-		self.window.update_status()
-
-	def _add_one_picture(self, filename, stt, trt):
-		pass # Implemented in non-abstract classes
 
 	############################################################################
 
@@ -306,9 +313,9 @@ class DWERowsView(DWEAbstractView):
 		else:
 			return row.get_child()
 
-	def _add_one_picture(self, filename, stt, trt):
+	def _add_one_picture(self, pic_structure):
 		self.set_unsaved()
-		row = DWEPictureRow(filename, stt, trt, self.length, self.window)
+		row = DWEPictureRow(pic_structure, self.window)
 		self.list_box.add(row)
 		self.update_length()
 
@@ -336,9 +343,9 @@ class DWEThumbnailsView(DWEAbstractView):
 		else:
 			return children[0].get_child()
 
-	def _add_one_picture(self, filename, stt, trt):
+	def _add_one_picture(self, pic_structure):
 		self.set_unsaved()
-		pic = DWEPictureThumbnail(filename, stt, trt, self.length, self.window)
+		pic = DWEPictureThumbnail(pic_structure, self.window)
 		self.flow_box.add(pic)
 		self.update_length()
 

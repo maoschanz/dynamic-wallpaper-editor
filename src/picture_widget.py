@@ -25,11 +25,12 @@ UI_PATH = '/com/github/maoschanz/DynamicWallpaperEditor/ui/'
 
 class DWEPictureWidget(Gtk.Box):
 
-	def __init__(self, pic_path, index, window):
+	def __init__(self, pic_structure, window):
 		super().__init__()
-		self.filename = pic_path
+		self.pic_id = pic_structure['pic_id']
+		self.filename = pic_structure['path']
+		self.indx = pic_structure['index']
 		self.window = window
-		self.indx = index
 
 	def build_ui(self, stt, trt, template, w, h):
 		builder = Gtk.Builder().new_from_resource(UI_PATH + template)
@@ -183,8 +184,10 @@ class DWEPictureWidget(Gtk.Box):
 class DWEPictureRow(DWEPictureWidget):
 	__gtype_name__ = 'DWEPictureRow'
 
-	def __init__(self, pic_path, stt, trt, index, window):
-		super().__init__(pic_path, index, window)
+	def __init__(self, pic_structure, window):
+		super().__init__(pic_structure, window)
+		stt = pic_structure['static']
+		trt = pic_structure['transition']
 		builder = self.build_ui(stt, trt, 'picture_row.ui', 114, 64)
 		# ... ?
 		self.end_build_ui()
@@ -200,8 +203,10 @@ class DWEPictureRow(DWEPictureWidget):
 class DWEPictureThumbnail(DWEPictureWidget):
 	__gtype_name__ = 'DWEPictureThumbnail'
 
-	def __init__(self, pic_path, stt, trt, index, window):
-		super().__init__(pic_path, index, window)
+	def __init__(self, pic_structure, window):
+		super().__init__(pic_structure, window)
+		stt = pic_structure['static']
+		trt = pic_structure['transition']
 		builder = self.build_ui(stt, trt, 'picture_thumbnail.ui', 250, 140)
 
 		builder.get_object('time_popover').popdown()
