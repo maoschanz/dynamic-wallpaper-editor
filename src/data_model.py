@@ -43,6 +43,7 @@ class DWEDataModel():
 				self.do_operation(pic_sub_op)
 
 		if op_type == 'add':
+			self._restack_indexes()
 			path = operation['path']
 			static = operation['static']
 			transition = operation['transition']
@@ -83,7 +84,8 @@ class DWEDataModel():
 			return
 		# The array has to be sorted because it optimized the view update, and
 		# it is necessary to the XML export
-		self._dw_data['pictures'].sort(key=self._getIndex)
+		self._dw_data['pictures'].sort(key=self._get_index)
+		self._restack_indexes()
 		self._history.append(operation)
 		self.update_view()
 
@@ -92,8 +94,12 @@ class DWEDataModel():
 		self._history_lock = False
 		self._window.view.update(self._dw_data)
 
-	def _getIndex(self, pic):
+	def _get_index(self, pic):
 		return pic['index']
+
+	def _restack_indexes(self):
+		for i in range(0, len(self._dw_data['pictures'])):
+			self._dw_data['pictures'][i]['index'] = i
 
 	############################################################################
 	# History ##################################################################

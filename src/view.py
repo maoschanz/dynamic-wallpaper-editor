@@ -68,13 +68,28 @@ class DWEAbstractView():
 				delta_removed.remove(p['pic_id'])
 
 		for w in widgets:
-			if w.get_child().pic_id in delta_removed:
+			row = w.get_child()
+			if row.pic_id in delta_removed:
 				self.get_view_widget().remove(w)
 				w.destroy()
+			else:
+				for p in dw_data['pictures']:
+					if p['pic_id'] == row.pic_id:
+						row.indx = p['index']
+						if row.filename != p['path']:
+							row.filename = p['path']
+							row.update_filename()
+						if row.static_time_btn.get_value() != p['static']:
+							row.static_time_btn.set_value(p['static'])
+						if row.trans_time_btn.get_value() != p['transition']:
+							row.trans_time_btn.set_value(p['transition'])
 
 		for pic in dw_data['pictures']:
 			if pic['pic_id'] in delta_added:
 				self._add_one_picture(pic)
+
+		self.get_view_widget().invalidate_sort()
+		self.window.update_status()
 
 	############################################################################
 
@@ -87,14 +102,6 @@ class DWEAbstractView():
 	def update_length(self):
 		self.length = len(self.get_view_widget().get_children())
 		self.update_subtitle(self.length == 0)
-
-	def restack_indexes(self):
-		"""Ensure rows' self.indx attribute corresponds to the actual index of
-		each row."""
-		rows = self.get_view_widget().get_children()
-		for r in rows:
-			r.get_child().indx = r.get_index()
-		self.window.on_time_change()
 
 	def sort_view(self, pic1, pic2, *args):
 		"""Returns int < 0 if pic1 should be before pic2, 0 if they are equal
@@ -183,21 +190,16 @@ class DWEAbstractView():
 		self.move_pic(self.get_active_pic().indx, new_index)
 
 	def move_pic(self, index_from, index_to):
-		self.set_unsaved()
 		if index_from > index_to:
-			self.get_pic_at(index_from).indx = index_to - 1
+			new_index = index_to - 1
 		else:
-			self.get_pic_at(index_from).indx = index_to + 1
-		self.get_view_widget().invalidate_sort()
-		self.restack_indexes()
-
-	def destroy_pic(self, index):
-		self.set_unsaved()
-		direct_child = self.get_view_widget().get_children()[index]
-		self.get_view_widget().remove(direct_child)
-		direct_child.destroy()
-		self.update_length()
-		self.restack_indexes()
+			new_index = index_to + 1
+		operation = {
+			'type': 'edit',
+			'pic_id': self.get_pic_at(index_from).pic_id,
+			'index': new_index,
+		}
+		self.window._data_model.do_operation(operation)
 
 	############################################################################
 
