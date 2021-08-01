@@ -279,22 +279,6 @@ class DWEAbstractView():
 		spinbtn.set_value(int(sb_time))
 
 	############################################################################
-
-	def get_pictures_xml(self, st_time, tr_time):
-		raw_text = ''
-		for index in range(0, self.length):
-			r = self.get_pic_at(index)
-			image = r.filename
-			if index >= self.length-1:
-				next_fn = self.get_pic_at(0).filename
-			else:
-				next_fn = self.get_pic_at(index+1).filename
-			if image is not None:
-				raw_text = str(raw_text) + r.generate_static(st_time)
-				raw_text = str(raw_text) + r.generate_transition(tr_time, next_fn)
-		return str(raw_text)
-
-	############################################################################
 ################################################################################
 
 class DWERowsView(DWEAbstractView):

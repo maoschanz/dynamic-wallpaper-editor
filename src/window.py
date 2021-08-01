@@ -418,8 +418,12 @@ class DWEWindow(Gtk.ApplicationWindow):
 		file_chooser = self._get_add_pic_dialog(title, False)
 		response = file_chooser.run()
 		if response == Gtk.ResponseType.OK:
-			pic.filename = file_chooser.get_filename()
-			pic.update_filename()
+			operation = {
+				'type': 'edit',
+				'pic_id': pic.pic_id,
+				'path': file_chooser.get_filename(),
+			}
+			self._data_model.do_operation(operation)
 		self.status_bar.pop(1)
 		file_chooser.destroy()
 
@@ -468,8 +472,9 @@ class DWEWindow(Gtk.ApplicationWindow):
 	# Adding pictures to the view ##############################################
 
 	def action_add_folder(self, *args):
-		"""Run an "open" dialog and create a list of DWEPictureRow from the result.
-		Actual paths are needed in XML files, so it can't be a native dialog."""
+		"""Run an "open" dialog and create a list of DWEPictureRow from the
+		result. The actual paths are needed in XML files, so it can't be a
+		'native dialog' (system's portal)."""
 		self.status_bar.push(1, _("Loading…"))
 		file_chooser = Gtk.FileChooserDialog(_("Add a folder"), self,
 		               Gtk.FileChooserAction.SELECT_FOLDER,
