@@ -110,7 +110,7 @@ class DWEDataModel():
 
 	def undo(self):
 		operation = self._history.pop()
-		self.undone.append(operation)
+		self._undone.append(operation)
 		self._history_lock = True
 		self._dw_data = copy.copy(self._initial_state) # .deepcopy maybe?
 		for operation in self._history:
@@ -118,7 +118,7 @@ class DWEDataModel():
 		self.update_view()
 
 	def redo(self):
-		operation = self.undone.pop()
+		operation = self._undone.pop()
 		self._history.append(operation)
 		self.do_operation(operation)
 

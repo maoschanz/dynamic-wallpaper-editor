@@ -308,7 +308,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 	def get_total_time(self):
 		total_time = 0
 		if self.get_action_boolean_state('same_duration'):
-			for index in range(0, self.view.length):
+			for index in range(0, self.view._length):
 				total_time += self.static_time_btn.get_value()
 				total_time += self.trans_time_btn.get_value()
 		else:
@@ -329,8 +329,8 @@ class DWEWindow(Gtk.ApplicationWindow):
 		"""Update the total time in the statusbar."""
 		self.status_bar.pop(0)
 		total_time = self.get_total_time()
-		message = ngettext("%s picture", "%s pictures", self.view.length) \
-		                                              % self.view.length + ' - '
+		message = ngettext("%s picture", "%s pictures", self.view._length) \
+		                                              % self.view._length + ' - '
 		message += ngettext("Total time: %s second", "Total time: %s seconds", \
 		                                                total_time) % total_time
 		# XXX ça prend en compte le 0 comme un pluriel cette merde ^
@@ -446,7 +446,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self.view.rel_move_pic(True)
 
 	def action_pic_last(self, *args):
-		self.view.abs_move_pic(self.view.length)
+		self.view.abs_move_pic(self.view._length)
 
 	############################################################################
 	# Find #####################################################################

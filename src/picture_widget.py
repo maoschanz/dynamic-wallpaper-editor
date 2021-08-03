@@ -39,12 +39,12 @@ class DWEPictureWidget(Gtk.Box):
 
 		# Thumbnail
 		self.image = builder.get_object('pic_thumbnail')
-		# self.generate_thumbnail() will be called later by self.update_filename
+		# self.generate_thumbnail() will be called later by self.update_for_current_file
 
 		# File name
 		self.label_widget = builder.get_object('pic_label')
 		self.label_widget.set_ellipsize(Pango.EllipsizeMode.START)
-		GLib.timeout_add(500, self.update_filename, {})
+		GLib.timeout_add(500, self.update_for_current_file, {})
 
 		# Schedule labels
 		self.static_label = builder.get_object('static_label')
@@ -62,10 +62,10 @@ class DWEPictureWidget(Gtk.Box):
 		# Picture durations
 		self.static_time_btn = builder.get_object('static_btn')
 		self.trans_time_btn = builder.get_object('transition_btn')
-		self.static_time_btn.connect('value-changed', self.on_static_changed)
-		self.trans_time_btn.connect('value-changed', self.on_transition_changed)
 		self.static_time_btn.set_value(float(stt))
 		self.trans_time_btn.set_value(float(trt))
+		self.static_time_btn.connect('value-changed', self.on_static_changed)
+		self.trans_time_btn.connect('value-changed', self.on_transition_changed)
 
 		# Ability to be dragged
 		pic_box.drag_source_set(Gdk.ModifierType.BUTTON1_MASK, None, Gdk.DragAction.MOVE)
@@ -106,9 +106,9 @@ class DWEPictureWidget(Gtk.Box):
 
 	def replace(self, searched_str, new_str):
 		self.filename = self.filename.replace(searched_str, new_str)
-		self.update_filename()
+		self.update_for_current_file()
 
-	def update_filename(self, content_params={}):
+	def update_for_current_file(self, content_params={}):
 		self.label_widget.set_label(self.filename)
 		# the concrete classes will call generate_thumbnail themselves
 		return False
@@ -131,21 +131,33 @@ class DWEPictureWidget(Gtk.Box):
 
 	############################################################################
 
+	def set_new_static(self, new_static):
+		if self.static_time_btn.get_value() != new_static:
+			self.static_time_btn.set_value(new_static)
+
+	def set_new_transition(self, new_transition):
+		if self.trans_time_btn.get_value() != new_transition:
+			self.trans_time_btn.set_value(new_transition)
+
 	def on_static_changed(self, *args):
-		self.update_static_tooltip()
-		self.window.on_time_change()
+		time = self.static_time_btn.get_value()
+		self.static_time_btn.set_tooltip_text(time_to_string(time))
+		operation = {
+			'type': 'edit',
+			'pic_id': self.pic_id,
+			'static': time,
+		}
+		self.window._data_model.do_operation(operation)
 
 	def on_transition_changed(self, *args):
-		self.update_transition_tooltip()
-		self.window.on_time_change()
-
-	def update_static_tooltip(self):
-		total = self.static_time_btn.get_value()
-		self.static_time_btn.set_tooltip_text(time_to_string(total))
-
-	def update_transition_tooltip(self):
-		total = self.trans_time_btn.get_value()
-		self.trans_time_btn.set_tooltip_text(time_to_string(total))
+		time = self.trans_time_btn.get_value()
+		self.trans_time_btn.set_tooltip_text(time_to_string(time))
+		operation = {
+			'type': 'edit',
+			'pic_id': self.pic_id,
+			'transition': time,
+		}
+		self.window._data_model.do_operation(operation)
 
 	############################################################################
 
@@ -195,8 +207,8 @@ class DWEPictureRow(DWEPictureWidget):
 		# ... ?
 		self.end_build_ui()
 
-	def update_filename(self, content_params={}):
-		super().update_filename()
+	def update_for_current_file(self, content_params={}):
+		super().update_for_current_file()
 		self.generate_thumbnail(114, 64)
 		return False
 
@@ -225,8 +237,8 @@ class DWEPictureThumbnail(DWEPictureWidget):
 		self.alt_label.set_visible(is_global)
 		self.time_btn.set_visible(not is_global)
 
-	def update_filename(self, content_params={}):
-		super().update_filename()
+	def update_for_current_file(self, content_params={}):
+		super().update_for_current_file()
 		self.generate_thumbnail(250, 140)
 		return False
 

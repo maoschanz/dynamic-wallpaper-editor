@@ -25,17 +25,17 @@ class DWEAbstractView():
 
 	def __init__(self, window):
 		self.window = window
-		self.length = 0
+		self._length = 0
 		self.searched_str = ""
 
-	def add_to_view(self, widget):
+	def _add_list_container(self, widget):
 		widget.set_sort_func(self.sort_view)
 		widget.set_filter_func(self.filter_view)
 		self.window.scrolled_window.add(widget)
-		self.update_length() # because it couldn't be done before
 
 	def destroy(self):
-		self.reset_view()
+		for w in self.get_view_widget().get_children():
+			w.destroy()
 		child = self.window.scrolled_window.get_child()
 		self.window.scrolled_window.remove(child)
 		child.destroy()
@@ -78,17 +78,17 @@ class DWEAbstractView():
 						row.indx = p['index']
 						if row.filename != p['path']:
 							row.filename = p['path']
-							row.update_filename()
-						if row.static_time_btn.get_value() != p['static']:
-							row.static_time_btn.set_value(p['static'])
-						if row.trans_time_btn.get_value() != p['transition']:
-							row.trans_time_btn.set_value(p['transition'])
+							row.update_for_current_file()
+						row.set_new_static(p['static'])
+						row.set_new_transition(p['transition'])
 
 		for pic in dw_data['pictures']:
 			if pic['pic_id'] in delta_added:
 				self._add_one_picture(pic)
 
 		self.get_view_widget().invalidate_sort()
+		self._length = len(self.get_view_widget().get_children())
+		self.update_subtitle(self._length == 0)
 		self.window.update_status()
 
 	############################################################################
@@ -98,10 +98,6 @@ class DWEAbstractView():
 
 	def get_pic_at(self, index):
 		return self.get_view_widget().get_children()[index].get_child()
-
-	def update_length(self):
-		self.length = len(self.get_view_widget().get_children())
-		self.update_subtitle(self.length == 0)
 
 	def sort_view(self, pic1, pic2, *args):
 		"""Returns int < 0 if pic1 should be before pic2, 0 if they are equal
@@ -142,11 +138,6 @@ class DWEAbstractView():
 			full_path = full_path.replace(filename, zeros + filename)
 		return full_path
 
-	def reset_view(self):
-		while self.length > 0:
-			self.get_view_widget().get_children().pop().destroy()
-			self.update_length()
-
 	############################################################################
 
 	def _add_one_picture(self, pic_structure):
@@ -163,17 +154,12 @@ class DWEAbstractView():
 	def get_selected_child(self):
 		pass # Implemented in non-abstract classes
 
-	def replace_str(self, new_str):
-		rows = self.get_view_widget().get_children()
-		for r in rows:
-			r.get_child().replace(self.searched_str, new_str)
-
 	def search_pic(self, string):
 		self.searched_str = string.lower()
 		self.get_view_widget().invalidate_filter()
 
-	def filter_view(self, pic):
-		target_text = pic.get_child().filename.lower()
+	def filter_view(self, each_pic):
+		target_text = each_pic.get_child().filename.lower()
 		return (self.searched_str in target_text)
 
 	############################################################################
@@ -218,13 +204,13 @@ class DWEAbstractView():
 			temp_time = row.update_transition_label(temp_time)
 
 	def update_to_mode(self, is_global, is_daylight):
-		for index in range(0, self.length):
+		for index in range(0, self._length):
 			self.get_pic_at(index).update_to_type(is_global, is_daylight)
 
 	def all_have_same_time(self):
 		st0 = self.get_pic_at(0).static_time_btn.get_value()
 		tr0 = self.get_pic_at(0).trans_time_btn.get_value()
-		for index in range(0, self.length):
+		for index in range(0, self._length):
 			r = self.get_pic_at(index)
 			if st0 != r.static_time_btn.get_value():
 				return False, st0, tr0
@@ -238,9 +224,9 @@ class DWEAbstractView():
 		the night is 40% of a cycle. 5% of the total time is used for
 		transitions."""
 
-		if self.length == 0:
+		if self._length == 0:
 			return
-		elif self.length == 1:
+		elif self._length == 1:
 			# Special case
 			self.get_pic_at(0).static_time_btn.set_value(86400)
 			self.get_pic_at(0).trans_time_btn.set_value(0)
@@ -251,7 +237,7 @@ class DWEAbstractView():
 			self.fix24_method2()
 
 		# Update the tooltips and the status bar
-		for index in range(0, self.length):
+		for index in range(0, self._length):
 			self.get_pic_at(index).on_static_changed()
 			self.get_pic_at(index).on_transition_changed()
 
@@ -267,7 +253,7 @@ class DWEAbstractView():
 		missing_time = 86400 - current_total
 		if missing_time == 0:
 			return
-		for index in range(0, self.length):
+		for index in range(0, self._length):
 			st_spinbtn = self.get_pic_at(index).static_time_btn
 			self.spinbtn_fix24_update(st_spinbtn, current_total, missing_time)
 			tr_spinbtn = self.get_pic_at(index).trans_time_btn
@@ -290,7 +276,7 @@ class DWERowsView(DWEAbstractView):
 		label = Gtk.Label(visible=True, \
 		             label=_("Add new pictures, or open an existing XML file."))
 		self.list_box.set_placeholder(label)
-		self.add_to_view(self.list_box)
+		self._add_list_container(self.list_box)
 
 	def get_view_widget(self):
 		return self.list_box
@@ -306,7 +292,6 @@ class DWERowsView(DWEAbstractView):
 		self.set_unsaved()
 		row = DWEPictureRow(pic_structure, self.window)
 		self.list_box.add(row)
-		self.update_length()
 
 	############################################################################
 ################################################################################
@@ -320,7 +305,7 @@ class DWEThumbnailsView(DWEAbstractView):
 		# label = Gtk.Label(visible=True, \
 		#              label=_("Add new pictures, or open an existing XML file."))
 		# self.flow_box.set_placeholder(label)
-		self.add_to_view(self.flow_box)
+		self._add_list_container(self.flow_box)
 
 	def get_view_widget(self):
 		return self.flow_box
@@ -336,7 +321,6 @@ class DWEThumbnailsView(DWEAbstractView):
 		self.set_unsaved()
 		pic = DWEPictureThumbnail(pic_structure, self.window)
 		self.flow_box.add(pic)
-		self.update_length()
 
 	############################################################################
 ################################################################################
