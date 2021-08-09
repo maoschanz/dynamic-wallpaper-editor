@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-26 20:18+0200\n"
-"PO-Revision-Date: 2021-08-09 20:05+0200\n"
+"PO-Revision-Date: 2021-08-09 21:46+0200\n"
 "Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -462,25 +462,25 @@ msgstr "Obrázky JPEG"
 #, python-format
 msgid "%s hour"
 msgid_plural "%s hours"
-msgstr[0] "%s hodin"
-msgstr[1] "%s hodina"
-msgstr[2] "%s hodiny"
+msgstr[0] "%s hodina"
+msgstr[1] "%s hodiny"
+msgstr[2] "%s hodin"
 
 #: src/misc.py
 #, python-format
 msgid "%s minute"
 msgid_plural "%s minutes"
-msgstr[0] "%s minut"
-msgstr[1] "%s minuta"
-msgstr[2] "%s minuty"
+msgstr[0] "%s minuta"
+msgstr[1] "%s minuty"
+msgstr[2] "%s minut"
 
 #: src/misc.py
 #, python-format
 msgid "%s second"
 msgid_plural "%s seconds"
-msgstr[0] "%s sekund"
-msgstr[1] "%s sekunda"
-msgstr[2] "%s sekundy"
+msgstr[0] "%s sekunda"
+msgstr[1] "%s sekundy"
+msgstr[2] "%s sekund"
 
 #: src/picture_widget.py
 msgid ""
@@ -515,17 +515,17 @@ msgstr "Přetáhněte obrázky pro změnu pořadí."
 #, python-format
 msgid "%s picture"
 msgid_plural "%s pictures"
-msgstr[0] "%s obrázků"
-msgstr[1] "%s obrázek"
-msgstr[2] "%s obrázky"
+msgstr[0] "%s obrázek"
+msgstr[1] "%s obrázky"
+msgstr[2] "%s obrázků"
 
 #: src/window.py
 #, python-format
 msgid "Total time: %s second"
 msgid_plural "Total time: %s seconds"
-msgstr[0] "Celkový čas: %s sekund"
-msgstr[1] "Celkový čas: %s sekunda"
-msgstr[2] "Celkový čas: %s sekundy"
+msgstr[0] "Celkový čas: %s sekunda"
+msgstr[1] "Celkový čas: %s sekundy"
+msgstr[2] "Celkový čas: %s sekund"
 
 #: src/window.py
 msgid "The total duration isn't 24 hours."
