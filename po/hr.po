@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 20:18+0200\n"
+"POT-Creation-Date: 2021-08-10 18:35+0200\n"
 "PO-Revision-Date: 2020-01-25 01:21+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
@@ -24,13 +24,11 @@ msgstr ""
 msgid "Dynamic Wallpaper Editor"
 msgstr "Uređivač dinamičnih pozadina"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
-"GNOME desktop"
-msgstr ""
-"Izradi ili uredi dinamične XML pozadine („pozadinske prezentacije”) za GNOME "
-"desktop"
+#. Translators: this should stay around 35 and 45 characters.
+#. If it's not possible, remove "or edit", or even "create or edit".
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in src/main.py
+msgid "Create or edit dynamic wallpapers for GNOME"
+msgstr "Stvori ili uredi dinamične pozadine za GNOME"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
@@ -41,10 +39,11 @@ msgstr ""
 "pozadina za GNOME desktop"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+#, fuzzy
 msgid ""
 "The duration of each picture and each transition can be set separately or "
-"globally. The total duration can be 24 hours to do a wallpaper fitting the "
-"daylight."
+"globally. The wallpaper will fit the daylight if its total duration is "
+"exactly 24 hours."
 msgstr ""
 "Trajanje svake slike i svakog prijelaza može se postaviti zasebno ili "
 "globalno. Ukupno trajanje tapeta za dnevnu svjetlost može biti 24 sata."
@@ -94,7 +93,7 @@ msgstr "Pločasti raspored"
 msgid "Romain F. T."
 msgstr "Romain F. T."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/main.py
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Stvori ili uredi dinamične pozadine za GNOME."
 
@@ -395,6 +394,19 @@ msgstr "Trajanje svake slike (sekunde)"
 msgid "Duration of each transition (seconds)"
 msgstr "Trajanje svakog prijelaza (sekunde)"
 
+#: src/data_model.py src/window.py
+msgid "This dynamic wallpaper is corrupted"
+msgstr "Ova dinamična pozadina nije ispravna"
+
+#: src/data_model.py
+msgid "This XML file doesn't describe a valid dynamic wallpaper"
+msgstr "Ova XML datoteka ne opisuje ispravnu dinamičnu pozadinu"
+
+#: src/data_model.py
+#, python-format
+msgid "Unknown element: %s"
+msgstr "Nepoznati element: %s"
+
 #: src/main.py
 msgid "Tell the version of the app"
 msgstr ""
@@ -548,19 +560,6 @@ msgstr "Učitava se …"
 #, python-format
 msgid "Replace %s"
 msgstr "Zamijeni %s"
-
-#: src/window.py
-msgid "This dynamic wallpaper is corrupted"
-msgstr "Ova dinamična pozadina nije ispravna"
-
-#: src/window.py
-msgid "This XML file doesn't describe a valid dynamic wallpaper"
-msgstr "Ova XML datoteka ne opisuje ispravnu dinamičnu pozadinu"
-
-#: src/window.py
-#, python-format
-msgid "Unknown element: %s"
-msgstr "Nepoznati element: %s"
 
 #: src/window.py
 msgid "Untitled"

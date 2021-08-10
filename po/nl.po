@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 20:18+0200\n"
+"POT-Creation-Date: 2021-08-10 18:35+0200\n"
 "PO-Revision-Date: 2021-07-26 21:08+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <vistausss@outlook.com>\n"
@@ -23,13 +23,11 @@ msgstr ""
 msgid "Dynamic Wallpaper Editor"
 msgstr "Dynamische achtergrondbewerking"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
-"GNOME desktop"
-msgstr ""
-"Maak of bewerk dynamische xml-achtergronden (‘diavoorstellingen’) voor de "
-"GNOME-werkomgeving"
+#. Translators: this should stay around 35 and 45 characters.
+#. If it's not possible, remove "or edit", or even "create or edit".
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in src/main.py
+msgid "Create or edit dynamic wallpapers for GNOME"
+msgstr "Maak of bewerk dynamische achtergronden voor GNOME"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
@@ -40,10 +38,11 @@ msgstr ""
 "achtergronden voor de GNOME-werkomgeving mee te maken of bewerken."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+#, fuzzy
 msgid ""
 "The duration of each picture and each transition can be set separately or "
-"globally. The total duration can be 24 hours to do a wallpaper fitting the "
-"daylight."
+"globally. The wallpaper will fit the daylight if its total duration is "
+"exactly 24 hours."
 msgstr ""
 "De duur en overgang kan globaal of per afbeelding worden ingesteld. De "
 "totaalduur is 24 uur voor een overgang naar daglicht."
@@ -103,7 +102,7 @@ msgstr "Roosterindeling"
 msgid "Romain F. T."
 msgstr "Romain F. T."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/main.py
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Maak of bewerk dynamische achtergronden voor GNOME."
 
@@ -404,6 +403,19 @@ msgstr "Duur van elke afbeelding (in seconden)"
 msgid "Duration of each transition (seconds)"
 msgstr "Duur van elke overgang (in seconden)"
 
+#: src/data_model.py src/window.py
+msgid "This dynamic wallpaper is corrupted"
+msgstr "Deze dynamische achtergrond werkt niet"
+
+#: src/data_model.py
+msgid "This XML file doesn't describe a valid dynamic wallpaper"
+msgstr "Dit xml-bestand beschrijft geen geldige dynamische achtergrond"
+
+#: src/data_model.py
+#, python-format
+msgid "Unknown element: %s"
+msgstr "Onbekend element: %s"
+
 #: src/main.py
 msgid "Tell the version of the app"
 msgstr "Toon de toepassingsversie"
@@ -554,19 +566,6 @@ msgstr "Bezig met laden…"
 #, python-format
 msgid "Replace %s"
 msgstr "%s vervangen"
-
-#: src/window.py
-msgid "This dynamic wallpaper is corrupted"
-msgstr "Deze dynamische achtergrond werkt niet"
-
-#: src/window.py
-msgid "This XML file doesn't describe a valid dynamic wallpaper"
-msgstr "Dit xml-bestand beschrijft geen geldige dynamische achtergrond"
-
-#: src/window.py
-#, python-format
-msgid "Unknown element: %s"
-msgstr "Onbekend element: %s"
 
 #: src/window.py
 msgid "Untitled"

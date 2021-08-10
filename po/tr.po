@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 20:18+0200\n"
+"POT-Creation-Date: 2021-08-10 18:35+0200\n"
 "PO-Revision-Date: 2019-03-18 02:19+0300\n"
 "Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Turkish <teknomobil@yandex.com>\n"
@@ -23,12 +23,11 @@ msgstr ""
 msgid "Dynamic Wallpaper Editor"
 msgstr "Dinamik Duvar Kağıdı Düzenleyici"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-#, fuzzy
-msgid ""
-"Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
-"GNOME desktop"
-msgstr "GNOME için dinamik duvar kağıtları oluşturun veya düzenleyin."
+#. Translators: this should stay around 35 and 45 characters.
+#. If it's not possible, remove "or edit", or even "create or edit".
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in src/main.py
+msgid "Create or edit dynamic wallpapers for GNOME"
+msgstr "GNOME için dinamik duvar kağıtları oluşturun"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
@@ -39,8 +38,8 @@ msgstr ""
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The duration of each picture and each transition can be set separately or "
-"globally. The total duration can be 24 hours to do a wallpaper fitting the "
-"daylight."
+"globally. The wallpaper will fit the daylight if its total duration is "
+"exactly 24 hours."
 msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
@@ -88,7 +87,7 @@ msgstr ""
 msgid "Romain F. T."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/main.py
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "GNOME için dinamik duvar kağıtları oluşturun veya düzenleyin."
 
@@ -398,6 +397,19 @@ msgstr "Her resmin süresi (saniye)"
 msgid "Duration of each transition (seconds)"
 msgstr "Her geçişin süresi (saniye)"
 
+#: src/data_model.py src/window.py
+msgid "This dynamic wallpaper is corrupted"
+msgstr "Bu dinamik duvar kağıdı bozuk"
+
+#: src/data_model.py
+msgid "This XML file doesn't describe a valid dynamic wallpaper"
+msgstr "Bu XML dosyası geçerli bir dinamik duvar kağıdı tanımlamıyor"
+
+#: src/data_model.py
+#, python-format
+msgid "Unknown element: %s"
+msgstr "Bilinmeyen öge: %s"
+
 #: src/main.py
 msgid "Tell the version of the app"
 msgstr ""
@@ -540,19 +552,6 @@ msgstr "Yükleniyor…"
 #, python-format
 msgid "Replace %s"
 msgstr ""
-
-#: src/window.py
-msgid "This dynamic wallpaper is corrupted"
-msgstr "Bu dinamik duvar kağıdı bozuk"
-
-#: src/window.py
-msgid "This XML file doesn't describe a valid dynamic wallpaper"
-msgstr "Bu XML dosyası geçerli bir dinamik duvar kağıdı tanımlamıyor"
-
-#: src/window.py
-#, python-format
-msgid "Unknown element: %s"
-msgstr "Bilinmeyen öge: %s"
 
 #: src/window.py
 msgid "Untitled"

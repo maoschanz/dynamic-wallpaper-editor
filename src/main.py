@@ -173,7 +173,7 @@ class Application(Gtk.Application):
 	def on_about(self, *args):
 		about_dialog = Gtk.AboutDialog.new()
 		about_dialog.set_version(str(self._version))
-		about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME."))
+		about_dialog.set_comments(_("Create or edit dynamic wallpapers for GNOME"))
 		about_dialog.set_authors([
 			"Romain F. T.",
 			"Felix Quill",

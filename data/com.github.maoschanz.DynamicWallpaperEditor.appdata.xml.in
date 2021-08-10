@@ -5,8 +5,9 @@
   <project_license>GPL-3.0-or-later</project_license>
 
   <name>Dynamic Wallpaper Editor</name>
-  <summary>Create or edit XML dynamic wallpapers ("background slideshows") for
-  the GNOME desktop</summary>
+  <!-- Translators: this should stay around 35 and 45 characters. -->
+  <!-- If it's not possible, remove "or edit", or even "create or edit". -->
+  <summary>Create or edit dynamic wallpapers for GNOME</summary>
   <description>
     <p>
       Dynamic Wallpaper Editor is a simple utility to create or edit dynamic
@@ -14,8 +15,8 @@
     </p>
     <p>
       The duration of each picture and each transition can be set separately or
-      globally. The total duration can be 24 hours to do a wallpaper fitting the
-      daylight.
+      globally. The wallpaper will fit the daylight if its total duration is
+      exactly 24 hours.
     </p>
   </description>
 

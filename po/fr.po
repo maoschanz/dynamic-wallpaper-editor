@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 20:18+0200\n"
+"POT-Creation-Date: 2021-08-10 18:35+0200\n"
 "PO-Revision-Date: 2018-06-16 20:01+0200\n"
 "Last-Translator: Romain F. T.>\n"
 "Language-Team: français\n"
@@ -23,13 +23,11 @@ msgstr ""
 msgid "Dynamic Wallpaper Editor"
 msgstr "Éditeur de fonds d'écran dynamiques"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
-"GNOME desktop"
-msgstr ""
-"Créer ou éditer des fonds d'écrans dynamiques (\"diaporamas\") pour le "
-"bureau GNOME."
+#. Translators: this should stay around 35 and 45 characters.
+#. If it's not possible, remove "or edit", or even "create or edit".
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in src/main.py
+msgid "Create or edit dynamic wallpapers for GNOME"
+msgstr "Créer des fonds d'écrans dynamiques pour GNOME"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
@@ -42,12 +40,12 @@ msgstr ""
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The duration of each picture and each transition can be set separately or "
-"globally. The total duration can be 24 hours to do a wallpaper fitting the "
-"daylight."
+"globally. The wallpaper will fit the daylight if its total duration is "
+"exactly 24 hours."
 msgstr ""
 "La durée de chaque image et de chaque transition peut être réglée séparément "
-"ou de manière globale. La durée totale peut être de 24 heures pour faire un "
-"fond d'écran s'adaptant à la lumière du jour."
+"ou de manière globale. Le fond d'écran sera adapté à la lumière du jour si "
+"sa durée totale est exactement de 24 heures."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Version 3.0 greatly improves performances."
@@ -99,7 +97,7 @@ msgstr "La vue en grille"
 msgid "Romain F. T."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/main.py
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Créer ou éditer des fonds d'écrans dynamiques pour GNOME."
 
@@ -398,6 +396,19 @@ msgstr "Durée de chaque image (secondes)"
 msgid "Duration of each transition (seconds)"
 msgstr "Durée de chaque transition (secondes)"
 
+#: src/data_model.py src/window.py
+msgid "This dynamic wallpaper is corrupted"
+msgstr "Ce fond d'écran dynamique est corrompu"
+
+#: src/data_model.py
+msgid "This XML file doesn't describe a valid dynamic wallpaper"
+msgstr "Ce fichier XML ne décrit pas un fond d'écran dynamique valide"
+
+#: src/data_model.py
+#, python-format
+msgid "Unknown element: %s"
+msgstr "Élément inconnu : %s"
+
 #: src/main.py
 msgid "Tell the version of the app"
 msgstr "Affiche la version de l'application"
@@ -546,19 +557,6 @@ msgstr "Chargement…"
 #, python-format
 msgid "Replace %s"
 msgstr "Remplacer %s"
-
-#: src/window.py
-msgid "This dynamic wallpaper is corrupted"
-msgstr "Ce fond d'écran dynamique est corrompu"
-
-#: src/window.py
-msgid "This XML file doesn't describe a valid dynamic wallpaper"
-msgstr "Ce fichier XML ne décrit pas un fond d'écran dynamique valide"
-
-#: src/window.py
-#, python-format
-msgid "Unknown element: %s"
-msgstr "Élément inconnu : %s"
 
 #: src/window.py
 msgid "Untitled"

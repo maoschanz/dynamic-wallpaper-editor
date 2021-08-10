@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 20:18+0200\n"
+"POT-Creation-Date: 2021-08-10 18:35+0200\n"
 "PO-Revision-Date: 2021-07-26 15:35+0200\n"
 "Last-Translator:  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language-Team: Italian\n"
@@ -25,13 +25,11 @@ msgstr ""
 msgid "Dynamic Wallpaper Editor"
 msgstr "Dynamic Wallpaper Editor"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
-"GNOME desktop"
-msgstr ""
-"Crea o modifica sfondi dinamici XML (\"presentazioni in background\") per "
-"Desktop GNOME"
+#. Translators: this should stay around 35 and 45 characters.
+#. If it's not possible, remove "or edit", or even "create or edit".
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in src/main.py
+msgid "Create or edit dynamic wallpapers for GNOME"
+msgstr "Crea o modifica sfondi dinamici per GNOME"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
@@ -42,10 +40,11 @@ msgstr ""
 "sfondi dinamici per il desktop GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+#, fuzzy
 msgid ""
 "The duration of each picture and each transition can be set separately or "
-"globally. The total duration can be 24 hours to do a wallpaper fitting the "
-"daylight."
+"globally. The wallpaper will fit the daylight if its total duration is "
+"exactly 24 hours."
 msgstr ""
 "La durata di ogni immagine e di ogni transizione può essere impostata "
 "separatamente o a livello globale. La durata totale può essere di 24 ore per "
@@ -67,15 +66,16 @@ msgid ""
 "when a feature isn't available because of it (instead of silently doing "
 "nothing)."
 msgstr ""
-"Questa versione ora rileva quando viene eseguita in una sandbox flatpak e ti dice "
-"quando una funzione non è disponibile a causa di essa (invece di fare silenziosamente "
-"niente)."
+"Questa versione ora rileva quando viene eseguita in una sandbox flatpak e ti "
+"dice quando una funzione non è disponibile a causa di essa (invece di fare "
+"silenziosamente niente)."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The help manual has been updated to tell you workarounds about this problem."
 msgstr ""
-"Il manuale della guida è stato aggiornato per fornire soluzioni alternative a questo problema."
+"Il manuale della guida è stato aggiornato per fornire soluzioni alternative "
+"a questo problema."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
@@ -105,7 +105,7 @@ msgstr "Il layout della griglia"
 msgid "Romain F. T."
 msgstr "Romain F. T."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/main.py
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Crea o modifica sfondi dinamici per GNOME."
 
@@ -406,6 +406,19 @@ msgstr "Durata di ogni immagine (secondi)"
 msgid "Duration of each transition (seconds)"
 msgstr "Durata di ogni transizione (secondi)"
 
+#: src/data_model.py src/window.py
+msgid "This dynamic wallpaper is corrupted"
+msgstr "Questo sfondo dinamico è corrotto"
+
+#: src/data_model.py
+msgid "This XML file doesn't describe a valid dynamic wallpaper"
+msgstr "Questo file XML non corrisponde a uno sfondo dinamico valido"
+
+#: src/data_model.py
+#, python-format
+msgid "Unknown element: %s"
+msgstr "Elemento sconosciuto: %s"
+
 #: src/main.py
 msgid "Tell the version of the app"
 msgstr "Indica la versione dell'app"
@@ -440,8 +453,8 @@ msgid ""
 "Don't worry, your XML file can still be set as your wallpaper from GNOME "
 "Tweaks."
 msgstr ""
-"Non preoccuparti, il tuo file XML può ancora essere impostato come sfondo da GNOME "
-"Tweaks."
+"Non preoccuparti, il tuo file XML può ancora essere impostato come sfondo da "
+"GNOME Tweaks."
 
 #: src/main.py
 msgid "This desktop environment isn't supported."
@@ -556,19 +569,6 @@ msgstr "Caricamento…"
 #, python-format
 msgid "Replace %s"
 msgstr "Sostituisci %s"
-
-#: src/window.py
-msgid "This dynamic wallpaper is corrupted"
-msgstr "Questo sfondo dinamico è corrotto"
-
-#: src/window.py
-msgid "This XML file doesn't describe a valid dynamic wallpaper"
-msgstr "Questo file XML non corrisponde a uno sfondo dinamico valido"
-
-#: src/window.py
-#, python-format
-msgid "Unknown element: %s"
-msgstr "Elemento sconosciuto: %s"
 
 #: src/window.py
 msgid "Untitled"

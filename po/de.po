@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 20:18+0200\n"
+"POT-Creation-Date: 2021-08-10 18:35+0200\n"
 "PO-Revision-Date: 2018-06-23 17:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,12 +24,11 @@ msgstr ""
 msgid "Dynamic Wallpaper Editor"
 msgstr "Dynamischer Bildschirmhintergrund Editor"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-#, fuzzy
-msgid ""
-"Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
-"GNOME desktop"
-msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
+#. Translators: this should stay around 35 and 45 characters.
+#. If it's not possible, remove "or edit", or even "create or edit".
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in src/main.py
+msgid "Create or edit dynamic wallpapers for GNOME"
+msgstr "Dynamische Bildschimhintergründe für GNOME"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
@@ -40,8 +39,8 @@ msgstr ""
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
 "The duration of each picture and each transition can be set separately or "
-"globally. The total duration can be 24 hours to do a wallpaper fitting the "
-"daylight."
+"globally. The wallpaper will fit the daylight if its total duration is "
+"exactly 24 hours."
 msgstr ""
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
@@ -89,7 +88,7 @@ msgstr ""
 msgid "Romain F. T."
 msgstr ""
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/main.py
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Erzeuge oder bearbeite dynamische Bildschimhintergründe für GNOME."
 
@@ -399,6 +398,20 @@ msgstr ""
 msgid "Duration of each transition (seconds)"
 msgstr ""
 
+#: src/data_model.py src/window.py
+#, fuzzy
+msgid "This dynamic wallpaper is corrupted"
+msgstr "Dynamischer Bildschirmhintergrund Editor"
+
+#: src/data_model.py
+msgid "This XML file doesn't describe a valid dynamic wallpaper"
+msgstr ""
+
+#: src/data_model.py
+#, python-format
+msgid "Unknown element: %s"
+msgstr ""
+
 #: src/main.py
 msgid "Tell the version of the app"
 msgstr ""
@@ -549,20 +562,5 @@ msgid "Replace %s"
 msgstr ""
 
 #: src/window.py
-#, fuzzy
-msgid "This dynamic wallpaper is corrupted"
-msgstr "Dynamischer Bildschirmhintergrund Editor"
-
-#: src/window.py
-msgid "This XML file doesn't describe a valid dynamic wallpaper"
-msgstr ""
-
-#: src/window.py
-#, python-format
-msgid "Unknown element: %s"
-msgstr ""
-
-#: src/window.py
 msgid "Untitled"
 msgstr ""
-

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-26 20:18+0200\n"
+"POT-Creation-Date: 2021-08-10 18:35+0200\n"
 "PO-Revision-Date: 2020-05-15 03:04+0200\n"
 "Last-Translator: Daniel Maciel <bobbed@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
@@ -25,12 +25,11 @@ msgstr ""
 msgid "Dynamic Wallpaper Editor"
 msgstr "Editor de Papéis de Parede Dinâmicos"
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Create or edit XML dynamic wallpapers (\"background slideshows\") for the "
-"GNOME desktop"
-msgstr ""
-"Crie ou edite papéis de parede dinâmicos em formato XML para usar com o GNOME"
+#. Translators: this should stay around 35 and 45 characters.
+#. If it's not possible, remove "or edit", or even "create or edit".
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in src/main.py
+msgid "Create or edit dynamic wallpapers for GNOME"
+msgstr "Crie ou edite papéis de parede dinâmicos para o GNOME"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid ""
@@ -41,10 +40,11 @@ msgstr ""
 "editar papéis de parede dinâmicos para o ambiente GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+#, fuzzy
 msgid ""
 "The duration of each picture and each transition can be set separately or "
-"globally. The total duration can be 24 hours to do a wallpaper fitting the "
-"daylight."
+"globally. The wallpaper will fit the daylight if its total duration is "
+"exactly 24 hours."
 msgstr ""
 "Você pode definir a duração de cada papel de parede o tempo de transição "
 "para o próximo papel de parede, ou, se preferir, definir um tempo de duração "
@@ -98,7 +98,7 @@ msgstr "O layout em grade"
 msgid "Romain F. T."
 msgstr "Romain F. T."
 
-#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/main.py
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Create or edit dynamic wallpapers for GNOME."
 msgstr "Crie ou edite papéis de parede dinâmicos para o GNOME."
 
@@ -400,6 +400,19 @@ msgstr "Duração de cada imagem (segundos)"
 msgid "Duration of each transition (seconds)"
 msgstr "Duração de cada transição (segundos)"
 
+#: src/data_model.py src/window.py
+msgid "This dynamic wallpaper is corrupted"
+msgstr "Este papel de parede dinâmico está corrompido"
+
+#: src/data_model.py
+msgid "This XML file doesn't describe a valid dynamic wallpaper"
+msgstr "Este arquivo XML não descreve um papel de parede dinâmico válido"
+
+#: src/data_model.py
+#, python-format
+msgid "Unknown element: %s"
+msgstr "Elemento desconhecido: %s"
+
 #: src/main.py
 msgid "Tell the version of the app"
 msgstr "Informa a versão do aplicativo"
@@ -551,19 +564,6 @@ msgstr "Carregando…"
 #, python-format
 msgid "Replace %s"
 msgstr "Substituir %s"
-
-#: src/window.py
-msgid "This dynamic wallpaper is corrupted"
-msgstr "Este papel de parede dinâmico está corrompido"
-
-#: src/window.py
-msgid "This XML file doesn't describe a valid dynamic wallpaper"
-msgstr "Este arquivo XML não descreve um papel de parede dinâmico válido"
-
-#: src/window.py
-#, python-format
-msgid "Unknown element: %s"
-msgstr "Elemento desconhecido: %s"
 
 #: src/window.py
 msgid "Untitled"
