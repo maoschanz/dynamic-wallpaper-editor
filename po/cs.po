@@ -1,0 +1,574 @@
+# Czech translations for dynamic-wallpaper-editor package.
+# Copyright (C) 2021 THE dynamic-wallpaper-editor'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the dynamic-wallpaper-editor package.
+# Vojtěch Perník <translations@pervoj.cz>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: dynamic-wallpaper-editor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-10 18:38+0200\n"
+"PO-Revision-Date: 2021-08-09 21:46+0200\n"
+"Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
+"X-Generator: Gtranslator 40.0\n"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/window.ui
+#: src/main.py
+msgid "Dynamic Wallpaper Editor"
+msgstr "Editor dynamických tapet"
+
+#. Translators: this should stay around 35 and 45 characters.
+#. If it's not possible, remove "or edit", or even "create or edit".
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in src/main.py
+msgid "Create or edit dynamic wallpapers for GNOME"
+msgstr "Vytvářejte nebo upravujte dynamické tapety pro GNOME"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
+"wallpapers for the GNOME desktop."
+msgstr ""
+"Editor dynamických tapet je jednoduchý nástroj pro vytváření nebo úpravu "
+"dynamických tapet pro prostředí GNOME."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+#, fuzzy
+msgid ""
+"The duration of each picture and each transition can be set separately or "
+"globally. The wallpaper will fit the daylight if its total duration is "
+"exactly 24 hours."
+msgstr ""
+"Délku trvání každého snímku a každého přechodu lze nastavit samostatně nebo "
+"globálně. Celková doba trvání může být 24 hodin, aby tapeta odpovídala "
+"dennímu světlu."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "Version 3.0 greatly improves performances."
+msgstr "Verze 3.0 výrazně zlepšuje výkon."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "An editing history is now available to undo or redo your changes."
+msgstr ""
+"Nyní je k dispozici historie úprav, která umožňuje vrátit nebo opakovat "
+"změny."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"This version now detects when it runs in a flatpak sandbox, and tells you "
+"when a feature isn't available because of it (instead of silently doing "
+"nothing)."
+msgstr ""
+"Tato verze nyní detekuje, když běží v sandboxu Flatpaku, a informuje vás, "
+"když kvůli tomu není funkce dostupná (místo toho, aby mlčky nedělala nic)."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"The help manual has been updated to tell you workarounds about this problem."
+msgstr "Byla aktualizována nápověda, aby vám sdělila řešení tohoto problému."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "An new icon is available, following the recent GNOME guidelines."
+msgstr "K dispozici je nová ikona podle nejnovějších pokynů GNOME."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid ""
+"The images can now be reordered, previewed, or deleted using keyboard "
+"shortcuts."
+msgstr ""
+"Nyní lze změnit pořadí obrázků, zobrazit jejich náhled nebo je odstranit "
+"pomocí klávesových zkratek."
+
+#. caption for screenshot 1
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "An example of a wallpaper changing with daylight"
+msgstr "Příklad tapety měnící se při denního světla"
+
+#. caption for screenshot 2
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "The grid layout"
+msgstr "Rozložení mřížky"
+
+#. That's my name, don't translate it
+#: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
+msgid "Romain F. T."
+msgstr "Romain F. T."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
+msgid "Create or edit dynamic wallpapers for GNOME."
+msgstr "Vytvářejte nebo upravujte dynamické tapety pro GNOME."
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
+msgid "Wallpaper;Daylight;XML;"
+msgstr "Tapeta;Denní světlo;XML;"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
+#: src/ui/shortcuts.ui
+msgid "New Window"
+msgstr "Nové okno"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
+msgid "Use a grid or a list"
+msgstr "Použít mřížku nebo seznam"
+
+#: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
+msgid "Display the pictures using a grid of thumbnails, or a list."
+msgstr "Zobrazit obrázky pomocí mřížky miniatur nebo seznamu."
+
+#: src/ui/menus.ui
+msgid "List"
+msgstr "Seznam"
+
+#: src/ui/menus.ui
+msgid "Grid"
+msgstr "Mřížka"
+
+#: src/ui/menus.ui
+msgid "Keyboard Shortcuts"
+msgstr "Klávesové zkratky"
+
+#: src/ui/menus.ui
+msgid "Help"
+msgstr "Nápověda"
+
+#: src/ui/menus.ui
+msgid "About"
+msgstr "O aplikaci"
+
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
+msgid "Save"
+msgstr "Uložit"
+
+#: src/ui/menus.ui src/ui/shortcuts.ui src/window.py
+msgid "Save as…"
+msgstr "Uložit jako..."
+
+#: src/ui/menus.ui src/ui/shortcuts.ui
+msgid "Set as wallpaper"
+msgstr "Nastavit jako tapetu"
+
+#: src/ui/menus.ui
+msgid "Wallpaper adjustment"
+msgstr "Zobrazení tapety"
+
+#: src/ui/menus.ui
+msgid "Mosaic"
+msgstr "Mozaika"
+
+#: src/ui/menus.ui
+msgid "Centered"
+msgstr "Vycentrované"
+
+#: src/ui/menus.ui
+msgid "Scaled"
+msgstr "Zmenšené"
+
+#: src/ui/menus.ui
+msgid "Stretched"
+msgstr "Roztažené"
+
+#: src/ui/menus.ui
+msgid "Zoom"
+msgstr "Přiblížené"
+
+#: src/ui/menus.ui
+msgid "Spanned"
+msgstr "Rozšířené"
+
+#: src/ui/menus.ui
+msgid "Same duration for all pictures"
+msgstr "Stejná délka trvání pro všechny obrázky"
+
+#: src/ui/menus.ui
+msgid "Fit the daylight"
+msgstr "Přizpůsobit dennímu světlu"
+
+#: src/ui/menus.ui
+msgid "Automatically set a total of 24 hours"
+msgstr "Automatické nastavení celkového času na 24 hodin"
+
+#: src/ui/menus.ui
+msgid "Use durations instead of times"
+msgstr "Použít dobu trvání namísto času"
+
+#: src/ui/picture_menu.ui
+msgid "Replace with…"
+msgstr "Nahradit..."
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "View picture"
+msgstr "Zobrazit obrázek"
+
+# Poznámky:
+# Přidat poznámku
+#
+# Cesty:
+# src/ui/picture_menu.ui:-1
+#: src/ui/picture_menu.ui
+msgid "View containing directory"
+msgstr "Zobrazit v adresáři"
+
+#: src/ui/picture_menu.ui
+msgid "Move to first position"
+msgstr "Posunout na první pozici"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move up"
+msgstr "Posunout nahoru"
+
+#: src/ui/picture_menu.ui src/ui/shortcuts.ui
+msgid "Move down"
+msgstr "Posunout dolů"
+
+#: src/ui/picture_menu.ui
+msgid "Move to last position"
+msgstr "Posunout na poslední pozici"
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
+msgid "Time"
+msgstr "Čas"
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
+msgid ""
+"Time (in seconds) of this image. This doesn't include the time of the "
+"transition."
+msgstr "Čas (v sekundách) tohoto snímku. Nezahrnuje dobu přechodu."
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
+msgid "Transition"
+msgstr "Přechod"
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
+msgid ""
+"Time (in seconds) of the transition between this image and the next one."
+msgstr "Čas (v sekundách) přechodu mezi tímto obrázkem a dalším."
+
+#: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/shortcuts.ui
+msgid "Delete"
+msgstr "Smazat"
+
+#: src/ui/picture_thumbnail.ui
+msgid "Duration"
+msgstr "Trvání"
+
+#: src/ui/start_time.ui
+msgid "This is useful when the total duration is 24 hours."
+msgstr "To je užitečné, když celková doba trvání je 24 hodin."
+
+#: src/ui/start_time.ui
+msgid "Start time of the wallpaper"
+msgstr "Počáteční čas tapety"
+
+#: src/ui/start_time.ui
+msgid "Year"
+msgstr "Rok"
+
+#: src/ui/start_time.ui
+msgid "Month"
+msgstr "Měsíc"
+
+#: src/ui/start_time.ui
+msgid "Day"
+msgstr "Den"
+
+#: src/ui/start_time.ui
+msgid "Hour"
+msgstr "Hodina"
+
+#: src/ui/start_time.ui
+msgid "Minute"
+msgstr "Minuta"
+
+#: src/ui/start_time.ui
+msgid "Second"
+msgstr "Sekunda"
+
+#: src/ui/shortcuts.ui
+msgid "General"
+msgstr "Obecné"
+
+#: src/ui/shortcuts.ui
+msgid "Close the current window"
+msgstr "Zavřít aktuální okno"
+
+#: src/ui/shortcuts.ui
+msgid "Quit all windows"
+msgstr "Zavřít všechna okna"
+
+#: src/ui/shortcuts.ui
+msgid "Show shortcuts"
+msgstr "Zobrazit zkratky"
+
+#: src/ui/shortcuts.ui
+msgid "Show help"
+msgstr "Zobrazit nápovědu"
+
+#: src/ui/shortcuts.ui
+msgid "Wallpaper"
+msgstr "Tapeta"
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Open an existing dynamic wallpaper"
+msgstr "Otevřít existující dynamickou tapetu"
+
+#: src/ui/shortcuts.ui
+msgid "History"
+msgstr "Historie"
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Undo"
+msgstr "Zpět"
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Redo"
+msgstr "Znovu"
+
+#: src/ui/shortcuts.ui
+msgid "Pictures management"
+msgstr "Správa obrázků"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add pictures"
+msgstr "Přidat obrázky"
+
+#: src/ui/shortcuts.ui src/ui/window.ui src/window.py
+msgid "Add a folder"
+msgstr "Přidat adresář"
+
+#: src/ui/shortcuts.ui src/ui/window.ui
+msgid "Find a picture"
+msgstr "Najít obrázek"
+
+#: src/ui/shortcuts.ui
+msgid "Selected picture"
+msgstr "Vybraný obrázek"
+
+#: src/ui/window.ui src/window.py
+msgid "Open"
+msgstr "Otevřít"
+
+#: src/ui/window.ui
+msgid "More actions"
+msgstr "Více akcí"
+
+#: src/ui/window.ui
+msgid "Save the file and apply it as your wallpaper"
+msgstr "Uložit soubor a nastavit ho jako tapetu"
+
+#: src/ui/window.ui
+msgid "Save and apply"
+msgstr "Uložit a nastavit"
+
+#: src/ui/window.ui
+msgid "Manage how you set the durations of your pictures"
+msgstr "Spravujte, jak nastavíte délku trvání obrázků"
+
+#: src/ui/window.ui
+msgid "Durations options"
+msgstr "Možnosti délky trvání"
+
+#: src/ui/window.ui
+msgid "Set the exact start time of the wallpaper"
+msgstr "Nastavte přesný čas počátku tapety"
+
+#: src/ui/window.ui
+msgid "Sort by name"
+msgstr "Seřadit podle jména"
+
+#: src/ui/window.ui
+msgid "Error starting the application, please report this bug."
+msgstr "Chyba při spuštění aplikace, nahlaste prosím tuto chybu."
+
+#: src/ui/window.ui
+msgid "Automatic fix"
+msgstr "Automaticky opravit"
+
+#: src/ui/window.ui
+msgid "Set durations for a total of 24 hours"
+msgstr "Nastavte celkovou dobu trvání na 24 hodin"
+
+#: src/ui/window.ui
+msgid "Duration of each picture (seconds)"
+msgstr "Doba trvání každého obrázku (sekundy)"
+
+#: src/ui/window.ui
+msgid "Duration of each transition (seconds)"
+msgstr "Doba trvání každého přechodu (sekundy)"
+
+#: src/data_model.py src/window.py
+msgid "This dynamic wallpaper is corrupted"
+msgstr "Tato dynamická tapeta je poškozená"
+
+#: src/data_model.py
+msgid "This XML file doesn't describe a valid dynamic wallpaper"
+msgstr "Tento soubor XML nepopisuje platnou dynamickou tapetu"
+
+#: src/data_model.py
+#, python-format
+msgid "Unknown element: %s"
+msgstr "Neznámý prvek: %s"
+
+#: src/main.py
+msgid "Tell the version of the app"
+msgstr "Zobrazit verzi aplikace"
+
+#: src/main.py
+msgid "Open a new window"
+msgstr "Otevřít nové okno"
+
+#: src/main.py
+msgid "Error opening this file."
+msgstr "Chyba při otevírání tohoto souboru."
+
+#: src/main.py
+#, python-format
+msgid "Did you mean %s ?"
+msgstr "Mysleli jste %s ?"
+
+#: src/main.py
+msgid "Report bugs or ideas"
+msgstr "Nahlásit chyby nebo nápady"
+
+#: src/main.py
+msgid "translator-credits"
+msgstr "Vojtěch Perník <translations@pervoj.cz>"
+
+#: src/main.py
+msgid "This feature isn't available with Flatpak."
+msgstr "Tato funkce není dostupná při instalaci z Flatpaku."
+
+#: src/main.py
+msgid ""
+"Don't worry, your XML file can still be set as your wallpaper from GNOME "
+"Tweaks."
+msgstr ""
+"Nebojte se, váš soubor XML lze stále nastavit jako tapetu z Vyladění GNOME."
+
+#: src/main.py
+msgid "This desktop environment isn't supported."
+msgstr "Toto prostředí není podporováno."
+
+#: src/misc.py
+msgid "Dynamic wallpapers (XML)"
+msgstr "Dynamické tapety (XML)"
+
+#: src/misc.py
+msgid "All pictures"
+msgstr "Všechny obrázky"
+
+#: src/misc.py
+msgid "PNG images"
+msgstr "Obrázky PNG"
+
+#: src/misc.py
+msgid "JPEG images"
+msgstr "Obrázky JPEG"
+
+#: src/misc.py
+#, python-format
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s hodina"
+msgstr[1] "%s hodiny"
+msgstr[2] "%s hodin"
+
+#: src/misc.py
+#, python-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s minuta"
+msgstr[1] "%s minuty"
+msgstr[2] "%s minut"
+
+#: src/misc.py
+#, python-format
+msgid "%s second"
+msgid_plural "%s seconds"
+msgstr[0] "%s sekunda"
+msgstr[1] "%s sekundy"
+msgstr[2] "%s sekund"
+
+#: src/picture_widget.py
+msgid ""
+"This picture might exist, but it isn't in your home folder so I can't see it."
+msgstr ""
+"Tento obrázek může existovat, ale není ve vaší domovské složce, takže ho "
+"nevidím."
+
+#: src/picture_widget.py
+msgid "This picture doesn't exist"
+msgstr "Tento obrázek neexistuje"
+
+#: src/picture_widget.py
+#, python-brace-format
+msgid "This picture lasts from {0} to {1}"
+msgstr "Tento obrázek trvá od {0} do {1}"
+
+#: src/picture_widget.py
+#, python-brace-format
+msgid "The transition to the next picture lasts from {0} to {1}"
+msgstr "Přechod na další obrázek trvá od {0} do {1}"
+
+#: src/view.py
+msgid "Add new pictures, or open an existing XML file."
+msgstr "Přidejte nové obrázky, nebo otevřete existující XML."
+
+#: src/view.py
+msgid "Drag-and-drop pictures to reorder them."
+msgstr "Přetáhněte obrázky pro změnu pořadí."
+
+#: src/window.py
+#, python-format
+msgid "%s picture"
+msgid_plural "%s pictures"
+msgstr[0] "%s obrázek"
+msgstr[1] "%s obrázky"
+msgstr[2] "%s obrázků"
+
+#: src/window.py
+#, python-format
+msgid "Total time: %s second"
+msgid_plural "Total time: %s seconds"
+msgstr[0] "Celkový čas: %s sekunda"
+msgstr[1] "Celkový čas: %s sekundy"
+msgstr[2] "Celkový čas: %s sekund"
+
+#: src/window.py
+msgid "The total duration isn't 24 hours."
+msgstr "Celková doba trvání není 24 hodin."
+
+#: src/window.py
+msgid "There are unsaved modifications to your wallpaper."
+msgstr "Ve vaší tapetě jsou neuložené změny."
+
+#: src/window.py
+#, python-format
+msgid "There are unsaved modifications to %s"
+msgstr "V %s jsou neuložené změny"
+
+#: src/window.py
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: src/window.py
+msgid "Discard"
+msgstr "Zahodit"
+
+#: src/window.py
+msgid "Loading…"
+msgstr "Načítání..."
+
+#: src/window.py
+#, python-format
+msgid "Replace %s"
+msgstr "Nahradit %s"
+
+#: src/window.py
+msgid "Untitled"
+msgstr "Bez názvu"
