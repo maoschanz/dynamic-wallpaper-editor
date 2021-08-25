@@ -248,12 +248,12 @@ class DWEDataModel():
 			text += """
 	<static>
 		<file>""" + file_path + """</file>
-		<duration>""" + pic_structure['static'] + """</duration>
+		<duration>""" + str(pic_structure['static']) + """</duration>
 	</static>\n"""
 		next_file = self._get_next_path_from_index(pic_structure['index'])
 		if next_file is not None and pic_structure['transition'] > 0:
 			text += """	<transition type="overlay">
-		<duration>""" + pic_structure['transition'] + """</duration>
+		<duration>""" + str(pic_structure['transition']) + """</duration>
 		<from>""" + file_path + """</from>
 		<to>""" + next_file + """</to>
 	</transition>\n"""
