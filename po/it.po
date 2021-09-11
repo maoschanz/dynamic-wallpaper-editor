@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: dynamic-wallpaper-editor\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-10 18:35+0200\n"
-"PO-Revision-Date: 2021-07-26 15:35+0200\n"
+"PO-Revision-Date: 2021-09-11 12:35+0200\n"
 "Last-Translator:  Albano Battistella <albano battistella@hotmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -40,15 +40,14 @@ msgstr ""
 "sfondi dinamici per il desktop GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-#, fuzzy
 msgid ""
 "The duration of each picture and each transition can be set separately or "
 "globally. The wallpaper will fit the daylight if its total duration is "
 "exactly 24 hours."
 msgstr ""
-"La durata di ogni immagine e di ogni transizione può essere impostata "
-"separatamente o a livello globale. La durata totale può essere di 24 ore per "
-"realizzare uno sfondo che si adatti al luce del giorno."
+"La durata di ogni immagine e ogni transizione può essere impostata separatamente o "
+"globalmente. Lo sfondo si adatterà alla luce del giorno se la sua durata totale è "
+"esattamente 24 ore."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Version 3.0 greatly improves performances."
