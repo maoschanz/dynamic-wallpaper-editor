@@ -176,12 +176,16 @@ class DWEPictureWidget(Gtk.Box):
 	def update_label_common(self, prev, btn, msg):
 		if btn.get_value() == 0:
 			return "", prev
+
+		# Calculate the next time available
 		hours, mins, seconds = get_hms(btn.get_value())
-		start_time = str(prev[0]) + ':' + str(prev[1]) + ':' + str(prev[2])
 		total = ((prev[0] + hours) * 60 + prev[1] + mins) * 60 + prev[2] + seconds
 		h, m, s = get_hms(total)
 		new_end = [h % 24, m, s]
-		end_time = str(new_end[0]) + ':' + str(new_end[1]) + ':' + str(new_end[2])
+
+		# Create strings that show time
+		start_time = ':'.join([str(time) if time > 9 else "0" + str(time) for time in prev])
+		end_time = ':'.join([str(time) if time > 9 else "0" + str(time) for time in new_end])
 		return msg.format(start_time, end_time), new_end
 
 	############################################################################
