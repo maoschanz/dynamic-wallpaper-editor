@@ -200,7 +200,7 @@ class DWEWindow(Gtk.ApplicationWindow):
 		self._data_model.undo()
 
 	def action_redo(self, *args):
-		self._data_model.undo()
+		self._data_model.redo()
 
 	############################################################################
 	# Window size ##############################################################

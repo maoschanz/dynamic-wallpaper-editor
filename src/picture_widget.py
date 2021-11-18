@@ -31,6 +31,8 @@ class DWEPictureWidget(Gtk.Box):
 		self.filename = pic_structure['path']
 		self.indx = pic_structure['index']
 		self.window = window
+		self._static_time_lock = False
+		self._transition_time_lock = False
 
 	def build_ui(self, stt, trt, template, w, h):
 		builder = Gtk.Builder().new_from_resource(UI_PATH + template)
@@ -135,11 +137,14 @@ class DWEPictureWidget(Gtk.Box):
 		if self.static_time_btn.get_value() != new_static:
 			self.static_time_btn.set_value(new_static)
 
-	def set_new_transition(self, new_transition):
-		if self.trans_time_btn.get_value() != new_transition:
-			self.trans_time_btn.set_value(new_transition)
-
 	def on_static_changed(self, *args):
+		if not self._static_time_lock:
+			GLib.timeout_add(500, self._trigger_static_operation, {})
+		self._static_time_lock = True
+
+	def _trigger_static_operation(self, *args):
+		self._static_time_lock = False
+
 		time = self.static_time_btn.get_value()
 		self.static_time_btn.set_tooltip_text(time_to_string(time))
 		operation = {
@@ -149,7 +154,20 @@ class DWEPictureWidget(Gtk.Box):
 		}
 		self.window._data_model.do_operation(operation)
 
+	### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+
+	def set_new_transition(self, new_transition):
+		if self.trans_time_btn.get_value() != new_transition:
+			self.trans_time_btn.set_value(new_transition)
+
 	def on_transition_changed(self, *args):
+		if not self._transition_time_lock:
+			GLib.timeout_add(500, self._trigger_transition_operation, {})
+		self._transition_time_lock = True
+
+	def _trigger_transition_operation(self, *args):
+		self._transition_time_lock = False
+
 		time = self.trans_time_btn.get_value()
 		self.trans_time_btn.set_tooltip_text(time_to_string(time))
 		operation = {

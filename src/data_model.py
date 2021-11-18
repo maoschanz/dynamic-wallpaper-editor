@@ -82,7 +82,7 @@ class DWEDataModel():
 	def end_model_change(self, operation):
 		if self._history_lock:
 			return
-		# The array has to be sorted because it optimized the view update, and
+		# The array has to be sorted because it optimizes the view update, and
 		# it is necessary to the XML export
 		self._dw_data['pictures'].sort(key=self._get_index)
 		self._restack_indexes()
@@ -119,7 +119,6 @@ class DWEDataModel():
 
 	def redo(self):
 		operation = self._undone.pop()
-		self._history.append(operation)
 		self.do_operation(operation)
 
 	############################################################################
