@@ -1,0 +1,5 @@
+dynamic-wallpaper-editor (2.7-1-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Olivier Bitsch <olivier.b@iabsis.com>  Thu, 10 Feb 2022 18:11:32 +0100

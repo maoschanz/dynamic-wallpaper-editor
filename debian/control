@@ -1,0 +1,29 @@
+Source: dynamic-wallpaper-editor
+Section: unknown
+Priority: optional
+Maintainer: Olivier Bitsch <olivier.b@iabsis.com>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-setuptools, python3-all, itstool
+Standards-Version: 4.5.1
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Browser: https://salsa.debian.org/debian/dynamic-wallpaper-editor
+#Vcs-Git: https://salsa.debian.org/debian/dynamic-wallpaper-editor.git
+#Testsuite: autopkgtest-pkg-python
+Rules-Requires-Root: no
+
+Package: dynamic-wallpaper-editor
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Suggests: dynamic-wallpaper-editor-doc
+Description: <insert up to 60 chars description> (Python 3)
+ <insert long description, indented with spaces>
+ .
+ This package installs the library for Python 3.
+
+Package: dynamic-wallpaper-editor-doc
+Architecture: all
+Section: doc
+Depends: ${sphinxdoc:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description> (common documentation)
+ <insert long description, indented with spaces>
+ .
+ This is the common documentation package.
