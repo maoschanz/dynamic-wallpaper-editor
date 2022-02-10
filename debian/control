@@ -2,7 +2,7 @@ Source: dynamic-wallpaper-editor
 Section: unknown
 Priority: optional
 Maintainer: Olivier Bitsch <olivier.b@iabsis.com>
-Build-Depends: debhelper-compat (= 13), dh-python, python3-setuptools, python3-all, itstool
+Build-Depends: debhelper-compat (= 13), dh-python, python3-setuptools, python3-all, itstool, desktop-file-utils, libappstream-glib8
 Standards-Version: 4.5.1
 Homepage: <insert the upstream URL, if relevant>
 #Vcs-Browser: https://salsa.debian.org/debian/dynamic-wallpaper-editor
@@ -14,8 +14,12 @@ Package: dynamic-wallpaper-editor
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends}
 Suggests: dynamic-wallpaper-editor-doc
-Description: <insert up to 60 chars description> (Python 3)
- <insert long description, indented with spaces>
+Description: Dynamic Wallpaper Editor for Gnome
+ The GNOME desktop allows the wallpaper to change with time.
+ 
+ These dynamic wallpapers are XML files, and you don't want to write these files in a 
+ text editor: Dynamic Wallpaper Editor is a little utility for the 
+ creation or the edition of these XML wallpapers.
  .
  This package installs the library for Python 3.
 
@@ -23,7 +27,9 @@ Package: dynamic-wallpaper-editor-doc
 Architecture: all
 Section: doc
 Depends: ${sphinxdoc:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description> (common documentation)
- <insert long description, indented with spaces>
+Description: Dynamic Wallpaper Editor for Gnome (common documentation)
+ These dynamic wallpapers are XML files, and you don't want to write these files in a 
+ text editor: Dynamic Wallpaper Editor is a little utility for the 
+ creation or the edition of these XML wallpapers.
  .
- This is the common documentation package.
+ This package installs the library for Python 3.
