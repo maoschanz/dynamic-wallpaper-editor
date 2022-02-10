@@ -16,7 +16,7 @@ Depends: ${python3:Depends}, ${misc:Depends}
 Suggests: dynamic-wallpaper-editor-doc
 Description: Dynamic Wallpaper Editor for Gnome
  The GNOME desktop allows the wallpaper to change with time.
- 
+ .
  These dynamic wallpapers are XML files, and you don't want to write these files in a 
  text editor: Dynamic Wallpaper Editor is a little utility for the 
  creation or the edition of these XML wallpapers.
