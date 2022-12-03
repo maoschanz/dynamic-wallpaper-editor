@@ -30,22 +30,18 @@ msgid "Create or edit dynamic wallpapers for GNOME"
 msgstr "Crea o edita Fondos de pantalla dinamicos para GNOME"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"Dynamic Wallpaper Editor is a simple utility to create or edit dynamic "
-"wallpapers for the GNOME desktop."
-msgstr ""
-"Dynamic Wallpaper Editor es una sencilla utilidad para crear o editar fondos "
-"de pantalla dinámicos para el escritorio GNOME."
+msgid "Dynamic Wallpaper Editor is a simple utility to create or edit dynamic 
+wallpapers for the GNOME desktop."
+msgstr "Dynamic Wallpaper Editor es una sencilla utilidad para crear o editar fondos 
+de pantalla dinámicos para el escritorio GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"The duration of each picture and each transition can be set separately or "
-"globally. The wallpaper will fit the daylight if its total duration is "
-"exactly 24 hours."
-msgstr ""
-"La duración de cada imagen y de cada transición puede ajustarse por separado "
-"o de forma global. El fondo de pantalla se ajustará a la luz del día si su "
-"duración total es exactamente de 24 horas."
+msgid "The duration of each picture and each transition can be set separately or 
+globally. The wallpaper will fit the daylight if its total duration is 
+exactly 24 hours."
+msgstr "La duración de cada imagen y de cada transición puede ajustarse por separado
+o de forma global. El fondo de pantalla se ajustará a la luz del día si su
+duración total es exactamente de 24 horas."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Version 3.0 greatly improves performances."
@@ -53,40 +49,27 @@ msgstr "La versión 3.0 mejora considerablemente el rendimiento."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An editing history is now available to undo or redo your changes."
-msgstr ""
-"Ahora está disponible un historial de edición para deshacer o rehacer los "
-"cambios."
+msgstr "Ahora está disponible un historial de edición para deshacer o rehacer los 
+cambios."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"This version now detects when it runs in a flatpak sandbox, and tells you "
-"when a feature isn't available because of it (instead of silently doing "
-"nothing)."
-msgstr ""
-"Esta versión ahora detecta cuando se ejecuta en un sandbox de flatpak, y te "
-"dice cuando una característica no está disponible a causa de ello (en lugar "
-"de no hacer nada)."
+msgid "This version now detects when it runs in a flatpak sandbox, and tells you
+when a feature isn't available because of it (instead of silently doing nothing)."
+msgstr "Esta versión ahora detecta cuando se ejecuta en un sandbox de flatpak, y te
+dice cuando una característica no está disponible a causa de ello (en lugar 
+de no hacer nada)."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"The help manual has been updated to tell you workarounds about this problem."
-msgstr ""
-"El manual de ayuda se ha actualizado para indicar las soluciones a este "
-"problema."
+msgid "The help manual has been updated to tell you workarounds about this problem."
+msgstr "El manual de ayuda se ha actualizado para indicar las soluciones a este problema."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
-msgstr ""
-"Hay un nuevo icono disponible, siguiendo las recientes directrices de diseño "
-"de GNOME."
+msgstr "Hay un nuevo icono disponible, siguiendo las recientes directrices de diseño de GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"The images can now be reordered, previewed, or deleted using keyboard "
-"shortcuts."
-msgstr ""
-"Ahora es posible reordenar, previsualizar o eliminar las imágenes mediante "
-"atajos de teclado."
+msgid "The images can now be reordered, previewed, or deleted using keyboard shortcuts."
+msgstr "Ahora es posible reordenar, previsualizar o eliminar las imágenes mediante atajos de teclado."
 
 #. caption for screenshot 1
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
@@ -122,8 +105,7 @@ msgstr "Utilizar una cuadrícula o una lista"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
 msgid "Display the pictures using a grid of thumbnails, or a list."
-msgstr ""
-"Mostrar las imágenes mediante una cuadrícula de miniaturas o una lista."
+msgstr "Mostrar las imágenes mediante una cuadrícula de miniaturas o una lista."
 
 #: src/ui/menus.ui
 msgid "List"
@@ -385,8 +367,7 @@ msgstr "Ordenar por nombre"
 
 #: src/ui/window.ui
 msgid "Error starting the application, please report this bug."
-msgstr ""
-"Ha ocurrido un error iniciando la aplicación, por favor reporte este error."
+msgstr "Ha ocurrido un error iniciando la aplicación, por favor reporte este error."
 
 #: src/ui/window.ui
 msgid "Automatic fix"
@@ -440,21 +421,15 @@ msgstr "Reportar errores o ideas"
 
 #: src/main.py
 msgid "translator-credits"
-msgstr ""
-"Sergio Varela, 2022"
-"Julian Reyes, 2019-2021"
+msgstr "Sergio Varela"
 
 #: src/main.py
 msgid "This feature isn't available with Flatpak."
 msgstr "Esta función no está disponible con Flatpak."
 
 #: src/main.py
-msgid ""
-"Don't worry, your XML file can still be set as your wallpaper from GNOME "
-"Tweaks."
-msgstr ""
-"No te preocupes, tu archivo XML puede seguir siendo tu fondo de pantalla "
-"desde GNOME Tweaks."
+msgid "Don't worry, your XML file can still be set as your wallpaper from GNOME Tweaks."
+msgstr "No te preocupes, tu archivo XML puede seguir siendo tu fondo de pantalla desde GNOME Tweaks."
 
 #: src/main.py
 msgid "This desktop environment isn't supported."
@@ -466,7 +441,7 @@ msgstr "Fondos de pantalla dinámicos (XML)"
 
 #: src/misc.py
 msgid "All pictures"
-msgstr "Todas las imagenes"
+msgstr "Todas las imágenes"
 
 #: src/misc.py
 msgid "PNG images"
@@ -498,11 +473,8 @@ msgstr[0] "%s segundo"
 msgstr[1] "%s segundos"
 
 #: src/picture_widget.py
-msgid ""
-"This picture might exist, but it isn't in your home folder so I can't see it."
-msgstr ""
-"Esta imagen podría existir, pero no está en tu carpeta de inicio, así que no "
-"puede verse."
+msgid "This picture might exist, but it isn't in your home folder so I can't see it."
+msgstr "Esta imagen podría existir, pero no está en tu carpeta de inicio, así que no puede verse."
 
 #: src/picture_widget.py
 msgid "This picture doesn't exist"
@@ -576,44 +548,40 @@ msgstr "Sin titulo"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An editing history is now available to undo or redo your changes."
-msgstr ""
+msgstr "Ahora está disponible un historial de edición para deshacer o rehacer los cambios."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"This version now detects when it runs in a flatpak sandbox, and tells you "
-"when a feature isn't available because of it (instead of silently doing "
-"nothing)."
-msgstr ""
+msgid "This version now detects when it runs in a flatpak sandbox, and tells you 
+when a feature isn't available because of it (instead of silently doing nothing)."
+msgstr "Esta versión ahora detecta cuando se ejecuta en un sandbox flatpak, y te dice 
+cuando una función no está disponible debido a ello (en lugar de no hacer nada en silencio)."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"The help manual has been updated to tell you workarounds about this problem."
-msgstr ""
+msgid "The help manual has been updated to tell you workarounds about this problem."
+msgstr 
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An new icon is available, following the recent GNOME guidelines."
-msgstr ""
+msgstr "Hay un nuevo icono disponible, siguiendo las recientes directrices de diseño de GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid ""
-"The images can now be reordered, previewed, or deleted using keyboard "
-"shortcuts."
-msgstr ""
+msgid "The images can now be reordered, previewed, or deleted using keyboard shortcuts."
+msgstr "Ahora es posible reordenar, previsualizar o eliminar las imágenes mediante atajos de teclado."
 
 #. caption for screenshot 1
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An example of a wallpaper changing with daylight"
-msgstr ""
+msgstr "Un ejemplo de fondo de pantalla que cambia con la luz del día"
 
 #. caption for screenshot 2
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "The grid layout"
-msgstr ""
+msgstr "La disposición de la cuadrícula"
 
 #. That's my name, don't translate it
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Romain F. T."
-msgstr ""
+msgstr "Romain F. T."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Create or edit dynamic wallpapers for GNOME."
@@ -621,7 +589,7 @@ msgstr "Crea o edita Fondos de pantalla dinamicos para GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in
 msgid "Wallpaper;Daylight;XML;"
-msgstr ""
+msgstr "Fondo de pantalla;Luz del día;XML;"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/menus.ui
 #: src/ui/shortcuts.ui
@@ -630,19 +598,19 @@ msgstr "Nueva ventana"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
 msgid "Use a grid or a list"
-msgstr ""
+msgstr "Utiliza una cuadrícula o una lista"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.gschema.xml
 msgid "Display the pictures using a grid of thumbnails, or a list."
-msgstr ""
+msgstr "Mostrar las imágenes mediante una cuadrícula de miniaturas o una lista."
 
 #: src/ui/menus.ui
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #: src/ui/menus.ui
 msgid "Grid"
-msgstr ""
+msgstr "Cuadrícula"
 
 #: src/ui/menus.ui
 msgid "Keyboard Shortcuts"
@@ -675,27 +643,27 @@ msgstr "Fondo de pantalla"
 
 #: src/ui/menus.ui
 msgid "Mosaic"
-msgstr ""
+msgstr "Mosaico"
 
 #: src/ui/menus.ui
 msgid "Centered"
-msgstr ""
+msgstr "Centrado"
 
 #: src/ui/menus.ui
 msgid "Scaled"
-msgstr ""
+msgstr "Escalado"
 
 #: src/ui/menus.ui
 msgid "Stretched"
-msgstr ""
+msgstr "Estirado"
 
 #: src/ui/menus.ui
 msgid "Zoom"
-msgstr ""
+msgstr "Ampliado"
 
 #: src/ui/menus.ui
 msgid "Spanned"
-msgstr ""
+msgstr "Extendido"
 
 #: src/ui/menus.ui
 #, fuzzy
@@ -704,7 +672,7 @@ msgstr "Usa la misma duración para todas las imágenes"
 
 #: src/ui/menus.ui
 msgid "Fit the daylight"
-msgstr ""
+msgstr "Encajar con la luz del día"
 
 #: src/ui/menus.ui
 #, fuzzy
@@ -718,54 +686,48 @@ msgstr "Transición"
 
 #: src/ui/picture_menu.ui
 msgid "Replace with…"
-msgstr ""
+msgstr "Reemplazar por…"
 
 #: src/ui/picture_menu.ui src/ui/shortcuts.ui
 #, fuzzy
 msgid "View picture"
-msgstr "%s imagenes"
+msgstr "%s imágenes"
 
 #: src/ui/picture_menu.ui
 msgid "View containing directory"
-msgstr ""
+msgstr "Ver el directorio que contiene"
 
 #: src/ui/picture_menu.ui
 msgid "Move to first position"
-msgstr ""
+msgstr "Mover hacia la primera posición"
 
 #: src/ui/picture_menu.ui src/ui/shortcuts.ui
 msgid "Move up"
-msgstr ""
+msgstr "Mover hacia arriba"
 
 #: src/ui/picture_menu.ui src/ui/shortcuts.ui
 msgid "Move down"
-msgstr ""
+msgstr "Mover hacia abajo"
 
 #: src/ui/picture_menu.ui
 msgid "Move to last position"
-msgstr ""
+msgstr "Mover hacia la ultima posición"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Time"
 msgstr "Tiempo"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
-msgid ""
-"Time (in seconds) of this image. This doesn't include the time of the "
-"transition."
-msgstr ""
-"Tiempo (en segundos) de esta imagen. Esto no incluye el tiempo de la "
-"transición."
+msgid "Time (in seconds) of this image. This doesn't include the time of the transition."
+msgstr "Tiempo (en segundos) de esta imagen. Esto no incluye el tiempo de la transición."
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/window.ui
 msgid "Transition"
 msgstr "Transición"
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui
-msgid ""
-"Time (in seconds) of the transition between this image and the next one."
-msgstr ""
-"Tiempo (en segundos) de la transición entre esta imagen y la siguiente."
+msgid "Time (in seconds) of the transition between this image and the next one."
+msgstr "Tiempo (en segundos) de la transición entre esta imagen y la siguiente."
 
 #: src/ui/picture_row.ui src/ui/picture_thumbnail.ui src/ui/shortcuts.ui
 msgid "Delete"
@@ -815,7 +777,7 @@ msgstr "General"
 
 #: src/ui/shortcuts.ui
 msgid "Close the current window"
-msgstr ""
+msgstr "Cerrar la ventana actual"
 
 #: src/ui/shortcuts.ui
 msgid "Quit all windows"
@@ -840,23 +802,23 @@ msgstr "Abrir un fondo dinamico existente"
 
 #: src/ui/shortcuts.ui
 msgid "History"
-msgstr ""
+msgstr "Historial"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Undo"
-msgstr ""
+msgstr "Deshacer"
 
 #: src/ui/shortcuts.ui src/ui/window.ui
 msgid "Redo"
-msgstr ""
+msgstr "Rehacer"
 
 #: src/ui/shortcuts.ui
 msgid "Pictures management"
-msgstr ""
+msgstr "Gestión de imágenes"
 
 #: src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add pictures"
-msgstr "Agregar imagenes"
+msgstr "Agregar imágenes"
 
 #: src/ui/shortcuts.ui src/ui/window.ui src/window.py
 msgid "Add a folder"
@@ -865,12 +827,12 @@ msgstr "Agregar una carpeta"
 #: src/ui/shortcuts.ui src/ui/window.ui
 #, fuzzy
 msgid "Find a picture"
-msgstr "Agregar imagenes"
+msgstr "Agregar imágenes"
 
 #: src/ui/shortcuts.ui
 #, fuzzy
 msgid "Selected picture"
-msgstr "Agregar imagenes"
+msgstr "Agregar imágenes"
 
 #: src/ui/window.ui src/window.py
 msgid "Open"
@@ -878,15 +840,15 @@ msgstr "Abrir"
 
 #: src/ui/window.ui
 msgid "More actions"
-msgstr "Mas acciones"
+msgstr "Más acciones"
 
 #: src/ui/window.ui
 msgid "Save the file and apply it as your wallpaper"
-msgstr ""
+msgstr "Guarda el archivo y aplícalo como fondo de pantalla"
 
 #: src/ui/window.ui
 msgid "Save and apply"
-msgstr ""
+msgstr "Guardar y aplicar"
 
 #: src/ui/window.ui
 #, fuzzy
@@ -904,16 +866,15 @@ msgstr "Establecer la hora exacta de inicio del fondo de pantalla"
 
 #: src/ui/window.ui
 msgid "Sort by name"
-msgstr ""
+msgstr "Clasificar por nombre"
 
 #: src/ui/window.ui
 msgid "Error starting the application, please report this bug."
-msgstr ""
-"Ha ocurrido un error iniciando la aplicación, por favor reporte este error."
+msgstr "Ha ocurrido un error iniciando la aplicación. Por favor, informa de este error."
 
 #: src/ui/window.ui
 msgid "Automatic fix"
-msgstr ""
+msgstr "Arreglo automático"
 
 #: src/ui/window.ui
 #, fuzzy
@@ -943,7 +904,7 @@ msgstr "Elemento desconocido: %s"
 
 #: src/main.py
 msgid "Tell the version of the app"
-msgstr ""
+msgstr "Indicar la versión de la aplicación"
 
 #: src/main.py
 #, fuzzy
@@ -952,34 +913,32 @@ msgstr "Nueva ventana"
 
 #: src/main.py
 msgid "Error opening this file."
-msgstr ""
+msgstr "Error al abrir este archivo."
 
 #: src/main.py
 #, python-format
 msgid "Did you mean %s ?"
-msgstr ""
+msgstr "¿Querías decir %s?"
 
 #: src/main.py
 msgid "Report bugs or ideas"
-msgstr "Reportar errores o ideas"
+msgstr "Informar de errores o aportar ideas"
 
 #: src/main.py
 msgid "translator-credits"
-msgstr "Julian Reyes"
+msgstr "Sergio Varela"
 
 #: src/main.py
 msgid "This feature isn't available with Flatpak."
-msgstr ""
+msgstr "Esta función no está disponible con Flatpak."
 
 #: src/main.py
-msgid ""
-"Don't worry, your XML file can still be set as your wallpaper from GNOME "
-"Tweaks."
-msgstr ""
+msgid "Don't worry, your XML file can still be set as your wallpaper from GNOME Tweaks."
+msgstr "No te preocupes, tu archivo XML puede seguir siendo tu fondo de pantalla desde GNOME Tweaks."
 
 #: src/main.py
 msgid "This desktop environment isn't supported."
-msgstr ""
+msgstr "Este entorno de escritorio no es compatible."
 
 #: src/misc.py
 msgid "Dynamic wallpapers (XML)"
@@ -987,77 +946,76 @@ msgstr "Fondos de pantalla dinámicos (XML)"
 
 #: src/misc.py
 msgid "All pictures"
-msgstr "Todas las imagenes"
+msgstr "Todas las imágenes"
 
 #: src/misc.py
 msgid "PNG images"
-msgstr "Imagenes PNG"
+msgstr "Imágenes PNG"
 
 #: src/misc.py
 msgid "JPEG images"
-msgstr "Imagenes JPEG"
+msgstr "Imágenes JPEG"
 
 #: src/misc.py
 #, fuzzy, python-format
 msgid "%s hour"
 msgid_plural "%s hours"
-msgstr[0] "%s horas(s)"
+msgstr[0] "%s hora"
 msgstr[1] "%s horas(s)"
 
 #: src/misc.py
 #, fuzzy, python-format
 msgid "%s minute"
 msgid_plural "%s minutes"
-msgstr[0] "%s minuto(s)"
+msgstr[0] "%s minuto"
 msgstr[1] "%s minuto(s)"
 
 #: src/misc.py
 #, fuzzy, python-format
 msgid "%s second"
 msgid_plural "%s seconds"
-msgstr[0] "%s segundo(s)"
+msgstr[0] "%s segundo"
 msgstr[1] "%s segundo(s)"
 
 #: src/picture_widget.py
-msgid ""
-"This picture might exist, but it isn't in your home folder so I can't see it."
-msgstr ""
+msgid "This picture might exist, but it isn't in your home folder so I can't see it."
+msgstr "Esta imagen podría existir, pero no está en tu carpeta de inicio, así que no puede verse."
 
 #: src/picture_widget.py
 msgid "This picture doesn't exist"
-msgstr ""
+msgstr "Esta imagen no existe"
 
 #: src/picture_widget.py
 #, python-brace-format
 msgid "This picture lasts from {0} to {1}"
-msgstr ""
+msgstr "Esta imagen dura de {0} a {1}"
 
 #: src/picture_widget.py
 #, python-brace-format
 msgid "The transition to the next picture lasts from {0} to {1}"
-msgstr ""
+msgstr "La transición a la siguiente imagen dura de {0} a {1}"
 
 #: src/view.py
 msgid "Add new pictures, or open an existing XML file."
-msgstr "Agregue nuevas imágenes o abra un archivo XML existente."
+msgstr "Agrega nuevas imágenes o abra un archivo XML existente."
 
 #: src/view.py
 msgid "Drag-and-drop pictures to reorder them."
-msgstr ""
+msgstr "Arrastra y suelta las imágenes para reordenarlas."
 
 #: src/window.py
 #, fuzzy, python-format
 msgid "%s picture"
 msgid_plural "%s pictures"
-msgstr[0] "%s imagenes"
+msgstr[0] "%s imagen"
 msgstr[1] "%s imagenes"
 
 #: src/window.py
 #, fuzzy, python-format
 msgid "Total time: %s second"
 msgid_plural "Total time: %s seconds"
-msgstr[0] "Tiempo total:%s segundo (s)"
-msgstr[1] "Tiempo total:%s segundo (s)"
+msgstr[0] "Tiempo total: %s segundo"
+msgstr[1] "Tiempo total: %s segundo(s)"
 
 #: src/window.py
 #, fuzzy
@@ -1088,7 +1046,7 @@ msgstr "Cargando..."
 #: src/window.py
 #, python-format
 msgid "Replace %s"
-msgstr ""
+msgstr "Reemplazar %s"
 
 #: src/window.py
 msgid "Untitled"
