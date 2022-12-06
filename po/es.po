@@ -30,18 +30,12 @@ msgid "Create or edit dynamic wallpapers for GNOME"
 msgstr "Crea o edita Fondos de pantalla dinamicos para GNOME"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "Dynamic Wallpaper Editor is a simple utility to create or edit dynamic 
-wallpapers for the GNOME desktop."
-msgstr "Dynamic Wallpaper Editor es una sencilla utilidad para crear o editar fondos 
-de pantalla dinámicos para el escritorio GNOME."
+msgid "Dynamic Wallpaper Editor is a simple utility to create or edit dynamic wallpapers for the GNOME desktop."
+msgstr "Dynamic Wallpaper Editor es una sencilla utilidad para crear o editar fondos de pantalla dinámicos para el escritorio GNOME."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "The duration of each picture and each transition can be set separately or 
-globally. The wallpaper will fit the daylight if its total duration is 
-exactly 24 hours."
-msgstr "La duración de cada imagen y de cada transición puede ajustarse por separado
-o de forma global. El fondo de pantalla se ajustará a la luz del día si su
-duración total es exactamente de 24 horas."
+msgid "The duration of each picture and each transition can be set separately or globally. The wallpaper will fit the daylight if its total duration is exactly 24 hours."
+msgstr "La duración de cada imagen y de cada transición puede ajustarse por separado o de forma global. El fondo de pantalla se ajustará a la luz del día si suduración total es exactamente de 24 horas."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "Version 3.0 greatly improves performances."
@@ -49,15 +43,11 @@ msgstr "La versión 3.0 mejora considerablemente el rendimiento."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "An editing history is now available to undo or redo your changes."
-msgstr "Ahora está disponible un historial de edición para deshacer o rehacer los 
-cambios."
+msgstr "Ahora está disponible un historial de edición para deshacer o rehacer los cambios."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
-msgid "This version now detects when it runs in a flatpak sandbox, and tells you
-when a feature isn't available because of it (instead of silently doing nothing)."
-msgstr "Esta versión ahora detecta cuando se ejecuta en un sandbox de flatpak, y te
-dice cuando una característica no está disponible a causa de ello (en lugar 
-de no hacer nada)."
+msgid "This version now detects when it runs in a flatpak sandbox, and tells you when a feature isn't available because of it (instead of silently doing nothing)."
+msgstr "Esta versión ahora detecta cuando se ejecuta en un sandbox de flatpak, y te dice cuando una característica no está disponible a causa de ello (en lugar de no hacer nada)."
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 msgid "The help manual has been updated to tell you workarounds about this problem."
