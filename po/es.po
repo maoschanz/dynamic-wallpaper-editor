@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-10 18:35+0200\n"
-"PO-Revision-Date: 2022-07-12 18:37+0200\n"
+"PO-Revision-Date: 2022-11-06 17:30+0200\n"
 "Last-Translator: Sergio Varela <sergiovg01@outlook.com>\n"
 "Language-Team: Spanish - Spain <sergiovg01@outlook.com>\n"
 "Language: es_ES\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 40.0\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #: data/com.github.maoschanz.DynamicWallpaperEditor.appdata.xml.in
 #: data/com.github.maoschanz.DynamicWallpaperEditor.desktop.in src/ui/window.ui
