@@ -217,6 +217,9 @@ class Application(Gtk.Application):
 			self.wp_schema = Gio.Settings.new('org.gnome.desktop.background')
 			self.wp_path = 'picture-uri'
 			self.wp_options = 'picture-options'
+			self.wp_schema = Gio.Settings.new('org.gnome.desktop.background')
+			self.wp_path = 'picture-uri-dark'
+			self.wp_options = 'picture-options'
 		elif 'Cinnamon' in self.desktop_env:
 			self.wp_schema = Gio.Settings.new('org.cinnamon.desktop.background')
 			self.wp_path = 'picture-uri'
