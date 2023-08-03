@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys, gi, os
+import subprocess
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gio, GLib, Gdk
@@ -210,16 +211,22 @@ class Application(Gtk.Application):
 		self.wp_schema = None
 		self.wp_path = None
 		self.wp_options = None
+		self.command = ["gsettings","get","org.gnome.desktop.interface", "color-scheme"]
+		process = subprocess.Popen(self.command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+		stdout, stderr = process.communicate()
+		self.dark_mode = stdout.strip()
 		if 'Budgie' in self.desktop_env:
 			pass # Doesn't support XML wallpapers XXX ???
 		elif 'GNOME' in self.desktop_env or 'Pantheon' in self.desktop_env \
 		                                         or 'Unity' in self.desktop_env:
-			self.wp_schema = Gio.Settings.new('org.gnome.desktop.background')
-			self.wp_path = 'picture-uri'
-			self.wp_options = 'picture-options'
-			self.wp_schema = Gio.Settings.new('org.gnome.desktop.background')
-			self.wp_path = 'picture-uri-dark'
-			self.wp_options = 'picture-options'
+			if self.dark_mode == "'prefer-light'" or self.dark_mode == "'default'":
+				self.wp_schema = Gio.Settings.new('org.gnome.desktop.background')
+				self.wp_path = 'picture-uri'
+				self.wp_options = 'picture-options'
+			else:
+				self.wp_schema = Gio.Settings.new('org.gnome.desktop.background')
+				self.wp_path = 'picture-uri-dark'
+				self.wp_options = 'picture-options'
 		elif 'Cinnamon' in self.desktop_env:
 			self.wp_schema = Gio.Settings.new('org.cinnamon.desktop.background')
 			self.wp_path = 'picture-uri'
